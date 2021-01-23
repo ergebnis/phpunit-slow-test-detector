@@ -20,6 +20,11 @@ final class SlowTestCollector
     private Event\Telemetry\Duration $maximumDuration;
 
     /**
+     * @var array<string, Event\Telemetry\HRTime>
+     */
+    private array $preparedTimes = [];
+
+    /**
      * @var array<string, SlowTest>
      */
     private array $slowTests = [];
@@ -29,21 +34,41 @@ final class SlowTestCollector
         $this->maximumDuration = $maximumDuration;
     }
 
-    public function collect(SlowTest $slowTest): void
-    {
-        $duration = $slowTest->duration();
+    public function testHasBeenPrepared(
+        Event\Code\Test $test,
+        Event\Telemetry\HRTime $preparedTime
+    ): void {
+        $key = self::key($test);
+
+        $this->preparedTimes[$key] = $preparedTime;
+    }
+
+    public function testHasPassed(
+        Event\Code\Test $test,
+        Event\Telemetry\HRTime $passedTime
+    ): void {
+        $key = self::key($test);
+
+        if (!\array_key_exists($key, $this->preparedTimes)) {
+            return;
+        }
+
+        $preparedTime = $this->preparedTimes[$key];
+
+        unset($this->preparedTimes[$key]);
+
+        $duration = $passedTime->duration($preparedTime);
 
         if (!$duration->isGreaterThan($this->maximumDuration)) {
             return;
         }
 
-        $test = $slowTest->test();
-
-        $key = \sprintf(
-            '%s::%s',
-            $test->className(),
-            $test->methodNameWithDataSet(),
+        $slowTest = SlowTest::fromTestAndDuration(
+            $test,
+            $duration
         );
+
+        $key = self::key($test);
 
         if (\array_key_exists($key, $this->slowTests)) {
             $previousSlowTest = $this->slowTests[$key];
@@ -74,5 +99,14 @@ final class SlowTestCollector
     public function slowTests(): array
     {
         return \array_values($this->slowTests);
+    }
+
+    private static function key(Event\Code\Test $test): string
+    {
+        return \sprintf(
+            '%s::%s',
+            $test->className(),
+            $test->methodNameWithDataSet(),
+        );
     }
 }
