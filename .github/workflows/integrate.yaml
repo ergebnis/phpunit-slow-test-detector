@@ -44,7 +44,7 @@ jobs:
           php-version: "${{ matrix.php-version }}"
 
       - name: "Validate composer.json and composer.lock"
-        run: "composer validate --strict"
+        run: "composer validate"
 
       - name: "Determine composer cache directory"
         uses: "./.github/actions/composer/composer/determine-cache-directory"
@@ -196,9 +196,7 @@ jobs:
           - "8.0"
 
         dependencies:
-          - "lowest"
           - "locked"
-          - "highest"
 
     steps:
       - name: "Checkout"
