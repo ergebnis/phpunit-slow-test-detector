@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Unreleased
 
-For a full diff see [`1902cc2...main`][1902cc2...main].
+For a full diff see [`7afa59c...main`][7afa59c...main].
 
-[1902cc2...main]: https://github.com/ergebnis/phpunit-slow-test-collector/compare/1902cc2...main
+### Added
+
+* Added `SlowTest` ([#6]), by [@localheinz]
+
+[7afa59c...main]: https://github.com/ergebnis/phpunit-slow-test-collector/compare/7afa59c...main
+
+[#6]: https://github.com/ergebnis/phpunit-slow-test-collector/pull/6
+
+[@localheinz]: https://github.com/localheinz
