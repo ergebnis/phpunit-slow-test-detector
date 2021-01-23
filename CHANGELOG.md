@@ -12,10 +12,12 @@ For a full diff see [`7afa59c...main`][7afa59c...main].
 
 * Added `SlowTest` ([#6]), by [@localheinz]
 * Added `SlowTestCollector` ([#8]), by [@localheinz]
+* Added `Subscriber\TestPreparedSubscriber` ([#12]), by [@localheinz]
 
 [7afa59c...main]: https://github.com/ergebnis/phpunit-slow-test-collector/compare/7afa59c...main
 
 [#6]: https://github.com/ergebnis/phpunit-slow-test-collector/pull/6
 [#8]: https://github.com/ergebnis/phpunit-slow-test-collector/pull/8
+[#12]: https://github.com/ergebnis/phpunit-slow-test-collector/pull/12
 
 [@localheinz]: https://github.com/localheinz
