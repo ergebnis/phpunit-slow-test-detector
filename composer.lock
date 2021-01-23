@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4657a2b241bfdff706e0544392ff02e3",
+    "content-hash": "fac32b0215d09c09ef1244f16c645b84",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -625,12 +625,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/theseer/phpunit.git",
-                "reference": "2e2b3f410"
+                "reference": "796042126"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/theseer/phpunit/zipball/2e2b3f410",
-                "reference": "2e2b3f410",
+                "url": "https://api.github.com/repos/theseer/phpunit/zipball/796042126",
+                "reference": "796042126",
                 "shasum": ""
             },
             "require": {
@@ -727,7 +727,7 @@
                     "url": "https://phpunit.de/donate.html"
                 }
             ],
-            "time": "2021-01-23T09:06:19+00:00"
+            "time": "2021-01-23T12:44:56+00:00"
         },
         {
             "name": "sebastian/cli-parser",

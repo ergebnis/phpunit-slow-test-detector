@@ -18,7 +18,7 @@
   ],
   "require": {
     "php": "^7.4 || ^8.0",
-    "phpunit/phpunit": "dev-event#2e2b3f410 as 10.0.0"
+    "phpunit/phpunit": "dev-event#796042126 as 10.0.0"
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.13.2",
