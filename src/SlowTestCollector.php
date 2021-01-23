@@ -34,7 +34,7 @@ final class SlowTestCollector
         $this->maximumDuration = $maximumDuration;
     }
 
-    public function testHasBeenPrepared(
+    public function testPrepared(
         Event\Code\Test $test,
         Event\Telemetry\HRTime $preparedTime
     ): void {
@@ -43,7 +43,7 @@ final class SlowTestCollector
         $this->preparedTimes[$key] = $preparedTime;
     }
 
-    public function testHasPassed(
+    public function testPassed(
         Event\Code\Test $test,
         Event\Telemetry\HRTime $passedTime
     ): void {
