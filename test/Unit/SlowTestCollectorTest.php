@@ -64,7 +64,7 @@ final class SlowTestCollectorTest extends Framework\TestCase
 
         $slowTestCollector = new SlowTestCollector($maximumDuration);
 
-        $slowTestCollector->testHasBeenPrepared(
+        $slowTestCollector->testPrepared(
             $test,
             $preparedTime
         );
@@ -90,7 +90,7 @@ final class SlowTestCollectorTest extends Framework\TestCase
 
         $slowTestCollector = new SlowTestCollector($maximumDuration);
 
-        $slowTestCollector->testHasPassed(
+        $slowTestCollector->testPassed(
             $test,
             $passedTime
         );
@@ -121,12 +121,12 @@ final class SlowTestCollectorTest extends Framework\TestCase
 
         $slowTestCollector = new SlowTestCollector($maximumDuration);
 
-        $slowTestCollector->testHasBeenPrepared(
+        $slowTestCollector->testPrepared(
             $test,
             $preparedTime
         );
 
-        $slowTestCollector->testHasPassed(
+        $slowTestCollector->testPassed(
             $test,
             $passedTime
         );
@@ -157,12 +157,12 @@ final class SlowTestCollectorTest extends Framework\TestCase
 
         $slowTestCollector = new SlowTestCollector($maximumDuration);
 
-        $slowTestCollector->testHasBeenPrepared(
+        $slowTestCollector->testPrepared(
             $test,
             $preparedTime
         );
 
-        $slowTestCollector->testHasPassed(
+        $slowTestCollector->testPassed(
             $test,
             $passedTime
         );
@@ -193,12 +193,12 @@ final class SlowTestCollectorTest extends Framework\TestCase
 
         $slowTestCollector = new SlowTestCollector($maximumDuration);
 
-        $slowTestCollector->testHasBeenPrepared(
+        $slowTestCollector->testPrepared(
             $test,
             $preparedTime
         );
 
-        $slowTestCollector->testHasPassed(
+        $slowTestCollector->testPassed(
             $test,
             $passedTime
         );
@@ -246,22 +246,22 @@ final class SlowTestCollectorTest extends Framework\TestCase
 
         $slowTestCollector = new SlowTestCollector($maximumDuration);
 
-        $slowTestCollector->testHasBeenPrepared(
+        $slowTestCollector->testPrepared(
             $test,
             $firstPreparedTime
         );
 
-        $slowTestCollector->testHasPassed(
+        $slowTestCollector->testPassed(
             $test,
             $firstPassedTime
         );
 
-        $slowTestCollector->testHasBeenPrepared(
+        $slowTestCollector->testPrepared(
             $test,
             $secondPreparedTime
         );
 
-        $slowTestCollector->testHasPassed(
+        $slowTestCollector->testPassed(
             $test,
             $secondPassedTime
         );
@@ -304,17 +304,17 @@ final class SlowTestCollectorTest extends Framework\TestCase
 
         $slowTestCollector = new SlowTestCollector($maximumDuration);
 
-        $slowTestCollector->testHasBeenPrepared(
+        $slowTestCollector->testPrepared(
             $test,
             $firstPreparedTime
         );
 
-        $slowTestCollector->testHasPassed(
+        $slowTestCollector->testPassed(
             $test,
             $firstPassedTime
         );
 
-        $slowTestCollector->testHasPassed(
+        $slowTestCollector->testPassed(
             $test,
             $secondPassedTime
         );
@@ -362,22 +362,22 @@ final class SlowTestCollectorTest extends Framework\TestCase
 
         $slowTestCollector = new SlowTestCollector($maximumDuration);
 
-        $slowTestCollector->testHasBeenPrepared(
+        $slowTestCollector->testPrepared(
             $test,
             $firstPreparedTime
         );
 
-        $slowTestCollector->testHasPassed(
+        $slowTestCollector->testPassed(
             $test,
             $firstPassedTime
         );
 
-        $slowTestCollector->testHasBeenPrepared(
+        $slowTestCollector->testPrepared(
             $test,
             $secondPreparedTime
         );
 
-        $slowTestCollector->testHasPassed(
+        $slowTestCollector->testPassed(
             $test,
             $secondPassedTime
         );
@@ -463,52 +463,52 @@ final class SlowTestCollectorTest extends Framework\TestCase
 
         $slowTestCollector = new SlowTestCollector($maximumDuration);
 
-        $slowTestCollector->testHasBeenPrepared(
+        $slowTestCollector->testPrepared(
             $firstTest,
             $firstPreparedTime
         );
 
-        $slowTestCollector->testHasPassed(
+        $slowTestCollector->testPassed(
             $firstTest,
             $firstPassedTime
         );
 
-        $slowTestCollector->testHasBeenPrepared(
+        $slowTestCollector->testPrepared(
             $secondTest,
             $secondPreparedTime
         );
 
-        $slowTestCollector->testHasPassed(
+        $slowTestCollector->testPassed(
             $secondTest,
             $secondPassedTime
         );
 
-        $slowTestCollector->testHasBeenPrepared(
+        $slowTestCollector->testPrepared(
             $thirdTest,
             $thirdPreparedTime
         );
 
-        $slowTestCollector->testHasPassed(
+        $slowTestCollector->testPassed(
             $thirdTest,
             $thirdPassedTime
         );
 
-        $slowTestCollector->testHasBeenPrepared(
+        $slowTestCollector->testPrepared(
             $fourthTest,
             $fourthPreparedTime
         );
 
-        $slowTestCollector->testHasPassed(
+        $slowTestCollector->testPassed(
             $fourthTest,
             $fourthPassedTime
         );
 
-        $slowTestCollector->testHasBeenPrepared(
+        $slowTestCollector->testPrepared(
             $fifthTest,
             $fifthPreparedTime
         );
 
-        $slowTestCollector->testHasPassed(
+        $slowTestCollector->testPassed(
             $fifthTest,
             $fifthPassedTime
         );
