@@ -46,252 +46,491 @@ final class SlowTestCollectorTest extends Framework\TestCase
         self::assertSame($maximumDuration, $slowTestCollector->maximumDuration());
     }
 
-    public function testCollectIgnoresSlowTestWhenDurationIsEqualToMaximumDuration(): void
+    public function testDoesNotCollectSlowTestWhenTestHasBeenPreparedButHasNotPassed(): void
     {
         $faker = self::faker();
 
         $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
-            $faker->numberBetween(0, 999999999)
+            $faker->numberBetween(0, 500000000)
         );
 
-        $slowTest = SlowTest::fromTestAndDuration(
-            self::createTest('slowTest'),
-            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-                $maximumDuration->seconds(),
-                $maximumDuration->nanoseconds()
-            )
+        $test = self::createTest('test');
+
+        $preparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            0
         );
 
         $slowTestCollector = new SlowTestCollector($maximumDuration);
 
-        $slowTestCollector->collect($slowTest);
+        $slowTestCollector->testHasBeenPrepared(
+            $test,
+            $preparedTime
+        );
 
         self::assertSame([], $slowTestCollector->slowTests());
     }
 
-    public function testCollectCollectsSlowTestsWhenDurationIsGreaterThanMaximumDuration(): void
+    public function testDoesNotCollectSlowTestWhenTestHasPassedButNotBeenPrepared(): void
     {
         $faker = self::faker();
 
         $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
-            $faker->numberBetween(1, 999999998)
+            $faker->numberBetween(0, 500000000)
         );
 
-        $slowTest = SlowTest::fromTestAndDuration(
-            self::createTest('slowTest'),
-            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-                $maximumDuration->seconds(),
-                $maximumDuration->nanoseconds() + 1,
-            )
+        $test = self::createTest('test');
+
+        $passedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            0
         );
 
         $slowTestCollector = new SlowTestCollector($maximumDuration);
 
-        $slowTestCollector->collect($slowTest);
+        $slowTestCollector->testHasPassed(
+            $test,
+            $passedTime
+        );
 
-        $expected = [
-            $slowTest,
-        ];
-
-        self::assertSame($expected, $slowTestCollector->slowTests());
+        self::assertSame([], $slowTestCollector->slowTests());
     }
 
-    public function testCollectIgnoresSlowTestWhenDurationIsGreaterThanMaximumDurationButLessThanDurationForEqualTest(): void
+    public function testDoesNotCollectSlowTestWhenTestHasBeenPreparedAndPassedWithDurationLessThanMaximumDuration(): void
     {
         $faker = self::faker();
 
         $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
-            $faker->numberBetween(1, 99999997),
+            $faker->numberBetween(1, 500000000)
         );
 
-        $slowTest = SlowTest::fromTestAndDuration(
-            self::createTest('slowTest'),
-            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-                $maximumDuration->seconds(),
-                $maximumDuration->nanoseconds() + 2
-            )
+        $test = self::createTest('test');
+
+        $preparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            0
         );
 
-        $test = $slowTest->test();
-        $duration = $slowTest->duration();
+        $passedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $preparedTime->seconds() + $maximumDuration->seconds(),
+            $preparedTime->nanoseconds() + $maximumDuration->nanoseconds() - 1
+        );
 
-        $slowTestForEqualTestWithLessDuration = SlowTest::fromTestAndDuration(
-            new Event\Code\Test(
-                $test->className(),
-                $test->methodName(),
-                $test->methodNameWithDataSet()
+        $slowTestCollector = new SlowTestCollector($maximumDuration);
+
+        $slowTestCollector->testHasBeenPrepared(
+            $test,
+            $preparedTime
+        );
+
+        $slowTestCollector->testHasPassed(
+            $test,
+            $passedTime
+        );
+
+        self::assertSame([], $slowTestCollector->slowTests());
+    }
+
+    public function testDoesNotCollectSlowTestWhenTestHasBeenPreparedAndPassedWithDurationEqualToMaximumDuration(): void
+    {
+        $faker = self::faker();
+
+        $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            $faker->numberBetween(0, 500000000)
+        );
+
+        $test = self::createTest('test');
+
+        $preparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            0
+        );
+
+        $passedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $preparedTime->seconds() + $maximumDuration->seconds(),
+            $preparedTime->nanoseconds() + $maximumDuration->nanoseconds()
+        );
+
+        $slowTestCollector = new SlowTestCollector($maximumDuration);
+
+        $slowTestCollector->testHasBeenPrepared(
+            $test,
+            $preparedTime
+        );
+
+        $slowTestCollector->testHasPassed(
+            $test,
+            $passedTime
+        );
+
+        self::assertSame([], $slowTestCollector->slowTests());
+    }
+
+    public function testCollectsSlowTestWhenTestHasBeenPreparedAndPassedWithDurationGreaterThanMaximumDuration(): void
+    {
+        $faker = self::faker();
+
+        $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            $faker->numberBetween(0, 500000000)
+        );
+
+        $test = self::createTest('test');
+
+        $preparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            0
+        );
+
+        $passedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $preparedTime->seconds() + $maximumDuration->seconds(),
+            $preparedTime->nanoseconds() + $maximumDuration->nanoseconds() + 1
+        );
+
+        $slowTestCollector = new SlowTestCollector($maximumDuration);
+
+        $slowTestCollector->testHasBeenPrepared(
+            $test,
+            $preparedTime
+        );
+
+        $slowTestCollector->testHasPassed(
+            $test,
+            $passedTime
+        );
+
+        $expected = [
+            SlowTest::fromTestAndDuration(
+                $test,
+                $passedTime->duration($preparedTime)
             ),
-            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-                $duration->seconds(),
-                $duration->nanoseconds() - 1,
-            )
-        );
-
-        $slowTestCollector = new SlowTestCollector($maximumDuration);
-
-        $slowTestCollector->collect($slowTest);
-        $slowTestCollector->collect($slowTestForEqualTestWithLessDuration);
-
-        $expected = [
-            $slowTest,
         ];
 
-        self::assertSame($expected, $slowTestCollector->slowTests());
+        self::assertEquals($expected, $slowTestCollector->slowTests());
     }
 
-    public function testCollectIgnoresSlowTestWhenDurationIsGreaterThanMaximumDurationButEqualToDurationForSameTest(): void
+    public function testDoesNotReplaceSlowTestWhenDurationIsGreaterThanMaximumDurationButLessThanPreviousDurationForSameTest(): void
     {
         $faker = self::faker();
 
         $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
-            $faker->numberBetween(0, 99999998),
+            $faker->numberBetween(0, 500000000)
         );
 
-        $slowTest = SlowTest::fromTestAndDuration(
-            self::createTest('slowTest'),
-            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-                $maximumDuration->seconds(),
-                $maximumDuration->nanoseconds() + 1
-            )
+        $test = self::createTest('test');
+
+        $firstPreparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            0
         );
 
-        $test = $slowTest->test();
-        $duration = $slowTest->duration();
+        $firstPassedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $firstPreparedTime->seconds() + $maximumDuration->seconds(),
+            $firstPreparedTime->nanoseconds() + $maximumDuration->nanoseconds() + 2
+        );
 
-        $slowTestForEqualTestWithEqualDuration = SlowTest::fromTestAndDuration(
-            new Event\Code\Test(
-                $test->className(),
-                $test->methodName(),
-                $test->methodNameWithDataSet()
-            ),
-            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-                $duration->seconds(),
-                $duration->nanoseconds()
-            )
+        $secondPreparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            0
+        );
+
+        $secondPassedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $secondPreparedTime->seconds() + $maximumDuration->seconds(),
+            $secondPreparedTime->nanoseconds() + $maximumDuration->nanoseconds() + 1
         );
 
         $slowTestCollector = new SlowTestCollector($maximumDuration);
 
-        $slowTestCollector->collect($slowTest);
-        $slowTestCollector->collect($slowTestForEqualTestWithEqualDuration);
+        $slowTestCollector->testHasBeenPrepared(
+            $test,
+            $firstPreparedTime
+        );
+
+        $slowTestCollector->testHasPassed(
+            $test,
+            $firstPassedTime
+        );
+
+        $slowTestCollector->testHasBeenPrepared(
+            $test,
+            $secondPreparedTime
+        );
+
+        $slowTestCollector->testHasPassed(
+            $test,
+            $secondPassedTime
+        );
 
         $expected = [
-            $slowTest,
+            SlowTest::fromTestAndDuration(
+                $test,
+                $firstPassedTime->duration($firstPreparedTime)
+            ),
         ];
-        self::assertSame($expected, $slowTestCollector->slowTests());
+
+        self::assertEquals($expected, $slowTestCollector->slowTests());
     }
 
-    public function testCollectReplacesSlowTestWhenDurationIsGreaterThanMaximumDurationAndGreaterThanDurationForSameTest(): void
+    public function testDoesNotReplaceSlowTestWhenDurationIsGreaterThanMaximumDurationAndTestHasPassedButNotBeenPrepared(): void
     {
         $faker = self::faker();
 
         $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
-            $faker->numberBetween(0, 99999997),
+            $faker->numberBetween(0, 500000000)
         );
 
-        $slowTest = SlowTest::fromTestAndDuration(
-            self::createTest('slowTest'),
-            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-                $maximumDuration->seconds(),
-                $maximumDuration->nanoseconds() + 1
-            )
+        $test = self::createTest('test');
+
+        $firstPreparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            0
         );
 
-        $test = $slowTest->test();
-        $duration = $slowTest->duration();
+        $firstPassedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $firstPreparedTime->seconds() + $maximumDuration->seconds(),
+            $firstPreparedTime->nanoseconds() + $maximumDuration->nanoseconds() + 1
+        );
 
-        $slowTestForEqualTestWithGreaterDuration = SlowTest::fromTestAndDuration(
-            new Event\Code\Test(
-                $test->className(),
-                $test->methodName(),
-                $test->methodNameWithDataSet()
-            ),
-            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-                $duration->seconds(),
-                $duration->nanoseconds() + 1
-            )
+        $secondPassedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $firstPreparedTime->seconds() + $maximumDuration->seconds(),
+            $firstPreparedTime->nanoseconds() + $maximumDuration->nanoseconds() + 2
         );
 
         $slowTestCollector = new SlowTestCollector($maximumDuration);
 
-        $slowTestCollector->collect($slowTest);
-        $slowTestCollector->collect($slowTestForEqualTestWithGreaterDuration);
+        $slowTestCollector->testHasBeenPrepared(
+            $test,
+            $firstPreparedTime
+        );
+
+        $slowTestCollector->testHasPassed(
+            $test,
+            $firstPassedTime
+        );
+
+        $slowTestCollector->testHasPassed(
+            $test,
+            $secondPassedTime
+        );
 
         $expected = [
-            $slowTestForEqualTestWithGreaterDuration,
+            SlowTest::fromTestAndDuration(
+                $test,
+                $firstPassedTime->duration($firstPreparedTime)
+            ),
         ];
 
-        self::assertSame($expected, $slowTestCollector->slowTests());
+        self::assertEquals($expected, $slowTestCollector->slowTests());
     }
 
-    public function testCollectCollectsMultipleSlowTestsWhenDurationIsGreaterThanMaximumDuration(): void
+    public function testReplacesSlowTestWhenDurationIsGreaterThanMaximumDurationAndGreaterThanPreviousDurationForSameTest(): void
+    {
+        $faker = self::faker();
+
+        $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            $faker->numberBetween(0, 500000000)
+        );
+
+        $test = self::createTest('test');
+
+        $firstPreparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            0
+        );
+
+        $firstPassedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $firstPreparedTime->seconds() + $maximumDuration->seconds(),
+            $firstPreparedTime->nanoseconds() + $maximumDuration->nanoseconds() + 1
+        );
+
+        $secondPreparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            0
+        );
+
+        $secondPassedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $secondPreparedTime->seconds() + $maximumDuration->seconds(),
+            $secondPreparedTime->nanoseconds() + $maximumDuration->nanoseconds() + 2
+        );
+
+        $slowTestCollector = new SlowTestCollector($maximumDuration);
+
+        $slowTestCollector->testHasBeenPrepared(
+            $test,
+            $firstPreparedTime
+        );
+
+        $slowTestCollector->testHasPassed(
+            $test,
+            $firstPassedTime
+        );
+
+        $slowTestCollector->testHasBeenPrepared(
+            $test,
+            $secondPreparedTime
+        );
+
+        $slowTestCollector->testHasPassed(
+            $test,
+            $secondPassedTime
+        );
+
+        $expected = [
+            SlowTest::fromTestAndDuration(
+                $test,
+                $secondPassedTime->duration($secondPreparedTime)
+            ),
+        ];
+
+        self::assertEquals($expected, $slowTestCollector->slowTests());
+    }
+
+    public function testCollectsMultipleSlowTestsWhenDurationIsGreaterThanMaximumDuration(): void
     {
         $faker = self::faker()->unique();
 
         $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-            $faker->numberBetween(2),
-            $faker->numberBetween(500000000, 999999999)
+            $faker->numberBetween(),
+            $faker->numberBetween(250000000, 500000000)
         );
 
-        $one = SlowTest::fromTestAndDuration(
-            self::createTest('one'),
-            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-                $maximumDuration->seconds() - 1,
-                $maximumDuration->nanoseconds()
-            )
+        $firstTest = self::createTest('one');
+
+        $firstPreparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            0
         );
 
-        $two = SlowTest::fromTestAndDuration(
-            self::createTest('two'),
-            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-                $maximumDuration->seconds(),
-                $maximumDuration->nanoseconds() - 1
-            )
+        $firstPassedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $firstPreparedTime->seconds() + $maximumDuration->seconds() - 1,
+            $firstPreparedTime->nanoseconds() + $maximumDuration->nanoseconds()
         );
 
-        $three = SlowTest::fromTestAndDuration(
-            self::createTest('three'),
-            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-                $maximumDuration->seconds(),
-                $maximumDuration->nanoseconds()
-            )
+        $secondTest = self::createTest('two');
+
+        $secondPreparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            0
         );
 
-        $four = SlowTest::fromTestAndDuration(
-            self::createTest('four'),
-            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-                $maximumDuration->seconds(),
-                $maximumDuration->nanoseconds() + 1
-            )
+        $secondPassedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $secondPreparedTime->seconds() + $maximumDuration->seconds(),
+            $secondPreparedTime->nanoseconds() + $maximumDuration->nanoseconds() - 1
         );
 
-        $five = SlowTest::fromTestAndDuration(
-            self::createTest('five'),
-            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-                $maximumDuration->seconds() + 1,
-                $maximumDuration->nanoseconds()
-            )
+        $thirdTest = self::createTest('three');
+
+        $thirdPreparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            0
+        );
+
+        $thirdPassedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $thirdPreparedTime->seconds() + $maximumDuration->seconds(),
+            $thirdPreparedTime->nanoseconds() + $maximumDuration->nanoseconds()
+        );
+
+        $fourthTest = self::createTest('four');
+
+        $fourthPreparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            0
+        );
+
+        $fourthPassedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $fourthPreparedTime->seconds() + $maximumDuration->seconds(),
+            $fourthPreparedTime->nanoseconds() + $maximumDuration->nanoseconds() + 1
+        );
+
+        $fifthTest = self::createTest('five');
+
+        $fifthPreparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            0
+        );
+
+        $fifthPassedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $fifthPreparedTime->seconds() + $maximumDuration->seconds() + 1,
+            $fifthPreparedTime->nanoseconds() + $maximumDuration->nanoseconds()
         );
 
         $slowTestCollector = new SlowTestCollector($maximumDuration);
 
-        $slowTestCollector->collect($one);
-        $slowTestCollector->collect($two);
-        $slowTestCollector->collect($three);
-        $slowTestCollector->collect($four);
-        $slowTestCollector->collect($five);
+        $slowTestCollector->testHasBeenPrepared(
+            $firstTest,
+            $firstPreparedTime
+        );
+
+        $slowTestCollector->testHasPassed(
+            $firstTest,
+            $firstPassedTime
+        );
+
+        $slowTestCollector->testHasBeenPrepared(
+            $secondTest,
+            $secondPreparedTime
+        );
+
+        $slowTestCollector->testHasPassed(
+            $secondTest,
+            $secondPassedTime
+        );
+
+        $slowTestCollector->testHasBeenPrepared(
+            $thirdTest,
+            $thirdPreparedTime
+        );
+
+        $slowTestCollector->testHasPassed(
+            $thirdTest,
+            $thirdPassedTime
+        );
+
+        $slowTestCollector->testHasBeenPrepared(
+            $fourthTest,
+            $fourthPreparedTime
+        );
+
+        $slowTestCollector->testHasPassed(
+            $fourthTest,
+            $fourthPassedTime
+        );
+
+        $slowTestCollector->testHasBeenPrepared(
+            $fifthTest,
+            $fifthPreparedTime
+        );
+
+        $slowTestCollector->testHasPassed(
+            $fifthTest,
+            $fifthPassedTime
+        );
 
         $expected = [
-            $four,
-            $five,
+            SlowTest::fromTestAndDuration(
+                $fourthTest,
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    $maximumDuration->seconds(),
+                    $maximumDuration->nanoseconds() + 1
+                )
+            ),
+            SlowTest::fromTestAndDuration(
+                $fifthTest,
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    $maximumDuration->seconds() + 1,
+                    $maximumDuration->nanoseconds()
+                )
+            ),
         ];
 
-        self::assertSame($expected, $slowTestCollector->slowTests());
+        self::assertEquals($expected, $slowTestCollector->slowTests());
     }
 
     private static function createTest(string $methodName): Event\Code\Test
