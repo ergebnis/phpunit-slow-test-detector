@@ -11,9 +11,11 @@ For a full diff see [`7afa59c...main`][7afa59c...main].
 ### Added
 
 * Added `SlowTest` ([#6]), by [@localheinz]
+* Added `SlowTestCollector` ([#8]), by [@localheinz]
 
 [7afa59c...main]: https://github.com/ergebnis/phpunit-slow-test-collector/compare/7afa59c...main
 
 [#6]: https://github.com/ergebnis/phpunit-slow-test-collector/pull/6
+[#8]: https://github.com/ergebnis/phpunit-slow-test-collector/pull/8
 
 [@localheinz]: https://github.com/localheinz
