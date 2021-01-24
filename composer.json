@@ -1,5 +1,5 @@
 {
-  "name": "ergebnis/phpunit-slow-test-collector",
+  "name": "ergebnis/phpunit-slow-test-detector",
   "type": "library",
   "description": "Provides a GitHub repository template for a PHP library, using GitHub actions.",
   "keywords": [
@@ -8,7 +8,7 @@
     "test",
     "collector"
   ],
-  "homepage": "https://github.com/ergebnis/phpunit-slow-test-collector",
+  "homepage": "https://github.com/ergebnis/phpunit-slow-test-detector",
   "license": "MIT",
   "authors": [
     {
@@ -50,12 +50,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Ergebnis\\PHPUnit\\SlowTestCollector\\": "src/"
+      "Ergebnis\\PHPUnit\\SlowTestDetector\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Ergebnis\\PHPUnit\\SlowTestCollector\\Test\\": "test/"
+      "Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\": "test/"
     }
   },
   "repositories": [
@@ -67,7 +67,7 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "support": {
-    "issues": "https://github.com/ergebnis/phpunit-slow-test-collector/issues",
-    "source": "https://github.com/ergebnis/phpunit-slow-test-collector"
+    "issues": "https://github.com/ergebnis/phpunit-slow-test-detector/issues",
+    "source": "https://github.com/ergebnis/phpunit-slow-test-detector"
   }
 }

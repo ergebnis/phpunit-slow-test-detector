@@ -81,7 +81,7 @@ repository:
   has_pages: false
   has_projects: false
   has_wiki: false
-  name: "phpunit-slow-test-collector"
+  name: "phpunit-slow-test-detector"
   private: false
 
   # https://docs.github.com/en/rest/reference/repos#replace-all-repository-topics

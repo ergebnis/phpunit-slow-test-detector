@@ -8,14 +8,14 @@ declare(strict_types=1);
  * For the full copyright and license information, please view
  * the LICENSE.md file that was distributed with this source code.
  *
- * @see https://github.com/ergebnis/phpunit-slow-test-collector
+ * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestCollector\Test\Unit\Subscriber;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Subscriber;
 
-use Ergebnis\PHPUnit\SlowTestCollector\SlowTest;
-use Ergebnis\PHPUnit\SlowTestCollector\SlowTestCollector;
-use Ergebnis\PHPUnit\SlowTestCollector\Subscriber\TestPreparedSubscriber;
+use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
+use Ergebnis\PHPUnit\SlowTestDetector\SlowTestCollector;
+use Ergebnis\PHPUnit\SlowTestDetector\Subscriber\TestPreparedSubscriber;
 use Ergebnis\Test\Util;
 use PHPUnit\Event;
 use PHPUnit\Framework;
@@ -23,10 +23,10 @@ use PHPUnit\Framework;
 /**
  * @internal
  *
- * @covers \Ergebnis\PHPUnit\SlowTestCollector\Subscriber\TestPreparedSubscriber
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Subscriber\TestPreparedSubscriber
  *
- * @uses \Ergebnis\PHPUnit\SlowTestCollector\SlowTest
- * @uses \Ergebnis\PHPUnit\SlowTestCollector\SlowTestCollector
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTestCollector
  */
 final class TestPreparedSubscriberTest extends Framework\TestCase
 {

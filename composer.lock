@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fac32b0215d09c09ef1244f16c645b84",
+    "content-hash": "bbc2c71ff9c0ced62b32d47a1cbcddfe",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -376,7 +376,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-01-23T09:13:01+00:00"
+            "time": "2021-01-24T08:23:19+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",

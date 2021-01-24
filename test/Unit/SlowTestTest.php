@@ -8,12 +8,12 @@ declare(strict_types=1);
  * For the full copyright and license information, please view
  * the LICENSE.md file that was distributed with this source code.
  *
- * @see https://github.com/ergebnis/phpunit-slow-test-collector
+ * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestCollector\Test\Unit;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit;
 
-use Ergebnis\PHPUnit\SlowTestCollector\SlowTest;
+use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\Test\Util;
 use PHPUnit\Event;
 use PHPUnit\Framework;
@@ -21,7 +21,7 @@ use PHPUnit\Framework;
 /**
  * @internal
  *
- * @covers \Ergebnis\PHPUnit\SlowTestCollector\SlowTest
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
  */
 final class SlowTestTest extends Framework\TestCase
 {
