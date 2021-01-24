@@ -13,10 +13,10 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Subscriber;
 
-use Ergebnis\PHPUnit\SlowTestDetector\Collector;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTestCollector;
 use Ergebnis\PHPUnit\SlowTestDetector\Subscriber\TestPassedSubscriber;
+use Ergebnis\PHPUnit\SlowTestDetector\Test\Double;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
 use Ergebnis\Test\Util;
 use PHPUnit\Event;
@@ -27,7 +27,6 @@ use PHPUnit\Framework;
  *
  * @covers \Ergebnis\PHPUnit\SlowTestDetector\Subscriber\TestPassedSubscriber
  *
- * @uses \Ergebnis\PHPUnit\SlowTestDetector\Collector
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTestCollector
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper
@@ -67,7 +66,7 @@ final class TestPassedSubscriberTest extends Framework\TestCase
         $slowTestCollector = new SlowTestCollector(
             $maximumDuration,
             new TimeKeeper(),
-            new Collector()
+            new Double\Collector\AppendingCollector()
         );
 
         $slowTestCollector->testPrepared(
