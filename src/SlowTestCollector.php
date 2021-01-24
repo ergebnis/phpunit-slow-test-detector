@@ -21,12 +21,12 @@ final class SlowTestCollector
 
     private TimeKeeper $timer;
 
-    private Collector $collector;
+    private Collector\Collector $collector;
 
     public function __construct(
         Event\Telemetry\Duration $maximumDuration,
         TimeKeeper $timeKeeper,
-        Collector $collector
+        Collector\Collector $collector
     ) {
         $this->maximumDuration = $maximumDuration;
         $this->timer = $timeKeeper;

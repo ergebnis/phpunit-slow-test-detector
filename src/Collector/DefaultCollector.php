@@ -11,11 +11,12 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Collector;
 
+use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use PHPUnit\Event;
 
-final class Collector
+final class DefaultCollector implements Collector
 {
     /**
      * @var array<string, SlowTest>

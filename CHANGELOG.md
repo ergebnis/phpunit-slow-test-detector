@@ -24,6 +24,7 @@ For a full diff see [`7afa59c...main`][7afa59c...main].
 
 * Renamed `SlowTestReporter` to `Reporter\Reporter` ([#20]), by [@localheinz]
 * Renamed `Reporter\Reporter` to `Reporter\DefaultReporter` and extracted `Reporter\Reporter` interface ([#21]), by [@localheinz]
+* Renamed `Collector` to `Collector\DefaultCollector` and extracted `Collector\Collector` interface ([#24]), by [@localheinz]
 
 [7afa59c...main]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/7afa59c...main
 
@@ -38,5 +39,6 @@ For a full diff see [`7afa59c...main`][7afa59c...main].
 [#21]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/21
 [#22]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/22
 [#23]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/23
+[#24]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/24
 
 [@localheinz]: https://github.com/localheinz

@@ -11,9 +11,9 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Collector;
 
-use Ergebnis\PHPUnit\SlowTestDetector\Collector;
+use Ergebnis\PHPUnit\SlowTestDetector\Collector\DefaultCollector;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture;
 use Ergebnis\Test\Util;
@@ -23,17 +23,17 @@ use PHPUnit\Framework;
 /**
  * @internal
  *
- * @covers \Ergebnis\PHPUnit\SlowTestDetector\Collector
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Collector\DefaultCollector
  *
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
  */
-final class CollectorTest extends Framework\TestCase
+final class DefaultCollectorTest extends Framework\TestCase
 {
     use Util\Helper;
 
     public function testDefaults(): void
     {
-        $collector = new Collector();
+        $collector = new DefaultCollector();
 
         self::assertSame([], $collector->collected());
     }
@@ -78,7 +78,7 @@ final class CollectorTest extends Framework\TestCase
             )
         );
 
-        $collector = new Collector();
+        $collector = new DefaultCollector();
 
         $collector->collect($first);
         $collector->collect($second);
@@ -133,7 +133,7 @@ final class CollectorTest extends Framework\TestCase
             )
         );
 
-        $collector = new Collector();
+        $collector = new DefaultCollector();
 
         $collector->collect($first);
         $collector->collect($second);
@@ -187,7 +187,7 @@ final class CollectorTest extends Framework\TestCase
             )
         );
 
-        $collector = new Collector();
+        $collector = new DefaultCollector();
 
         $collector->collect($first);
         $collector->collect($second);
