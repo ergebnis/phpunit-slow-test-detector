@@ -15,7 +15,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Reporter;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\Formatter\ToMillisecondsDurationFormatter;
-use Ergebnis\PHPUnit\SlowTestDetector\Reporter\Reporter;
+use Ergebnis\PHPUnit\SlowTestDetector\Reporter\DefaultReporter;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture;
 use Ergebnis\Test\Util;
@@ -25,14 +25,14 @@ use PHPUnit\Framework;
 /**
  * @internal
  *
- * @covers \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Reporter
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Reporter\DefaultReporter
  *
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Comparator\DurationComparator
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Exception\MaximumNumberNotGreaterThanZero
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Formatter\ToMillisecondsDurationFormatter
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
  */
-final class ReporterTest extends Framework\TestCase
+final class DefaultReporterTest extends Framework\TestCase
 {
     use Util\Helper;
 
@@ -52,7 +52,7 @@ final class ReporterTest extends Framework\TestCase
 
         $this->expectException(Exception\MaximumNumberNotGreaterThanZero::class);
 
-        new Reporter(
+        new DefaultReporter(
             $durationFormatter,
             $maximumDuration,
             $maximumCount
@@ -70,7 +70,7 @@ final class ReporterTest extends Framework\TestCase
         );
         $maximumCount = $faker->numberBetween();
 
-        $reporter = new Reporter(
+        $reporter = new DefaultReporter(
             $durationFormatter,
             $maximumDuration,
             $maximumCount
@@ -152,7 +152,7 @@ final class ReporterTest extends Framework\TestCase
 
         $maximumNumber = $faker->numberBetween(\count($slowTests) + 1);
 
-        $reporter = new Reporter(
+        $reporter = new DefaultReporter(
             $durationFormatter,
             $maximumDuration,
             $maximumNumber
@@ -243,7 +243,7 @@ TXT;
 
         $maximumNumber = \count($slowTests);
 
-        $reporter = new Reporter(
+        $reporter = new DefaultReporter(
             $durationFormatter,
             $maximumDuration,
             $maximumNumber
@@ -334,7 +334,7 @@ TXT;
 
         $maximumNumber = \count($slowTests) - 1;
 
-        $reporter = new Reporter(
+        $reporter = new DefaultReporter(
             $durationFormatter,
             $maximumDuration,
             $maximumNumber
@@ -425,7 +425,7 @@ TXT;
 
         $maximumNumber = \count($slowTests) - 2;
 
-        $reporter = new Reporter(
+        $reporter = new DefaultReporter(
             $durationFormatter,
             $maximumDuration,
             $maximumNumber
