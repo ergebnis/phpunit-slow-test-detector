@@ -11,11 +11,14 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 
+use Ergebnis\PHPUnit\SlowTestDetector\Comparator;
+use Ergebnis\PHPUnit\SlowTestDetector\Exception;
+use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use PHPUnit\Event;
 
-final class SlowTestReporter
+final class Reporter
 {
     private Comparator\DurationComparator $durationComparator;
 
