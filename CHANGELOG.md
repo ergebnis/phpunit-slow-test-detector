@@ -17,6 +17,7 @@ For a full diff see [`7afa59c...main`][7afa59c...main].
 * Added `Formatter\ToMillisecondsDurationFormatter` ([#17]), by [@localheinz]
 * Added `Comparator\DurationComparator` ([#18]), by [@localheinz]
 * Added `SlowTestReporter` ([#19]), by [@localheinz]
+* Extracted `TimeKeeper` ([#22]), by [@localheinz]
 
 ### Changed
 
@@ -34,5 +35,6 @@ For a full diff see [`7afa59c...main`][7afa59c...main].
 [#19]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/19
 [#20]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/20
 [#21]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/21
+[#22]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/22
 
 [@localheinz]: https://github.com/localheinz

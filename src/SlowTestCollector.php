@@ -17,47 +17,35 @@ use PHPUnit\Event;
 
 final class SlowTestCollector
 {
-    private Event\Telemetry\Duration $maximumDuration;
+    private TimeKeeper $timer;
 
-    /**
-     * @var array<string, Event\Telemetry\HRTime>
-     */
-    private array $preparedTimes = [];
+    private Event\Telemetry\Duration $maximumDuration;
 
     /**
      * @var array<string, SlowTest>
      */
     private array $slowTests = [];
 
-    public function __construct(Event\Telemetry\Duration $maximumDuration)
+    public function __construct(TimeKeeper $timeKeeper, Event\Telemetry\Duration $maximumDuration)
     {
+        $this->timer = $timeKeeper;
         $this->maximumDuration = $maximumDuration;
     }
 
-    public function testPrepared(
-        Event\Code\Test $test,
-        Event\Telemetry\HRTime $preparedTime
-    ): void {
-        $key = self::key($test);
-
-        $this->preparedTimes[$key] = $preparedTime;
+    public function testPrepared(Event\Code\Test $test, Event\Telemetry\HRTime $preparedTime): void
+    {
+        $this->timer->start(
+            $test,
+            $preparedTime
+        );
     }
 
-    public function testPassed(
-        Event\Code\Test $test,
-        Event\Telemetry\HRTime $passedTime
-    ): void {
-        $key = self::key($test);
-
-        if (!\array_key_exists($key, $this->preparedTimes)) {
-            return;
-        }
-
-        $preparedTime = $this->preparedTimes[$key];
-
-        unset($this->preparedTimes[$key]);
-
-        $duration = $passedTime->duration($preparedTime);
+    public function testPassed(Event\Code\Test $test, Event\Telemetry\HRTime $passedTime): void
+    {
+        $duration = $this->timer->stop(
+            $test,
+            $passedTime
+        );
 
         if (!$duration->isGreaterThan($this->maximumDuration)) {
             return;
