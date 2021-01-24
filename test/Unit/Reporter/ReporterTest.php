@@ -11,12 +11,12 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Reporter;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\Formatter\ToMillisecondsDurationFormatter;
+use Ergebnis\PHPUnit\SlowTestDetector\Reporter\Reporter;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
-use Ergebnis\PHPUnit\SlowTestDetector\SlowTestReporter;
 use Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture;
 use Ergebnis\Test\Util;
 use PHPUnit\Event;
@@ -25,14 +25,14 @@ use PHPUnit\Framework;
 /**
  * @internal
  *
- * @covers \Ergebnis\PHPUnit\SlowTestDetector\SlowTestReporter
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Reporter
  *
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Comparator\DurationComparator
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Exception\MaximumNumberNotGreaterThanZero
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Formatter\ToMillisecondsDurationFormatter
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
  */
-final class SlowTestReporterTest extends Framework\TestCase
+final class ReporterTest extends Framework\TestCase
 {
     use Util\Helper;
 
@@ -52,7 +52,7 @@ final class SlowTestReporterTest extends Framework\TestCase
 
         $this->expectException(Exception\MaximumNumberNotGreaterThanZero::class);
 
-        new SlowTestReporter(
+        new Reporter(
             $durationFormatter,
             $maximumDuration,
             $maximumCount
@@ -70,13 +70,13 @@ final class SlowTestReporterTest extends Framework\TestCase
         );
         $maximumCount = $faker->numberBetween();
 
-        $slowTestReporter = new SlowTestReporter(
+        $reporter = new Reporter(
             $durationFormatter,
             $maximumDuration,
             $maximumCount
         );
 
-        $report = $slowTestReporter->report();
+        $report = $reporter->report();
 
         self::assertSame('', $report);
     }
@@ -152,13 +152,13 @@ final class SlowTestReporterTest extends Framework\TestCase
 
         $maximumNumber = $faker->numberBetween(\count($slowTests) + 1);
 
-        $slowTestReporter = new SlowTestReporter(
+        $reporter = new Reporter(
             $durationFormatter,
             $maximumDuration,
             $maximumNumber
         );
 
-        $report = $slowTestReporter->report(...$slowTests);
+        $report = $reporter->report(...$slowTests);
 
         $expected = <<<'TXT'
 Detected 5 tests that took longer than 100 ms.
@@ -243,13 +243,13 @@ TXT;
 
         $maximumNumber = \count($slowTests);
 
-        $slowTestReporter = new SlowTestReporter(
+        $reporter = new Reporter(
             $durationFormatter,
             $maximumDuration,
             $maximumNumber
         );
 
-        $report = $slowTestReporter->report(...$slowTests);
+        $report = $reporter->report(...$slowTests);
 
         $expected = <<<'TXT'
 Detected 5 tests that took longer than 100 ms.
@@ -334,13 +334,13 @@ TXT;
 
         $maximumNumber = \count($slowTests) - 1;
 
-        $slowTestReporter = new SlowTestReporter(
+        $reporter = new Reporter(
             $durationFormatter,
             $maximumDuration,
             $maximumNumber
         );
 
-        $report = $slowTestReporter->report(...$slowTests);
+        $report = $reporter->report(...$slowTests);
 
         $expected = <<<'TXT'
 Detected 5 tests that took longer than 100 ms.
@@ -425,13 +425,13 @@ TXT;
 
         $maximumNumber = \count($slowTests) - 2;
 
-        $slowTestReporter = new SlowTestReporter(
+        $reporter = new Reporter(
             $durationFormatter,
             $maximumDuration,
             $maximumNumber
         );
 
-        $report = $slowTestReporter->report(...$slowTests);
+        $report = $reporter->report(...$slowTests);
 
         $expected = <<<'TXT'
 Detected 5 tests that took longer than 100 ms.
