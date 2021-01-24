@@ -13,21 +13,21 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Subscriber;
 
-use Ergebnis\PHPUnit\SlowTestDetector\SlowTestCollector;
+use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
 use PHPUnit\Event;
 
 final class TestPreparedSubscriber implements Event\Test\PreparedSubscriber
 {
-    private SlowTestCollector $slowTestCollector;
+    private TimeKeeper $timeKeeper;
 
-    public function __construct(SlowTestCollector $slowTestCollector)
+    public function __construct(TimeKeeper $timeKeeper)
     {
-        $this->slowTestCollector = $slowTestCollector;
+        $this->timeKeeper = $timeKeeper;
     }
 
     public function notify(Event\Test\Prepared $event): void
     {
-        $this->slowTestCollector->testPrepared(
+        $this->timeKeeper->start(
             $event->test(),
             $event->telemetryInfo()->time()
         );
