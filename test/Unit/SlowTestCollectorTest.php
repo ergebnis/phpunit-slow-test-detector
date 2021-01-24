@@ -52,7 +52,7 @@ final class SlowTestCollectorTest extends Framework\TestCase
 
         $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
-            $faker->numberBetween(0, 500000000)
+            $faker->numberBetween(0, 500_000_000)
         );
 
         $preparedTest = self::createTest('test');
@@ -78,7 +78,7 @@ final class SlowTestCollectorTest extends Framework\TestCase
 
         $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
-            $faker->numberBetween(0, 500000000)
+            $faker->numberBetween(0, 500_000_000)
         );
 
         $passedTest = self::createTest('test');
@@ -104,7 +104,7 @@ final class SlowTestCollectorTest extends Framework\TestCase
 
         $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
-            $faker->numberBetween(1, 500000000)
+            $faker->numberBetween(1, 500_000_000)
         );
 
         $preparedTest = self::createTest('test');
@@ -142,7 +142,7 @@ final class SlowTestCollectorTest extends Framework\TestCase
 
         $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
-            $faker->numberBetween(0, 500000000)
+            $faker->numberBetween(0, 500_000_000)
         );
 
         $preparedTest = self::createTest('test');
@@ -180,7 +180,7 @@ final class SlowTestCollectorTest extends Framework\TestCase
 
         $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
-            $faker->numberBetween(0, 500000000)
+            $faker->numberBetween(0, 500_000_000)
         );
 
         $preparedTest = self::createTest('test');
@@ -225,7 +225,7 @@ final class SlowTestCollectorTest extends Framework\TestCase
 
         $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
-            $faker->numberBetween(0, 500000000)
+            $faker->numberBetween(0, 500_000_000)
         );
 
         $firstPreparedTest = self::createTest('test');
@@ -294,7 +294,7 @@ final class SlowTestCollectorTest extends Framework\TestCase
 
         $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
-            $faker->numberBetween(0, 500000000)
+            $faker->numberBetween(0, 500_000_000)
         );
 
         $firstPreparedTest = self::createTest('test');
@@ -351,7 +351,7 @@ final class SlowTestCollectorTest extends Framework\TestCase
 
         $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
-            $faker->numberBetween(0, 500000000)
+            $faker->numberBetween(0, 500_000_000)
         );
 
         $firstPreparedTest = self::createTest('test');
@@ -420,7 +420,7 @@ final class SlowTestCollectorTest extends Framework\TestCase
 
         $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
-            $faker->numberBetween(250000000, 500000000)
+            $faker->numberBetween(250_000_000, 500_000_000)
         );
 
         $firstPreparedTest = self::createTest('one');
