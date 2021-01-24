@@ -1,12 +1,12 @@
 {
   "name": "ergebnis/phpunit-slow-test-detector",
   "type": "library",
-  "description": "Provides a GitHub repository template for a PHP library, using GitHub actions.",
+  "description": "Provides facilities for detecting slow tests in phpunit/phpunit.",
   "keywords": [
     "phpunit",
     "slow",
     "test",
-    "collector"
+    "detector"
   ],
   "homepage": "https://github.com/ergebnis/phpunit-slow-test-detector",
   "license": "MIT",
