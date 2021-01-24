@@ -26,6 +26,7 @@ For a full diff see [`7afa59c...main`][7afa59c...main].
 * Renamed `Reporter\Reporter` to `Reporter\DefaultReporter` and extracted `Reporter\Reporter` interface ([#21]), by [@localheinz]
 * Renamed `Collector` to `Collector\DefaultCollector` and extracted `Collector\Collector` interface ([#24]), by [@localheinz]
 * Used `TimeKeeper` instead of `SlowTestCollector` in `Subscriber\TestPreparedSubscriber` ([#25]), by [@localheinz]
+* Used `TimeKeeper` and `Collector\Collector` instead of `SlowTestCollector` in `Subscriber\TestPassedSubscriber` ([#26]), by [@localheinz]
 
 [7afa59c...main]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/7afa59c...main
 
@@ -42,5 +43,6 @@ For a full diff see [`7afa59c...main`][7afa59c...main].
 [#23]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/23
 [#24]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/24
 [#25]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/25
+[#26]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/26
 
 [@localheinz]: https://github.com/localheinz

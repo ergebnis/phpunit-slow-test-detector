@@ -14,9 +14,9 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Subscriber;
 
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
-use Ergebnis\PHPUnit\SlowTestDetector\SlowTestCollector;
 use Ergebnis\PHPUnit\SlowTestDetector\Subscriber\TestPassedSubscriber;
 use Ergebnis\PHPUnit\SlowTestDetector\Test\Double;
+use Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
 use Ergebnis\Test\Util;
 use PHPUnit\Event;
@@ -35,7 +35,7 @@ final class TestPassedSubscriberTest extends Framework\TestCase
 {
     use Util\Helper;
 
-    public function testNotifyCollectsPreparedTest(): void
+    public function testNotifyDoesNotCollectSlowTestWhenDurationIsLessThanMaximumDuration(): void
     {
         $faker = self::faker();
 
@@ -46,35 +46,187 @@ final class TestPassedSubscriberTest extends Framework\TestCase
 
         $preparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
-            0
+            $faker->numberBetween(1, 999_999_999)
         );
 
-        $preparedTest = self::createTest('test');
+        $preparedTest = new Event\Code\Test(
+            Fixture\ExampleTest::class,
+            'foo',
+            'foo with data set #123'
+        );
 
         $passedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
-            $preparedTime->seconds() + $maximumDuration->seconds() + 1,
-            0
+            $preparedTime->seconds() + $maximumDuration->seconds(),
+            $preparedTime->nanoseconds() - 1
         );
 
-        $passedTest = clone $preparedTest;
+        $passedTest = new Event\Code\Test(
+            Fixture\ExampleTest::class,
+            'foo',
+            'foo with data set #123'
+        );
 
         $passedTestEvent = new Event\Test\Passed(
-            self::createTelemetryInfo($passedTime),
-            $preparedTest
+            new Event\Telemetry\Info(
+                new Event\Telemetry\Snapshot(
+                    $passedTime,
+                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween())
+                ),
+                Event\Telemetry\Duration::fromSeconds($faker->numberBetween()),
+                Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+                Event\Telemetry\Duration::fromSeconds($faker->numberBetween()),
+                Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+            ),
+            $passedTest
         );
 
-        $slowTestCollector = new SlowTestCollector(
-            $maximumDuration,
-            new TimeKeeper(),
-            new Double\Collector\AppendingCollector()
-        );
+        $timeKeeper = new TimeKeeper();
 
-        $slowTestCollector->testPrepared(
+        $timeKeeper->start(
             $preparedTest,
             $preparedTime
         );
 
-        $subscriber = new TestPassedSubscriber($slowTestCollector);
+        $collector = new Double\Collector\AppendingCollector();
+
+        $subscriber = new TestPassedSubscriber(
+            $maximumDuration,
+            $timeKeeper,
+            $collector
+        );
+
+        $subscriber->notify($passedTestEvent);
+
+        self::assertSame([], $collector->collected());
+    }
+
+    public function testNotifyDoesNotCollectSlowTestWhenDurationIsEqualToMaximumDuration(): void
+    {
+        $faker = self::faker();
+
+        $maximumDuration = Event\Telemetry\Duration::fromSeconds($faker->numberBetween(
+            5,
+            10
+        ));
+
+        $preparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            $faker->numberBetween(1, 999_999_999)
+        );
+
+        $preparedTest = new Event\Code\Test(
+            Fixture\ExampleTest::class,
+            'foo',
+            'foo with data set #123'
+        );
+
+        $passedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $preparedTime->seconds() + $maximumDuration->seconds(),
+            $preparedTime->nanoseconds()
+        );
+
+        $passedTest = new Event\Code\Test(
+            Fixture\ExampleTest::class,
+            'foo',
+            'foo with data set #123'
+        );
+
+        $passedTestEvent = new Event\Test\Passed(
+            new Event\Telemetry\Info(
+                new Event\Telemetry\Snapshot(
+                    $passedTime,
+                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween())
+                ),
+                Event\Telemetry\Duration::fromSeconds($faker->numberBetween()),
+                Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+                Event\Telemetry\Duration::fromSeconds($faker->numberBetween()),
+                Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+            ),
+            $passedTest
+        );
+
+        $timeKeeper = new TimeKeeper();
+
+        $timeKeeper->start(
+            $preparedTest,
+            $preparedTime
+        );
+
+        $collector = new Double\Collector\AppendingCollector();
+
+        $subscriber = new TestPassedSubscriber(
+            $maximumDuration,
+            $timeKeeper,
+            $collector
+        );
+
+        $subscriber->notify($passedTestEvent);
+
+        self::assertSame([], $collector->collected());
+    }
+
+    public function testNotifyCollectsSlowTestWhenDurationIsGreaterThanMaximumDuration(): void
+    {
+        $faker = self::faker();
+
+        $maximumDuration = Event\Telemetry\Duration::fromSeconds($faker->numberBetween(
+            5,
+            10
+        ));
+
+        $preparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            $faker->numberBetween(0, 999_999_998)
+        );
+
+        $preparedTest = new Event\Code\Test(
+            Fixture\ExampleTest::class,
+            'foo',
+            'foo with data set #123'
+        );
+
+        $passedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $preparedTime->seconds() + $maximumDuration->seconds(),
+            $preparedTime->nanoseconds() + 1
+        );
+
+        $passedTest = new Event\Code\Test(
+            Fixture\ExampleTest::class,
+            'foo',
+            'foo with data set #123'
+        );
+
+        $passedTestEvent = new Event\Test\Passed(
+            new Event\Telemetry\Info(
+                new Event\Telemetry\Snapshot(
+                    $passedTime,
+                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween())
+                ),
+                Event\Telemetry\Duration::fromSeconds($faker->numberBetween()),
+                Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+                Event\Telemetry\Duration::fromSeconds($faker->numberBetween()),
+                Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+            ),
+            $passedTest
+        );
+
+        $timeKeeper = new TimeKeeper();
+
+        $timeKeeper->start(
+            $preparedTest,
+            $preparedTime
+        );
+
+        $collector = new Double\Collector\AppendingCollector();
+
+        $subscriber = new TestPassedSubscriber(
+            $maximumDuration,
+            $timeKeeper,
+            $collector
+        );
 
         $subscriber->notify($passedTestEvent);
 
@@ -85,44 +237,6 @@ final class TestPassedSubscriberTest extends Framework\TestCase
             ),
         ];
 
-        self::assertEquals($expected, $slowTestCollector->slowTests());
-    }
-
-    private static function createTelemetryInfo(Event\Telemetry\HRTime $time): Event\Telemetry\Info
-    {
-        $faker = self::faker();
-
-        return new Event\Telemetry\Info(
-            new Event\Telemetry\Snapshot(
-                $time,
-                Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
-                Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween())
-            ),
-            Event\Telemetry\Duration::fromSeconds($faker->numberBetween()),
-            Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
-            Event\Telemetry\Duration::fromSeconds($faker->numberBetween()),
-            Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
-        );
-    }
-
-    private static function createTest(string $methodName): Event\Code\Test
-    {
-        $faker = self::faker();
-
-        $methodNameWithDataSet = \sprintf(
-            '%s with data set #%d',
-            $methodName,
-            $faker->numberBetween()
-        );
-
-        if ($faker->boolean) {
-            $methodNameWithDataSet = $methodName;
-        }
-
-        return new Event\Code\Test(
-            self::class,
-            $methodName,
-            $methodNameWithDataSet
-        );
+        self::assertEquals($expected, $collector->collected());
     }
 }
