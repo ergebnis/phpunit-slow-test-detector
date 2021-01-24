@@ -15,11 +15,11 @@ For a full diff see [`7afa59c...main`][7afa59c...main].
 * Added `Subscriber\TestPreparedSubscriber` ([#12]), by [@localheinz]
 * Added `Subscriber\TestPassedSubscriber` ([#13]), by [@localheinz]
 
-[7afa59c...main]: https://github.com/ergebnis/phpunit-slow-test-collector/compare/7afa59c...main
+[7afa59c...main]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/7afa59c...main
 
-[#6]: https://github.com/ergebnis/phpunit-slow-test-collector/pull/6
-[#8]: https://github.com/ergebnis/phpunit-slow-test-collector/pull/8
-[#12]: https://github.com/ergebnis/phpunit-slow-test-collector/pull/12
-[#13]: https://github.com/ergebnis/phpunit-slow-test-collector/pull/13
+[#6]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/6
+[#8]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/8
+[#12]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/12
+[#13]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/13
 
 [@localheinz]: https://github.com/localheinz

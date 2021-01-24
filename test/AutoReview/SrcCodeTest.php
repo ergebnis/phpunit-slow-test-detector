@@ -8,10 +8,10 @@ declare(strict_types=1);
  * For the full copyright and license information, please view
  * the LICENSE.md file that was distributed with this source code.
  *
- * @see https://github.com/ergebnis/phpunit-slow-test-collector
+ * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestCollector\Test\AutoReview;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Test\AutoReview;
 
 use Ergebnis\Test\Util;
 use PHPUnit\Framework;
@@ -29,8 +29,8 @@ final class SrcCodeTest extends Framework\TestCase
     {
         self::assertClassesHaveTests(
             __DIR__ . '/../../src/',
-            'Ergebnis\\PHPUnit\\SlowTestCollector\\',
-            'Ergebnis\\PHPUnit\\SlowTestCollector\\Test\\Unit\\',
+            'Ergebnis\\PHPUnit\\SlowTestDetector\\',
+            'Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\',
         );
     }
 }

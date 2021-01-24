@@ -8,19 +8,19 @@ declare(strict_types=1);
  * For the full copyright and license information, please view
  * the LICENSE.md file that was distributed with this source code.
  *
- * @see https://github.com/ergebnis/phpunit-slow-test-collector
+ * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestCollector\Test\Example;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Example;
 
-use Ergebnis\PHPUnit\SlowTestCollector\Test\Fixture;
+use Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture;
 use Ergebnis\Test\Util;
 use PHPUnit\Framework;
 
 /**
  * @internal
  *
- * @covers \Ergebnis\PHPUnit\SlowTestCollector\Test\Fixture\Sleeper
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\Sleeper
  */
 final class ExampleTest extends Framework\TestCase
 {

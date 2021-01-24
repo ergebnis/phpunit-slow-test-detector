@@ -1,24 +1,24 @@
-# phpunit-slow-test-collector
+# phpunit-slow-test-detector
 
-[![Integrate](https://github.com/ergebnis/phpunit-slow-test-collector/workflows/Integrate/badge.svg)](https://github.com/ergebnis/phpunit-slow-test-collector/actions)
-[![Prune](https://github.com/ergebnis/phpunit-slow-test-collector/workflows/Prune/badge.svg)](https://github.com/ergebnis/phpunit-slow-test-collector/actions)
-[![Release](https://github.com/ergebnis/phpunit-slow-test-collector/workflows/Release/badge.svg)](https://github.com/ergebnis/phpunit-slow-test-collector/actions)
-[![Renew](https://github.com/ergebnis/phpunit-slow-test-collector/workflows/Renew/badge.svg)](https://github.com/ergebnis/phpunit-slow-test-collector/actions)
+[![Integrate](https://github.com/ergebnis/phpunit-slow-test-detector/workflows/Integrate/badge.svg)](https://github.com/ergebnis/phpunit-slow-test-detector/actions)
+[![Prune](https://github.com/ergebnis/phpunit-slow-test-detector/workflows/Prune/badge.svg)](https://github.com/ergebnis/phpunit-slow-test-detector/actions)
+[![Release](https://github.com/ergebnis/phpunit-slow-test-detector/workflows/Release/badge.svg)](https://github.com/ergebnis/phpunit-slow-test-detector/actions)
+[![Renew](https://github.com/ergebnis/phpunit-slow-test-detector/workflows/Renew/badge.svg)](https://github.com/ergebnis/phpunit-slow-test-detector/actions)
 
-[![Code Coverage](https://codecov.io/gh/ergebnis/phpunit-slow-test-collector/branch/main/graph/badge.svg)](https://codecov.io/gh/ergebnis/phpunit-slow-test-collector)
-[![Type Coverage](https://shepherd.dev/github/ergebnis/phpunit-slow-test-collector/coverage.svg)](https://shepherd.dev/github/ergebnis/phpunit-slow-test-collector)
+[![Code Coverage](https://codecov.io/gh/ergebnis/phpunit-slow-test-detector/branch/main/graph/badge.svg)](https://codecov.io/gh/ergebnis/phpunit-slow-test-detector)
+[![Type Coverage](https://shepherd.dev/github/ergebnis/phpunit-slow-test-detector/coverage.svg)](https://shepherd.dev/github/ergebnis/phpunit-slow-test-detector)
 
-[![Latest Stable Version](https://poser.pugx.org/ergebnis/phpunit-slow-test-collector/v/stable)](https://packagist.org/packages/ergebnis/phpunit-slow-test-collector)
-[![Total Downloads](https://poser.pugx.org/ergebnis/phpunit-slow-test-collector/downloads)](https://packagist.org/packages/ergebnis/phpunit-slow-test-collector)
+[![Latest Stable Version](https://poser.pugx.org/ergebnis/phpunit-slow-test-detector/v/stable)](https://packagist.org/packages/ergebnis/phpunit-slow-test-detector)
+[![Total Downloads](https://poser.pugx.org/ergebnis/phpunit-slow-test-detector/downloads)](https://packagist.org/packages/ergebnis/phpunit-slow-test-detector)
 
-Provides facilities for collecting slow tests in [`phpunit/phpunit`](https://github.com/sebastianbergmann/phpunit).
+Provides facilities for detecting slow tests in [`phpunit/phpunit`](https://github.com/sebastianbergmann/phpunit).
 
 ## Installation
 
 Run
 
 ```sh
-$ composer require --dev ergebnis/phpunit-slow-test-collector
+$ composer require --dev ergebnis/phpunit-slow-test-detector
 ```
 
 ## Changelog
