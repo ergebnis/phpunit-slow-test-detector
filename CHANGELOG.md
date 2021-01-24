@@ -14,6 +14,7 @@ For a full diff see [`7afa59c...main`][7afa59c...main].
 * Added `SlowTestCollector` ([#8]), by [@localheinz]
 * Added `Subscriber\TestPreparedSubscriber` ([#12]), by [@localheinz]
 * Added `Subscriber\TestPassedSubscriber` ([#13]), by [@localheinz]
+* Added `Formatter\ToMillisecondsDurationFormatter` ([#17]), by [@localheinz]
 
 [7afa59c...main]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/7afa59c...main
 
@@ -21,5 +22,6 @@ For a full diff see [`7afa59c...main`][7afa59c...main].
 [#8]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/8
 [#12]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/12
 [#13]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/13
+[#17]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/137
 
 [@localheinz]: https://github.com/localheinz
