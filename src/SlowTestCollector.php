@@ -17,19 +17,20 @@ use PHPUnit\Event;
 
 final class SlowTestCollector
 {
-    private TimeKeeper $timer;
-
     private Event\Telemetry\Duration $maximumDuration;
 
-    /**
-     * @var array<string, SlowTest>
-     */
-    private array $slowTests = [];
+    private TimeKeeper $timer;
 
-    public function __construct(TimeKeeper $timeKeeper, Event\Telemetry\Duration $maximumDuration)
-    {
-        $this->timer = $timeKeeper;
+    private Collector $collector;
+
+    public function __construct(
+        Event\Telemetry\Duration $maximumDuration,
+        TimeKeeper $timeKeeper,
+        Collector $collector
+    ) {
         $this->maximumDuration = $maximumDuration;
+        $this->timer = $timeKeeper;
+        $this->collector = $collector;
     }
 
     public function testPrepared(Event\Code\Test $test, Event\Telemetry\HRTime $preparedTime): void
@@ -56,21 +57,7 @@ final class SlowTestCollector
             $duration
         );
 
-        $key = self::key($test);
-
-        if (\array_key_exists($key, $this->slowTests)) {
-            $previousSlowTest = $this->slowTests[$key];
-
-            if (!$duration->isGreaterThan($previousSlowTest->duration())) {
-                return;
-            }
-
-            $this->slowTests[$key] = $slowTest;
-
-            return;
-        }
-
-        $this->slowTests[$key] = $slowTest;
+        $this->collector->collect($slowTest);
     }
 
     public function maximumDuration(): Event\Telemetry\Duration
@@ -86,15 +73,6 @@ final class SlowTestCollector
      */
     public function slowTests(): array
     {
-        return \array_values($this->slowTests);
-    }
-
-    private static function key(Event\Code\Test $test): string
-    {
-        return \sprintf(
-            '%s::%s',
-            $test->className(),
-            $test->methodNameWithDataSet(),
-        );
+        return $this->collector->collected();
     }
 }
