@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit;
 
+use Ergebnis\PHPUnit\SlowTestDetector\Collector;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTestCollector;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
@@ -25,6 +26,7 @@ use PHPUnit\Framework;
  *
  * @covers \Ergebnis\PHPUnit\SlowTestDetector\SlowTestCollector
  *
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Collector
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper
  */
@@ -37,8 +39,9 @@ final class SlowTestCollectorTest extends Framework\TestCase
         $maximumDuration = Event\Telemetry\Duration::fromSeconds(self::faker()->numberBetween());
 
         $slowTestCollector = new SlowTestCollector(
+            $maximumDuration,
             new TimeKeeper(),
-            $maximumDuration
+            new Collector()
         );
 
         self::assertSame([], $slowTestCollector->slowTests());
@@ -49,8 +52,9 @@ final class SlowTestCollectorTest extends Framework\TestCase
         $maximumDuration = Event\Telemetry\Duration::fromSeconds(self::faker()->numberBetween());
 
         $slowTestCollector = new SlowTestCollector(
+            $maximumDuration,
             new TimeKeeper(),
-            $maximumDuration
+            new Collector()
         );
 
         self::assertSame($maximumDuration, $slowTestCollector->maximumDuration());
@@ -73,8 +77,9 @@ final class SlowTestCollectorTest extends Framework\TestCase
         );
 
         $slowTestCollector = new SlowTestCollector(
+            $maximumDuration,
             new TimeKeeper(),
-            $maximumDuration
+            new Collector()
         );
 
         $slowTestCollector->testPrepared(
@@ -102,8 +107,9 @@ final class SlowTestCollectorTest extends Framework\TestCase
         );
 
         $slowTestCollector = new SlowTestCollector(
+            $maximumDuration,
             new TimeKeeper(),
-            $maximumDuration
+            new Collector()
         );
 
         $slowTestCollector->testPassed(
@@ -138,8 +144,9 @@ final class SlowTestCollectorTest extends Framework\TestCase
         );
 
         $slowTestCollector = new SlowTestCollector(
+            $maximumDuration,
             new TimeKeeper(),
-            $maximumDuration
+            new Collector()
         );
 
         $slowTestCollector->testPrepared(
@@ -179,8 +186,9 @@ final class SlowTestCollectorTest extends Framework\TestCase
         );
 
         $slowTestCollector = new SlowTestCollector(
+            $maximumDuration,
             new TimeKeeper(),
-            $maximumDuration
+            new Collector()
         );
 
         $slowTestCollector->testPrepared(
@@ -220,8 +228,9 @@ final class SlowTestCollectorTest extends Framework\TestCase
         );
 
         $slowTestCollector = new SlowTestCollector(
+            $maximumDuration,
             new TimeKeeper(),
-            $maximumDuration
+            new Collector()
         );
 
         $slowTestCollector->testPrepared(
@@ -282,8 +291,9 @@ final class SlowTestCollectorTest extends Framework\TestCase
         );
 
         $slowTestCollector = new SlowTestCollector(
+            $maximumDuration,
             new TimeKeeper(),
-            $maximumDuration
+            new Collector()
         );
 
         $slowTestCollector->testPrepared(
@@ -347,8 +357,9 @@ final class SlowTestCollectorTest extends Framework\TestCase
         );
 
         $slowTestCollector = new SlowTestCollector(
+            $maximumDuration,
             new TimeKeeper(),
-            $maximumDuration
+            new Collector()
         );
 
         $slowTestCollector->testPrepared(
@@ -414,8 +425,9 @@ final class SlowTestCollectorTest extends Framework\TestCase
         );
 
         $slowTestCollector = new SlowTestCollector(
+            $maximumDuration,
             new TimeKeeper(),
-            $maximumDuration
+            new Collector()
         );
 
         $slowTestCollector->testPrepared(
@@ -528,8 +540,9 @@ final class SlowTestCollectorTest extends Framework\TestCase
         );
 
         $slowTestCollector = new SlowTestCollector(
+            $maximumDuration,
             new TimeKeeper(),
-            $maximumDuration
+            new Collector()
         );
 
         $slowTestCollector->testPrepared(
