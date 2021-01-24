@@ -16,6 +16,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Subscriber;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTestCollector;
 use Ergebnis\PHPUnit\SlowTestDetector\Subscriber\TestPreparedSubscriber;
+use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
 use Ergebnis\Test\Util;
 use PHPUnit\Event;
 use PHPUnit\Framework;
@@ -27,6 +28,7 @@ use PHPUnit\Framework;
  *
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTestCollector
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper
  */
 final class TestPreparedSubscriberTest extends Framework\TestCase
 {
@@ -35,6 +37,8 @@ final class TestPreparedSubscriberTest extends Framework\TestCase
     public function testNotifyCollectsPreparedTest(): void
     {
         $faker = self::faker();
+
+        $timeKeeper = new TimeKeeper();
 
         $maximumDuration = Event\Telemetry\Duration::fromSeconds($faker->numberBetween(
             5,
@@ -60,7 +64,10 @@ final class TestPreparedSubscriberTest extends Framework\TestCase
 
         $passedTest = clone $preparedTest;
 
-        $slowTestCollector = new SlowTestCollector($maximumDuration);
+        $slowTestCollector = new SlowTestCollector(
+            $timeKeeper,
+            $maximumDuration
+        );
 
         $subscriber = new TestPreparedSubscriber($slowTestCollector);
 
