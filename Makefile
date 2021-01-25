@@ -47,7 +47,8 @@ tests: vendor ## Runs auto-review, unit, integration, and example tests with php
 	vendor/bin/phpunit --configuration=test/AutoReview/phpunit.xml
 	vendor/bin/phpunit --configuration=test/Unit/phpunit.xml
 	vendor/bin/phpunit --configuration=test/Integration/phpunit.xml
-	vendor/bin/phpunit --configuration=test/Example/phpunit.xml
+	MAXIMUM_NUMBER=3 vendor/bin/phpunit --configuration=test/Example/phpunit.xml
+	MAXIMUM_NUMBER=10 vendor/bin/phpunit --configuration=test/Example/phpunit.xml
 
 vendor: composer.json composer.lock
 	composer validate

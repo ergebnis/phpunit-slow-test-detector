@@ -19,6 +19,7 @@ For a full diff see [`7afa59c...main`][7afa59c...main].
 * Added `SlowTestReporter` ([#19]), by [@localheinz]
 * Extracted `TimeKeeper` ([#22]), by [@localheinz]
 * Extracted `Collector` ([#23]), by [@localheinz]
+* Added `Subscriber\TestSuiteFinishedSubscriber` ([#34]), by [@localheinz]
 
 ### Changed
 
@@ -44,5 +45,6 @@ For a full diff see [`7afa59c...main`][7afa59c...main].
 [#24]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/24
 [#25]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/25
 [#26]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/26
+[#34]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/34
 
 [@localheinz]: https://github.com/localheinz
