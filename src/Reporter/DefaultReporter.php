@@ -148,7 +148,7 @@ TXT;
             );
 
             return <<<TXT
-{$formattedDuration} ({$formattedMaximumDuration}): {$testName}
+{$formattedDuration} ({$formattedMaximumDuration}) {$testName}
 TXT;
         }, $slowTestsToReport);
 
