@@ -76,6 +76,13 @@ TXT;
 
         $formattedMaximumDuration = $this->durationFormatter->format($this->maximumDuration);
 
+        if (1 === $count) {
+            return <<<TXT
+Detected {$count} test that took longer than {$formattedMaximumDuration}.
+
+TXT;
+        }
+
         return <<<TXT
 Detected {$count} tests that took longer than {$formattedMaximumDuration}.
 
