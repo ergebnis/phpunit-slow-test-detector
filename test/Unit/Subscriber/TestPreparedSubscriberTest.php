@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Subscriber;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Subscriber\TestPreparedSubscriber;
-use Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture;
+use Ergebnis\PHPUnit\SlowTestDetector\Test\Example;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
 use Ergebnis\Test\Util;
 use PHPUnit\Event;
@@ -42,7 +42,7 @@ final class TestPreparedSubscriberTest extends Framework\TestCase
         );
 
         $preparedTest = new Event\Code\Test(
-            Fixture\ExampleTest::class,
+            Example\SleeperTest::class,
             'foo',
             'foo with data set #123'
         );
