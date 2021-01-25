@@ -42,7 +42,7 @@ final class DefaultCollectorTest extends Framework\TestCase
     {
         $faker = self::faker();
 
-        $first = SlowTest::fromTestAndDuration(
+        $first = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
                 Example\SleeperTest::class,
                 'foo',
@@ -51,10 +51,14 @@ final class DefaultCollectorTest extends Framework\TestCase
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
                 $faker->numberBetween(0, 999_999_999)
+            ),
+            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                $faker->numberBetween(),
+                $faker->numberBetween(0, 999_999_999)
             )
         );
 
-        $second = SlowTest::fromTestAndDuration(
+        $second = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
                 Example\SleeperTest::class,
                 'bar',
@@ -63,14 +67,22 @@ final class DefaultCollectorTest extends Framework\TestCase
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
                 $faker->numberBetween(0, 999_999_999)
+            ),
+            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                $faker->numberBetween(),
+                $faker->numberBetween(0, 999_999_999)
             )
         );
 
-        $third = SlowTest::fromTestAndDuration(
+        $third = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
                 Example\SleeperTest::class,
                 'baz',
                 'baz with data set "string"',
+            ),
+            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                $faker->numberBetween(),
+                $faker->numberBetween(0, 999_999_999)
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
@@ -97,7 +109,7 @@ final class DefaultCollectorTest extends Framework\TestCase
     {
         $faker = self::faker();
 
-        $first = SlowTest::fromTestAndDuration(
+        $first = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
                 Example\SleeperTest::class,
                 'foo',
@@ -106,10 +118,14 @@ final class DefaultCollectorTest extends Framework\TestCase
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(1),
                 $faker->numberBetween(0, 999_999_999)
+            ),
+            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                $faker->numberBetween(),
+                $faker->numberBetween(0, 999_999_999)
             )
         );
 
-        $second = SlowTest::fromTestAndDuration(
+        $second = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
                 Example\SleeperTest::class,
                 'bar',
@@ -118,10 +134,14 @@ final class DefaultCollectorTest extends Framework\TestCase
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
                 $faker->numberBetween(0, 999_999_999)
+            ),
+            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                $faker->numberBetween(),
+                $faker->numberBetween(0, 999_999_999)
             )
         );
 
-        $thirdForSameTest = SlowTest::fromTestAndDuration(
+        $thirdForSameTest = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
                 $first->test()->className(),
                 $first->test()->methodName(),
@@ -129,6 +149,10 @@ final class DefaultCollectorTest extends Framework\TestCase
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(0, $first->duration()->seconds() - 1),
+                $faker->numberBetween(0, 999_999_999)
+            ),
+            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                $faker->numberBetween(),
                 $faker->numberBetween(0, 999_999_999)
             )
         );
@@ -151,7 +175,12 @@ final class DefaultCollectorTest extends Framework\TestCase
     {
         $faker = self::faker();
 
-        $first = SlowTest::fromTestAndDuration(
+        $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            $faker->numberBetween(0, 999_999_999)
+        );
+
+        $first = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
                 Example\SleeperTest::class,
                 'foo',
@@ -160,10 +189,11 @@ final class DefaultCollectorTest extends Framework\TestCase
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
                 $faker->numberBetween(0, 999_999_999)
-            )
+            ),
+            $maximumDuration
         );
 
-        $second = SlowTest::fromTestAndDuration(
+        $second = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
                 Example\SleeperTest::class,
                 'bar',
@@ -172,10 +202,11 @@ final class DefaultCollectorTest extends Framework\TestCase
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
                 $faker->numberBetween(0, 999_999_999)
-            )
+            ),
+            $maximumDuration
         );
 
-        $thirdForSameTest = SlowTest::fromTestAndDuration(
+        $thirdForSameTest = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
                 $first->test()->className(),
                 $first->test()->methodName(),
@@ -184,7 +215,8 @@ final class DefaultCollectorTest extends Framework\TestCase
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween($first->duration()->seconds() + 1),
                 $faker->numberBetween(0, 999_999_999)
-            )
+            ),
+            $maximumDuration
         );
 
         $collector = new DefaultCollector();

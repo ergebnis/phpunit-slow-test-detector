@@ -83,8 +83,13 @@ final class DefaultReporterTest extends Framework\TestCase
 
     public function testReportReturnsReportWhenTheNumberOfSlowTestsIsSmallerThanTheMaximumCountAndLessThanOne(): void
     {
+        $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            0,
+            100_000_000
+        );
+
         $slowTests = [
-            SlowTest::fromTestAndDuration(
+            SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
                     Example\SleeperTest::class,
                     'foo',
@@ -93,16 +98,12 @@ final class DefaultReporterTest extends Framework\TestCase
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     7,
                     890_123_456
-                )
+                ),
+                $maximumDuration
             ),
         ];
 
         $durationFormatter = new ToMillisecondsDurationFormatter();
-
-        $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-            0,
-            100_000_000
-        );
 
         $maximumNumber = \count($slowTests);
 
@@ -127,8 +128,13 @@ TXT;
     {
         $faker = self::faker();
 
+        $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            0,
+            100_000_000
+        );
+
         $slowTests = [
-            SlowTest::fromTestAndDuration(
+            SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
                     Example\SleeperTest::class,
                     'foo',
@@ -137,9 +143,10 @@ TXT;
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     7,
                     890_123_456
-                )
+                ),
+                $maximumDuration
             ),
-            SlowTest::fromTestAndDuration(
+            SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
                     Example\SleeperTest::class,
                     'bar',
@@ -148,9 +155,10 @@ TXT;
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     12,
                     345_000_000
-                )
+                ),
+                $maximumDuration
             ),
-            SlowTest::fromTestAndDuration(
+            SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
                     Example\SleeperTest::class,
                     'baz',
@@ -159,9 +167,10 @@ TXT;
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     0,
                     123_000_000
-                )
+                ),
+                $maximumDuration
             ),
-            SlowTest::fromTestAndDuration(
+            SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
                     Example\SleeperTest::class,
                     'qux',
@@ -170,9 +179,10 @@ TXT;
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     3,
                     456_000_000
-                )
+                ),
+                $maximumDuration
             ),
-            SlowTest::fromTestAndDuration(
+            SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
                     Example\SleeperTest::class,
                     'quz',
@@ -181,16 +191,12 @@ TXT;
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     1,
                     234_000_000
-                )
+                ),
+                $maximumDuration
             ),
         ];
 
         $durationFormatter = new ToMillisecondsDurationFormatter();
-
-        $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-            0,
-            100_000_000
-        );
 
         $maximumNumber = $faker->numberBetween(\count($slowTests) + 1);
 
@@ -217,8 +223,13 @@ TXT;
 
     public function testReportReturnsReportWhenTheNumberOfSlowTestsIsEqualToTheMaximumCount(): void
     {
+        $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            0,
+            100_000_000
+        );
+
         $slowTests = [
-            SlowTest::fromTestAndDuration(
+            SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
                     Example\SleeperTest::class,
                     'foo',
@@ -227,9 +238,10 @@ TXT;
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     7,
                     890_123_456
-                )
+                ),
+                $maximumDuration
             ),
-            SlowTest::fromTestAndDuration(
+            SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
                     Example\SleeperTest::class,
                     'bar',
@@ -238,9 +250,10 @@ TXT;
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     12,
                     345_000_000
-                )
+                ),
+                $maximumDuration
             ),
-            SlowTest::fromTestAndDuration(
+            SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
                     Example\SleeperTest::class,
                     'baz',
@@ -249,9 +262,10 @@ TXT;
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     0,
                     123_000_000
-                )
+                ),
+                $maximumDuration
             ),
-            SlowTest::fromTestAndDuration(
+            SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
                     Example\SleeperTest::class,
                     'qux',
@@ -260,9 +274,10 @@ TXT;
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     3,
                     456_000_000
-                )
+                ),
+                $maximumDuration
             ),
-            SlowTest::fromTestAndDuration(
+            SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
                     Example\SleeperTest::class,
                     'quz',
@@ -271,16 +286,12 @@ TXT;
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     1,
                     234_000_000
-                )
+                ),
+                $maximumDuration
             ),
         ];
 
         $durationFormatter = new ToMillisecondsDurationFormatter();
-
-        $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-            0,
-            100_000_000
-        );
 
         $maximumNumber = \count($slowTests);
 
@@ -307,8 +318,13 @@ TXT;
 
     public function testReportReturnsReportWhenTheNumberOfSlowTestsIsOneMoreThanTheMaximumCount(): void
     {
+        $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            0,
+            100_000_000
+        );
+
         $slowTests = [
-            SlowTest::fromTestAndDuration(
+            SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
                     Example\SleeperTest::class,
                     'foo',
@@ -317,9 +333,10 @@ TXT;
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     7,
                     890_123_456
-                )
+                ),
+                $maximumDuration
             ),
-            SlowTest::fromTestAndDuration(
+            SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
                     Example\SleeperTest::class,
                     'bar',
@@ -328,9 +345,10 @@ TXT;
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     12,
                     345_000_000
-                )
+                ),
+                $maximumDuration
             ),
-            SlowTest::fromTestAndDuration(
+            SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
                     Example\SleeperTest::class,
                     'baz',
@@ -339,9 +357,10 @@ TXT;
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     0,
                     123_000_000
-                )
+                ),
+                $maximumDuration
             ),
-            SlowTest::fromTestAndDuration(
+            SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
                     Example\SleeperTest::class,
                     'qux',
@@ -350,9 +369,10 @@ TXT;
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     3,
                     456_000_000
-                )
+                ),
+                $maximumDuration
             ),
-            SlowTest::fromTestAndDuration(
+            SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
                     Example\SleeperTest::class,
                     'quz',
@@ -361,16 +381,12 @@ TXT;
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     1,
                     234_000_000
-                )
+                ),
+                $maximumDuration
             ),
         ];
 
         $durationFormatter = new ToMillisecondsDurationFormatter();
-
-        $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-            0,
-            100_000_000
-        );
 
         $maximumNumber = \count($slowTests) - 1;
 
@@ -398,8 +414,13 @@ TXT;
 
     public function testReportReturnsReportWhenTheNumberOfSlowTestsIsGreaterThanTheMaximumCountPlusOne(): void
     {
+        $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            0,
+            100_000_000
+        );
+
         $slowTests = [
-            SlowTest::fromTestAndDuration(
+            SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
                     Example\SleeperTest::class,
                     'foo',
@@ -408,9 +429,10 @@ TXT;
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     7,
                     890_123_456
-                )
+                ),
+                $maximumDuration
             ),
-            SlowTest::fromTestAndDuration(
+            SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
                     Example\SleeperTest::class,
                     'bar',
@@ -419,9 +441,10 @@ TXT;
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     12,
                     345_000_000
-                )
+                ),
+                $maximumDuration
             ),
-            SlowTest::fromTestAndDuration(
+            SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
                     Example\SleeperTest::class,
                     'baz',
@@ -430,9 +453,10 @@ TXT;
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     0,
                     123_000_000
-                )
+                ),
+                $maximumDuration
             ),
-            SlowTest::fromTestAndDuration(
+            SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
                     Example\SleeperTest::class,
                     'qux',
@@ -441,9 +465,10 @@ TXT;
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     3,
                     456_000_000
-                )
+                ),
+                $maximumDuration
             ),
-            SlowTest::fromTestAndDuration(
+            SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
                     Example\SleeperTest::class,
                     'quz',
@@ -452,16 +477,12 @@ TXT;
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     1,
                     234_000_000
-                )
+                ),
+                $maximumDuration
             ),
         ];
 
         $durationFormatter = new ToMillisecondsDurationFormatter();
-
-        $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-            0,
-            100_000_000
-        );
 
         $maximumNumber = \count($slowTests) - 2;
 

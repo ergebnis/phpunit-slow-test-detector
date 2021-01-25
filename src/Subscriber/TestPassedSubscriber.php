@@ -47,9 +47,10 @@ final class TestPassedSubscriber implements Event\Test\PassedSubscriber
             return;
         }
 
-        $slowTest = SlowTest::fromTestAndDuration(
+        $slowTest = SlowTest::fromTestDurationAndMaximumDuration(
             $event->test(),
-            $duration
+            $duration,
+            $this->maximumDuration
         );
 
         $this->collector->collect($slowTest);
