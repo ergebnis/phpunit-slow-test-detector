@@ -230,9 +230,10 @@ final class TestPassedSubscriberTest extends Framework\TestCase
         $subscriber->notify($passedTestEvent);
 
         $expected = [
-            SlowTest::fromTestAndDuration(
+            SlowTest::fromTestDurationAndMaximumDuration(
                 $passedTest,
-                $passedTime->duration($preparedTime)
+                $passedTime->duration($preparedTime),
+                $maximumDuration
             ),
         ];
 

@@ -27,7 +27,7 @@ final class SlowTestTest extends Framework\TestCase
 {
     use Util\Helper;
 
-    public function testFromTestAndDurationReturnsSlowTest(): void
+    public function testFromTestDurationAndMaximumDurationReturnsSlowTest(): void
     {
         $faker = self::faker();
 
@@ -38,13 +38,16 @@ final class SlowTestTest extends Framework\TestCase
         );
 
         $duration = Event\Telemetry\Duration::fromSeconds($faker->numberBetween());
+        $maximumDuration = Event\Telemetry\Duration::fromSeconds($faker->numberBetween());
 
-        $slowTest = SlowTest::fromTestAndDuration(
+        $slowTest = SlowTest::fromTestDurationAndMaximumDuration(
             $test,
-            $duration
+            $duration,
+            $maximumDuration
         );
 
         self::assertSame($test, $slowTest->test());
         self::assertSame($duration, $slowTest->duration());
+        self::assertSame($maximumDuration, $slowTest->maximumDuration());
     }
 }

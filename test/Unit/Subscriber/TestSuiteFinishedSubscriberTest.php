@@ -84,7 +84,7 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
     {
         $faker = self::faker();
 
-        $first = SlowTest::fromTestAndDuration(
+        $first = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
                 Example\SleeperTest::class,
                 'foo',
@@ -93,10 +93,14 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
                 $faker->numberBetween(0, 999_999_999)
+            ),
+            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                $faker->numberBetween(),
+                $faker->numberBetween(0, 999_999_999)
             )
         );
 
-        $second = SlowTest::fromTestAndDuration(
+        $second = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
                 Example\SleeperTest::class,
                 'bar',
@@ -105,14 +109,22 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
                 $faker->numberBetween(0, 999_999_999)
+            ),
+            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                $faker->numberBetween(),
+                $faker->numberBetween(0, 999_999_999)
             )
         );
 
-        $third = SlowTest::fromTestAndDuration(
+        $third = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
                 Example\SleeperTest::class,
                 'baz',
                 'baz with data set "string"',
+            ),
+            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                $faker->numberBetween(),
+                $faker->numberBetween(0, 999_999_999)
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
@@ -174,7 +186,7 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
     {
         $faker = self::faker();
 
-        $first = SlowTest::fromTestAndDuration(
+        $first = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
                 Example\SleeperTest::class,
                 'foo',
@@ -183,10 +195,14 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
                 $faker->numberBetween(0, 999_999_999)
+            ),
+            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                $faker->numberBetween(),
+                $faker->numberBetween(0, 999_999_999)
             )
         );
 
-        $second = SlowTest::fromTestAndDuration(
+        $second = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
                 Example\SleeperTest::class,
                 'bar',
@@ -195,14 +211,22 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
                 $faker->numberBetween(0, 999_999_999)
+            ),
+            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                $faker->numberBetween(),
+                $faker->numberBetween(0, 999_999_999)
             )
         );
 
-        $third = SlowTest::fromTestAndDuration(
+        $third = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
                 Example\SleeperTest::class,
                 'baz',
                 'baz with data set "string"',
+            ),
+            Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                $faker->numberBetween(),
+                $faker->numberBetween(0, 999_999_999)
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),

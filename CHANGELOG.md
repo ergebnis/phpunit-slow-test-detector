@@ -28,6 +28,7 @@ For a full diff see [`7afa59c...main`][7afa59c...main].
 * Renamed `Collector` to `Collector\DefaultCollector` and extracted `Collector\Collector` interface ([#24]), by [@localheinz]
 * Used `TimeKeeper` instead of `SlowTestCollector` in `Subscriber\TestPreparedSubscriber` ([#25]), by [@localheinz]
 * Used `TimeKeeper` and `Collector\Collector` instead of `SlowTestCollector` in `Subscriber\TestPassedSubscriber` ([#26]), by [@localheinz]
+* Composed maximum duration into `SlowTest` ([#37]), by [@localheinz]
 
 ### Removed
 
@@ -51,5 +52,6 @@ For a full diff see [`7afa59c...main`][7afa59c...main].
 [#26]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/26
 [#34]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/34
 [#36]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/36
+[#37]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/37
 
 [@localheinz]: https://github.com/localheinz
