@@ -28,7 +28,6 @@ use PHPUnit\Framework;
  * @covers \Ergebnis\PHPUnit\SlowTestDetector\Subscriber\TestPassedSubscriber
  *
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
- * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTestCollector
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper
  */
 final class TestPassedSubscriberTest extends Framework\TestCase
