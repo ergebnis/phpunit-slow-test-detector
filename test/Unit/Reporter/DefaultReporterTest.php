@@ -28,6 +28,7 @@ use PHPUnit\Framework;
  * @covers \Ergebnis\PHPUnit\SlowTestDetector\Reporter\DefaultReporter
  *
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Comparator\DurationComparator
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Console\Color
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Exception\MaximumNumberNotGreaterThanZero
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Formatter\ToMillisecondsDurationFormatter
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
@@ -118,10 +119,10 @@ final class DefaultReporterTest extends Framework\TestCase
 
         $report = $reporter->report(...$slowTests);
 
-        $expected = <<<'TXT'
+        $expected = <<<TXT
 Detected 1 test that took longer than expected.
 
-7,890 ms (3,500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::foo with data set #123
+7,890 ms \e[2m(3,500 ms)\e[22m Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Example\\SleeperTest::foo with data set #123
 TXT;
 
         self::assertSame($expected, $report);
@@ -214,14 +215,14 @@ TXT;
 
         $report = $reporter->report(...$slowTests);
 
-        $expected = <<<'TXT'
+        $expected = <<<TXT
 Detected 5 tests that took longer than expected.
 
-12,345 ms (  100 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::bar
- 7,890 ms (3,500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::foo with data set #123
- 3,456 ms (  100 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::qux
- 1,234 ms (  100 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::quz
-   123 ms (  100 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::baz with dataset "string"
+12,345 ms \e[2m(  100 ms)\e[22m Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Example\\SleeperTest::bar
+ 7,890 ms \e[2m(3,500 ms)\e[22m Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Example\\SleeperTest::foo with data set #123
+ 3,456 ms \e[2m(  100 ms)\e[22m Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Example\\SleeperTest::qux
+ 1,234 ms \e[2m(  100 ms)\e[22m Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Example\\SleeperTest::quz
+   123 ms \e[2m(  100 ms)\e[22m Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Example\\SleeperTest::baz with dataset "string"
 TXT;
 
         self::assertSame($expected, $report);
@@ -312,14 +313,14 @@ TXT;
 
         $report = $reporter->report(...$slowTests);
 
-        $expected = <<<'TXT'
+        $expected = <<<TXT
 Detected 5 tests that took longer than expected.
 
-12,345 ms (  100 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::bar
- 7,890 ms (3,500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::foo with data set #123
- 3,456 ms (  100 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::qux
- 1,234 ms (  100 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::quz
-   123 ms (  100 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::baz with dataset "string"
+12,345 ms \e[2m(  100 ms)\e[22m Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Example\\SleeperTest::bar
+ 7,890 ms \e[2m(3,500 ms)\e[22m Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Example\\SleeperTest::foo with data set #123
+ 3,456 ms \e[2m(  100 ms)\e[22m Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Example\\SleeperTest::qux
+ 1,234 ms \e[2m(  100 ms)\e[22m Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Example\\SleeperTest::quz
+   123 ms \e[2m(  100 ms)\e[22m Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Example\\SleeperTest::baz with dataset "string"
 TXT;
 
         self::assertSame($expected, $report);
@@ -410,13 +411,13 @@ TXT;
 
         $report = $reporter->report(...$slowTests);
 
-        $expected = <<<'TXT'
+        $expected = <<<TXT
 Detected 5 tests that took longer than expected.
 
-12,345 ms (  100 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::bar
- 7,890 ms (3,500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::foo with data set #123
- 3,456 ms (  100 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::qux
- 1,234 ms (  100 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::quz
+12,345 ms \e[2m(  100 ms)\e[22m Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Example\\SleeperTest::bar
+ 7,890 ms \e[2m(3,500 ms)\e[22m Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Example\\SleeperTest::foo with data set #123
+ 3,456 ms \e[2m(  100 ms)\e[22m Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Example\\SleeperTest::qux
+ 1,234 ms \e[2m(  100 ms)\e[22m Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Example\\SleeperTest::quz
 
 There is one additional slow test that is not listed here.
 TXT;
@@ -509,12 +510,12 @@ TXT;
 
         $report = $reporter->report(...$slowTests);
 
-        $expected = <<<'TXT'
+        $expected = <<<TXT
 Detected 5 tests that took longer than expected.
 
-12,345 ms (  100 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::bar
- 7,890 ms (3,500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::foo with data set #123
- 3,456 ms (  100 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::qux
+12,345 ms \e[2m(  100 ms)\e[22m Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Example\\SleeperTest::bar
+ 7,890 ms \e[2m(3,500 ms)\e[22m Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Example\\SleeperTest::foo with data set #123
+ 3,456 ms \e[2m(  100 ms)\e[22m Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Example\\SleeperTest::qux
 
 There are 2 additional slow tests that are not listed here.
 TXT;
