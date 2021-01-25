@@ -29,6 +29,10 @@ For a full diff see [`7afa59c...main`][7afa59c...main].
 * Used `TimeKeeper` instead of `SlowTestCollector` in `Subscriber\TestPreparedSubscriber` ([#25]), by [@localheinz]
 * Used `TimeKeeper` and `Collector\Collector` instead of `SlowTestCollector` in `Subscriber\TestPassedSubscriber` ([#26]), by [@localheinz]
 
+### Removed
+
+* Removed `SlowTestCollector` ([#36]), by [@localheinz]
+
 [7afa59c...main]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/7afa59c...main
 
 [#6]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/6
@@ -46,5 +50,6 @@ For a full diff see [`7afa59c...main`][7afa59c...main].
 [#25]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/25
 [#26]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/26
 [#34]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/34
+[#36]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/36
 
 [@localheinz]: https://github.com/localheinz
