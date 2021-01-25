@@ -22,7 +22,7 @@ use PHPUnit\Framework;
  *
  * @covers \Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\Sleeper
  */
-final class ExampleTest extends Framework\TestCase
+final class SleeperTest extends Framework\TestCase
 {
     use Util\Helper;
 
