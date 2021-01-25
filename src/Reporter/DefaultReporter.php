@@ -74,17 +74,15 @@ TXT;
     {
         $count = \count($slowTests);
 
-        $formattedMaximumDuration = $this->durationFormatter->format($this->maximumDuration);
-
         if (1 === $count) {
             return <<<TXT
-Detected {$count} test that took longer than {$formattedMaximumDuration}.
+Detected {$count} test that took longer than expected.
 
 TXT;
         }
 
         return <<<TXT
-Detected {$count} tests that took longer than {$formattedMaximumDuration}.
+Detected {$count} tests that took longer than expected.
 
 TXT;
     }
@@ -109,14 +107,34 @@ TXT;
         /** @var SlowTest $slowestTest */
         $slowestTest = \reset($slowTestsToReport);
 
+        $longestMaximumDuration = \array_reduce(
+            $slowTestsToReport,
+            static function (Event\Telemetry\Duration $maximumDuration, SlowTest $slowTest): Event\Telemetry\Duration {
+                if ($maximumDuration->isLessThan($slowTest->maximumDuration())) {
+                    return $slowTest->maximumDuration();
+                }
+
+                return $maximumDuration;
+            },
+            $this->maximumDuration
+        );
+
         $durationFormatter = $this->durationFormatter;
 
-        $width = \strlen($durationFormatter->format($slowestTest->duration()));
+        $durationWidth = \strlen($durationFormatter->format($slowestTest->duration()));
+        $maximumDurationWidth = \strlen($durationFormatter->format($longestMaximumDuration));
 
-        $items = \array_map(static function (SlowTest $slowTest) use ($durationFormatter, $width): string {
-            $label = \str_pad(
+        $items = \array_map(static function (SlowTest $slowTest) use ($durationFormatter, $durationWidth, $maximumDurationWidth): string {
+            $formattedDuration = \str_pad(
                 $durationFormatter->format($slowTest->duration()),
-                $width,
+                $durationWidth,
+                ' ',
+                \STR_PAD_LEFT
+            );
+
+            $formattedMaximumDuration = \str_pad(
+                $durationFormatter->format($slowTest->maximumDuration()),
+                $maximumDurationWidth,
                 ' ',
                 \STR_PAD_LEFT
             );
@@ -130,7 +148,7 @@ TXT;
             );
 
             return <<<TXT
-{$label}: {$testName}
+{$formattedDuration} ({$formattedMaximumDuration}): {$testName}
 TXT;
         }, $slowTestsToReport);
 
