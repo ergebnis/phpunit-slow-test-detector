@@ -238,6 +238,13 @@ jobs:
 
       - name: "Run example tests with phpunit/phpunit"
         run: "vendor/bin/phpunit --configuration=test/Example/phpunit.xml"
+        env:
+          MAXIMUM_NUMBER: 3
+
+      - name: "Run example tests with phpunit/phpunit"
+        run: "vendor/bin/phpunit --configuration=test/Example/phpunit.xml"
+        env:
+          MAXIMUM_NUMBER: 10
 
   code-coverage:
     name: "Code Coverage"
