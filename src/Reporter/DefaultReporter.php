@@ -56,6 +56,13 @@ final class DefaultReporter implements Reporter
         $list = $this->list(...$slowTests);
         $footer = $this->footer(...$slowTests);
 
+        if ('' === $footer) {
+            return <<<TXT
+{$header}
+{$list}
+TXT;
+        }
+
         return <<<TXT
 {$header}
 {$list}
