@@ -13,14 +13,13 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Example;
 
-use Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture;
 use Ergebnis\Test\Util;
 use PHPUnit\Framework;
 
 /**
  * @internal
  *
- * @covers \Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\Sleeper
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Test\Example\Sleeper
  */
 final class SleeperTest extends Framework\TestCase
 {
@@ -30,7 +29,7 @@ final class SleeperTest extends Framework\TestCase
     {
         $milliseconds = 0;
 
-        $sleeper = Fixture\Sleeper::fromMilliseconds($milliseconds);
+        $sleeper = Sleeper::fromMilliseconds($milliseconds);
 
         $sleeper->sleep();
 
@@ -41,7 +40,7 @@ final class SleeperTest extends Framework\TestCase
     {
         $milliseconds = 250;
 
-        $sleeper = Fixture\Sleeper::fromMilliseconds($milliseconds);
+        $sleeper = Sleeper::fromMilliseconds($milliseconds);
 
         $sleeper->sleep();
 
@@ -52,7 +51,7 @@ final class SleeperTest extends Framework\TestCase
     {
         $milliseconds = 500;
 
-        $sleeper = Fixture\Sleeper::fromMilliseconds($milliseconds);
+        $sleeper = Sleeper::fromMilliseconds($milliseconds);
 
         $sleeper->sleep();
 
@@ -63,7 +62,7 @@ final class SleeperTest extends Framework\TestCase
     {
         $milliseconds = 750;
 
-        $sleeper = Fixture\Sleeper::fromMilliseconds($milliseconds);
+        $sleeper = Sleeper::fromMilliseconds($milliseconds);
 
         $sleeper->sleep();
 
@@ -74,7 +73,7 @@ final class SleeperTest extends Framework\TestCase
     {
         $milliseconds = 1000;
 
-        $sleeper = Fixture\Sleeper::fromMilliseconds($milliseconds);
+        $sleeper = Sleeper::fromMilliseconds($milliseconds);
 
         $sleeper->sleep();
 
