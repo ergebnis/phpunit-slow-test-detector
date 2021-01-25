@@ -17,7 +17,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\Formatter\ToMillisecondsDurationFormatter;
 use Ergebnis\PHPUnit\SlowTestDetector\Reporter\DefaultReporter;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
-use Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture;
+use Ergebnis\PHPUnit\SlowTestDetector\Test\Example;
 use Ergebnis\Test\Util;
 use PHPUnit\Event;
 use PHPUnit\Framework;
@@ -88,7 +88,7 @@ final class DefaultReporterTest extends Framework\TestCase
         $slowTests = [
             SlowTest::fromTestAndDuration(
                 new Event\Code\Test(
-                    Fixture\ExampleTest::class,
+                    Example\SleeperTest::class,
                     'foo',
                     'foo with data set #123',
                 ),
@@ -99,7 +99,7 @@ final class DefaultReporterTest extends Framework\TestCase
             ),
             SlowTest::fromTestAndDuration(
                 new Event\Code\Test(
-                    Fixture\ExampleTest::class,
+                    Example\SleeperTest::class,
                     'bar',
                     'bar',
                 ),
@@ -110,7 +110,7 @@ final class DefaultReporterTest extends Framework\TestCase
             ),
             SlowTest::fromTestAndDuration(
                 new Event\Code\Test(
-                    Fixture\ExampleTest::class,
+                    Example\SleeperTest::class,
                     'baz',
                     'baz with dataset "string"',
                 ),
@@ -121,7 +121,7 @@ final class DefaultReporterTest extends Framework\TestCase
             ),
             SlowTest::fromTestAndDuration(
                 new Event\Code\Test(
-                    Fixture\ExampleTest::class,
+                    Example\SleeperTest::class,
                     'qux',
                     'qux',
                 ),
@@ -132,7 +132,7 @@ final class DefaultReporterTest extends Framework\TestCase
             ),
             SlowTest::fromTestAndDuration(
                 new Event\Code\Test(
-                    Fixture\ExampleTest::class,
+                    Example\SleeperTest::class,
                     'quz',
                     'quz',
                 ),
@@ -163,11 +163,11 @@ final class DefaultReporterTest extends Framework\TestCase
         $expected = <<<'TXT'
 Detected 5 tests that took longer than 100 ms.
 
-12,345 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\ExampleTest::bar
- 7,890 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\ExampleTest::foo with data set #123
- 3,456 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\ExampleTest::qux
- 1,234 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\ExampleTest::quz
-   123 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\ExampleTest::baz with dataset "string"
+12,345 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::bar
+ 7,890 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::foo with data set #123
+ 3,456 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::qux
+ 1,234 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::quz
+   123 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::baz with dataset "string"
 
 TXT;
 
@@ -179,7 +179,7 @@ TXT;
         $slowTests = [
             SlowTest::fromTestAndDuration(
                 new Event\Code\Test(
-                    Fixture\ExampleTest::class,
+                    Example\SleeperTest::class,
                     'foo',
                     'foo with data set #123',
                 ),
@@ -190,7 +190,7 @@ TXT;
             ),
             SlowTest::fromTestAndDuration(
                 new Event\Code\Test(
-                    Fixture\ExampleTest::class,
+                    Example\SleeperTest::class,
                     'bar',
                     'bar',
                 ),
@@ -201,7 +201,7 @@ TXT;
             ),
             SlowTest::fromTestAndDuration(
                 new Event\Code\Test(
-                    Fixture\ExampleTest::class,
+                    Example\SleeperTest::class,
                     'baz',
                     'baz with dataset "string"',
                 ),
@@ -212,7 +212,7 @@ TXT;
             ),
             SlowTest::fromTestAndDuration(
                 new Event\Code\Test(
-                    Fixture\ExampleTest::class,
+                    Example\SleeperTest::class,
                     'qux',
                     'qux',
                 ),
@@ -223,7 +223,7 @@ TXT;
             ),
             SlowTest::fromTestAndDuration(
                 new Event\Code\Test(
-                    Fixture\ExampleTest::class,
+                    Example\SleeperTest::class,
                     'quz',
                     'quz',
                 ),
@@ -254,11 +254,11 @@ TXT;
         $expected = <<<'TXT'
 Detected 5 tests that took longer than 100 ms.
 
-12,345 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\ExampleTest::bar
- 7,890 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\ExampleTest::foo with data set #123
- 3,456 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\ExampleTest::qux
- 1,234 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\ExampleTest::quz
-   123 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\ExampleTest::baz with dataset "string"
+12,345 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::bar
+ 7,890 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::foo with data set #123
+ 3,456 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::qux
+ 1,234 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::quz
+   123 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::baz with dataset "string"
 
 TXT;
 
@@ -270,7 +270,7 @@ TXT;
         $slowTests = [
             SlowTest::fromTestAndDuration(
                 new Event\Code\Test(
-                    Fixture\ExampleTest::class,
+                    Example\SleeperTest::class,
                     'foo',
                     'foo with data set #123',
                 ),
@@ -281,7 +281,7 @@ TXT;
             ),
             SlowTest::fromTestAndDuration(
                 new Event\Code\Test(
-                    Fixture\ExampleTest::class,
+                    Example\SleeperTest::class,
                     'bar',
                     'bar',
                 ),
@@ -292,7 +292,7 @@ TXT;
             ),
             SlowTest::fromTestAndDuration(
                 new Event\Code\Test(
-                    Fixture\ExampleTest::class,
+                    Example\SleeperTest::class,
                     'baz',
                     'baz with dataset "string"',
                 ),
@@ -303,7 +303,7 @@ TXT;
             ),
             SlowTest::fromTestAndDuration(
                 new Event\Code\Test(
-                    Fixture\ExampleTest::class,
+                    Example\SleeperTest::class,
                     'qux',
                     'qux',
                 ),
@@ -314,7 +314,7 @@ TXT;
             ),
             SlowTest::fromTestAndDuration(
                 new Event\Code\Test(
-                    Fixture\ExampleTest::class,
+                    Example\SleeperTest::class,
                     'quz',
                     'quz',
                 ),
@@ -345,10 +345,10 @@ TXT;
         $expected = <<<'TXT'
 Detected 5 tests that took longer than 100 ms.
 
-12,345 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\ExampleTest::bar
- 7,890 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\ExampleTest::foo with data set #123
- 3,456 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\ExampleTest::qux
- 1,234 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\ExampleTest::quz
+12,345 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::bar
+ 7,890 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::foo with data set #123
+ 3,456 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::qux
+ 1,234 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::quz
 
 There is one additional slow test that is not listed here.
 TXT;
@@ -361,7 +361,7 @@ TXT;
         $slowTests = [
             SlowTest::fromTestAndDuration(
                 new Event\Code\Test(
-                    Fixture\ExampleTest::class,
+                    Example\SleeperTest::class,
                     'foo',
                     'foo with data set #123',
                 ),
@@ -372,7 +372,7 @@ TXT;
             ),
             SlowTest::fromTestAndDuration(
                 new Event\Code\Test(
-                    Fixture\ExampleTest::class,
+                    Example\SleeperTest::class,
                     'bar',
                     'bar',
                 ),
@@ -383,7 +383,7 @@ TXT;
             ),
             SlowTest::fromTestAndDuration(
                 new Event\Code\Test(
-                    Fixture\ExampleTest::class,
+                    Example\SleeperTest::class,
                     'baz',
                     'baz with dataset "string"',
                 ),
@@ -394,7 +394,7 @@ TXT;
             ),
             SlowTest::fromTestAndDuration(
                 new Event\Code\Test(
-                    Fixture\ExampleTest::class,
+                    Example\SleeperTest::class,
                     'qux',
                     'qux',
                 ),
@@ -405,7 +405,7 @@ TXT;
             ),
             SlowTest::fromTestAndDuration(
                 new Event\Code\Test(
-                    Fixture\ExampleTest::class,
+                    Example\SleeperTest::class,
                     'quz',
                     'quz',
                 ),
@@ -436,9 +436,9 @@ TXT;
         $expected = <<<'TXT'
 Detected 5 tests that took longer than 100 ms.
 
-12,345 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\ExampleTest::bar
- 7,890 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\ExampleTest::foo with data set #123
- 3,456 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\ExampleTest::qux
+12,345 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::bar
+ 7,890 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::foo with data set #123
+ 3,456 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::qux
 
 There are 2 additional slow tests that are not listed here.
 TXT;

@@ -15,7 +15,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Collector;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Collector\DefaultCollector;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
-use Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture;
+use Ergebnis\PHPUnit\SlowTestDetector\Test\Example;
 use Ergebnis\Test\Util;
 use PHPUnit\Event;
 use PHPUnit\Framework;
@@ -44,7 +44,7 @@ final class DefaultCollectorTest extends Framework\TestCase
 
         $first = SlowTest::fromTestAndDuration(
             new Event\Code\Test(
-                Fixture\ExampleTest::class,
+                Example\SleeperTest::class,
                 'foo',
                 'foo with data set #123',
             ),
@@ -56,7 +56,7 @@ final class DefaultCollectorTest extends Framework\TestCase
 
         $second = SlowTest::fromTestAndDuration(
             new Event\Code\Test(
-                Fixture\ExampleTest::class,
+                Example\SleeperTest::class,
                 'bar',
                 'bar',
             ),
@@ -68,7 +68,7 @@ final class DefaultCollectorTest extends Framework\TestCase
 
         $third = SlowTest::fromTestAndDuration(
             new Event\Code\Test(
-                Fixture\ExampleTest::class,
+                Example\SleeperTest::class,
                 'baz',
                 'baz with data set "string"',
             ),
@@ -99,7 +99,7 @@ final class DefaultCollectorTest extends Framework\TestCase
 
         $first = SlowTest::fromTestAndDuration(
             new Event\Code\Test(
-                Fixture\ExampleTest::class,
+                Example\SleeperTest::class,
                 'foo',
                 'foo with data set #123',
             ),
@@ -111,7 +111,7 @@ final class DefaultCollectorTest extends Framework\TestCase
 
         $second = SlowTest::fromTestAndDuration(
             new Event\Code\Test(
-                Fixture\ExampleTest::class,
+                Example\SleeperTest::class,
                 'bar',
                 'bar',
             ),
@@ -153,7 +153,7 @@ final class DefaultCollectorTest extends Framework\TestCase
 
         $first = SlowTest::fromTestAndDuration(
             new Event\Code\Test(
-                Fixture\ExampleTest::class,
+                Example\SleeperTest::class,
                 'foo',
                 'foo with data set #123',
             ),
@@ -165,7 +165,7 @@ final class DefaultCollectorTest extends Framework\TestCase
 
         $second = SlowTest::fromTestAndDuration(
             new Event\Code\Test(
-                Fixture\ExampleTest::class,
+                Example\SleeperTest::class,
                 'bar',
                 'bar',
             ),
