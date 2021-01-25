@@ -168,7 +168,6 @@ Detected 5 tests that took longer than 100 ms.
  3,456 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::qux
  1,234 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::quz
    123 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::baz with dataset "string"
-
 TXT;
 
         self::assertSame($expected, $report);
@@ -259,7 +258,6 @@ Detected 5 tests that took longer than 100 ms.
  3,456 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::qux
  1,234 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::quz
    123 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::baz with dataset "string"
-
 TXT;
 
         self::assertSame($expected, $report);
