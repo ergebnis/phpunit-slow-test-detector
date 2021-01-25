@@ -75,7 +75,7 @@ repository:
   archived: false
   default_branch: "main"
   delete_branch_on_merge: true
-  description: ":eyeglasses: Provides facilities for detecting slow tests in phpunit/phpunit."
+  description: ":eyeglasses: Provides an extension for detecting slow tests in phpunit/phpunit."
   has_downloads: true
   has_issues: true
   has_pages: false
@@ -86,4 +86,4 @@ repository:
 
   # https://docs.github.com/en/rest/reference/repos#replace-all-repository-topics
 
-  topics: "phpunit, slow, test, detector"
+  topics: "phpunit, slow, test, detector, extension"

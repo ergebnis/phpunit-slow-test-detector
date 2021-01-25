@@ -6,7 +6,8 @@
     "phpunit",
     "slow",
     "test",
-    "detector"
+    "detector",
+    "extension"
   ],
   "homepage": "https://github.com/ergebnis/phpunit-slow-test-detector",
   "license": "MIT",
