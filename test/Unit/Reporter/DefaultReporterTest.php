@@ -81,7 +81,49 @@ final class DefaultReporterTest extends Framework\TestCase
         self::assertSame('', $report);
     }
 
-    public function testReportReturnsReportWhenTheNumberOfSlowTestsIsSmallerThanTheMaximumCount(): void
+    public function testReportReturnsReportWhenTheNumberOfSlowTestsIsSmallerThanTheMaximumCountAndLessThanOne(): void
+    {
+        $slowTests = [
+            SlowTest::fromTestAndDuration(
+                new Event\Code\Test(
+                    Example\SleeperTest::class,
+                    'foo',
+                    'foo with data set #123',
+                ),
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    7,
+                    890_123_456
+                )
+            ),
+        ];
+
+        $durationFormatter = new ToMillisecondsDurationFormatter();
+
+        $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            0,
+            100_000_000
+        );
+
+        $maximumNumber = \count($slowTests);
+
+        $reporter = new DefaultReporter(
+            $durationFormatter,
+            $maximumDuration,
+            $maximumNumber
+        );
+
+        $report = $reporter->report(...$slowTests);
+
+        $expected = <<<'TXT'
+Detected 1 test that took longer than 100 ms.
+
+7,890 ms: Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::foo with data set #123
+TXT;
+
+        self::assertSame($expected, $report);
+    }
+
+    public function testReportReturnsReportWhenTheNumberOfSlowTestsIsSmallerThanTheMaximumCountAndGreaterThanOne(): void
     {
         $faker = self::faker();
 
