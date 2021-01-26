@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Comparator;
+use Ergebnis\PHPUnit\SlowTestDetector\Console;
 use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use PHPUnit\Event;
@@ -132,12 +133,15 @@ TXT;
                 \STR_PAD_LEFT
             );
 
-            $formattedMaximumDuration = \str_pad(
-                $durationFormatter->format($slowTest->maximumDuration()),
-                $maximumDurationWidth,
-                ' ',
-                \STR_PAD_LEFT
-            );
+            $formattedMaximumDuration = Console\Color::dim(\sprintf(
+                '(%s)',
+                \str_pad(
+                    $durationFormatter->format($slowTest->maximumDuration()),
+                    $maximumDurationWidth,
+                    ' ',
+                    \STR_PAD_LEFT
+                )
+            ));
 
             $test = $slowTest->test();
 
@@ -148,7 +152,7 @@ TXT;
             );
 
             return <<<TXT
-{$formattedDuration} ({$formattedMaximumDuration}) {$testName}
+{$formattedDuration} {$formattedMaximumDuration} {$testName}
 TXT;
         }, $slowTestsToReport);
 
