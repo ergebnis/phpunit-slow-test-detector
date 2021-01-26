@@ -80,6 +80,31 @@ Event\Facade::registerSubscriber(new SlowTestDetector\Subscriber\TestSuiteFinish
 
 :exclamation: Currently, this is a bit verbose. [@sebastianbergmann](https://github.com/sebastianbergmann), [@theseer](https://github.com/theseer), and I are going to meet to talk about how we can improve this.
 
+### Configuring maximum duration per test case
+
+When necessary, you can configure the maximum duration for a test with a `@slowThreshold` annotation in the DocBlock.
+
+This example configures the maximum duration for a single test to 5.000 ms:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use PHPUnit\Framework;
+
+final class ExtraSlowTest extends Framework\TestCase
+{
+    /**
+     * @slowThreshold 5000
+     */
+    public function testExtraExtraSlow(): void
+    {
+        // ...
+    }
+}
+```
+
 ### Running tests
 
 When you have activated the extension, you can run your tests as usually:
