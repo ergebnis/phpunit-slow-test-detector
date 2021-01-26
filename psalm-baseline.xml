@@ -1,2 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.4.1@9fd7a7d885b3a216cff8dec9d8c21a132f275224"/>
+<files psalm-version="4.4.1@9fd7a7d885b3a216cff8dec9d8c21a132f275224">
+  <file src="src/Subscriber/TestPassedSubscriber.php">
+    <InternalClass occurrences="1"/>
+    <InternalMethod occurrences="1"/>
+    <MixedArgument occurrences="1">
+      <code>$slowThreshold</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="1">
+      <code>$slowThreshold</code>
+    </MixedAssignment>
+  </file>
+</files>
