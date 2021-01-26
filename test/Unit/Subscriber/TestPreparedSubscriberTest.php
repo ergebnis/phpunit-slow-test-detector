@@ -54,9 +54,15 @@ final class TestPreparedSubscriberTest extends Framework\TestCase
                     Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
                     Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween())
                 ),
-                Event\Telemetry\Duration::fromSeconds($faker->numberBetween()),
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    $faker->numberBetween(),
+                    $faker->numberBetween(0, 999_999_999)
+                ),
                 Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
-                Event\Telemetry\Duration::fromSeconds($faker->numberBetween()),
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    $faker->numberBetween(),
+                    $faker->numberBetween(0, 999_999_999)
+                ),
                 Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
             ),
             $preparedTest

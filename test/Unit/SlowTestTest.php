@@ -37,8 +37,14 @@ final class SlowTestTest extends Framework\TestCase
             $faker->word
         );
 
-        $duration = Event\Telemetry\Duration::fromSeconds($faker->numberBetween());
-        $maximumDuration = Event\Telemetry\Duration::fromSeconds($faker->numberBetween());
+        $duration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            $faker->numberBetween(0, 999_999_999)
+        );
+        $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            $faker->numberBetween(0, 999_999_999)
+        );
 
         $slowTest = SlowTest::fromTestDurationAndMaximumDuration(
             $test,
