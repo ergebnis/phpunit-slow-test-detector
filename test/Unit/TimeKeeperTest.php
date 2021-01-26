@@ -68,11 +68,7 @@ final class TimeKeeperTest extends Framework\TestCase
             $faker->numberBetween(0, 999_999_999),
         );
 
-        $stoppedTest = new Event\Code\Test(
-            $startedTest->className(),
-            $startedTest->methodName(),
-            $startedTest->methodNameWithDataSet(),
-        );
+        $stoppedTest = clone $startedTest;
 
         $stoppedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
             $faker->numberBetween($startedTime->seconds() + 1),
@@ -109,22 +105,14 @@ final class TimeKeeperTest extends Framework\TestCase
             $faker->numberBetween(0, 999_999_999),
         );
 
-        $firstStoppedTest = new Event\Code\Test(
-            $startedTest->className(),
-            $startedTest->methodName(),
-            $startedTest->methodNameWithDataSet(),
-        );
+        $firstStoppedTest = clone $startedTest;
 
         $firstStoppedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
             $faker->numberBetween($startedTime->seconds() + 1),
             $faker->numberBetween(0, 999_999_999),
         );
 
-        $secondStoppedTest = new Event\Code\Test(
-            $startedTest->className(),
-            $startedTest->methodName(),
-            $startedTest->methodNameWithDataSet(),
-        );
+        $secondStoppedTest = clone $startedTest;
 
         $secondStoppedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
             $faker->numberBetween($startedTime->seconds() + 1),
@@ -166,11 +154,7 @@ final class TimeKeeperTest extends Framework\TestCase
             $faker->numberBetween(0, 999_999_999),
         );
 
-        $firstStoppedTest = new Event\Code\Test(
-            $firstStartedTest->className(),
-            $firstStartedTest->methodName(),
-            $firstStartedTest->methodNameWithDataSet(),
-        );
+        $firstStoppedTest = clone $firstStartedTest;
 
         $firstStoppedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
             $faker->numberBetween($firstStartedTime->seconds() + 1),
@@ -188,11 +172,7 @@ final class TimeKeeperTest extends Framework\TestCase
             $faker->numberBetween(0, 999_999_999),
         );
 
-        $secondStoppedTest = new Event\Code\Test(
-            $secondStartedTest->className(),
-            $secondStartedTest->methodName(),
-            $secondStartedTest->methodNameWithDataSet(),
-        );
+        $secondStoppedTest = clone $secondStartedTest;
 
         $secondStoppedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
             $faker->numberBetween($secondStartedTime->seconds() + 1),
