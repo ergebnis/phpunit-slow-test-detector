@@ -13,12 +13,12 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Exception;
 
-final class MaximumNumberNotGreaterThanZero extends \InvalidArgumentException
+final class InvalidMaximumCount extends \InvalidArgumentException
 {
-    public static function create(int $value): self
+    public static function notGreaterThanZero(int $value): self
     {
         return new self(\sprintf(
-            'Maximum number should be greater than 0, but %d is not.',
+            'Value should be greater than 0, but %d is not.',
             $value
         ));
     }

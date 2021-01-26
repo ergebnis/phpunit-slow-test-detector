@@ -64,12 +64,12 @@ Event\Facade::registerSubscriber(new SlowTestDetector\Subscriber\TestPassedSubsc
     $collector
 ));
 
-$maximumNumber = 10;
+$maximumCount = SlowTestDetector\MaximumCount::fromInt(10);
 
 $reporter = new SlowTestDetector\Reporter\DefaultReporter(
     new SlowTestDetector\Formatter\ToMillisecondsDurationFormatter(),
     $maximumDuration,
-    $maximumNumber
+    $maximumCount
 );
 
 Event\Facade::registerSubscriber(new SlowTestDetector\Subscriber\TestSuiteFinishedSubscriber(
