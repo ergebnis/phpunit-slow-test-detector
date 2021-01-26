@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8954407b34245265d4e8998c69cbcadd",
+    "content-hash": "3e6559869f8f70b58934f317f8ed60c7",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -306,12 +306,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "91c227197c1f0059750427987ef325c185a5b3d5"
+                "reference": "db615444858f85683513ea809cee902a29a30ab3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/91c227197c1f0059750427987ef325c185a5b3d5",
-                "reference": "91c227197c1f0059750427987ef325c185a5b3d5",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/db615444858f85683513ea809cee902a29a30ab3",
+                "reference": "db615444858f85683513ea809cee902a29a30ab3",
                 "shasum": ""
             },
             "require": {
@@ -625,12 +625,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/theseer/phpunit.git",
-                "reference": "796042126"
+                "reference": "ffd44c130"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/theseer/phpunit/zipball/796042126",
-                "reference": "796042126",
+                "url": "https://api.github.com/repos/theseer/phpunit/zipball/ffd44c130",
+                "reference": "ffd44c130",
                 "shasum": ""
             },
             "require": {
@@ -727,7 +727,7 @@
                     "url": "https://phpunit.de/donate.html"
                 }
             ],
-            "time": "2021-01-23T12:44:56+00:00"
+            "time": "2021-01-26T18:45:27+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -791,12 +791,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/code-unit.git",
-                "reference": "40d121b9d37b78d60ebe637cdce0e1087d4eecbc"
+                "reference": "ae3e30af942e2fc0d7b0d055086842c912ffece9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/code-unit/zipball/40d121b9d37b78d60ebe637cdce0e1087d4eecbc",
-                "reference": "40d121b9d37b78d60ebe637cdce0e1087d4eecbc",
+                "url": "https://api.github.com/repos/sebastianbergmann/code-unit/zipball/ae3e30af942e2fc0d7b0d055086842c912ffece9",
+                "reference": "ae3e30af942e2fc0d7b0d055086842c912ffece9",
                 "shasum": ""
             },
             "require": {
@@ -840,7 +840,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-01-23T09:13:11+00:00"
+            "time": "2021-01-25T09:14:33+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
