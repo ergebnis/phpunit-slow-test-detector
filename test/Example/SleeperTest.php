@@ -79,4 +79,65 @@ final class SleeperTest extends Framework\TestCase
 
         self::assertSame($milliseconds, $sleeper->milliseconds());
     }
+
+    /**
+     * This DocBlock is intentionally left without a useful comment or annotation.
+     */
+    public function testSleeperSleepsWithDocBlockWithoutSlowThresholdAnnotation(): void
+    {
+        $milliseconds = 500;
+
+        $sleeper = Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * @slowThreshold 3.14
+     */
+    public function testSleeperSleepsWithDocBlockWithSlowThresholdAnnotationWhereValueIsNotAnInt(): void
+    {
+        $milliseconds = 500;
+
+        $sleeper = Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * @see https://github.com/johnkary/phpunit-speedtrap/blob/1.0/src/JohnKary/PHPUnit/Listener/SpeedTrapListener.php#L309-L331
+     *
+     * @slowThreshold 400
+     *
+     * @dataProvider provideMilliseconds
+     */
+    public function testSleeperSleepsWithSlowThresholdAnnotation(int $milliseconds): void
+    {
+        $sleeper = Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * @return \Generator<int, array{0: int}>
+     */
+    public function provideMilliseconds(): \Generator
+    {
+        $values = [
+            250,
+            500,
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
+    }
 }

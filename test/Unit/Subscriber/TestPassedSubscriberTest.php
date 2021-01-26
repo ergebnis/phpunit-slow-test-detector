@@ -251,4 +251,363 @@ final class TestPassedSubscriberTest extends Framework\TestCase
 
         self::assertEquals($expected, $collector->collected());
     }
+
+    public function testNotifyDoesNotCollectSlowTestWhenDurationIsLessThanMaximumDurationAnnotatedWithSlowThreshold(): void
+    {
+        $faker = self::faker();
+
+        $maximumDuration = MaximumDuration::fromSeconds(60);
+
+        $annotatedMaximumDuration = MaximumDuration::fromMilliseconds(400);
+
+        $preparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            $faker->numberBetween(0, 100_000_000)
+        );
+
+        $preparedTest = new Event\Code\Test(
+            Example\SleeperTest::class,
+            'testSleeperSleepsWithSlowThresholdAnnotation',
+            'testSleeperSleepsWithSlowThresholdAnnotation with data set "foo"'
+        );
+
+        $passedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $preparedTime->seconds(),
+            $preparedTime->nanoseconds() + $annotatedMaximumDuration->toTelemetryDuration()->nanoseconds() - 1
+        );
+
+        $passedTest = new Event\Code\Test(
+            Example\SleeperTest::class,
+            'testSleeperSleepsWithSlowThresholdAnnotation',
+            'testSleeperSleepsWithSlowThresholdAnnotation with data set "foo"'
+        );
+
+        $passedTestEvent = new Event\Test\Passed(
+            new Event\Telemetry\Info(
+                new Event\Telemetry\Snapshot(
+                    $passedTime,
+                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween())
+                ),
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    $faker->numberBetween(),
+                    $faker->numberBetween(0, 999_999_999)
+                ),
+                Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    $faker->numberBetween(),
+                    $faker->numberBetween(0, 999_999_999)
+                ),
+                Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+            ),
+            $passedTest
+        );
+
+        $timeKeeper = new TimeKeeper();
+
+        $timeKeeper->start(
+            $preparedTest,
+            $preparedTime
+        );
+
+        $collector = new Double\Collector\AppendingCollector();
+
+        $subscriber = new TestPassedSubscriber(
+            $maximumDuration,
+            $timeKeeper,
+            $collector
+        );
+
+        $subscriber->notify($passedTestEvent);
+
+        self::assertSame([], $collector->collected());
+    }
+
+    public function testNotifyDoesNotCollectSlowTestWhenDurationIsLessThanMaximumDurationWhenTestMethodHasDocBlockWithoutSlowThresholdAnnotation(): void
+    {
+        $faker = self::faker();
+
+        $maximumDuration = MaximumDuration::fromSeconds(60);
+
+        $preparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            $faker->numberBetween(0, 100_000_000)
+        );
+
+        $preparedTest = new Event\Code\Test(
+            Example\SleeperTest::class,
+            'testSleeperSleepsWithDocBlockWithoutSlowThresholdAnnotation',
+            'testSleeperSleepsWithDocBlockWithoutSlowThresholdAnnotation'
+        );
+
+        $passedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $preparedTime->seconds(),
+            $preparedTime->nanoseconds() + 1
+        );
+
+        $passedTest = new Event\Code\Test(
+            $preparedTest->className(),
+            $preparedTest->methodName(),
+            $preparedTest->methodNameWithDataSet()
+        );
+
+        $passedTestEvent = new Event\Test\Passed(
+            new Event\Telemetry\Info(
+                new Event\Telemetry\Snapshot(
+                    $passedTime,
+                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween())
+                ),
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    $faker->numberBetween(),
+                    $faker->numberBetween(0, 999_999_999)
+                ),
+                Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    $faker->numberBetween(),
+                    $faker->numberBetween(0, 999_999_999)
+                ),
+                Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+            ),
+            $passedTest
+        );
+
+        $timeKeeper = new TimeKeeper();
+
+        $timeKeeper->start(
+            $preparedTest,
+            $preparedTime
+        );
+
+        $collector = new Double\Collector\AppendingCollector();
+
+        $subscriber = new TestPassedSubscriber(
+            $maximumDuration,
+            $timeKeeper,
+            $collector
+        );
+
+        $subscriber->notify($passedTestEvent);
+
+        self::assertSame([], $collector->collected());
+    }
+
+    public function testNotifyDoesNotCollectSlowTestWhenDurationIsLessThanMaximumDurationWhenTestMethodHasDocBlockWithSlowThresholdAnnotationWhereValueIsNotAnInt(): void
+    {
+        $faker = self::faker();
+
+        $maximumDuration = MaximumDuration::fromSeconds(60);
+
+        $preparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            $faker->numberBetween(0, 100_000_000)
+        );
+
+        $preparedTest = new Event\Code\Test(
+            Example\SleeperTest::class,
+            'testSleeperSleepsWithDocBlockWithSlowThresholdAnnotationWhereValueIsNotAnInt',
+            'testSleeperSleepsWithDocBlockWithSlowThresholdAnnotationWhereValueIsNotAnInt'
+        );
+
+        $passedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $preparedTime->seconds(),
+            $preparedTime->nanoseconds() + 1
+        );
+
+        $passedTest = new Event\Code\Test(
+            $preparedTest->className(),
+            $preparedTest->methodName(),
+            $preparedTest->methodNameWithDataSet()
+        );
+
+        $passedTestEvent = new Event\Test\Passed(
+            new Event\Telemetry\Info(
+                new Event\Telemetry\Snapshot(
+                    $passedTime,
+                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween())
+                ),
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    $faker->numberBetween(),
+                    $faker->numberBetween(0, 999_999_999)
+                ),
+                Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    $faker->numberBetween(),
+                    $faker->numberBetween(0, 999_999_999)
+                ),
+                Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+            ),
+            $passedTest
+        );
+
+        $timeKeeper = new TimeKeeper();
+
+        $timeKeeper->start(
+            $preparedTest,
+            $preparedTime
+        );
+
+        $collector = new Double\Collector\AppendingCollector();
+
+        $subscriber = new TestPassedSubscriber(
+            $maximumDuration,
+            $timeKeeper,
+            $collector
+        );
+
+        $subscriber->notify($passedTestEvent);
+
+        self::assertSame([], $collector->collected());
+    }
+
+    public function testNotifyDoesNotCollectSlowTestWhenDurationIsEqualToMaximumDurationAnnotatedWithSlowThreshold(): void
+    {
+        $faker = self::faker();
+
+        $maximumDuration = MaximumDuration::fromSeconds(60);
+
+        $annotatedMaximumDuration = MaximumDuration::fromMilliseconds(400);
+
+        $preparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            $faker->numberBetween(0, 100_000_000)
+        );
+
+        $preparedTest = new Event\Code\Test(
+            Example\SleeperTest::class,
+            'testSleeperSleepsWithSlowThresholdAnnotation',
+            'testSleeperSleepsWithSlowThresholdAnnotation with data set "foo"'
+        );
+
+        $passedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $preparedTime->seconds(),
+            $preparedTime->nanoseconds() + $annotatedMaximumDuration->toTelemetryDuration()->nanoseconds()
+        );
+
+        $passedTest = new Event\Code\Test(
+            $preparedTest->className(),
+            $preparedTest->methodName(),
+            $preparedTest->methodNameWithDataSet()
+        );
+
+        $passedTestEvent = new Event\Test\Passed(
+            new Event\Telemetry\Info(
+                new Event\Telemetry\Snapshot(
+                    $passedTime,
+                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween())
+                ),
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    $faker->numberBetween(),
+                    $faker->numberBetween(0, 999_999_999)
+                ),
+                Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    $faker->numberBetween(),
+                    $faker->numberBetween(0, 999_999_999)
+                ),
+                Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+            ),
+            $passedTest
+        );
+
+        $timeKeeper = new TimeKeeper();
+
+        $timeKeeper->start(
+            $preparedTest,
+            $preparedTime
+        );
+
+        $collector = new Double\Collector\AppendingCollector();
+
+        $subscriber = new TestPassedSubscriber(
+            $maximumDuration,
+            $timeKeeper,
+            $collector
+        );
+
+        $subscriber->notify($passedTestEvent);
+
+        self::assertSame([], $collector->collected());
+    }
+
+    public function testNotifyCollectsSlowTestWhenDurationIsGreaterThanMaximumDurationAnnotatedWithSlowThreshold(): void
+    {
+        $faker = self::faker();
+
+        $maximumDuration = MaximumDuration::fromSeconds(60);
+
+        $annotatedMaximumDuration = MaximumDuration::fromMilliseconds(400);
+
+        $preparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $faker->numberBetween(),
+            $faker->numberBetween(0, 100_000_000)
+        );
+
+        $preparedTest = new Event\Code\Test(
+            Example\SleeperTest::class,
+            'testSleeperSleepsWithSlowThresholdAnnotation',
+            'testSleeperSleepsWithSlowThresholdAnnotation with data set "foo"'
+        );
+
+        $passedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
+            $preparedTime->seconds(),
+            $preparedTime->nanoseconds() + $annotatedMaximumDuration->toTelemetryDuration()->nanoseconds() + 1
+        );
+
+        $passedTest = new Event\Code\Test(
+            $preparedTest->className(),
+            $preparedTest->methodName(),
+            $preparedTest->methodNameWithDataSet()
+        );
+
+        $passedTestEvent = new Event\Test\Passed(
+            new Event\Telemetry\Info(
+                new Event\Telemetry\Snapshot(
+                    $passedTime,
+                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween())
+                ),
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    $faker->numberBetween(),
+                    $faker->numberBetween(0, 999_999_999)
+                ),
+                Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    $faker->numberBetween(),
+                    $faker->numberBetween(0, 999_999_999)
+                ),
+                Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
+            ),
+            $passedTest
+        );
+
+        $timeKeeper = new TimeKeeper();
+
+        $timeKeeper->start(
+            $preparedTest,
+            $preparedTime
+        );
+
+        $collector = new Double\Collector\AppendingCollector();
+
+        $subscriber = new TestPassedSubscriber(
+            $maximumDuration,
+            $timeKeeper,
+            $collector
+        );
+
+        $subscriber->notify($passedTestEvent);
+
+        $expected = [
+            SlowTest::fromTestDurationAndMaximumDuration(
+                $passedTest,
+                $passedTime->duration($preparedTime),
+                $annotatedMaximumDuration->toTelemetryDuration()
+            ),
+        ];
+
+        self::assertEquals($expected, $collector->collected());
+    }
 }

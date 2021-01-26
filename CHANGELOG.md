@@ -22,6 +22,7 @@ For a full diff see [`7afa59c...main`][7afa59c...main].
 * Added `Subscriber\TestSuiteFinishedSubscriber` ([#34]), by [@localheinz]
 * Added `MaximumDuration` ([#46]), by [@localheinz]
 * Added `MaximumCount` ([#47]), by [@localheinz]
+* Allowed configuring the maximum duration for a test with a `@slowThreshold` annotation ([#49]), by [@localheinz]
 
 ### Changed
 
@@ -59,5 +60,6 @@ For a full diff see [`7afa59c...main`][7afa59c...main].
 [#38]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/38
 [#46]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/46
 [#47]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/47
+[#49]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/49
 
 [@localheinz]: https://github.com/localheinz
