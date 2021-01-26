@@ -142,11 +142,7 @@ final class DefaultCollectorTest extends Framework\TestCase
         );
 
         $thirdForSameTest = SlowTest::fromTestDurationAndMaximumDuration(
-            new Event\Code\Test(
-                $first->test()->className(),
-                $first->test()->methodName(),
-                $first->test()->methodNameWithDataSet(),
-            ),
+            clone $first->test(),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(0, $first->duration()->seconds() - 1),
                 $faker->numberBetween(0, 999_999_999)
@@ -207,11 +203,7 @@ final class DefaultCollectorTest extends Framework\TestCase
         );
 
         $thirdForSameTest = SlowTest::fromTestDurationAndMaximumDuration(
-            new Event\Code\Test(
-                $first->test()->className(),
-                $first->test()->methodName(),
-                $first->test()->methodNameWithDataSet(),
-            ),
+            clone $first->test(),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween($first->duration()->seconds() + 1),
                 $faker->numberBetween(0, 999_999_999)

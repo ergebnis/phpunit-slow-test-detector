@@ -125,11 +125,7 @@ final class TestPassedSubscriberTest extends Framework\TestCase
             $preparedTime->nanoseconds()
         );
 
-        $passedTest = new Event\Code\Test(
-            Example\SleeperTest::class,
-            'foo',
-            'foo with data set #123'
-        );
+        $passedTest = clone $preparedTest;
 
         $passedTestEvent = new Event\Test\Passed(
             new Event\Telemetry\Info(
@@ -191,11 +187,7 @@ final class TestPassedSubscriberTest extends Framework\TestCase
             $preparedTime->nanoseconds() + 1
         );
 
-        $passedTest = new Event\Code\Test(
-            Example\SleeperTest::class,
-            'foo',
-            'foo with data set #123'
-        );
+        $passedTest = clone $preparedTest;
 
         $passedTestEvent = new Event\Test\Passed(
             new Event\Telemetry\Info(
