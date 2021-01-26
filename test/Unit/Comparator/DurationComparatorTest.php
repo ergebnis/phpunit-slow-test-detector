@@ -29,8 +29,15 @@ final class DurationComparatorTest extends Framework\TestCase
 
     public function testReturnsMinusOneWhenOneIsLessThanTwo(): void
     {
-        $one = Event\Telemetry\Duration::fromSeconds(5);
-        $two = Event\Telemetry\Duration::fromSeconds(6);
+        $one = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            5,
+            0
+        );
+
+        $two = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            5,
+            1
+        );
 
         $comparator = new DurationComparator();
 
@@ -39,8 +46,15 @@ final class DurationComparatorTest extends Framework\TestCase
 
     public function testReturnsZeroWhenOneEqualsTwo(): void
     {
-        $one = Event\Telemetry\Duration::fromSeconds(5);
-        $two = Event\Telemetry\Duration::fromSeconds(5);
+        $one = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            5,
+            0
+        );
+
+        $two = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            5,
+            0
+        );
 
         $comparator = new DurationComparator();
 
@@ -49,8 +63,15 @@ final class DurationComparatorTest extends Framework\TestCase
 
     public function testReturnsPlusOneWhenOneIsGreaterThanTwo(): void
     {
-        $one = Event\Telemetry\Duration::fromSeconds(5);
-        $two = Event\Telemetry\Duration::fromSeconds(4);
+        $one = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            5,
+            1
+        );
+
+        $two = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            5,
+            0
+        );
 
         $comparator = new DurationComparator();
 

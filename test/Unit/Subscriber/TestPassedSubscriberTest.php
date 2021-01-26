@@ -38,10 +38,10 @@ final class TestPassedSubscriberTest extends Framework\TestCase
     {
         $faker = self::faker();
 
-        $maximumDuration = Event\Telemetry\Duration::fromSeconds($faker->numberBetween(
-            5,
-            10
-        ));
+        $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            $faker->numberBetween(5, 10),
+            0
+        );
 
         $preparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
@@ -72,9 +72,15 @@ final class TestPassedSubscriberTest extends Framework\TestCase
                     Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
                     Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween())
                 ),
-                Event\Telemetry\Duration::fromSeconds($faker->numberBetween()),
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    $faker->numberBetween(),
+                    $faker->numberBetween(0, 999_999_999)
+                ),
                 Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
-                Event\Telemetry\Duration::fromSeconds($faker->numberBetween()),
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    $faker->numberBetween(),
+                    $faker->numberBetween(0, 999_999_999)
+                ),
                 Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
             ),
             $passedTest
@@ -104,10 +110,10 @@ final class TestPassedSubscriberTest extends Framework\TestCase
     {
         $faker = self::faker();
 
-        $maximumDuration = Event\Telemetry\Duration::fromSeconds($faker->numberBetween(
-            5,
-            10
-        ));
+        $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            $faker->numberBetween(5, 10),
+            0
+        );
 
         $preparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
@@ -134,9 +140,15 @@ final class TestPassedSubscriberTest extends Framework\TestCase
                     Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
                     Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween())
                 ),
-                Event\Telemetry\Duration::fromSeconds($faker->numberBetween()),
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    $faker->numberBetween(),
+                    $faker->numberBetween(0, 999_999_999)
+                ),
                 Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
-                Event\Telemetry\Duration::fromSeconds($faker->numberBetween()),
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    $faker->numberBetween(),
+                    $faker->numberBetween(0, 999_999_999)
+                ),
                 Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
             ),
             $passedTest
@@ -166,10 +178,10 @@ final class TestPassedSubscriberTest extends Framework\TestCase
     {
         $faker = self::faker();
 
-        $maximumDuration = Event\Telemetry\Duration::fromSeconds($faker->numberBetween(
-            5,
-            10
-        ));
+        $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            $faker->numberBetween(5, 10),
+            0
+        );
 
         $preparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
@@ -196,9 +208,15 @@ final class TestPassedSubscriberTest extends Framework\TestCase
                     Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
                     Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween())
                 ),
-                Event\Telemetry\Duration::fromSeconds($faker->numberBetween()),
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    $faker->numberBetween(),
+                    $faker->numberBetween(0, 999_999_999)
+                ),
                 Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
-                Event\Telemetry\Duration::fromSeconds($faker->numberBetween()),
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    $faker->numberBetween(),
+                    $faker->numberBetween(0, 999_999_999)
+                ),
                 Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
             ),
             $passedTest

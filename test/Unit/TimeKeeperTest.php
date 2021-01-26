@@ -50,7 +50,12 @@ final class TimeKeeperTest extends Framework\TestCase
             $stoppedTime
         );
 
-        self::assertEquals(Event\Telemetry\Duration::fromSeconds(0), $duration);
+        $expected = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            0,
+            0
+        );
+
+        self::assertEquals($expected, $duration);
     }
 
     public function testStopReturnsDurationWhenTestHasBeenStartedAndStopped(): void
@@ -136,7 +141,12 @@ final class TimeKeeperTest extends Framework\TestCase
             $secondStoppedTime
         );
 
-        self::assertEquals(Event\Telemetry\Duration::fromSeconds(0), $duration);
+        $expected = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            0,
+            0
+        );
+
+        self::assertEquals($expected, $duration);
     }
 
     public function testCanStartAndStopMultipleTests(): void

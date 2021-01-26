@@ -34,7 +34,10 @@ final class TimeKeeper
         $key = self::key($test);
 
         if (!\array_key_exists($key, $this->startedTimes)) {
-            return Event\Telemetry\Duration::fromSeconds(0);
+            return Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                0,
+                0
+            );
         }
 
         $startedTime = $this->startedTimes[$key];
