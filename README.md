@@ -21,6 +21,100 @@ Run
 $ composer require --dev ergebnis/phpunit-slow-test-detector
 ```
 
+## Usage
+
+### Activating the extension
+
+This extension provides three event subscribers for `phpunit/phpunit`:
+
+- `Subscriber\TestPreparedSubscriber`
+- `Subscriber\TestPassedSubscriber`
+- `Subscriber\TestSuiteFinishedSubscriber`
+
+These subscribers depend on the following:
+
+- a `TimeKeeper` for keeping test prepared and passed times
+- a maximum duration
+- a `Collector\Collector` for collecting slow tests
+- a `Reporter\Reporter` for reporting slow tests
+
+To activate this extension, you need to register these subscribers with the event system of `phpunit/phpunit`. As of the moment, this is only possible with a `bootstrap.php` script:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Ergebnis\PHPUnit\SlowTestDetector;
+use PHPUnit\Event;
+
+$timeKeeper = new SlowTestDetector\TimeKeeper();
+
+Event\Facade::registerSubscriber(new SlowTestDetector\Subscriber\TestPreparedSubscriber($timeKeeper));
+
+$maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+    0,
+    750_000_000
+);
+
+$collector = new SlowTestDetector\Collector\DefaultCollector();
+
+Event\Facade::registerSubscriber(new SlowTestDetector\Subscriber\TestPassedSubscriber(
+    $maximumDuration,
+    $timeKeeper,
+    $collector
+));
+
+$maximumNumber = 10;
+
+$reporter = new SlowTestDetector\Reporter\DefaultReporter(
+    new SlowTestDetector\Formatter\ToMillisecondsDurationFormatter(),
+    $maximumDuration,
+    $maximumNumber
+);
+
+Event\Facade::registerSubscriber(new SlowTestDetector\Subscriber\TestSuiteFinishedSubscriber(
+    $collector,
+    $reporter
+));
+```
+
+:exclamation: Currently, this is a bit verbose. [@sebastianbergmann](https://github.com/sebastianbergmann), [@theseer](https://github.com/theseer), and I are going to meet to talk about how we can improve this.
+
+### Running tests
+
+When you have activated the extension, you can run your tests as usually:
+
+```sh
+$ vendor/bin/phpunit
+```
+
+When the extension has detected slow tests, it will report them:
+
+```sh
+PHPUnit 10.0-dev by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 7.4.14
+Configuration: test/Example/phpunit.xml
+Random Seed:   1611649366
+
+.....                                                                                                                                                                                                                                                                                                             5 / 5 (100%)
+
+Detected 4 tests that took longer than expected.
+
+1,012 ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::testSleeperSleepsOneSecond
+  755 ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::testSleeperSleepsThreeQuartersOfASecond
+  503 ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Example\SleeperTest::testSleeperSleepsHalfASeconds
+
+There is one additional slow test that is not listed here.
+
+Time: 00:02.563, Memory: 10.00 MB
+
+OK (5 tests, 5 assertions)
+```
+
 ## Changelog
 
 Please have a look at [`CHANGELOG.md`](CHANGELOG.md).
