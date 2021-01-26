@@ -22,10 +22,7 @@ if (\is_string(\getenv('MAXIMUM_NUMBER'))) {
     $maximumNumber = (int) \getenv('MAXIMUM_NUMBER');
 }
 
-$maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-    0,
-    125_000_000
-);
+$maximumDuration = SlowTestDetector\MaximumDuration::fromMilliseconds(125);
 
 $collector = new SlowTestDetector\Collector\DefaultCollector();
 

@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Subscriber;
 
+use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\Subscriber\TestPassedSubscriber;
 use Ergebnis\PHPUnit\SlowTestDetector\Test\Double;
@@ -27,6 +28,7 @@ use PHPUnit\Framework;
  *
  * @covers \Ergebnis\PHPUnit\SlowTestDetector\Subscriber\TestPassedSubscriber
  *
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper
  */
@@ -38,10 +40,10 @@ final class TestPassedSubscriberTest extends Framework\TestCase
     {
         $faker = self::faker();
 
-        $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-            $faker->numberBetween(5, 10),
-            0
-        );
+        $maximumDuration = MaximumDuration::fromSeconds($faker->numberBetween(
+            5,
+            10
+        ));
 
         $preparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
@@ -55,7 +57,7 @@ final class TestPassedSubscriberTest extends Framework\TestCase
         );
 
         $passedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
-            $preparedTime->seconds() + $maximumDuration->seconds(),
+            $preparedTime->seconds() + $maximumDuration->toTelemetryDuration()->seconds(),
             $preparedTime->nanoseconds() - 1
         );
 
@@ -110,10 +112,10 @@ final class TestPassedSubscriberTest extends Framework\TestCase
     {
         $faker = self::faker();
 
-        $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-            $faker->numberBetween(5, 10),
-            0
-        );
+        $maximumDuration = MaximumDuration::fromSeconds($faker->numberBetween(
+            5,
+            10
+        ));
 
         $preparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
@@ -127,7 +129,7 @@ final class TestPassedSubscriberTest extends Framework\TestCase
         );
 
         $passedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
-            $preparedTime->seconds() + $maximumDuration->seconds(),
+            $preparedTime->seconds() + $maximumDuration->toTelemetryDuration()->seconds(),
             $preparedTime->nanoseconds()
         );
 
@@ -178,10 +180,10 @@ final class TestPassedSubscriberTest extends Framework\TestCase
     {
         $faker = self::faker();
 
-        $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-            $faker->numberBetween(5, 10),
-            0
-        );
+        $maximumDuration = MaximumDuration::fromSeconds($faker->numberBetween(
+            5,
+            10
+        ));
 
         $preparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
@@ -195,7 +197,7 @@ final class TestPassedSubscriberTest extends Framework\TestCase
         );
 
         $passedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
-            $preparedTime->seconds() + $maximumDuration->seconds(),
+            $preparedTime->seconds() + $maximumDuration->toTelemetryDuration()->seconds(),
             $preparedTime->nanoseconds() + 1
         );
 
@@ -243,7 +245,7 @@ final class TestPassedSubscriberTest extends Framework\TestCase
             SlowTest::fromTestDurationAndMaximumDuration(
                 $passedTest,
                 $passedTime->duration($preparedTime),
-                $maximumDuration
+                $maximumDuration->toTelemetryDuration()
             ),
         ];
 

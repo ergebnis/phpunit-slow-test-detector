@@ -16,6 +16,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 use Ergebnis\PHPUnit\SlowTestDetector\Comparator;
 use Ergebnis\PHPUnit\SlowTestDetector\Console;
 use Ergebnis\PHPUnit\SlowTestDetector\Exception;
+use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use PHPUnit\Event;
 
@@ -27,14 +28,14 @@ final class DefaultReporter implements Reporter
 
     private int $maximumNumber;
 
-    private Event\Telemetry\Duration $maximumDuration;
+    private MaximumDuration $maximumDuration;
 
     /**
      * @throws Exception\MaximumNumberNotGreaterThanZero
      */
     public function __construct(
         Event\Telemetry\DurationFormatter $durationFormatter,
-        Event\Telemetry\Duration $maximumDuration,
+        MaximumDuration $maximumDuration,
         int $maximumNumber
     ) {
         if (0 >= $maximumNumber) {
@@ -117,7 +118,7 @@ TXT;
 
                 return $maximumDuration;
             },
-            $this->maximumDuration
+            $this->maximumDuration->toTelemetryDuration()
         );
 
         $durationFormatter = $this->durationFormatter;

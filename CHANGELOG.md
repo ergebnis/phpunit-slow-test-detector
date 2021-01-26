@@ -20,6 +20,7 @@ For a full diff see [`7afa59c...main`][7afa59c...main].
 * Extracted `TimeKeeper` ([#22]), by [@localheinz]
 * Extracted `Collector` ([#23]), by [@localheinz]
 * Added `Subscriber\TestSuiteFinishedSubscriber` ([#34]), by [@localheinz]
+* Added `MaximumDuration` ([#46]), by [@localheinz]
 
 ### Changed
 
@@ -55,5 +56,6 @@ For a full diff see [`7afa59c...main`][7afa59c...main].
 [#36]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/36
 [#37]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/37
 [#38]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/38
+[#46]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/46
 
 [@localheinz]: https://github.com/localheinz

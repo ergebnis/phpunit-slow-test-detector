@@ -14,20 +14,21 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Subscriber;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Collector;
+use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
 use PHPUnit\Event;
 
 final class TestPassedSubscriber implements Event\Test\PassedSubscriber
 {
-    private Event\Telemetry\Duration $maximumDuration;
+    private MaximumDuration$maximumDuration;
 
     private TimeKeeper $timeKeeper;
 
     private Collector\Collector $collector;
 
     public function __construct(
-        Event\Telemetry\Duration $maximumDuration,
+        MaximumDuration $maximumDuration,
         TimeKeeper $timeKeeper,
         Collector\Collector $collector
     ) {
@@ -43,14 +44,14 @@ final class TestPassedSubscriber implements Event\Test\PassedSubscriber
             $event->telemetryInfo()->time()
         );
 
-        if (!$duration->isGreaterThan($this->maximumDuration)) {
+        if (!$duration->isGreaterThan($this->maximumDuration->toTelemetryDuration())) {
             return;
         }
 
         $slowTest = SlowTest::fromTestDurationAndMaximumDuration(
             $event->test(),
             $duration,
-            $this->maximumDuration
+            $this->maximumDuration->toTelemetryDuration()
         );
 
         $this->collector->collect($slowTest);

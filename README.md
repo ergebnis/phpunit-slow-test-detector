@@ -34,7 +34,7 @@ This extension provides three event subscribers for `phpunit/phpunit`:
 These subscribers depend on the following:
 
 - a `TimeKeeper` for keeping test prepared and passed times
-- a maximum duration
+- a `MaximumDuration`
 - a `Collector\Collector` for collecting slow tests
 - a `Reporter\Reporter` for reporting slow tests
 
@@ -54,10 +54,7 @@ $timeKeeper = new SlowTestDetector\TimeKeeper();
 
 Event\Facade::registerSubscriber(new SlowTestDetector\Subscriber\TestPreparedSubscriber($timeKeeper));
 
-$maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-    0,
-    500_000_000
-);
+$maximumDuration = SlowTestDetector\MaximumDuration::fromMilliseconds(500);
 
 $collector = new SlowTestDetector\Collector\DefaultCollector();
 
