@@ -15,7 +15,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Comparator;
 use Ergebnis\PHPUnit\SlowTestDetector\Console;
-use Ergebnis\PHPUnit\SlowTestDetector\Exception;
+use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use PHPUnit\Event;
@@ -26,26 +26,19 @@ final class DefaultReporter implements Reporter
 
     private Event\Telemetry\DurationFormatter $durationFormatter;
 
-    private int $maximumNumber;
-
     private MaximumDuration $maximumDuration;
 
-    /**
-     * @throws Exception\MaximumNumberNotGreaterThanZero
-     */
+    private MaximumCount $maximumCount;
+
     public function __construct(
         Event\Telemetry\DurationFormatter $durationFormatter,
         MaximumDuration $maximumDuration,
-        int $maximumNumber
+        MaximumCount $maximumCount
     ) {
-        if (0 >= $maximumNumber) {
-            throw Exception\MaximumNumberNotGreaterThanZero::create($maximumNumber);
-        }
-
         $this->durationComparator = new Comparator\DurationComparator();
         $this->durationFormatter = $durationFormatter;
         $this->maximumDuration = $maximumDuration;
-        $this->maximumNumber = $maximumNumber;
+        $this->maximumCount = $maximumCount;
     }
 
     public function report(SlowTest ...$slowTests): string
@@ -103,7 +96,7 @@ TXT;
         $slowTestsToReport = \array_slice(
             $slowTests,
             0,
-            $this->maximumNumber
+            $this->maximumCount->toInt()
         );
 
         /** @var SlowTest $slowestTest */
@@ -166,7 +159,7 @@ TXT;
     private function footer(SlowTest ...$slowTests): string
     {
         $remainingCount = \max(
-            \count($slowTests) - $this->maximumNumber,
+            \count($slowTests) - $this->maximumCount->toInt(),
             0
         );
 

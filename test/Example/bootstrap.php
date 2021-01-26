@@ -16,10 +16,10 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use Ergebnis\PHPUnit\SlowTestDetector;
 use PHPUnit\Event;
 
-$maximumNumber = 3;
+$maximumCount = SlowTestDetector\MaximumCount::fromInt(3);
 
 if (\is_string(\getenv('MAXIMUM_NUMBER'))) {
-    $maximumNumber = (int) \getenv('MAXIMUM_NUMBER');
+    $maximumCount = SlowTestDetector\MaximumCount::fromInt((int) \getenv('MAXIMUM_NUMBER'));
 }
 
 $maximumDuration = SlowTestDetector\MaximumDuration::fromMilliseconds(125);
@@ -29,7 +29,7 @@ $collector = new SlowTestDetector\Collector\DefaultCollector();
 $reporter = new SlowTestDetector\Reporter\DefaultReporter(
     new SlowTestDetector\Formatter\ToMillisecondsDurationFormatter(),
     $maximumDuration,
-    $maximumNumber
+    $maximumCount
 );
 
 $timeKeeper = new SlowTestDetector\TimeKeeper();

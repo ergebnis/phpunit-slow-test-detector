@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Reporter;
 
-use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\Formatter\ToMillisecondsDurationFormatter;
+use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\Reporter\DefaultReporter;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
@@ -30,8 +30,9 @@ use PHPUnit\Framework;
  *
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Comparator\DurationComparator
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Console\Color
- * @uses \Ergebnis\PHPUnit\SlowTestDetector\Exception\MaximumNumberNotGreaterThanZero
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Exception\InvalidMaximumCount
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Formatter\ToMillisecondsDurationFormatter
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumCount
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
  */
@@ -39,33 +40,13 @@ final class DefaultReporterTest extends Framework\TestCase
 {
     use Util\Helper;
 
-    /**
-     * @dataProvider \Ergebnis\Test\Util\DataProvider\IntProvider::lessThanZero()
-     * @dataProvider \Ergebnis\Test\Util\DataProvider\IntProvider::zero()
-     */
-    public function testConstructorRejectsMaximumCountLessThanOne(int $maximumCount): void
-    {
-        $faker = self::faker();
-
-        $durationFormatter = $this->createMock(Event\Telemetry\DurationFormatter::class);
-        $maximumDuration = MaximumDuration::fromMilliseconds($faker->numberBetween());
-
-        $this->expectException(Exception\MaximumNumberNotGreaterThanZero::class);
-
-        new DefaultReporter(
-            $durationFormatter,
-            $maximumDuration,
-            $maximumCount
-        );
-    }
-
     public function testReportReturnsEmptyStringWhenNoSlowTestsHaveBeenSpecified(): void
     {
         $faker = self::faker();
 
         $durationFormatter = $this->createMock(Event\Telemetry\DurationFormatter::class);
         $maximumDuration = MaximumDuration::fromMilliseconds($faker->numberBetween());
-        $maximumCount = $faker->numberBetween();
+        $maximumCount = MaximumCount::fromInt($faker->numberBetween(1));
 
         $reporter = new DefaultReporter(
             $durationFormatter,
@@ -102,12 +83,12 @@ final class DefaultReporterTest extends Framework\TestCase
 
         $durationFormatter = new ToMillisecondsDurationFormatter();
 
-        $maximumNumber = \count($slowTests);
+        $maximumCount = MaximumCount::fromInt(\count($slowTests));
 
         $reporter = new DefaultReporter(
             $durationFormatter,
             $maximumDuration,
-            $maximumNumber
+            $maximumCount
         );
 
         $report = $reporter->report(...$slowTests);
@@ -195,12 +176,12 @@ TXT;
 
         $durationFormatter = new ToMillisecondsDurationFormatter();
 
-        $maximumNumber = $faker->numberBetween(\count($slowTests) + 1);
+        $maximumCount = MaximumCount::fromInt($faker->numberBetween(\count($slowTests) + 1));
 
         $reporter = new DefaultReporter(
             $durationFormatter,
             $maximumDuration,
-            $maximumNumber
+            $maximumCount
         );
 
         $report = $reporter->report(...$slowTests);
@@ -290,12 +271,12 @@ TXT;
 
         $durationFormatter = new ToMillisecondsDurationFormatter();
 
-        $maximumNumber = \count($slowTests);
+        $maximumCount = MaximumCount::fromInt(\count($slowTests));
 
         $reporter = new DefaultReporter(
             $durationFormatter,
             $maximumDuration,
-            $maximumNumber
+            $maximumCount
         );
 
         $report = $reporter->report(...$slowTests);
@@ -385,12 +366,12 @@ TXT;
 
         $durationFormatter = new ToMillisecondsDurationFormatter();
 
-        $maximumNumber = \count($slowTests) - 1;
+        $maximumCount = MaximumCount::fromInt(\count($slowTests) - 1);
 
         $reporter = new DefaultReporter(
             $durationFormatter,
             $maximumDuration,
-            $maximumNumber
+            $maximumCount
         );
 
         $report = $reporter->report(...$slowTests);
@@ -481,12 +462,12 @@ TXT;
 
         $durationFormatter = new ToMillisecondsDurationFormatter();
 
-        $maximumNumber = \count($slowTests) - 2;
+        $maximumCount = MaximumCount::fromInt(\count($slowTests) - 2);
 
         $reporter = new DefaultReporter(
             $durationFormatter,
             $maximumDuration,
-            $maximumNumber
+            $maximumCount
         );
 
         $report = $reporter->report(...$slowTests);
