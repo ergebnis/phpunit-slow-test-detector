@@ -56,7 +56,7 @@ Event\Facade::registerSubscriber(new SlowTestDetector\Subscriber\TestPreparedSub
 
 $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
     0,
-    750_000_000
+    500_000_000
 );
 
 $collector = new SlowTestDetector\Collector\DefaultCollector();
