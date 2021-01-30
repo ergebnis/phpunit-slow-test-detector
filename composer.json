@@ -27,7 +27,7 @@
     "ergebnis/php-cs-fixer-config": "~2.12.1",
     "ergebnis/phpstan-rules": "~0.15.3",
     "ergebnis/test-util": "^1.4.0",
-    "infection/infection": "~0.20.2",
+    "infection/infection": "~0.21.0",
     "phpstan/extension-installer": "^1.1.0",
     "phpstan/phpstan": "~0.12.70",
     "phpstan/phpstan-deprecation-rules": "~0.12.6",
