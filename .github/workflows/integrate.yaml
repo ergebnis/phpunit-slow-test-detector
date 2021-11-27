@@ -376,7 +376,7 @@ jobs:
               "ergebnis-bot",
             ]
 
-            await github.pulls.requestReviewers({
+            await github.rest.pulls.requestReviewers({
               owner: repository.owner,
               pull_number: pullRequest.number,
               repo: repository.repo,
@@ -395,7 +395,7 @@ jobs:
               "ergebnis-bot",
             ]
 
-            await github.issues.addAssignees({
+            await github.rest.issues.addAssignees({
               assignees: assignees,
               issue_number: pullRequest.number,
               owner: repository.owner,
@@ -410,7 +410,7 @@ jobs:
             const pullRequest = context.payload.pull_request
             const repository = context.repo
 
-            await github.pulls.createReview({
+            await github.rest.pulls.createReview({
               event: "APPROVE",
               owner: repository.owner,
               pull_number: pullRequest.number,
@@ -425,7 +425,7 @@ jobs:
             const pullRequest = context.payload.pull_request
             const repository = context.repo
 
-            await github.pulls.merge({
+            await github.rest.pulls.merge({
               merge_method: "merge",
               owner: repository.owner,
               pull_number: pullRequest.number,
