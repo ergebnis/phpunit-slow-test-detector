@@ -18,7 +18,7 @@
     }
   ],
   "require": {
-    "php": "^7.4 || ^8.0",
+    "php": "^8.0",
     "phpunit/phpunit": "dev-event#ffd44c130 as 10.0.0"
   },
   "require-dev": {
@@ -38,7 +38,7 @@
   },
   "config": {
     "platform": {
-      "php": "7.4.14"
+      "php": "8.0.12"
     },
     "preferred-install": "dist",
     "sort-packages": true
