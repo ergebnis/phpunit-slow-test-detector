@@ -1,6 +1,7 @@
 # phpunit-slow-test-detector
 
 [![Integrate](https://github.com/ergebnis/phpunit-slow-test-detector/workflows/Integrate/badge.svg)](https://github.com/ergebnis/phpunit-slow-test-detector/actions)
+[![Merge](https://github.com/ergebnis/phpunit-slow-test-detector/workflows/Merge>/badge.svg)](https://github.com/ergebnis/phpunit-slow-test-detector/actions)
 [![Prune](https://github.com/ergebnis/phpunit-slow-test-detector/workflows/Prune/badge.svg)](https://github.com/ergebnis/phpunit-slow-test-detector/actions)
 [![Release](https://github.com/ergebnis/phpunit-slow-test-detector/workflows/Release/badge.svg)](https://github.com/ergebnis/phpunit-slow-test-detector/actions)
 [![Renew](https://github.com/ergebnis/phpunit-slow-test-detector/workflows/Renew/badge.svg)](https://github.com/ergebnis/phpunit-slow-test-detector/actions)
