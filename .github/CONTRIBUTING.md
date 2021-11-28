@@ -51,7 +51,7 @@ to run a dependency analysis.
 
 We are using [`infection/infection`](https://github.com/infection/infection) to ensure a minimum quality of the tests.
 
-Enable `pcov` or `Xdebug` and run
+Enable `Xdebug` and run
 
 ```sh
 $ make mutation-tests
