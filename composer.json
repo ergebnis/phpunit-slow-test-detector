@@ -26,9 +26,7 @@
     "ergebnis/license": "^1.1.0",
     "ergebnis/php-cs-fixer-config": "~2.12.1",
     "ergebnis/test-util": "^1.4.0",
-    "infection/infection": "~0.21.0",
-    "psalm/plugin-phpunit": "~0.15.1",
-    "vimeo/psalm": "^4.4.1"
+    "infection/infection": "~0.21.0"
   },
   "config": {
     "platform": {
