@@ -29,7 +29,7 @@ $collector = new SlowTestDetector\Collector\DefaultCollector();
 $reporter = new SlowTestDetector\Reporter\DefaultReporter(
     new SlowTestDetector\Formatter\ToMillisecondsDurationFormatter(),
     $maximumDuration,
-    $maximumCount
+    $maximumCount,
 );
 
 $timeKeeper = new SlowTestDetector\TimeKeeper();
@@ -39,10 +39,10 @@ Event\Facade::registerSubscriber(new SlowTestDetector\Subscriber\TestPreparedSub
 Event\Facade::registerSubscriber(new SlowTestDetector\Subscriber\TestPassedSubscriber(
     $maximumDuration,
     $timeKeeper,
-    $collector
+    $collector,
 ));
 
 Event\Facade::registerSubscriber(new SlowTestDetector\Subscriber\TestSuiteFinishedSubscriber(
     $collector,
-    $reporter
+    $reporter,
 ));

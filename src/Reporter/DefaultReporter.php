@@ -23,11 +23,8 @@ use PHPUnit\Event;
 final class DefaultReporter implements Reporter
 {
     private Comparator\DurationComparator $durationComparator;
-
     private Event\Telemetry\DurationFormatter $durationFormatter;
-
     private MaximumDuration $maximumDuration;
-
     private MaximumCount $maximumCount;
 
     public function __construct(
@@ -89,14 +86,14 @@ TXT;
         \usort($slowTests, static function (SlowTest $one, SlowTest $two) use ($durationComparator): int {
             return $durationComparator->compare(
                 $two->duration(),
-                $one->duration()
+                $one->duration(),
             );
         });
 
         $slowTestsToReport = \array_slice(
             $slowTests,
             0,
-            $this->maximumCount->toInt()
+            $this->maximumCount->toInt(),
         );
 
         /** @var SlowTest $slowestTest */
@@ -111,7 +108,7 @@ TXT;
 
                 return $maximumDuration;
             },
-            $this->maximumDuration->toTelemetryDuration()
+            $this->maximumDuration->toTelemetryDuration(),
         );
 
         $durationFormatter = $this->durationFormatter;
@@ -124,7 +121,7 @@ TXT;
                 $durationFormatter->format($slowTest->duration()),
                 $durationWidth,
                 ' ',
-                \STR_PAD_LEFT
+                \STR_PAD_LEFT,
             );
 
             $formattedMaximumDuration = Console\Color::dim(\sprintf(
@@ -133,8 +130,8 @@ TXT;
                     $durationFormatter->format($slowTest->maximumDuration()),
                     $maximumDurationWidth,
                     ' ',
-                    \STR_PAD_LEFT
-                )
+                    \STR_PAD_LEFT,
+                ),
             ));
 
             $test = $slowTest->test();
@@ -142,7 +139,7 @@ TXT;
             $testName = \sprintf(
                 '%s::%s',
                 $test->className(),
-                $test->methodNameWithDataSet()
+                $test->methodNameWithDataSet(),
             );
 
             return <<<TXT
@@ -152,7 +149,7 @@ TXT;
 
         return \implode(
             "\n",
-            $items
+            $items,
         );
     }
 
@@ -160,7 +157,7 @@ TXT;
     {
         $remainingCount = \max(
             \count($slowTests) - $this->maximumCount->toInt(),
-            0
+            0,
         );
 
         if (0 === $remainingCount) {

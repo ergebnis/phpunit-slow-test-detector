@@ -46,49 +46,49 @@ final class ToMillisecondsDurationFormatterTest extends Framework\TestCase
             'zero' => [
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     0,
-                    0
+                    0,
                 ),
                 '0 ms',
             ],
             'nanoseconds-rounded-down' => [
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     0,
-                    499_999
+                    499_999,
                 ),
                 '0 ms',
             ],
             'nanoseconds-rounded-up' => [
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     0,
-                    500_000
+                    500_000,
                 ),
                 '1 ms',
             ],
             'milliseconds-one' => [
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     0,
-                    1_000_000
+                    1_000_000,
                 ),
                 '1 ms',
             ],
             'milliseconds-hundreds' => [
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     0,
-                    123 * 1_000_000
+                    123 * 1_000_000,
                 ),
                 '123 ms',
             ],
             'seconds' => [
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     1,
-                    1_000_000
+                    1_000_000,
                 ),
                 '1,001 ms',
             ],
             'thousands-of-seconds' => [
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     1_234,
-                    567_890_123
+                    567_890_123,
                 ),
                 '1,234,568 ms',
             ],

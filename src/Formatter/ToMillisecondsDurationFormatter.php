@@ -23,7 +23,7 @@ final class ToMillisecondsDurationFormatter implements Event\Telemetry\DurationF
 
         return \sprintf(
             '%s ms',
-            \number_format($milliseconds)
+            \number_format($milliseconds),
         );
     }
 

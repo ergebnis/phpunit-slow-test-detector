@@ -34,7 +34,7 @@ final class InvalidMaximumDurationTest extends Framework\TestCase
 
         $message = \sprintf(
             'Value should be greater than 0, but %d is not.',
-            $value
+            $value,
         );
 
         self::assertSame($message, $exception->getMessage());

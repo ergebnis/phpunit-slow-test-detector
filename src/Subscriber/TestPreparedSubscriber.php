@@ -29,7 +29,7 @@ final class TestPreparedSubscriber implements Event\Test\PreparedSubscriber
     {
         $this->timeKeeper->start(
             $event->test(),
-            $event->telemetryInfo()->time()
+            $event->telemetryInfo()->time(),
         );
     }
 }

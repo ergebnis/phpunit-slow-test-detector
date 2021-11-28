@@ -41,19 +41,19 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
                 new Event\Telemetry\Snapshot(
                     Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
                         $faker->numberBetween(),
-                        $faker->numberBetween(0, 999_999_999)
+                        $faker->numberBetween(0, 999_999_999),
                     ),
                     Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
-                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween())
+                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     $faker->numberBetween(),
-                    $faker->numberBetween(0, 999_999_999)
+                    $faker->numberBetween(0, 999_999_999),
                 ),
                 Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     $faker->numberBetween(),
-                    $faker->numberBetween(0, 999_999_999)
+                    $faker->numberBetween(0, 999_999_999),
                 ),
                 Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
             ),
@@ -67,14 +67,14 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
                 new Event\TestSuite\FailureCollection(),
                 new Event\TestSuite\FailureCollection(),
                 [],
-                []
+                [],
             ),
-            null
+            null,
         );
 
         $subscriber = new TestSuiteFinishedSubscriber(
             new Double\Collector\AppendingCollector(),
-            new Double\Reporter\CountingReporter()
+            new Double\Reporter\CountingReporter(),
         );
 
         \ob_start();
@@ -98,12 +98,12 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
+                $faker->numberBetween(0, 999_999_999),
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
-            )
+                $faker->numberBetween(0, 999_999_999),
+            ),
         );
 
         $second = SlowTest::fromTestDurationAndMaximumDuration(
@@ -114,12 +114,12 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
+                $faker->numberBetween(0, 999_999_999),
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
-            )
+                $faker->numberBetween(0, 999_999_999),
+            ),
         );
 
         $third = SlowTest::fromTestDurationAndMaximumDuration(
@@ -130,12 +130,12 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
+                $faker->numberBetween(0, 999_999_999),
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
-            )
+                $faker->numberBetween(0, 999_999_999),
+            ),
         );
 
         $finishedTestSuiteEvent = new Event\TestSuite\Finished(
@@ -143,19 +143,19 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
                 new Event\Telemetry\Snapshot(
                     Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
                         $faker->numberBetween(),
-                        $faker->numberBetween(0, 999_999_999)
+                        $faker->numberBetween(0, 999_999_999),
                     ),
                     Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
-                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween())
+                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     $faker->numberBetween(),
-                    $faker->numberBetween(0, 999_999_999)
+                    $faker->numberBetween(0, 999_999_999),
                 ),
                 Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     $faker->numberBetween(),
-                    $faker->numberBetween(0, 999_999_999)
+                    $faker->numberBetween(0, 999_999_999),
                 ),
                 Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
             ),
@@ -169,9 +169,9 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
                 new Event\TestSuite\FailureCollection(),
                 new Event\TestSuite\FailureCollection(),
                 [],
-                []
+                [],
             ),
-            null
+            null,
         );
 
         $collector = new Double\Collector\AppendingCollector();
@@ -182,7 +182,7 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
 
         $subscriber = new TestSuiteFinishedSubscriber(
             $collector,
-            new Double\Reporter\NullReporter()
+            new Double\Reporter\NullReporter(),
         );
 
         \ob_start();
@@ -206,12 +206,12 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
+                $faker->numberBetween(0, 999_999_999),
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
-            )
+                $faker->numberBetween(0, 999_999_999),
+            ),
         );
 
         $second = SlowTest::fromTestDurationAndMaximumDuration(
@@ -222,12 +222,12 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
+                $faker->numberBetween(0, 999_999_999),
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
-            )
+                $faker->numberBetween(0, 999_999_999),
+            ),
         );
 
         $third = SlowTest::fromTestDurationAndMaximumDuration(
@@ -238,12 +238,12 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
+                $faker->numberBetween(0, 999_999_999),
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
-            )
+                $faker->numberBetween(0, 999_999_999),
+            ),
         );
 
         $finishedTestSuiteEvent = new Event\TestSuite\Finished(
@@ -251,19 +251,19 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
                 new Event\Telemetry\Snapshot(
                     Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
                         $faker->numberBetween(),
-                        $faker->numberBetween(0, 999_999_999)
+                        $faker->numberBetween(0, 999_999_999),
                     ),
                     Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
-                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween())
+                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     $faker->numberBetween(),
-                    $faker->numberBetween(0, 999_999_999)
+                    $faker->numberBetween(0, 999_999_999),
                 ),
                 Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     $faker->numberBetween(),
-                    $faker->numberBetween(0, 999_999_999)
+                    $faker->numberBetween(0, 999_999_999),
                 ),
                 Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
             ),
@@ -277,9 +277,9 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
                 new Event\TestSuite\FailureCollection(),
                 new Event\TestSuite\FailureCollection(),
                 [],
-                []
+                [],
             ),
-            null
+            null,
         );
 
         $collector = new Double\Collector\AppendingCollector();
@@ -292,7 +292,7 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
 
         $subscriber = new TestSuiteFinishedSubscriber(
             $collector,
-            $reporter
+            $reporter,
         );
 
         \ob_start();
@@ -304,7 +304,7 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
         $report = $reporter->report(
             $first,
             $second,
-            $third
+            $third,
         );
 
         $expected = <<<TXT

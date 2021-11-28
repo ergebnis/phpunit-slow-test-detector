@@ -23,9 +23,7 @@ use PHPUnit\Util;
 final class TestPassedSubscriber implements Event\Test\PassedSubscriber
 {
     private MaximumDuration$maximumDuration;
-
     private TimeKeeper $timeKeeper;
-
     private Collector\Collector $collector;
 
     public function __construct(
@@ -42,7 +40,7 @@ final class TestPassedSubscriber implements Event\Test\PassedSubscriber
     {
         $duration = $this->timeKeeper->stop(
             $event->test(),
-            $event->telemetryInfo()->time()
+            $event->telemetryInfo()->time(),
         );
 
         $maximumDuration = $this->resolveMaximumDuration($event->test());
@@ -54,7 +52,7 @@ final class TestPassedSubscriber implements Event\Test\PassedSubscriber
         $slowTest = SlowTest::fromTestDurationAndMaximumDuration(
             $event->test(),
             $duration,
-            $maximumDuration
+            $maximumDuration,
         );
 
         $this->collector->collect($slowTest);
@@ -64,7 +62,7 @@ final class TestPassedSubscriber implements Event\Test\PassedSubscriber
     {
         $annotations = Util\Test::parseTestMethodAnnotations(
             $test->className(),
-            $test->methodName()
+            $test->methodName(),
         );
 
         if (!\array_key_exists('method', $annotations)) {
