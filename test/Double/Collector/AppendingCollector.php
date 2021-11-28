@@ -13,10 +13,10 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Double\Collector;
 
-use Ergebnis\PHPUnit\SlowTestDetector\Collector\Collector;
+use Ergebnis\PHPUnit\SlowTestDetector\Collector;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 
-final class AppendingCollector implements Collector
+final class AppendingCollector implements Collector\Collector
 {
     /**
      * @phpstan-var list<SlowTest>

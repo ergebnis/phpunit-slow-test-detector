@@ -13,10 +13,9 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Collector;
 
-use Ergebnis\PHPUnit\SlowTestDetector\Collector\DefaultCollector;
+use Ergebnis\PHPUnit\SlowTestDetector\Collector;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
-use Ergebnis\PHPUnit\SlowTestDetector\Test\Example;
 use PHPUnit\Event;
 use PHPUnit\Framework;
 
@@ -33,7 +32,7 @@ final class DefaultCollectorTest extends Framework\TestCase
 
     public function testDefaults(): void
     {
-        $collector = new DefaultCollector();
+        $collector = new Collector\DefaultCollector();
 
         self::assertSame([], $collector->collected());
     }
@@ -44,7 +43,7 @@ final class DefaultCollectorTest extends Framework\TestCase
 
         $first = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
-                Example\SleeperTest::class,
+                Test\Example\SleeperTest::class,
                 'foo',
                 'foo with data set #123',
             ),
@@ -60,7 +59,7 @@ final class DefaultCollectorTest extends Framework\TestCase
 
         $second = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
-                Example\SleeperTest::class,
+                Test\Example\SleeperTest::class,
                 'bar',
                 'bar',
             ),
@@ -76,7 +75,7 @@ final class DefaultCollectorTest extends Framework\TestCase
 
         $third = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
-                Example\SleeperTest::class,
+                Test\Example\SleeperTest::class,
                 'baz',
                 'baz with data set "string"',
             ),
@@ -90,7 +89,7 @@ final class DefaultCollectorTest extends Framework\TestCase
             ),
         );
 
-        $collector = new DefaultCollector();
+        $collector = new Collector\DefaultCollector();
 
         $collector->collect($first);
         $collector->collect($second);
@@ -111,7 +110,7 @@ final class DefaultCollectorTest extends Framework\TestCase
 
         $first = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
-                Example\SleeperTest::class,
+                Test\Example\SleeperTest::class,
                 'foo',
                 'foo with data set #123',
             ),
@@ -127,7 +126,7 @@ final class DefaultCollectorTest extends Framework\TestCase
 
         $second = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
-                Example\SleeperTest::class,
+                Test\Example\SleeperTest::class,
                 'bar',
                 'bar',
             ),
@@ -153,7 +152,7 @@ final class DefaultCollectorTest extends Framework\TestCase
             ),
         );
 
-        $collector = new DefaultCollector();
+        $collector = new Collector\DefaultCollector();
 
         $collector->collect($first);
         $collector->collect($second);
@@ -178,7 +177,7 @@ final class DefaultCollectorTest extends Framework\TestCase
 
         $first = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
-                Example\SleeperTest::class,
+                Test\Example\SleeperTest::class,
                 'foo',
                 'foo with data set #123',
             ),
@@ -191,7 +190,7 @@ final class DefaultCollectorTest extends Framework\TestCase
 
         $second = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
-                Example\SleeperTest::class,
+                Test\Example\SleeperTest::class,
                 'bar',
                 'bar',
             ),
@@ -211,7 +210,7 @@ final class DefaultCollectorTest extends Framework\TestCase
             $maximumDuration,
         );
 
-        $collector = new DefaultCollector();
+        $collector = new Collector\DefaultCollector();
 
         $collector->collect($first);
         $collector->collect($second);

@@ -13,9 +13,8 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Subscriber;
 
-use Ergebnis\PHPUnit\SlowTestDetector\Subscriber\TestPreparedSubscriber;
+use Ergebnis\PHPUnit\SlowTestDetector\Subscriber;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
-use Ergebnis\PHPUnit\SlowTestDetector\Test\Example;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
 use PHPUnit\Event;
 use PHPUnit\Framework;
@@ -42,7 +41,7 @@ final class TestPreparedSubscriberTest extends Framework\TestCase
         );
 
         $preparedTest = new Event\Code\Test(
-            Example\SleeperTest::class,
+            Test\Example\SleeperTest::class,
             'foo',
             'foo with data set #123',
         );
@@ -70,7 +69,7 @@ final class TestPreparedSubscriberTest extends Framework\TestCase
 
         $timeKeeper = new TimeKeeper();
 
-        $subscriber = new TestPreparedSubscriber($timeKeeper);
+        $subscriber = new Subscriber\TestPreparedSubscriber($timeKeeper);
 
         $subscriber->notify($preparedTestEvent);
 
