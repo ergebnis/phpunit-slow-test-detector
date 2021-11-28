@@ -10,12 +10,6 @@
       <code>$slowThreshold</code>
     </MixedAssignment>
   </file>
-  <file src="test/AutoReview/SrcCodeTest.php">
-    <PropertyNotSetInConstructor occurrences="2">
-      <code>SrcCodeTest</code>
-      <code>SrcCodeTest</code>
-    </PropertyNotSetInConstructor>
-  </file>
   <file src="test/Example/SleeperTest.php">
     <PropertyNotSetInConstructor occurrences="2">
       <code>SleeperTest</code>
