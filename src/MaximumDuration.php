@@ -15,6 +15,9 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
 
 use PHPUnit\Event;
 
+/**
+ * @psalm-immutable
+ */
 final class MaximumDuration
 {
     private function __construct(private Event\Telemetry\Duration $duration)
