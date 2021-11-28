@@ -29,7 +29,7 @@ final class TestPassedSubscriber implements Event\Test\PassedSubscriber
     public function __construct(
         MaximumDuration $maximumDuration,
         TimeKeeper $timeKeeper,
-        Collector\Collector $collector
+        Collector\Collector $collector,
     ) {
         $this->maximumDuration = $maximumDuration;
         $this->timeKeeper = $timeKeeper;

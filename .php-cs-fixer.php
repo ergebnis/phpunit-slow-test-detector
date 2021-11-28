@@ -26,7 +26,7 @@ $license = License\Type\MIT::markdown(
 
 $license->save();
 
-$config = PhpCsFixer\Config\Factory::fromRuleSet(new PhpCsFixer\Config\RuleSet\Php74($license->header()), [
+$config = PhpCsFixer\Config\Factory::fromRuleSet(new PhpCsFixer\Config\RuleSet\Php80($license->header()), [
     'mb_str_functions' => false,
     'php_unit_internal_class' => false,
     'php_unit_test_class_requires_covers' => false,
