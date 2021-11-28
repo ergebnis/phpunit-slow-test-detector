@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
-use Ergebnis\PHPUnit\SlowTestDetector\Test\Example;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
 use PHPUnit\Event;
 use PHPUnit\Framework;
@@ -33,7 +32,7 @@ final class TimeKeeperTest extends Framework\TestCase
         $faker = self::faker();
 
         $stoppedTest = new Event\Code\Test(
-            Example\SleeperTest::class,
+            Test\Example\SleeperTest::class,
             'foo',
             'foo with data set #123',
         );
@@ -63,7 +62,7 @@ final class TimeKeeperTest extends Framework\TestCase
         $faker = self::faker();
 
         $startedTest = new Event\Code\Test(
-            Example\SleeperTest::class,
+            Test\Example\SleeperTest::class,
             'foo',
             'foo with data set #123',
         );
@@ -100,7 +99,7 @@ final class TimeKeeperTest extends Framework\TestCase
         $faker = self::faker();
 
         $startedTest = new Event\Code\Test(
-            Example\SleeperTest::class,
+            Test\Example\SleeperTest::class,
             'foo',
             'foo with data set #123',
         );
@@ -154,7 +153,7 @@ final class TimeKeeperTest extends Framework\TestCase
         $faker = self::faker();
 
         $firstStartedTest = new Event\Code\Test(
-            Example\SleeperTest::class,
+            Test\Example\SleeperTest::class,
             'foo',
             'foo with data set #123',
         );
@@ -172,7 +171,7 @@ final class TimeKeeperTest extends Framework\TestCase
         );
 
         $secondStartedTest = new Event\Code\Test(
-            Example\SleeperTest::class,
+            Test\Example\SleeperTest::class,
             'bar',
             'bar',
         );

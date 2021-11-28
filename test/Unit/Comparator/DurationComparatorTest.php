@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Comparator;
 
-use Ergebnis\PHPUnit\SlowTestDetector\Comparator\DurationComparator;
+use Ergebnis\PHPUnit\SlowTestDetector\Comparator;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Event;
 use PHPUnit\Framework;
@@ -39,7 +39,7 @@ final class DurationComparatorTest extends Framework\TestCase
             1,
         );
 
-        $comparator = new DurationComparator();
+        $comparator = new Comparator\DurationComparator();
 
         self::assertSame(-1, $comparator->compare($one, $two));
     }
@@ -56,7 +56,7 @@ final class DurationComparatorTest extends Framework\TestCase
             0,
         );
 
-        $comparator = new DurationComparator();
+        $comparator = new Comparator\DurationComparator();
 
         self::assertSame(0, $comparator->compare($one, $two));
     }
@@ -73,7 +73,7 @@ final class DurationComparatorTest extends Framework\TestCase
             0,
         );
 
-        $comparator = new DurationComparator();
+        $comparator = new Comparator\DurationComparator();
 
         self::assertSame(1, $comparator->compare($one, $two));
     }

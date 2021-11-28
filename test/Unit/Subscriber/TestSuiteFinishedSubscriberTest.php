@@ -14,10 +14,8 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Subscriber;
 
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
-use Ergebnis\PHPUnit\SlowTestDetector\Subscriber\TestSuiteFinishedSubscriber;
+use Ergebnis\PHPUnit\SlowTestDetector\Subscriber;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
-use Ergebnis\PHPUnit\SlowTestDetector\Test\Double;
-use Ergebnis\PHPUnit\SlowTestDetector\Test\Example;
 use PHPUnit\Event;
 use PHPUnit\Framework;
 
@@ -72,9 +70,9 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
             null,
         );
 
-        $subscriber = new TestSuiteFinishedSubscriber(
-            new Double\Collector\AppendingCollector(),
-            new Double\Reporter\CountingReporter(),
+        $subscriber = new Subscriber\TestSuiteFinishedSubscriber(
+            new Test\Double\Collector\AppendingCollector(),
+            new Test\Double\Reporter\CountingReporter(),
         );
 
         \ob_start();
@@ -92,7 +90,7 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
 
         $first = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
-                Example\SleeperTest::class,
+                Test\Example\SleeperTest::class,
                 'foo',
                 'foo with data set #123',
             ),
@@ -108,7 +106,7 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
 
         $second = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
-                Example\SleeperTest::class,
+                Test\Example\SleeperTest::class,
                 'bar',
                 'bar',
             ),
@@ -124,7 +122,7 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
 
         $third = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
-                Example\SleeperTest::class,
+                Test\Example\SleeperTest::class,
                 'baz',
                 'baz with data set "string"',
             ),
@@ -174,15 +172,15 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
             null,
         );
 
-        $collector = new Double\Collector\AppendingCollector();
+        $collector = new Test\Double\Collector\AppendingCollector();
 
         $collector->collect($first);
         $collector->collect($second);
         $collector->collect($third);
 
-        $subscriber = new TestSuiteFinishedSubscriber(
+        $subscriber = new Subscriber\TestSuiteFinishedSubscriber(
             $collector,
-            new Double\Reporter\NullReporter(),
+            new Test\Double\Reporter\NullReporter(),
         );
 
         \ob_start();
@@ -200,7 +198,7 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
 
         $first = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
-                Example\SleeperTest::class,
+                Test\Example\SleeperTest::class,
                 'foo',
                 'foo with data set #123',
             ),
@@ -216,7 +214,7 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
 
         $second = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
-                Example\SleeperTest::class,
+                Test\Example\SleeperTest::class,
                 'bar',
                 'bar',
             ),
@@ -232,7 +230,7 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
 
         $third = SlowTest::fromTestDurationAndMaximumDuration(
             new Event\Code\Test(
-                Example\SleeperTest::class,
+                Test\Example\SleeperTest::class,
                 'baz',
                 'baz with data set "string"',
             ),
@@ -282,15 +280,15 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
             null,
         );
 
-        $collector = new Double\Collector\AppendingCollector();
+        $collector = new Test\Double\Collector\AppendingCollector();
 
         $collector->collect($first);
         $collector->collect($second);
         $collector->collect($third);
 
-        $reporter = new Double\Reporter\CountingReporter();
+        $reporter = new Test\Double\Reporter\CountingReporter();
 
-        $subscriber = new TestSuiteFinishedSubscriber(
+        $subscriber = new Subscriber\TestSuiteFinishedSubscriber(
             $collector,
             $reporter,
         );

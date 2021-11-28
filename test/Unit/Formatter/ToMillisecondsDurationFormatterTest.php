@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Formatter;
 
-use Ergebnis\PHPUnit\SlowTestDetector\Formatter\ToMillisecondsDurationFormatter;
+use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Event;
 use PHPUnit\Framework;
@@ -32,7 +32,7 @@ final class ToMillisecondsDurationFormatterTest extends Framework\TestCase
      */
     public function testFormatFormats(Event\Telemetry\Duration $duration, string $formattedDuration): void
     {
-        $formatter = new ToMillisecondsDurationFormatter();
+        $formatter = new Formatter\ToMillisecondsDurationFormatter();
 
         self::assertSame($formattedDuration, $formatter->format($duration));
     }

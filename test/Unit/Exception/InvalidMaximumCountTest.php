@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Exception;
 
-use Ergebnis\PHPUnit\SlowTestDetector\Exception\InvalidMaximumCount;
+use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
@@ -30,7 +30,7 @@ final class InvalidMaximumCountTest extends Framework\TestCase
     {
         $value = self::faker()->numberBetween();
 
-        $exception = InvalidMaximumCount::notGreaterThanZero($value);
+        $exception = Exception\InvalidMaximumCount::notGreaterThanZero($value);
 
         $message = \sprintf(
             'Value should be greater than 0, but %d is not.',

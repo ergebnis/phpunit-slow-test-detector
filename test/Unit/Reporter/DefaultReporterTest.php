@@ -13,13 +13,12 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Reporter;
 
-use Ergebnis\PHPUnit\SlowTestDetector\Formatter\ToMillisecondsDurationFormatter;
+use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
-use Ergebnis\PHPUnit\SlowTestDetector\Reporter\DefaultReporter;
+use Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
-use Ergebnis\PHPUnit\SlowTestDetector\Test\Example;
 use PHPUnit\Event;
 use PHPUnit\Framework;
 
@@ -48,7 +47,7 @@ final class DefaultReporterTest extends Framework\TestCase
         $maximumDuration = MaximumDuration::fromMilliseconds($faker->numberBetween());
         $maximumCount = MaximumCount::fromInt($faker->numberBetween(1));
 
-        $reporter = new DefaultReporter(
+        $reporter = new Reporter\DefaultReporter(
             $durationFormatter,
             $maximumDuration,
             $maximumCount,
@@ -66,7 +65,7 @@ final class DefaultReporterTest extends Framework\TestCase
         $slowTests = [
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
-                    Example\SleeperTest::class,
+                    Test\Example\SleeperTest::class,
                     'foo',
                     'foo with data set #123',
                 ),
@@ -81,11 +80,11 @@ final class DefaultReporterTest extends Framework\TestCase
             ),
         ];
 
-        $durationFormatter = new ToMillisecondsDurationFormatter();
+        $durationFormatter = new Formatter\ToMillisecondsDurationFormatter();
 
         $maximumCount = MaximumCount::fromInt(\count($slowTests));
 
-        $reporter = new DefaultReporter(
+        $reporter = new Reporter\DefaultReporter(
             $durationFormatter,
             $maximumDuration,
             $maximumCount,
@@ -111,7 +110,7 @@ TXT;
         $slowTests = [
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
-                    Example\SleeperTest::class,
+                    Test\Example\SleeperTest::class,
                     'foo',
                     'foo with data set #123',
                 ),
@@ -126,7 +125,7 @@ TXT;
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
-                    Example\SleeperTest::class,
+                    Test\Example\SleeperTest::class,
                     'bar',
                     'bar',
                 ),
@@ -138,7 +137,7 @@ TXT;
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
-                    Example\SleeperTest::class,
+                    Test\Example\SleeperTest::class,
                     'baz',
                     'baz with dataset "string"',
                 ),
@@ -150,7 +149,7 @@ TXT;
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
-                    Example\SleeperTest::class,
+                    Test\Example\SleeperTest::class,
                     'qux',
                     'qux',
                 ),
@@ -162,7 +161,7 @@ TXT;
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
-                    Example\SleeperTest::class,
+                    Test\Example\SleeperTest::class,
                     'quz',
                     'quz',
                 ),
@@ -174,11 +173,11 @@ TXT;
             ),
         ];
 
-        $durationFormatter = new ToMillisecondsDurationFormatter();
+        $durationFormatter = new Formatter\ToMillisecondsDurationFormatter();
 
         $maximumCount = MaximumCount::fromInt($faker->numberBetween(\count($slowTests) + 1));
 
-        $reporter = new DefaultReporter(
+        $reporter = new Reporter\DefaultReporter(
             $durationFormatter,
             $maximumDuration,
             $maximumCount,
@@ -206,7 +205,7 @@ TXT;
         $slowTests = [
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
-                    Example\SleeperTest::class,
+                    Test\Example\SleeperTest::class,
                     'foo',
                     'foo with data set #123',
                 ),
@@ -221,7 +220,7 @@ TXT;
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
-                    Example\SleeperTest::class,
+                    Test\Example\SleeperTest::class,
                     'bar',
                     'bar',
                 ),
@@ -233,7 +232,7 @@ TXT;
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
-                    Example\SleeperTest::class,
+                    Test\Example\SleeperTest::class,
                     'baz',
                     'baz with dataset "string"',
                 ),
@@ -245,7 +244,7 @@ TXT;
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
-                    Example\SleeperTest::class,
+                    Test\Example\SleeperTest::class,
                     'qux',
                     'qux',
                 ),
@@ -257,7 +256,7 @@ TXT;
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
-                    Example\SleeperTest::class,
+                    Test\Example\SleeperTest::class,
                     'quz',
                     'quz',
                 ),
@@ -269,11 +268,11 @@ TXT;
             ),
         ];
 
-        $durationFormatter = new ToMillisecondsDurationFormatter();
+        $durationFormatter = new Formatter\ToMillisecondsDurationFormatter();
 
         $maximumCount = MaximumCount::fromInt(\count($slowTests));
 
-        $reporter = new DefaultReporter(
+        $reporter = new Reporter\DefaultReporter(
             $durationFormatter,
             $maximumDuration,
             $maximumCount,
@@ -301,7 +300,7 @@ TXT;
         $slowTests = [
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
-                    Example\SleeperTest::class,
+                    Test\Example\SleeperTest::class,
                     'foo',
                     'foo with data set #123',
                 ),
@@ -316,7 +315,7 @@ TXT;
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
-                    Example\SleeperTest::class,
+                    Test\Example\SleeperTest::class,
                     'bar',
                     'bar',
                 ),
@@ -328,7 +327,7 @@ TXT;
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
-                    Example\SleeperTest::class,
+                    Test\Example\SleeperTest::class,
                     'baz',
                     'baz with dataset "string"',
                 ),
@@ -340,7 +339,7 @@ TXT;
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
-                    Example\SleeperTest::class,
+                    Test\Example\SleeperTest::class,
                     'qux',
                     'qux',
                 ),
@@ -352,7 +351,7 @@ TXT;
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
-                    Example\SleeperTest::class,
+                    Test\Example\SleeperTest::class,
                     'quz',
                     'quz',
                 ),
@@ -364,11 +363,11 @@ TXT;
             ),
         ];
 
-        $durationFormatter = new ToMillisecondsDurationFormatter();
+        $durationFormatter = new Formatter\ToMillisecondsDurationFormatter();
 
         $maximumCount = MaximumCount::fromInt(\count($slowTests) - 1);
 
-        $reporter = new DefaultReporter(
+        $reporter = new Reporter\DefaultReporter(
             $durationFormatter,
             $maximumDuration,
             $maximumCount,
@@ -397,7 +396,7 @@ TXT;
         $slowTests = [
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
-                    Example\SleeperTest::class,
+                    Test\Example\SleeperTest::class,
                     'foo',
                     'foo with data set #123',
                 ),
@@ -412,7 +411,7 @@ TXT;
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
-                    Example\SleeperTest::class,
+                    Test\Example\SleeperTest::class,
                     'bar',
                     'bar',
                 ),
@@ -424,7 +423,7 @@ TXT;
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
-                    Example\SleeperTest::class,
+                    Test\Example\SleeperTest::class,
                     'baz',
                     'baz with dataset "string"',
                 ),
@@ -436,7 +435,7 @@ TXT;
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
-                    Example\SleeperTest::class,
+                    Test\Example\SleeperTest::class,
                     'qux',
                     'qux',
                 ),
@@ -448,7 +447,7 @@ TXT;
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
-                    Example\SleeperTest::class,
+                    Test\Example\SleeperTest::class,
                     'quz',
                     'quz',
                 ),
@@ -460,11 +459,11 @@ TXT;
             ),
         ];
 
-        $durationFormatter = new ToMillisecondsDurationFormatter();
+        $durationFormatter = new Formatter\ToMillisecondsDurationFormatter();
 
         $maximumCount = MaximumCount::fromInt(\count($slowTests) - 2);
 
-        $reporter = new DefaultReporter(
+        $reporter = new Reporter\DefaultReporter(
             $durationFormatter,
             $maximumDuration,
             $maximumCount,

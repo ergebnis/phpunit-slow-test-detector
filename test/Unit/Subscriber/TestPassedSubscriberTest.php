@@ -15,10 +15,8 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Subscriber;
 
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
-use Ergebnis\PHPUnit\SlowTestDetector\Subscriber\TestPassedSubscriber;
+use Ergebnis\PHPUnit\SlowTestDetector\Subscriber;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
-use Ergebnis\PHPUnit\SlowTestDetector\Test\Double;
-use Ergebnis\PHPUnit\SlowTestDetector\Test\Example;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
 use PHPUnit\Event;
 use PHPUnit\Framework;
@@ -51,7 +49,7 @@ final class TestPassedSubscriberTest extends Framework\TestCase
         );
 
         $preparedTest = new Event\Code\Test(
-            Example\SleeperTest::class,
+            Test\Example\SleeperTest::class,
             'foo',
             'foo with data set #123',
         );
@@ -62,7 +60,7 @@ final class TestPassedSubscriberTest extends Framework\TestCase
         );
 
         $passedTest = new Event\Code\Test(
-            Example\SleeperTest::class,
+            Test\Example\SleeperTest::class,
             'foo',
             'foo with data set #123',
         );
@@ -95,9 +93,9 @@ final class TestPassedSubscriberTest extends Framework\TestCase
             $preparedTime,
         );
 
-        $collector = new Double\Collector\AppendingCollector();
+        $collector = new Test\Double\Collector\AppendingCollector();
 
-        $subscriber = new TestPassedSubscriber(
+        $subscriber = new Subscriber\TestPassedSubscriber(
             $maximumDuration,
             $timeKeeper,
             $collector,
@@ -123,7 +121,7 @@ final class TestPassedSubscriberTest extends Framework\TestCase
         );
 
         $preparedTest = new Event\Code\Test(
-            Example\SleeperTest::class,
+            Test\Example\SleeperTest::class,
             'foo',
             'foo with data set #123',
         );
@@ -163,9 +161,9 @@ final class TestPassedSubscriberTest extends Framework\TestCase
             $preparedTime,
         );
 
-        $collector = new Double\Collector\AppendingCollector();
+        $collector = new Test\Double\Collector\AppendingCollector();
 
-        $subscriber = new TestPassedSubscriber(
+        $subscriber = new Subscriber\TestPassedSubscriber(
             $maximumDuration,
             $timeKeeper,
             $collector,
@@ -191,7 +189,7 @@ final class TestPassedSubscriberTest extends Framework\TestCase
         );
 
         $preparedTest = new Event\Code\Test(
-            Example\SleeperTest::class,
+            Test\Example\SleeperTest::class,
             'foo',
             'foo with data set #123',
         );
@@ -231,9 +229,9 @@ final class TestPassedSubscriberTest extends Framework\TestCase
             $preparedTime,
         );
 
-        $collector = new Double\Collector\AppendingCollector();
+        $collector = new Test\Double\Collector\AppendingCollector();
 
-        $subscriber = new TestPassedSubscriber(
+        $subscriber = new Subscriber\TestPassedSubscriber(
             $maximumDuration,
             $timeKeeper,
             $collector,
@@ -266,7 +264,7 @@ final class TestPassedSubscriberTest extends Framework\TestCase
         );
 
         $preparedTest = new Event\Code\Test(
-            Example\SleeperTest::class,
+            Test\Example\SleeperTest::class,
             'testSleeperSleepsWithSlowThresholdAnnotation',
             'testSleeperSleepsWithSlowThresholdAnnotation with data set "foo"',
         );
@@ -277,7 +275,7 @@ final class TestPassedSubscriberTest extends Framework\TestCase
         );
 
         $passedTest = new Event\Code\Test(
-            Example\SleeperTest::class,
+            Test\Example\SleeperTest::class,
             'testSleeperSleepsWithSlowThresholdAnnotation',
             'testSleeperSleepsWithSlowThresholdAnnotation with data set "foo"',
         );
@@ -310,9 +308,9 @@ final class TestPassedSubscriberTest extends Framework\TestCase
             $preparedTime,
         );
 
-        $collector = new Double\Collector\AppendingCollector();
+        $collector = new Test\Double\Collector\AppendingCollector();
 
-        $subscriber = new TestPassedSubscriber(
+        $subscriber = new Subscriber\TestPassedSubscriber(
             $maximumDuration,
             $timeKeeper,
             $collector,
@@ -335,7 +333,7 @@ final class TestPassedSubscriberTest extends Framework\TestCase
         );
 
         $preparedTest = new Event\Code\Test(
-            Example\SleeperTest::class,
+            Test\Example\SleeperTest::class,
             'testSleeperSleepsWithDocBlockWithoutSlowThresholdAnnotation',
             'testSleeperSleepsWithDocBlockWithoutSlowThresholdAnnotation',
         );
@@ -379,9 +377,9 @@ final class TestPassedSubscriberTest extends Framework\TestCase
             $preparedTime,
         );
 
-        $collector = new Double\Collector\AppendingCollector();
+        $collector = new Test\Double\Collector\AppendingCollector();
 
-        $subscriber = new TestPassedSubscriber(
+        $subscriber = new Subscriber\TestPassedSubscriber(
             $maximumDuration,
             $timeKeeper,
             $collector,
@@ -404,7 +402,7 @@ final class TestPassedSubscriberTest extends Framework\TestCase
         );
 
         $preparedTest = new Event\Code\Test(
-            Example\SleeperTest::class,
+            Test\Example\SleeperTest::class,
             'testSleeperSleepsWithDocBlockWithSlowThresholdAnnotationWhereValueIsNotAnInt',
             'testSleeperSleepsWithDocBlockWithSlowThresholdAnnotationWhereValueIsNotAnInt',
         );
@@ -448,9 +446,9 @@ final class TestPassedSubscriberTest extends Framework\TestCase
             $preparedTime,
         );
 
-        $collector = new Double\Collector\AppendingCollector();
+        $collector = new Test\Double\Collector\AppendingCollector();
 
-        $subscriber = new TestPassedSubscriber(
+        $subscriber = new Subscriber\TestPassedSubscriber(
             $maximumDuration,
             $timeKeeper,
             $collector,
@@ -475,7 +473,7 @@ final class TestPassedSubscriberTest extends Framework\TestCase
         );
 
         $preparedTest = new Event\Code\Test(
-            Example\SleeperTest::class,
+            Test\Example\SleeperTest::class,
             'testSleeperSleepsWithSlowThresholdAnnotation',
             'testSleeperSleepsWithSlowThresholdAnnotation with data set "foo"',
         );
@@ -519,9 +517,9 @@ final class TestPassedSubscriberTest extends Framework\TestCase
             $preparedTime,
         );
 
-        $collector = new Double\Collector\AppendingCollector();
+        $collector = new Test\Double\Collector\AppendingCollector();
 
-        $subscriber = new TestPassedSubscriber(
+        $subscriber = new Subscriber\TestPassedSubscriber(
             $maximumDuration,
             $timeKeeper,
             $collector,
@@ -546,7 +544,7 @@ final class TestPassedSubscriberTest extends Framework\TestCase
         );
 
         $preparedTest = new Event\Code\Test(
-            Example\SleeperTest::class,
+            Test\Example\SleeperTest::class,
             'testSleeperSleepsWithSlowThresholdAnnotation',
             'testSleeperSleepsWithSlowThresholdAnnotation with data set "foo"',
         );
@@ -590,9 +588,9 @@ final class TestPassedSubscriberTest extends Framework\TestCase
             $preparedTime,
         );
 
-        $collector = new Double\Collector\AppendingCollector();
+        $collector = new Test\Double\Collector\AppendingCollector();
 
-        $subscriber = new TestPassedSubscriber(
+        $subscriber = new Subscriber\TestPassedSubscriber(
             $maximumDuration,
             $timeKeeper,
             $collector,
