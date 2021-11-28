@@ -209,7 +209,7 @@ jobs:
           dependencies: "${{ matrix.dependencies }}"
 
       - name: "Run mutation tests with Xdebug and infection/infection"
-        run: "vendor/bin/infection --configuration=infection.json"
+        run: ".phive/infection --configuration=infection.json"
 
   static-code-analysis:
     name: "Static Code Analysis"
