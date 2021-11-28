@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.4.1@9fd7a7d885b3a216cff8dec9d8c21a132f275224">
+<files psalm-version="4.x-dev@">
   <file src="src/Subscriber/TestPassedSubscriber.php">
     <InternalClass occurrences="1"/>
     <InternalMethod occurrences="1"/>
@@ -9,5 +9,101 @@
     <MixedAssignment occurrences="1">
       <code>$slowThreshold</code>
     </MixedAssignment>
+  </file>
+  <file src="test/AutoReview/SrcCodeTest.php">
+    <PropertyNotSetInConstructor occurrences="2">
+      <code>SrcCodeTest</code>
+      <code>SrcCodeTest</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="test/Example/SleeperTest.php">
+    <PropertyNotSetInConstructor occurrences="2">
+      <code>SleeperTest</code>
+      <code>SleeperTest</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="test/Unit/Collector/DefaultCollectorTest.php">
+    <PropertyNotSetInConstructor occurrences="2">
+      <code>DefaultCollectorTest</code>
+      <code>DefaultCollectorTest</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="test/Unit/Comparator/DurationComparatorTest.php">
+    <PropertyNotSetInConstructor occurrences="2">
+      <code>DurationComparatorTest</code>
+      <code>DurationComparatorTest</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="test/Unit/Console/ColorTest.php">
+    <PropertyNotSetInConstructor occurrences="2">
+      <code>ColorTest</code>
+      <code>ColorTest</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="test/Unit/Exception/InvalidMaximumCountTest.php">
+    <PropertyNotSetInConstructor occurrences="2">
+      <code>InvalidMaximumCountTest</code>
+      <code>InvalidMaximumCountTest</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="test/Unit/Exception/InvalidMaximumDurationTest.php">
+    <PropertyNotSetInConstructor occurrences="2">
+      <code>InvalidMaximumDurationTest</code>
+      <code>InvalidMaximumDurationTest</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="test/Unit/Formatter/ToMillisecondsDurationFormatterTest.php">
+    <PropertyNotSetInConstructor occurrences="2">
+      <code>ToMillisecondsDurationFormatterTest</code>
+      <code>ToMillisecondsDurationFormatterTest</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="test/Unit/MaximumCountTest.php">
+    <PropertyNotSetInConstructor occurrences="2">
+      <code>MaximumCountTest</code>
+      <code>MaximumCountTest</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="test/Unit/MaximumDurationTest.php">
+    <PropertyNotSetInConstructor occurrences="2">
+      <code>MaximumDurationTest</code>
+      <code>MaximumDurationTest</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="test/Unit/Reporter/DefaultReporterTest.php">
+    <PropertyNotSetInConstructor occurrences="2">
+      <code>DefaultReporterTest</code>
+      <code>DefaultReporterTest</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="test/Unit/SlowTestTest.php">
+    <PropertyNotSetInConstructor occurrences="2">
+      <code>SlowTestTest</code>
+      <code>SlowTestTest</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="test/Unit/Subscriber/TestPassedSubscriberTest.php">
+    <PropertyNotSetInConstructor occurrences="2">
+      <code>TestPassedSubscriberTest</code>
+      <code>TestPassedSubscriberTest</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="test/Unit/Subscriber/TestPreparedSubscriberTest.php">
+    <PropertyNotSetInConstructor occurrences="2">
+      <code>TestPreparedSubscriberTest</code>
+      <code>TestPreparedSubscriberTest</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="test/Unit/Subscriber/TestSuiteFinishedSubscriberTest.php">
+    <PropertyNotSetInConstructor occurrences="2">
+      <code>TestSuiteFinishedSubscriberTest</code>
+      <code>TestSuiteFinishedSubscriberTest</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="test/Unit/TimeKeeperTest.php">
+    <PropertyNotSetInConstructor occurrences="2">
+      <code>TimeKeeperTest</code>
+      <code>TimeKeeperTest</code>
+    </PropertyNotSetInConstructor>
   </file>
 </files>

@@ -29,14 +29,14 @@ mutation-tests: vendor ## Runs mutation tests with infection/infection
 .PHONY: static-code-analysis
 static-code-analysis: vendor ## Runs a static code analysis with vimeo/psalm
 	mkdir -p .build/psalm
-	vendor/bin/psalm --config=psalm.xml --clear-cache
-	vendor/bin/psalm --config=psalm.xml --diff --show-info=false --stats --threads=4
+	.phive/psalm --config=psalm.xml --clear-cache
+	.phive/psalm --config=psalm.xml --diff --show-info=false --stats --threads=4
 
 .PHONY: static-code-analysis-baseline
 static-code-analysis-baseline: vendor ## Generates a baseline for static code analysis with vimeo/psalm
 	mkdir -p .build/psalm
-	vendor/bin/psalm --config=psalm.xml --clear-cache
-	vendor/bin/psalm --config=psalm.xml --set-baseline=psalm-baseline.xml
+	.phive/psalm --config=psalm.xml --clear-cache
+	.phive/psalm --config=psalm.xml --set-baseline=psalm-baseline.xml
 
 .PHONY: tests
 tests: vendor ## Runs auto-review, unit, integration, and example tests with phpunit/phpunit

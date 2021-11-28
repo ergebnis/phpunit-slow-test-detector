@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phive xmlns="https://phar.io/phive">
   <phar name="composer-require-checker" version="^3.5.1" installed="3.5.1" location="./.phive/composer-require-checker" copy="true"/>
+  <phar name="psalm" version="4.4.1" installed="4.4.1" location="./.phive/psalm" copy="true"/>
 </phive>
