@@ -30,7 +30,7 @@ final class DefaultReporter implements Reporter
     public function __construct(
         Event\Telemetry\DurationFormatter $durationFormatter,
         MaximumDuration $maximumDuration,
-        MaximumCount $maximumCount
+        MaximumCount $maximumCount,
     ) {
         $this->durationComparator = new Comparator\DurationComparator();
         $this->durationFormatter = $durationFormatter;

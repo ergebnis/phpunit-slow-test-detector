@@ -24,7 +24,7 @@ final class SlowTest
     private function __construct(
         Event\Code\Test $test,
         Event\Telemetry\Duration $duration,
-        Event\Telemetry\Duration $maximumDuration
+        Event\Telemetry\Duration $maximumDuration,
     ) {
         $this->test = $test;
         $this->duration = $duration;
@@ -34,7 +34,7 @@ final class SlowTest
     public static function fromTestDurationAndMaximumDuration(
         Event\Code\Test $test,
         Event\Telemetry\Duration $duration,
-        Event\Telemetry\Duration $maximumDuration
+        Event\Telemetry\Duration $maximumDuration,
     ): self {
         return new self(
             $test,
