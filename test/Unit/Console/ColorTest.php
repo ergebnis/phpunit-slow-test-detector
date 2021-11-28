@@ -27,8 +27,8 @@ final class ColorTest extends Framework\TestCase
     use Test\Util\Helper;
 
     /**
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::blank()
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::empty()
+     * @dataProvider \Ergebnis\DataProvider\StringProvider::blank
+     * @dataProvider \Ergebnis\DataProvider\StringProvider::empty
      */
     public function testDimReturnsOriginalStringWhenItIsWhitespaceOnly(string $output): void
     {
