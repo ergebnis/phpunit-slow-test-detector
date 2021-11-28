@@ -23,19 +23,13 @@ use PHPUnit\Event;
 final class DefaultReporter implements Reporter
 {
     private Comparator\DurationComparator $durationComparator;
-    private Event\Telemetry\DurationFormatter $durationFormatter;
-    private MaximumDuration $maximumDuration;
-    private MaximumCount $maximumCount;
 
     public function __construct(
-        Event\Telemetry\DurationFormatter $durationFormatter,
-        MaximumDuration $maximumDuration,
-        MaximumCount $maximumCount,
+        private Event\Telemetry\DurationFormatter $durationFormatter,
+        private MaximumDuration $maximumDuration,
+        private MaximumCount $maximumCount,
     ) {
         $this->durationComparator = new Comparator\DurationComparator();
-        $this->durationFormatter = $durationFormatter;
-        $this->maximumDuration = $maximumDuration;
-        $this->maximumCount = $maximumCount;
     }
 
     public function report(SlowTest ...$slowTests): string

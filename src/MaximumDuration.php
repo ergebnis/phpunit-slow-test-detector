@@ -17,11 +17,8 @@ use PHPUnit\Event;
 
 final class MaximumDuration
 {
-    private Event\Telemetry\Duration $duration;
-
-    private function __construct(Event\Telemetry\Duration $duration)
+    private function __construct(private Event\Telemetry\Duration $duration)
     {
-        $this->duration = $duration;
     }
 
     /**

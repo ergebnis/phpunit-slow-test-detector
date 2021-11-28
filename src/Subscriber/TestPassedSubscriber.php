@@ -22,18 +22,11 @@ use PHPUnit\Util;
 
 final class TestPassedSubscriber implements Event\Test\PassedSubscriber
 {
-    private MaximumDuration$maximumDuration;
-    private TimeKeeper $timeKeeper;
-    private Collector\Collector $collector;
-
     public function __construct(
-        MaximumDuration $maximumDuration,
-        TimeKeeper $timeKeeper,
-        Collector\Collector $collector,
+        private MaximumDuration $maximumDuration,
+        private TimeKeeper $timeKeeper,
+        private Collector\Collector $collector,
     ) {
-        $this->maximumDuration = $maximumDuration;
-        $this->timeKeeper = $timeKeeper;
-        $this->collector = $collector;
     }
 
     public function notify(Event\Test\Passed $event): void

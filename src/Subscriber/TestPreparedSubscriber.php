@@ -18,11 +18,8 @@ use PHPUnit\Event;
 
 final class TestPreparedSubscriber implements Event\Test\PreparedSubscriber
 {
-    private TimeKeeper $timeKeeper;
-
-    public function __construct(TimeKeeper $timeKeeper)
+    public function __construct(private TimeKeeper $timeKeeper)
     {
-        $this->timeKeeper = $timeKeeper;
     }
 
     public function notify(Event\Test\Prepared $event): void
