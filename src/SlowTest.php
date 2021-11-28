@@ -17,18 +17,11 @@ use PHPUnit\Event;
 
 final class SlowTest
 {
-    private Event\Code\Test $test;
-    private Event\Telemetry\Duration $duration;
-    private Event\Telemetry\Duration $maximumDuration;
-
     private function __construct(
-        Event\Code\Test $test,
-        Event\Telemetry\Duration $duration,
-        Event\Telemetry\Duration $maximumDuration,
+        private Event\Code\Test $test,
+        private Event\Telemetry\Duration $duration,
+        private Event\Telemetry\Duration $maximumDuration,
     ) {
-        $this->test = $test;
-        $this->duration = $duration;
-        $this->maximumDuration = $maximumDuration;
     }
 
     public static function fromTestDurationAndMaximumDuration(

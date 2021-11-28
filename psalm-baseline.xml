@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="4.x-dev@">
+  <file src="src/MaximumCount.php">
+    <UnusedParam occurrences="1">
+      <code>$value</code>
+    </UnusedParam>
+  </file>
+  <file src="src/MaximumDuration.php">
+    <UnusedParam occurrences="1">
+      <code>$duration</code>
+    </UnusedParam>
+  </file>
+  <file src="src/SlowTest.php">
+    <UnusedParam occurrences="3">
+      <code>$duration</code>
+      <code>$maximumDuration</code>
+      <code>$test</code>
+    </UnusedParam>
+  </file>
   <file src="src/Subscriber/TestPassedSubscriber.php">
     <InternalClass occurrences="1"/>
     <InternalMethod occurrences="1"/>
@@ -9,6 +26,11 @@
     <MixedAssignment occurrences="1">
       <code>$slowThreshold</code>
     </MixedAssignment>
+  </file>
+  <file src="test/Example/Sleeper.php">
+    <UnusedParam occurrences="1">
+      <code>$milliseconds</code>
+    </UnusedParam>
   </file>
   <file src="test/Example/SleeperTest.php">
     <PropertyNotSetInConstructor occurrences="2">

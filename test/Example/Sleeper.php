@@ -15,11 +15,8 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Example;
 
 final class Sleeper
 {
-    private int $milliseconds;
-
-    private function __construct(int $seconds)
+    private function __construct(private int $milliseconds)
     {
-        $this->milliseconds = $seconds;
     }
 
     /**
