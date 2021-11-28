@@ -302,9 +302,6 @@ jobs:
       - name: "Run unit tests with phpunit/phpunit"
         run: "vendor/bin/phpunit --configuration=test/Unit/phpunit.xml"
 
-      - name: "Run integration tests with phpunit/phpunit"
-        run: "vendor/bin/phpunit --configuration=test/Integration/phpunit.xml"
-
       - name: "Run example tests with phpunit/phpunit"
         run: "vendor/bin/phpunit --configuration=test/Example/phpunit.xml"
         env:
