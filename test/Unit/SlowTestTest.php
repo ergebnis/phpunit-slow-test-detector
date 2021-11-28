@@ -33,8 +33,8 @@ final class SlowTestTest extends Framework\TestCase
 
         $test = new Event\Code\Test(
             self::class,
-            $faker->word,
-            $faker->word,
+            $faker->word(),
+            $faker->word(),
         );
 
         $duration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(

@@ -55,7 +55,7 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
                 ),
                 Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
             ),
-            $faker->word,
+            $faker->word(),
             new Event\TestSuite\Result(
                 $faker->numberBetween(),
                 new Event\TestSuite\FailureCollection(),
@@ -157,7 +157,7 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
                 ),
                 Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
             ),
-            $faker->word,
+            $faker->word(),
             new Event\TestSuite\Result(
                 $faker->numberBetween(),
                 new Event\TestSuite\FailureCollection(),
@@ -265,7 +265,7 @@ final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
                 ),
                 Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
             ),
-            $faker->word,
+            $faker->word(),
             new Event\TestSuite\Result(
                 $faker->numberBetween(),
                 new Event\TestSuite\FailureCollection(),
