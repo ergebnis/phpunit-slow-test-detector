@@ -27,8 +27,8 @@ use PHPUnit\Framework;
 final class MaximumCountTest extends Framework\TestCase
 {
     /**
-     * @dataProvider \Ergebnis\Test\Util\DataProvider\IntProvider::lessThanZero()
-     * @dataProvider \Ergebnis\Test\Util\DataProvider\IntProvider::zero()
+     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero()
+     * @dataProvider \Ergebnis\DataProvider\IntProvider::zero()
      */
     public function testFromIntRejectsInvalidValue(int $value): void
     {
@@ -38,7 +38,7 @@ final class MaximumCountTest extends Framework\TestCase
     }
 
     /**
-     * @dataProvider \Ergebnis\Test\Util\DataProvider\IntProvider::greaterThanZero()
+     * @dataProvider \Ergebnis\DataProvider\IntProvider::greaterThanZero()
      */
     public function testFromSecondsReturnsMaximumDuration(int $value): void
     {
