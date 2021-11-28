@@ -50,12 +50,12 @@ final class DefaultCollectorTest extends Framework\TestCase
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
+                $faker->numberBetween(0, 999_999_999),
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
-            )
+                $faker->numberBetween(0, 999_999_999),
+            ),
         );
 
         $second = SlowTest::fromTestDurationAndMaximumDuration(
@@ -66,12 +66,12 @@ final class DefaultCollectorTest extends Framework\TestCase
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
+                $faker->numberBetween(0, 999_999_999),
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
-            )
+                $faker->numberBetween(0, 999_999_999),
+            ),
         );
 
         $third = SlowTest::fromTestDurationAndMaximumDuration(
@@ -82,12 +82,12 @@ final class DefaultCollectorTest extends Framework\TestCase
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
+                $faker->numberBetween(0, 999_999_999),
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
-            )
+                $faker->numberBetween(0, 999_999_999),
+            ),
         );
 
         $collector = new DefaultCollector();
@@ -117,12 +117,12 @@ final class DefaultCollectorTest extends Framework\TestCase
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(1),
-                $faker->numberBetween(0, 999_999_999)
+                $faker->numberBetween(0, 999_999_999),
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
-            )
+                $faker->numberBetween(0, 999_999_999),
+            ),
         );
 
         $second = SlowTest::fromTestDurationAndMaximumDuration(
@@ -133,24 +133,24 @@ final class DefaultCollectorTest extends Framework\TestCase
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
+                $faker->numberBetween(0, 999_999_999),
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
-            )
+                $faker->numberBetween(0, 999_999_999),
+            ),
         );
 
         $thirdForSameTest = SlowTest::fromTestDurationAndMaximumDuration(
             clone $first->test(),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(0, $first->duration()->seconds() - 1),
-                $faker->numberBetween(0, 999_999_999)
+                $faker->numberBetween(0, 999_999_999),
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
-            )
+                $faker->numberBetween(0, 999_999_999),
+            ),
         );
 
         $collector = new DefaultCollector();
@@ -173,7 +173,7 @@ final class DefaultCollectorTest extends Framework\TestCase
 
         $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
-            $faker->numberBetween(0, 999_999_999)
+            $faker->numberBetween(0, 999_999_999),
         );
 
         $first = SlowTest::fromTestDurationAndMaximumDuration(
@@ -184,9 +184,9 @@ final class DefaultCollectorTest extends Framework\TestCase
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
+                $faker->numberBetween(0, 999_999_999),
             ),
-            $maximumDuration
+            $maximumDuration,
         );
 
         $second = SlowTest::fromTestDurationAndMaximumDuration(
@@ -197,18 +197,18 @@ final class DefaultCollectorTest extends Framework\TestCase
             ),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween(),
-                $faker->numberBetween(0, 999_999_999)
+                $faker->numberBetween(0, 999_999_999),
             ),
-            $maximumDuration
+            $maximumDuration,
         );
 
         $thirdForSameTest = SlowTest::fromTestDurationAndMaximumDuration(
             clone $first->test(),
             Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                 $faker->numberBetween($first->duration()->seconds() + 1),
-                $faker->numberBetween(0, 999_999_999)
+                $faker->numberBetween(0, 999_999_999),
             ),
-            $maximumDuration
+            $maximumDuration,
         );
 
         $collector = new DefaultCollector();

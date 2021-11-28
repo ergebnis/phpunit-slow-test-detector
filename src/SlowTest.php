@@ -18,9 +18,7 @@ use PHPUnit\Event;
 final class SlowTest
 {
     private Event\Code\Test $test;
-
     private Event\Telemetry\Duration $duration;
-
     private Event\Telemetry\Duration $maximumDuration;
 
     private function __construct(
@@ -41,7 +39,7 @@ final class SlowTest
         return new self(
             $test,
             $duration,
-            $maximumDuration
+            $maximumDuration,
         );
     }
 

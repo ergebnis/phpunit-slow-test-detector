@@ -91,7 +91,7 @@ final class MaximumDurationTest extends Framework\TestCase
 
         $expected = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
             $seconds,
-            0
+            0,
         );
 
         self::assertEquals($expected, $maximumDuration->toTelemetryDuration());

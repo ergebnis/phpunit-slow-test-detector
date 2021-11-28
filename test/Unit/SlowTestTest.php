@@ -34,22 +34,22 @@ final class SlowTestTest extends Framework\TestCase
         $test = new Event\Code\Test(
             self::class,
             $faker->word,
-            $faker->word
+            $faker->word,
         );
 
         $duration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
-            $faker->numberBetween(0, 999_999_999)
+            $faker->numberBetween(0, 999_999_999),
         );
         $maximumDuration = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
-            $faker->numberBetween(0, 999_999_999)
+            $faker->numberBetween(0, 999_999_999),
         );
 
         $slowTest = SlowTest::fromTestDurationAndMaximumDuration(
             $test,
             $duration,
-            $maximumDuration
+            $maximumDuration,
         );
 
         self::assertSame($test, $slowTest->test());

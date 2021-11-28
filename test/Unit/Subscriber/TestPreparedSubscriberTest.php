@@ -38,13 +38,13 @@ final class TestPreparedSubscriberTest extends Framework\TestCase
 
         $preparedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
             $faker->numberBetween(),
-            $faker->numberBetween(0, 999_999_999)
+            $faker->numberBetween(0, 999_999_999),
         );
 
         $preparedTest = new Event\Code\Test(
             Example\SleeperTest::class,
             'foo',
-            'foo with data set #123'
+            'foo with data set #123',
         );
 
         $preparedTestEvent = new Event\Test\Prepared(
@@ -52,20 +52,20 @@ final class TestPreparedSubscriberTest extends Framework\TestCase
                 new Event\Telemetry\Snapshot(
                     $preparedTime,
                     Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
-                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween())
+                    Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     $faker->numberBetween(),
-                    $faker->numberBetween(0, 999_999_999)
+                    $faker->numberBetween(0, 999_999_999),
                 ),
                 Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     $faker->numberBetween(),
-                    $faker->numberBetween(0, 999_999_999)
+                    $faker->numberBetween(0, 999_999_999),
                 ),
                 Event\Telemetry\MemoryUsage::fromBytes($faker->numberBetween()),
             ),
-            $preparedTest
+            $preparedTest,
         );
 
         $timeKeeper = new TimeKeeper();
@@ -76,12 +76,12 @@ final class TestPreparedSubscriberTest extends Framework\TestCase
 
         $passedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
             $faker->numberBetween($preparedTime->seconds()),
-            0
+            0,
         );
 
         $duration = $timeKeeper->stop(
             clone $preparedTest,
-            $passedTime
+            $passedTime,
         );
 
         self::assertEquals($passedTime->duration($preparedTime), $duration);

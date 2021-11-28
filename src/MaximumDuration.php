@@ -35,7 +35,7 @@ final class MaximumDuration
 
         return new self(Event\Telemetry\Duration::fromSecondsAndNanoseconds(
             $seconds,
-            0
+            0,
         ));
     }
 
@@ -50,14 +50,14 @@ final class MaximumDuration
 
         $seconds = \intdiv(
             $milliseconds,
-            1_000
+            1_000,
         );
 
         $nanoseconds = ($milliseconds - $seconds * 1_000) * 1_000_000;
 
         return new self(Event\Telemetry\Duration::fromSecondsAndNanoseconds(
             $seconds,
-            $nanoseconds
+            $nanoseconds,
         ));
     }
 

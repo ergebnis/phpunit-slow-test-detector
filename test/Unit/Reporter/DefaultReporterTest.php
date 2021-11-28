@@ -51,7 +51,7 @@ final class DefaultReporterTest extends Framework\TestCase
         $reporter = new DefaultReporter(
             $durationFormatter,
             $maximumDuration,
-            $maximumCount
+            $maximumCount,
         );
 
         $report = $reporter->report();
@@ -72,12 +72,12 @@ final class DefaultReporterTest extends Framework\TestCase
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     7,
-                    890_123_456
+                    890_123_456,
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     3,
-                    500_000_000
-                )
+                    500_000_000,
+                ),
             ),
         ];
 
@@ -88,7 +88,7 @@ final class DefaultReporterTest extends Framework\TestCase
         $reporter = new DefaultReporter(
             $durationFormatter,
             $maximumDuration,
-            $maximumCount
+            $maximumCount,
         );
 
         $report = $reporter->report(...$slowTests);
@@ -117,12 +117,12 @@ TXT;
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     7,
-                    890_123_456
+                    890_123_456,
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     3,
-                    500_000_000
-                )
+                    500_000_000,
+                ),
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
@@ -132,9 +132,9 @@ TXT;
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     12,
-                    345_000_000
+                    345_000_000,
                 ),
-                $maximumDuration->toTelemetryDuration()
+                $maximumDuration->toTelemetryDuration(),
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
@@ -144,9 +144,9 @@ TXT;
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     0,
-                    123_000_000
+                    123_000_000,
                 ),
-                $maximumDuration->toTelemetryDuration()
+                $maximumDuration->toTelemetryDuration(),
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
@@ -156,9 +156,9 @@ TXT;
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     3,
-                    456_000_000
+                    456_000_000,
                 ),
-                $maximumDuration->toTelemetryDuration()
+                $maximumDuration->toTelemetryDuration(),
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
@@ -168,9 +168,9 @@ TXT;
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     1,
-                    234_000_000
+                    234_000_000,
                 ),
-                $maximumDuration->toTelemetryDuration()
+                $maximumDuration->toTelemetryDuration(),
             ),
         ];
 
@@ -181,7 +181,7 @@ TXT;
         $reporter = new DefaultReporter(
             $durationFormatter,
             $maximumDuration,
-            $maximumCount
+            $maximumCount,
         );
 
         $report = $reporter->report(...$slowTests);
@@ -212,12 +212,12 @@ TXT;
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     7,
-                    890_123_456
+                    890_123_456,
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     3,
-                    500_000_000
-                )
+                    500_000_000,
+                ),
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
@@ -227,9 +227,9 @@ TXT;
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     12,
-                    345_000_000
+                    345_000_000,
                 ),
-                $maximumDuration->toTelemetryDuration()
+                $maximumDuration->toTelemetryDuration(),
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
@@ -239,9 +239,9 @@ TXT;
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     0,
-                    123_000_000
+                    123_000_000,
                 ),
-                $maximumDuration->toTelemetryDuration()
+                $maximumDuration->toTelemetryDuration(),
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
@@ -251,9 +251,9 @@ TXT;
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     3,
-                    456_000_000
+                    456_000_000,
                 ),
-                $maximumDuration->toTelemetryDuration()
+                $maximumDuration->toTelemetryDuration(),
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
@@ -263,9 +263,9 @@ TXT;
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     1,
-                    234_000_000
+                    234_000_000,
                 ),
-                $maximumDuration->toTelemetryDuration()
+                $maximumDuration->toTelemetryDuration(),
             ),
         ];
 
@@ -276,7 +276,7 @@ TXT;
         $reporter = new DefaultReporter(
             $durationFormatter,
             $maximumDuration,
-            $maximumCount
+            $maximumCount,
         );
 
         $report = $reporter->report(...$slowTests);
@@ -307,12 +307,12 @@ TXT;
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     7,
-                    890_123_456
+                    890_123_456,
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     3,
-                    500_000_000
-                )
+                    500_000_000,
+                ),
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
@@ -322,9 +322,9 @@ TXT;
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     12,
-                    345_000_000
+                    345_000_000,
                 ),
-                $maximumDuration->toTelemetryDuration()
+                $maximumDuration->toTelemetryDuration(),
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
@@ -334,9 +334,9 @@ TXT;
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     0,
-                    123_000_000
+                    123_000_000,
                 ),
-                $maximumDuration->toTelemetryDuration()
+                $maximumDuration->toTelemetryDuration(),
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
@@ -346,9 +346,9 @@ TXT;
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     3,
-                    456_000_000
+                    456_000_000,
                 ),
-                $maximumDuration->toTelemetryDuration()
+                $maximumDuration->toTelemetryDuration(),
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
@@ -358,9 +358,9 @@ TXT;
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     1,
-                    234_000_000
+                    234_000_000,
                 ),
-                $maximumDuration->toTelemetryDuration()
+                $maximumDuration->toTelemetryDuration(),
             ),
         ];
 
@@ -371,7 +371,7 @@ TXT;
         $reporter = new DefaultReporter(
             $durationFormatter,
             $maximumDuration,
-            $maximumCount
+            $maximumCount,
         );
 
         $report = $reporter->report(...$slowTests);
@@ -403,12 +403,12 @@ TXT;
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     7,
-                    890_123_456
+                    890_123_456,
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     3,
-                    500_000_000
-                )
+                    500_000_000,
+                ),
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
@@ -418,9 +418,9 @@ TXT;
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     12,
-                    345_000_000
+                    345_000_000,
                 ),
-                $maximumDuration->toTelemetryDuration()
+                $maximumDuration->toTelemetryDuration(),
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
@@ -430,9 +430,9 @@ TXT;
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     0,
-                    123_000_000
+                    123_000_000,
                 ),
-                $maximumDuration->toTelemetryDuration()
+                $maximumDuration->toTelemetryDuration(),
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
@@ -442,9 +442,9 @@ TXT;
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     3,
-                    456_000_000
+                    456_000_000,
                 ),
-                $maximumDuration->toTelemetryDuration()
+                $maximumDuration->toTelemetryDuration(),
             ),
             SlowTest::fromTestDurationAndMaximumDuration(
                 new Event\Code\Test(
@@ -454,9 +454,9 @@ TXT;
                 ),
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     1,
-                    234_000_000
+                    234_000_000,
                 ),
-                $maximumDuration->toTelemetryDuration()
+                $maximumDuration->toTelemetryDuration(),
             ),
         ];
 
@@ -467,7 +467,7 @@ TXT;
         $reporter = new DefaultReporter(
             $durationFormatter,
             $maximumDuration,
-            $maximumCount
+            $maximumCount,
         );
 
         $report = $reporter->report(...$slowTests);

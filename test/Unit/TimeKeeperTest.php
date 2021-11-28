@@ -35,7 +35,7 @@ final class TimeKeeperTest extends Framework\TestCase
         $stoppedTest = new Event\Code\Test(
             Example\SleeperTest::class,
             'foo',
-            'foo with data set #123'
+            'foo with data set #123',
         );
 
         $stoppedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
@@ -47,12 +47,12 @@ final class TimeKeeperTest extends Framework\TestCase
 
         $duration = $timeKeeper->stop(
             $stoppedTest,
-            $stoppedTime
+            $stoppedTime,
         );
 
         $expected = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
             0,
-            0
+            0,
         );
 
         self::assertEquals($expected, $duration);
@@ -65,7 +65,7 @@ final class TimeKeeperTest extends Framework\TestCase
         $startedTest = new Event\Code\Test(
             Example\SleeperTest::class,
             'foo',
-            'foo with data set #123'
+            'foo with data set #123',
         );
 
         $startedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
@@ -84,12 +84,12 @@ final class TimeKeeperTest extends Framework\TestCase
 
         $timeKeeper->start(
             $startedTest,
-            $startedTime
+            $startedTime,
         );
 
         $duration = $timeKeeper->stop(
             $stoppedTest,
-            $stoppedTime
+            $stoppedTime,
         );
 
         self::assertEquals($stoppedTime->duration($startedTime), $duration);
@@ -102,7 +102,7 @@ final class TimeKeeperTest extends Framework\TestCase
         $startedTest = new Event\Code\Test(
             Example\SleeperTest::class,
             'foo',
-            'foo with data set #123'
+            'foo with data set #123',
         );
 
         $startedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
@@ -128,22 +128,22 @@ final class TimeKeeperTest extends Framework\TestCase
 
         $timeKeeper->start(
             $startedTest,
-            $startedTime
+            $startedTime,
         );
 
         $timeKeeper->stop(
             $firstStoppedTest,
-            $firstStoppedTime
+            $firstStoppedTime,
         );
 
         $duration = $timeKeeper->stop(
             $secondStoppedTest,
-            $secondStoppedTime
+            $secondStoppedTime,
         );
 
         $expected = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
             0,
-            0
+            0,
         );
 
         self::assertEquals($expected, $duration);
@@ -156,7 +156,7 @@ final class TimeKeeperTest extends Framework\TestCase
         $firstStartedTest = new Event\Code\Test(
             Example\SleeperTest::class,
             'foo',
-            'foo with data set #123'
+            'foo with data set #123',
         );
 
         $firstStartedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
@@ -174,7 +174,7 @@ final class TimeKeeperTest extends Framework\TestCase
         $secondStartedTest = new Event\Code\Test(
             Example\SleeperTest::class,
             'bar',
-            'bar'
+            'bar',
         );
 
         $secondStartedTime = Event\Telemetry\HRTime::fromSecondsAndNanoseconds(
@@ -193,22 +193,22 @@ final class TimeKeeperTest extends Framework\TestCase
 
         $timeKeeper->start(
             $firstStartedTest,
-            $firstStartedTime
+            $firstStartedTime,
         );
 
         $timeKeeper->start(
             $secondStartedTest,
-            $secondStartedTime
+            $secondStartedTime,
         );
 
         $secondDuration = $timeKeeper->stop(
             $secondStoppedTest,
-            $secondStoppedTime
+            $secondStoppedTime,
         );
 
         $firstDuration = $timeKeeper->stop(
             $firstStoppedTest,
-            $firstStoppedTime
+            $firstStoppedTime,
         );
 
         self::assertEquals($firstStoppedTime->duration($firstStartedTime), $firstDuration);
