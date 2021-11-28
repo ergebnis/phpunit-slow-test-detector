@@ -15,8 +15,8 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Collector;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Collector\DefaultCollector;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
+use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\Test\Example;
-use Ergebnis\Test\Util;
 use PHPUnit\Event;
 use PHPUnit\Framework;
 
@@ -29,7 +29,7 @@ use PHPUnit\Framework;
  */
 final class DefaultCollectorTest extends Framework\TestCase
 {
-    use Util\Helper;
+    use Test\Util\Helper;
 
     public function testDefaults(): void
     {

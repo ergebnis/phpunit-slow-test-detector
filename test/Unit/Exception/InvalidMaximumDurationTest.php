@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Exception;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Exception\InvalidMaximumDuration;
-use Ergebnis\Test\Util;
+use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
 /**
@@ -24,7 +24,7 @@ use PHPUnit\Framework;
  */
 final class InvalidMaximumDurationTest extends Framework\TestCase
 {
-    use Util\Helper;
+    use Test\Util\Helper;
 
     public function testNotGreaterThanReturnsException(): void
     {

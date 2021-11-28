@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Formatter;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Formatter\ToMillisecondsDurationFormatter;
-use Ergebnis\Test\Util;
+use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Event;
 use PHPUnit\Framework;
 
@@ -25,7 +25,7 @@ use PHPUnit\Framework;
  */
 final class ToMillisecondsDurationFormatterTest extends Framework\TestCase
 {
-    use Util\Helper;
+    use Test\Util\Helper;
 
     /**
      * @dataProvider provideDurationAndFormattedDuration
