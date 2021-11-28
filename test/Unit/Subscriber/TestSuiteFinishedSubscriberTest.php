@@ -15,9 +15,9 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Subscriber;
 
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\Subscriber\TestSuiteFinishedSubscriber;
+use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\Test\Double;
 use Ergebnis\PHPUnit\SlowTestDetector\Test\Example;
-use Ergebnis\Test\Util;
 use PHPUnit\Event;
 use PHPUnit\Framework;
 
@@ -30,7 +30,7 @@ use PHPUnit\Framework;
  */
 final class TestSuiteFinishedSubscriberTest extends Framework\TestCase
 {
-    use Util\Helper;
+    use Test\Util\Helper;
 
     public function testNotifyDoesNothingWhenCollectorHasNotCollectedAnything(): void
     {

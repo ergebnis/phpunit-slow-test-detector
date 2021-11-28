@@ -18,8 +18,8 @@ use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\Reporter\DefaultReporter;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
+use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\Test\Example;
-use Ergebnis\Test\Util;
 use PHPUnit\Event;
 use PHPUnit\Framework;
 
@@ -38,7 +38,7 @@ use PHPUnit\Framework;
  */
 final class DefaultReporterTest extends Framework\TestCase
 {
-    use Util\Helper;
+    use Test\Util\Helper;
 
     public function testReportReturnsEmptyStringWhenNoSlowTestsHaveBeenSpecified(): void
     {

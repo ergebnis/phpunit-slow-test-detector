@@ -15,7 +15,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
-use Ergebnis\Test\Util;
+use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Event;
 use PHPUnit\Framework;
 
@@ -28,7 +28,7 @@ use PHPUnit\Framework;
  */
 final class MaximumDurationTest extends Framework\TestCase
 {
-    use Util\Helper;
+    use Test\Util\Helper;
 
     /**
      * @dataProvider \Ergebnis\Test\Util\DataProvider\IntProvider::lessThanZero()

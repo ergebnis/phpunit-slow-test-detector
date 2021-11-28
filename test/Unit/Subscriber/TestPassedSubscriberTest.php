@@ -16,10 +16,10 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Subscriber;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\Subscriber\TestPassedSubscriber;
+use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\Test\Double;
 use Ergebnis\PHPUnit\SlowTestDetector\Test\Example;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
-use Ergebnis\Test\Util;
 use PHPUnit\Event;
 use PHPUnit\Framework;
 
@@ -34,7 +34,7 @@ use PHPUnit\Framework;
  */
 final class TestPassedSubscriberTest extends Framework\TestCase
 {
-    use Util\Helper;
+    use Test\Util\Helper;
 
     public function testNotifyDoesNotCollectSlowTestWhenDurationIsLessThanMaximumDuration(): void
     {

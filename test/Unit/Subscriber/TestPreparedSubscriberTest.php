@@ -14,9 +14,9 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Subscriber;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Subscriber\TestPreparedSubscriber;
+use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\Test\Example;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
-use Ergebnis\Test\Util;
 use PHPUnit\Event;
 use PHPUnit\Framework;
 
@@ -30,7 +30,7 @@ use PHPUnit\Framework;
  */
 final class TestPreparedSubscriberTest extends Framework\TestCase
 {
-    use Util\Helper;
+    use Test\Util\Helper;
 
     public function testNotifyRecordsTestStartWithTimeKeeper(): void
     {
