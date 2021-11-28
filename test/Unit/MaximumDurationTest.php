@@ -31,8 +31,8 @@ final class MaximumDurationTest extends Framework\TestCase
     use Test\Util\Helper;
 
     /**
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero()
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::zero()
+     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero
+     * @dataProvider \Ergebnis\DataProvider\IntProvider::zero
      */
     public function testFromMillisecondsRejectsInvalidValue(int $milliseconds): void
     {
@@ -72,8 +72,8 @@ final class MaximumDurationTest extends Framework\TestCase
     }
 
     /**
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero()
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::zero()
+     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero
+     * @dataProvider \Ergebnis\DataProvider\IntProvider::zero
      */
     public function testFromSecondsRejectsInvalidValue(int $seconds): void
     {
@@ -83,7 +83,7 @@ final class MaximumDurationTest extends Framework\TestCase
     }
 
     /**
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::greaterThanZero()
+     * @dataProvider \Ergebnis\DataProvider\IntProvider::greaterThanZero
      */
     public function testFromSecondsReturnsMaximumDuration(int $seconds): void
     {
