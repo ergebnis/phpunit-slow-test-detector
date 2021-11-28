@@ -37,7 +37,7 @@ final class ColorTest extends Framework\TestCase
 
     public function testDimReturnsDimmedStringWhenItIsNotWhitespaceOnly(): void
     {
-        $output = self::faker()->sentence;
+        $output = self::faker()->sentence();
 
         $expected = <<<TXT
 \e[2m{$output}\e[22m
