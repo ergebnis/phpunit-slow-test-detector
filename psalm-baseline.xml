@@ -29,6 +29,15 @@
     </PropertyNotSetInConstructor>
   </file>
   <file src="test/Unit/Console/ColorTest.php">
+    <DeprecatedMethod occurrences="1">
+      <code>sentence</code>
+    </DeprecatedMethod>
+    <MixedArgument occurrences="1">
+      <code>$output</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="1">
+      <code>$output</code>
+    </MixedAssignment>
     <PropertyNotSetInConstructor occurrences="2">
       <code>ColorTest</code>
       <code>ColorTest</code>
@@ -71,6 +80,13 @@
     </PropertyNotSetInConstructor>
   </file>
   <file src="test/Unit/SlowTestTest.php">
+    <DeprecatedMethod occurrences="1">
+      <code>word</code>
+    </DeprecatedMethod>
+    <MixedArgument occurrences="2">
+      <code>$faker-&gt;word</code>
+      <code>$faker-&gt;word</code>
+    </MixedArgument>
     <PropertyNotSetInConstructor occurrences="2">
       <code>SlowTestTest</code>
       <code>SlowTestTest</code>
@@ -89,6 +105,16 @@
     </PropertyNotSetInConstructor>
   </file>
   <file src="test/Unit/Subscriber/TestSuiteFinishedSubscriberTest.php">
+    <DeprecatedMethod occurrences="3">
+      <code>word</code>
+      <code>word</code>
+      <code>word</code>
+    </DeprecatedMethod>
+    <MixedArgument occurrences="3">
+      <code>$faker-&gt;word</code>
+      <code>$faker-&gt;word</code>
+      <code>$faker-&gt;word</code>
+    </MixedArgument>
     <PropertyNotSetInConstructor occurrences="2">
       <code>TestSuiteFinishedSubscriberTest</code>
       <code>TestSuiteFinishedSubscriberTest</code>
