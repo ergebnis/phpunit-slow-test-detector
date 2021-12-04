@@ -22,17 +22,11 @@ final class ToMillisecondsDurationFormatter implements Event\Telemetry\DurationF
 {
     public function format(Event\Telemetry\Duration $duration): string
     {
-        $milliseconds = self::toMilliseconds($duration);
+        $milliseconds = $duration->seconds() * (10 ** 3) + (int) \round($duration->nanoseconds() / (10 ** 6));
 
         return \sprintf(
             '%s ms',
             \number_format($milliseconds),
         );
-    }
-
-    private static function toMilliseconds(Event\Telemetry\Duration $duration): int
-    {
-        return $duration->seconds() * (10 ** 3)
-            + (int) \round($duration->nanoseconds() / (10 ** 6));
     }
 }
