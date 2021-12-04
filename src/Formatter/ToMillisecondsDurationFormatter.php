@@ -15,6 +15,9 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Formatter;
 
 use PHPUnit\Event;
 
+/**
+ * @psalm-immutable
+ */
 final class ToMillisecondsDurationFormatter implements Event\Telemetry\DurationFormatter
 {
     public function format(Event\Telemetry\Duration $duration): string
