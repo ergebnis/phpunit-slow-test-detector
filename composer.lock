@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9008784c33d8ddfbf5ae83266baefd18",
+    "content-hash": "45812ca5b13ac0a7ae8879089855050b",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -2126,29 +2126,29 @@
         },
         {
             "name": "ergebnis/data-provider",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/data-provider.git",
-                "reference": "b4ad8ac2d75cedbfd675d9aeaf213ce3af5a7faf"
+                "reference": "db55595c6b50b4699aeba1f2764616b43cce7587"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/data-provider/zipball/b4ad8ac2d75cedbfd675d9aeaf213ce3af5a7faf",
-                "reference": "b4ad8ac2d75cedbfd675d9aeaf213ce3af5a7faf",
+                "url": "https://api.github.com/repos/ergebnis/data-provider/zipball/db55595c6b50b4699aeba1f2764616b43cce7587",
+                "reference": "db55595c6b50b4699aeba1f2764616b43cce7587",
                 "shasum": ""
             },
             "require": {
-                "fakerphp/faker": "^1.16.0",
-                "php": "^7.3 || ^8.0"
+                "fakerphp/faker": "^1.17.0",
+                "php": "^7.4 || ^8.0"
             },
             "require-dev": {
-                "ergebnis/composer-normalize": "^2.16.0",
+                "ergebnis/composer-normalize": "^2.20.0",
                 "ergebnis/license": "^1.1.0",
-                "ergebnis/php-cs-fixer-config": "^3.2.1",
-                "phpunit/phpunit": "~9.5.10",
+                "ergebnis/php-cs-fixer-config": "^3.4.0",
+                "phpunit/phpunit": "^9.5.12",
                 "psalm/plugin-phpunit": "~0.16.1",
-                "vimeo/psalm": "^4.13.1"
+                "vimeo/psalm": "^4.18"
             },
             "type": "library",
             "extra": {
@@ -2188,7 +2188,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-11-25T19:54:39+00:00"
+            "time": "2022-01-24T09:36:10+00:00"
         },
         {
             "name": "ergebnis/json-normalizer",
@@ -2463,22 +2463,22 @@
         },
         {
             "name": "fakerphp/faker",
-            "version": "v1.16.0",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
-                "reference": "271d384d216e5e5c468a6b28feedf95d49f83b35"
+                "reference": "2e77a868f6540695cf5ebf21e5ab472c65f47567"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/271d384d216e5e5c468a6b28feedf95d49f83b35",
-                "reference": "271d384d216e5e5c468a6b28feedf95d49f83b35",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/2e77a868f6540695cf5ebf21e5ab472c65f47567",
+                "reference": "2e77a868f6540695cf5ebf21e5ab472c65f47567",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1 || ^8.0",
                 "psr/container": "^1.0 || ^2.0",
-                "symfony/deprecation-contracts": "^2.2"
+                "symfony/deprecation-contracts": "^2.2 || ^3.0"
             },
             "conflict": {
                 "fzaninotto/faker": "*"
@@ -2497,7 +2497,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "v1.16-dev"
+                    "dev-main": "v1.18-dev"
                 }
             },
             "autoload": {
@@ -2522,9 +2522,9 @@
             ],
             "support": {
                 "issues": "https://github.com/FakerPHP/Faker/issues",
-                "source": "https://github.com/FakerPHP/Faker/tree/v1.16.0"
+                "source": "https://github.com/FakerPHP/Faker/tree/v1.18.0"
             },
-            "time": "2021-09-06T14:53:37+00:00"
+            "time": "2022-01-23T17:56:23+00:00"
         },
         {
             "name": "friendsofphp/php-cs-fixer",
@@ -4476,5 +4476,5 @@
     "platform-overrides": {
         "php": "8.0.12"
     },
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }
