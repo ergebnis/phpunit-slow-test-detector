@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "05d461e5b3f2a74b26e31fcf6fe3da1e",
+    "content-hash": "01d8af28ce3600af5e0b7dbdf24e0443",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -2195,29 +2195,29 @@
         },
         {
             "name": "ergebnis/data-provider",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/data-provider.git",
-                "reference": "db55595c6b50b4699aeba1f2764616b43cce7587"
+                "reference": "3fa1615fccba03596fe81876304c8f27a2d716ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/data-provider/zipball/db55595c6b50b4699aeba1f2764616b43cce7587",
-                "reference": "db55595c6b50b4699aeba1f2764616b43cce7587",
+                "url": "https://api.github.com/repos/ergebnis/data-provider/zipball/3fa1615fccba03596fe81876304c8f27a2d716ff",
+                "reference": "3fa1615fccba03596fe81876304c8f27a2d716ff",
                 "shasum": ""
             },
             "require": {
-                "fakerphp/faker": "^1.17.0",
+                "fakerphp/faker": "^1.19.0",
                 "php": "^7.4 || ^8.0"
             },
             "require-dev": {
-                "ergebnis/composer-normalize": "^2.20.0",
-                "ergebnis/license": "^1.1.0",
-                "ergebnis/php-cs-fixer-config": "^3.4.0",
-                "phpunit/phpunit": "^9.5.12",
+                "ergebnis/composer-normalize": "^2.23.1",
+                "ergebnis/license": "^1.2.0",
+                "ergebnis/php-cs-fixer-config": "^4.1.0",
+                "phpunit/phpunit": "^9.5.13",
                 "psalm/plugin-phpunit": "~0.16.1",
-                "vimeo/psalm": "^4.18"
+                "vimeo/psalm": "^4.20"
             },
             "type": "library",
             "extra": {
@@ -2257,7 +2257,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-01-24T09:36:10+00:00"
+            "time": "2022-02-10T18:54:18+00:00"
         },
         {
             "name": "ergebnis/json-normalizer",
