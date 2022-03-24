@@ -8,9 +8,6 @@ on: # yamllint disable-line rule:truthy
     branches:
       - "main"
 
-env:
-  PHP_EXTENSIONS: "mbstring"
-
 jobs:
   code-coverage:
     name: "Code Coverage"
@@ -33,14 +30,17 @@ jobs:
         uses: "shivammathur/setup-php@2.18.0"
         with:
           coverage: "xdebug"
-          extensions: "${{ env.PHP_EXTENSIONS }}"
+          extensions: "none, ctype, dom, json, mbstring, phar, simplexml, tokenizer, xml, xmlwriter"
           php-version: "${{ matrix.php-version }}"
+
+      - name: "Set up problem matchers for PHP"
+        run: "echo \"::add-matcher::${{ runner.tool_cache }}/php.json\""
 
       - name: "Set up problem matchers for phpunit/phpunit"
         run: "echo \"::add-matcher::${{ runner.tool_cache }}/phpunit.json\""
 
       - name: "Determine composer cache directory"
-        uses: "./.github/actions/composer/composer/determine-cache-directory"
+        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.4.0"
 
       - name: "Cache dependencies installed with composer"
         uses: "actions/cache@v3"
@@ -50,17 +50,20 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
-        uses: "./.github/actions/composer/composer/install"
+        uses: "ergebnis/.github/actions/composer/install@1.4.0"
         with:
           dependencies: "${{ matrix.dependencies }}"
 
       - name: "Collect code coverage with Xdebug and phpunit/phpunit"
-        run: "vendor/bin/phpunit --configuration=test/Unit/phpunit.xml --coverage-clover=.build/phpunit/logs/clover.xml"
-
-      - name: "Send code coverage report to Codecov.io"
         env:
-          CODECOV_TOKEN: "${{ secrets.CODECOV_TOKEN }}"
-        run: "bash <(curl -s https://codecov.io/bash)"
+          XDEBUG_MODE: "coverage"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/Unit/phpunit.xml --coverage-clover=.build/phpunit/logs/clover.xml"
+
+      - name: "Send code coverage report to codecov.io"
+        uses: "codecov/codecov-action@v2.1.0"
+        with:
+          files: ".build/phpunit/logs/clover.xml"
+          token: "${{ secrets.CODECOV_TOKEN }}"
 
   coding-standards:
     name: "Coding Standards"
@@ -80,7 +83,7 @@ jobs:
         uses: "actions/checkout@v3"
 
       - name: "Lint YAML files"
-        uses: "ibiqlik/action-yamllint@v3"
+        uses: "ibiqlik/action-yamllint@v3.1"
         with:
           config_file: ".yamllint.yaml"
           file_or_dir: "."
@@ -90,14 +93,17 @@ jobs:
         uses: "shivammathur/setup-php@2.18.0"
         with:
           coverage: "none"
-          extensions: "${{ env.PHP_EXTENSIONS }}"
+          extensions: "none, ctype, dom, json, mbstring, phar, simplexml, tokenizer, xml, xmlwriter"
           php-version: "${{ matrix.php-version }}"
 
+      - name: "Set up problem matchers for PHP"
+        run: "echo \"::add-matcher::${{ runner.tool_cache }}/php.json\""
+
       - name: "Validate composer.json and composer.lock"
-        run: "composer validate"
+        run: "composer validate --ansi"
 
       - name: "Determine composer cache directory"
-        uses: "./.github/actions/composer/composer/determine-cache-directory"
+        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.4.0"
 
       - name: "Cache dependencies installed with composer"
         uses: "actions/cache@v3"
@@ -107,12 +113,12 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
-        uses: "./.github/actions/composer/composer/install"
+        uses: "ergebnis/.github/actions/composer/install@1.4.0"
         with:
           dependencies: "${{ matrix.dependencies }}"
 
       - name: "Run ergebnis/composer-normalize"
-        run: "composer normalize --dry-run"
+        run: "composer normalize --ansi --dry-run"
 
       - name: "Create cache directory for friendsofphp/php-cs-fixer"
         run: "mkdir -p .build/php-cs-fixer"
@@ -125,7 +131,7 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-php-cs-fixer-"
 
       - name: "Run friendsofphp/php-cs-fixer"
-        run: "vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --diff --dry-run --verbose"
+        run: "vendor/bin/php-cs-fixer fix --ansi --config=.php-cs-fixer.php --diff --dry-run --verbose"
 
   dependency-analysis:
     name: "Dependency Analysis"
@@ -148,11 +154,14 @@ jobs:
         uses: "shivammathur/setup-php@2.18.0"
         with:
           coverage: "none"
-          extensions: "${{ env.PHP_EXTENSIONS }}"
+          extensions: "none, ctype, dom, json, mbstring, phar, simplexml, tokenizer, xml, xmlwriter"
           php-version: "${{ matrix.php-version }}"
 
+      - name: "Set up problem matchers for PHP"
+        run: "echo \"::add-matcher::${{ runner.tool_cache }}/php.json\""
+
       - name: "Determine composer cache directory"
-        uses: "./.github/actions/composer/composer/determine-cache-directory"
+        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.4.0"
 
       - name: "Cache dependencies installed with composer"
         uses: "actions/cache@v3"
@@ -162,7 +171,7 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
-        uses: "./.github/actions/composer/composer/install"
+        uses: "ergebnis/.github/actions/composer/install@1.4.0"
         with:
           dependencies: "${{ matrix.dependencies }}"
 
@@ -190,11 +199,14 @@ jobs:
         uses: "shivammathur/setup-php@2.18.0"
         with:
           coverage: "xdebug"
-          extensions: "${{ env.PHP_EXTENSIONS }}"
+          extensions: "none, ctype, dom, json, mbstring, phar, simplexml, tokenizer, xml, xmlwriter"
           php-version: "${{ matrix.php-version }}"
 
+      - name: "Set up problem matchers for PHP"
+        run: "echo \"::add-matcher::${{ runner.tool_cache }}/php.json\""
+
       - name: "Determine composer cache directory"
-        uses: "./.github/actions/composer/composer/determine-cache-directory"
+        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.4.0"
 
       - name: "Cache dependencies installed with composer"
         uses: "actions/cache@v3"
@@ -204,12 +216,14 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
-        uses: "./.github/actions/composer/composer/install"
+        uses: "ergebnis/.github/actions/composer/install@1.4.0"
         with:
           dependencies: "${{ matrix.dependencies }}"
 
       - name: "Run mutation tests with Xdebug and infection/infection"
-        run: ".phive/infection --configuration=infection.json"
+        env:
+          XDEBUG_MODE: "coverage"
+        run: "vendor/bin/infection --ansi --configuration=infection.json --logger-github"
 
   static-code-analysis:
     name: "Static Code Analysis"
@@ -232,11 +246,14 @@ jobs:
         uses: "shivammathur/setup-php@2.18.0"
         with:
           coverage: "none"
-          extensions: "${{ env.PHP_EXTENSIONS }}"
+          extensions: "none, ctype, curl, dom, json, mbstring, pcntl, phar, posix, simplexml, tokenizer, xml, xmlwriter"
           php-version: "${{ matrix.php-version }}"
 
+      - name: "Set up problem matchers for PHP"
+        run: "echo \"::add-matcher::${{ runner.tool_cache }}/php.json\""
+
       - name: "Determine composer cache directory"
-        uses: "./.github/actions/composer/composer/determine-cache-directory"
+        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.4.0"
 
       - name: "Cache dependencies installed with composer"
         uses: "actions/cache@v3"
@@ -246,7 +263,7 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
-        uses: "./.github/actions/composer/composer/install"
+        uses: "ergebnis/.github/actions/composer/install@1.4.0"
         with:
           dependencies: "${{ matrix.dependencies }}"
 
@@ -254,7 +271,7 @@ jobs:
         run: "mkdir -p .build/psalm"
 
       - name: "Run vimeo/psalm"
-        run: ".phive/psalm --config=psalm.xml --diff --shepherd --show-info=false --stats --threads=4"
+        run: "vendor/bin/psalm --config=psalm.xml --output-format=github --shepherd --show-info=false --stats --threads=4"
 
   tests:
     name: "Tests"
@@ -278,14 +295,17 @@ jobs:
         uses: "shivammathur/setup-php@2.18.0"
         with:
           coverage: "none"
-          extensions: "${{ env.PHP_EXTENSIONS }}"
+          extensions: "none, ctype, dom, json, mbstring, phar, simplexml, tokenizer, xml, xmlwriter"
           php-version: "${{ matrix.php-version }}"
+
+      - name: "Set up problem matchers for PHP"
+        run: "echo \"::add-matcher::${{ runner.tool_cache }}/php.json\""
 
       - name: "Set up problem matchers for phpunit/phpunit"
         run: "echo \"::add-matcher::${{ runner.tool_cache }}/phpunit.json\""
 
       - name: "Determine composer cache directory"
-        uses: "./.github/actions/composer/composer/determine-cache-directory"
+        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.4.0"
 
       - name: "Cache dependencies installed with composer"
         uses: "actions/cache@v3"
@@ -295,12 +315,12 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
-        uses: "./.github/actions/composer/composer/install"
+        uses: "ergebnis/.github/actions/composer/install@1.4.0"
         with:
           dependencies: "${{ matrix.dependencies }}"
 
       - name: "Run unit tests with phpunit/phpunit"
-        run: "vendor/bin/phpunit --configuration=test/Unit/phpunit.xml"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/Unit/phpunit.xml"
 
       - name: "Run example tests with phpunit/phpunit"
         run: "vendor/bin/phpunit --configuration=test/Example/phpunit.xml"
