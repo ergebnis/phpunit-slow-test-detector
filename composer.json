@@ -23,7 +23,7 @@
   },
   "require": {
     "php": "^8.0",
-    "phpunit/phpunit": "dev-event#ffd44c130 as 10.0.0"
+    "phpunit/phpunit": "dev-master#5c5801a72 as 10.0.0"
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.24.1",
