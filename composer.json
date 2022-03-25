@@ -1,7 +1,8 @@
 {
   "name": "ergebnis/phpunit-slow-test-detector",
-  "type": "library",
   "description": "Provides facilities for detecting slow tests in phpunit/phpunit.",
+  "license": "MIT",
+  "type": "library",
   "keywords": [
     "phpunit",
     "slow",
@@ -9,14 +10,17 @@
     "detector",
     "extension"
   ],
-  "homepage": "https://github.com/ergebnis/phpunit-slow-test-detector",
-  "license": "MIT",
   "authors": [
     {
       "name": "Andreas Möller",
       "email": "am@localheinz.com"
     }
   ],
+  "homepage": "https://github.com/ergebnis/phpunit-slow-test-detector",
+  "support": {
+    "issues": "https://github.com/ergebnis/phpunit-slow-test-detector/issues",
+    "source": "https://github.com/ergebnis/phpunit-slow-test-detector"
+  },
   "require": {
     "php": "^8.0",
     "phpunit/phpunit": "dev-event#ffd44c130 as 10.0.0"
@@ -27,6 +31,24 @@
     "ergebnis/license": "^1.2.0",
     "ergebnis/php-cs-fixer-config": "~4.4.0",
     "fakerphp/faker": "^1.19.0"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/theseer/phpunit"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "Ergebnis\\PHPUnit\\SlowTestDetector\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\": "test/"
+    }
   },
   "config": {
     "allow-plugins": {
@@ -43,27 +65,5 @@
       "indent-size": 2,
       "indent-style": "space"
     }
-  },
-  "autoload": {
-    "psr-4": {
-      "Ergebnis\\PHPUnit\\SlowTestDetector\\": "src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\": "test/"
-    }
-  },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/theseer/phpunit"
-    }
-  ],
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "support": {
-    "issues": "https://github.com/ergebnis/phpunit-slow-test-detector/issues",
-    "source": "https://github.com/ergebnis/phpunit-slow-test-detector"
   }
 }
