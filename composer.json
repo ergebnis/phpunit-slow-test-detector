@@ -29,6 +29,9 @@
     "fakerphp/faker": "^1.19.0"
   },
   "config": {
+    "allow-plugins": {
+      "ergebnis/composer-normalize": true
+    },
     "platform": {
       "php": "8.0.12"
     },
