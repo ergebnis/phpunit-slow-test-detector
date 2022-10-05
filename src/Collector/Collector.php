@@ -21,6 +21,7 @@ interface Collector
 
     /**
      * @phpstan-return list<SlowTest>
+     *
      * @psalm-return list<SlowTest>
      *
      * @return array<int, SlowTest>

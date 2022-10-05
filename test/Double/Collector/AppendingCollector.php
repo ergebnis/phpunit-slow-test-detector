@@ -20,6 +20,7 @@ final class AppendingCollector implements Collector\Collector
 {
     /**
      * @phpstan-var list<SlowTest>
+     *
      * @psalm-var list<SlowTest>
      *
      * @var array<int, SlowTest>
