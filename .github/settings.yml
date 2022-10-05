@@ -20,7 +20,6 @@ branches:
           - "Mutation Tests (8.1, locked)"
           - "Static Code Analysis (8.1, locked)"
           - "Tests (8.1, locked)"
-          - "Tests (8.1, locked)"
         strict: false
       restrictions:
 
