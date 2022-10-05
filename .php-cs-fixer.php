@@ -14,6 +14,8 @@ declare(strict_types=1);
 use Ergebnis\License;
 use Ergebnis\PhpCsFixer;
 
+require_once __DIR__ . '/vendor/autoload.php';
+
 $license = License\Type\MIT::markdown(
     __DIR__ . '/LICENSE.md',
     License\Range::since(

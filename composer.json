@@ -32,6 +32,9 @@
     "ergebnis/php-cs-fixer-config": "~4.9.0",
     "fakerphp/faker": "^1.20.0"
   },
+  "replace": {
+    "friendsofphp/php-cs-fixer": "*"
+  },
   "repositories": [
     {
       "type": "vcs",
