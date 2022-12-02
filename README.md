@@ -19,7 +19,7 @@ Provides an extension for detecting slow tests in [`phpunit/phpunit`](https://gi
 Run
 
 ```sh
-$ composer require --dev ergebnis/phpunit-slow-test-detector
+composer require --dev ergebnis/phpunit-slow-test-detector
 ```
 
 ## Usage
