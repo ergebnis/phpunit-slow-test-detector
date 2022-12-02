@@ -9,12 +9,10 @@
     </UndefinedDocblockClass>
   </file>
   <file src="src/Collector/DefaultCollector.php">
-    <MixedInferredReturnType occurrences="2">
+    <MixedInferredReturnType occurrences="1">
       <code>list&lt;SlowTest&gt;</code>
-      <code>string</code>
     </MixedInferredReturnType>
-    <UndefinedClass occurrences="2">
-      <code>Event\Code\Test</code>
+    <UndefinedClass occurrences="1">
       <code>SlowTest</code>
     </UndefinedClass>
     <UndefinedDocblockClass occurrences="3">

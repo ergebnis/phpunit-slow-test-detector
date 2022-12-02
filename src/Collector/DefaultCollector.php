@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Collector;
 
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
-use PHPUnit\Event;
 
 final class DefaultCollector implements Collector
 {
@@ -25,7 +24,7 @@ final class DefaultCollector implements Collector
 
     public function collect(SlowTest $slowTest): void
     {
-        $key = self::key($slowTest->test());
+        $key = $slowTest->test()->name();
 
         if (\array_key_exists($key, $this->slowTests)) {
             $previousSlowTest = $this->slowTests[$key];
@@ -52,10 +51,5 @@ final class DefaultCollector implements Collector
     public function collected(): array
     {
         return \array_values($this->slowTests);
-    }
-
-    private static function key(Event\Code\Test $test): string
-    {
-        return $test->name();
     }
 }
