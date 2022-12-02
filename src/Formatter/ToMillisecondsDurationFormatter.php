@@ -18,7 +18,7 @@ use PHPUnit\Event;
 /**
  * @psalm-immutable
  */
-final class ToMillisecondsDurationFormatter implements Event\Telemetry\DurationFormatter
+final class ToMillisecondsDurationFormatter implements DurationFormatter
 {
     public function format(Event\Telemetry\Duration $duration): string
     {

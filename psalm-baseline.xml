@@ -18,9 +18,17 @@
       <code>Event\Telemetry\Duration</code>
     </UndefinedClass>
   </file>
-  <file src="src/Formatter/ToMillisecondsDurationFormatter.php">
+  <file src="src/Formatter/DurationFormatter.php">
     <UndefinedClass occurrences="1">
-      <code>Event\Telemetry\DurationFormatter</code>
+      <code>Event\Telemetry\Duration</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/Formatter/ToMillisecondsDurationFormatter.php">
+    <MixedInferredReturnType occurrences="1">
+      <code>string</code>
+    </MixedInferredReturnType>
+    <UndefinedClass occurrences="1">
+      <code>Event\Telemetry\Duration</code>
     </UndefinedClass>
   </file>
   <file src="src/MaximumCount.php">
@@ -41,27 +49,15 @@
     </UnusedVariable>
   </file>
   <file src="src/Reporter/DefaultReporter.php">
-    <MixedArgument occurrences="6">
-      <code>$durationFormatter-&gt;format($longestMaximumDuration)</code>
-      <code>$durationFormatter-&gt;format($slowTest-&gt;duration())</code>
-      <code>$durationFormatter-&gt;format($slowTest-&gt;maximumDuration())</code>
-      <code>$durationFormatter-&gt;format($slowestTest-&gt;duration())</code>
+    <MixedArgument occurrences="2">
       <code>$test-&gt;className()</code>
       <code>$test-&gt;methodNameWithDataSet()</code>
     </MixedArgument>
-    <PropertyNotSetInConstructor occurrences="1">
-      <code>$durationComparator</code>
-    </PropertyNotSetInConstructor>
-    <UndefinedClass occurrences="9">
-      <code>$durationFormatter</code>
-      <code>$durationFormatter</code>
-      <code>$durationFormatter</code>
-      <code>$durationFormatter</code>
+    <UndefinedClass occurrences="4">
       <code>$test</code>
       <code>$test</code>
       <code>Event\Telemetry\Duration</code>
       <code>Event\Telemetry\Duration</code>
-      <code>private</code>
     </UndefinedClass>
   </file>
   <file src="src/SlowTest.php">
@@ -132,12 +128,6 @@
     <InternalMethod occurrences="3">
       <code>Event\Facade::registerSubscriber(new SlowTestDetector\Subscriber\TestPreparedSubscriber($timeKeeper))</code>
     </InternalMethod>
-    <MissingDependency occurrences="1">
-      <code>SlowTestDetector\Formatter\ToMillisecondsDurationFormatter</code>
-    </MissingDependency>
-    <MixedArgument occurrences="1">
-      <code>new SlowTestDetector\Formatter\ToMillisecondsDurationFormatter()</code>
-    </MixedArgument>
   </file>
   <file src="test/Unit/Collector/DefaultCollectorTest.php">
     <UndefinedClass occurrences="1">
