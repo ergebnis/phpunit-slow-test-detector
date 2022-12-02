@@ -30,8 +30,10 @@ final class ToMillisecondsDurationFormatterTest extends Framework\TestCase
     /**
      * @dataProvider provideDurationAndFormattedDuration
      */
-    public function testFormatFormats(Event\Telemetry\Duration $duration, string $formattedDuration): void
-    {
+    public function testFormatFormats(
+        Event\Telemetry\Duration $duration,
+        string $formattedDuration,
+    ): void {
         $formatter = new Formatter\ToMillisecondsDurationFormatter();
 
         self::assertSame($formattedDuration, $formatter->format($duration));

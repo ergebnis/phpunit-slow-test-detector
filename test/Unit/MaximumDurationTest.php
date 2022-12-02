@@ -44,8 +44,10 @@ final class MaximumDurationTest extends Framework\TestCase
     /**
      * @dataProvider provideMillisecondsAndTelemetryDuration
      */
-    public function testFromMillisecondsReturnsMaximumDuration(int $milliseconds, Event\Telemetry\Duration $duration): void
-    {
+    public function testFromMillisecondsReturnsMaximumDuration(
+        int $milliseconds,
+        Event\Telemetry\Duration $duration,
+    ): void {
         $maximumDuration = MaximumDuration::fromMilliseconds($milliseconds);
 
         self::assertEquals($duration, $maximumDuration->toTelemetryDuration());

@@ -22,15 +22,19 @@ final class TimeKeeper
      */
     private array $startedTimes = [];
 
-    public function start(Event\Code\Test $test, Event\Telemetry\HRTime $startedTime): void
-    {
+    public function start(
+        Event\Code\Test $test,
+        Event\Telemetry\HRTime $startedTime,
+    ): void {
         $key = self::key($test);
 
         $this->startedTimes[$key] = $startedTime;
     }
 
-    public function stop(Event\Code\Test $test, Event\Telemetry\HRTime $stoppedTime): Event\Telemetry\Duration
-    {
+    public function stop(
+        Event\Code\Test $test,
+        Event\Telemetry\HRTime $stoppedTime,
+    ): Event\Telemetry\Duration {
         $key = self::key($test);
 
         if (!\array_key_exists($key, $this->startedTimes)) {

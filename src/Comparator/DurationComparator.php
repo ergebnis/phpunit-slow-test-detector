@@ -17,8 +17,10 @@ use PHPUnit\Event;
 
 final class DurationComparator
 {
-    public function compare(Event\Telemetry\Duration $one, Event\Telemetry\Duration $two): int
-    {
+    public function compare(
+        Event\Telemetry\Duration $one,
+        Event\Telemetry\Duration $two,
+    ): int {
         if ($one->isLessThan($two)) {
             return -1;
         }
