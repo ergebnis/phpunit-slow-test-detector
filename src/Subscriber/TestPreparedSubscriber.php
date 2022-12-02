@@ -18,7 +18,7 @@ use PHPUnit\Event;
 
 final class TestPreparedSubscriber implements Event\Test\PreparedSubscriber
 {
-    public function __construct(private TimeKeeper $timeKeeper)
+    public function __construct(private readonly TimeKeeper $timeKeeper)
     {
     }
 

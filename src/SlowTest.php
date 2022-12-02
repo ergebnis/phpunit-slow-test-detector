@@ -21,9 +21,9 @@ use PHPUnit\Event;
 final class SlowTest
 {
     private function __construct(
-        private Event\Code\Test $test,
-        private Event\Telemetry\Duration $duration,
-        private Event\Telemetry\Duration $maximumDuration,
+        private readonly Event\Code\Test $test,
+        private readonly Event\Telemetry\Duration $duration,
+        private readonly Event\Telemetry\Duration $maximumDuration,
     ) {
     }
 

@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="4.x-dev@">
+  <file src="src/Collector/Collector.php">
+    <UndefinedClass occurrences="1">
+      <code>SlowTest</code>
+    </UndefinedClass>
+    <UndefinedDocblockClass occurrences="1">
+      <code>list&lt;SlowTest&gt;</code>
+    </UndefinedDocblockClass>
+  </file>
   <file src="src/Collector/DefaultCollector.php">
-    <MixedInferredReturnType occurrences="1">
+    <MixedInferredReturnType occurrences="2">
+      <code>list&lt;SlowTest&gt;</code>
       <code>string</code>
     </MixedInferredReturnType>
     <UndefinedClass occurrences="2">
-      <code>$slowTest-&gt;duration()</code>
       <code>Event\Code\Test</code>
+      <code>SlowTest</code>
     </UndefinedClass>
+    <UndefinedDocblockClass occurrences="3">
+      <code>array</code>
+      <code>list&lt;SlowTest&gt;</code>
+      <code>private array $slowTests = [];</code>
+    </UndefinedDocblockClass>
   </file>
   <file src="src/Comparator/DurationComparator.php">
     <MixedInferredReturnType occurrences="1">
@@ -31,69 +45,9 @@
       <code>Event\Telemetry\Duration</code>
     </UndefinedClass>
   </file>
-  <file src="src/MaximumCount.php">
-    <UnusedParam occurrences="1">
-      <code>$value</code>
-    </UnusedParam>
-  </file>
-  <file src="src/MaximumDuration.php">
-    <UndefinedClass occurrences="4">
-      <code>Event\Telemetry\Duration</code>
-      <code>Event\Telemetry\Duration</code>
-      <code>Event\Telemetry\Duration</code>
-      <code>private</code>
-    </UndefinedClass>
-    <UnusedVariable occurrences="2">
-      <code>$nanoseconds</code>
-      <code>$seconds</code>
-    </UnusedVariable>
-  </file>
-  <file src="src/Reporter/DefaultReporter.php">
-    <MixedArgument occurrences="2">
-      <code>$test-&gt;className()</code>
-      <code>$test-&gt;methodNameWithDataSet()</code>
-    </MixedArgument>
-    <UndefinedClass occurrences="4">
-      <code>$test</code>
-      <code>$test</code>
-      <code>Event\Telemetry\Duration</code>
-      <code>Event\Telemetry\Duration</code>
-    </UndefinedClass>
-  </file>
-  <file src="src/SlowTest.php">
-    <MixedInferredReturnType occurrences="1">
-      <code>self</code>
-    </MixedInferredReturnType>
-    <UndefinedClass occurrences="9">
-      <code>Event\Code\Test</code>
-      <code>Event\Code\Test</code>
-      <code>Event\Telemetry\Duration</code>
-      <code>Event\Telemetry\Duration</code>
-      <code>Event\Telemetry\Duration</code>
-      <code>Event\Telemetry\Duration</code>
-      <code>private</code>
-      <code>private</code>
-      <code>private</code>
-    </UndefinedClass>
-  </file>
-  <file src="src/Subscriber/TestPassedSubscriber.php">
-    <MixedInferredReturnType occurrences="1">
-      <code>Event\Telemetry\Duration</code>
-    </MixedInferredReturnType>
-    <UndefinedClass occurrences="3">
-      <code>Event\Code\Test</code>
-      <code>Event\Telemetry\Duration</code>
-      <code>Event\Test\Passed</code>
-    </UndefinedClass>
-  </file>
-  <file src="src/Subscriber/TestPreparedSubscriber.php">
+  <file src="src/Reporter/Reporter.php">
     <UndefinedClass occurrences="1">
-      <code>Event\Test\Prepared</code>
-    </UndefinedClass>
-  </file>
-  <file src="src/Subscriber/TestSuiteFinishedSubscriber.php">
-    <UndefinedClass occurrences="1">
-      <code>Event\TestSuite\Finished</code>
+      <code>SlowTest</code>
     </UndefinedClass>
   </file>
   <file src="src/TimeKeeper.php">
@@ -114,6 +68,31 @@
       <code>private array $startedTimes = [];</code>
     </UndefinedDocblockClass>
   </file>
+  <file src="test/Double/Collector/AppendingCollector.php">
+    <UndefinedClass occurrences="1">
+      <code>SlowTest</code>
+    </UndefinedClass>
+    <UndefinedDocblockClass occurrences="2">
+      <code>array</code>
+      <code>private array $collected = [];</code>
+    </UndefinedDocblockClass>
+  </file>
+  <file src="test/Double/Reporter/CountingReporter.php">
+    <MixedInferredReturnType occurrences="1">
+      <code>string</code>
+    </MixedInferredReturnType>
+    <UndefinedClass occurrences="1">
+      <code>SlowTest</code>
+    </UndefinedClass>
+  </file>
+  <file src="test/Double/Reporter/NullReporter.php">
+    <MixedInferredReturnType occurrences="1">
+      <code>string</code>
+    </MixedInferredReturnType>
+    <UndefinedClass occurrences="1">
+      <code>SlowTest</code>
+    </UndefinedClass>
+  </file>
   <file src="test/Example/Sleeper.php">
     <UnusedParam occurrences="1">
       <code>$milliseconds</code>
@@ -125,9 +104,9 @@
     </UndefinedClass>
   </file>
   <file src="test/Example/bootstrap.php">
-    <InternalMethod occurrences="3">
-      <code>Event\Facade::registerSubscriber(new SlowTestDetector\Subscriber\TestPreparedSubscriber($timeKeeper))</code>
-    </InternalMethod>
+    <UndefinedClass occurrences="1">
+      <code>SlowTestDetector\MaximumCount</code>
+    </UndefinedClass>
   </file>
   <file src="test/Unit/Collector/DefaultCollectorTest.php">
     <UndefinedClass occurrences="1">

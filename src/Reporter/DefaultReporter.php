@@ -23,12 +23,12 @@ use PHPUnit\Event;
 
 final class DefaultReporter implements Reporter
 {
-    private Comparator\DurationComparator $durationComparator;
+    private readonly Comparator\DurationComparator $durationComparator;
 
     public function __construct(
-        private Formatter\DurationFormatter $durationFormatter,
-        private MaximumDuration $maximumDuration,
-        private MaximumCount $maximumCount,
+        private readonly Formatter\DurationFormatter $durationFormatter,
+        private readonly MaximumDuration $maximumDuration,
+        private readonly MaximumCount $maximumCount,
     ) {
         $this->durationComparator = new Comparator\DurationComparator();
     }

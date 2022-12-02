@@ -20,8 +20,8 @@ use PHPUnit\Event;
 final class TestSuiteFinishedSubscriber implements Event\TestSuite\FinishedSubscriber
 {
     public function __construct(
-        private Collector\Collector $collector,
-        private Reporter\Reporter $reporter,
+        private readonly Collector\Collector $collector,
+        private readonly Reporter\Reporter $reporter,
     ) {
     }
 

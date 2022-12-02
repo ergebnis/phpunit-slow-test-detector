@@ -23,9 +23,9 @@ use PHPUnit\Util;
 final class TestPassedSubscriber implements Event\Test\PassedSubscriber
 {
     public function __construct(
-        private MaximumDuration $maximumDuration,
-        private TimeKeeper $timeKeeper,
-        private Collector\Collector $collector,
+        private readonly MaximumDuration $maximumDuration,
+        private readonly TimeKeeper $timeKeeper,
+        private readonly Collector\Collector $collector,
     ) {
     }
 

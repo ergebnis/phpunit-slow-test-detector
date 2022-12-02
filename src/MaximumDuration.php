@@ -20,7 +20,7 @@ use PHPUnit\Event;
  */
 final class MaximumDuration
 {
-    private function __construct(private Event\Telemetry\Duration $duration)
+    private function __construct(private readonly Event\Telemetry\Duration $duration)
     {
     }
 
