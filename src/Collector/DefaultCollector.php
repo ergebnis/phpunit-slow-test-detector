@@ -56,10 +56,6 @@ final class DefaultCollector implements Collector
 
     private static function key(Event\Code\Test $test): string
     {
-        return \sprintf(
-            '%s::%s',
-            $test->className(),
-            $test->methodNameWithDataSet(),
-        );
+        return $test->name();
     }
 }
