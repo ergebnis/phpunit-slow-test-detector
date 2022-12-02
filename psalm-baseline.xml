@@ -1,31 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="4.x-dev@">
+  <file src="src/Collector/DefaultCollector.php">
+    <MixedInferredReturnType occurrences="1">
+      <code>string</code>
+    </MixedInferredReturnType>
+    <UndefinedClass occurrences="2">
+      <code>$slowTest-&gt;duration()</code>
+      <code>Event\Code\Test</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/Comparator/DurationComparator.php">
+    <MixedInferredReturnType occurrences="1">
+      <code>int</code>
+    </MixedInferredReturnType>
+    <UndefinedClass occurrences="2">
+      <code>Event\Telemetry\Duration</code>
+      <code>Event\Telemetry\Duration</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/Formatter/ToMillisecondsDurationFormatter.php">
+    <UndefinedClass occurrences="1">
+      <code>Event\Telemetry\DurationFormatter</code>
+    </UndefinedClass>
+  </file>
   <file src="src/MaximumCount.php">
     <UnusedParam occurrences="1">
       <code>$value</code>
     </UnusedParam>
   </file>
   <file src="src/MaximumDuration.php">
-    <UnusedParam occurrences="1">
-      <code>$duration</code>
-    </UnusedParam>
+    <UndefinedClass occurrences="4">
+      <code>Event\Telemetry\Duration</code>
+      <code>Event\Telemetry\Duration</code>
+      <code>Event\Telemetry\Duration</code>
+      <code>private</code>
+    </UndefinedClass>
+    <UnusedVariable occurrences="2">
+      <code>$nanoseconds</code>
+      <code>$seconds</code>
+    </UnusedVariable>
+  </file>
+  <file src="src/Reporter/DefaultReporter.php">
+    <MixedArgument occurrences="6">
+      <code>$durationFormatter-&gt;format($longestMaximumDuration)</code>
+      <code>$durationFormatter-&gt;format($slowTest-&gt;duration())</code>
+      <code>$durationFormatter-&gt;format($slowTest-&gt;maximumDuration())</code>
+      <code>$durationFormatter-&gt;format($slowestTest-&gt;duration())</code>
+      <code>$test-&gt;className()</code>
+      <code>$test-&gt;methodNameWithDataSet()</code>
+    </MixedArgument>
+    <PropertyNotSetInConstructor occurrences="1">
+      <code>$durationComparator</code>
+    </PropertyNotSetInConstructor>
+    <UndefinedClass occurrences="9">
+      <code>$durationFormatter</code>
+      <code>$durationFormatter</code>
+      <code>$durationFormatter</code>
+      <code>$durationFormatter</code>
+      <code>$test</code>
+      <code>$test</code>
+      <code>Event\Telemetry\Duration</code>
+      <code>Event\Telemetry\Duration</code>
+      <code>private</code>
+    </UndefinedClass>
   </file>
   <file src="src/SlowTest.php">
-    <UnusedParam occurrences="3">
-      <code>$duration</code>
-      <code>$maximumDuration</code>
-      <code>$test</code>
-    </UnusedParam>
+    <MixedInferredReturnType occurrences="1">
+      <code>self</code>
+    </MixedInferredReturnType>
+    <UndefinedClass occurrences="9">
+      <code>Event\Code\Test</code>
+      <code>Event\Code\Test</code>
+      <code>Event\Telemetry\Duration</code>
+      <code>Event\Telemetry\Duration</code>
+      <code>Event\Telemetry\Duration</code>
+      <code>Event\Telemetry\Duration</code>
+      <code>private</code>
+      <code>private</code>
+      <code>private</code>
+    </UndefinedClass>
   </file>
   <file src="src/Subscriber/TestPassedSubscriber.php">
-    <InternalClass occurrences="1"/>
-    <InternalMethod occurrences="1"/>
-    <MixedArgument occurrences="1">
-      <code>$slowThreshold</code>
-    </MixedArgument>
-    <MixedAssignment occurrences="1">
-      <code>$slowThreshold</code>
-    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>Event\Telemetry\Duration</code>
+    </MixedInferredReturnType>
+    <UndefinedClass occurrences="3">
+      <code>Event\Code\Test</code>
+      <code>Event\Telemetry\Duration</code>
+      <code>Event\Test\Passed</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/Subscriber/TestPreparedSubscriber.php">
+    <UndefinedClass occurrences="1">
+      <code>Event\Test\Prepared</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/Subscriber/TestSuiteFinishedSubscriber.php">
+    <UndefinedClass occurrences="1">
+      <code>Event\TestSuite\Finished</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/TimeKeeper.php">
+    <MixedInferredReturnType occurrences="2">
+      <code>Event\Telemetry\Duration</code>
+      <code>string</code>
+    </MixedInferredReturnType>
+    <UndefinedClass occurrences="6">
+      <code>Event\Code\Test</code>
+      <code>Event\Code\Test</code>
+      <code>Event\Code\Test</code>
+      <code>Event\Telemetry\Duration</code>
+      <code>Event\Telemetry\HRTime</code>
+      <code>Event\Telemetry\HRTime</code>
+    </UndefinedClass>
+    <UndefinedDocblockClass occurrences="2">
+      <code>array</code>
+      <code>private array $startedTimes = [];</code>
+    </UndefinedDocblockClass>
   </file>
   <file src="test/Example/Sleeper.php">
     <UnusedParam occurrences="1">
@@ -33,108 +124,89 @@
     </UnusedParam>
   </file>
   <file src="test/Example/SleeperTest.php">
-    <PropertyNotSetInConstructor occurrences="2">
-      <code>SleeperTest</code>
-      <code>SleeperTest</code>
-    </PropertyNotSetInConstructor>
+    <UndefinedClass occurrences="1">
+      <code>Framework\TestCase</code>
+    </UndefinedClass>
+  </file>
+  <file src="test/Example/bootstrap.php">
+    <InternalMethod occurrences="3">
+      <code>Event\Facade::registerSubscriber(new SlowTestDetector\Subscriber\TestPreparedSubscriber($timeKeeper))</code>
+    </InternalMethod>
+    <MissingDependency occurrences="1">
+      <code>SlowTestDetector\Formatter\ToMillisecondsDurationFormatter</code>
+    </MissingDependency>
+    <MixedArgument occurrences="1">
+      <code>new SlowTestDetector\Formatter\ToMillisecondsDurationFormatter()</code>
+    </MixedArgument>
   </file>
   <file src="test/Unit/Collector/DefaultCollectorTest.php">
-    <PropertyNotSetInConstructor occurrences="2">
-      <code>DefaultCollectorTest</code>
-      <code>DefaultCollectorTest</code>
-    </PropertyNotSetInConstructor>
+    <UndefinedClass occurrences="1">
+      <code>Framework\TestCase</code>
+    </UndefinedClass>
   </file>
   <file src="test/Unit/Comparator/DurationComparatorTest.php">
-    <PropertyNotSetInConstructor occurrences="2">
-      <code>DurationComparatorTest</code>
-      <code>DurationComparatorTest</code>
-    </PropertyNotSetInConstructor>
+    <UndefinedClass occurrences="1">
+      <code>Framework\TestCase</code>
+    </UndefinedClass>
   </file>
   <file src="test/Unit/Console/ColorTest.php">
-    <MixedArgument occurrences="1">
-      <code>$output</code>
-    </MixedArgument>
-    <MixedAssignment occurrences="1">
-      <code>$output</code>
-    </MixedAssignment>
-    <PropertyNotSetInConstructor occurrences="2">
-      <code>ColorTest</code>
-      <code>ColorTest</code>
-    </PropertyNotSetInConstructor>
+    <UndefinedClass occurrences="1">
+      <code>Framework\TestCase</code>
+    </UndefinedClass>
   </file>
   <file src="test/Unit/Exception/InvalidMaximumCountTest.php">
-    <PropertyNotSetInConstructor occurrences="2">
-      <code>InvalidMaximumCountTest</code>
-      <code>InvalidMaximumCountTest</code>
-    </PropertyNotSetInConstructor>
+    <UndefinedClass occurrences="1">
+      <code>Framework\TestCase</code>
+    </UndefinedClass>
   </file>
   <file src="test/Unit/Exception/InvalidMaximumDurationTest.php">
-    <PropertyNotSetInConstructor occurrences="2">
-      <code>InvalidMaximumDurationTest</code>
-      <code>InvalidMaximumDurationTest</code>
-    </PropertyNotSetInConstructor>
+    <UndefinedClass occurrences="1">
+      <code>Framework\TestCase</code>
+    </UndefinedClass>
   </file>
   <file src="test/Unit/Formatter/ToMillisecondsDurationFormatterTest.php">
-    <PropertyNotSetInConstructor occurrences="2">
-      <code>ToMillisecondsDurationFormatterTest</code>
-      <code>ToMillisecondsDurationFormatterTest</code>
-    </PropertyNotSetInConstructor>
+    <UndefinedClass occurrences="1">
+      <code>Framework\TestCase</code>
+    </UndefinedClass>
   </file>
   <file src="test/Unit/MaximumCountTest.php">
-    <PropertyNotSetInConstructor occurrences="2">
-      <code>MaximumCountTest</code>
-      <code>MaximumCountTest</code>
-    </PropertyNotSetInConstructor>
+    <UndefinedClass occurrences="1">
+      <code>Framework\TestCase</code>
+    </UndefinedClass>
   </file>
   <file src="test/Unit/MaximumDurationTest.php">
-    <PropertyNotSetInConstructor occurrences="2">
-      <code>MaximumDurationTest</code>
-      <code>MaximumDurationTest</code>
-    </PropertyNotSetInConstructor>
+    <UndefinedClass occurrences="1">
+      <code>Framework\TestCase</code>
+    </UndefinedClass>
   </file>
   <file src="test/Unit/Reporter/DefaultReporterTest.php">
-    <PropertyNotSetInConstructor occurrences="2">
-      <code>DefaultReporterTest</code>
-      <code>DefaultReporterTest</code>
-    </PropertyNotSetInConstructor>
+    <UndefinedClass occurrences="1">
+      <code>Framework\TestCase</code>
+    </UndefinedClass>
   </file>
   <file src="test/Unit/SlowTestTest.php">
-    <MixedArgument occurrences="2">
-      <code>$faker-&gt;word()</code>
-      <code>$faker-&gt;word()</code>
-    </MixedArgument>
-    <PropertyNotSetInConstructor occurrences="2">
-      <code>SlowTestTest</code>
-      <code>SlowTestTest</code>
-    </PropertyNotSetInConstructor>
+    <UndefinedClass occurrences="1">
+      <code>Framework\TestCase</code>
+    </UndefinedClass>
   </file>
   <file src="test/Unit/Subscriber/TestPassedSubscriberTest.php">
-    <PropertyNotSetInConstructor occurrences="2">
-      <code>TestPassedSubscriberTest</code>
-      <code>TestPassedSubscriberTest</code>
-    </PropertyNotSetInConstructor>
+    <UndefinedClass occurrences="1">
+      <code>Framework\TestCase</code>
+    </UndefinedClass>
   </file>
   <file src="test/Unit/Subscriber/TestPreparedSubscriberTest.php">
-    <PropertyNotSetInConstructor occurrences="2">
-      <code>TestPreparedSubscriberTest</code>
-      <code>TestPreparedSubscriberTest</code>
-    </PropertyNotSetInConstructor>
+    <UndefinedClass occurrences="1">
+      <code>Framework\TestCase</code>
+    </UndefinedClass>
   </file>
   <file src="test/Unit/Subscriber/TestSuiteFinishedSubscriberTest.php">
-    <MixedArgument occurrences="3">
-      <code>$faker-&gt;word()</code>
-      <code>$faker-&gt;word()</code>
-      <code>$faker-&gt;word()</code>
-    </MixedArgument>
-    <PropertyNotSetInConstructor occurrences="2">
-      <code>TestSuiteFinishedSubscriberTest</code>
-      <code>TestSuiteFinishedSubscriberTest</code>
-    </PropertyNotSetInConstructor>
+    <UndefinedClass occurrences="1">
+      <code>Framework\TestCase</code>
+    </UndefinedClass>
   </file>
   <file src="test/Unit/TimeKeeperTest.php">
-    <PropertyNotSetInConstructor occurrences="2">
-      <code>TimeKeeperTest</code>
-      <code>TimeKeeperTest</code>
-    </PropertyNotSetInConstructor>
+    <UndefinedClass occurrences="1">
+      <code>Framework\TestCase</code>
+    </UndefinedClass>
   </file>
 </files>
