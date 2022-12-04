@@ -111,7 +111,7 @@ final class ExtraSlowTest extends Framework\TestCase
 When you have activated the extension, you can run your tests as usually:
 
 ```sh
-$ vendor/bin/phpunit
+vendor/bin/phpunit
 ```
 
 When the extension has detected slow tests, it will report them:
