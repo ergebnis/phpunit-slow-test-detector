@@ -43,7 +43,7 @@ final class DefaultReporterTest extends Framework\TestCase
     {
         $faker = self::faker();
 
-        $durationFormatter = $this->createMock(Event\Telemetry\DurationFormatter::class);
+        $durationFormatter = $this->createMock(Formatter\DurationFormatter::class);
         $maximumDuration = MaximumDuration::fromMilliseconds($faker->numberBetween());
         $maximumCount = MaximumCount::fromInt($faker->numberBetween(1));
 

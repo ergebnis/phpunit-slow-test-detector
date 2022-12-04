@@ -49,15 +49,6 @@
   </file>
   <file src="test/Unit/Reporter/DefaultReporterTest.php">
     <AbstractInstantiation occurrences="21"/>
-    <ArgumentTypeCoercion occurrences="1">
-      <code>$durationFormatter</code>
-    </ArgumentTypeCoercion>
-    <MixedArgument occurrences="1">
-      <code>Event\Telemetry\DurationFormatter::class</code>
-    </MixedArgument>
-    <UndefinedClass occurrences="1">
-      <code>Event\Telemetry\DurationFormatter</code>
-    </UndefinedClass>
   </file>
   <file src="test/Unit/SlowTestTest.php">
     <AbstractInstantiation occurrences="1"/>
