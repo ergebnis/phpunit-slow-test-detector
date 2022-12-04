@@ -1,179 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.x-dev@">
-  <file src="src/Collector/Collector.php">
-    <UndefinedClass occurrences="1">
-      <code>SlowTest</code>
-    </UndefinedClass>
-    <UndefinedDocblockClass occurrences="1">
-      <code>list&lt;SlowTest&gt;</code>
-    </UndefinedDocblockClass>
+<files psalm-version="dev-master@">
+  <file src="src/Reporter/DefaultReporter.php">
+    <MixedArgument occurrences="2">
+      <code>$test-&gt;className()</code>
+      <code>$test-&gt;methodNameWithDataSet()</code>
+    </MixedArgument>
+    <UndefinedMethod occurrences="2">
+      <code>className</code>
+      <code>methodNameWithDataSet</code>
+    </UndefinedMethod>
   </file>
-  <file src="src/Collector/DefaultCollector.php">
-    <MixedInferredReturnType occurrences="1">
-      <code>list&lt;SlowTest&gt;</code>
-    </MixedInferredReturnType>
-    <UndefinedClass occurrences="1">
-      <code>SlowTest</code>
-    </UndefinedClass>
-    <UndefinedDocblockClass occurrences="3">
-      <code>array</code>
-      <code>list&lt;SlowTest&gt;</code>
-      <code>private array $slowTests = [];</code>
-    </UndefinedDocblockClass>
-  </file>
-  <file src="src/Comparator/DurationComparator.php">
-    <MixedInferredReturnType occurrences="1">
-      <code>int</code>
-    </MixedInferredReturnType>
-    <UndefinedClass occurrences="2">
-      <code>Event\Telemetry\Duration</code>
-      <code>Event\Telemetry\Duration</code>
-    </UndefinedClass>
-  </file>
-  <file src="src/Formatter/DurationFormatter.php">
-    <UndefinedClass occurrences="1">
-      <code>Event\Telemetry\Duration</code>
-    </UndefinedClass>
-  </file>
-  <file src="src/Formatter/ToMillisecondsDurationFormatter.php">
-    <MixedInferredReturnType occurrences="1">
-      <code>string</code>
-    </MixedInferredReturnType>
-    <UndefinedClass occurrences="1">
-      <code>Event\Telemetry\Duration</code>
-    </UndefinedClass>
-  </file>
-  <file src="src/Reporter/Reporter.php">
-    <UndefinedClass occurrences="1">
-      <code>SlowTest</code>
-    </UndefinedClass>
+  <file src="src/Subscriber/TestPassedSubscriber.php">
+    <MixedArgument occurrences="2">
+      <code>$annotations</code>
+      <code>$slowThreshold</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="2">
+      <code>$annotations</code>
+      <code>$slowThreshold</code>
+    </MixedAssignment>
+    <UndefinedMethod occurrences="3">
+      <code>className</code>
+      <code>methodName</code>
+    </UndefinedMethod>
   </file>
   <file src="src/TimeKeeper.php">
-    <MixedInferredReturnType occurrences="2">
-      <code>Event\Telemetry\Duration</code>
-      <code>string</code>
-    </MixedInferredReturnType>
-    <UndefinedClass occurrences="6">
-      <code>Event\Code\Test</code>
-      <code>Event\Code\Test</code>
-      <code>Event\Code\Test</code>
-      <code>Event\Telemetry\Duration</code>
-      <code>Event\Telemetry\HRTime</code>
-      <code>Event\Telemetry\HRTime</code>
-    </UndefinedClass>
-    <UndefinedDocblockClass occurrences="2">
-      <code>array</code>
-      <code>private array $startedTimes = [];</code>
-    </UndefinedDocblockClass>
-  </file>
-  <file src="test/Double/Collector/AppendingCollector.php">
-    <UndefinedClass occurrences="1">
-      <code>SlowTest</code>
-    </UndefinedClass>
-    <UndefinedDocblockClass occurrences="2">
-      <code>array</code>
-      <code>private array $collected = [];</code>
-    </UndefinedDocblockClass>
-  </file>
-  <file src="test/Double/Reporter/CountingReporter.php">
-    <MixedInferredReturnType occurrences="1">
-      <code>string</code>
-    </MixedInferredReturnType>
-    <UndefinedClass occurrences="1">
-      <code>SlowTest</code>
-    </UndefinedClass>
-  </file>
-  <file src="test/Double/Reporter/NullReporter.php">
-    <MixedInferredReturnType occurrences="1">
-      <code>string</code>
-    </MixedInferredReturnType>
-    <UndefinedClass occurrences="1">
-      <code>SlowTest</code>
-    </UndefinedClass>
+    <MixedArgument occurrences="2">
+      <code>$test-&gt;className()</code>
+      <code>$test-&gt;methodNameWithDataSet()</code>
+    </MixedArgument>
+    <UndefinedMethod occurrences="2">
+      <code>className</code>
+      <code>methodNameWithDataSet</code>
+    </UndefinedMethod>
   </file>
   <file src="test/Example/Sleeper.php">
-    <UnusedParam occurrences="1">
-      <code>$milliseconds</code>
-    </UnusedParam>
-  </file>
-  <file src="test/Example/SleeperTest.php">
-    <UndefinedClass occurrences="1">
-      <code>Framework\TestCase</code>
-    </UndefinedClass>
+    <ArgumentTypeCoercion occurrences="1">
+      <code>$this-&gt;milliseconds * 1000</code>
+    </ArgumentTypeCoercion>
   </file>
   <file src="test/Example/bootstrap.php">
-    <UndefinedClass occurrences="1">
-      <code>SlowTestDetector\MaximumCount</code>
-    </UndefinedClass>
+    <InternalMethod occurrences="3">
+      <code>Event\Facade::registerSubscriber(new SlowTestDetector\Subscriber\TestPreparedSubscriber($timeKeeper))</code>
+    </InternalMethod>
   </file>
   <file src="test/Unit/Collector/DefaultCollectorTest.php">
-    <UndefinedClass occurrences="1">
-      <code>Framework\TestCase</code>
-    </UndefinedClass>
-  </file>
-  <file src="test/Unit/Comparator/DurationComparatorTest.php">
-    <UndefinedClass occurrences="1">
-      <code>Framework\TestCase</code>
-    </UndefinedClass>
-  </file>
-  <file src="test/Unit/Console/ColorTest.php">
-    <UndefinedClass occurrences="1">
-      <code>Framework\TestCase</code>
-    </UndefinedClass>
-  </file>
-  <file src="test/Unit/Exception/InvalidMaximumCountTest.php">
-    <UndefinedClass occurrences="1">
-      <code>Framework\TestCase</code>
-    </UndefinedClass>
-  </file>
-  <file src="test/Unit/Exception/InvalidMaximumDurationTest.php">
-    <UndefinedClass occurrences="1">
-      <code>Framework\TestCase</code>
-    </UndefinedClass>
-  </file>
-  <file src="test/Unit/Formatter/ToMillisecondsDurationFormatterTest.php">
-    <UndefinedClass occurrences="1">
-      <code>Framework\TestCase</code>
-    </UndefinedClass>
-  </file>
-  <file src="test/Unit/MaximumCountTest.php">
-    <UndefinedClass occurrences="1">
-      <code>Framework\TestCase</code>
-    </UndefinedClass>
-  </file>
-  <file src="test/Unit/MaximumDurationTest.php">
-    <UndefinedClass occurrences="1">
-      <code>Framework\TestCase</code>
-    </UndefinedClass>
+    <AbstractInstantiation occurrences="7"/>
   </file>
   <file src="test/Unit/Reporter/DefaultReporterTest.php">
+    <AbstractInstantiation occurrences="21"/>
+    <ArgumentTypeCoercion occurrences="1">
+      <code>$durationFormatter</code>
+    </ArgumentTypeCoercion>
+    <MixedArgument occurrences="1">
+      <code>Event\Telemetry\DurationFormatter::class</code>
+    </MixedArgument>
     <UndefinedClass occurrences="1">
-      <code>Framework\TestCase</code>
+      <code>Event\Telemetry\DurationFormatter</code>
     </UndefinedClass>
   </file>
   <file src="test/Unit/SlowTestTest.php">
-    <UndefinedClass occurrences="1">
-      <code>Framework\TestCase</code>
-    </UndefinedClass>
+    <AbstractInstantiation occurrences="1"/>
   </file>
   <file src="test/Unit/Subscriber/TestPassedSubscriberTest.php">
-    <UndefinedClass occurrences="1">
-      <code>Framework\TestCase</code>
-    </UndefinedClass>
+    <AbstractInstantiation occurrences="14"/>
+    <TooFewArguments occurrences="8"/>
   </file>
   <file src="test/Unit/Subscriber/TestPreparedSubscriberTest.php">
-    <UndefinedClass occurrences="1">
-      <code>Framework\TestCase</code>
-    </UndefinedClass>
+    <AbstractInstantiation occurrences="1"/>
+    <TooFewArguments occurrences="1"/>
   </file>
   <file src="test/Unit/Subscriber/TestSuiteFinishedSubscriberTest.php">
-    <UndefinedClass occurrences="1">
-      <code>Framework\TestCase</code>
+    <AbstractInstantiation occurrences="6"/>
+    <InvalidArgument occurrences="3">
+      <code>$faker-&gt;word()</code>
+      <code>$faker-&gt;word()</code>
+      <code>$faker-&gt;word()</code>
+    </InvalidArgument>
+    <TooFewArguments occurrences="3"/>
+    <TooManyArguments occurrences="3"/>
+    <UndefinedClass occurrences="21">
+      <code>Event\TestSuite\FailureCollection</code>
+      <code>Event\TestSuite\FailureCollection</code>
+      <code>Event\TestSuite\FailureCollection</code>
+      <code>Event\TestSuite\FailureCollection</code>
+      <code>Event\TestSuite\FailureCollection</code>
+      <code>Event\TestSuite\FailureCollection</code>
+      <code>Event\TestSuite\FailureCollection</code>
+      <code>Event\TestSuite\FailureCollection</code>
+      <code>Event\TestSuite\FailureCollection</code>
+      <code>Event\TestSuite\FailureCollection</code>
+      <code>Event\TestSuite\FailureCollection</code>
+      <code>Event\TestSuite\FailureCollection</code>
+      <code>Event\TestSuite\FailureCollection</code>
+      <code>Event\TestSuite\FailureCollection</code>
+      <code>Event\TestSuite\FailureCollection</code>
+      <code>Event\TestSuite\FailureCollection</code>
+      <code>Event\TestSuite\FailureCollection</code>
+      <code>Event\TestSuite\FailureCollection</code>
+      <code>Event\TestSuite\Result</code>
+      <code>Event\TestSuite\Result</code>
+      <code>Event\TestSuite\Result</code>
     </UndefinedClass>
   </file>
   <file src="test/Unit/TimeKeeperTest.php">
-    <UndefinedClass occurrences="1">
-      <code>Framework\TestCase</code>
-    </UndefinedClass>
+    <AbstractInstantiation occurrences="5"/>
   </file>
 </files>
