@@ -26,7 +26,7 @@ final class TimeKeeper
         Event\Code\Test $test,
         Event\Telemetry\HRTime $startedTime,
     ): void {
-        $key = self::key($test);
+        $key = $test->id();
 
         $this->startedTimes[$key] = $startedTime;
     }
@@ -35,7 +35,7 @@ final class TimeKeeper
         Event\Code\Test $test,
         Event\Telemetry\HRTime $stoppedTime,
     ): Event\Telemetry\Duration {
-        $key = self::key($test);
+        $key = $test->id();
 
         if (!\array_key_exists($key, $this->startedTimes)) {
             return Event\Telemetry\Duration::fromSecondsAndNanoseconds(
@@ -49,10 +49,5 @@ final class TimeKeeper
         unset($this->startedTimes[$key]);
 
         return $stoppedTime->duration($startedTime);
-    }
-
-    private static function key(Event\Code\Test $test): string
-    {
-        return $test->id();
     }
 }
