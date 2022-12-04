@@ -18,7 +18,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
 use PHPUnit\Event;
-use PHPUnit\Util;
+use PHPUnit\Metadata;
 
 final class TestPassedSubscriber implements Event\Test\PassedSubscriber
 {
@@ -53,10 +53,13 @@ final class TestPassedSubscriber implements Event\Test\PassedSubscriber
 
     private function resolveMaximumDuration(Event\Code\Test $test): Event\Telemetry\Duration
     {
-        $annotations = Util\Test::parseTestMethodAnnotations(
+        /** @var Event\Code\TestMethod $test */
+        $docBlock = Metadata\Annotation\Parser\Registry::getInstance()->forMethod(
             $test->className(),
             $test->methodName(),
         );
+
+        $annotations = $docBlock->symbolAnnotations();
 
         if (!\array_key_exists('method', $annotations)) {
             return $this->maximumDuration->toTelemetryDuration();

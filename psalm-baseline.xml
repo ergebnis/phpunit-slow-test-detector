@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="dev-master@">
   <file src="src/Subscriber/TestPassedSubscriber.php">
-    <MixedArgument occurrences="2">
-      <code>$annotations</code>
+    <InternalClass occurrences="1">
+      <code>Metadata\Annotation\Parser\Registry::getInstance()</code>
+    </InternalClass>
+    <InternalMethod occurrences="3">
+      <code>Metadata\Annotation\Parser\Registry::getInstance()</code>
+      <code>forMethod</code>
+      <code>symbolAnnotations</code>
+    </InternalMethod>
+    <MixedArgument occurrences="1">
       <code>$slowThreshold</code>
     </MixedArgument>
-    <MixedAssignment occurrences="2">
-      <code>$annotations</code>
+    <MixedAssignment occurrences="1">
       <code>$slowThreshold</code>
     </MixedAssignment>
-    <UndefinedMethod occurrences="3">
-      <code>className</code>
-      <code>methodName</code>
-    </UndefinedMethod>
   </file>
   <file src="test/EndToEnd/Sleeper.php">
     <ArgumentTypeCoercion occurrences="1">
