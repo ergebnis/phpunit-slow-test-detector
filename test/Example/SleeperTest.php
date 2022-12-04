@@ -127,7 +127,7 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @return \Generator<int, array{0: int}>
      */
-    public function provideMilliseconds(): \Generator
+    public static function provideMilliseconds(): \Generator
     {
         $values = [
             250,
