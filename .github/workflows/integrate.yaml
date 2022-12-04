@@ -354,12 +354,5 @@ jobs:
       - name: "Run unit tests with phpunit/phpunit"
         run: "vendor/bin/phpunit --colors=always --configuration=test/phpunit.xml --testsuite=unit"
 
-      - name: "Run example tests with phpunit/phpunit"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/phpunit.xml --testsuite=example"
-        env:
-          MAXIMUM_NUMBER: 3
-
-      - name: "Run example tests with phpunit/phpunit"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/phpunit.xml --testsuite=example"
-        env:
-          MAXIMUM_NUMBER: 10
+      - name: "Run end-to-end tests with phpunit/phpunit"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/phpunit.xml --testsuite=end-to-end"

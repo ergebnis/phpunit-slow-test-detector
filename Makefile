@@ -39,11 +39,10 @@ static-code-analysis-baseline: vendor ## Generates a baseline for static code an
 	.phive/psalm --config=psalm.xml --set-baseline=psalm-baseline.xml
 
 .PHONY: tests
-tests: vendor ## Runs unit and example tests with phpunit/phpunit
+tests: vendor ## Runs unit and end-to-end tests with phpunit/phpunit
 	mkdir -p .build/phpunit
 	vendor/bin/phpunit --configuration=test/phpunit.xml --testsuite=unit
-	MAXIMUM_NUMBER=3 vendor/bin/phpunit --configuration=test/phpunit.xml --testsuite=example
-	MAXIMUM_NUMBER=10 vendor/bin/phpunit --configuration=test/phpunit.xml --testsuite=example
+	vendor/bin/phpunit --configuration=test/phpunit.xml --testsuite=end-to-end
 
 vendor: composer.json composer.lock
 	composer validate

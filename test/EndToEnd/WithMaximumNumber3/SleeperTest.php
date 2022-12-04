@@ -11,7 +11,7 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Example;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\WithMaximumNumber3;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
@@ -19,7 +19,7 @@ use PHPUnit\Framework;
 /**
  * @internal
  *
- * @covers \Ergebnis\PHPUnit\SlowTestDetector\Test\Example\Sleeper
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Sleeper
  */
 final class SleeperTest extends Framework\TestCase
 {
@@ -29,7 +29,7 @@ final class SleeperTest extends Framework\TestCase
     {
         $milliseconds = 0;
 
-        $sleeper = Sleeper::fromMilliseconds($milliseconds);
+        $sleeper = Test\EndToEnd\Sleeper::fromMilliseconds($milliseconds);
 
         $sleeper->sleep();
 
@@ -40,7 +40,7 @@ final class SleeperTest extends Framework\TestCase
     {
         $milliseconds = 250;
 
-        $sleeper = Sleeper::fromMilliseconds($milliseconds);
+        $sleeper = Test\EndToEnd\Sleeper::fromMilliseconds($milliseconds);
 
         $sleeper->sleep();
 
@@ -51,7 +51,7 @@ final class SleeperTest extends Framework\TestCase
     {
         $milliseconds = 500;
 
-        $sleeper = Sleeper::fromMilliseconds($milliseconds);
+        $sleeper = Test\EndToEnd\Sleeper::fromMilliseconds($milliseconds);
 
         $sleeper->sleep();
 
@@ -62,7 +62,7 @@ final class SleeperTest extends Framework\TestCase
     {
         $milliseconds = 750;
 
-        $sleeper = Sleeper::fromMilliseconds($milliseconds);
+        $sleeper = Test\EndToEnd\Sleeper::fromMilliseconds($milliseconds);
 
         $sleeper->sleep();
 
@@ -73,7 +73,7 @@ final class SleeperTest extends Framework\TestCase
     {
         $milliseconds = 1000;
 
-        $sleeper = Sleeper::fromMilliseconds($milliseconds);
+        $sleeper = Test\EndToEnd\Sleeper::fromMilliseconds($milliseconds);
 
         $sleeper->sleep();
 
@@ -87,7 +87,7 @@ final class SleeperTest extends Framework\TestCase
     {
         $milliseconds = 500;
 
-        $sleeper = Sleeper::fromMilliseconds($milliseconds);
+        $sleeper = Test\EndToEnd\Sleeper::fromMilliseconds($milliseconds);
 
         $sleeper->sleep();
 
@@ -101,7 +101,7 @@ final class SleeperTest extends Framework\TestCase
     {
         $milliseconds = 500;
 
-        $sleeper = Sleeper::fromMilliseconds($milliseconds);
+        $sleeper = Test\EndToEnd\Sleeper::fromMilliseconds($milliseconds);
 
         $sleeper->sleep();
 
@@ -117,7 +117,7 @@ final class SleeperTest extends Framework\TestCase
      */
     public function testSleeperSleepsWithSlowThresholdAnnotation(int $milliseconds): void
     {
-        $sleeper = Sleeper::fromMilliseconds($milliseconds);
+        $sleeper = Test\EndToEnd\Sleeper::fromMilliseconds($milliseconds);
 
         $sleeper->sleep();
 

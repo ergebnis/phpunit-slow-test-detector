@@ -14,7 +14,7 @@
       <code>methodName</code>
     </UndefinedMethod>
   </file>
-  <file src="test/Example/Sleeper.php">
+  <file src="test/EndToEnd/Sleeper.php">
     <ArgumentTypeCoercion occurrences="1">
       <code>$this-&gt;milliseconds * 1000</code>
     </ArgumentTypeCoercion>
