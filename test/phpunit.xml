@@ -1,13 +1,13 @@
 <phpunit
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="../../vendor/phpunit/phpunit/phpunit.xsd"
+    xsi:noNamespaceSchemaLocation="../vendor/phpunit/phpunit/phpunit.xsd"
     beStrictAboutChangesToGlobalState="true"
     beStrictAboutOutputDuringTests="true"
     beStrictAboutTestsThatDoNotTestAnything="true"
     beStrictAboutTodoAnnotatedTests="true"
-    bootstrap="../../vendor/autoload.php"
+    bootstrap="../vendor/autoload.php"
     cacheResult="true"
-    cacheResultFile="../../.build/phpunit/unit.cache"
+    cacheResultFile="../.build/phpunit/cache"
     colors="true"
     columns="max"
     executionOrder="random"
@@ -18,12 +18,15 @@
 >
     <coverage includeUncoveredFiles="true">
         <include>
-            <directory suffix=".php">../../src/</directory>
+            <directory suffix=".php">../src/</directory>
         </include>
     </coverage>
     <testsuites>
-        <testsuite name="Unit Tests">
-            <directory>.</directory>
+        <testsuite name="example">
+            <directory>Example/</directory>
+        </testsuite>
+        <testsuite name="unit">
+            <directory>Unit/</directory>
         </testsuite>
     </testsuites>
 </phpunit>
