@@ -7,7 +7,7 @@
     beStrictAboutTodoAnnotatedTests="true"
     bootstrap="bootstrap.php"
     cacheResult="true"
-    cacheResultFile="../../.build/phpunit/integration.cache"
+    cacheResultFile="../../.build/phpunit/example.cache"
     colors="true"
     columns="max"
     executionOrder="random"
