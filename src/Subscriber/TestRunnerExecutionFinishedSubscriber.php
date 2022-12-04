@@ -17,7 +17,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\Collector;
 use Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 use PHPUnit\Event;
 
-final class TestSuiteFinishedSubscriber implements Event\TestSuite\FinishedSubscriber
+final class TestRunnerExecutionFinishedSubscriber implements Event\TestRunner\ExecutionFinishedSubscriber
 {
     public function __construct(
         private readonly Collector\Collector $collector,
@@ -25,7 +25,7 @@ final class TestSuiteFinishedSubscriber implements Event\TestSuite\FinishedSubsc
     ) {
     }
 
-    public function notify(Event\TestSuite\Finished $event): void
+    public function notify(Event\TestRunner\ExecutionFinished $event): void
     {
         $slowTests = $this->collector->collected();
 

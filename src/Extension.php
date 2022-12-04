@@ -48,7 +48,7 @@ final class Extension implements Runner\Extension\Extension
                 $timeKeeper,
                 $collector,
             ),
-            new Subscriber\TestSuiteFinishedSubscriber(
+            new Subscriber\TestRunnerExecutionFinishedSubscriber(
                 $collector,
                 $reporter,
             ),

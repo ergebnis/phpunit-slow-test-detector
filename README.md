@@ -73,7 +73,7 @@ $reporter = new SlowTestDetector\Reporter\DefaultReporter(
     $maximumCount
 );
 
-Event\Facade::registerSubscriber(new SlowTestDetector\Subscriber\TestSuiteFinishedSubscriber(
+Event\Facade::registerSubscriber(new SlowTestDetector\Subscriber\TestRunnerExecutionFinishedSubscriber(
     $collector,
     $reporter
 ));
