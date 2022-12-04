@@ -56,7 +56,7 @@ final class MaximumDurationTest extends Framework\TestCase
     /**
      * @return \Generator<int, array{0: int, Event\Telemetry\Duration}>
      */
-    public function provideMillisecondsAndTelemetryDuration(): \Generator
+    public static function provideMillisecondsAndTelemetryDuration(): \Generator
     {
         $values = [
             1 => Event\Telemetry\Duration::fromSecondsAndNanoseconds(0, 1_000_000),

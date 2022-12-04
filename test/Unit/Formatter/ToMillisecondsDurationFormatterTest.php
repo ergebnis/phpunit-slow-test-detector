@@ -42,7 +42,7 @@ final class ToMillisecondsDurationFormatterTest extends Framework\TestCase
     /**
      * @return array<string, array{0: Event\Telemetry\Duration, 1: string}>
      */
-    public function provideDurationAndFormattedDuration(): array
+    public static function provideDurationAndFormattedDuration(): array
     {
         return [
             'zero' => [
