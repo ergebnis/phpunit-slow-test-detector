@@ -5,7 +5,7 @@
     beStrictAboutOutputDuringTests="true"
     beStrictAboutTestsThatDoNotTestAnything="true"
     beStrictAboutTodoAnnotatedTests="true"
-    bootstrap="bootstrap.php"
+    bootstrap="../../vendor/autoload.php"
     cacheResult="true"
     cacheResultFile="../../.build/phpunit/example.cache"
     colors="true"
@@ -16,6 +16,9 @@
     stopOnIncomplete="false"
     stopOnSkipped="false"
 >
+    <extensions>
+        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
+    </extensions>
     <testsuites>
         <testsuite name="Example Tests">
             <directory>.</directory>

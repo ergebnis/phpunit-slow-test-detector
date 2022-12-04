@@ -29,9 +29,4 @@
       <code>$this-&gt;milliseconds * 1000</code>
     </ArgumentTypeCoercion>
   </file>
-  <file src="test/Example/bootstrap.php">
-    <InternalMethod occurrences="3">
-      <code>Event\Facade::registerSubscriber(new SlowTestDetector\Subscriber\TestPreparedSubscriber($timeKeeper))</code>
-    </InternalMethod>
-  </file>
 </files>
