@@ -129,13 +129,7 @@ TXT;
                 ),
             ));
 
-            $test = $slowTest->test();
-
-            $testName = \sprintf(
-                '%s::%s',
-                $test->className(),
-                $test->methodNameWithDataSet(),
-            );
+            $testName = $slowTest->test()->id();
 
             return <<<TXT
 {$formattedDuration} {$formattedMaximumDuration} {$testName}
