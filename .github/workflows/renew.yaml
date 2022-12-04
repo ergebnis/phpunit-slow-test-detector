@@ -37,7 +37,7 @@ jobs:
         run: "echo \"::add-matcher::${{ runner.tool_cache }}/php.json\""
 
       - name: "Validate composer.json and composer.lock"
-        run: "composer validate --ansi --strict"
+        run: "composer validate --ansi"
 
       - name: "Determine composer cache directory"
         uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.7.0"
