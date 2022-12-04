@@ -2,9 +2,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../vendor/phpunit/phpunit/phpunit.xsd"
     beStrictAboutChangesToGlobalState="true"
-    beStrictAboutCoversAnnotation="true"
     beStrictAboutOutputDuringTests="true"
-    beStrictAboutResourceUsageDuringSmallTests="true"
     beStrictAboutTestsThatDoNotTestAnything="true"
     beStrictAboutTodoAnnotatedTests="true"
     bootstrap="../../vendor/autoload.php"
@@ -12,17 +10,13 @@
     cacheResultFile="../../.build/phpunit/unit.cache"
     colors="true"
     columns="max"
-    convertErrorsToExceptions="true"
-    convertNoticesToExceptions="true"
-    convertWarningsToExceptions="true"
     executionOrder="random"
     stopOnError="false"
     stopOnFailure="false"
     stopOnIncomplete="false"
     stopOnSkipped="false"
-    verbose="true"
 >
-    <coverage includeUncoveredFiles="true" processUncoveredFiles="true">
+    <coverage includeUncoveredFiles="true">
         <include>
             <directory suffix=".php">../../src/</directory>
         </include>

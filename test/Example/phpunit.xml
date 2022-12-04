@@ -2,9 +2,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../vendor/phpunit/phpunit/phpunit.xsd"
     beStrictAboutChangesToGlobalState="true"
-    beStrictAboutCoversAnnotation="true"
     beStrictAboutOutputDuringTests="true"
-    beStrictAboutResourceUsageDuringSmallTests="true"
     beStrictAboutTestsThatDoNotTestAnything="true"
     beStrictAboutTodoAnnotatedTests="true"
     bootstrap="bootstrap.php"
@@ -12,15 +10,11 @@
     cacheResultFile="../../.build/phpunit/integration.cache"
     colors="true"
     columns="max"
-    convertErrorsToExceptions="true"
-    convertNoticesToExceptions="true"
-    convertWarningsToExceptions="true"
     executionOrder="random"
     stopOnError="false"
     stopOnFailure="false"
     stopOnIncomplete="false"
     stopOnSkipped="false"
-    verbose="true"
 >
     <testsuites>
         <testsuite name="Example Tests">
