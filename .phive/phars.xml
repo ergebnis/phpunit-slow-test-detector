@@ -3,5 +3,5 @@
   <phar name="composer-require-checker" version="^4.3.0" installed="4.3.0" location="./.phive/composer-require-checker" copy="true"/>
   <phar name="infection" version="~0.25.6" installed="0.25.6" location="./.phive/infection" copy="true"/>
   <phar name="php-cs-fixer" version="^3.13.0" installed="3.13.0" location="./.phive/php-cs-fixer" copy="true"/>
-  <phar name="psalm" version="4.4.1" installed="4.4.1" location="./.phive/psalm" copy="true"/>
+  <phar name="psalm" version="^5.1.0" installed="5.1.0" location="./.phive/psalm" copy="true"/>
 </phive>
