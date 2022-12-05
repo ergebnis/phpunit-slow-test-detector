@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Comparator;
-use Ergebnis\PHPUnit\SlowTestDetector\Console;
 use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
@@ -119,7 +118,7 @@ TXT;
                 \STR_PAD_LEFT,
             );
 
-            $formattedMaximumDuration = Console\Color::dim(\sprintf(
+            $formattedMaximumDuration = \sprintf(
                 '(%s)',
                 \str_pad(
                     $durationFormatter->format($slowTest->maximumDuration()),
@@ -127,7 +126,7 @@ TXT;
                     ' ',
                     \STR_PAD_LEFT,
                 ),
-            ));
+            );
 
             $testName = $slowTest->test()->id();
 

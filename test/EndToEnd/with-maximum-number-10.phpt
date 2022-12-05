@@ -21,6 +21,17 @@ Random Seed:   %s
 
 .........                                                           9 / 9 (100%)
 
+Detected 8 tests that took longer than expected.
+
+1,0%s ms (125 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\WithMaximumNumber10\SleeperTest::testSleeperSleepsOneSecond
+  5%s ms (125 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\WithMaximumNumber10\SleeperTest::testSleeperSleepsWithSlowThresholdAnnotation#1
+  4%s ms (125 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\WithMaximumNumber10\SleeperTest::testSleeperSleepsWithDocBlockWithSlowThresholdAnnotationWhereValueIsNotAnInt
+  4%s ms (125 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\WithMaximumNumber10\SleeperTest::testSleeperSleepsWithDocBlockWithoutSlowThresholdAnnotation
+  3%s ms (125 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\WithMaximumNumber10\SleeperTest::testSleeperSleepsThreeHundredMilliseconds
+  2%s ms (125 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\WithMaximumNumber10\SleeperTest::testSleeperSleepsWithSlowThresholdAnnotation#0
+  2%s ms (125 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\WithMaximumNumber10\SleeperTest::testSleeperSleepsTwoHundredMilliseconds
+  1%s ms (125 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\WithMaximumNumber10\SleeperTest::testSleeperSleepsOneHundredFiftyMilliseconds
+
 Time: %s, Memory: %s
 
 OK (9 tests, 9 assertions)
