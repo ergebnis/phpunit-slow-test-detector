@@ -36,9 +36,9 @@ final class SleeperTest extends Framework\TestCase
         self::assertSame($milliseconds, $sleeper->milliseconds());
     }
 
-    public function testSleeperSleepsOneQuarterOfASecond(): void
+    public function testSleeperSleepsOneHundredFiftyMilliseconds(): void
     {
-        $milliseconds = 250;
+        $milliseconds = 150;
 
         $sleeper = Test\EndToEnd\Sleeper::fromMilliseconds($milliseconds);
 
@@ -47,9 +47,9 @@ final class SleeperTest extends Framework\TestCase
         self::assertSame($milliseconds, $sleeper->milliseconds());
     }
 
-    public function testSleeperSleepsHalfASeconds(): void
+    public function testSleeperSleepsTwoHundredMilliseconds(): void
     {
-        $milliseconds = 500;
+        $milliseconds = 200;
 
         $sleeper = Test\EndToEnd\Sleeper::fromMilliseconds($milliseconds);
 
@@ -58,9 +58,9 @@ final class SleeperTest extends Framework\TestCase
         self::assertSame($milliseconds, $sleeper->milliseconds());
     }
 
-    public function testSleeperSleepsThreeQuartersOfASecond(): void
+    public function testSleeperSleepsThreeHundredMilliseconds(): void
     {
-        $milliseconds = 750;
+        $milliseconds = 300;
 
         $sleeper = Test\EndToEnd\Sleeper::fromMilliseconds($milliseconds);
 
@@ -85,7 +85,7 @@ final class SleeperTest extends Framework\TestCase
      */
     public function testSleeperSleepsWithDocBlockWithoutSlowThresholdAnnotation(): void
     {
-        $milliseconds = 500;
+        $milliseconds = 400;
 
         $sleeper = Test\EndToEnd\Sleeper::fromMilliseconds($milliseconds);
 
@@ -99,7 +99,7 @@ final class SleeperTest extends Framework\TestCase
      */
     public function testSleeperSleepsWithDocBlockWithSlowThresholdAnnotationWhereValueIsNotAnInt(): void
     {
-        $milliseconds = 500;
+        $milliseconds = 450;
 
         $sleeper = Test\EndToEnd\Sleeper::fromMilliseconds($milliseconds);
 
@@ -131,7 +131,7 @@ final class SleeperTest extends Framework\TestCase
     {
         $values = [
             250,
-            500,
+            550,
         ];
 
         foreach ($values as $value) {
