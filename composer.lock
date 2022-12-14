@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "67f0d3000b2a80333b0b5e5cfe9db204",
+    "content-hash": "e46ba53f808ada449fa205709659430e",
     "packages": [
         {
             "name": "myclabs/deep-copy",
@@ -561,12 +561,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "743ef0d6b"
+                "reference": "415d81a68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/743ef0d6b",
-                "reference": "743ef0d6b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/415d81a68",
+                "reference": "415d81a68",
                 "shasum": ""
             },
             "require": {
@@ -653,7 +653,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-02T12:11:11+00:00"
+            "time": "2022-12-13T06:21:19+00:00"
         },
         {
             "name": "sebastian/cli-parser",
