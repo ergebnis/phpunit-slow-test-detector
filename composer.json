@@ -30,7 +30,7 @@
     "ergebnis/data-provider": "^1.2.0",
     "ergebnis/license": "^2.1.0",
     "ergebnis/php-cs-fixer-config": "~5.0.0",
-    "fakerphp/faker": "^1.20.0"
+    "fakerphp/faker": "^1.21.0"
   },
   "replace": {
     "friendsofphp/php-cs-fixer": "*"
