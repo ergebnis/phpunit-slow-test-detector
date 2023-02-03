@@ -5,13 +5,17 @@ With default configuration of extension
 
 declare(strict_types=1);
 
+use PHPUnit\TextUI;
+
 putenv('MAXIMUM_NUMBER=3');
 
 $_SERVER['argv'][] = '--configuration=test/EndToEnd/WithMaximumNumber3/phpunit.xml';
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-PHPUnit\TextUI\Application::main();
+$application = new TextUI\Application();
+
+$application->run($_SERVER['argv']);
 --EXPECTF--
 PHPUnit %s by Sebastian Bergmann and contributors.
 
