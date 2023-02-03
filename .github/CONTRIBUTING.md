@@ -20,7 +20,7 @@ We are using [`yamllint`](https://github.com/adrienverge/yamllint) to enforce co
 If you do not have `yamllint` installed yet, run
 
 ```sh
-$ brew install yamllint
+brew install yamllint
 ```
 
 to install `yamllint`.
@@ -30,7 +30,7 @@ We are using [`friendsofphp/php-cs-fixer`](https://github.com/FriendsOfPHP/PHP-C
 Run
 
 ```sh
-$ make coding-standards
+make coding-standards
 ```
 
 to automatically fix coding standard violations.
@@ -42,10 +42,34 @@ We are using [`maglnet/composer-require-checker`](https://github.com/maglnet/Com
 Run
 
 ```sh
-$ make dependency-analysis
+make dependency-analysis
 ```
 
 to run a dependency analysis.
+
+## Refactoring
+
+We are using [`rector/rector`](https://github.com/rectorphp/rector) to automatically refactor code.
+
+Run
+
+```sh
+make refactoring
+```
+
+to automatically refactor code.
+
+## Security Analysis
+
+We are using [`composer`](https://github.com/composer/composer) to run a security analysis.
+
+Run
+
+```sh
+make security-analysis
+```
+
+to run a security analysis.
 
 ## Static Code Analysis
 
@@ -54,7 +78,7 @@ We are using [`vimeo/psalm`](https://github.com/vimeo/psalm) to statically analy
 Run
 
 ```sh
-$ make static-code-analysis
+make static-code-analysis
 ```
 
 to run a static code analysis.
@@ -64,7 +88,7 @@ We are also using the baseline feature of [`vimeo/psalm`](https://psalm.dev/docs
 Run
 
 ```sh
-$ make static-code-analysis-baseline
+make static-code-analysis-baseline
 ```
 
 to regenerate the baseline in [`../psalm-baseline.xml`](../psalm-baseline.xml).
@@ -78,7 +102,7 @@ We are using [`phpunit/phpunit`](https://github.com/sebastianbergmann/phpunit) t
 Run
 
 ```sh
-$ make tests
+make tests
 ```
 
 to run all the tests.
@@ -88,7 +112,7 @@ to run all the tests.
 Run
 
 ```sh
-$ make
+make
 ```
 
 to enforce coding standards, run a static code analysis, and run tests!
@@ -98,7 +122,7 @@ to enforce coding standards, run a static code analysis, and run tests!
 :bulb: Run
 
 ```sh
-$ make help
+make help
 ```
 
 to display a list of available targets with corresponding descriptions.

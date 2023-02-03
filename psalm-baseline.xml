@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="5.6.0@e784128902dfe01d489c4123d69918a9f3c1eac5">
+  <file src="src/Extension.php">
+    <UnusedClass>
+      <code>Extension</code>
+    </UnusedClass>
+  </file>
   <file src="src/Subscriber/TestPassedSubscriber.php">
     <InternalClass>
       <code>Metadata\Annotation\Parser\Registry::getInstance()</code>
@@ -16,9 +21,69 @@
       <code>$slowThreshold</code>
     </MixedAssignment>
   </file>
+  <file src="test/Double/Collector/AppendingCollector.php">
+    <UnusedClass>
+      <code>AppendingCollector</code>
+    </UnusedClass>
+  </file>
+  <file src="test/Double/Reporter/CountingReporter.php">
+    <UnusedClass>
+      <code>CountingReporter</code>
+    </UnusedClass>
+  </file>
+  <file src="test/Double/Reporter/NullReporter.php">
+    <UnusedClass>
+      <code>NullReporter</code>
+    </UnusedClass>
+  </file>
   <file src="test/EndToEnd/Sleeper.php">
     <ArgumentTypeCoercion>
       <code>$this-&gt;milliseconds * 1000</code>
     </ArgumentTypeCoercion>
+  </file>
+  <file src="test/EndToEnd/WithMaximumNumber10/SleeperTest.php">
+    <UnusedClass>
+      <code>SleeperTest</code>
+    </UnusedClass>
+  </file>
+  <file src="test/EndToEnd/WithMaximumNumber3/SleeperTest.php">
+    <UnusedClass>
+      <code>SleeperTest</code>
+    </UnusedClass>
+  </file>
+  <file src="test/Unit/Comparator/DurationComparatorTest.php">
+    <UnusedClass>
+      <code>DurationComparatorTest</code>
+    </UnusedClass>
+  </file>
+  <file src="test/Unit/Console/ColorTest.php">
+    <UnusedClass>
+      <code>ColorTest</code>
+    </UnusedClass>
+  </file>
+  <file src="test/Unit/Exception/InvalidMaximumCountTest.php">
+    <UnusedClass>
+      <code>InvalidMaximumCountTest</code>
+    </UnusedClass>
+  </file>
+  <file src="test/Unit/Exception/InvalidMaximumDurationTest.php">
+    <UnusedClass>
+      <code>InvalidMaximumDurationTest</code>
+    </UnusedClass>
+  </file>
+  <file src="test/Unit/Formatter/ToMillisecondsDurationFormatterTest.php">
+    <UnusedClass>
+      <code>ToMillisecondsDurationFormatterTest</code>
+    </UnusedClass>
+  </file>
+  <file src="test/Unit/MaximumCountTest.php">
+    <UnusedClass>
+      <code>MaximumCountTest</code>
+    </UnusedClass>
+  </file>
+  <file src="test/Unit/MaximumDurationTest.php">
+    <UnusedClass>
+      <code>MaximumDurationTest</code>
+    </UnusedClass>
   </file>
 </files>

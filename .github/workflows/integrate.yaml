@@ -83,7 +83,7 @@ jobs:
         uses: "actions/checkout@v3.3.0"
 
       - name: "Lint YAML files"
-        uses: "ibiqlik/action-yamllint@v3.1"
+        uses: "ibiqlik/action-yamllint@v3.1.1"
         with:
           config_file: ".yamllint.yaml"
           file_or_dir: "."
@@ -95,12 +95,13 @@ jobs:
           coverage: "none"
           extensions: "none, ctype, dom, json, mbstring, phar, simplexml, tokenizer, xml, xmlwriter"
           php-version: "${{ matrix.php-version }}"
+          tools: "phive"
 
       - name: "Set up problem matchers for PHP"
         run: "echo \"::add-matcher::${{ runner.tool_cache }}/php.json\""
 
       - name: "Validate composer.json and composer.lock"
-        run: "composer validate --ansi"
+        run: "composer validate --ansi --strict"
 
       - name: "Determine composer cache directory"
         uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.8.0"
@@ -127,8 +128,15 @@ jobs:
         uses: "actions/cache@v3.2.4"
         with:
           path: ".build/php-cs-fixer"
-          key: "php-${{ matrix.php-version }}-php-cs-fixer-${{ github.sha }}"
-          restore-keys: "php-${{ matrix.php-version }}-php-cs-fixer-"
+          key: "php-${{ matrix.php-version }}-php-cs-fixer-${{ github.ref_name }}"
+          restore-keys: |
+            php-${{ matrix.php-version }}-php-cs-fixer-main
+            php-${{ matrix.php-version }}-php-cs-fixer-
+
+      - name: "Install dependencies with phive"
+        uses: "ergebnis/.github/actions/phive/install@1.8.0"
+        with:
+          trust-gpg-keys: "0x033E5F8D801A2F8D,0xE82B2FB314E9906E"
 
       - name: "Run friendsofphp/php-cs-fixer"
         run: ".phive/php-cs-fixer fix --ansi --config=.php-cs-fixer.php --diff --dry-run --verbose"
@@ -156,6 +164,7 @@ jobs:
           coverage: "none"
           extensions: "none, ctype, dom, json, mbstring, phar, simplexml, tokenizer, xml, xmlwriter"
           php-version: "${{ matrix.php-version }}"
+          tools: "phive"
 
       - name: "Set up problem matchers for PHP"
         run: "echo \"::add-matcher::${{ runner.tool_cache }}/php.json\""
@@ -175,8 +184,70 @@ jobs:
         with:
           dependencies: "${{ matrix.dependencies }}"
 
+      - name: "Install dependencies with phive"
+        uses: "ergebnis/.github/actions/phive/install@1.8.0"
+        with:
+          trust-gpg-keys: "0x033E5F8D801A2F8D,0xE82B2FB314E9906E"
+
       - name: "Run maglnet/composer-require-checker"
         run: ".phive/composer-require-checker check --config-file=$(pwd)/composer-require-checker.json"
+
+  refactoring:
+    name: "Refactoring"
+
+    runs-on: "ubuntu-latest"
+
+    strategy:
+      matrix:
+        php-version:
+          - "8.1"
+
+        dependencies:
+          - "locked"
+
+    steps:
+      - name: "Checkout"
+        uses: "actions/checkout@v3.3.0"
+
+      - name: "Set up PHP"
+        uses: "shivammathur/setup-php@2.24.0"
+        with:
+          coverage: "none"
+          extensions: "none, ctype, dom, intl, json, mbstring, phar, simplexml, tokenizer, xml, xmlwriter"
+          php-version: "${{ matrix.php-version }}"
+
+      - name: "Set up problem matchers for PHP"
+        run: "echo \"::add-matcher::${{ runner.tool_cache }}/php.json\""
+
+      - name: "Determine composer cache directory"
+        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.8.0"
+
+      - name: "Cache dependencies installed with composer"
+        uses: "actions/cache@v3.2.4"
+        with:
+          path: "${{ env.COMPOSER_CACHE_DIR }}"
+          key: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}"
+          restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
+
+      - name: "Install ${{ matrix.dependencies }} dependencies with composer"
+        uses: "ergebnis/.github/actions/composer/install@1.8.0"
+        with:
+          dependencies: "${{ matrix.dependencies }}"
+
+      - name: "Create cache directory for rector/rector"
+        run: "mkdir -p .build/rector"
+
+      - name: "Cache cache directory for rector/rector"
+        uses: "actions/cache@v3.2.4"
+        with:
+          path: ".build/rector"
+          key: "php-${{ matrix.php-version }}-rector-${{ github.ref_name }}"
+          restore-keys: |
+            php-${{ matrix.php-version }}-rector-main
+            php-${{ matrix.php-version }}-rector-
+
+      - name: "Run automated refactoring with rector/rector"
+        run: "vendor/bin/rector --ansi --config=rector.php --dry-run"
 
   security-analysis:
     name: "Security Analysis"
@@ -206,7 +277,7 @@ jobs:
         run: "echo \"::add-matcher::${{ runner.tool_cache }}/php.json\""
 
       - name: "Validate composer.json and composer.lock"
-        run: "composer validate --ansi"
+        run: "composer validate --ansi --strict"
 
       - name: "Check installed packages for security vulnerability advisories"
         run: "composer audit --ansi"
@@ -234,6 +305,7 @@ jobs:
           coverage: "none"
           extensions: "none, ctype, curl, dom, json, mbstring, pcntl, phar, posix, simplexml, tokenizer, xml, xmlwriter"
           php-version: "${{ matrix.php-version }}"
+          tools: "phive"
 
       - name: "Set up problem matchers for PHP"
         run: "echo \"::add-matcher::${{ runner.tool_cache }}/php.json\""
@@ -257,7 +329,7 @@ jobs:
         run: "mkdir -p .build/psalm"
 
       - name: "Run vimeo/psalm"
-        run: ".phive/psalm --config=psalm.xml --output-format=github --shepherd --show-info=false --stats --threads=4"
+        run: "vendor/bin/psalm --config=psalm.xml --output-format=github --shepherd --show-info=false --stats --threads=4"
 
   tests:
     name: "Tests"
@@ -271,7 +343,9 @@ jobs:
           - "8.2"
 
         dependencies:
+          - "lowest"
           - "locked"
+          - "highest"
 
     steps:
       - name: "Checkout"
