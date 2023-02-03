@@ -54,7 +54,7 @@ final class MaximumDurationTest extends Framework\TestCase
     }
 
     /**
-     * @return \Generator<int, array{0: int, Event\Telemetry\Duration}>
+     * @return \Generator<int, array{0: int, 1: Event\Telemetry\Duration}>
      */
     public static function provideMillisecondsAndTelemetryDuration(): \Generator
     {
