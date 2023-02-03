@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="dev-master@">
+<files psalm-version="5.6.0@e784128902dfe01d489c4123d69918a9f3c1eac5">
   <file src="src/Subscriber/TestPassedSubscriber.php">
-    <InternalClass occurrences="1">
+    <InternalClass>
       <code>Metadata\Annotation\Parser\Registry::getInstance()</code>
     </InternalClass>
-    <InternalMethod occurrences="3">
+    <InternalMethod>
       <code>Metadata\Annotation\Parser\Registry::getInstance()</code>
       <code>forMethod</code>
       <code>symbolAnnotations</code>
     </InternalMethod>
-    <MixedArgument occurrences="1">
+    <MixedArgument>
       <code>$slowThreshold</code>
     </MixedArgument>
-    <MixedAssignment occurrences="1">
+    <MixedAssignment>
       <code>$slowThreshold</code>
     </MixedAssignment>
   </file>
   <file src="test/EndToEnd/Sleeper.php">
-    <ArgumentTypeCoercion occurrences="1">
+    <ArgumentTypeCoercion>
       <code>$this-&gt;milliseconds * 1000</code>
     </ArgumentTypeCoercion>
   </file>
