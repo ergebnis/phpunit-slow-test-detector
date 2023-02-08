@@ -21,6 +21,9 @@
             <directory suffix=".php">../src/</directory>
         </include>
     </coverage>
+    <extensions>
+        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
+    </extensions>
     <testsuites>
         <testsuite name="end-to-end">
             <directory suffix=".phpt">EndToEnd/</directory>
