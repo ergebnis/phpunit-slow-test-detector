@@ -28,58 +28,35 @@ composer require --dev ergebnis/phpunit-slow-test-detector
 
 This extension provides three event subscribers for `phpunit/phpunit`:
 
-- `Subscriber\TestPreparedSubscriber`
-- `Subscriber\TestPassedSubscriber`
-- `Subscriber\TestSuiteFinishedSubscriber`
+- [`Subscriber\TestPreparedSubscriber`](src/Subscriber/TestPreparedSubscriber.php)
+- [`Subscriber\TestPassedSubscriber`](src/Subscriber/TestPassedSubscriber.php)
+- [`Subscriber\TestRunnerExecutionFinishedSubscriber`](src/Subscriber/TestRunnerExecutionFinishedSubscriber.php)
 
 These subscribers depend on the following:
 
-- a `TimeKeeper` for keeping test prepared and passed times
-- a `MaximumDuration`
-- a `Collector\Collector` for collecting slow tests
-- a `Reporter\Reporter` for reporting slow tests
+- a [`TimeKeeper`](src/TimeKeeper.php) for keeping test prepared and passed times
+- a [`MaximumDuration`](src/MaximumDuration.php)
+- a [`Collector\Collector`](src/Collector/Collector.php) for collecting slow tests
+- a [`Reporter\Reporter`](src/Reporter/Reporter.php) for reporting slow tests
 
-To activate this extension, you need to register these subscribers with the event system of `phpunit/phpunit`. As of the moment, this is only possible with a `bootstrap.php` script:
+To activate this extension, you need to bootstrap the extension in your `phpunit.xml` configuration file:
 
-```php
-<?php
-
-declare(strict_types=1);
-
-require_once __DIR__ . '/vendor/autoload.php';
-
-use Ergebnis\PHPUnit\SlowTestDetector;
-use PHPUnit\Event;
-
-$timeKeeper = new SlowTestDetector\TimeKeeper();
-
-Event\Facade::registerSubscriber(new SlowTestDetector\Subscriber\TestPreparedSubscriber($timeKeeper));
-
-$maximumDuration = SlowTestDetector\MaximumDuration::fromMilliseconds(500);
-
-$collector = new SlowTestDetector\Collector\DefaultCollector();
-
-Event\Facade::registerSubscriber(new SlowTestDetector\Subscriber\TestPassedSubscriber(
-    $maximumDuration,
-    $timeKeeper,
-    $collector
-));
-
-$maximumCount = SlowTestDetector\MaximumCount::fromInt(10);
-
-$reporter = new SlowTestDetector\Reporter\DefaultReporter(
-    new SlowTestDetector\Formatter\ToMillisecondsDurationFormatter(),
-    $maximumDuration,
-    $maximumCount
-);
-
-Event\Facade::registerSubscriber(new SlowTestDetector\Subscriber\TestRunnerExecutionFinishedSubscriber(
-    $collector,
-    $reporter
-));
+```diff
+ <phpunit
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+     bootstrap="vendor/autoload.php"
+ >
++    <extensions>
++        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
++    </extensions>
+     <testsuites>
+         <testsuite name="unit">
+             <directory>test/Unit/</directory>
+         </testsuite>
+     </testsuites>
+ </phpunit>
 ```
-
-:exclamation: Currently, this is a bit verbose. [@sebastianbergmann](https://github.com/sebastianbergmann), [@theseer](https://github.com/theseer), and I are going to meet to talk about how we can improve this.
 
 ### Configuring maximum duration per test case
 
