@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`1.0.0...main`][1.0.0...main].
 
+### Changed
+
+- Allowed configuring the maximum duration via `maximum-parameter` ([#212]), by [@localheinz]
+
 ### Fixed
 
 - Removed possibility to configure maximum count of reported tests using the `MAXIMUM_NUMBER` environment variable ([#211]), by [@localheinz]
@@ -73,5 +77,6 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#47]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/47
 [#49]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/49
 [#211]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/211
+[#212]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/212
 
 [@localheinz]: https://github.com/localheinz
