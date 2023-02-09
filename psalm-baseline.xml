@@ -36,6 +36,11 @@
       <code>NullReporter</code>
     </UnusedClass>
   </file>
+  <file src="test/EndToEnd/MaximumNumber/None/SleeperTest.php">
+    <UnusedClass>
+      <code>SleeperTest</code>
+    </UnusedClass>
+  </file>
   <file src="test/EndToEnd/MaximumNumber/Ten/SleeperTest.php">
     <UnusedClass>
       <code>SleeperTest</code>
