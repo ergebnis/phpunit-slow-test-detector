@@ -30,11 +30,8 @@ Detected 8 tests that took longer than expected.
 1,0%s ms (125 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumNumber\Ten\SleeperTest::testSleeperSleepsOneSecond
   5%s ms (125 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumNumber\Ten\SleeperTest::testSleeperSleepsWithSlowThresholdAnnotation#1
   4%s ms (125 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumNumber\Ten\SleeperTest::testSleeperSleepsWithDocBlockWithSlowThresholdAnnotationWhereValueIsNotAnInt
-  4%s ms (125 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumNumber\Ten\SleeperTest::testSleeperSleepsWithDocBlockWithoutSlowThresholdAnnotation
-  3%s ms (125 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumNumber\Ten\SleeperTest::testSleeperSleepsThreeHundredMilliseconds
-  2%s ms (125 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumNumber\Ten\SleeperTest::testSleeperSleepsWithSlowThresholdAnnotation#0
-  2%s ms (125 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumNumber\Ten\SleeperTest::testSleeperSleepsTwoHundredMilliseconds
-  1%s ms (125 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumNumber\Ten\SleeperTest::testSleeperSleepsOneHundredFiftyMilliseconds
+
+There are 5 additional slow tests that are not listed here.
 
 Time: %s, Memory: %s
 
