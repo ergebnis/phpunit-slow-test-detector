@@ -25,10 +25,6 @@ final class Extension implements Runner\Extension\Extension
     ): void {
         $maximumCount = MaximumCount::fromInt(3);
 
-        if (\is_string(\getenv('MAXIMUM_NUMBER'))) {
-            $maximumCount = MaximumCount::fromInt((int) \getenv('MAXIMUM_NUMBER'));
-        }
-
         $maximumDuration = MaximumDuration::fromMilliseconds(125);
 
         $collector = new Collector\DefaultCollector();
