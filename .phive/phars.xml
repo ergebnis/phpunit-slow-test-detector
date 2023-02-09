@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phive xmlns="https://phar.io/phive">
   <phar name="composer-require-checker" version="^4.5.0" installed="4.5.0" location="./.phive/composer-require-checker" copy="false"/>
-  <phar name="php-cs-fixer" version="^3.14.3" installed="3.14.3" location="./.phive/php-cs-fixer" copy="false"/>
 </phive>
