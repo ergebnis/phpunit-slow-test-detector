@@ -7,8 +7,6 @@ declare(strict_types=1);
 
 use PHPUnit\TextUI;
 
-putenv('MAXIMUM_NUMBER=3');
-
 $_SERVER['argv'][] = '--configuration=test/EndToEnd/MaximumNumber/Three/phpunit.xml';
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
