@@ -7,7 +7,7 @@ declare(strict_types=1);
 
 use PHPUnit\TextUI;
 
-$_SERVER['argv'][] = '--configuration=test/EndToEnd/MaximumNumber/Ten/phpunit.xml';
+$_SERVER['argv'][] = '--configuration=test/EndToEnd/MaximumNumber/None/phpunit.xml';
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
 
@@ -18,7 +18,7 @@ $application->run($_SERVER['argv']);
 PHPUnit %s by Sebastian Bergmann and contributors.
 
 Runtime: %s
-Configuration: test/EndToEnd/MaximumNumber/Ten/phpunit.xml
+Configuration: test/EndToEnd/MaximumNumber/None/phpunit.xml
 Random Seed:   %s
 
 .........                                                           9 / 9 (100%)
