@@ -11,7 +11,7 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture;
 
 final class Sleeper
 {

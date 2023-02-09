@@ -20,7 +20,7 @@
     </extensions>
     <testsuites>
         <testsuite name="unit">
-            <directory>.</directory>
+            <directory>../../../Fixture/</directory>
         </testsuite>
     </testsuites>
 </phpunit>
