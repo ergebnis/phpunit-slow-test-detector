@@ -18,33 +18,33 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 
 ### Added
 
-* Added `SlowTest` ([#6]), by [@localheinz]
-* Added `SlowTestCollector` ([#8]), by [@localheinz]
-* Added `Subscriber\TestPreparedSubscriber` ([#12]), by [@localheinz]
-* Added `Subscriber\TestPassedSubscriber` ([#13]), by [@localheinz]
-* Added `Formatter\ToMillisecondsDurationFormatter` ([#17]), by [@localheinz]
-* Added `Comparator\DurationComparator` ([#18]), by [@localheinz]
-* Added `SlowTestReporter` ([#19]), by [@localheinz]
-* Extracted `TimeKeeper` ([#22]), by [@localheinz]
-* Extracted `Collector` ([#23]), by [@localheinz]
-* Added `Subscriber\TestSuiteFinishedSubscriber` ([#34]), by [@localheinz]
-* Added `MaximumDuration` ([#46]), by [@localheinz]
-* Added `MaximumCount` ([#47]), by [@localheinz]
-* Allowed configuring the maximum duration for a test with a `@slowThreshold` annotation ([#49]), by [@localheinz]
+- Added `SlowTest` ([#6]), by [@localheinz]
+- Added `SlowTestCollector` ([#8]), by [@localheinz]
+- Added `Subscriber\TestPreparedSubscriber` ([#12]), by [@localheinz]
+- Added `Subscriber\TestPassedSubscriber` ([#13]), by [@localheinz]
+- Added `Formatter\ToMillisecondsDurationFormatter` ([#17]), by [@localheinz]
+- Added `Comparator\DurationComparator` ([#18]), by [@localheinz]
+- Added `SlowTestReporter` ([#19]), by [@localheinz]
+- Extracted `TimeKeeper` ([#22]), by [@localheinz]
+- Extracted `Collector` ([#23]), by [@localheinz]
+- Added `Subscriber\TestSuiteFinishedSubscriber` ([#34]), by [@localheinz]
+- Added `MaximumDuration` ([#46]), by [@localheinz]
+- Added `MaximumCount` ([#47]), by [@localheinz]
+- Allowed configuring the maximum duration for a test with a `@slowThreshold` annotation ([#49]), by [@localheinz]
 
 ### Changed
 
-* Renamed `SlowTestReporter` to `Reporter\Reporter` ([#20]), by [@localheinz]
-* Renamed `Reporter\Reporter` to `Reporter\DefaultReporter` and extracted `Reporter\Reporter` interface ([#21]), by [@localheinz]
-* Renamed `Collector` to `Collector\DefaultCollector` and extracted `Collector\Collector` interface ([#24]), by [@localheinz]
-* Used `TimeKeeper` instead of `SlowTestCollector` in `Subscriber\TestPreparedSubscriber` ([#25]), by [@localheinz]
-* Used `TimeKeeper` and `Collector\Collector` instead of `SlowTestCollector` in `Subscriber\TestPassedSubscriber` ([#26]), by [@localheinz]
-* Composed maximum duration into `SlowTest` ([#37]), by [@localheinz]
-* Rendered maximum duration in report created by `DefaultReporter` ([#38]), by [@localheinz]
+- Renamed `SlowTestReporter` to `Reporter\Reporter` ([#20]), by [@localheinz]
+- Renamed `Reporter\Reporter` to `Reporter\DefaultReporter` and extracted `Reporter\Reporter` interface ([#21]), by [@localheinz]
+- Renamed `Collector` to `Collector\DefaultCollector` and extracted `Collector\Collector` interface ([#24]), by [@localheinz]
+- Used `TimeKeeper` instead of `SlowTestCollector` in `Subscriber\TestPreparedSubscriber` ([#25]), by [@localheinz]
+- Used `TimeKeeper` and `Collector\Collector` instead of `SlowTestCollector` in `Subscriber\TestPassedSubscriber` ([#26]), by [@localheinz]
+- Composed maximum duration into `SlowTest` ([#37]), by [@localheinz]
+- Rendered maximum duration in report created by `DefaultReporter` ([#38]), by [@localheinz]
 
 ### Removed
 
-* Removed `SlowTestCollector` ([#36]), by [@localheinz]
+- Removed `SlowTestCollector` ([#36]), by [@localheinz]
 
 [1.0.0]: https://github.com/ergebnis/phpunit-slow-test-detector/releases/tag/1.0.0
 
