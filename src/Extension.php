@@ -27,6 +27,10 @@ final class Extension implements Runner\Extension\Extension
 
         $maximumDuration = MaximumDuration::fromMilliseconds(125);
 
+        if ($parameters->has('maximum-duration')) {
+            $maximumDuration = MaximumDuration::fromMilliseconds((int) $parameters->get('maximum-duration'));
+        }
+
         $collector = new Collector\DefaultCollector();
 
         $reporter = new Reporter\DefaultReporter(
