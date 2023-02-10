@@ -28,8 +28,11 @@ Detected 8 tests that took longer than expected.
 1,0%s ms (50 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsOneSecond
   5%s ms (50 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsWithSlowThresholdAnnotation#1
   4%s ms (50 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsWithDocBlockWithSlowThresholdAnnotationWhereValueIsNotAnInt
-
-There are 5 additional slow tests that are not listed here.
+  4%s ms (50 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsWithDocBlockWithoutSlowThresholdAnnotation
+  3%s ms (50 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsThreeHundredMilliseconds
+  2%s ms (50 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsWithSlowThresholdAnnotation#0
+  2%s ms (50 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsTwoHundredMilliseconds
+  1%s ms (50 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsOneHundredFiftyMilliseconds
 
 Time: %s, Memory: %s
 

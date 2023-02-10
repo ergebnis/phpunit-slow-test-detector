@@ -23,13 +23,10 @@ Random Seed:   %s
 
 .........                                                           9 / 9 (100%)
 
-Detected 8 tests that took longer than expected.
+Detected 2 tests that took longer than expected.
 
-1,0%s ms (125 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsOneSecond
-  5%s ms (125 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsWithSlowThresholdAnnotation#1
-  4%s ms (125 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsWithDocBlockWithSlowThresholdAnnotationWhereValueIsNotAnInt
-
-There are 5 additional slow tests that are not listed here.
+1,0%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsOneSecond
+  5%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsWithSlowThresholdAnnotation#1
 
 Time: %s, Memory: %s
 
