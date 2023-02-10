@@ -58,6 +58,32 @@ To activate this extension, you need to bootstrap the extension in your `phpunit
  </phpunit>
 ```
 
+### Configuring maximum duration for all tests
+
+You can configure the maximum duration in milliseconds with the `maximum-duration` parameter in your `phpunit.xml` configuration file.
+
+This example configures the maximum duration for all tests to 250ms:
+
+```diff
+ <phpunit
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+     bootstrap="vendor/autoload.php"
+ >
+     <extensions>
+-        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
++        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension">
++            <parameter name="maximum-duration" value="250"/>
++        </boostrap>
+     </extensions>
+     <testsuites>
+         <testsuite name="unit">
+             <directory>test/Unit/</directory>
+         </testsuite>
+     </testsuites>
+ </phpunit>
+```
+
 ### Configuring maximum duration per test case
 
 When necessary, you can configure the maximum duration for a test with a `@slowThreshold` annotation in the DocBlock.
