@@ -21,19 +21,16 @@ Runtime: %s
 Configuration: test/EndToEnd/MaximumDuration/Fifty/phpunit.xml
 Random Seed:   %s
 
-.........                                                           9 / 9 (100%)
+.......                                                             7 / 7 (100%)
 
-Detected 8 tests that took longer than expected.
+Detected 5 tests that took longer than expected.
 
-1,0%s ms (50 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsOneSecond
-  5%s ms (50 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsWithSlowThresholdAnnotation#1
-  4%s ms (50 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsWithDocBlockWithSlowThresholdAnnotationWhereValueIsNotAnInt
-  4%s ms (50 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsWithDocBlockWithoutSlowThresholdAnnotation
-  3%s ms (50 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsThreeHundredMilliseconds
-  2%s ms (50 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsWithSlowThresholdAnnotation#0
-  2%s ms (50 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsTwoHundredMilliseconds
-  1%s ms (50 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsOneHundredFiftyMilliseconds
+1%s ms (50 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromSlowThresholdAnnotation
+1%s ms (50 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsWithDocBlockWithSlowThresholdAnnotationWhereValueIsNotAnInt
+ 9%s ms (50 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsShorterThanMaximumDurationFromSlowThresholdAnnotation
+ 8%s ms (50 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsWithDocBlockWithoutSlowThresholdAnnotation
+ 6%s ms (50 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsJustAboveDefaultMaximumDuration
 
 Time: %s, Memory: %s
 
-OK (9 tests, 9 assertions)
+OK (7 tests, 7 assertions)
