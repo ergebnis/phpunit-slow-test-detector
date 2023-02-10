@@ -11,6 +11,7 @@ For a full diff see [`1.0.0...main`][1.0.0...main].
 ### Changed
 
 - Allowed configuring the maximum duration via `maximum-duration` parameter ([#212]), by [@localheinz]
+- Allowed configuring the maximum count via `maximum-count` parameter ([#217]), by [@localheinz]
 
 ### Fixed
 
@@ -78,5 +79,6 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#49]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/49
 [#211]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/211
 [#212]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/212
+[#217]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/217
 
 [@localheinz]: https://github.com/localheinz

@@ -25,6 +25,10 @@ final class Extension implements Runner\Extension\Extension
     ): void {
         $maximumCount = MaximumCount::fromInt(3);
 
+        if ($parameters->has('maximum-count')) {
+            $maximumCount = MaximumCount::fromInt((int) $parameters->get('maximum-count'));
+        }
+
         $maximumDuration = MaximumDuration::fromMilliseconds(125);
 
         if ($parameters->has('maximum-duration')) {
