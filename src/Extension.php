@@ -23,13 +23,13 @@ final class Extension implements Runner\Extension\Extension
         Runner\Extension\Facade $facade,
         Runner\Extension\ParameterCollection $parameters,
     ): void {
-        $maximumCount = MaximumCount::fromInt(3);
+        $maximumCount = MaximumCount::fromInt(10);
 
         if ($parameters->has('maximum-count')) {
             $maximumCount = MaximumCount::fromInt((int) $parameters->get('maximum-count'));
         }
 
-        $maximumDuration = MaximumDuration::fromMilliseconds(125);
+        $maximumDuration = MaximumDuration::fromMilliseconds(500);
 
         if ($parameters->has('maximum-duration')) {
             $maximumDuration = MaximumDuration::fromMilliseconds((int) $parameters->get('maximum-duration'));

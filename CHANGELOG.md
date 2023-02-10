@@ -16,6 +16,7 @@ For a full diff see [`1.0.0...main`][1.0.0...main].
 ### Fixed
 
 - Removed possibility to configure maximum count of reported tests using the `MAXIMUM_NUMBER` environment variable ([#211]), by [@localheinz]
+- Increased default maximum count from `3` to `10` and default maximum duration from `125` to `500` milliseconds ([#218]), by [@localheinz]
 
 ## [`1.0.0`][1.0.0]
 
@@ -80,5 +81,6 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#211]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/211
 [#212]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/212
 [#217]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/217
+[#218]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/218
 
 [@localheinz]: https://github.com/localheinz
