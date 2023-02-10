@@ -22,7 +22,7 @@
     </extensions>
     <testsuites>
         <testsuite name="unit">
-            <directory>../../../Fixture/</directory>
+            <directory>.</directory>
         </testsuite>
     </testsuites>
 </phpunit>
