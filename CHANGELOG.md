@@ -10,7 +10,7 @@ For a full diff see [`1.0.0...main`][1.0.0...main].
 
 ### Changed
 
-- Allowed configuring the maximum duration via `maximum-parameter` ([#212]), by [@localheinz]
+- Allowed configuring the maximum duration via `maximum-duration` parameter ([#212]), by [@localheinz]
 
 ### Fixed
 
