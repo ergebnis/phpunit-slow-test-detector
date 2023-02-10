@@ -94,9 +94,9 @@ vendor/bin/phpunit
 When the extension has detected slow tests, it will report them:
 
 ```sh
-PHPUnit 10.0-dev by Sebastian Bergmann and contributors.
+PHPUnit 10.0.0 by Sebastian Bergmann and contributors.
 
-Runtime:       PHP 7.4.14
+Runtime:       PHP 8.1.0
 Configuration: test/Example/phpunit.xml
 Random Seed:   1611649366
 
