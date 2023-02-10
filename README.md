@@ -49,9 +49,10 @@ To bootstrap the extension, adjust your `phpunit.xml` configuration file:
 
 You can configure the extension with the following parameters in your `phpunit.xml` configuration file:
 
+- `maximum-count`, an `int`, the maximum count of slow test that should be listed, defaults to `3`
 - `maximum-duration`, an `int`, the maximum duration in milliseconds for all tests, defaults to `250`
 
-The following example configures the maximum duration for all tests to 250ms:
+The following example configures the maximum count of slow tests to three, and the maximum duration for all tests to 250 milliseconds:
 
 ```xml
 <phpunit
