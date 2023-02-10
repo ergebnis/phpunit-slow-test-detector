@@ -21,13 +21,18 @@ Runtime: %s
 Configuration: test/EndToEnd/MaximumCount/Five/phpunit.xml
 Random Seed:   %s
 
-.........                                                           9 / 9 (100%)
+.......                                                             7 / 7 (100%)
 
-Detected 2 tests that took longer than expected.
+Detected 6 tests that took longer than expected.
 
-1,0%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsOneSecond
-  5%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsWithSlowThresholdAnnotation#1
+5%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#3
+5%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#2
+5%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#1
+5%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#0
+5%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsJustAboveDefaultMaximumDuration
+
+There is one additional slow test that is not listed here.
 
 Time: %s, Memory: %s
 
-OK (9 tests, 9 assertions)
+OK (7 tests, 7 assertions)
