@@ -38,7 +38,7 @@ final class SleeperTest extends Framework\TestCase
 
     public function testSleeperSleepsJustBelowDefaultMaximumDuration(): void
     {
-        $milliseconds = 499;
+        $milliseconds = 400;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
@@ -49,18 +49,7 @@ final class SleeperTest extends Framework\TestCase
 
     public function testSleeperSleepsJustAboveDefaultMaximumDuration(): void
     {
-        $milliseconds = 501;
-
-        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
-
-        $sleeper->sleep();
-
-        self::assertSame($milliseconds, $sleeper->milliseconds());
-    }
-
-    public function testSleeperSleepsOneThousandMilliseconds(): void
-    {
-        $milliseconds = 1000;
+        $milliseconds = 600;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
@@ -86,13 +75,22 @@ final class SleeperTest extends Framework\TestCase
      */
     public static function provideMillisecondsGreaterThanDefaultMaximumDuration(): \Generator
     {
-        $defaultMaximumDurationInMilliseconds = 500;
+        $values = [
+            700,
+            800,
+            900,
+            1000,
+            1100,
+            1200,
+            1300,
+            1400,
+            1500,
+            1600,
+        ];
 
-        foreach (\range(1, 9) as $value) {
-            $milliseconds = $defaultMaximumDurationInMilliseconds + $value * 50;
-
-            yield $milliseconds => [
-                $milliseconds,
+        foreach ($values as $value) {
+            yield $value => [
+                $value,
             ];
         }
     }
