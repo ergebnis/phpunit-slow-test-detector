@@ -24,22 +24,9 @@ composer require --dev ergebnis/phpunit-slow-test-detector
 
 ## Usage
 
-### Activating the extension
+### Bootstrapping the extension
 
-This extension provides three event subscribers for `phpunit/phpunit`:
-
-- [`Subscriber\TestPreparedSubscriber`](src/Subscriber/TestPreparedSubscriber.php)
-- [`Subscriber\TestPassedSubscriber`](src/Subscriber/TestPassedSubscriber.php)
-- [`Subscriber\TestRunnerExecutionFinishedSubscriber`](src/Subscriber/TestRunnerExecutionFinishedSubscriber.php)
-
-These subscribers depend on the following:
-
-- a [`TimeKeeper`](src/TimeKeeper.php) for keeping test prepared and passed times
-- a [`MaximumDuration`](src/MaximumDuration.php)
-- a [`Collector\Collector`](src/Collector/Collector.php) for collecting slow tests
-- a [`Reporter\Reporter`](src/Reporter/Reporter.php) for reporting slow tests
-
-To activate this extension, you need to bootstrap the extension in your `phpunit.xml` configuration file:
+To bootstrap the extension, adjust your `phpunit.xml` configuration file:
 
 ```diff
  <phpunit
