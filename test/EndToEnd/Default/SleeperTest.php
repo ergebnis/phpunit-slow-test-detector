@@ -88,7 +88,7 @@ final class SleeperTest extends Framework\TestCase
     {
         $defaultMaximumDurationInMilliseconds = 500;
 
-        foreach (\range(1, 10) as $value) {
+        foreach (\range(1, 9) as $value) {
             $milliseconds = $defaultMaximumDurationInMilliseconds + $value * 10;
 
             yield $milliseconds => [

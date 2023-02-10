@@ -21,12 +21,11 @@ Runtime: %s
 Configuration: test/EndToEnd/Default/phpunit.xml
 Random Seed:   %s
 
-..............                                                    14 / 14 (100%)
+.............                                                     13 / 13 (100%)
 
-Detected 13 tests that took longer than expected.
+Detected 12 tests that took longer than expected.
 
 1,0%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsOneThousandMilliseconds
-  6%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#9
   5%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#8
   5%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#7
   5%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#6
@@ -35,9 +34,10 @@ Detected 13 tests that took longer than expected.
   5%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#3
   5%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#2
   5%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#1
+  5%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#0
 
-There are 3 additional slow tests that are not listed here.
+There are 2 additional slow tests that are not listed here.
 
 Time: %s, Memory: %s
 
-OK (14 tests, 14 assertions)
+OK (13 tests, 13 assertions)
