@@ -45,37 +45,38 @@ To bootstrap the extension, adjust your `phpunit.xml` configuration file:
  </phpunit>
 ```
 
-### Configuring maximum duration for all tests
+### Configuring the extension
 
-You can configure the maximum duration in milliseconds with the `maximum-duration` parameter in your `phpunit.xml` configuration file.
+You can configure the extension with the following parameters in your `phpunit.xml` configuration file:
 
-This example configures the maximum duration for all tests to 250ms:
+- `maximum-duration`, an `int`, the maximum duration in milliseconds for all tests, defaults to `250`
 
-```diff
- <phpunit
-     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
-     bootstrap="vendor/autoload.php"
- >
-     <extensions>
--        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
-+        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension">
-+            <parameter name="maximum-duration" value="250"/>
-+        </boostrap>
-     </extensions>
-     <testsuites>
-         <testsuite name="unit">
-             <directory>test/Unit/</directory>
-         </testsuite>
-     </testsuites>
- </phpunit>
+The following example configures the maximum duration for all tests to 250ms:
+
+```xml
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+    bootstrap="vendor/autoload.php"
+>
+    <extensions>
+        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension">
+            <parameter name="maximum-duration" value="250"/>
+        </boostrap>
+    </extensions>
+    <testsuites>
+        <testsuite name="unit">
+            <directory>test/Unit/</directory>
+       </testsuite>
+    </testsuites>
+</phpunit>
 ```
 
-### Configuring maximum duration per test case
+#### Configuring the maximum duration per test case
 
-When necessary, you can configure the maximum duration for a test with a `@slowThreshold` annotation in the DocBlock.
+You can configure the maximum duration for a single test with a `@slowThreshold` annotation in the DocBlock.
 
-This example configures the maximum duration for a single test to 5.000 ms:
+The following example configures the maximum duration for a single test to 5.000 ms:
 
 ```php
 <?php
