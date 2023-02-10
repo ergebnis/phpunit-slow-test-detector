@@ -9,8 +9,6 @@ updates:
     directory: "/"
     ignore:
       - dependency-name: "phpunit/phpunit"
-        versions:
-          - ">= 0"
     labels:
       - "dependency"
     open-pull-requests-limit: 10
