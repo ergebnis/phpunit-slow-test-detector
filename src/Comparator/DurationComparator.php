@@ -15,6 +15,9 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Comparator;
 
 use PHPUnit\Event;
 
+/**
+ * @internal
+ */
 final class DurationComparator
 {
     public function compare(

@@ -20,6 +20,9 @@ use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use PHPUnit\Event;
 
+/**
+ * @internal
+ */
 final class DefaultReporter implements Reporter
 {
     private readonly Comparator\DurationComparator $durationComparator;

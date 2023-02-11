@@ -16,6 +16,9 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Subscriber;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
 use PHPUnit\Event;
 
+/**
+ * @internal
+ */
 final class TestPreparedSubscriber implements Event\Test\PreparedSubscriber
 {
     public function __construct(private readonly TimeKeeper $timeKeeper)

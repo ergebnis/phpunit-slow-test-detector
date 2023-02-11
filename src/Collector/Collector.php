@@ -15,6 +15,9 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Collector;
 
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 
+/**
+ * @internal
+ */
 interface Collector
 {
     public function collect(SlowTest $slowTest): void;

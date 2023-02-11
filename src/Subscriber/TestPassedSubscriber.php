@@ -20,6 +20,9 @@ use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
 use PHPUnit\Event;
 use PHPUnit\Metadata;
 
+/**
+ * @internal
+ */
 final class TestPassedSubscriber implements Event\Test\PassedSubscriber
 {
     public function __construct(

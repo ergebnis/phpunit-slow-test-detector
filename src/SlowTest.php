@@ -16,6 +16,8 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
 use PHPUnit\Event;
 
 /**
+ * @internal
+ *
  * @psalm-immutable
  */
 final class SlowTest

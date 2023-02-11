@@ -17,6 +17,9 @@ use Ergebnis\PHPUnit\SlowTestDetector\Collector;
 use Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 use PHPUnit\Event;
 
+/**
+ * @internal
+ */
 final class TestRunnerExecutionFinishedSubscriber implements Event\TestRunner\ExecutionFinishedSubscriber
 {
     public function __construct(
