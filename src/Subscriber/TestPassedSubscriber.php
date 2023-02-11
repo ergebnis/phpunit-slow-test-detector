@@ -56,28 +56,37 @@ final class TestPassedSubscriber implements Event\Test\PassedSubscriber
 
     private function resolveMaximumDuration(Event\Code\Test $test): Event\Telemetry\Duration
     {
+        $annotations = [
+            'maximumDuration',
+            'slowThreshold',
+        ];
+
         /** @var Event\Code\TestMethod $test */
         $docBlock = Metadata\Annotation\Parser\Registry::getInstance()->forMethod(
             $test->className(),
             $test->methodName(),
         );
 
-        $annotations = $docBlock->symbolAnnotations();
+        $symbolAnnotations = $docBlock->symbolAnnotations();
 
-        if (!\array_key_exists('slowThreshold', $annotations)) {
-            return $this->maximumDuration->toTelemetryDuration();
+        foreach ($annotations as $annotation) {
+            if (!\array_key_exists($annotation, $symbolAnnotations)) {
+                continue;
+            }
+
+            if (!\is_array($symbolAnnotations[$annotation])) {
+                continue;
+            }
+
+            $maximumDuration = \reset($symbolAnnotations[$annotation]);
+
+            if (1 !== \preg_match('/^\d+$/', $maximumDuration)) {
+                continue;
+            }
+
+            return MaximumDuration::fromMilliseconds((int) $maximumDuration)->toTelemetryDuration();
         }
 
-        if (!\is_array($annotations['slowThreshold'])) {
-            return $this->maximumDuration->toTelemetryDuration();
-        }
-
-        $slowThreshold = \reset($annotations['slowThreshold']);
-
-        if (1 !== \preg_match('/^\d+$/', $slowThreshold)) {
-            return $this->maximumDuration->toTelemetryDuration();
-        }
-
-        return MaximumDuration::fromMilliseconds((int) $slowThreshold)->toTelemetryDuration();
+        return $this->maximumDuration->toTelemetryDuration();
     }
 }

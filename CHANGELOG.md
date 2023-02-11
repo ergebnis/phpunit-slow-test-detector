@@ -14,6 +14,7 @@ For a full diff see [`1.0.0...main`][1.0.0...main].
 - Allowed configuring the maximum count via `maximum-count` parameter ([#217]), by [@localheinz]
 - Marked classes and interfaces as internal ([#219]), by [@localheinz]
 - Brought duration formatting in line with `phpunit/php-timer` ([#220]), by [@localheinz]
+- Allowed configuring the maximum duration via `@maximumDuration` annotation ([#222]), by [@localheinz]
 
 ### Fixed
 
@@ -89,5 +90,6 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#219]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/219
 [#220]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/220
 [#221]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/221
+[#222]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/222
 
 [@localheinz]: https://github.com/localheinz

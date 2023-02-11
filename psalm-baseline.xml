@@ -25,10 +25,10 @@
       <code>symbolAnnotations</code>
     </InternalMethod>
     <MixedArgument>
-      <code>$slowThreshold</code>
+      <code>$maximumDuration</code>
     </MixedArgument>
     <MixedAssignment>
-      <code>$slowThreshold</code>
+      <code>$maximumDuration</code>
     </MixedAssignment>
   </file>
   <file src="test/Double/Collector/AppendingCollector.php">
