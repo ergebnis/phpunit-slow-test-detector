@@ -64,23 +64,15 @@ final class TestPassedSubscriber implements Event\Test\PassedSubscriber
 
         $annotations = $docBlock->symbolAnnotations();
 
-        if (!\array_key_exists('method', $annotations)) {
+        if (!\array_key_exists('slowThreshold', $annotations)) {
             return $this->maximumDuration->toTelemetryDuration();
         }
 
-        if (!\is_array($annotations['method'])) {
+        if (!\is_array($annotations['slowThreshold'])) {
             return $this->maximumDuration->toTelemetryDuration();
         }
 
-        if (!\array_key_exists('slowThreshold', $annotations['method'])) {
-            return $this->maximumDuration->toTelemetryDuration();
-        }
-
-        if (!\is_array($annotations['method']['slowThreshold'])) {
-            return $this->maximumDuration->toTelemetryDuration();
-        }
-
-        $slowThreshold = \reset($annotations['method']['slowThreshold']);
+        $slowThreshold = \reset($annotations['slowThreshold']);
 
         if (1 !== \preg_match('/^\d+$/', $slowThreshold)) {
             return $this->maximumDuration->toTelemetryDuration();
