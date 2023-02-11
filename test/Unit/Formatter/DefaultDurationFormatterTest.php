@@ -21,9 +21,9 @@ use PHPUnit\Framework;
 /**
  * @internal
  *
- * @covers \Ergebnis\PHPUnit\SlowTestDetector\Formatter\ToMillisecondsDurationFormatter
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Formatter\DefaultDurationFormatter
  */
-final class ToMillisecondsDurationFormatterTest extends Framework\TestCase
+final class DefaultDurationFormatterTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
@@ -34,7 +34,7 @@ final class ToMillisecondsDurationFormatterTest extends Framework\TestCase
         Event\Telemetry\Duration $duration,
         string $formattedDuration,
     ): void {
-        $formatter = new Formatter\ToMillisecondsDurationFormatter();
+        $formatter = new Formatter\DefaultDurationFormatter();
 
         self::assertSame($formattedDuration, $formatter->format($duration));
     }
@@ -50,49 +50,56 @@ final class ToMillisecondsDurationFormatterTest extends Framework\TestCase
                     0,
                     0,
                 ),
-                '0 ms',
+                '0.000',
             ],
-            'nanoseconds-rounded-down' => [
+            'milliseconds' => [
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     0,
-                    499_999,
+                    123_999_000,
                 ),
-                '0 ms',
+                '0.123',
             ],
-            'nanoseconds-rounded-up' => [
-                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-                    0,
-                    500_000,
-                ),
-                '1 ms',
-            ],
-            'milliseconds-one' => [
-                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-                    0,
-                    1_000_000,
-                ),
-                '1 ms',
-            ],
-            'milliseconds-hundreds' => [
-                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-                    0,
-                    123 * 1_000_000,
-                ),
-                '123 ms',
-            ],
-            'seconds' => [
+            'seconds-digits-one' => [
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
                     1,
-                    1_000_000,
+                    234_456_789,
                 ),
-                '1,001 ms',
+                '1.234',
             ],
-            'thousands-of-seconds' => [
+            'seconds-digits-two' => [
                 Event\Telemetry\Duration::fromSecondsAndNanoseconds(
-                    1_234,
+                    12,
+                    345_678_912,
+                ),
+                '12.345',
+            ],
+            'minutes-digits-one' => [
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    1 * 60 + 23,
+                    456_789_012,
+                ),
+                '1:23.456',
+            ],
+            'minutes-digits-two' => [
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    12 * 60 + 34,
                     567_890_123,
                 ),
-                '1,234,568 ms',
+                '12:34.567',
+            ],
+            'hours-digits-one' => [
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    60 * 60 + 23 * 60 + 45,
+                    567_890_123,
+                ),
+                '1:23:45.567',
+            ],
+            'hours-digits-two' => [
+                Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+                    12 * 60 * 60 + 34 * 60 + 56,
+                    789_012_345,
+                ),
+                '12:34:56.789',
             ],
         ];
     }

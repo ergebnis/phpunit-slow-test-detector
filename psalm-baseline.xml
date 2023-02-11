@@ -5,6 +5,16 @@
       <code>Extension</code>
     </UnusedClass>
   </file>
+  <file src="src/Formatter/DefaultDurationFormatter.php">
+    <InvalidOperand>
+      <code>$duration-&gt;seconds() * 1000 + $duration-&gt;nanoseconds() / 1000000</code>
+      <code>$durationInMilliseconds - $hoursInMilliseconds</code>
+      <code>$durationInMilliseconds - $hoursInMilliseconds</code>
+      <code>$durationInMilliseconds / 60</code>
+      <code>$durationInMilliseconds / 60</code>
+      <code>($durationInMilliseconds - $hoursInMilliseconds - $minutesInMilliseconds) / 1000</code>
+    </InvalidOperand>
+  </file>
   <file src="src/Subscriber/TestPassedSubscriber.php">
     <InternalClass>
       <code>Metadata\Annotation\Parser\Registry::getInstance()</code>
@@ -76,9 +86,9 @@
       <code>InvalidMaximumDurationTest</code>
     </UnusedClass>
   </file>
-  <file src="test/Unit/Formatter/ToMillisecondsDurationFormatterTest.php">
+  <file src="test/Unit/Formatter/DefaultDurationFormatterTest.php">
     <UnusedClass>
-      <code>ToMillisecondsDurationFormatterTest</code>
+      <code>DefaultDurationFormatterTest</code>
     </UnusedClass>
   </file>
   <file src="test/Unit/MaximumCountTest.php">

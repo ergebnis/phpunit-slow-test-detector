@@ -38,7 +38,7 @@ final class Extension implements Runner\Extension\Extension
         $collector = new Collector\DefaultCollector();
 
         $reporter = new Reporter\DefaultReporter(
-            new Formatter\ToMillisecondsDurationFormatter(),
+            new Formatter\DefaultDurationFormatter(),
             $maximumDuration,
             $maximumCount,
         );
