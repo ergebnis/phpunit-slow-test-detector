@@ -72,7 +72,7 @@ repository:
   archived: false
   default_branch: "main"
   delete_branch_on_merge: true
-  description: ":eyeglasses: Provides an extension for detecting slow tests in phpunit/phpunit."
+  description: ":stopwatch: Provides an extension for detecting slow tests in phpunit/phpunit."
   enable_automated_security_fixes: true
   enable_vulnerability_alerts: true
   has_downloads: true
