@@ -15,6 +15,9 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
 
 use PHPUnit\Event;
 
+/**
+ * @internal
+ */
 final class TimeKeeper
 {
     /**

@@ -14,6 +14,8 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector;
 
 /**
+ * @internal
+ *
  * @psalm-immutable
  */
 final class MaximumCount

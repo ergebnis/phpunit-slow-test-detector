@@ -15,6 +15,9 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Formatter;
 
 use PHPUnit\Event;
 
+/**
+ * @internal
+ */
 interface DurationFormatter
 {
     public function format(Event\Telemetry\Duration $duration): string;

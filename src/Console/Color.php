@@ -13,6 +13,9 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Console;
 
+/**
+ * @internal
+ */
 final class Color
 {
     /**

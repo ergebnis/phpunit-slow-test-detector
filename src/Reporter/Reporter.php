@@ -15,6 +15,9 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 
+/**
+ * @internal
+ */
 interface Reporter
 {
     public function report(SlowTest ...$slowTests): string;
