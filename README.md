@@ -54,24 +54,25 @@ You can configure the extension with the following parameters in your `phpunit.x
 
 The following example configures the maximum count of slow tests to three, and the maximum duration for all tests to 250 milliseconds:
 
-```xml
-<phpunit
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
-    bootstrap="vendor/autoload.php"
->
-    <extensions>
-        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension">
-            <parameter name="maximum-count" value="3"/>
-            <parameter name="maximum-duration" value="250"/>
-        </boostrap>
-    </extensions>
-    <testsuites>
-        <testsuite name="unit">
-            <directory>test/Unit/</directory>
-       </testsuite>
-    </testsuites>
-</phpunit>
+```diff
+ <phpunit
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+     bootstrap="vendor/autoload.php"
+ >
+     <extensions>
+-        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
++        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension">
++            <parameter name="maximum-count" value="3"/>
++            <parameter name="maximum-duration" value="250"/>
++        </boostrap>
+     </extensions>
+     <testsuites>
+         <testsuite name="unit">
+             <directory>test/Unit/</directory>
+        </testsuite>
+     </testsuites>
+ </phpunit>
 ```
 
 #### Configuring the maximum duration per test case
