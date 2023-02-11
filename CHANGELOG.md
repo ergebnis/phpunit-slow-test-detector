@@ -88,5 +88,6 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#218]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/218
 [#219]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/219
 [#220]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/220
+[#221]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/221
 
 [@localheinz]: https://github.com/localheinz
