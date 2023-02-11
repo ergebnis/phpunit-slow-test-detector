@@ -21,18 +21,18 @@ Runtime: %s
 Configuration: test/EndToEnd/MaximumCount/Five/phpunit.xml
 Random Seed:   %s
 
-.......                                                             7 / 7 (100%)
+.........                                                           9 / 9 (100%)
 
-Detected 6 tests that took longer than expected.
+Detected 7 tests that took longer than expected.
 
-7%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#3
-6%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#2
-6%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#1
-5%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#0
-5%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsJustAboveDefaultMaximumDuration
+1,2%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#5
+1,1%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#4
+1,0%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#3
+  9%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#2
+  8%s ms (500 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#1
 
-There is one additional slow test that is not listed here.
+There are 2 additional slow tests that are not listed here.
 
 Time: %s, Memory: %s
 
-OK (7 tests, 7 assertions)
+OK (9 tests, 9 assertions)
