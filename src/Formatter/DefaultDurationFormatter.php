@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Formatter;
 
 use PHPUnit\Event;
-use SebastianBergmann\Timer;
 
 /**
  * @psalm-immutable
