@@ -19,6 +19,8 @@ For a full diff see [`1.0.0...main`][1.0.0...main].
 
 - Removed possibility to configure maximum count of reported tests using the `MAXIMUM_NUMBER` environment variable ([#211]), by [@localheinz]
 - Increased default maximum count from `3` to `10` and default maximum duration from `125` to `500` milliseconds ([#218]), by [@localheinz]
+- Fixed resolving maximum duration from `@slowThreshold` annotation ([#221]), by [@localheinz]
+
 
 ## [`1.0.0`][1.0.0]
 
