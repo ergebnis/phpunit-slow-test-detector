@@ -158,7 +158,7 @@ TXT;
         if (1 === $remainingCount) {
             return <<<'TXT'
 
-There is one additional slow test that is not listed here.
+There is 1 additional slow test that is not listed here.
 TXT;
         }
 

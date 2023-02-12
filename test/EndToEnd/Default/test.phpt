@@ -36,7 +36,7 @@ Detected 11 tests that took longer than expected.
 0.8%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#1
 0.7%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#0
 
-There is one additional slow test that is not listed here.
+There is 1 additional slow test that is not listed here.
 
 Time: %s, Memory: %s
 
