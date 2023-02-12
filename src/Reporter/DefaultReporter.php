@@ -110,10 +110,18 @@ TXT;
 
         $durationFormatter = $this->durationFormatter;
 
+        $numberWidth = \strlen((string) \count($slowTestsToReport));
         $durationWidth = \strlen($durationFormatter->format($slowestTest->duration()));
         $maximumDurationWidth = \strlen($durationFormatter->format($longestMaximumDuration));
 
-        $items = \array_map(static function (SlowTest $slowTest) use ($durationFormatter, $durationWidth, $maximumDurationWidth): string {
+        $items = \array_map(static function (int $number, SlowTest $slowTest) use ($numberWidth, $durationFormatter, $durationWidth, $maximumDurationWidth): string {
+            $formattedNumber = \str_pad(
+                (string) $number,
+                $numberWidth,
+                ' ',
+                \STR_PAD_LEFT,
+            );
+
             $formattedDuration = \str_pad(
                 $durationFormatter->format($slowTest->duration()),
                 $durationWidth,
@@ -134,9 +142,9 @@ TXT;
             $testName = $slowTest->test()->id();
 
             return <<<TXT
-{$formattedDuration} {$formattedMaximumDuration} {$testName}
+{$formattedNumber}. {$formattedDuration} {$formattedMaximumDuration} {$testName}
 TXT;
-        }, $slowTestsToReport);
+        }, \range(1, \count($slowTestsToReport)), $slowTestsToReport);
 
         return \implode(
             "\n",

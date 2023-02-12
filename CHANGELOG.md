@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.0.0...main`][2.0.0...main].
 
+### Changed
+
+- Started rendering slow tests as ordered list ([#224]), by [@localheinz]
+
 ## [`2.0.0`][2.0.0]
 
 For a full diff see [`1.0.0...2.0.0`][1.0.0...2.0.0].
@@ -96,5 +100,6 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#220]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/220
 [#221]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/221
 [#222]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/222
+[#224]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/224
 
 [@localheinz]: https://github.com/localheinz
