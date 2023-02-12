@@ -25,11 +25,11 @@ Random Seed:   %s
 
 Detected 7 tests that took longer than expected.
 
-1.2%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#5
-1.1%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#4
-1.0%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#3
-0.9%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#2
-0.8%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#1
+1. 1.2%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#5
+2. 1.1%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#4
+3. 1.0%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#3
+4. 0.9%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#2
+5. 0.8%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#1
 
 There are 2 additional slow tests that are not listed here.
 
