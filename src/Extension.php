@@ -23,6 +23,10 @@ final class Extension implements Runner\Extension\Extension
         Runner\Extension\Facade $facade,
         Runner\Extension\ParameterCollection $parameters,
     ): void {
+        if ($configuration->noOutput()) {
+            return;
+        }
+
         $maximumCount = MaximumCount::fromInt(10);
 
         if ($parameters->has('maximum-count')) {
