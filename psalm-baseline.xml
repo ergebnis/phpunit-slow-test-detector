@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.6.0@e784128902dfe01d489c4123d69918a9f3c1eac5">
+<files psalm-version="5.8.0@9cf4f60a333f779ad3bc704a555920e81d4fdcda">
   <file src="src/Extension.php">
     <UnusedClass>
       <code>Extension</code>
@@ -7,7 +7,7 @@
   </file>
   <file src="src/Formatter/DefaultDurationFormatter.php">
     <InvalidOperand>
-      <code>$duration-&gt;seconds() * 1000 + $duration-&gt;nanoseconds() / 1000000</code>
+      <code><![CDATA[$duration->seconds() * 1000 + $duration->nanoseconds() / 1000000]]></code>
       <code>$durationInMilliseconds - $hoursInMilliseconds</code>
       <code>$durationInMilliseconds - $hoursInMilliseconds</code>
       <code>$durationInMilliseconds / 60</code>
@@ -48,7 +48,7 @@
   </file>
   <file src="test/Fixture/Sleeper.php">
     <ArgumentTypeCoercion>
-      <code>$this-&gt;milliseconds * 1000</code>
+      <code><![CDATA[$this->milliseconds * 1000]]></code>
     </ArgumentTypeCoercion>
   </file>
 </files>
