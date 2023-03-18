@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.1.0...main`][2.1.0...main].
 
+### Fixed
+
+- Stopped registering extension when running `phpunit` with the `--no-output` option ([#243]), by [@localheinz]
+
 ## [`2.1.0`][2.1.0]
 
 For a full diff see [`2.0.0...2.1.0`][2.0.0...2.1.0].
@@ -107,5 +111,6 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#221]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/221
 [#222]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/222
 [#224]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/224
+[#243]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/243
 
 [@localheinz]: https://github.com/localheinz
