@@ -65,7 +65,7 @@ The following example configures the maximum count of slow tests to three, and t
 +        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension">
 +            <parameter name="maximum-count" value="3"/>
 +            <parameter name="maximum-duration" value="250"/>
-+        </boostrap>
++        </bootstrap>
      </extensions>
      <testsuites>
          <testsuite name="unit">
