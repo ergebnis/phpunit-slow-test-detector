@@ -12,3 +12,5 @@
 /psalm-baseline.xml             export-ignore
 /psalm.xml                      export-ignore
 /rector.php                     export-ignore
+/docker                         export-ignore
+/docker-compose.yml             export-ignore
