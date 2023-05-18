@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "98d7051780d9b39d2e238e15c9979033",
+    "content-hash": "47ad32b2ce12c279e8a7a974b507bd5c",
     "packages": [
         {
             "name": "myclabs/deep-copy",
@@ -2811,16 +2811,16 @@
         },
         {
             "name": "ergebnis/php-cs-fixer-config",
-            "version": "5.5.2",
+            "version": "5.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/php-cs-fixer-config.git",
-                "reference": "b926460aa2a978dcb2cb6c8d79323d2abab27157"
+                "reference": "4abee6e2f2d94417f03dad3054e516574cb6e53c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/php-cs-fixer-config/zipball/b926460aa2a978dcb2cb6c8d79323d2abab27157",
-                "reference": "b926460aa2a978dcb2cb6c8d79323d2abab27157",
+                "url": "https://api.github.com/repos/ergebnis/php-cs-fixer-config/zipball/4abee6e2f2d94417f03dad3054e516574cb6e53c",
+                "reference": "4abee6e2f2d94417f03dad3054e516574cb6e53c",
                 "shasum": ""
             },
             "require": {
@@ -2829,16 +2829,16 @@
                 "php": "~8.0.0 || ~8.1.0 || ~8.2.0"
             },
             "require-dev": {
-                "ergebnis/composer-normalize": "^2.30.2",
+                "ergebnis/composer-normalize": "^2.31.0",
                 "ergebnis/license": "^2.1.0",
-                "fakerphp/faker": "^1.21.0",
+                "fakerphp/faker": "^1.22.0",
                 "infection/infection": "~0.26.19",
-                "phpunit/phpunit": "^9.6.7",
+                "phpunit/phpunit": "^9.6.8",
                 "psalm/plugin-phpunit": "~0.18.4",
-                "rector/rector": "~0.15.25",
+                "rector/rector": "~0.16.0",
                 "symfony/filesystem": "^5.0.0 || ^6.0.0",
                 "symfony/process": "^5.0.0 || ^6.0.0",
-                "vimeo/psalm": "^5.9.0"
+                "vimeo/psalm": "^5.11.0"
             },
             "type": "library",
             "extra": {
@@ -2868,7 +2868,7 @@
                 "issues": "https://github.com/ergebnis/php-cs-fixer-config/issues",
                 "source": "https://github.com/ergebnis/php-cs-fixer-config"
             },
-            "time": "2023-04-27T17:31:51+00:00"
+            "time": "2023-05-17T13:17:28+00:00"
         },
         {
             "name": "fakerphp/faker",
@@ -5051,16 +5051,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v6.2.8",
+            "version": "v6.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "75ed64103df4f6615e15a7fe38b8111099f47416"
+                "reference": "b34cdbc9c5e75d45a3703e63a48ad07aafa8bf2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/75ed64103df4f6615e15a7fe38b8111099f47416",
-                "reference": "75ed64103df4f6615e15a7fe38b8111099f47416",
+                "url": "https://api.github.com/repos/symfony/process/zipball/b34cdbc9c5e75d45a3703e63a48ad07aafa8bf2e",
+                "reference": "b34cdbc9c5e75d45a3703e63a48ad07aafa8bf2e",
                 "shasum": ""
             },
             "require": {
@@ -5092,7 +5092,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/process/tree/v6.2.8"
+                "source": "https://github.com/symfony/process/tree/v6.2.10"
             },
             "funding": [
                 {
@@ -5108,7 +5108,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-09T16:20:02+00:00"
+            "time": "2023-04-18T13:56:57+00:00"
         },
         {
             "name": "symfony/service-contracts",
