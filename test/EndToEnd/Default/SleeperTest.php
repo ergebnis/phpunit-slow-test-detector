@@ -16,11 +16,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
-/**
- * @internal
- *
- * @covers \Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\Sleeper
- */
+#[Framework\Attributes\CoversClass(Test\Fixture\Sleeper::class)]
 final class SleeperTest extends Framework\TestCase
 {
     use Test\Util\Helper;
@@ -58,9 +54,7 @@ final class SleeperTest extends Framework\TestCase
         self::assertSame($milliseconds, $sleeper->milliseconds());
     }
 
-    /**
-     * @dataProvider provideMillisecondsGreaterThanDefaultMaximumDuration
-     */
+    #[Framework\Attributes\DataProvider('provideMillisecondsGreaterThanDefaultMaximumDuration')]
     public function testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider(int $milliseconds): void
     {
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);

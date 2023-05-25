@@ -13,27 +13,21 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit;
 
+use Ergebnis\DataProvider;
 use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Event;
 use PHPUnit\Framework;
 
-/**
- * @internal
- *
- * @covers \Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration
- *
- * @uses \Ergebnis\PHPUnit\SlowTestDetector\Exception\InvalidMaximumDuration
- */
+#[Framework\Attributes\CoversClass(MaximumDuration::class)]
+#[Framework\Attributes\UsesClass(Exception\InvalidMaximumDuration::class)]
 final class MaximumDurationTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    /**
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::zero
-     */
+    #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'lessThanZero')]
+    #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'zero')]
     public function testFromMillisecondsRejectsInvalidValue(int $milliseconds): void
     {
         $this->expectException(Exception\InvalidMaximumDuration::class);
@@ -41,9 +35,7 @@ final class MaximumDurationTest extends Framework\TestCase
         MaximumDuration::fromMilliseconds($milliseconds);
     }
 
-    /**
-     * @dataProvider provideMillisecondsAndTelemetryDuration
-     */
+    #[Framework\Attributes\DataProvider('provideMillisecondsAndTelemetryDuration')]
     public function testFromMillisecondsReturnsMaximumDuration(
         int $milliseconds,
         Event\Telemetry\Duration $duration,
@@ -73,10 +65,8 @@ final class MaximumDurationTest extends Framework\TestCase
         }
     }
 
-    /**
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::zero
-     */
+    #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'lessThanZero')]
+    #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'zero')]
     public function testFromSecondsRejectsInvalidValue(int $seconds): void
     {
         $this->expectException(Exception\InvalidMaximumDuration::class);
@@ -84,9 +74,7 @@ final class MaximumDurationTest extends Framework\TestCase
         MaximumDuration::fromSeconds($seconds);
     }
 
-    /**
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::greaterThanZero
-     */
+    #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'greaterThanZero')]
     public function testFromSecondsReturnsMaximumDuration(int $seconds): void
     {
         $maximumDuration = MaximumDuration::fromSeconds($seconds);

@@ -13,23 +13,17 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit;
 
+use Ergebnis\DataProvider;
 use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
 use PHPUnit\Framework;
 
-/**
- * @internal
- *
- * @covers \Ergebnis\PHPUnit\SlowTestDetector\MaximumCount
- *
- * @uses \Ergebnis\PHPUnit\SlowTestDetector\Exception\InvalidMaximumCount
- */
+#[Framework\Attributes\CoversClass(MaximumCount::class)]
+#[Framework\Attributes\UsesClass(Exception\InvalidMaximumCount::class)]
 final class MaximumCountTest extends Framework\TestCase
 {
-    /**
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::zero
-     */
+    #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'lessThanZero')]
+    #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'zero')]
     public function testFromIntRejectsInvalidValue(int $value): void
     {
         $this->expectException(Exception\InvalidMaximumCount::class);
@@ -37,9 +31,7 @@ final class MaximumCountTest extends Framework\TestCase
         MaximumCount::fromInt($value);
     }
 
-    /**
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::greaterThanZero
-     */
+    #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'greaterThanZero')]
     public function testFromSecondsReturnsMaximumDuration(int $value): void
     {
         $maximumCount = MaximumCount::fromInt($value);

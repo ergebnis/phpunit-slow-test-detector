@@ -18,18 +18,12 @@ use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Event;
 use PHPUnit\Framework;
 
-/**
- * @internal
- *
- * @covers \Ergebnis\PHPUnit\SlowTestDetector\Formatter\DefaultDurationFormatter
- */
+#[Framework\Attributes\CoversClass(Formatter\DefaultDurationFormatter::class)]
 final class DefaultDurationFormatterTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    /**
-     * @dataProvider provideDurationAndFormattedDuration
-     */
+    #[Framework\Attributes\DataProvider('provideDurationAndFormattedDuration')]
     public function testFormatFormats(
         Event\Telemetry\Duration $duration,
         string $formattedDuration,
