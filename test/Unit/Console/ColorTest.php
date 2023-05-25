@@ -13,23 +13,18 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Console;
 
+use Ergebnis\DataProvider;
 use Ergebnis\PHPUnit\SlowTestDetector\Console;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
-/**
- * @internal
- *
- * @covers \Ergebnis\PHPUnit\SlowTestDetector\Console\Color
- */
+#[Framework\Attributes\CoversClass(Console\Color::class)]
 final class ColorTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    /**
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::blank
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::empty
-     */
+    #[Framework\Attributes\DataProviderExternal(DataProvider\StringProvider::class, 'blank')]
+    #[Framework\Attributes\DataProviderExternal(DataProvider\StringProvider::class, 'empty')]
     public function testDimReturnsOriginalStringWhenItIsWhitespaceOnly(string $output): void
     {
         self::assertSame($output, Console\Color::dim($output));

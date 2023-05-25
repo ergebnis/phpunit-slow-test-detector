@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.8.0@9cf4f60a333f779ad3bc704a555920e81d4fdcda">
+<files psalm-version="5.12.0@f90118cdeacd0088e7215e64c0c99ceca819e176">
   <file src="src/Extension.php">
     <UnusedClass>
       <code>Extension</code>
@@ -46,9 +46,34 @@
       <code>NullReporter</code>
     </UnusedClass>
   </file>
+  <file src="test/EndToEnd/Default/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/MaximumCount/Five/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/NoOutput/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
+    </PossiblyUnusedMethod>
+  </file>
   <file src="test/Fixture/Sleeper.php">
     <ArgumentTypeCoercion>
       <code><![CDATA[$this->milliseconds * 1000]]></code>
     </ArgumentTypeCoercion>
+  </file>
+  <file src="test/Unit/Formatter/DefaultDurationFormatterTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideDurationAndFormattedDuration</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/Unit/MaximumDurationTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideMillisecondsAndTelemetryDuration</code>
+    </PossiblyUnusedMethod>
   </file>
 </files>

@@ -17,11 +17,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
-/**
- * @internal
- *
- * @covers \Ergebnis\PHPUnit\SlowTestDetector\Exception\InvalidMaximumCount
- */
+#[Framework\Attributes\CoversClass(Exception\InvalidMaximumCount::class)]
 final class InvalidMaximumCountTest extends Framework\TestCase
 {
     use Test\Util\Helper;

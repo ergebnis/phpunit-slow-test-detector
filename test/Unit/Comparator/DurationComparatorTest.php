@@ -18,11 +18,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Event;
 use PHPUnit\Framework;
 
-/**
- * @internal
- *
- * @covers \Ergebnis\PHPUnit\SlowTestDetector\Comparator\DurationComparator
- */
+#[Framework\Attributes\CoversClass(Comparator\DurationComparator::class)]
 final class DurationComparatorTest extends Framework\TestCase
 {
     use Test\Util\Helper;

@@ -17,11 +17,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
-/**
- * @internal
- *
- * @covers \Ergebnis\PHPUnit\SlowTestDetector\Exception\InvalidMaximumDuration
- */
+#[Framework\Attributes\CoversClass(Exception\InvalidMaximumDuration::class)]
 final class InvalidMaximumDurationTest extends Framework\TestCase
 {
     use Test\Util\Helper;
