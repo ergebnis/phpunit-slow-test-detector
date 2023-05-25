@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.1.1...main`][2.1.1...main].
 
+### Changed
+
+- Suggested and required `phpunit/phpunit` as a development dependency to allow usage with `phpunit/phpunit` when installed as PHAR ([#272]), by [@localheinz]
+
 ## [`2.1.1`][2.1.1]
 
 For a full diff see [`2.1.0...2.1.1`][2.1.0...2.1.1].
@@ -118,5 +122,6 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#222]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/222
 [#224]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/224
 [#243]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/243
+[#272]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/272
 
 [@localheinz]: https://github.com/localheinz

@@ -1,3 +1,18 @@
 {
-  "symbol-whitelist": []
+  "symbol-whitelist": [
+    "PHPUnit\\Event\\Code\\Test",
+    "PHPUnit\\Event\\Telemetry\\Duration",
+    "PHPUnit\\Event\\Telemetry\\HRTime",
+    "PHPUnit\\Event\\Test\\Passed",
+    "PHPUnit\\Event\\Test\\PassedSubscriber",
+    "PHPUnit\\Event\\Test\\Prepared",
+    "PHPUnit\\Event\\Test\\PreparedSubscriber",
+    "PHPUnit\\Event\\TestRunner\\ExecutionFinished",
+    "PHPUnit\\Event\\TestRunner\\ExecutionFinishedSubscriber",
+    "PHPUnit\\Metadata\\Annotation\\Parser\\Registry",
+    "PHPUnit\\Runner\\Extension\\Extension",
+    "PHPUnit\\Runner\\Extension\\Facade",
+    "PHPUnit\\Runner\\Extension\\ParameterCollection",
+    "PHPUnit\\TextUI\\Configuration\\Configuration"
+  ]
 }
