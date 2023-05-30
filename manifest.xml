@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<phar xmlns="https://phar.io/xml/manifest/1.0">
+    <contains name="ergebnis/phpunit-slow-test-detector" version="2.2.0" type="extension">
+        <extension for="phpunit/phpunit" compatible="^10.1"/>
+    </contains>
+
+    <copyright>
+        <author name="Andreas Möller" email="am@localheinz.com"/>
+        <license type="MIT" url="https://github.com/ergebnis/phpunit-slow-test-detector/blob/main/LICENSE.md"/>
+    </copyright>
+
+    <requires>
+        <php version="^8.1"/>
+    </requires>
+</phar>

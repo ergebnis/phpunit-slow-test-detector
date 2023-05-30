@@ -66,6 +66,11 @@
       <code><![CDATA[$this->milliseconds * 1000]]></code>
     </ArgumentTypeCoercion>
   </file>
+  <file src="test/Phar/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
+    </PossiblyUnusedMethod>
+  </file>
   <file src="test/Unit/Formatter/DefaultDurationFormatterTest.php">
     <PossiblyUnusedMethod>
       <code>provideDurationAndFormattedDuration</code>

@@ -21,10 +21,19 @@ dependency-analysis: phive vendor ## Runs a dependency analysis with maglnet/com
 help: ## Displays this list of targets with descriptions
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}'
 
+.PHONY: phar
+phar: phive vendor ## Builds a phar with humbug/box
+	.phive/box validate box.json
+	composer remove phpunit/phpunit --no-interaction --no-progress
+	.phive/box compile --config=box.json
+	git checkout HEAD -- composer.json composer.lock
+	.phive/box info .build/phar/phpunit-slow-test-detector.phar
+	.phive/phpunit --configuration=test/Phar/phpunit.xml
+
 .PHONY: phive
 phive: .phive ## Installs dependencies with phive
 	mkdir -p .build/phive/
-	PHIVE_HOME=.build/phive phive install --trust-gpg-keys 0x033E5F8D801A2F8D
+	PHIVE_HOME=.build/phive phive install --trust-gpg-keys 0x2DF45277AEF09A2F,0x033E5F8D801A2F8D,0x4AA394086372C20A
 
 .PHONY: refactoring
 refactoring: vendor ## Runs automated refactoring with rector/rector
