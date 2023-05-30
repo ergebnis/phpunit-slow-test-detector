@@ -16,6 +16,7 @@ branches:
         checks:
           - context: "Code Coverage (8.1, locked)"
           - context: "Coding Standards (8.1, locked)"
+          - context: "Compile Phar (8.1, locked)"
           - context: "Dependency Analysis (8.1, locked)"
           - context: "Refactoring (8.1, locked)"
           - context: "Security Analysis (8.1, locked)"

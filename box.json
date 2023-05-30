@@ -1,0 +1,14 @@
+{
+  "$schema": "https://raw.githubusercontent.com/humbug/box/4.3.8/res/schema.json",
+  "compactors": [
+    "KevinGH\\Box\\Compactor\\Json",
+    "KevinGH\\Box\\Compactor\\Php"
+  ],
+  "compression": "GZ",
+  "files": [
+    "manifest.xml"
+  ],
+  "git": "git",
+  "main": "phar/phpunit-slow-test-detector.php",
+  "output": ".build/phar/phpunit-slow-test-detector.phar"
+}
