@@ -16,23 +16,53 @@ Provides an extension for detecting slow tests in [`phpunit/phpunit`](https://gi
 
 ## Installation
 
+### Composer
+
 Run
 
 ```sh
 composer require --dev ergebnis/phpunit-slow-test-detector
 ```
 
+to install `ergebnis/phpunit-slow-test-detector` as a composer package.
+
+### Phar
+
+Download `phpunit-slow-test-detector.phar` from the [latest release](https://github.com/ergebnis/phpunit-slow-test-detector/releases/latest).
+
 ## Usage
 
-### Bootstrapping the extension
+### Bootstrapping the extension as a composer package
 
-To bootstrap the extension, adjust your `phpunit.xml` configuration file:
+To bootstrap the extension as a composer package, adjust your `phpunit.xml` configuration file:
 
 ```diff
  <phpunit
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
      bootstrap="vendor/autoload.php"
+ >
++    <extensions>
++        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
++    </extensions>
+     <testsuites>
+         <testsuite name="unit">
+             <directory>test/Unit/</directory>
+         </testsuite>
+     </testsuites>
+ </phpunit>
+```
+
+### Bootstrapping the extension as a PHAR
+
+To bootstrap the extension as a PHAR, adjust your `phpunit.xml` configuration file and configure the `extensionsDirectory` attribute of the `<phpunit>` element:
+
+```diff
+ <phpunit
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+     bootstrap="vendor/autoload.php"
++    extensionsDirectory="directory/where/you/saved/the/extension/phars"
  >
 +    <extensions>
 +        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
