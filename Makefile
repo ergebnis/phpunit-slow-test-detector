@@ -4,7 +4,7 @@ it: refactoring coding-standards security-analysis static-code-analysis tests ##
 .PHONY: code-coverage
 code-coverage: vendor ## Collects coverage from running unit tests with phpunit/phpunit
 	mkdir -p .build/phpunit/
-	vendor/bin/phpunit --configuration=test/Unit/phpunit.xml --coverage-text
+	vendor/bin/phpunit --configuration=test/phpunit.xml --coverage-text
 
 .PHONY: coding-standards
 coding-standards: vendor ## Lints YAML files with yamllint, normalizes composer.json with ergebnis/composer-normalize, and fixes code style issues with friendsofphp/php-cs-fixer
