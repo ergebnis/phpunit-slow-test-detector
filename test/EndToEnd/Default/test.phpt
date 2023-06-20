@@ -18,7 +18,7 @@ $application->run($_SERVER['argv']);
 PHPUnit %s by Sebastian Bergmann and contributors.
 
 Runtime: %s
-Configuration: test/EndToEnd/Default/phpunit.xml
+Configuration: %Stest/EndToEnd/Default/phpunit.xml
 Random Seed:   %s
 
 .............                                                     13 / 13 (100%)
