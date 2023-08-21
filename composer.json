@@ -33,7 +33,7 @@
     "fakerphp/faker": "^1.23.0",
     "psalm/plugin-phpunit": "~0.18.4",
     "rector/rector": "~0.18.0",
-    "vimeo/psalm": "^5.14.1"
+    "vimeo/psalm": "^5.15.0"
   },
   "suggest": {
     "phpunit/phpunit": "^10.0.1"
