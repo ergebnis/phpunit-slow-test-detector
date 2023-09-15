@@ -52,6 +52,9 @@
     "allow-plugins": {
       "ergebnis/composer-normalize": true
     },
+    "audit": {
+      "abandoned": "report"
+    },
     "platform": {
       "php": "8.1.10"
     },
