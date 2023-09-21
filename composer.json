@@ -20,7 +20,8 @@
   "homepage": "https://github.com/ergebnis/phpunit-slow-test-detector",
   "support": {
     "issues": "https://github.com/ergebnis/phpunit-slow-test-detector/issues",
-    "source": "https://github.com/ergebnis/phpunit-slow-test-detector"
+    "source": "https://github.com/ergebnis/phpunit-slow-test-detector",
+    "security": "https://github.com/ergebnis/phpunit-slow-test-detector/blob/main/.github/SECURITY.md"
   },
   "require": {
     "php": "~8.1.0 || ~8.2.0",
