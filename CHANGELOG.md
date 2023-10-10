@@ -15,6 +15,7 @@ For a full diff see [`2.2.0...2.3.0`][2.2.0...2.3.0].
 ### Changed
 
 - Added support for installing extension as a PHAR ([#273]), by [@localheinz]
+- Added support for PHP 8.3 ([#340]), by [@localheinz]
 
 ## [`2.2.0`][2.2.0]
 
@@ -140,5 +141,6 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#243]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/243
 [#272]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/272
 [#273]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/273
+[#340]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/340
 
 [@localheinz]: https://github.com/localheinz
