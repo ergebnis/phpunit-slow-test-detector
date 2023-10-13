@@ -59,7 +59,7 @@ jobs:
           dependencies: "${{ matrix.dependencies }}"
 
       - name: "Remove phpunit/phpunit"
-        run: "composer remove phpiunit/phpunit --ansi --no-interaction --no-progress"
+        run: "composer remove phpunit/phpunit --ansi --no-interaction --no-progress"
 
       - name: "Install dependencies with phive"
         uses: "ergebnis/.github/actions/phive/install@1.8.0"

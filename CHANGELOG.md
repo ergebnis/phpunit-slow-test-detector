@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.3.0...main`][2.3.0...main].
 
+### Fixed
+
+- Prevented inclusion of `phpunit/phpunit` in PHAR ([#342]), by [@localheinz]
+
 ## [`2.3.0`][2.3.0]
 
 For a full diff see [`2.2.0...2.3.0`][2.2.0...2.3.0].
@@ -142,5 +146,6 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#272]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/272
 [#273]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/273
 [#340]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/340
+[#342]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/342
 
 [@localheinz]: https://github.com/localheinz
