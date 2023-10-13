@@ -27,7 +27,7 @@ phar: phive vendor ## Builds a phar with humbug/box
 	composer remove phpunit/phpunit --no-interaction --no-progress
 	.phive/box compile --config=box.json
 	git checkout HEAD -- composer.json composer.lock
-	.phive/box info .build/phar/phpunit-slow-test-detector.phar
+	.phive/box info .build/phar/phpunit-slow-test-detector.phar --list
 	.phive/phpunit --configuration=test/Phar/phpunit.xml
 
 .PHONY: phive
