@@ -6,7 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Unreleased
 
-For a full diff see [`2.3.1...main`][2.3.1...main].
+For a full diff see [`2.3.2...main`][2.3.2...main].
+
+## [`2.3.2`][2.3.2]
+
+For a full diff see [`2.3.1...2.3.2`][2.3.1...2.3.2].
 
 ### Fixed
 
@@ -112,6 +116,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [2.2.0]: https://github.com/ergebnis/phpunit-slow-test-detector/releases/tag/2.2.0
 [2.3.0]: https://github.com/ergebnis/phpunit-slow-test-detector/releases/tag/2.3.0
 [2.3.1]: https://github.com/ergebnis/phpunit-slow-test-detector/releases/tag/2.3.1
+[2.3.2]: https://github.com/ergebnis/phpunit-slow-test-detector/releases/tag/2.3.2
 
 [7afa59c...1.0.0]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/7afa59c...1.0.0
 [1.0.0...2.0.0]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/1.0.0...2.0.0
@@ -120,7 +125,8 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [2.1.1...2.2.0]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/2.1.1...2.2.0
 [2.2.0...2.3.0]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/2.2.0...2.3.0
 [2.3.0...2.3.1]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/2.3.0...2.3.1
-[2.3.1...main]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/2.3.1...main
+[2.3.1...2.3.2]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/2.3.1...2.3.2
+[2.3.2...main]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/2.3.2...main
 
 [#6]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/6
 [#8]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/8
