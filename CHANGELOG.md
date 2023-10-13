@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.3.1...main`][2.3.1...main].
 
+### Fixed
+
+- Adjusted version in `manifest.xml` ([#343]), by [@localheinz]
+
 ## [`2.3.1`][2.3.1]
 
 For a full diff see [`2.3.0...2.3.1`][2.3.0...2.3.1].
@@ -153,5 +157,6 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#273]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/273
 [#340]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/340
 [#342]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/342
+[#343]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/343
 
 [@localheinz]: https://github.com/localheinz
