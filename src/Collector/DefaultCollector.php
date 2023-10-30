@@ -47,9 +47,7 @@ final class DefaultCollector implements Collector
     /**
      * @phpstan-return list<SlowTest>
      *
-     * @psalm-return list<SlowTest>
-     *
-     * @return array<int, SlowTest>
+     * @return list<SlowTest>
      */
     public function collected(): array
     {
