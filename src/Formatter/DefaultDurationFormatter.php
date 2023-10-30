@@ -15,9 +15,6 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Formatter;
 
 use PHPUnit\Event;
 
-/**
- * @psalm-immutable
- */
 final class DefaultDurationFormatter implements DurationFormatter
 {
     /**

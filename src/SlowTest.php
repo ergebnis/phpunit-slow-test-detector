@@ -17,8 +17,6 @@ use PHPUnit\Event;
 
 /**
  * @internal
- *
- * @psalm-immutable
  */
 final class SlowTest
 {
