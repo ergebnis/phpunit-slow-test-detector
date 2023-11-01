@@ -22,14 +22,14 @@ final class InvalidMillisecondsTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testNotGreaterThanZeroReturnsException(): void
+    public function testNotGreaterThanOrEqualToZeroReturnsException(): void
     {
         $value = self::faker()->numberBetween();
 
-        $exception = Exception\InvalidMilliseconds::notGreaterThanZero($value);
+        $exception = Exception\InvalidMilliseconds::notGreaterThanOrEqualToZero($value);
 
         $message = \sprintf(
-            'Value should be greater than 0, but %d is not.',
+            'Value should be greater than or equal to 0, but %d is not.',
             $value,
         );
 

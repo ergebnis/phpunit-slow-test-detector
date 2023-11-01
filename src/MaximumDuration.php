@@ -43,7 +43,7 @@ final class MaximumDuration
     public static function fromMilliseconds(int $milliseconds): self
     {
         if (0 >= $milliseconds) {
-            throw Exception\InvalidMilliseconds::notGreaterThanZero($milliseconds);
+            throw Exception\InvalidMilliseconds::notGreaterThanOrEqualToZero($milliseconds);
         }
 
         $seconds = \intdiv(
