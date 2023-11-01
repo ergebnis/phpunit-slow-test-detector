@@ -37,7 +37,7 @@ final class Duration
         }
 
         if (0 > $nanoseconds) {
-            throw Exception\InvalidNanoseconds::notGreaterThanZero($nanoseconds);
+            throw Exception\InvalidNanoseconds::notGreaterThanOrEqualToZero($nanoseconds);
         }
 
         if (999_999_999 < $nanoseconds) {

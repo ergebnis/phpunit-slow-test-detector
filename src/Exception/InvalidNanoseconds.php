@@ -18,10 +18,10 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Exception;
  */
 final class InvalidNanoseconds extends \InvalidArgumentException
 {
-    public static function notGreaterThanZero(int $value): self
+    public static function notGreaterThanOrEqualToZero(int $value): self
     {
         return new self(\sprintf(
-            'Value should be greater than 0, but %d is not.',
+            'Value should be greater than or equal to 0, but %d is not.',
             $value,
         ));
     }
