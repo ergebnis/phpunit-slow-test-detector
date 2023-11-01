@@ -14,10 +14,10 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit;
 
 use Ergebnis\DataProvider;
+use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
-use PHPUnit\Event;
 use PHPUnit\Framework;
 
 #[Framework\Attributes\CoversClass(MaximumDuration::class)]
@@ -35,26 +35,26 @@ final class MaximumDurationTest extends Framework\TestCase
         MaximumDuration::fromMilliseconds($milliseconds);
     }
 
-    #[Framework\Attributes\DataProvider('provideMillisecondsAndTelemetryDuration')]
+    #[Framework\Attributes\DataProvider('provideMillisecondsAndDuration')]
     public function testFromMillisecondsReturnsMaximumDuration(
         int $milliseconds,
-        Event\Telemetry\Duration $duration,
+        Duration $duration,
     ): void {
         $maximumDuration = MaximumDuration::fromMilliseconds($milliseconds);
 
-        self::assertEquals($duration, $maximumDuration->toTelemetryDuration());
+        self::assertEquals($duration, $maximumDuration->toDuration());
     }
 
     /**
-     * @return \Generator<int, array{0: int, 1: Event\Telemetry\Duration}>
+     * @return \Generator<int, array{0: int, 1: Duration}>
      */
-    public static function provideMillisecondsAndTelemetryDuration(): \Generator
+    public static function provideMillisecondsAndDuration(): \Generator
     {
         $values = [
-            1 => Event\Telemetry\Duration::fromSecondsAndNanoseconds(0, 1_000_000),
-            999 => Event\Telemetry\Duration::fromSecondsAndNanoseconds(0, 999_000_000),
-            1_000 => Event\Telemetry\Duration::fromSecondsAndNanoseconds(1, 0),
-            1_234 => Event\Telemetry\Duration::fromSecondsAndNanoseconds(1, 234_000_000),
+            1 => Duration::fromSecondsAndNanoseconds(0, 1_000_000),
+            999 => Duration::fromSecondsAndNanoseconds(0, 999_000_000),
+            1_000 => Duration::fromSecondsAndNanoseconds(1, 0),
+            1_234 => Duration::fromSecondsAndNanoseconds(1, 234_000_000),
         ];
 
         foreach ($values as $milliseconds => $duration) {
@@ -79,11 +79,11 @@ final class MaximumDurationTest extends Framework\TestCase
     {
         $maximumDuration = MaximumDuration::fromSeconds($seconds);
 
-        $expected = Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+        $expected = Duration::fromSecondsAndNanoseconds(
             $seconds,
             0,
         );
 
-        self::assertEquals($expected, $maximumDuration->toTelemetryDuration());
+        self::assertEquals($expected, $maximumDuration->toDuration());
     }
 }

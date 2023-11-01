@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Formatter;
 
-use PHPUnit\Event;
+use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 
 /**
  * @internal
@@ -23,7 +23,7 @@ final class DefaultDurationFormatter implements DurationFormatter
     /**
      * @see https://github.com/sebastianbergmann/php-timer/blob/6.0.0/src/Duration.php
      */
-    public function format(Event\Telemetry\Duration $duration): string
+    public function format(Duration $duration): string
     {
         $durationInMilliseconds = $duration->seconds() * 1000 + $duration->nanoseconds() / 1000000;
 

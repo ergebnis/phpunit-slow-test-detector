@@ -22,15 +22,15 @@ final class SlowTest
 {
     private function __construct(
         private readonly Event\Code\Test $test,
-        private readonly Event\Telemetry\Duration $duration,
-        private readonly Event\Telemetry\Duration $maximumDuration,
+        private readonly Duration $duration,
+        private readonly Duration $maximumDuration,
     ) {
     }
 
     public static function fromTestDurationAndMaximumDuration(
         Event\Code\Test $test,
-        Event\Telemetry\Duration $duration,
-        Event\Telemetry\Duration $maximumDuration,
+        Duration $duration,
+        Duration $maximumDuration,
     ): self {
         return new self(
             $test,
@@ -44,12 +44,12 @@ final class SlowTest
         return $this->test;
     }
 
-    public function duration(): Event\Telemetry\Duration
+    public function duration(): Duration
     {
         return $this->duration;
     }
 
-    public function maximumDuration(): Event\Telemetry\Duration
+    public function maximumDuration(): Duration
     {
         return $this->maximumDuration;
     }

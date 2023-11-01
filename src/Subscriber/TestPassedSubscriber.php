@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Subscriber;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Collector;
+use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
@@ -54,7 +55,7 @@ final class TestPassedSubscriber implements Event\Test\PassedSubscriber
         $this->collector->collect($slowTest);
     }
 
-    private function resolveMaximumDuration(Event\Code\Test $test): Event\Telemetry\Duration
+    private function resolveMaximumDuration(Event\Code\Test $test): Duration
     {
         $annotations = [
             'maximumDuration',
@@ -84,9 +85,9 @@ final class TestPassedSubscriber implements Event\Test\PassedSubscriber
                 continue;
             }
 
-            return MaximumDuration::fromMilliseconds((int) $maximumDuration)->toTelemetryDuration();
+            return MaximumDuration::fromMilliseconds((int) $maximumDuration)->toDuration();
         }
 
-        return $this->maximumDuration->toTelemetryDuration();
+        return $this->maximumDuration->toDuration();
     }
 }

@@ -78,7 +78,7 @@
   </file>
   <file src="test/Unit/MaximumDurationTest.php">
     <PossiblyUnusedMethod>
-      <code>provideMillisecondsAndTelemetryDuration</code>
+      <code>provideMillisecondsAndDuration</code>
     </PossiblyUnusedMethod>
   </file>
 </files>
