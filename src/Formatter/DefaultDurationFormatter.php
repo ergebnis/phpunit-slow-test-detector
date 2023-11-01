@@ -15,6 +15,9 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Formatter;
 
 use PHPUnit\Event;
 
+/**
+ * @internal
+ */
 final class DefaultDurationFormatter implements DurationFormatter
 {
     /**

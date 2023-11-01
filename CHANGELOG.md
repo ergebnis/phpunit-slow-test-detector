@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.3.2...main`][2.3.2...main].
 
+### Fixed
+
+- Marked `DefaultDurationFormatter` as internal ([#350]), by [@localheinz]
+
 ## [`2.3.2`][2.3.2]
 
 For a full diff see [`2.3.1...2.3.2`][2.3.1...2.3.2].
@@ -164,5 +168,6 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#340]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/340
 [#342]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/342
 [#343]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/343
+[#350]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/350
 
 [@localheinz]: https://github.com/localheinz
