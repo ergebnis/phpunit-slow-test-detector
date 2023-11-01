@@ -3,12 +3,12 @@
 version: 2
 
 updates:
-  - commit-message:
+  - allow:
+      - dependency-type: "development"
+    commit-message:
       include: "scope"
       prefix: "composer"
     directory: "/"
-    ignore:
-      - dependency-name: "phpunit/phpunit"
     labels:
       - "dependency"
     open-pull-requests-limit: 10

@@ -1,4 +1,4 @@
-# https://github.com/probot/settings
+# https://github.com/repository-settings/app
 
 branches:
   - name: "main"
@@ -85,6 +85,7 @@ repository:
   has_pages: false
   has_projects: false
   has_wiki: false
+  is_template: false
   name: "phpunit-slow-test-detector"
   private: false
 
