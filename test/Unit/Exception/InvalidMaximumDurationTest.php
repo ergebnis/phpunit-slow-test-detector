@@ -22,7 +22,7 @@ final class InvalidMaximumDurationTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testNotGreaterThanReturnsException(): void
+    public function testNotGreaterThanZeroReturnsException(): void
     {
         $value = self::faker()->numberBetween();
 
