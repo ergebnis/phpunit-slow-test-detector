@@ -69,7 +69,7 @@ final class MaximumDurationTest extends Framework\TestCase
     #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'zero')]
     public function testFromSecondsRejectsInvalidValue(int $seconds): void
     {
-        $this->expectException(Exception\InvalidMilliseconds::class);
+        $this->expectException(Exception\InvalidSeconds::class);
 
         MaximumDuration::fromSeconds($seconds);
     }

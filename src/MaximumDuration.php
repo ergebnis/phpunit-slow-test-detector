@@ -23,12 +23,12 @@ final class MaximumDuration
     }
 
     /**
-     * @throws Exception\InvalidMilliseconds
+     * @throws Exception\InvalidSeconds
      */
     public static function fromSeconds(int $seconds): self
     {
         if (0 >= $seconds) {
-            throw Exception\InvalidMilliseconds::notGreaterThanZero($seconds);
+            throw Exception\InvalidSeconds::notGreaterThanZero($seconds);
         }
 
         return new self(Duration::fromSecondsAndNanoseconds(
