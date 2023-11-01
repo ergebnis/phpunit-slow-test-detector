@@ -33,7 +33,7 @@ final class Duration
         int $nanoseconds,
     ): self {
         if (0 > $seconds) {
-            throw Exception\InvalidSeconds::notGreaterThanZero($seconds);
+            throw Exception\InvalidSeconds::notGreaterThanOrEqualToZero($seconds);
         }
 
         if (0 > $nanoseconds) {

@@ -35,4 +35,18 @@ final class InvalidSecondsTest extends Framework\TestCase
 
         self::assertSame($message, $exception->getMessage());
     }
+
+    public function testNotGreaterThanOrEqualToZeroReturnsException(): void
+    {
+        $value = self::faker()->numberBetween();
+
+        $exception = Exception\InvalidSeconds::notGreaterThanOrEqualToZero($value);
+
+        $message = \sprintf(
+            'Value should be greater than or equal to 0, but %d is not.',
+            $value,
+        );
+
+        self::assertSame($message, $exception->getMessage());
+    }
 }
