@@ -17,8 +17,8 @@ use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
-#[Framework\Attributes\CoversClass(Exception\InvalidMaximumDuration::class)]
-final class InvalidMaximumDurationTest extends Framework\TestCase
+#[Framework\Attributes\CoversClass(Exception\InvalidMilliseconds::class)]
+final class InvalidMillisecondsTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
@@ -26,7 +26,7 @@ final class InvalidMaximumDurationTest extends Framework\TestCase
     {
         $value = self::faker()->numberBetween();
 
-        $exception = Exception\InvalidMaximumDuration::notGreaterThanZero($value);
+        $exception = Exception\InvalidMilliseconds::notGreaterThanZero($value);
 
         $message = \sprintf(
             'Value should be greater than 0, but %d is not.',

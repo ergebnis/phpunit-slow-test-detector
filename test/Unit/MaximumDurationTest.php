@@ -21,7 +21,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
 #[Framework\Attributes\CoversClass(MaximumDuration::class)]
-#[Framework\Attributes\UsesClass(Exception\InvalidMaximumDuration::class)]
+#[Framework\Attributes\UsesClass(Exception\InvalidMilliseconds::class)]
 final class MaximumDurationTest extends Framework\TestCase
 {
     use Test\Util\Helper;
@@ -30,7 +30,7 @@ final class MaximumDurationTest extends Framework\TestCase
     #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'zero')]
     public function testFromMillisecondsRejectsInvalidValue(int $milliseconds): void
     {
-        $this->expectException(Exception\InvalidMaximumDuration::class);
+        $this->expectException(Exception\InvalidMilliseconds::class);
 
         MaximumDuration::fromMilliseconds($milliseconds);
     }
@@ -69,7 +69,7 @@ final class MaximumDurationTest extends Framework\TestCase
     #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'zero')]
     public function testFromSecondsRejectsInvalidValue(int $seconds): void
     {
-        $this->expectException(Exception\InvalidMaximumDuration::class);
+        $this->expectException(Exception\InvalidMilliseconds::class);
 
         MaximumDuration::fromSeconds($seconds);
     }
