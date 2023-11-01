@@ -37,11 +37,11 @@ final class TimeKeeper
     public function stop(
         Event\Code\Test $test,
         Event\Telemetry\HRTime $stoppedTime,
-    ): Event\Telemetry\Duration {
+    ): Duration {
         $key = $test->id();
 
         if (!\array_key_exists($key, $this->startedTimes)) {
-            return Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+            return Duration::fromSecondsAndNanoseconds(
                 0,
                 0,
             );
@@ -51,6 +51,11 @@ final class TimeKeeper
 
         unset($this->startedTimes[$key]);
 
-        return $stoppedTime->duration($startedTime);
+        $duration = $stoppedTime->duration($startedTime);
+
+        return Duration::fromSecondsAndNanoseconds(
+            $duration->seconds(),
+            $duration->nanoseconds(),
+        );
     }
 }

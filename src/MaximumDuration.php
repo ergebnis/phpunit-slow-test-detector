@@ -13,14 +13,12 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector;
 
-use PHPUnit\Event;
-
 /**
  * @internal
  */
 final class MaximumDuration
 {
-    private function __construct(private readonly Event\Telemetry\Duration $duration)
+    private function __construct(private readonly Duration $duration)
     {
     }
 
@@ -33,7 +31,7 @@ final class MaximumDuration
             throw Exception\InvalidMaximumDuration::notGreaterThanZero($seconds);
         }
 
-        return new self(Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+        return new self(Duration::fromSecondsAndNanoseconds(
             $seconds,
             0,
         ));
@@ -55,13 +53,13 @@ final class MaximumDuration
 
         $nanoseconds = ($milliseconds - $seconds * 1_000) * 1_000_000;
 
-        return new self(Event\Telemetry\Duration::fromSecondsAndNanoseconds(
+        return new self(Duration::fromSecondsAndNanoseconds(
             $seconds,
             $nanoseconds,
         ));
     }
 
-    public function toTelemetryDuration(): Event\Telemetry\Duration
+    public function toDuration(): Duration
     {
         return $this->duration;
     }

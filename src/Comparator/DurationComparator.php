@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Comparator;
 
-use PHPUnit\Event;
+use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 
 /**
  * @internal
@@ -21,8 +21,8 @@ use PHPUnit\Event;
 final class DurationComparator
 {
     public function compare(
-        Event\Telemetry\Duration $one,
-        Event\Telemetry\Duration $two,
+        Duration $one,
+        Duration $two,
     ): int {
         if ($one->isLessThan($two)) {
             return -1;

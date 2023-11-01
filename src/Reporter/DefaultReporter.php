@@ -14,11 +14,11 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Comparator;
+use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
-use PHPUnit\Event;
 
 /**
  * @internal
@@ -98,14 +98,14 @@ TXT;
 
         $longestMaximumDuration = \array_reduce(
             $slowTestsToReport,
-            static function (Event\Telemetry\Duration $maximumDuration, SlowTest $slowTest): Event\Telemetry\Duration {
+            static function (Duration $maximumDuration, SlowTest $slowTest): Duration {
                 if ($maximumDuration->isLessThan($slowTest->maximumDuration())) {
                     return $slowTest->maximumDuration();
                 }
 
                 return $maximumDuration;
             },
-            $this->maximumDuration->toTelemetryDuration(),
+            $this->maximumDuration->toDuration(),
         );
 
         $durationFormatter = $this->durationFormatter;
