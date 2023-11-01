@@ -32,7 +32,7 @@ final class MaximumCountTest extends Framework\TestCase
     }
 
     #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'greaterThanZero')]
-    public function testFromSecondsReturnsMaximumDuration(int $value): void
+    public function testFromSecondsReturnsMaximumCount(int $value): void
     {
         $maximumCount = MaximumCount::fromInt($value);
 
