@@ -11,6 +11,8 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
+namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit;
+
 use Ergebnis\DataProvider;
 use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
