@@ -51,11 +51,6 @@ final class TimeKeeper
 
         unset($this->startedTimes[$key]);
 
-        $duration = $stoppedTime->duration($startedTime);
-
-        return Duration::fromSecondsAndNanoseconds(
-            $duration->seconds(),
-            $duration->nanoseconds(),
-        );
+        return $stoppedTime->duration($startedTime);
     }
 }
