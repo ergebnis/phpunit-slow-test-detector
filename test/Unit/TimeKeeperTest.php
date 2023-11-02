@@ -21,6 +21,7 @@ use PHPUnit\Framework;
 #[Framework\Attributes\CoversClass(TimeKeeper::class)]
 #[Framework\Attributes\UsesClass(Duration::class)]
 #[Framework\Attributes\UsesClass(TestIdentifier::class)]
+#[Framework\Attributes\UsesClass(Time::class)]
 final class TimeKeeperTest extends Framework\TestCase
 {
     use Test\Util\Helper;

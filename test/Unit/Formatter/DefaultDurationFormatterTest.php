@@ -19,6 +19,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
 #[Framework\Attributes\CoversClass(Formatter\DefaultDurationFormatter::class)]
+#[Framework\Attributes\UsesClass(Duration::class)]
 final class DefaultDurationFormatterTest extends Framework\TestCase
 {
     use Test\Util\Helper;

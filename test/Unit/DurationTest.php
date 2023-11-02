@@ -20,6 +20,9 @@ use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
 #[Framework\Attributes\CoversClass(Duration::class)]
+#[Framework\Attributes\UsesClass(Exception\InvalidMilliseconds::class)]
+#[Framework\Attributes\UsesClass(Exception\InvalidNanoseconds::class)]
+#[Framework\Attributes\UsesClass(Exception\InvalidSeconds::class)]
 final class DurationTest extends Framework\TestCase
 {
     use Test\Util\Helper;
