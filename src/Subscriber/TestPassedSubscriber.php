@@ -16,6 +16,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Subscriber;
 use Ergebnis\PHPUnit\SlowTestDetector\Collector;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
+use Ergebnis\PHPUnit\SlowTestDetector\Time;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
 use PHPUnit\Event;
 use PHPUnit\Metadata;
@@ -34,9 +35,14 @@ final class TestPassedSubscriber implements Event\Test\PassedSubscriber
 
     public function notify(Event\Test\Passed $event): void
     {
+        $time = $event->telemetryInfo()->time();
+
         $duration = $this->timeKeeper->stop(
             $event->test(),
-            $event->telemetryInfo()->time(),
+            Time::fromSecondsAndNanoseconds(
+                $time->seconds(),
+                $time->nanoseconds(),
+            ),
         );
 
         $maximumDuration = $this->resolveMaximumDuration($event->test());
