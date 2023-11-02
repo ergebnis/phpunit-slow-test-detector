@@ -15,7 +15,6 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Subscriber;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Collector;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
-use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
 use PHPUnit\Event;
@@ -27,7 +26,7 @@ use PHPUnit\Metadata;
 final class TestPassedSubscriber implements Event\Test\PassedSubscriber
 {
     public function __construct(
-        private readonly MaximumDuration $maximumDuration,
+        private readonly Duration $maximumDuration,
         private readonly TimeKeeper $timeKeeper,
         private readonly Collector\Collector $collector,
     ) {
@@ -85,9 +84,9 @@ final class TestPassedSubscriber implements Event\Test\PassedSubscriber
                 continue;
             }
 
-            return MaximumDuration::fromMilliseconds((int) $maximumDuration)->toDuration();
+            return Duration::fromMilliseconds((int) $maximumDuration);
         }
 
-        return $this->maximumDuration->toDuration();
+        return $this->maximumDuration;
     }
 }

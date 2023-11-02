@@ -33,10 +33,10 @@ final class Extension implements Runner\Extension\Extension
             $maximumCount = MaximumCount::fromInt((int) $parameters->get('maximum-count'));
         }
 
-        $maximumDuration = MaximumDuration::fromMilliseconds(500);
+        $maximumDuration = Duration::fromMilliseconds(500);
 
         if ($parameters->has('maximum-duration')) {
-            $maximumDuration = MaximumDuration::fromMilliseconds((int) $parameters->get('maximum-duration'));
+            $maximumDuration = Duration::fromMilliseconds((int) $parameters->get('maximum-duration'));
         }
 
         $collector = new Collector\DefaultCollector();

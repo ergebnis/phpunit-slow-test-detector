@@ -50,6 +50,28 @@ final class Duration
         );
     }
 
+    /**
+     * @throws Exception\InvalidMilliseconds
+     */
+    public static function fromMilliseconds(int $milliseconds): self
+    {
+        if (0 >= $milliseconds) {
+            throw Exception\InvalidMilliseconds::notGreaterThanZero($milliseconds);
+        }
+
+        $seconds = \intdiv(
+            $milliseconds,
+            1_000,
+        );
+
+        $nanoseconds = ($milliseconds - $seconds * 1_000) * 1_000_000;
+
+        return new self(
+            $seconds,
+            $nanoseconds,
+        );
+    }
+
     public function seconds(): int
     {
         return $this->seconds;

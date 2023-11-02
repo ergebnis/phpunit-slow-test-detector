@@ -71,14 +71,14 @@
       <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
     </PossiblyUnusedMethod>
   </file>
+  <file src="test/Unit/DurationTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideMillisecondsSecondsAndNanoseconds</code>
+    </PossiblyUnusedMethod>
+  </file>
   <file src="test/Unit/Formatter/DefaultDurationFormatterTest.php">
     <PossiblyUnusedMethod>
       <code>provideDurationAndFormattedDuration</code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="test/Unit/MaximumDurationTest.php">
-    <PossiblyUnusedMethod>
-      <code>provideMillisecondsAndDuration</code>
     </PossiblyUnusedMethod>
   </file>
 </files>
