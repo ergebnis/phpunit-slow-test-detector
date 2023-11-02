@@ -80,6 +80,60 @@ final class DurationTest extends Framework\TestCase
         self::assertSame($nanoseconds, $duration->nanoseconds());
     }
 
+    #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'lessThanZero')]
+    #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'zero')]
+    public function testFromMillisecondsRejectsInvalidValue(int $milliseconds): void
+    {
+        $this->expectException(Exception\InvalidMilliseconds::class);
+
+        Duration::fromMilliseconds($milliseconds);
+    }
+
+    #[Framework\Attributes\DataProvider('provideMillisecondsSecondsAndNanoseconds')]
+    public function testFromMillisecondsReturnsDuration(
+        int $milliseconds,
+        int $seconds,
+        int $nanoseconds,
+    ): void {
+        $duration = Duration::fromMilliseconds($milliseconds);
+
+        self::assertSame($seconds, $duration->seconds());
+        self::assertSame($nanoseconds, $duration->nanoseconds());
+    }
+
+    /**
+     * @return \Generator<int, array{0: int, 1: int, 2: int}>
+     */
+    public static function provideMillisecondsSecondsAndNanoseconds(): \Generator
+    {
+        $values = [
+            1 => [
+                0,
+                1_000_000,
+            ],
+            999 => [
+                0,
+                999_000_000,
+            ],
+            1_000 => [
+                1,
+                0,
+            ],
+            1_234 => [
+                1,
+                234_000_000,
+            ],
+        ];
+
+        foreach ($values as $milliseconds => [$seconds, $nanoseconds]) {
+            yield $milliseconds => [
+                $milliseconds,
+                $seconds,
+                $nanoseconds,
+            ];
+        }
+    }
+
     public function testIsLessThanReturnsFalseWhenSecondsAreGreater(): void
     {
         $one = Duration::fromSecondsAndNanoseconds(123, 456);

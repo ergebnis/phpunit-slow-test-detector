@@ -11,6 +11,7 @@ For a full diff see [`2.3.2...main`][2.3.2...main].
 ### Changed
 
 - Extracted `Duration` ([#351]), by [@localheinz]
+- Merged `MaximumDuration` into `Duration` ([#352]), by [@localheinz]
 
 ### Fixed
 
@@ -174,5 +175,6 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#343]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/343
 [#350]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/350
 [#351]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/351
+[#352]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/352
 
 [@localheinz]: https://github.com/localheinz
