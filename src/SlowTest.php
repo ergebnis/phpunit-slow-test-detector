@@ -25,7 +25,7 @@ final class SlowTest
     ) {
     }
 
-    public static function fromTestIdentifierDurationAndMaximumDuration(
+    public static function create(
         TestIdentifier $testIdentifier,
         Duration $duration,
         Duration $maximumDuration,

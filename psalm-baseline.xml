@@ -85,7 +85,7 @@
     <InternalClass>
       <code><![CDATA[Duration::fromMilliseconds($faker->numberBetween(0))]]></code>
       <code><![CDATA[Duration::fromMilliseconds($faker->numberBetween(0))]]></code>
-      <code>SlowTest::fromTestIdentifierDurationAndMaximumDuration(
+      <code>SlowTest::create(
             $testIdentifier,
             $duration,
             $maximumDuration,
@@ -95,7 +95,7 @@
     <InternalMethod>
       <code><![CDATA[Duration::fromMilliseconds($faker->numberBetween(0))]]></code>
       <code><![CDATA[Duration::fromMilliseconds($faker->numberBetween(0))]]></code>
-      <code>SlowTest::fromTestIdentifierDurationAndMaximumDuration(
+      <code>SlowTest::create(
             $testIdentifier,
             $duration,
             $maximumDuration,

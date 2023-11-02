@@ -54,7 +54,7 @@ final class TestPassedSubscriber implements Event\Test\PassedSubscriber
             return;
         }
 
-        $slowTest = SlowTest::fromTestIdentifierDurationAndMaximumDuration(
+        $slowTest = SlowTest::create(
             $testIdentifier,
             $duration,
             $maximumDuration,

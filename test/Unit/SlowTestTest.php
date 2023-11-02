@@ -24,7 +24,7 @@ final class SlowTestTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testFromTestIdentifierDurationAndMaximumDurationReturnsSlowTest(): void
+    public function testCreateReturnsSlowTest(): void
     {
         $faker = self::faker();
 
@@ -32,7 +32,7 @@ final class SlowTestTest extends Framework\TestCase
         $duration = Duration::fromMilliseconds($faker->numberBetween(0));
         $maximumDuration = Duration::fromMilliseconds($faker->numberBetween(0));
 
-        $slowTest = SlowTest::fromTestIdentifierDurationAndMaximumDuration(
+        $slowTest = SlowTest::create(
             $testIdentifier,
             $duration,
             $maximumDuration,
