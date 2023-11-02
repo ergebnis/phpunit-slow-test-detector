@@ -14,28 +14,28 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit;
 
 use Ergebnis\DataProvider;
+use Ergebnis\PHPUnit\SlowTestDetector\Count;
 use Ergebnis\PHPUnit\SlowTestDetector\Exception;
-use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
 use PHPUnit\Framework;
 
-#[Framework\Attributes\CoversClass(MaximumCount::class)]
-#[Framework\Attributes\UsesClass(Exception\InvalidMaximumCount::class)]
-final class MaximumCountTest extends Framework\TestCase
+#[Framework\Attributes\CoversClass(Count::class)]
+#[Framework\Attributes\UsesClass(Exception\InvalidCount::class)]
+final class CountTest extends Framework\TestCase
 {
     #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'lessThanZero')]
     #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'zero')]
     public function testFromIntRejectsInvalidValue(int $value): void
     {
-        $this->expectException(Exception\InvalidMaximumCount::class);
+        $this->expectException(Exception\InvalidCount::class);
 
-        MaximumCount::fromInt($value);
+        Count::fromInt($value);
     }
 
     #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'greaterThanZero')]
-    public function testFromSecondsReturnsMaximumCount(int $value): void
+    public function testFromIntReturnsCount(int $value): void
     {
-        $maximumCount = MaximumCount::fromInt($value);
+        $count = Count::fromInt($value);
 
-        self::assertSame($value, $maximumCount->toInt());
+        self::assertSame($value, $count->toInt());
     }
 }

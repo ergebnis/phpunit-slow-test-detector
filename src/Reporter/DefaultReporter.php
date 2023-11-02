@@ -14,9 +14,9 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Comparator;
+use Ergebnis\PHPUnit\SlowTestDetector\Count;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
-use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 
 /**
@@ -29,7 +29,7 @@ final class DefaultReporter implements Reporter
     public function __construct(
         private readonly Formatter\DurationFormatter $durationFormatter,
         private readonly Duration $maximumDuration,
-        private readonly MaximumCount $maximumCount,
+        private readonly Count $maximumCount,
     ) {
         $this->durationComparator = new Comparator\DurationComparator();
     }

@@ -16,7 +16,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Exception;
 /**
  * @internal
  */
-final class InvalidMaximumCount extends \InvalidArgumentException
+final class InvalidCount extends \InvalidArgumentException
 {
     public static function notGreaterThanZero(int $value): self
     {
