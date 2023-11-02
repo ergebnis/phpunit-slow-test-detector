@@ -27,7 +27,7 @@ final class DefaultCollector implements Collector
 
     public function collect(SlowTest $slowTest): void
     {
-        $key = $slowTest->test()->id();
+        $key = $slowTest->testIdentifier()->toString();
 
         if (\array_key_exists($key, $this->slowTests)) {
             $previousSlowTest = $this->slowTests[$key];

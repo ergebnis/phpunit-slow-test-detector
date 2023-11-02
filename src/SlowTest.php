@@ -13,35 +13,33 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector;
 
-use PHPUnit\Event;
-
 /**
  * @internal
  */
 final class SlowTest
 {
     private function __construct(
-        private readonly Event\Code\Test $test,
+        private readonly TestIdentifier $testIdentifier,
         private readonly Duration $duration,
         private readonly Duration $maximumDuration,
     ) {
     }
 
-    public static function fromTestDurationAndMaximumDuration(
-        Event\Code\Test $test,
+    public static function fromTestIdentifierDurationAndMaximumDuration(
+        TestIdentifier $testIdentifier,
         Duration $duration,
         Duration $maximumDuration,
     ): self {
         return new self(
-            $test,
+            $testIdentifier,
             $duration,
             $maximumDuration,
         );
     }
 
-    public function test(): Event\Code\Test
+    public function testIdentifier(): TestIdentifier
     {
-        return $this->test;
+        return $this->testIdentifier;
     }
 
     public function duration(): Duration

@@ -13,8 +13,6 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector;
 
-use PHPUnit\Event;
-
 /**
  * @internal
  */
@@ -26,19 +24,19 @@ final class TimeKeeper
     private array $startedTimes = [];
 
     public function start(
-        Event\Code\Test $test,
+        TestIdentifier $testIdentifier,
         Time $startedTime,
     ): void {
-        $key = $test->id();
+        $key = $testIdentifier->toString();
 
         $this->startedTimes[$key] = $startedTime;
     }
 
     public function stop(
-        Event\Code\Test $test,
+        TestIdentifier $testIdentifier,
         Time $stoppedTime,
     ): Duration {
-        $key = $test->id();
+        $key = $testIdentifier->toString();
 
         if (!\array_key_exists($key, $this->startedTimes)) {
             return Duration::fromSecondsAndNanoseconds(

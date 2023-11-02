@@ -138,7 +138,7 @@ TXT;
                 ),
             );
 
-            $testName = $slowTest->test()->id();
+            $testName = $slowTest->testIdentifier()->toString();
 
             return <<<TXT
 {$formattedNumber}. {$formattedDuration} {$formattedMaximumDuration} {$testName}

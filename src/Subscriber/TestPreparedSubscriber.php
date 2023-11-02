@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Subscriber;
 
+use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use Ergebnis\PHPUnit\SlowTestDetector\Time;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
 use PHPUnit\Event;
@@ -31,7 +32,7 @@ final class TestPreparedSubscriber implements Event\Test\PreparedSubscriber
         $time = $event->telemetryInfo()->time();
 
         $this->timeKeeper->start(
-            $event->test(),
+            TestIdentifier::fromString($event->test()->id()),
             Time::fromSecondsAndNanoseconds(
                 $time->seconds(),
                 $time->nanoseconds(),
