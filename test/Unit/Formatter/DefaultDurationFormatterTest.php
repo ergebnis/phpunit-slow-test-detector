@@ -34,11 +34,11 @@ final class DefaultDurationFormatterTest extends Framework\TestCase
     }
 
     /**
-     * @return array<string, array{0: Duration, 1: string}>
+     * @return \Generator<string, array{0: Duration, 1: string}>
      */
-    public static function provideDurationAndFormattedDuration(): array
+    public static function provideDurationAndFormattedDuration(): \Generator
     {
-        return [
+        $values = [
             'zero' => [
                 Duration::fromSecondsAndNanoseconds(
                     0,
@@ -96,5 +96,12 @@ final class DefaultDurationFormatterTest extends Framework\TestCase
                 '12:34:56.789',
             ],
         ];
+
+        foreach ($values as $key => [$duration, $formattedDuration]) {
+            yield $key => [
+                $duration,
+                $formattedDuration,
+            ];
+        }
     }
 }

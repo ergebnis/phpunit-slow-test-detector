@@ -94,11 +94,11 @@ final class TimeTest extends Framework\TestCase
     }
 
     /**
-     * @return array<string, array{0: int, 1: int, 2: int, 3: int}>
+     * @return \Generator<string, array{0: int, 1: int, 2: int, 3: int}>
      */
-    public static function provideStartGreaterThanEnd(): array
+    public static function provideStartGreaterThanEnd(): \Generator
     {
-        return [
+        $values = [
             'seconds-greater' => [
                 11,
                 1,
@@ -118,6 +118,15 @@ final class TimeTest extends Framework\TestCase
                 0,
             ],
         ];
+
+        foreach ($values as $key => [$startSeconds, $startNanoseconds, $endSeconds, $endNanoseconds]) {
+            yield $key => [
+                $startSeconds,
+                $startNanoseconds,
+                $endSeconds,
+                $endNanoseconds,
+            ];
+        }
     }
 
     #[Framework\Attributes\DataProvider('provideStartEndAndDuration')]
@@ -142,11 +151,11 @@ final class TimeTest extends Framework\TestCase
     }
 
     /**
-     * @return array<string, array{0: int, 1: int, 2: int, 3: int, 4: Duration}>
+     * @return \Generator<string, array{0: int, 1: int, 2: int, 3: int, 4: Duration}>
      */
-    public static function provideStartEndAndDuration(): array
+    public static function provideStartEndAndDuration(): \Generator
     {
-        return [
+        $values = [
             'start-equal-to-end' => [
                 10,
                 50,
@@ -178,5 +187,15 @@ final class TimeTest extends Framework\TestCase
                 ),
             ],
         ];
+
+        foreach ($values as $key => [$startSeconds, $startNanoseconds, $endSeconds, $endNanoseconds, $duration]) {
+            yield $key => [
+                $startSeconds,
+                $startNanoseconds,
+                $endSeconds,
+                $endNanoseconds,
+                $duration,
+            ];
+        }
     }
 }
