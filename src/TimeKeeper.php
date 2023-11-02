@@ -21,13 +21,13 @@ use PHPUnit\Event;
 final class TimeKeeper
 {
     /**
-     * @var array<string, Event\Telemetry\HRTime>
+     * @var array<string, Time>
      */
     private array $startedTimes = [];
 
     public function start(
         Event\Code\Test $test,
-        Event\Telemetry\HRTime $startedTime,
+        Time $startedTime,
     ): void {
         $key = $test->id();
 
@@ -36,7 +36,7 @@ final class TimeKeeper
 
     public function stop(
         Event\Code\Test $test,
-        Event\Telemetry\HRTime $stoppedTime,
+        Time $stoppedTime,
     ): Duration {
         $key = $test->id();
 
