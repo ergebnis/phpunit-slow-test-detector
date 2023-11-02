@@ -40,8 +40,13 @@ final class Time
             throw Exception\InvalidNanoseconds::notGreaterThanOrEqualToZero($nanoseconds);
         }
 
-        if (999_999_999 < $nanoseconds) {
-            throw Exception\InvalidNanoseconds::notLessThanOrEqualTo999999999($nanoseconds);
+        $maxNanoseconds = 999_999_999;
+
+        if ($maxNanoseconds < $nanoseconds) {
+            throw Exception\InvalidNanoseconds::notLessThanOrEqualTo(
+                $nanoseconds,
+                $maxNanoseconds,
+            );
         }
 
         return new self(

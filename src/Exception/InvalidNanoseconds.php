@@ -26,11 +26,14 @@ final class InvalidNanoseconds extends \InvalidArgumentException
         ));
     }
 
-    public static function notLessThanOrEqualTo999999999(int $value): self
-    {
+    public static function notLessThanOrEqualTo(
+        int $one,
+        int $two,
+    ): self {
         return new self(\sprintf(
-            'Value should be less than or equal to 999999999, but %d is not.',
-            $value,
+            'Value should be less than or equal to %d, but %d is not.',
+            $two,
+            $one,
         ));
     }
 }

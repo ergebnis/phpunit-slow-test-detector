@@ -36,15 +36,22 @@ final class InvalidNanosecondsTest extends Framework\TestCase
         self::assertSame($message, $exception->getMessage());
     }
 
-    public function testNotLessThanOrEqualTo999999999ReturnsException(): void
+    public function testNotLessThanOrEqualToReturnsException(): void
     {
-        $value = self::faker()->numberBetween();
+        $faker = self::faker();
 
-        $exception = Exception\InvalidNanoseconds::notLessThanOrEqualTo999999999($value);
+        $one = $faker->numberBetween();
+        $two = $faker->numberBetween();
+
+        $exception = Exception\InvalidNanoseconds::notLessThanOrEqualTo(
+            $one,
+            $two,
+        );
 
         $message = \sprintf(
-            'Value should be less than or equal to 999999999, but %d is not.',
-            $value,
+            'Value should be less than or equal to %d, but %d is not.',
+            $two,
+            $one,
         );
 
         self::assertSame($message, $exception->getMessage());
