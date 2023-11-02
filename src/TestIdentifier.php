@@ -1,0 +1,41 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2021-2023 Andreas Möller
+ *
+ * For the full copyright and license information, please view
+ * the LICENSE.md file that was distributed with this source code.
+ *
+ * @see https://github.com/ergebnis/phpunit-slow-test-detector
+ */
+
+namespace Ergebnis\PHPUnit\SlowTestDetector;
+
+/**
+ * @internal
+ */
+final class TestIdentifier
+{
+    private function __construct(private readonly string $value)
+    {
+    }
+
+    /**
+     * @throws Exception\InvalidTestIdentifier
+     */
+    public static function fromString(string $value): self
+    {
+        if ('' === \trim($value)) {
+            throw Exception\InvalidTestIdentifier::blankOrEmpty();
+        }
+
+        return new self($value);
+    }
+
+    public function toString(): string
+    {
+        return $this->value;
+    }
+}
