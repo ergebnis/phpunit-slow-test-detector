@@ -16,19 +16,19 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
 /**
  * @internal
  */
-final class MaximumCount
+final class Count
 {
     private function __construct(private readonly int $value)
     {
     }
 
     /**
-     * @throws Exception\InvalidMaximumCount
+     * @throws Exception\InvalidCount
      */
     public static function fromInt(int $value): self
     {
         if (0 >= $value) {
-            throw Exception\InvalidMaximumCount::notGreaterThanZero($value);
+            throw Exception\InvalidCount::notGreaterThanZero($value);
         }
 
         return new self($value);

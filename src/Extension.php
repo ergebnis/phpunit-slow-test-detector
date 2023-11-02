@@ -27,10 +27,10 @@ final class Extension implements Runner\Extension\Extension
             return;
         }
 
-        $maximumCount = MaximumCount::fromInt(10);
+        $maximumCount = Count::fromInt(10);
 
         if ($parameters->has('maximum-count')) {
-            $maximumCount = MaximumCount::fromInt((int) $parameters->get('maximum-count'));
+            $maximumCount = Count::fromInt((int) $parameters->get('maximum-count'));
         }
 
         $maximumDuration = Duration::fromMilliseconds(500);
