@@ -152,21 +152,30 @@ final class TimeTest extends Framework\TestCase
                 50,
                 10,
                 50,
-                Duration::fromSecondsAndNanoseconds(0, 0),
+                Duration::fromSecondsAndNanoseconds(
+                    0,
+                    0,
+                ),
             ],
             'start-smaller-than-end' => [
                 10,
                 50,
                 12,
                 70,
-                Duration::fromSecondsAndNanoseconds(2, 20),
+                Duration::fromSecondsAndNanoseconds(
+                    2,
+                    20,
+                ),
             ],
             'start-nanoseconds-greater-than-end-nanoseconds' => [
                 10,
                 50,
                 12,
                 30,
-                Duration::fromSecondsAndNanoseconds(1, 999999980),
+                Duration::fromSecondsAndNanoseconds(
+                    1,
+                    999999980,
+                ),
             ],
         ];
     }
