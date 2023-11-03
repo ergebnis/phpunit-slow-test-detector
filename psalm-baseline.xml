@@ -7,12 +7,12 @@
   </file>
   <file src="src/Formatter/DefaultDurationFormatter.php">
     <InvalidOperand>
-      <code><![CDATA[$duration->seconds() * 1000 + $duration->nanoseconds() / 1000000]]></code>
+      <code><![CDATA[$duration->seconds() * 1_000 + $duration->nanoseconds() / 1_000_000]]></code>
       <code>$durationInMilliseconds - $hoursInMilliseconds</code>
       <code>$durationInMilliseconds - $hoursInMilliseconds</code>
       <code>$durationInMilliseconds / 60</code>
       <code>$durationInMilliseconds / 60</code>
-      <code>($durationInMilliseconds - $hoursInMilliseconds - $minutesInMilliseconds) / 1000</code>
+      <code>($durationInMilliseconds - $hoursInMilliseconds - $minutesInMilliseconds) / 1_000</code>
     </InvalidOperand>
   </file>
   <file src="src/Subscriber/TestPassedSubscriber.php">
