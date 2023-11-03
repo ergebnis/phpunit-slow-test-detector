@@ -93,11 +93,11 @@ final class Duration
             return true;
         }
 
-        if ($this->seconds > $other->seconds) {
-            return false;
+        if ($this->seconds === $other->seconds) {
+            return $this->nanoseconds < $other->nanoseconds;
         }
 
-        return $this->nanoseconds < $other->nanoseconds;
+        return false;
     }
 
     public function isGreaterThan(self $other): bool
@@ -106,10 +106,10 @@ final class Duration
             return true;
         }
 
-        if ($this->seconds < $other->seconds) {
-            return false;
+        if ($this->seconds === $other->seconds) {
+            return $this->nanoseconds > $other->nanoseconds;
         }
 
-        return $this->nanoseconds > $other->nanoseconds;
+        return false;
     }
 }
