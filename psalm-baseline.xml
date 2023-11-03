@@ -81,6 +81,11 @@
       <code>provideDurationAndFormattedDuration</code>
     </PossiblyUnusedMethod>
   </file>
+  <file src="test/Unit/Reporter/DefaultReporterTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideExpectedReportMaximumDurationMaximumCountAndSlowTests</code>
+    </PossiblyUnusedMethod>
+  </file>
   <file src="test/Unit/TimeTest.php">
     <PossiblyUnusedMethod>
       <code>provideStartEndAndDuration</code>
