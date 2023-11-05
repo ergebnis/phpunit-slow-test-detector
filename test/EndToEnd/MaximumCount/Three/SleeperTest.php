@@ -11,40 +11,21 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Three;
 
+use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
-#[Framework\Attributes\CoversClass(Sleeper::class)]
+#[Framework\Attributes\CoversClass(Test\Fixture\Sleeper::class)]
 final class SleeperTest extends Framework\TestCase
 {
+    use Test\Util\Helper;
+
     public function testSleeperDoesNotSleepAtAll(): void
     {
         $milliseconds = 0;
 
-        $sleeper = Sleeper::fromMilliseconds($milliseconds);
-
-        $sleeper->sleep();
-
-        self::assertSame($milliseconds, $sleeper->milliseconds());
-    }
-
-    public function testSleeperSleepsJustBelowDefaultMaximumDuration(): void
-    {
-        $milliseconds = 400;
-
-        $sleeper = Sleeper::fromMilliseconds($milliseconds);
-
-        $sleeper->sleep();
-
-        self::assertSame($milliseconds, $sleeper->milliseconds());
-    }
-
-    public function testSleeperSleepsJustAboveDefaultMaximumDuration(): void
-    {
-        $milliseconds = 600;
-
-        $sleeper = Sleeper::fromMilliseconds($milliseconds);
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
         $sleeper->sleep();
 
@@ -54,7 +35,7 @@ final class SleeperTest extends Framework\TestCase
     #[Framework\Attributes\DataProvider('provideMillisecondsGreaterThanDefaultMaximumDuration')]
     public function testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider(int $milliseconds): void
     {
-        $sleeper = Sleeper::fromMilliseconds($milliseconds);
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
         $sleeper->sleep();
 
@@ -67,9 +48,9 @@ final class SleeperTest extends Framework\TestCase
     public static function provideMillisecondsGreaterThanDefaultMaximumDuration(): \Generator
     {
         $values = \range(
+            550,
             700,
-            1600,
-            100,
+            50,
         );
 
         foreach ($values as $value) {

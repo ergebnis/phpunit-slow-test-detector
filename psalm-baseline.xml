@@ -46,15 +46,20 @@
       <code>NullReporter</code>
     </UnusedClass>
   </file>
+  <file src="test/EndToEnd/Default/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/MaximumCount/Three/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
+    </PossiblyUnusedMethod>
+  </file>
   <file src="test/Fixture/Sleeper.php">
     <ArgumentTypeCoercion>
       <code><![CDATA[$this->milliseconds * 1000]]></code>
     </ArgumentTypeCoercion>
-  </file>
-  <file src="test/Fixture/SleeperTest.php">
-    <PossiblyUnusedMethod>
-      <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
-    </PossiblyUnusedMethod>
   </file>
   <file src="test/Unit/DurationTest.php">
     <PossiblyUnusedMethod>

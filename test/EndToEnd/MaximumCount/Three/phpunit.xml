@@ -17,12 +17,12 @@
 >
     <extensions>
         <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension">
-            <parameter name="maximum-count" value="5"/>
+            <parameter name="maximum-count" value="3"/>
         </bootstrap>
     </extensions>
     <testsuites>
         <testsuite name="Unit Tests">
-            <directory>../../../Fixture/</directory>
+            <directory>.</directory>
         </testsuite>
     </testsuites>
 </phpunit>
