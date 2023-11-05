@@ -449,6 +449,10 @@ jobs:
           - "8.2"
           - "8.3"
 
+        phpunit-version:
+          - "9.6.0"
+          - "10.4.0"
+
         dependencies:
           - "lowest"
           - "locked"
@@ -481,16 +485,25 @@ jobs:
         uses: "actions/cache@v3.3.2"
         with:
           path: "${{ env.COMPOSER_CACHE_DIR }}"
-          key: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}"
-          restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
+          key: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-phpunit-${{ matrix.phpunit-version }}-${{ hashFiles('composer.lock') }}"
+          restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-phpunit-${{ matrix.phpunit-version }}-"
+
+      - name: "Require phpunit/phpunit:^${{ matrix.phpunit-version }}"
+        run: "composer require phpunit/phpunit:^${{ matrix.phpunit-version }} --ansi --no-interaction --no-progress --update-with-all-dependencies"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
         uses: "ergebnis/.github/actions/composer/install@1.8.0"
         with:
           dependencies: "${{ matrix.dependencies }}"
 
-      - name: "Run unit tests with phpunit/phpunit"
+      - name: "Run unit tests with phpunit/phpunit:10.4.0"
+        if: "matrix.phpunit-version == '10.4.0'"
         run: "vendor/bin/phpunit --colors=always --configuration=test/Unit/phpunit.xml"
 
-      - name: "Run end-to-end tests with phpunit/phpunit"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/phpunit.xml"
+      - name: "Run end-to-end tests with phpunit/phpunit:10.4.0"
+        if: "matrix.phpunit-version == '10.4.0'"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version10/phpunit.xml"
+
+      - name: "Run end-to-end tests with phpunit/phpunit:9.6.0"
+        if: "matrix.phpunit-version == '9.6.0'"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version9/phpunit.xml"

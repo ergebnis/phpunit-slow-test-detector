@@ -1,3 +1,7 @@
 {
-  "symbol-whitelist": []
+  "symbol-whitelist": [
+    "PHPUnit\\Runner\\AfterLastTestHook",
+    "PHPUnit\\Runner\\AfterSuccessfulTestHook",
+    "PHPUnit\\Runner\\BeforeFirstTestHook"
+  ]
 }

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="5.15.0@5c774aca4746caf3d239d9c8cadb9f882ca29352">
   <file src="src/Extension.php">
+    <DuplicateClass>
+      <code>Extension</code>
+    </DuplicateClass>
     <UnusedClass>
       <code>Extension</code>
     </UnusedClass>
@@ -30,6 +33,19 @@
     <MixedAssignment>
       <code>$maximumDuration</code>
     </MixedAssignment>
+    <UnusedClass>
+      <code>TestPassedSubscriber</code>
+    </UnusedClass>
+  </file>
+  <file src="src/Subscriber/TestPreparedSubscriber.php">
+    <UnusedClass>
+      <code>TestPreparedSubscriber</code>
+    </UnusedClass>
+  </file>
+  <file src="src/Subscriber/TestRunnerExecutionFinishedSubscriber.php">
+    <UnusedClass>
+      <code>TestRunnerExecutionFinishedSubscriber</code>
+    </UnusedClass>
   </file>
   <file src="test/Double/Collector/AppendingCollector.php">
     <UnusedClass>
@@ -46,12 +62,12 @@
       <code>NullReporter</code>
     </UnusedClass>
   </file>
-  <file src="test/EndToEnd/Default/SleeperTest.php">
+  <file src="test/EndToEnd/Version10/Default/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
     </PossiblyUnusedMethod>
   </file>
-  <file src="test/EndToEnd/MaximumCount/Three/SleeperTest.php">
+  <file src="test/EndToEnd/Version10/MaximumCount/Three/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
     </PossiblyUnusedMethod>

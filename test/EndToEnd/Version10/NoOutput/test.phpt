@@ -7,10 +7,10 @@ declare(strict_types=1);
 
 use PHPUnit\TextUI;
 
-$_SERVER['argv'][] = '--configuration=test/EndToEnd/Default/phpunit.xml';
+$_SERVER['argv'][] = '--configuration=test/EndToEnd/Version10/Default/phpunit.xml';
 $_SERVER['argv'][] = '--no-output';
 
-require_once __DIR__ . '/../../../vendor/autoload.php';
+require_once __DIR__ . '/../../../../vendor/autoload.php';
 
 $application = new TextUI\Application();
 

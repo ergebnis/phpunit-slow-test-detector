@@ -31,8 +31,4 @@ return static function (Config\RectorConfig $rectorConfig): void {
     $rectorConfig->rules([
         Php81\Rector\Property\ReadOnlyPropertyRector::class,
     ]);
-
-    $rectorConfig->sets([
-        PHPUnit\Set\PHPUnitSetList::PHPUNIT_100,
-    ]);
 };

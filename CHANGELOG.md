@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.3.2...main`][2.3.2...main].
 
+### Added
+
+- Added support for `phpunit/phpunit:^9.6.0`  ([#341]), by [@localheinz]
+
 ### Changed
 
 - Extracted `Duration` ([#351]), by [@localheinz]
@@ -175,6 +179,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#272]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/272
 [#273]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/273
 [#340]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/340
+[#341]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/341
 [#342]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/342
 [#343]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/343
 [#350]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/350

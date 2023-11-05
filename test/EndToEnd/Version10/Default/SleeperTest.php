@@ -11,7 +11,7 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Three;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\Default;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
@@ -49,7 +49,7 @@ final class SleeperTest extends Framework\TestCase
     {
         $values = \range(
             550,
-            700,
+            1050,
             50,
         );
 
