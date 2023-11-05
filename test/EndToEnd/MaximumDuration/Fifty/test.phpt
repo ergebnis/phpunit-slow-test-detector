@@ -21,18 +21,23 @@ Runtime: %s
 Configuration: %Stest/EndToEnd/MaximumDuration/Fifty/phpunit.xml
 Random Seed:   %s
 
-............                                                      12 / 12 (100%)
+.............                                                     13 / 13 (100%)
 
-Detected 7 tests that took longer than expected.
+Detected 12 tests that took longer than expected.
 
-1. 0.2%s (0.200) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromSlowThresholdAnnotation
-2. 0.2%s (0.180) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromMaximumDurationAnnotationWhenSlowThresholdAnnotationIsPresentBeforeMaximumDuration
-3. 0.1%s (0.160) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromMaximumDurationAnnotationWhenSlowThresholdAnnotationIsPresentAfterMaximumDuration
-4. 0.1%s (0.150) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromMaximumDurationAnnotation
-5. 0.1%s (0.050) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsWithDocBlockWithMaximumDurationAnnotationWhereValueIsNotAnInt
-6. 0.0%s (0.050) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsWithDocBlockWithoutSlowThresholdAnnotation
-7. 0.0%s (0.050) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsJustAboveDefaultMaximumDuration
+ 1. 1.6%s (0.050) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#9
+ 2. 1.5%s (0.050) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#8
+ 3. 1.4%s (0.050) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#7
+ 4. 1.3%s (0.050) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#6
+ 5. 1.2%s (0.050) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#5
+ 6. 1.1%s (0.050) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#4
+ 7. 1.0%s (0.050) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#3
+ 8. 0.9%s (0.050) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#2
+ 9. 0.8%s (0.050) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#1
+10. 0.7%s (0.050) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#0
+
+There are 2 additional slow tests that are not listed here.
 
 Time: %s, Memory: %s
 
-OK (12 tests, 12 assertions)
+OK (13 tests, 13 assertions)

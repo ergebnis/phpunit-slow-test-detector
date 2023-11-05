@@ -21,18 +21,18 @@ Runtime: %s
 Configuration: %Stest/EndToEnd/MaximumCount/Five/phpunit.xml
 Random Seed:   %s
 
-.........                                                           9 / 9 (100%)
+.............                                                     13 / 13 (100%)
 
-Detected 7 tests that took longer than expected.
+Detected 11 tests that took longer than expected.
 
-1. 1.2%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#5
-2. 1.1%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#4
-3. 1.0%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#3
-4. 0.9%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#2
-5. 0.8%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumCount\Five\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#1
+1. 1.6%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#9
+2. 1.5%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#8
+3. 1.4%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#7
+4. 1.3%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#6
+5. 1.2%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#5
 
-There are 2 additional slow tests that are not listed here.
+There are 6 additional slow tests that are not listed here.
 
 Time: %s, Memory: %s
 
-OK (9 tests, 9 assertions)
+OK (13 tests, 13 assertions)

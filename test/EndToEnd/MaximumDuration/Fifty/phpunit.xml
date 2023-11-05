@@ -21,8 +21,8 @@
         </bootstrap>
     </extensions>
     <testsuites>
-        <testsuite name="unit">
-            <directory>.</directory>
+        <testsuite name="Unit Tests">
+            <directory>../../../Fixture/</directory>
         </testsuite>
     </testsuites>
 </phpunit>

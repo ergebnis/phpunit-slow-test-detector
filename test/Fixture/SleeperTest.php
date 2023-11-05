@@ -11,21 +11,18 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture;
 
-use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
-#[Framework\Attributes\CoversClass(Test\Fixture\Sleeper::class)]
+#[Framework\Attributes\CoversClass(Sleeper::class)]
 final class SleeperTest extends Framework\TestCase
 {
-    use Test\Util\Helper;
-
     public function testSleeperDoesNotSleepAtAll(): void
     {
         $milliseconds = 0;
 
-        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+        $sleeper = Sleeper::fromMilliseconds($milliseconds);
 
         $sleeper->sleep();
 
@@ -36,7 +33,7 @@ final class SleeperTest extends Framework\TestCase
     {
         $milliseconds = 400;
 
-        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+        $sleeper = Sleeper::fromMilliseconds($milliseconds);
 
         $sleeper->sleep();
 
@@ -47,7 +44,7 @@ final class SleeperTest extends Framework\TestCase
     {
         $milliseconds = 600;
 
-        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+        $sleeper = Sleeper::fromMilliseconds($milliseconds);
 
         $sleeper->sleep();
 
@@ -57,7 +54,7 @@ final class SleeperTest extends Framework\TestCase
     #[Framework\Attributes\DataProvider('provideMillisecondsGreaterThanDefaultMaximumDuration')]
     public function testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider(int $milliseconds): void
     {
-        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+        $sleeper = Sleeper::fromMilliseconds($milliseconds);
 
         $sleeper->sleep();
 
