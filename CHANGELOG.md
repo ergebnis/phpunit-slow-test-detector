@@ -15,6 +15,7 @@ For a full diff see [`2.3.2...main`][2.3.2...main].
 - Renamed `MaximumCount` to `Count` ([#353]), by [@localheinz]
 - Extracted `Time` ([#354]), by [@localheinz]
 - Extracted `TestIdentifier` ([#355]), by [@localheinz]
+- Required `phpunit/phpunit:^10.4.2` ([#357]), by [@localheinz]
 
 ### Fixed
 
@@ -182,5 +183,6 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#353]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/353
 [#354]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/354
 [#355]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/355
+[#357]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/357
 
 [@localheinz]: https://github.com/localheinz
