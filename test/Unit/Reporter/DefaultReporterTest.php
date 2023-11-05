@@ -166,14 +166,21 @@ TXT,
             ],
             'list-different-maximum-duration' => [
                 <<<'TXT'
-Detected 3 tests that took longer than expected.
+Detected 10 tests that took longer than expected.
 
-1. 20:50.000 (16:40.000) FooTest::test
-2.  9:35.000 ( 8:20.000) BarTest::test
-3.     0.250 (    0.100) BazTest::test
+ 1. 20:50.000 (16:40.000) FooTest::test
+ 2.  9:35.000 ( 8:20.000) BarTest::test
+ 3.     0.250 (    0.100) BazTest::test
+ 4.     0.200 (    0.100) QuxTest::test
+ 5.     0.160 (    0.100) QuuxTest::test
+ 6.     0.150 (    0.100) CorgeTest::test
+ 7.     0.140 (    0.100) GraultTest::test
+ 8.     0.130 (    0.100) GarplyTest::test
+ 9.     0.120 (    0.100) WaldoTest::test
+10.     0.110 (    0.100) FredTest::test
 TXT,
                 Duration::fromMilliseconds(500),
-                Count::fromInt(3),
+                Count::fromInt(10),
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
@@ -188,6 +195,41 @@ TXT,
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
                         Duration::fromMilliseconds(250),
+                        Duration::fromMilliseconds(100),
+                    ),
+                    SlowTest::create(
+                        TestIdentifier::fromString('QuxTest::test'),
+                        Duration::fromMilliseconds(200),
+                        Duration::fromMilliseconds(100),
+                    ),
+                    SlowTest::create(
+                        TestIdentifier::fromString('QuuxTest::test'),
+                        Duration::fromMilliseconds(160),
+                        Duration::fromMilliseconds(100),
+                    ),
+                    SlowTest::create(
+                        TestIdentifier::fromString('CorgeTest::test'),
+                        Duration::fromMilliseconds(150),
+                        Duration::fromMilliseconds(100),
+                    ),
+                    SlowTest::create(
+                        TestIdentifier::fromString('GraultTest::test'),
+                        Duration::fromMilliseconds(140),
+                        Duration::fromMilliseconds(100),
+                    ),
+                    SlowTest::create(
+                        TestIdentifier::fromString('GarplyTest::test'),
+                        Duration::fromMilliseconds(130),
+                        Duration::fromMilliseconds(100),
+                    ),
+                    SlowTest::create(
+                        TestIdentifier::fromString('WaldoTest::test'),
+                        Duration::fromMilliseconds(120),
+                        Duration::fromMilliseconds(100),
+                    ),
+                    SlowTest::create(
+                        TestIdentifier::fromString('FredTest::test'),
+                        Duration::fromMilliseconds(110),
                         Duration::fromMilliseconds(100),
                     ),
                 ],
