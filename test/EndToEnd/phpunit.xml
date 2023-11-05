@@ -33,7 +33,7 @@
     </source>
     <testsuites>
         <testsuite name="End-to-end Tests">
-            <directory>.</directory>
+            <directory suffix=".phpt">.</directory>
         </testsuite>
     </testsuites>
 </phpunit>
