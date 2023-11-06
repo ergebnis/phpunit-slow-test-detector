@@ -40,9 +40,7 @@ final class Extension implements Runner\Extension\Extension
         }
 
         $timeKeeper = new TimeKeeper();
-
         $collector = new Collector\DefaultCollector();
-
         $reporter = new Reporter\DefaultReporter(
             new Formatter\DefaultDurationFormatter(),
             $maximumDuration,
