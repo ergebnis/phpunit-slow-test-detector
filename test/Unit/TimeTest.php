@@ -21,7 +21,6 @@ use PHPUnit\Framework;
 
 #[Framework\Attributes\CoversClass(Time::class)]
 #[Framework\Attributes\UsesClass(Duration::class)]
-#[Framework\Attributes\UsesClass(Exception\InvalidMilliseconds::class)]
 #[Framework\Attributes\UsesClass(Exception\InvalidNanoseconds::class)]
 #[Framework\Attributes\UsesClass(Exception\InvalidSeconds::class)]
 #[Framework\Attributes\UsesClass(Exception\InvalidStart::class)]
