@@ -39,6 +39,8 @@ final class Extension implements Runner\Extension\Extension
             $maximumDuration = Duration::fromMilliseconds((int) $parameters->get('maximum-duration'));
         }
 
+        $timeKeeper = new TimeKeeper();
+
         $collector = new Collector\DefaultCollector();
 
         $reporter = new Reporter\DefaultReporter(
@@ -46,8 +48,6 @@ final class Extension implements Runner\Extension\Extension
             $maximumDuration,
             $maximumCount,
         );
-
-        $timeKeeper = new TimeKeeper();
 
         $facade->registerSubscribers(
             new Subscriber\TestPreparedSubscriber($timeKeeper),
