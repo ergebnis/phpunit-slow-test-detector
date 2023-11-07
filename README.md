@@ -24,7 +24,7 @@ Run
 composer require --dev ergebnis/phpunit-slow-test-detector
 ```
 
-to install `ergebnis/phpunit-slow-test-detector` as a composer package.
+to install `ergebnis/phpunit-slow-test-detector` as a `composer` package.
 
 ### Phar
 
@@ -32,9 +32,9 @@ Download `phpunit-slow-test-detector.phar` from the [latest release](https://git
 
 ## Usage
 
-### Bootstrapping the extension as a composer package
+### Bootstrapping the extension as a `composer` package
 
-To bootstrap the extension as a composer package, adjust your `phpunit.xml` configuration file:
+To bootstrap the extension as a `composer` package, adjust your `phpunit.xml` configuration file:
 
 ```diff
  <phpunit
