@@ -105,31 +105,35 @@ final class DurationTest extends Framework\TestCase
     }
 
     /**
-     * @return \Generator<int, array{0: int, 1: int, 2: int}>
+     * @return \Generator<string, array{0: int, 1: int, 2: int}>
      */
     public static function provideMillisecondsSecondsAndNanoseconds(): \Generator
     {
         $values = [
-            1 => [
+            'one' => [
+                1,
                 0,
                 1_000_000,
             ],
-            999 => [
+            'nine-hundred-ninety-nine' => [
+                999,
                 0,
                 999_000_000,
             ],
-            1_000 => [
+            'one-thousand' => [
+                1_000,
                 1,
                 0,
             ],
-            1_234 => [
+            'one-thousand-and-something' => [
+                1_234,
                 1,
                 234_000_000,
             ],
         ];
 
-        foreach ($values as $milliseconds => [$seconds, $nanoseconds]) {
-            yield $milliseconds => [
+        foreach ($values as $key => [$milliseconds, $seconds, $nanoseconds]) {
+            yield $key => [
                 $milliseconds,
                 $seconds,
                 $nanoseconds,
