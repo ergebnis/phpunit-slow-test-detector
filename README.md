@@ -34,7 +34,7 @@ Download `phpunit-slow-test-detector.phar` from the [latest release](https://git
 
 ### Bootstrapping the extension as a `composer` package
 
-To bootstrap the extension as a `composer` package, adjust your `phpunit.xml` configuration file:
+To bootstrap the extension as a `composer` package, adjust your `phpunit.xml` configuration file and configure the [`<extensions>` element](https://docs.phpunit.de/en/10.4/configuration.html#the-extensions-element):
 
 ```diff
  <phpunit
@@ -55,7 +55,7 @@ To bootstrap the extension as a `composer` package, adjust your `phpunit.xml` co
 
 ### Bootstrapping the extension as a PHAR
 
-To bootstrap the extension as a PHAR, adjust your `phpunit.xml` configuration file and configure the `extensionsDirectory` attribute of the `<phpunit>` element:
+To bootstrap the extension as a PHAR, adjust your `phpunit.xml` configuration file and configure the [`extensionsDirectory` attribute](https://docs.phpunit.de/en/10.4/configuration.html#the-extensionsdirectory-attribute) of the [`<phpunit>` element](https://docs.phpunit.de/en/10.4/configuration.html#the-phpunit-element):
 
 ```diff
  <phpunit
