@@ -149,7 +149,7 @@ vendor/bin/phpunit
 When the extension has detected slow tests, it will report them:
 
 ```txt
-PHPUnit 10.0.0 by Sebastian Bergmann and contributors.
+PHPUnit 10.4.0 by Sebastian Bergmann and contributors.
 
 Runtime:       PHP 8.1.0
 Configuration: test/EndToEnd/Default/phpunit.xml
