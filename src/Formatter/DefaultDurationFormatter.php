@@ -25,7 +25,7 @@ final class DefaultDurationFormatter implements DurationFormatter
      */
     public function format(Duration $duration): string
     {
-        $durationInMilliseconds = $duration->seconds() * 1_000 + $duration->nanoseconds() / 1_000_000;
+        $durationInMilliseconds = $duration->seconds()->toInt() * 1_000 + $duration->nanoseconds() / 1_000_000;
 
         $hours = (int) \floor($durationInMilliseconds / 60 / 60 / 1_000);
         $hoursInMilliseconds = $hours * 60 * 60 * 1_000;

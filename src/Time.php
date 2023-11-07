@@ -19,23 +19,18 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
 final class Time
 {
     private function __construct(
-        private readonly int $seconds,
+        private readonly Seconds $seconds,
         private readonly int $nanoseconds,
     ) {
     }
 
     /**
      * @throws Exception\InvalidNanoseconds
-     * @throws Exception\InvalidSeconds
      */
     public static function fromSecondsAndNanoseconds(
-        int $seconds,
+        Seconds $seconds,
         int $nanoseconds,
     ): self {
-        if (0 > $seconds) {
-            throw Exception\InvalidSeconds::notGreaterThanOrEqualToZero($seconds);
-        }
-
         if (0 > $nanoseconds) {
             throw Exception\InvalidNanoseconds::notGreaterThanOrEqualToZero($nanoseconds);
         }
@@ -55,7 +50,7 @@ final class Time
         );
     }
 
-    public function seconds(): int
+    public function seconds(): Seconds
     {
         return $this->seconds;
     }
@@ -70,7 +65,7 @@ final class Time
      */
     public function duration(self $start): Duration
     {
-        $seconds = $this->seconds - $start->seconds;
+        $seconds = $this->seconds->toInt() - $start->seconds->toInt();
         $nanoseconds = $this->nanoseconds - $start->nanoseconds;
 
         if (0 > $nanoseconds) {
@@ -84,7 +79,7 @@ final class Time
         }
 
         return Duration::fromSecondsAndNanoseconds(
-            $seconds,
+            Seconds::fromInt($seconds),
             $nanoseconds,
         );
     }

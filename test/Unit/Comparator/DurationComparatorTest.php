@@ -15,11 +15,13 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Comparator;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Comparator;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
+use Ergebnis\PHPUnit\SlowTestDetector\Seconds;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
 #[Framework\Attributes\CoversClass(Comparator\DurationComparator::class)]
 #[Framework\Attributes\UsesClass(Duration::class)]
+#[Framework\Attributes\UsesClass(Seconds::class)]
 final class DurationComparatorTest extends Framework\TestCase
 {
     use Test\Util\Helper;
@@ -27,12 +29,12 @@ final class DurationComparatorTest extends Framework\TestCase
     public function testReturnsMinusOneWhenOneIsLessThanTwo(): void
     {
         $one = Duration::fromSecondsAndNanoseconds(
-            5,
+            Seconds::fromInt(5),
             0,
         );
 
         $two = Duration::fromSecondsAndNanoseconds(
-            5,
+            Seconds::fromInt(5),
             1,
         );
 
@@ -44,12 +46,12 @@ final class DurationComparatorTest extends Framework\TestCase
     public function testReturnsZeroWhenOneEqualsTwo(): void
     {
         $one = Duration::fromSecondsAndNanoseconds(
-            5,
+            Seconds::fromInt(5),
             0,
         );
 
         $two = Duration::fromSecondsAndNanoseconds(
-            5,
+            Seconds::fromInt(5),
             0,
         );
 
@@ -61,12 +63,12 @@ final class DurationComparatorTest extends Framework\TestCase
     public function testReturnsPlusOneWhenOneIsGreaterThanTwo(): void
     {
         $one = Duration::fromSecondsAndNanoseconds(
-            5,
+            Seconds::fromInt(5),
             1,
         );
 
         $two = Duration::fromSecondsAndNanoseconds(
-            5,
+            Seconds::fromInt(5),
             0,
         );
 

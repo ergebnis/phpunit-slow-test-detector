@@ -15,11 +15,13 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Formatter;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
+use Ergebnis\PHPUnit\SlowTestDetector\Seconds;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
 #[Framework\Attributes\CoversClass(Formatter\DefaultDurationFormatter::class)]
 #[Framework\Attributes\UsesClass(Duration::class)]
+#[Framework\Attributes\UsesClass(Seconds::class)]
 final class DefaultDurationFormatterTest extends Framework\TestCase
 {
     use Test\Util\Helper;
@@ -42,56 +44,56 @@ final class DefaultDurationFormatterTest extends Framework\TestCase
         $values = [
             'zero' => [
                 Duration::fromSecondsAndNanoseconds(
-                    0,
+                    Seconds::fromInt(0),
                     0,
                 ),
                 '0.000',
             ],
             'milliseconds' => [
                 Duration::fromSecondsAndNanoseconds(
-                    0,
+                    Seconds::fromInt(0),
                     123_999_000,
                 ),
                 '0.123',
             ],
             'seconds-digits-one' => [
                 Duration::fromSecondsAndNanoseconds(
-                    1,
+                    Seconds::fromInt(1),
                     234_456_789,
                 ),
                 '1.234',
             ],
             'seconds-digits-two' => [
                 Duration::fromSecondsAndNanoseconds(
-                    12,
+                    Seconds::fromInt(12),
                     345_678_912,
                 ),
                 '12.345',
             ],
             'minutes-digits-one' => [
                 Duration::fromSecondsAndNanoseconds(
-                    1 * 60 + 23,
+                    Seconds::fromInt(1 * 60 + 23),
                     456_789_012,
                 ),
                 '1:23.456',
             ],
             'minutes-digits-two' => [
                 Duration::fromSecondsAndNanoseconds(
-                    12 * 60 + 34,
+                    Seconds::fromInt(12 * 60 + 34),
                     567_890_123,
                 ),
                 '12:34.567',
             ],
             'hours-digits-one' => [
                 Duration::fromSecondsAndNanoseconds(
-                    60 * 60 + 23 * 60 + 45,
+                    Seconds::fromInt(60 * 60 + 23 * 60 + 45),
                     567_890_123,
                 ),
                 '1:23:45.567',
             ],
             'hours-digits-two' => [
                 Duration::fromSecondsAndNanoseconds(
-                    12 * 60 * 60 + 34 * 60 + 56,
+                    Seconds::fromInt(12 * 60 * 60 + 34 * 60 + 56),
                     789_012_345,
                 ),
                 '12:34:56.789',

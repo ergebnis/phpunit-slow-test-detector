@@ -26,8 +26,15 @@ final class InvalidSeconds extends \InvalidArgumentException
         ));
     }
 
-    public static function notGreaterThanOrEqualToZero(int $value): self
+    public static function notGreaterThanOrEqualToZero(float|int $value): self
     {
+        if (\is_float($value)) {
+            return new self(\sprintf(
+                'Value should be greater than or equal to 0, but %f is not.',
+                $value,
+            ));
+        }
+
         return new self(\sprintf(
             'Value should be greater than or equal to 0, but %d is not.',
             $value,

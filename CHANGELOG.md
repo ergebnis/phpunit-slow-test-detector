@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.4.0...main`][2.4.0...main].
 
+### Changed
+
+- Extracted `Seconds` ([#362]), by [@localheinz]
+
 ## [`2.4.0`][2.4.0]
 
 For a full diff see [`2.3.2...2.4.0`][2.3.2...2.4.0].
@@ -195,5 +199,6 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#354]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/354
 [#355]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/355
 [#357]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/357
+[#362]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/362
 
 [@localheinz]: https://github.com/localheinz

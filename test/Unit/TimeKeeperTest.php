@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
+use Ergebnis\PHPUnit\SlowTestDetector\Seconds;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use Ergebnis\PHPUnit\SlowTestDetector\Time;
@@ -22,6 +23,7 @@ use PHPUnit\Framework;
 
 #[Framework\Attributes\CoversClass(TimeKeeper::class)]
 #[Framework\Attributes\UsesClass(Duration::class)]
+#[Framework\Attributes\UsesClass(Seconds::class)]
 #[Framework\Attributes\UsesClass(TestIdentifier::class)]
 #[Framework\Attributes\UsesClass(Time::class)]
 final class TimeKeeperTest extends Framework\TestCase
@@ -34,7 +36,7 @@ final class TimeKeeperTest extends Framework\TestCase
 
         $testIdentifier = TestIdentifier::fromString($faker->word());
         $stoppedTime = Time::fromSecondsAndNanoseconds(
-            $faker->numberBetween(0),
+            Seconds::fromInt($faker->numberBetween(0)),
             $faker->numberBetween(0, 999_999_999),
         );
 
@@ -45,7 +47,7 @@ final class TimeKeeperTest extends Framework\TestCase
             $stoppedTime,
         );
 
-        self::assertSame(0, $duration->seconds());
+        self::assertEquals(Seconds::fromInt(0), $duration->seconds());
         self::assertSame(0, $duration->nanoseconds());
     }
 
@@ -55,11 +57,11 @@ final class TimeKeeperTest extends Framework\TestCase
 
         $testIdentifier = TestIdentifier::fromString($faker->word());
         $startedTime = Time::fromSecondsAndNanoseconds(
-            $faker->numberBetween(0),
+            Seconds::fromInt($faker->numberBetween(0)),
             $faker->numberBetween(0, 999_999_999 - 1),
         );
         $stoppedTime = Time::fromSecondsAndNanoseconds(
-            $faker->numberBetween($startedTime->seconds() + 1),
+            Seconds::fromInt($faker->numberBetween($startedTime->seconds()->toInt() + 1)),
             $faker->numberBetween($startedTime->nanoseconds() + 1, 999_999_999),
         );
 

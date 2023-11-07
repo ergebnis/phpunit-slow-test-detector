@@ -1,0 +1,53 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2021-2023 Andreas Möller
+ *
+ * For the full copyright and license information, please view
+ * the LICENSE.md file that was distributed with this source code.
+ *
+ * @see https://github.com/ergebnis/phpunit-slow-test-detector
+ */
+
+namespace Ergebnis\PHPUnit\SlowTestDetector;
+
+/**
+ * @internal
+ */
+final class Seconds
+{
+    private function __construct(private readonly int $value)
+    {
+    }
+
+    /**
+     * @throws Exception\InvalidSeconds
+     */
+    public static function fromFloat(float $value): self
+    {
+        if (0 > $value) {
+            throw Exception\InvalidSeconds::notGreaterThanOrEqualToZero($value);
+        }
+
+        return new self((int) \floor($value));
+    }
+
+    /**
+     * @throws Exception\InvalidSeconds
+     */
+    public static function fromInt(int $value): self
+    {
+        if (0 > $value) {
+            throw Exception\InvalidSeconds::notGreaterThanOrEqualToZero($value);
+        }
+
+        return new self($value);
+    }
+
+    public function toInt(): int
+    {
+        return $this->value;
+    }
+}

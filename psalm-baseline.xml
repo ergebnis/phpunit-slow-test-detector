@@ -10,7 +10,7 @@
   </file>
   <file src="src/Formatter/DefaultDurationFormatter.php">
     <InvalidOperand>
-      <code><![CDATA[$duration->seconds() * 1_000 + $duration->nanoseconds() / 1_000_000]]></code>
+      <code><![CDATA[$duration->seconds()->toInt() * 1_000 + $duration->nanoseconds() / 1_000_000]]></code>
       <code>$durationInMilliseconds - $hoursInMilliseconds</code>
       <code>$durationInMilliseconds - $hoursInMilliseconds</code>
       <code>$durationInMilliseconds / 60</code>

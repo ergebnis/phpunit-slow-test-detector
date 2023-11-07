@@ -19,23 +19,18 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
 final class Duration
 {
     private function __construct(
-        private readonly int $seconds,
+        private readonly Seconds $seconds,
         private readonly int $nanoseconds,
     ) {
     }
 
     /**
      * @throws Exception\InvalidNanoseconds
-     * @throws Exception\InvalidSeconds
      */
     public static function fromSecondsAndNanoseconds(
-        int $seconds,
+        Seconds $seconds,
         int $nanoseconds,
     ): self {
-        if (0 > $seconds) {
-            throw Exception\InvalidSeconds::notGreaterThanOrEqualToZero($seconds);
-        }
-
         if (0 > $nanoseconds) {
             throw Exception\InvalidNanoseconds::notGreaterThanOrEqualToZero($nanoseconds);
         }
@@ -64,12 +59,12 @@ final class Duration
             throw Exception\InvalidMilliseconds::notGreaterThanZero($milliseconds);
         }
 
-        $seconds = \intdiv(
+        $seconds = Seconds::fromInt(\intdiv(
             $milliseconds,
             1_000,
-        );
+        ));
 
-        $nanoseconds = ($milliseconds - $seconds * 1_000) * 1_000_000;
+        $nanoseconds = ($milliseconds - $seconds->toInt() * 1_000) * 1_000_000;
 
         return new self(
             $seconds,
@@ -77,7 +72,7 @@ final class Duration
         );
     }
 
-    public function seconds(): int
+    public function seconds(): Seconds
     {
         return $this->seconds;
     }
@@ -89,11 +84,11 @@ final class Duration
 
     public function isLessThan(self $other): bool
     {
-        if ($this->seconds < $other->seconds) {
+        if ($this->seconds->toInt() < $other->seconds->toInt()) {
             return true;
         }
 
-        if ($this->seconds === $other->seconds) {
+        if ($this->seconds->toInt() === $other->seconds->toInt()) {
             return $this->nanoseconds < $other->nanoseconds;
         }
 
@@ -102,11 +97,11 @@ final class Duration
 
     public function isGreaterThan(self $other): bool
     {
-        if ($this->seconds > $other->seconds) {
+        if ($this->seconds->toInt() > $other->seconds->toInt()) {
             return true;
         }
 
-        if ($this->seconds === $other->seconds) {
+        if ($this->seconds->toInt() === $other->seconds->toInt()) {
             return $this->nanoseconds > $other->nanoseconds;
         }
 

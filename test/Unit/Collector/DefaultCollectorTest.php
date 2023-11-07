@@ -15,6 +15,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Collector;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Collector;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
+use Ergebnis\PHPUnit\SlowTestDetector\Seconds;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
@@ -22,6 +23,7 @@ use PHPUnit\Framework;
 
 #[Framework\Attributes\CoversClass(Collector\DefaultCollector::class)]
 #[Framework\Attributes\UsesClass(Duration::class)]
+#[Framework\Attributes\UsesClass(Seconds::class)]
 #[Framework\Attributes\UsesClass(SlowTest::class)]
 #[Framework\Attributes\UsesClass(TestIdentifier::class)]
 final class DefaultCollectorTest extends Framework\TestCase

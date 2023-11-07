@@ -18,6 +18,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\Count;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
 use Ergebnis\PHPUnit\SlowTestDetector\Reporter;
+use Ergebnis\PHPUnit\SlowTestDetector\Seconds;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
@@ -28,6 +29,7 @@ use PHPUnit\Framework;
 #[Framework\Attributes\UsesClass(Count::class)]
 #[Framework\Attributes\UsesClass(Duration::class)]
 #[Framework\Attributes\UsesClass(Formatter\DefaultDurationFormatter::class)]
+#[Framework\Attributes\UsesClass(Seconds::class)]
 #[Framework\Attributes\UsesClass(SlowTest::class)]
 #[Framework\Attributes\UsesClass(TestIdentifier::class)]
 final class DefaultReporterTest extends Framework\TestCase
