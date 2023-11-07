@@ -1,28 +1,27 @@
 <phpunit
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="../../../../vendor/phpunit/phpunit/phpunit.xsd"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.6/phpunit.xsd"
     beStrictAboutChangesToGlobalState="true"
+    beStrictAboutCoversAnnotation="true"
     beStrictAboutOutputDuringTests="true"
     beStrictAboutTestsThatDoNotTestAnything="true"
     beStrictAboutTodoAnnotatedTests="true"
-    bootstrap="../../../../vendor/autoload.php"
+    bootstrap="../../../vendor/autoload.php"
     cacheResult="false"
     colors="true"
     columns="max"
     executionOrder="random"
+    forceCoversAnnotation="true"
     stopOnError="false"
     stopOnFailure="false"
     stopOnIncomplete="false"
     stopOnSkipped="false"
+    verbose="true"
 >
-    <extensions>
-        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension">
-            <parameter name="maximum-duration" value="50"/>
-        </bootstrap>
-    </extensions>
+    <coverage includeUncoveredFiles="true"/>
     <testsuites>
-        <testsuite name="Unit Tests">
-            <directory>.</directory>
+        <testsuite name="End-to-end Tests">
+            <directory suffix=".phpt">.</directory>
         </testsuite>
     </testsuites>
 </phpunit>

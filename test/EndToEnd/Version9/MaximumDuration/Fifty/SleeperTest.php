@@ -11,12 +11,14 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\MaximumDuration\Fifty;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version9\MaximumDuration\Fifty;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
-#[Framework\Attributes\CoversClass(Test\Fixture\Sleeper::class)]
+/**
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\Sleeper
+ */
 final class SleeperTest extends Framework\TestCase
 {
     use Test\Util\Helper;

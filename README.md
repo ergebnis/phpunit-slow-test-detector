@@ -34,7 +34,7 @@ Download `phpunit-slow-test-detector.phar` from the [latest release](https://git
 
 ### Bootstrapping the extension as a `composer` package
 
-To bootstrap the extension as a `composer` package, adjust your `phpunit.xml` configuration file and configure the [`<extensions>` element](https://docs.phpunit.de/en/10.4/configuration.html#the-extensions-element):
+To bootstrap the extension as a `composer` package when using `phpunit/phpunit:^10.4.0`, adjust your `phpunit.xml` configuration file and configure the [`extensions` element](https://docs.phpunit.de/en/10.4/configuration.html#the-extensions-element):
 
 ```diff
  <phpunit
@@ -53,9 +53,28 @@ To bootstrap the extension as a `composer` package, adjust your `phpunit.xml` co
  </phpunit>
 ```
 
+To bootstrap the extension as a `composer` package when using `phpunit/phpunit:^9.6.0`, adjust your `phpunit.xml` configuration file and configure the [`extensions` element](https://docs.phpunit.de/en/9.6/configuration.html#the-extensions-element):
+
+```diff
+ <phpunit
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+     bootstrap="vendor/autoload.php"
+ >
++    <extensions>
++        <extension class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
++    </extensions>
+     <testsuites>
+         <testsuite name="unit">
+             <directory>test/Unit/</directory>
+         </testsuite>
+     </testsuites>
+ </phpunit>
+```
+
 ### Bootstrapping the extension as a PHAR
 
-To bootstrap the extension as a PHAR, adjust your `phpunit.xml` configuration file and configure the [`extensionsDirectory` attribute](https://docs.phpunit.de/en/10.4/configuration.html#the-extensionsdirectory-attribute) of the [`<phpunit>` element](https://docs.phpunit.de/en/10.4/configuration.html#the-phpunit-element):
+To bootstrap the extension as a PHAR when using `phpunit/phpunit:^10.4.0`, adjust your `phpunit.xml` configuration file and configure the [`extensionsDirectory` attribute](https://docs.phpunit.de/en/10.4/configuration.html#the-extensionsdirectory-attribute) of the [`<phpunit>` element](https://docs.phpunit.de/en/10.4/configuration.html#the-phpunit-element):
 
 ```diff
  <phpunit
@@ -82,7 +101,7 @@ You can configure the extension with the following parameters in your `phpunit.x
 - `maximum-count`, an `int`, the maximum count of slow test that should be listed, defaults to `10`
 - `maximum-duration`, an `int`, the maximum duration in milliseconds for all tests, defaults to `500`
 
-The following example configures the maximum count of slow tests to three, and the maximum duration for all tests to 250 milliseconds:
+The following example configures the maximum count of slow tests to three, and the maximum duration for all tests to 250 milliseconds when using `phpunit/phpunit:^10.4.0`:
 
 ```diff
  <phpunit
@@ -96,6 +115,37 @@ The following example configures the maximum count of slow tests to three, and t
 +            <parameter name="maximum-count" value="3"/>
 +            <parameter name="maximum-duration" value="250"/>
 +        </bootstrap>
+     </extensions>
+     <testsuites>
+         <testsuite name="unit">
+             <directory>test/Unit/</directory>
+        </testsuite>
+     </testsuites>
+ </phpunit>
+```
+
+The following example configures the maximum count of slow tests to three, and the maximum duration for all tests to 250 milliseconds when using `phpunit/phpunit:^9.6.0`:
+
+```diff
+ <phpunit
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+     bootstrap="vendor/autoload.php"
+ >
+     <extensions>
+-        <extension class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
++        <extension class="Ergebnis\PHPUnit\SlowTestDetector\Extension">
++            <arguments>
++                <array>
++                    <element key="maximum-count">
++                        <integer>3</integer>
++                    </element>
++                    <element key="maximum-duration">
++                        <integer>250</integer>
++                    </element>
++                </array>
++            </arguments>
++        </extension>
      </extensions>
      <testsuites>
          <testsuite name="unit">

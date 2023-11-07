@@ -1,7 +1,8 @@
 <phpunit
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="../../../vendor/phpunit/phpunit/phpunit.xsd"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.4/phpunit.xsd"
     beStrictAboutChangesToGlobalState="true"
+    beStrictAboutCoverageMetadata="true"
     beStrictAboutOutputDuringTests="true"
     beStrictAboutTestsThatDoNotTestAnything="true"
     beStrictAboutTodoAnnotatedTests="true"
@@ -16,17 +17,21 @@
     displayDetailsOnTestsThatTriggerNotices="true"
     displayDetailsOnTestsThatTriggerWarnings="true"
     executionOrder="random"
+    requireCoverageMetadata="true"
     stopOnError="false"
     stopOnFailure="false"
     stopOnIncomplete="false"
     stopOnSkipped="false"
 >
-    <extensions>
-        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
-    </extensions>
+    <coverage includeUncoveredFiles="true"/>
+    <source>
+        <include>
+            <directory suffix=".php">../../../src/</directory>
+        </include>
+    </source>
     <testsuites>
-        <testsuite name="Unit Tests">
-            <directory>.</directory>
+        <testsuite name="End-to-end Tests">
+            <directory suffix=".phpt">.</directory>
         </testsuite>
     </testsuites>
 </phpunit>
