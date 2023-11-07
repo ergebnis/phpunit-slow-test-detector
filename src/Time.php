@@ -70,8 +70,8 @@ final class Time
      */
     public function duration(self $start): Duration
     {
-        $seconds = $this->seconds - $start->seconds();
-        $nanoseconds = $this->nanoseconds - $start->nanoseconds();
+        $seconds = $this->seconds - $start->seconds;
+        $nanoseconds = $this->nanoseconds - $start->nanoseconds;
 
         if (0 > $nanoseconds) {
             --$seconds;
