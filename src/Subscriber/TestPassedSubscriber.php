@@ -15,6 +15,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Subscriber;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Collector;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
+use Ergebnis\PHPUnit\SlowTestDetector\Seconds;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use Ergebnis\PHPUnit\SlowTestDetector\Time;
@@ -43,7 +44,7 @@ final class TestPassedSubscriber implements Event\Test\PassedSubscriber
         $duration = $this->timeKeeper->stop(
             $testIdentifier,
             Time::fromSecondsAndNanoseconds(
-                $time->seconds(),
+                Seconds::fromInt($time->seconds()),
                 $time->nanoseconds(),
             ),
         );

@@ -123,8 +123,8 @@ if (10 <= $major) {
             string $test,
             float $time,
         ): void {
-            $seconds = (int) \floor($time);
-            $nanoseconds = (int) (($time - $seconds) * 1_000_000_000);
+            $seconds = Seconds::fromFloat($time);
+            $nanoseconds = (int) (($time - $seconds->toInt()) * 1_000_000_000);
 
             $duration = Duration::fromSecondsAndNanoseconds(
                 $seconds,

@@ -40,7 +40,7 @@ final class TimeKeeper
 
         if (!\array_key_exists($key, $this->startedTimes)) {
             return Duration::fromSecondsAndNanoseconds(
-                0,
+                Seconds::fromInt(0),
                 0,
             );
         }

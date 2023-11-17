@@ -15,6 +15,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\Exception;
+use Ergebnis\PHPUnit\SlowTestDetector\Seconds;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\Time;
 use PHPUnit\Framework;
@@ -24,36 +25,31 @@ use PHPUnit\Framework;
 #[Framework\Attributes\UsesClass(Exception\InvalidNanoseconds::class)]
 #[Framework\Attributes\UsesClass(Exception\InvalidSeconds::class)]
 #[Framework\Attributes\UsesClass(Exception\InvalidStart::class)]
+#[Framework\Attributes\UsesClass(Seconds::class)]
 final class TimeTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testFromSecondsAndNanosecondsRejectsNegativeSeconds(): void
-    {
-        $this->expectException(Exception\InvalidSeconds::class);
-
-        Time::fromSecondsAndNanoseconds(
-            -1,
-            0,
-        );
-    }
-
     public function testFromSecondsAndNanosecondsRejectsNegativeNanoseconds(): void
     {
+        $seconds = Seconds::fromInt(0);
+
         $this->expectException(Exception\InvalidNanoseconds::class);
 
         Time::fromSecondsAndNanoseconds(
-            0,
+            $seconds,
             -1,
         );
     }
 
     public function testFromSecondsAndNanosecondsRejectsNanosecondsGreaterThan999999999(): void
     {
+        $seconds = Seconds::fromInt(0);
+
         $this->expectException(Exception\InvalidNanoseconds::class);
 
         Time::fromSecondsAndNanoseconds(
-            0,
+            $seconds,
             1000000000,
         );
     }
@@ -62,7 +58,7 @@ final class TimeTest extends Framework\TestCase
     {
         $faker = self::faker();
 
-        $seconds = $faker->numberBetween(0, 999);
+        $seconds = Seconds::fromInt($faker->numberBetween(0, 999));
         $nanoseconds = $faker->numberBetween(0, 999_999_999);
 
         $time = Time::fromSecondsAndNanoseconds(
@@ -82,12 +78,12 @@ final class TimeTest extends Framework\TestCase
         int $endNanoseconds,
     ): void {
         $start = Time::fromSecondsAndNanoseconds(
-            $startSeconds,
+            Seconds::fromInt($startSeconds),
             $startNanoseconds,
         );
 
         $end = Time::fromSecondsAndNanoseconds(
-            $endSeconds,
+            Seconds::fromInt($endSeconds),
             $endNanoseconds,
         );
 
@@ -134,9 +130,9 @@ final class TimeTest extends Framework\TestCase
 
     #[Framework\Attributes\DataProvider('provideStartEndAndDuration')]
     public function testDurationReturnsDifferenceBetweenEndAndStart(
-        int $startSeconds,
+        Seconds $startSeconds,
         int $startNanoseconds,
-        int $endSeconds,
+        Seconds $endSeconds,
         int $endNanoseconds,
         Duration $duration,
     ): void {
@@ -154,38 +150,38 @@ final class TimeTest extends Framework\TestCase
     }
 
     /**
-     * @return \Generator<string, array{0: int, 1: int, 2: int, 3: int, 4: Duration}>
+     * @return \Generator<string, array{0: Seconds, 1: int, 2: Seconds, 3: int, 4: Duration}>
      */
     public static function provideStartEndAndDuration(): \Generator
     {
         $values = [
             'start-equal-to-end' => [
-                10,
+                Seconds::fromInt(10),
                 50,
-                10,
+                Seconds::fromInt(10),
                 50,
                 Duration::fromSecondsAndNanoseconds(
-                    0,
+                    Seconds::fromInt(0),
                     0,
                 ),
             ],
             'start-smaller-than-end' => [
-                10,
+                Seconds::fromInt(10),
                 50,
-                12,
+                Seconds::fromInt(12),
                 70,
                 Duration::fromSecondsAndNanoseconds(
-                    2,
+                    Seconds::fromInt(2),
                     20,
                 ),
             ],
             'start-nanoseconds-greater-than-end-nanoseconds' => [
-                10,
+                Seconds::fromInt(10),
                 50,
-                12,
+                Seconds::fromInt(12),
                 30,
                 Duration::fromSecondsAndNanoseconds(
-                    1,
+                    Seconds::fromInt(1),
                     999999980,
                 ),
             ],
