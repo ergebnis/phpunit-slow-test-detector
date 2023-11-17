@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\MaximumDuration\Fifty;
 
+use Ergebnis\PHPUnit\SlowTestDetector\Attribute;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
@@ -160,6 +161,45 @@ final class SleeperTest extends Framework\TestCase
     public function testSleeperSleepsLongerThanMaximumDurationFromSlowThresholdAnnotation(): void
     {
         $milliseconds = 220;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    #[Attribute\MaximumDuration(140)]
+    public function testSleeperSleepsShorterThanMaximumDurationFromMaximumDurationAttribute(): void
+    {
+        $milliseconds = 130;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    #[Attribute\MaximumDuration(160)]
+    public function testSleeperSleepsLongerThanMaximumDurationFromMaximumDurationAttribute(): void
+    {
+        $milliseconds = 160;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * @maximumDuration 20
+     */
+    #[Attribute\MaximumDuration(50)]
+    public function testSleeperSleepsShorterThanMaximumDurationFromMaximumDurationAttributeWhenMaximumDurationAnnotationIsPresent(): void
+    {
+        $milliseconds = 40;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 

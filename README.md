@@ -157,9 +157,13 @@ The following example configures the maximum count of slow tests to three, and t
 
 #### Configuring the maximum duration per test case
 
-You can configure the maximum duration for a single test case with a `@maximumDuration` (or `@slowThreshold`) annotation in the DocBlock.
+You can configure the maximum duration for a single test case with
 
-The following example configures the maximum durations for single test cases to 5.000 and 4.000 ms:
+- an `Attribute\MaximumDuration` attribute
+- a `@maximumDuration` annotation in the DocBlock
+- a `@slowThreshold` annotation in the DocBlock
+
+The following example configures the maximum durations for single test cases to 5.000 ms, 4.000 ms, and 3.000 ms:
 
 ```php
 <?php
@@ -167,21 +171,30 @@ The following example configures the maximum durations for single test cases to 
 declare(strict_types=1);
 
 use PHPUnit\Framework;
+use Ergebnis\PHPUnit\SlowTestDetector;
 
 final class ExtraSlowTest extends Framework\TestCase
 {
     /**
-     * @maximumDuration 5000
      */
+    #[SlowTestDetector\Attribute\MaximumDuration(5000)]
     public function testExtraExtraSlow(): void
     {
         // ...
     }
 
     /**
-     * @slowThreshold 4000
+     * @maximumDuration 4000
      */
     public function testAlsoQuiteSlow(): void
+    {
+        // ...
+    }
+
+    /**
+     * @slowThreshold 3000
+     */
+    public function testQuiteSlow(): void
     {
         // ...
     }

@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Subscriber;
 
+use Ergebnis\PHPUnit\SlowTestDetector\Attribute;
 use Ergebnis\PHPUnit\SlowTestDetector\Collector;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
@@ -65,6 +66,44 @@ final class TestPassedSubscriber implements Event\Test\PassedSubscriber
 
     private function resolveMaximumDuration(Event\Code\Test $test): Duration
     {
+        $maximumDurationFromAttribute = self::resolveMaximumDurationFromAttribute($test);
+
+        if ($maximumDurationFromAttribute instanceof Duration) {
+            return $maximumDurationFromAttribute;
+        }
+
+        $maximumDurationFromAnnotation = self::resolveMaximumDurationFromAnnotation($test);
+
+        if ($maximumDurationFromAnnotation instanceof Duration) {
+            return $maximumDurationFromAnnotation;
+        }
+
+        return $this->maximumDuration;
+    }
+
+    private static function resolveMaximumDurationFromAttribute(Event\Code\Test $test): ?Duration
+    {
+        /** @var Event\Code\TestMethod $test */
+        $methodReflection = new \ReflectionMethod(
+            $test->className(),
+            $test->methodName(),
+        );
+
+        $attributeReflections = $methodReflection->getAttributes(Attribute\MaximumDuration::class);
+
+        if ([] !== $attributeReflections) {
+            $attributeReflection = \reset($attributeReflections);
+
+            $attribute = $attributeReflection->newInstance();
+
+            return Duration::fromMilliseconds($attribute->milliseconds());
+        }
+
+        return null;
+    }
+
+    private static function resolveMaximumDurationFromAnnotation(Event\Code\Test $test): ?Duration
+    {
         $annotations = [
             'maximumDuration',
             'slowThreshold',
@@ -96,6 +135,6 @@ final class TestPassedSubscriber implements Event\Test\PassedSubscriber
             return Duration::fromMilliseconds((int) $maximumDuration);
         }
 
-        return $this->maximumDuration;
+        return null;
     }
 }
