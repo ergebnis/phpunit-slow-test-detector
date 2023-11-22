@@ -22,6 +22,7 @@ final class TestIdentifier
      * @readonly
      */
     private string $value;
+
     private function __construct(string $value)
     {
         $this->value = $value;

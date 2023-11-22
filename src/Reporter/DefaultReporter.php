@@ -28,14 +28,17 @@ final class DefaultReporter implements Reporter
      * @readonly
      */
     private Formatter\DurationFormatter $durationFormatter;
+
     /**
      * @readonly
      */
     private Duration $maximumDuration;
+
     /**
      * @readonly
      */
     private Count $maximumCount;
+
     /**
      * @readonly
      */
@@ -124,9 +127,9 @@ TXT;
 
         $durationFormatter = $this->durationFormatter;
 
-        $numberWidth = \strlen((string) \count($slowTestsToReport));
-        $durationWidth = \strlen($durationFormatter->format($slowestTest->duration()));
-        $maximumDurationWidth = \strlen($durationFormatter->format($longestMaximumDuration));
+        $numberWidth = \mb_strlen((string) \count($slowTestsToReport));
+        $durationWidth = \mb_strlen($durationFormatter->format($slowestTest->duration()));
+        $maximumDurationWidth = \mb_strlen($durationFormatter->format($longestMaximumDuration));
 
         $items = \array_map(static function (int $number, SlowTest $slowTest) use ($numberWidth, $durationFormatter, $durationWidth, $maximumDurationWidth): string {
             $formattedNumber = \str_pad(

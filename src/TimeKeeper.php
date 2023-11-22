@@ -32,6 +32,7 @@ final class TimeKeeper
     public function stop(TestIdentifier $testIdentifier, Time $stoppedTime): Duration
     {
         $key = $testIdentifier->toString();
+
         if (!\array_key_exists($key, $this->startedTimes)) {
             return Duration::fromSecondsAndNanoseconds(
                 0,
@@ -40,6 +41,7 @@ final class TimeKeeper
         }
         $startedTime = $this->startedTimes[$key];
         unset($this->startedTimes[$key]);
+
         return $stoppedTime->duration($startedTime);
     }
 }

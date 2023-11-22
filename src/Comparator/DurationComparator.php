@@ -25,9 +25,11 @@ final class DurationComparator
         if ($one->isLessThan($two)) {
             return -1;
         }
+
         if ($one->isGreaterThan($two)) {
             return 1;
         }
+
         return 0;
     }
 }

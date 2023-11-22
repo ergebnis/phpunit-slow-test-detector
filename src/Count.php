@@ -22,6 +22,7 @@ final class Count
      * @readonly
      */
     private int $value;
+
     private function __construct(int $value)
     {
         $this->value = $value;

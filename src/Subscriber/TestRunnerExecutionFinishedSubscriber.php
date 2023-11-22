@@ -26,15 +26,18 @@ final class TestRunnerExecutionFinishedSubscriber implements Event\TestRunner\Ex
      * @readonly
      */
     private Collector\Collector $collector;
+
     /**
      * @readonly
      */
     private Reporter\Reporter $reporter;
+
     public function __construct(Collector\Collector $collector, Reporter\Reporter $reporter)
     {
         $this->collector = $collector;
         $this->reporter = $reporter;
     }
+
     public function notify(Event\TestRunner\ExecutionFinished $event): void
     {
         $slowTests = $this->collector->collected();

@@ -22,15 +22,18 @@ final class Time
      * @readonly
      */
     private int $seconds;
+
     /**
      * @readonly
      */
     private int $nanoseconds;
+
     private function __construct(int $seconds, int $nanoseconds)
     {
         $this->seconds = $seconds;
         $this->nanoseconds = $nanoseconds;
     }
+
     /**
      * @throws Exception\InvalidNanoseconds
      * @throws Exception\InvalidSeconds
@@ -40,21 +43,25 @@ final class Time
         if (0 > $seconds) {
             throw Exception\InvalidSeconds::notGreaterThanOrEqualToZero($seconds);
         }
+
         if (0 > $nanoseconds) {
             throw Exception\InvalidNanoseconds::notGreaterThanOrEqualToZero($nanoseconds);
         }
         $maxNanoseconds = 999_999_999;
+
         if ($maxNanoseconds < $nanoseconds) {
             throw Exception\InvalidNanoseconds::notLessThanOrEqualTo(
                 $nanoseconds,
                 $maxNanoseconds,
             );
         }
+
         return new self(
             $seconds,
             $nanoseconds,
         );
     }
+
     public function seconds(): int
     {
         return $this->seconds;

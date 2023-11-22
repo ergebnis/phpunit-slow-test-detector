@@ -27,6 +27,7 @@ final class TestPreparedSubscriber implements Event\Test\PreparedSubscriber
      * @readonly
      */
     private TimeKeeper $timeKeeper;
+
     public function __construct(TimeKeeper $timeKeeper)
     {
         $this->timeKeeper = $timeKeeper;

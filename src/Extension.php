@@ -38,10 +38,12 @@ if (10 <= $major) {
                 return;
             }
             $maximumCount = Count::fromInt(10);
+
             if ($parameters->has('maximum-count')) {
                 $maximumCount = Count::fromInt((int) $parameters->get('maximum-count'));
             }
             $maximumDuration = Duration::fromMilliseconds(500);
+
             if ($parameters->has('maximum-duration')) {
                 $maximumDuration = Duration::fromMilliseconds((int) $parameters->get('maximum-duration'));
             }
@@ -76,18 +78,22 @@ if (10 <= $major) {
         Runner\BeforeFirstTestHook
     {
         private int $suites = 0;
+
         /**
          * @readonly
          */
         private Duration $maximumDuration;
+
         /**
          * @readonly
          */
         private TimeKeeper $timeKeeper;
+
         /**
          * @readonly
          */
         private Collector\Collector $collector;
+
         /**
          * @readonly
          */
@@ -131,6 +137,7 @@ if (10 <= $major) {
                 $nanoseconds,
             );
             $maximumDuration = $this->resolveMaximumDuration($test);
+
             if (!$duration->isGreaterThan($maximumDuration)) {
                 return;
             }
