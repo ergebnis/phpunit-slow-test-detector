@@ -32,27 +32,19 @@ if (10 <= $major) {
      */
     final class Extension implements Runner\Extension\Extension
     {
-        public function bootstrap(
-            TextUI\Configuration\Configuration $configuration,
-            Runner\Extension\Facade $facade,
-            Runner\Extension\ParameterCollection $parameters,
-        ): void {
+        public function bootstrap(TextUI\Configuration\Configuration $configuration, Runner\Extension\Facade $facade, Runner\Extension\ParameterCollection $parameters): void
+        {
             if ($configuration->noOutput()) {
                 return;
             }
-
             $maximumCount = Count::fromInt(10);
-
             if ($parameters->has('maximum-count')) {
                 $maximumCount = Count::fromInt((int) $parameters->get('maximum-count'));
             }
-
             $maximumDuration = Duration::fromMilliseconds(500);
-
             if ($parameters->has('maximum-duration')) {
                 $maximumDuration = Duration::fromMilliseconds((int) $parameters->get('maximum-duration'));
             }
-
             $timeKeeper = new TimeKeeper();
             $collector = new Collector\DefaultCollector();
             $reporter = new Reporter\DefaultReporter(
@@ -60,7 +52,6 @@ if (10 <= $major) {
                 $maximumDuration,
                 $maximumCount,
             );
-
             $facade->registerSubscribers(
                 new Subscriber\TestPreparedSubscriber($timeKeeper),
                 new Subscriber\TestPassedSubscriber(
@@ -85,10 +76,22 @@ if (10 <= $major) {
         Runner\BeforeFirstTestHook
     {
         private int $suites = 0;
-        private readonly Duration $maximumDuration;
-        private readonly TimeKeeper $timeKeeper;
-        private readonly Collector\Collector $collector;
-        private readonly Reporter\Reporter $reporter;
+        /**
+         * @readonly
+         */
+        private Duration $maximumDuration;
+        /**
+         * @readonly
+         */
+        private TimeKeeper $timeKeeper;
+        /**
+         * @readonly
+         */
+        private Collector\Collector $collector;
+        /**
+         * @readonly
+         */
+        private Reporter\Reporter $reporter;
 
         public function __construct(array $options = [])
         {
@@ -119,32 +122,24 @@ if (10 <= $major) {
             ++$this->suites;
         }
 
-        public function executeAfterSuccessfulTest(
-            string $test,
-            float $time,
-        ): void {
+        public function executeAfterSuccessfulTest(string $test, float $time): void
+        {
             $seconds = (int) \floor($time);
             $nanoseconds = (int) (($time - $seconds) * 1_000_000_000);
-
             $duration = Duration::fromSecondsAndNanoseconds(
                 $seconds,
                 $nanoseconds,
             );
-
             $maximumDuration = $this->resolveMaximumDuration($test);
-
             if (!$duration->isGreaterThan($maximumDuration)) {
                 return;
             }
-
             $testIdentifier = TestIdentifier::fromString($test);
-
             $slowTest = SlowTest::create(
                 $testIdentifier,
                 $duration,
                 $maximumDuration,
             );
-
             $this->collector->collect($slowTest);
         }
 

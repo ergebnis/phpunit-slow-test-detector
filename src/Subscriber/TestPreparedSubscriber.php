@@ -23,8 +23,13 @@ use PHPUnit\Event;
  */
 final class TestPreparedSubscriber implements Event\Test\PreparedSubscriber
 {
-    public function __construct(private readonly TimeKeeper $timeKeeper)
+    /**
+     * @readonly
+     */
+    private TimeKeeper $timeKeeper;
+    public function __construct(TimeKeeper $timeKeeper)
     {
+        $this->timeKeeper = $timeKeeper;
     }
 
     public function notify(Event\Test\Prepared $event): void

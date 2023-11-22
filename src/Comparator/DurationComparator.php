@@ -20,18 +20,14 @@ use Ergebnis\PHPUnit\SlowTestDetector\Duration;
  */
 final class DurationComparator
 {
-    public function compare(
-        Duration $one,
-        Duration $two,
-    ): int {
+    public function compare(Duration $one, Duration $two): int
+    {
         if ($one->isLessThan($two)) {
             return -1;
         }
-
         if ($one->isGreaterThan($two)) {
             return 1;
         }
-
         return 0;
     }
 }

@@ -18,43 +18,43 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
  */
 final class Duration
 {
-    private function __construct(
-        private readonly int $seconds,
-        private readonly int $nanoseconds,
-    ) {
+    /**
+     * @readonly
+     */
+    private int $seconds;
+    /**
+     * @readonly
+     */
+    private int $nanoseconds;
+    private function __construct(int $seconds, int $nanoseconds)
+    {
+        $this->seconds = $seconds;
+        $this->nanoseconds = $nanoseconds;
     }
-
     /**
      * @throws Exception\InvalidNanoseconds
      * @throws Exception\InvalidSeconds
      */
-    public static function fromSecondsAndNanoseconds(
-        int $seconds,
-        int $nanoseconds,
-    ): self {
+    public static function fromSecondsAndNanoseconds(int $seconds, int $nanoseconds): self
+    {
         if (0 > $seconds) {
             throw Exception\InvalidSeconds::notGreaterThanOrEqualToZero($seconds);
         }
-
         if (0 > $nanoseconds) {
             throw Exception\InvalidNanoseconds::notGreaterThanOrEqualToZero($nanoseconds);
         }
-
         $maxNanoseconds = 999_999_999;
-
         if ($maxNanoseconds < $nanoseconds) {
             throw Exception\InvalidNanoseconds::notLessThanOrEqualTo(
                 $nanoseconds,
                 $maxNanoseconds,
             );
         }
-
         return new self(
             $seconds,
             $nanoseconds,
         );
     }
-
     /**
      * @throws Exception\InvalidMilliseconds
      */

@@ -26,10 +26,8 @@ final class InvalidNanoseconds extends \InvalidArgumentException
         ));
     }
 
-    public static function notLessThanOrEqualTo(
-        int $one,
-        int $two,
-    ): self {
+    public static function notLessThanOrEqualTo(int $one, int $two): self
+    {
         return new self(\sprintf(
             'Value should be less than or equal to %d, but %d is not.',
             $two,

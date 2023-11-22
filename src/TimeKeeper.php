@@ -23,32 +23,23 @@ final class TimeKeeper
      */
     private array $startedTimes = [];
 
-    public function start(
-        TestIdentifier $testIdentifier,
-        Time $startedTime,
-    ): void {
+    public function start(TestIdentifier $testIdentifier, Time $startedTime): void
+    {
         $key = $testIdentifier->toString();
-
         $this->startedTimes[$key] = $startedTime;
     }
 
-    public function stop(
-        TestIdentifier $testIdentifier,
-        Time $stoppedTime,
-    ): Duration {
+    public function stop(TestIdentifier $testIdentifier, Time $stoppedTime): Duration
+    {
         $key = $testIdentifier->toString();
-
         if (!\array_key_exists($key, $this->startedTimes)) {
             return Duration::fromSecondsAndNanoseconds(
                 0,
                 0,
             );
         }
-
         $startedTime = $this->startedTimes[$key];
-
         unset($this->startedTimes[$key]);
-
         return $stoppedTime->duration($startedTime);
     }
 }

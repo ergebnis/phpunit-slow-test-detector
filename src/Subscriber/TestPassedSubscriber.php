@@ -27,13 +27,24 @@ use PHPUnit\Metadata;
  */
 final class TestPassedSubscriber implements Event\Test\PassedSubscriber
 {
-    public function __construct(
-        private readonly Duration $maximumDuration,
-        private readonly TimeKeeper $timeKeeper,
-        private readonly Collector\Collector $collector,
-    ) {
+    /**
+     * @readonly
+     */
+    private Duration $maximumDuration;
+    /**
+     * @readonly
+     */
+    private TimeKeeper $timeKeeper;
+    /**
+     * @readonly
+     */
+    private Collector\Collector $collector;
+    public function __construct(Duration $maximumDuration, TimeKeeper $timeKeeper, Collector\Collector $collector)
+    {
+        $this->maximumDuration = $maximumDuration;
+        $this->timeKeeper = $timeKeeper;
+        $this->collector = $collector;
     }
-
     public function notify(Event\Test\Passed $event): void
     {
         $testIdentifier = TestIdentifier::fromString($event->test()->id());
