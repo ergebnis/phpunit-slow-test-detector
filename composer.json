@@ -1,72 +1,7 @@
 {
-  "name": "ergebnis/phpunit-slow-test-detector",
-  "description": "Provides facilities for detecting slow tests in phpunit/phpunit.",
-  "license": "MIT",
-  "type": "library",
-  "keywords": [
-    "phpunit",
-    "slow",
-    "test",
-    "detector",
-    "extension"
-  ],
-  "authors": [
-    {
-      "name": "Andreas Möller",
-      "email": "am@localheinz.com",
-      "homepage": "https://localheinz.com"
+    "require-dev": {
+        "fakerphp/faker": "^1.23.0",
+        "rector/rector": "^0.18.10",
+        "ergebnis/php-cs-fixer-config": "^4"
     }
-  ],
-  "homepage": "https://github.com/ergebnis/phpunit-slow-test-detector",
-  "support": {
-    "issues": "https://github.com/ergebnis/phpunit-slow-test-detector/issues",
-    "source": "https://github.com/ergebnis/phpunit-slow-test-detector",
-    "security": "https://github.com/ergebnis/phpunit-slow-test-detector/blob/main/.github/SECURITY.md"
-  },
-  "require": {
-    "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
-    "phpunit/phpunit": "^9.6.0 || ^10.4.0"
-  },
-  "require-dev": {
-    "ergebnis/composer-normalize": "^2.39.0",
-    "ergebnis/data-provider": "^3.0.0",
-    "ergebnis/license": "^2.2.0",
-    "ergebnis/php-cs-fixer-config": "^6.11.0",
-    "fakerphp/faker": "^1.23.0",
-    "psalm/plugin-phpunit": "~0.18.4",
-    "rector/rector": "~0.18.10",
-    "vimeo/psalm": "^5.15.0"
-  },
-  "suggest": {
-    "phpunit/phpunit": "^10.0.1"
-  },
-  "autoload": {
-    "psr-4": {
-      "Ergebnis\\PHPUnit\\SlowTestDetector\\": "src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\": "test/"
-    }
-  },
-  "config": {
-    "allow-plugins": {
-      "ergebnis/composer-normalize": true
-    },
-    "audit": {
-      "abandoned": "report"
-    },
-    "platform": {
-      "php": "8.1.10"
-    },
-    "preferred-install": "dist",
-    "sort-packages": true
-  },
-  "extra": {
-    "composer-normalize": {
-      "indent-size": 2,
-      "indent-style": "space"
-    }
-  }
 }

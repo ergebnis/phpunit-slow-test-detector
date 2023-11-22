@@ -15,12 +15,13 @@ use Rector\Config;
 use Rector\Core;
 use Rector\Php81;
 use Rector\PHPUnit;
+use Rector\Set\ValueObject\DowngradeLevelSetList;
 
 return static function (Config\RectorConfig $rectorConfig): void {
     $rectorConfig->cacheDirectory(__DIR__ . '/.build/rector/');
 
     $rectorConfig->import(__DIR__ . '/vendor/fakerphp/faker/rector-migrate.php');
-
+$rectorConfig->disableParallel();
     $rectorConfig->paths([
         __DIR__ . '/src/',
         __DIR__ . '/test/',
@@ -28,7 +29,5 @@ return static function (Config\RectorConfig $rectorConfig): void {
 
     $rectorConfig->phpVersion(Core\ValueObject\PhpVersion::PHP_81);
 
-    $rectorConfig->rules([
-        Php81\Rector\Property\ReadOnlyPropertyRector::class,
-    ]);
+    $rectorConfig->sets([DowngradeLevelSetList::DOWN_TO_PHP_74]);
 };

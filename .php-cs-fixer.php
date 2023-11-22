@@ -14,23 +14,7 @@ declare(strict_types=1);
 use Ergebnis\License;
 use Ergebnis\PhpCsFixer;
 
-$license = License\Type\MIT::markdown(
-    __DIR__ . '/LICENSE.md',
-    License\Range::since(
-        License\Year::fromString('2021'),
-        new \DateTimeZone('UTC'),
-    ),
-    License\Holder::fromString('Andreas Möller'),
-    License\Url::fromString('https://github.com/ergebnis/phpunit-slow-test-detector'),
-);
-
-$license->save();
-
-$ruleSet = PhpCsFixer\Config\RuleSet\Php81::create()
-    ->withHeader($license->header())
-    ->withRules(PhpCsFixer\Config\Rules::fromArray([
-        'mb_str_functions' => false,
-    ]));
+$ruleSet = (new PhpCsFixer\Config\RuleSet\Php74());
 
 $config = PhpCsFixer\Config\Factory::fromRuleSet($ruleSet);
 
