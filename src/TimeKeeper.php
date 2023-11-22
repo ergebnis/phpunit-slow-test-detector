@@ -39,7 +39,9 @@ final class TimeKeeper
                 0,
             );
         }
+
         $startedTime = $this->startedTimes[$key];
+
         unset($this->startedTimes[$key]);
 
         return $stoppedTime->duration($startedTime);

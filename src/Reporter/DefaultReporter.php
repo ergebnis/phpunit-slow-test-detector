@@ -127,9 +127,9 @@ TXT;
 
         $durationFormatter = $this->durationFormatter;
 
-        $numberWidth = \mb_strlen((string) \count($slowTestsToReport));
-        $durationWidth = \mb_strlen($durationFormatter->format($slowestTest->duration()));
-        $maximumDurationWidth = \mb_strlen($durationFormatter->format($longestMaximumDuration));
+        $numberWidth = \strlen((string) \count($slowTestsToReport));
+        $durationWidth = \strlen($durationFormatter->format($slowestTest->duration()));
+        $maximumDurationWidth = \strlen($durationFormatter->format($longestMaximumDuration));
 
         $items = \array_map(static function (int $number, SlowTest $slowTest) use ($numberWidth, $durationFormatter, $durationWidth, $maximumDurationWidth): string {
             $formattedNumber = \str_pad(

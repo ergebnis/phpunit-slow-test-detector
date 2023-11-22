@@ -37,16 +37,19 @@ if (10 <= $major) {
             if ($configuration->noOutput()) {
                 return;
             }
+
             $maximumCount = Count::fromInt(10);
 
             if ($parameters->has('maximum-count')) {
                 $maximumCount = Count::fromInt((int) $parameters->get('maximum-count'));
             }
+
             $maximumDuration = Duration::fromMilliseconds(500);
 
             if ($parameters->has('maximum-duration')) {
                 $maximumDuration = Duration::fromMilliseconds((int) $parameters->get('maximum-duration'));
             }
+
             $timeKeeper = new TimeKeeper();
             $collector = new Collector\DefaultCollector();
             $reporter = new Reporter\DefaultReporter(
@@ -54,6 +57,7 @@ if (10 <= $major) {
                 $maximumDuration,
                 $maximumCount,
             );
+
             $facade->registerSubscribers(
                 new Subscriber\TestPreparedSubscriber($timeKeeper),
                 new Subscriber\TestPassedSubscriber(
@@ -132,21 +136,26 @@ if (10 <= $major) {
         {
             $seconds = (int) \floor($time);
             $nanoseconds = (int) (($time - $seconds) * 1_000_000_000);
+
             $duration = Duration::fromSecondsAndNanoseconds(
                 $seconds,
                 $nanoseconds,
             );
+
             $maximumDuration = $this->resolveMaximumDuration($test);
 
             if (!$duration->isGreaterThan($maximumDuration)) {
                 return;
             }
+
             $testIdentifier = TestIdentifier::fromString($test);
+
             $slowTest = SlowTest::create(
                 $testIdentifier,
                 $duration,
                 $maximumDuration,
             );
+
             $this->collector->collect($slowTest);
         }
 
