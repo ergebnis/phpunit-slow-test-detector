@@ -86,7 +86,6 @@ if (10 <= $major) {
     {
         private int $suites = 0;
         private readonly Duration $maximumDuration;
-        private readonly TimeKeeper $timeKeeper;
         private readonly Collector\Collector $collector;
         private readonly Reporter\Reporter $reporter;
 
@@ -105,7 +104,6 @@ if (10 <= $major) {
             }
 
             $this->maximumDuration = $maximumDuration;
-            $this->timeKeeper = new TimeKeeper();
             $this->collector = new Collector\DefaultCollector();
             $this->reporter = new Reporter\DefaultReporter(
                 new Formatter\DefaultDurationFormatter(),
