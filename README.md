@@ -157,9 +157,9 @@ The following example configures the maximum count of slow tests to three, and t
 
 #### Configuring the maximum duration per test case
 
-You can configure the maximum duration for a single test with a `@maximumDuration` (or `@slowThreshold`) annotation in the DocBlock.
+You can configure the maximum duration for a single test case with a `@maximumDuration` (or `@slowThreshold`) annotation in the DocBlock.
 
-The following example configures the maximum duration for a single test to 5.000 ms:
+The following example configures the maximum duration for a single test case to 5.000 ms:
 
 ```php
 <?php
