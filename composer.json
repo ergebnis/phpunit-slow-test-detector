@@ -37,9 +37,6 @@
     "rector/rector": "~0.18.10",
     "vimeo/psalm": "^5.16.0"
   },
-  "suggest": {
-    "phpunit/phpunit": "^10.0.1"
-  },
   "autoload": {
     "psr-4": {
       "Ergebnis\\PHPUnit\\SlowTestDetector\\": "src/"
