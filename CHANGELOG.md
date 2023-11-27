@@ -14,7 +14,7 @@ For a full diff see [`2.3.2...2.4.0`][2.3.2...2.4.0].
 
 ### Added
 
-- Added support for `phpunit/phpunit:^9.6.0`  ([#341]), by [@localheinz]
+- Added support for `phpunit/phpunit:^9.6.0` ([#341]), by [@localheinz]
 
 ### Changed
 
