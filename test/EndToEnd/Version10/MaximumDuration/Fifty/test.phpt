@@ -30,8 +30,8 @@ Detected 7 tests that took longer than expected.
 3. 0.1%s (0.160) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromMaximumDurationAnnotationWhenSlowThresholdAnnotationIsPresentAfterMaximumDuration
 4. 0.1%s (0.160) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromMaximumDurationAttribute
 5. 0.1%s (0.150) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromMaximumDurationAnnotation
-6. 0.1%s (0.050) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsWithDocBlockWithMaximumDurationAnnotationWhereValueIsNotAnInt
-7. 0.0%s (0.050) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsWithDocBlockWithoutSlowThresholdAnnotation
+6. 0.1%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsWithDocBlockWithMaximumDurationAnnotationWhereValueIsNotAnInt
+7. 0.0%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\MaximumDuration\Fifty\SleeperTest::testSleeperSleepsWithDocBlockWithoutSlowThresholdAnnotation
 
 Time: %s, Memory: %s
 

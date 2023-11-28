@@ -128,20 +128,22 @@ TXT;
                 \STR_PAD_LEFT,
             );
 
-            $formattedMaximumDuration = \sprintf(
-                '(%s)',
-                \str_pad(
-                    $durationFormatter->format($slowTest->maximumDuration()),
-                    $maximumDurationWidth,
-                    ' ',
-                    \STR_PAD_LEFT,
-                ),
-            );
+            $formattedMaximumDuration = $slowTest->maximumDuration() !== $this->maximumDuration
+                ? ' ' . \sprintf(
+                    '(%s)',
+                    \str_pad(
+                        $durationFormatter->format($slowTest->maximumDuration()),
+                        $maximumDurationWidth,
+                        ' ',
+                        \STR_PAD_LEFT,
+                    ),
+                )
+                : '';
 
             $testName = $slowTest->testIdentifier()->toString();
 
             return <<<TXT
-{$formattedNumber}. {$formattedDuration} {$formattedMaximumDuration} {$testName}
+{$formattedNumber}. {$formattedDuration}{$formattedMaximumDuration} {$testName}
 TXT;
         }, \range(1, \count($slowTestsToReport)), $slowTestsToReport);
 
