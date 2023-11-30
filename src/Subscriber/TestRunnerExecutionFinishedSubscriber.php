@@ -23,8 +23,8 @@ use PHPUnit\Event;
 final class TestRunnerExecutionFinishedSubscriber implements Event\TestRunner\ExecutionFinishedSubscriber
 {
     public function __construct(
-        private readonly Collector\Collector $collector,
-        private readonly Reporter\Reporter $reporter,
+        private Collector\Collector $collector,
+        private Reporter\Reporter $reporter,
     ) {
     }
 

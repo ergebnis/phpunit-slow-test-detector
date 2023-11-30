@@ -29,9 +29,9 @@ use PHPUnit\Metadata;
 final class TestPassedSubscriber implements Event\Test\PassedSubscriber
 {
     public function __construct(
-        private readonly Duration $maximumDuration,
-        private readonly TimeKeeper $timeKeeper,
-        private readonly Collector\Collector $collector,
+        private Duration $maximumDuration,
+        private TimeKeeper $timeKeeper,
+        private Collector\Collector $collector,
     ) {
     }
 

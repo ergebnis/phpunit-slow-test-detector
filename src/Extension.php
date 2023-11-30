@@ -85,9 +85,9 @@ if (10 <= $major) {
         Runner\BeforeFirstTestHook
     {
         private int $suites = 0;
-        private readonly Duration $maximumDuration;
-        private readonly Collector\Collector $collector;
-        private readonly Reporter\Reporter $reporter;
+        private Duration $maximumDuration;
+        private Collector\Collector $collector;
+        private Reporter\Reporter $reporter;
 
         public function __construct(array $options = [])
         {

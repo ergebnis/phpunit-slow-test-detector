@@ -7,6 +7,11 @@
     <UnusedClass>
       <code>Extension</code>
     </UnusedClass>
+    <UnusedParam>
+      <code>$configuration</code>
+      <code>$facade</code>
+      <code>$parameters</code>
+    </UnusedParam>
   </file>
   <file src="src/Formatter/DefaultDurationFormatter.php">
     <InvalidOperand>
@@ -19,33 +24,37 @@
     </InvalidOperand>
   </file>
   <file src="src/Subscriber/TestPassedSubscriber.php">
-    <InternalClass>
-      <code>Metadata\Annotation\Parser\Registry::getInstance()</code>
-    </InternalClass>
-    <InternalMethod>
-      <code>Metadata\Annotation\Parser\Registry::getInstance()</code>
-      <code>forMethod</code>
-      <code>symbolAnnotations</code>
-    </InternalMethod>
-    <MixedArgument>
-      <code>$maximumDuration</code>
-    </MixedArgument>
-    <MixedAssignment>
-      <code>$maximumDuration</code>
-    </MixedAssignment>
+    <UndefinedClass>
+      <code>Event\Test\PassedSubscriber</code>
+    </UndefinedClass>
     <UnusedClass>
       <code>TestPassedSubscriber</code>
     </UnusedClass>
+    <UnusedParam>
+      <code>$event</code>
+    </UnusedParam>
   </file>
   <file src="src/Subscriber/TestPreparedSubscriber.php">
+    <UndefinedClass>
+      <code>Event\Test\PreparedSubscriber</code>
+    </UndefinedClass>
     <UnusedClass>
       <code>TestPreparedSubscriber</code>
     </UnusedClass>
+    <UnusedParam>
+      <code>$event</code>
+    </UnusedParam>
   </file>
   <file src="src/Subscriber/TestRunnerExecutionFinishedSubscriber.php">
+    <UndefinedClass>
+      <code>Event\TestRunner\ExecutionFinishedSubscriber</code>
+    </UndefinedClass>
     <UnusedClass>
       <code>TestRunnerExecutionFinishedSubscriber</code>
     </UnusedClass>
+    <UnusedParam>
+      <code>$event</code>
+    </UnusedParam>
   </file>
   <file src="test/Double/Collector/AppendingCollector.php">
     <UnusedClass>
@@ -66,16 +75,39 @@
     <PossiblyUnusedMethod>
       <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
     </PossiblyUnusedMethod>
+    <UndefinedAttributeClass>
+      <code>Framework\Attributes\CoversClass</code>
+      <code>Framework\Attributes\DataProvider</code>
+    </UndefinedAttributeClass>
   </file>
   <file src="test/EndToEnd/Version10/MaximumCount/Three/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
     </PossiblyUnusedMethod>
+    <UndefinedAttributeClass>
+      <code>Framework\Attributes\CoversClass</code>
+      <code>Framework\Attributes\DataProvider</code>
+    </UndefinedAttributeClass>
+  </file>
+  <file src="test/EndToEnd/Version10/MaximumDuration/Fifty/SleeperTest.php">
+    <UndefinedAttributeClass>
+      <code>Framework\Attributes\CoversClass</code>
+    </UndefinedAttributeClass>
+  </file>
+  <file src="test/EndToEnd/Version10/NoOutput/SleeperTest.php">
+    <UndefinedAttributeClass>
+      <code>Framework\Attributes\CoversClass</code>
+    </UndefinedAttributeClass>
   </file>
   <file src="test/Fixture/Sleeper.php">
     <ArgumentTypeCoercion>
       <code><![CDATA[$this->milliseconds * 1000]]></code>
     </ArgumentTypeCoercion>
+  </file>
+  <file src="test/Phar/SleeperTest.php">
+    <UndefinedAttributeClass>
+      <code>Framework\Attributes\CoversClass</code>
+    </UndefinedAttributeClass>
   </file>
   <file src="test/Unit/Reporter/DefaultReporterTest.php">
     <MixedInferredReturnType>

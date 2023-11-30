@@ -18,7 +18,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
  */
 final class Count
 {
-    private function __construct(private readonly int $value)
+    private function __construct(private int $value)
     {
     }
 

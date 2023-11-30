@@ -18,7 +18,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
  */
 final class TestIdentifier
 {
-    private function __construct(private readonly string $value)
+    private function __construct(private string $value)
     {
     }
 
