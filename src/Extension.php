@@ -13,20 +13,14 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector;
 
+use PHPUnit\Framework\TestCase;
 use PHPUnit\Runner;
 use PHPUnit\TextUI;
 use PHPUnit\Util;
 
-if (1 !== \preg_match('/(?P<major>\d+)\.(?P<minor>\d+)\.(?P<patch>\d+)/', Runner\Version::id(), $matches)) {
-    throw new \RuntimeException(\sprintf(
-        'Unable to determine PHPUnit version from version identifier "%s".',
-        Runner\Version::id(),
-    ));
-}
+$isPhpunit9x = (new \ReflectionClass(TestCase::class))->hasMethod('getStatus');
 
-$major = (int) $matches['major'];
-
-if (9 === $major) {
+if ($isPhpunit9x) {
     /**
      * @internal
      */
@@ -166,7 +160,7 @@ TXT;
             return $this->maximumDuration;
         }
     }
-} elseif (10 <= $major) {
+} else {
     /**
      * @internal
      */
@@ -215,9 +209,4 @@ TXT;
             );
         }
     }
-} else {
-    throw new \RuntimeException(\sprintf(
-        'Unable to select extension for PHPUnit version with version identifier "%s".',
-        Runner\Version::id(),
-    ));
 }
