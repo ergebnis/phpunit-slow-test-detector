@@ -4,7 +4,7 @@ it: refactoring coding-standards security-analysis static-code-analysis tests ##
 .PHONY: code-coverage
 code-coverage: ## Collects coverage from running unit tests with phpunit/phpunit
 	mkdir -p .build/phpunit/
-	composer require phpunit/phpunit:9.6.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/Unit/phpunit.xml --coverage-text; git checkout HEAD -- composer.json composer.lock; composer install --no-interaction --quiet
+	composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --dev --no-interaction --no-progress; composer require phpunit/phpunit:9.6.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/Unit/phpunit.xml --coverage-text; git checkout HEAD -- composer.json composer.lock; composer install --no-interaction --quiet
 
 .PHONY: coding-standards
 coding-standards: vendor ## Lints YAML files with yamllint, normalizes composer.json with ergebnis/composer-normalize, and fixes code style issues with friendsofphp/php-cs-fixer
