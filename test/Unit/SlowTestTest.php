@@ -19,9 +19,12 @@ use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use PHPUnit\Framework;
 
-#[Framework\Attributes\CoversClass(SlowTest::class)]
-#[Framework\Attributes\UsesClass(Duration::class)]
-#[Framework\Attributes\UsesClass(TestIdentifier::class)]
+/**
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
+ *
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
+ */
 final class SlowTestTest extends Framework\TestCase
 {
     use Test\Util\Helper;

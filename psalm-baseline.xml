@@ -77,25 +77,9 @@
       <code><![CDATA[$this->milliseconds * 1000]]></code>
     </ArgumentTypeCoercion>
   </file>
-  <file src="test/Unit/DurationTest.php">
-    <PossiblyUnusedMethod>
-      <code>provideMillisecondsSecondsAndNanoseconds</code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="test/Unit/Formatter/DefaultDurationFormatterTest.php">
-    <PossiblyUnusedMethod>
-      <code>provideDurationAndFormattedDuration</code>
-    </PossiblyUnusedMethod>
-  </file>
   <file src="test/Unit/Reporter/DefaultReporterTest.php">
-    <PossiblyUnusedMethod>
-      <code>provideExpectedReportMaximumDurationMaximumCountAndSlowTests</code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="test/Unit/TimeTest.php">
-    <PossiblyUnusedMethod>
-      <code>provideStartEndAndDuration</code>
-      <code>provideStartGreaterThanEnd</code>
-    </PossiblyUnusedMethod>
+    <MixedInferredReturnType>
+      <code>iterable</code>
+    </MixedInferredReturnType>
   </file>
 </files>

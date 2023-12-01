@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Reporter;
 
-use Ergebnis\PHPUnit\SlowTestDetector\Comparator;
 use Ergebnis\PHPUnit\SlowTestDetector\Count;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
@@ -23,13 +22,16 @@ use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use PHPUnit\Framework;
 
-#[Framework\Attributes\CoversClass(Reporter\DefaultReporter::class)]
-#[Framework\Attributes\UsesClass(Comparator\DurationComparator::class)]
-#[Framework\Attributes\UsesClass(Count::class)]
-#[Framework\Attributes\UsesClass(Duration::class)]
-#[Framework\Attributes\UsesClass(Formatter\DefaultDurationFormatter::class)]
-#[Framework\Attributes\UsesClass(SlowTest::class)]
-#[Framework\Attributes\UsesClass(TestIdentifier::class)]
+/**
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Reporter\DefaultReporter
+ *
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Comparator\DurationComparator
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Count
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Formatter\DefaultDurationFormatter
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
+ */
 final class DefaultReporterTest extends Framework\TestCase
 {
     use Test\Util\Helper;
@@ -49,7 +51,9 @@ final class DefaultReporterTest extends Framework\TestCase
         self::assertSame('', $report);
     }
 
-    #[Framework\Attributes\DataProvider('provideExpectedReportMaximumDurationMaximumCountAndSlowTests')]
+    /**
+     * @dataProvider provideExpectedReportMaximumDurationMaximumCountAndSlowTests
+     */
     public function testReportReturnsReportWhenThereAreFewerSlowTestsThanMaximumCount(
         string $expectedReport,
         Duration $maximumDuration,
@@ -67,7 +71,7 @@ final class DefaultReporterTest extends Framework\TestCase
         self::assertSame($expectedReport, $report);
     }
 
-    public static function provideExpectedReportMaximumDurationMaximumCountAndSlowTests(): \Generator
+    public static function provideExpectedReportMaximumDurationMaximumCountAndSlowTests(): iterable
     {
         $values = [
             'header-singular' => [

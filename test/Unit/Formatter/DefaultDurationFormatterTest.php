@@ -18,13 +18,18 @@ use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
-#[Framework\Attributes\CoversClass(Formatter\DefaultDurationFormatter::class)]
-#[Framework\Attributes\UsesClass(Duration::class)]
+/**
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Formatter\DefaultDurationFormatter
+ *
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
+ */
 final class DefaultDurationFormatterTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    #[Framework\Attributes\DataProvider('provideDurationAndFormattedDuration')]
+    /**
+     * @dataProvider provideDurationAndFormattedDuration
+     */
     public function testFormatFormats(
         Duration $duration,
         string $formattedDuration,
@@ -37,7 +42,7 @@ final class DefaultDurationFormatterTest extends Framework\TestCase
     /**
      * @return \Generator<string, array{0: Duration, 1: string}>
      */
-    public static function provideDurationAndFormattedDuration(): \Generator
+    public static function provideDurationAndFormattedDuration(): iterable
     {
         $values = [
             'zero' => [

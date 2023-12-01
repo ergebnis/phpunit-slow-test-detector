@@ -19,14 +19,19 @@ use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use PHPUnit\Framework;
 
-#[Framework\Attributes\CoversClass(TestIdentifier::class)]
-#[Framework\Attributes\UsesClass(Exception\InvalidTestIdentifier::class)]
+/**
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
+ *
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Exception\InvalidTestIdentifier
+ */
 final class TestIdentifierTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    #[Framework\Attributes\DataProviderExternal(DataProvider\StringProvider::class, 'blank')]
-    #[Framework\Attributes\DataProviderExternal(DataProvider\StringProvider::class, 'empty')]
+    /**
+     * @dataProvider \Ergebnis\DataProvider\StringProvider::blank
+     * @dataProvider \Ergebnis\DataProvider\StringProvider::empty
+     */
     public function testFromStringRejectsInvalidValue(string $value): void
     {
         $this->expectException(Exception\InvalidTestIdentifier::class);

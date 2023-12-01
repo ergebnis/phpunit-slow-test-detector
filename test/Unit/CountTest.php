@@ -18,12 +18,17 @@ use Ergebnis\PHPUnit\SlowTestDetector\Count;
 use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use PHPUnit\Framework;
 
-#[Framework\Attributes\CoversClass(Count::class)]
-#[Framework\Attributes\UsesClass(Exception\InvalidCount::class)]
+/**
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Count
+ *
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Exception\InvalidCount
+ */
 final class CountTest extends Framework\TestCase
 {
-    #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'lessThanZero')]
-    #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'zero')]
+    /**
+     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero
+     * @dataProvider \Ergebnis\DataProvider\IntProvider::zero
+     */
     public function testFromIntRejectsInvalidValue(int $value): void
     {
         $this->expectException(Exception\InvalidCount::class);
@@ -31,7 +36,9 @@ final class CountTest extends Framework\TestCase
         Count::fromInt($value);
     }
 
-    #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'greaterThanZero')]
+    /**
+     * @dataProvider \Ergebnis\DataProvider\IntProvider::greaterThanZero
+     */
     public function testFromIntReturnsCount(int $value): void
     {
         $count = Count::fromInt($value);

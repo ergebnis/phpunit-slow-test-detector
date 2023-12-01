@@ -19,15 +19,20 @@ use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
-#[Framework\Attributes\CoversClass(Duration::class)]
-#[Framework\Attributes\UsesClass(Exception\InvalidMilliseconds::class)]
-#[Framework\Attributes\UsesClass(Exception\InvalidNanoseconds::class)]
-#[Framework\Attributes\UsesClass(Exception\InvalidSeconds::class)]
+/**
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Duration
+ *
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Exception\InvalidMilliseconds
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Exception\InvalidNanoseconds
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Exception\InvalidSeconds
+ */
 final class DurationTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'lessThanZero')]
+    /**
+     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero
+     */
     public function testFromSecondsAndNanosecondsRejectsSecondsLessThanZero(int $seconds): void
     {
         $nanoseconds = self::faker()->numberBetween(0, 999_999_999);
@@ -40,7 +45,9 @@ final class DurationTest extends Framework\TestCase
         );
     }
 
-    #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'lessThanZero')]
+    /**
+     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero
+     */
     public function testFromSecondsAndNanosecondsRejectsNanosecondsLessThanZero(int $nanoseconds): void
     {
         $seconds = self::faker()->numberBetween(0, 123);
@@ -53,7 +60,9 @@ final class DurationTest extends Framework\TestCase
         );
     }
 
-    #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'greaterThanOne')]
+    /**
+     * @dataProvider \Ergebnis\DataProvider\IntProvider::greaterThanOne
+     */
     public function testFromSecondsAndNanosecondsRejectsNanosecondsGreaterThan999999999(int $offset): void
     {
         $seconds = self::faker()->numberBetween(0, 123);
@@ -83,8 +92,10 @@ final class DurationTest extends Framework\TestCase
         self::assertSame($nanoseconds, $duration->nanoseconds());
     }
 
-    #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'lessThanZero')]
-    #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'zero')]
+    /**
+     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero
+     * @dataProvider \Ergebnis\DataProvider\IntProvider::zero
+     */
     public function testFromMillisecondsRejectsInvalidValue(int $milliseconds): void
     {
         $this->expectException(Exception\InvalidMilliseconds::class);
@@ -92,7 +103,9 @@ final class DurationTest extends Framework\TestCase
         Duration::fromMilliseconds($milliseconds);
     }
 
-    #[Framework\Attributes\DataProvider('provideMillisecondsSecondsAndNanoseconds')]
+    /**
+     * @dataProvider provideMillisecondsSecondsAndNanoseconds
+     */
     public function testFromMillisecondsReturnsDuration(
         int $milliseconds,
         int $seconds,
@@ -107,7 +120,7 @@ final class DurationTest extends Framework\TestCase
     /**
      * @return \Generator<string, array{0: int, 1: int, 2: int}>
      */
-    public static function provideMillisecondsSecondsAndNanoseconds(): \Generator
+    public static function provideMillisecondsSecondsAndNanoseconds(): iterable
     {
         $values = [
             'one' => [

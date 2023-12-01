@@ -19,11 +19,14 @@ use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\Time;
 use PHPUnit\Framework;
 
-#[Framework\Attributes\CoversClass(Time::class)]
-#[Framework\Attributes\UsesClass(Duration::class)]
-#[Framework\Attributes\UsesClass(Exception\InvalidNanoseconds::class)]
-#[Framework\Attributes\UsesClass(Exception\InvalidSeconds::class)]
-#[Framework\Attributes\UsesClass(Exception\InvalidStart::class)]
+/**
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Time
+ *
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Exception\InvalidNanoseconds
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Exception\InvalidSeconds
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Exception\InvalidStart
+ */
 final class TimeTest extends Framework\TestCase
 {
     use Test\Util\Helper;
@@ -74,7 +77,9 @@ final class TimeTest extends Framework\TestCase
         self::assertSame($nanoseconds, $time->nanoseconds());
     }
 
-    #[Framework\Attributes\DataProvider('provideStartGreaterThanEnd')]
+    /**
+     * @dataProvider provideStartGreaterThanEnd
+     */
     public function testDurationRejectsStartGreaterThanEnd(
         int $startSeconds,
         int $startNanoseconds,
@@ -99,7 +104,7 @@ final class TimeTest extends Framework\TestCase
     /**
      * @return \Generator<string, array{0: int, 1: int, 2: int, 3: int}>
      */
-    public static function provideStartGreaterThanEnd(): \Generator
+    public static function provideStartGreaterThanEnd(): iterable
     {
         $values = [
             'seconds-greater' => [
@@ -132,7 +137,9 @@ final class TimeTest extends Framework\TestCase
         }
     }
 
-    #[Framework\Attributes\DataProvider('provideStartEndAndDuration')]
+    /**
+     * @dataProvider provideStartEndAndDuration
+     */
     public function testDurationReturnsDifferenceBetweenEndAndStart(
         int $startSeconds,
         int $startNanoseconds,
@@ -156,7 +163,7 @@ final class TimeTest extends Framework\TestCase
     /**
      * @return \Generator<string, array{0: int, 1: int, 2: int, 3: int, 4: Duration}>
      */
-    public static function provideStartEndAndDuration(): \Generator
+    public static function provideStartEndAndDuration(): iterable
     {
         $values = [
             'start-equal-to-end' => [

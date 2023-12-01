@@ -4,7 +4,7 @@ it: refactoring coding-standards security-analysis static-code-analysis tests ##
 .PHONY: code-coverage
 code-coverage: vendor ## Collects coverage from running unit tests with phpunit/phpunit
 	mkdir -p .build/phpunit/
-	vendor/bin/phpunit --configuration=test/Unit/phpunit.xml --coverage-text
+	composer require phpunit/phpunit:9.6.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/Unit/phpunit.xml --coverage-text; git checkout HEAD -- composer.json composer.lock; composer install --no-interaction --quiet
 
 .PHONY: coding-standards
 coding-standards: vendor ## Lints YAML files with yamllint, normalizes composer.json with ergebnis/composer-normalize, and fixes code style issues with friendsofphp/php-cs-fixer
@@ -59,9 +59,9 @@ static-code-analysis-baseline: vendor ## Generates a baseline for static code an
 .PHONY: tests
 tests: vendor ## Runs unit and end-to-end tests with phpunit/phpunit
 	mkdir -p .build/phpunit
-	composer require phpunit/phpunit:10.4.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/Unit/phpunit.xml; git checkout HEAD -- composer.json composer.lock; composer install --no-interaction --quiet
-	composer require phpunit/phpunit:10.4.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/EndToEnd/Version10/phpunit.xml; git checkout HEAD -- composer.json composer.lock; composer install --no-interaction --quiet
+	composer require phpunit/phpunit:9.6.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/Unit/phpunit.xml; git checkout HEAD -- composer.json composer.lock; composer install --no-interaction --quiet
 	composer require phpunit/phpunit:9.6.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/EndToEnd/Version9/phpunit.xml; git checkout HEAD -- composer.json composer.lock; composer install --no-interaction --quiet
+	composer require phpunit/phpunit:10.4.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/EndToEnd/Version10/phpunit.xml; git checkout HEAD -- composer.json composer.lock; composer install --no-interaction --quiet
 
 vendor: composer.json composer.lock
 	composer validate --strict

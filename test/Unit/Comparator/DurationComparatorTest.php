@@ -18,8 +18,11 @@ use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
-#[Framework\Attributes\CoversClass(Comparator\DurationComparator::class)]
-#[Framework\Attributes\UsesClass(Duration::class)]
+/**
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Comparator\DurationComparator
+ *
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
+ */
 final class DurationComparatorTest extends Framework\TestCase
 {
     use Test\Util\Helper;

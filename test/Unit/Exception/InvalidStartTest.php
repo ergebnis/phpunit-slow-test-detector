@@ -16,7 +16,9 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use PHPUnit\Framework;
 
-#[Framework\Attributes\CoversClass(Exception\InvalidStart::class)]
+/**
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Exception\InvalidStart
+ */
 final class InvalidStartTest extends Framework\TestCase
 {
     public function testNotLessThanOrEqualToEndReturnsException(): void

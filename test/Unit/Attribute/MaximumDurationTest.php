@@ -20,15 +20,20 @@ use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
-#[Framework\Attributes\CoversClass(Attribute\MaximumDuration::class)]
-#[Framework\Attributes\UsesClass(Duration::class)]
-#[Framework\Attributes\UsesClass(Exception\InvalidMilliseconds::class)]
+/**
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Attribute\MaximumDuration
+ *
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Exception\InvalidMilliseconds
+ */
 final class MaximumDurationTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'lessThanZero')]
-    #[Framework\Attributes\DataProviderExternal(DataProvider\IntProvider::class, 'zero')]
+    /**
+     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero
+     * @dataProvider \Ergebnis\DataProvider\IntProvider::zero
+     */
     public function testConstructorRejectsInvalidValue(int $milliseconds): void
     {
         $this->expectException(Exception\InvalidMilliseconds::class);
