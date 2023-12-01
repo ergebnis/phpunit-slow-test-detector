@@ -1,5 +1,11 @@
 {
   "symbol-whitelist": [
+    "array",
+    "bool",
+    "false",
+    "float",
+    "int",
+    "null",
     "PHPUnit\\Event\\Code\\Test",
     "PHPUnit\\Event\\Test\\Passed",
     "PHPUnit\\Event\\Test\\PassedSubscriber",
@@ -11,6 +17,10 @@
     "PHPUnit\\Runner\\Extension\\Extension",
     "PHPUnit\\Runner\\Extension\\Facade",
     "PHPUnit\\Runner\\Extension\\ParameterCollection",
-    "PHPUnit\\TextUI\\Configuration\\Configuration"
+    "PHPUnit\\TextUI\\Configuration\\Configuration",
+    "self",
+    "string",
+    "true",
+    "void"
   ]
 }

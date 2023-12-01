@@ -18,17 +18,24 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
  */
 final class SlowTest
 {
+    private Duration $maximumDuration;
+    private Duration $duration;
+    private TestIdentifier $testIdentifier;
+
     private function __construct(
-        private TestIdentifier $testIdentifier,
-        private Duration $duration,
-        private Duration $maximumDuration,
+        TestIdentifier $testIdentifier,
+        Duration $duration,
+        Duration $maximumDuration
     ) {
+        $this->testIdentifier = $testIdentifier;
+        $this->duration = $duration;
+        $this->maximumDuration = $maximumDuration;
     }
 
     public static function create(
         TestIdentifier $testIdentifier,
         Duration $duration,
-        Duration $maximumDuration,
+        Duration $maximumDuration
     ): self {
         return new self(
             $testIdentifier,

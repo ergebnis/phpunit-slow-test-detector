@@ -22,8 +22,9 @@ help: ## Displays this list of targets with descriptions
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}'
 
 .PHONY: phar
-phar: phive vendor ## Builds a phar with humbug/box
+phar: phive ## Builds a phar with humbug/box
 	.phive/box validate box.json
+	composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --dev --no-interaction --no-progress
 	composer remove phpunit/phpunit --no-interaction --no-progress
 	.phive/box compile --config=box.json
 	git checkout HEAD -- composer.json composer.lock

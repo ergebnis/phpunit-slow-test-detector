@@ -22,7 +22,7 @@ final class DurationComparator
 {
     public function compare(
         Duration $one,
-        Duration $two,
+        Duration $two
     ): int {
         if ($one->isLessThan($two)) {
             return -1;

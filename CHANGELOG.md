@@ -12,6 +12,7 @@ For a full diff see [`2.4.0...main`][2.4.0...main].
 
 - Added `Attribute\MaximumDuration` to allow configuration of maximum duration with attributes on test method level ([#367]), by [@HypeMC]
 - Added support for PHP 8.0 ([#375]), by [@localheinz] and [@mvorisek]
+- Added support for PHP 7.4 ([#390]), by [@localheinz] and [@mvorisek]
 
 ## [`2.4.0`][2.4.0]
 
@@ -202,6 +203,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#357]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/357
 [#367]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/367
 [#375]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/375
+[#390]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/390
 
 [@HypeMC]: https://github.com/HypeMC
 [@localheinz]: https://github.com/localheinz

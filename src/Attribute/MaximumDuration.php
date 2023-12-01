@@ -18,14 +18,18 @@ use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 #[\Attribute(\Attribute::TARGET_METHOD)]
 final class MaximumDuration
 {
+    private int $milliseconds;
+
     /**
      * @throws Exception\InvalidMilliseconds
      */
-    public function __construct(private int $milliseconds)
+    public function __construct(int $milliseconds)
     {
         if (0 >= $milliseconds) {
             throw Exception\InvalidMilliseconds::notGreaterThanZero($milliseconds);
         }
+
+        $this->milliseconds = $milliseconds;
     }
 
     public function milliseconds(): int

@@ -18,8 +18,11 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
  */
 final class TestIdentifier
 {
-    private function __construct(private string $value)
+    private string $value;
+
+    private function __construct(string $value)
     {
+        $this->value = $value;
     }
 
     /**
