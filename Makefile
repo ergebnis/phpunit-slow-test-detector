@@ -2,7 +2,7 @@
 it: refactoring coding-standards security-analysis static-code-analysis tests ## Runs the refactoring, coding-standards, security-analysis, static-code-analysis, and tests targets
 
 .PHONY: code-coverage
-code-coverage: vendor ## Collects coverage from running unit tests with phpunit/phpunit
+code-coverage: ## Collects coverage from running unit tests with phpunit/phpunit
 	mkdir -p .build/phpunit/
 	composer require phpunit/phpunit:9.6.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/Unit/phpunit.xml --coverage-text; git checkout HEAD -- composer.json composer.lock; composer install --no-interaction --quiet
 
