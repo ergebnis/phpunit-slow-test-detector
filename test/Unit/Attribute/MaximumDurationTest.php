@@ -21,6 +21,8 @@ use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
 #[Framework\Attributes\CoversClass(Attribute\MaximumDuration::class)]
+#[Framework\Attributes\UsesClass(Duration::class)]
+#[Framework\Attributes\UsesClass(Exception\InvalidMilliseconds::class)]
 final class MaximumDurationTest extends Framework\TestCase
 {
     use Test\Util\Helper;
