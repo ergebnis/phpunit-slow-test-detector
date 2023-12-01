@@ -55,8 +55,11 @@ jobs:
           key: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}"
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
-      - name: "Remove phpunit/phpunit"
-        run: "composer remove phpunit/phpunit --ansi --no-interaction --no-progress"
+      - name: "Remove incompatible dependencies with composer"
+        run: "composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --ansi --dev --no-interaction --no-progress"
+
+      - name: "Remove phpunit/phpunit with composer"
+        run: "composer remove phpunit/phpunit --ansi --no-interaction --ignore-platform-reqs --no-progress"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
         uses: "ergebnis/.github/actions/composer/install@1.8.0"

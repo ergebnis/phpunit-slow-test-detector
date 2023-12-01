@@ -25,7 +25,7 @@ final class TimeKeeper
 
     public function start(
         TestIdentifier $testIdentifier,
-        Time $startedTime,
+        Time $startedTime
     ): void {
         $key = $testIdentifier->toString();
 
@@ -34,7 +34,7 @@ final class TimeKeeper
 
     public function stop(
         TestIdentifier $testIdentifier,
-        Time $stoppedTime,
+        Time $stoppedTime
     ): Duration {
         $key = $testIdentifier->toString();
 

@@ -84,7 +84,7 @@ final class TimeTest extends Framework\TestCase
         int $startSeconds,
         int $startNanoseconds,
         int $endSeconds,
-        int $endNanoseconds,
+        int $endNanoseconds
     ): void {
         $start = Time::fromSecondsAndNanoseconds(
             $startSeconds,
@@ -145,7 +145,7 @@ final class TimeTest extends Framework\TestCase
         int $startNanoseconds,
         int $endSeconds,
         int $endNanoseconds,
-        Duration $duration,
+        Duration $duration
     ): void {
         $start = Time::fromSecondsAndNanoseconds(
             $startSeconds,

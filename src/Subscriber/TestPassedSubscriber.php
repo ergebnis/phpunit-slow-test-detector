@@ -28,11 +28,18 @@ use PHPUnit\Metadata;
  */
 final class TestPassedSubscriber implements Event\Test\PassedSubscriber
 {
+    private Collector\Collector $collector;
+    private TimeKeeper $timeKeeper;
+    private Duration $maximumDuration;
+
     public function __construct(
-        private Duration $maximumDuration,
-        private TimeKeeper $timeKeeper,
-        private Collector\Collector $collector,
+        Duration $maximumDuration,
+        TimeKeeper $timeKeeper,
+        Collector\Collector $collector
     ) {
+        $this->maximumDuration = $maximumDuration;
+        $this->timeKeeper = $timeKeeper;
+        $this->collector = $collector;
     }
 
     public function notify(Event\Test\Passed $event): void

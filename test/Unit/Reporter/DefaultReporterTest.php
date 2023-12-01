@@ -58,7 +58,7 @@ final class DefaultReporterTest extends Framework\TestCase
         string $expectedReport,
         Duration $maximumDuration,
         Count $maximumCount,
-        SlowTest ...$slowTests,
+        SlowTest ...$slowTests
     ): void {
         $reporter = new Reporter\DefaultReporter(
             new Formatter\DefaultDurationFormatter(),

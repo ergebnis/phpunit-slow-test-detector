@@ -18,8 +18,11 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
  */
 final class Count
 {
-    private function __construct(private int $value)
+    private int $value;
+
+    private function __construct(int $value)
     {
+        $this->value = $value;
     }
 
     /**

@@ -25,12 +25,18 @@ use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 final class DefaultReporter implements Reporter
 {
     private Comparator\DurationComparator $durationComparator;
+    private Count $maximumCount;
+    private Duration $maximumDuration;
+    private Formatter\DurationFormatter $durationFormatter;
 
     public function __construct(
-        private Formatter\DurationFormatter $durationFormatter,
-        private Duration $maximumDuration,
-        private Count $maximumCount,
+        Formatter\DurationFormatter $durationFormatter,
+        Duration $maximumDuration,
+        Count $maximumCount
     ) {
+        $this->durationFormatter = $durationFormatter;
+        $this->maximumDuration = $maximumDuration;
+        $this->maximumCount = $maximumCount;
         $this->durationComparator = new Comparator\DurationComparator();
     }
 

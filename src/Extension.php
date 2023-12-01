@@ -35,7 +35,7 @@ if (10 <= $major) {
         public function bootstrap(
             TextUI\Configuration\Configuration $configuration,
             Runner\Extension\Facade $facade,
-            Runner\Extension\ParameterCollection $parameters,
+            Runner\Extension\ParameterCollection $parameters
         ): void {
             if ($configuration->noOutput()) {
                 return;
@@ -119,7 +119,7 @@ if (10 <= $major) {
 
         public function executeAfterSuccessfulTest(
             string $test,
-            float $time,
+            float $time
         ): void {
             $seconds = (int) \floor($time);
             $nanoseconds = (int) (($time - $seconds) * 1_000_000_000);

@@ -32,7 +32,7 @@ final class DefaultDurationFormatterTest extends Framework\TestCase
      */
     public function testFormatFormats(
         Duration $duration,
-        string $formattedDuration,
+        string $formattedDuration
     ): void {
         $formatter = new Formatter\DefaultDurationFormatter();
 

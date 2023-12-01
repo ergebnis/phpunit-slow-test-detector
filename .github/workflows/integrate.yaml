@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.0"
+          - "7.4"
 
         phpunit-version:
           - "9.6.0"
@@ -86,7 +86,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.0"
+          - "7.4"
 
         dependencies:
           - "locked"
@@ -192,8 +192,11 @@ jobs:
           key: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}"
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
-      - name: "Remove phpunit/phpunit"
-        run: "composer remove phpunit/phpunit --ansi --no-interaction --no-progress"
+      - name: "Remove incompatible dependencies with composer"
+        run: "composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --ansi --dev --no-interaction --no-progress"
+
+      - name: "Remove phpunit/phpunit with composer"
+        run: "composer remove phpunit/phpunit --ansi --no-interaction --ignore-platform-reqs --no-progress"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
         uses: "ergebnis/.github/actions/composer/install@1.8.0"
@@ -230,7 +233,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.0"
+          - "7.4"
 
         dependencies:
           - "locked"
@@ -286,7 +289,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.0"
+          - "7.4"
 
         dependencies:
           - "locked"
@@ -348,7 +351,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.0"
+          - "7.4"
 
         dependencies:
           - "locked"
@@ -398,7 +401,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.0"
+          - "7.4"
 
         dependencies:
           - "locked"
@@ -465,6 +468,18 @@ jobs:
           - "highest"
 
         include:
+          - php-version: "7.4"
+            phpunit-version: "9.6.0"
+            dependencies: "lowest"
+
+          - php-version: "7.4"
+            phpunit-version: "9.6.0"
+            dependencies: "locked"
+
+          - php-version: "7.4"
+            phpunit-version: "9.6.0"
+            dependencies: "highest"
+
           - php-version: "8.0"
             phpunit-version: "9.6.0"
             dependencies: "lowest"
@@ -508,7 +523,7 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-phpunit-${{ matrix.phpunit-version }}-"
 
       - name: "Remove incompatible dependencies with composer"
-        run: "composer remove ergebnis/composer-normalize --ansi --dev --no-interaction --no-progress"
+        run: "composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --ansi --dev --no-interaction --no-progress"
 
       - name: "Require phpunit/phpunit:^${{ matrix.phpunit-version }}"
         run: "composer require phpunit/phpunit:^${{ matrix.phpunit-version }} --ansi --no-interaction --no-progress --update-with-all-dependencies"

@@ -11,14 +11,12 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version9\Default;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\DefaultConfiguration;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
-/**
- * @covers \Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\Sleeper
- */
+#[Framework\Attributes\CoversClass(Test\Fixture\Sleeper::class)]
 final class SleeperTest extends Framework\TestCase
 {
     use Test\Util\Helper;
@@ -34,9 +32,7 @@ final class SleeperTest extends Framework\TestCase
         self::assertSame($milliseconds, $sleeper->milliseconds());
     }
 
-    /**
-     * @dataProvider provideMillisecondsGreaterThanDefaultMaximumDuration
-     */
+    #[Framework\Attributes\DataProvider('provideMillisecondsGreaterThanDefaultMaximumDuration')]
     public function testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider(int $milliseconds): void
     {
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
@@ -49,7 +45,7 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @return \Generator<int, array{0: int}>
      */
-    public static function provideMillisecondsGreaterThanDefaultMaximumDuration(): iterable
+    public static function provideMillisecondsGreaterThanDefaultMaximumDuration(): \Generator
     {
         $values = \range(
             550,

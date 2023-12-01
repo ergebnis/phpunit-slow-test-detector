@@ -109,7 +109,7 @@ final class DurationTest extends Framework\TestCase
     public function testFromMillisecondsReturnsDuration(
         int $milliseconds,
         int $seconds,
-        int $nanoseconds,
+        int $nanoseconds
     ): void {
         $duration = Duration::fromMilliseconds($milliseconds);
 

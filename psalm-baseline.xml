@@ -31,7 +31,10 @@
       <code>TestPassedSubscriber</code>
     </UnusedClass>
     <UnusedParam>
+      <code>$collector</code>
       <code>$event</code>
+      <code>$maximumDuration</code>
+      <code>$timeKeeper</code>
     </UnusedParam>
   </file>
   <file src="src/Subscriber/TestPreparedSubscriber.php">
@@ -43,6 +46,7 @@
     </UnusedClass>
     <UnusedParam>
       <code>$event</code>
+      <code>$timeKeeper</code>
     </UnusedParam>
   </file>
   <file src="src/Subscriber/TestRunnerExecutionFinishedSubscriber.php">
@@ -53,7 +57,9 @@
       <code>TestRunnerExecutionFinishedSubscriber</code>
     </UnusedClass>
     <UnusedParam>
+      <code>$collector</code>
       <code>$event</code>
+      <code>$reporter</code>
     </UnusedParam>
   </file>
   <file src="test/Double/Collector/AppendingCollector.php">
@@ -71,43 +77,20 @@
       <code>NullReporter</code>
     </UnusedClass>
   </file>
-  <file src="test/EndToEnd/Version10/Default/SleeperTest.php">
+  <file src="test/EndToEnd/Version10/DefaultConfiguration/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
     </PossiblyUnusedMethod>
-    <UndefinedAttributeClass>
-      <code>Framework\Attributes\CoversClass</code>
-      <code>Framework\Attributes\DataProvider</code>
-    </UndefinedAttributeClass>
   </file>
   <file src="test/EndToEnd/Version10/MaximumCount/Three/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
     </PossiblyUnusedMethod>
-    <UndefinedAttributeClass>
-      <code>Framework\Attributes\CoversClass</code>
-      <code>Framework\Attributes\DataProvider</code>
-    </UndefinedAttributeClass>
-  </file>
-  <file src="test/EndToEnd/Version10/MaximumDuration/Fifty/SleeperTest.php">
-    <UndefinedAttributeClass>
-      <code>Framework\Attributes\CoversClass</code>
-    </UndefinedAttributeClass>
-  </file>
-  <file src="test/EndToEnd/Version10/NoOutput/SleeperTest.php">
-    <UndefinedAttributeClass>
-      <code>Framework\Attributes\CoversClass</code>
-    </UndefinedAttributeClass>
   </file>
   <file src="test/Fixture/Sleeper.php">
     <ArgumentTypeCoercion>
       <code><![CDATA[$this->milliseconds * 1000]]></code>
     </ArgumentTypeCoercion>
-  </file>
-  <file src="test/Phar/SleeperTest.php">
-    <UndefinedAttributeClass>
-      <code>Framework\Attributes\CoversClass</code>
-    </UndefinedAttributeClass>
   </file>
   <file src="test/Unit/Reporter/DefaultReporterTest.php">
     <MixedInferredReturnType>
