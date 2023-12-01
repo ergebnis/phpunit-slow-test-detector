@@ -60,6 +60,7 @@ static-code-analysis-baseline: vendor ## Generates a baseline for static code an
 .PHONY: tests
 tests: ## Runs unit and end-to-end tests with phpunit/phpunit
 	mkdir -p .build/phpunit
+	composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --dev --no-interaction --no-progress
 	composer require phpunit/phpunit:^9.6.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/Unit/phpunit.xml; git checkout HEAD -- composer.json composer.lock; composer install --no-interaction --quiet
 	composer require phpunit/phpunit:^9.6.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/EndToEnd/Version9/phpunit.xml; git checkout HEAD -- composer.json composer.lock; composer install --no-interaction --quiet
 	composer require phpunit/phpunit:^10.4.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/EndToEnd/Version10/phpunit.xml; git checkout HEAD -- composer.json composer.lock; composer install --no-interaction --quiet
