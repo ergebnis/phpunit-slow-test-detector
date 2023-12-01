@@ -26,56 +26,7 @@ if (1 !== \preg_match('/(?P<major>\d+)\.(?P<minor>\d+)\.(?P<patch>\d+)/', Runner
 
 $major = (int) $matches['major'];
 
-if (10 <= $major) {
-    /**
-     * @internal
-     */
-    final class Extension implements Runner\Extension\Extension
-    {
-        public function bootstrap(
-            TextUI\Configuration\Configuration $configuration,
-            Runner\Extension\Facade $facade,
-            Runner\Extension\ParameterCollection $parameters
-        ): void {
-            if ($configuration->noOutput()) {
-                return;
-            }
-
-            $maximumCount = Count::fromInt(10);
-
-            if ($parameters->has('maximum-count')) {
-                $maximumCount = Count::fromInt((int) $parameters->get('maximum-count'));
-            }
-
-            $maximumDuration = Duration::fromMilliseconds(500);
-
-            if ($parameters->has('maximum-duration')) {
-                $maximumDuration = Duration::fromMilliseconds((int) $parameters->get('maximum-duration'));
-            }
-
-            $timeKeeper = new TimeKeeper();
-            $collector = new Collector\DefaultCollector();
-            $reporter = new Reporter\DefaultReporter(
-                new Formatter\DefaultDurationFormatter(),
-                $maximumDuration,
-                $maximumCount,
-            );
-
-            $facade->registerSubscribers(
-                new Subscriber\TestPreparedSubscriber($timeKeeper),
-                new Subscriber\TestPassedSubscriber(
-                    $maximumDuration,
-                    $timeKeeper,
-                    $collector,
-                ),
-                new Subscriber\TestRunnerExecutionFinishedSubscriber(
-                    $collector,
-                    $reporter,
-                ),
-            );
-        }
-    }
-} elseif (9 === $major) {
+if (9 === $major) {
     /**
      * @internal
      */
@@ -213,6 +164,55 @@ TXT;
             }
 
             return $this->maximumDuration;
+        }
+    }
+} elseif (10 <= $major) {
+    /**
+     * @internal
+     */
+    final class Extension implements Runner\Extension\Extension
+    {
+        public function bootstrap(
+            TextUI\Configuration\Configuration $configuration,
+            Runner\Extension\Facade $facade,
+            Runner\Extension\ParameterCollection $parameters
+        ): void {
+            if ($configuration->noOutput()) {
+                return;
+            }
+
+            $maximumCount = Count::fromInt(10);
+
+            if ($parameters->has('maximum-count')) {
+                $maximumCount = Count::fromInt((int) $parameters->get('maximum-count'));
+            }
+
+            $maximumDuration = Duration::fromMilliseconds(500);
+
+            if ($parameters->has('maximum-duration')) {
+                $maximumDuration = Duration::fromMilliseconds((int) $parameters->get('maximum-duration'));
+            }
+
+            $timeKeeper = new TimeKeeper();
+            $collector = new Collector\DefaultCollector();
+            $reporter = new Reporter\DefaultReporter(
+                new Formatter\DefaultDurationFormatter(),
+                $maximumDuration,
+                $maximumCount,
+            );
+
+            $facade->registerSubscribers(
+                new Subscriber\TestPreparedSubscriber($timeKeeper),
+                new Subscriber\TestPassedSubscriber(
+                    $maximumDuration,
+                    $timeKeeper,
+                    $collector,
+                ),
+                new Subscriber\TestRunnerExecutionFinishedSubscriber(
+                    $collector,
+                    $reporter,
+                ),
+            );
         }
     }
 } else {

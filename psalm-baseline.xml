@@ -8,9 +8,7 @@
       <code>Extension</code>
     </UnusedClass>
     <UnusedParam>
-      <code>$configuration</code>
-      <code>$facade</code>
-      <code>$parameters</code>
+      <code>$options</code>
     </UnusedParam>
   </file>
   <file src="src/Formatter/DefaultDurationFormatter.php">
