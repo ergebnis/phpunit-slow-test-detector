@@ -19,8 +19,8 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
 final class Time
 {
     private function __construct(
-        private readonly int $seconds,
-        private readonly int $nanoseconds,
+        private int $seconds,
+        private int $nanoseconds,
     ) {
     }
 

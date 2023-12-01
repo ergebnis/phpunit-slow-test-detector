@@ -21,7 +21,7 @@ final class MaximumDuration
     /**
      * @throws Exception\InvalidMilliseconds
      */
-    public function __construct(private readonly int $milliseconds)
+    public function __construct(private int $milliseconds)
     {
         if (0 >= $milliseconds) {
             throw Exception\InvalidMilliseconds::notGreaterThanZero($milliseconds);

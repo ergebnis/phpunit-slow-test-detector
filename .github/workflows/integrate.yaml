@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.1"
+          - "8.0"
 
         phpunit-version:
           - "9.6.0"
@@ -86,7 +86,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.1"
+          - "8.0"
 
         dependencies:
           - "locked"
@@ -230,7 +230,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.1"
+          - "8.0"
 
         dependencies:
           - "locked"
@@ -286,7 +286,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.1"
+          - "8.0"
 
         dependencies:
           - "locked"
@@ -348,7 +348,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.1"
+          - "8.0"
 
         dependencies:
           - "locked"
@@ -398,7 +398,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.1"
+          - "8.0"
 
         dependencies:
           - "locked"
@@ -464,6 +464,19 @@ jobs:
           - "locked"
           - "highest"
 
+        include:
+          - php-version: "8.0"
+            phpunit-version: "9.6.0"
+            dependencies: "lowest"
+
+          - php-version: "8.0"
+            phpunit-version: "9.6.0"
+            dependencies: "locked"
+
+          - php-version: "8.0"
+            phpunit-version: "9.6.0"
+            dependencies: "highest"
+
     steps:
       - name: "Checkout"
         uses: "actions/checkout@v4.1.1"
@@ -493,6 +506,9 @@ jobs:
           path: "${{ env.COMPOSER_CACHE_DIR }}"
           key: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-phpunit-${{ matrix.phpunit-version }}-${{ hashFiles('composer.lock') }}"
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-phpunit-${{ matrix.phpunit-version }}-"
+
+      - name: "Remove incompatible dependencies with composer"
+        run: "composer remove ergebnis/composer-normalize --ansi --dev --no-interaction --no-progress"
 
       - name: "Require phpunit/phpunit:^${{ matrix.phpunit-version }}"
         run: "composer require phpunit/phpunit:^${{ matrix.phpunit-version }} --ansi --no-interaction --no-progress --update-with-all-dependencies"

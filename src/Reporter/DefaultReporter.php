@@ -27,9 +27,9 @@ final class DefaultReporter implements Reporter
     private Comparator\DurationComparator $durationComparator;
 
     public function __construct(
-        private readonly Formatter\DurationFormatter $durationFormatter,
-        private readonly Duration $maximumDuration,
-        private readonly Count $maximumCount,
+        private Formatter\DurationFormatter $durationFormatter,
+        private Duration $maximumDuration,
+        private Count $maximumCount,
     ) {
         $this->durationComparator = new Comparator\DurationComparator();
     }
