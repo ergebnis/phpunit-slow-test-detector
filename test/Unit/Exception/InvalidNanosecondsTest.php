@@ -17,7 +17,9 @@ use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
-#[Framework\Attributes\CoversClass(Exception\InvalidNanoseconds::class)]
+/**
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Exception\InvalidNanoseconds
+ */
 final class InvalidNanosecondsTest extends Framework\TestCase
 {
     use Test\Util\Helper;

@@ -24,7 +24,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
  */
 final class DefaultReporter implements Reporter
 {
-    private readonly Comparator\DurationComparator $durationComparator;
+    private Comparator\DurationComparator $durationComparator;
 
     public function __construct(
         private readonly Formatter\DurationFormatter $durationFormatter,

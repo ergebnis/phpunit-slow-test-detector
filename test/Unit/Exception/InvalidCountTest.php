@@ -17,7 +17,9 @@ use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
-#[Framework\Attributes\CoversClass(Exception\InvalidCount::class)]
+/**
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Exception\InvalidCount
+ */
 final class InvalidCountTest extends Framework\TestCase
 {
     use Test\Util\Helper;

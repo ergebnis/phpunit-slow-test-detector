@@ -13,17 +13,19 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit;
 
-use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use Ergebnis\PHPUnit\SlowTestDetector\Time;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
 use PHPUnit\Framework;
 
-#[Framework\Attributes\CoversClass(TimeKeeper::class)]
-#[Framework\Attributes\UsesClass(Duration::class)]
-#[Framework\Attributes\UsesClass(TestIdentifier::class)]
-#[Framework\Attributes\UsesClass(Time::class)]
+/**
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper
+ *
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Time
+ */
 final class TimeKeeperTest extends Framework\TestCase
 {
     use Test\Util\Helper;

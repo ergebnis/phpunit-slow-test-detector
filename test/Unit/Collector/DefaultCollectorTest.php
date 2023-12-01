@@ -20,10 +20,13 @@ use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use PHPUnit\Framework;
 
-#[Framework\Attributes\CoversClass(Collector\DefaultCollector::class)]
-#[Framework\Attributes\UsesClass(Duration::class)]
-#[Framework\Attributes\UsesClass(SlowTest::class)]
-#[Framework\Attributes\UsesClass(TestIdentifier::class)]
+/**
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Collector\DefaultCollector
+ *
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
+ */
 final class DefaultCollectorTest extends Framework\TestCase
 {
     use Test\Util\Helper;

@@ -21,6 +21,9 @@ jobs:
         php-version:
           - "8.1"
 
+        phpunit-version:
+          - "9.6.0"
+
         dependencies:
           - "locked"
 
@@ -53,6 +56,9 @@ jobs:
           path: "${{ env.COMPOSER_CACHE_DIR }}"
           key: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}"
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
+
+      - name: "Require phpunit/phpunit:^${{ matrix.phpunit-version }}"
+        run: "composer require phpunit/phpunit:^${{ matrix.phpunit-version }} --ansi --no-interaction --no-progress --update-with-all-dependencies"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
         uses: "ergebnis/.github/actions/composer/install@1.8.0"
@@ -496,14 +502,14 @@ jobs:
         with:
           dependencies: "${{ matrix.dependencies }}"
 
-      - name: "Run unit tests with phpunit/phpunit:10.4.0"
-        if: "matrix.phpunit-version == '10.4.0'"
+      - name: "Run unit tests with phpunit/phpunit:9.6.0"
+        if: "matrix.phpunit-version == '9.6.0'"
         run: "vendor/bin/phpunit --colors=always --configuration=test/Unit/phpunit.xml"
-
-      - name: "Run end-to-end tests with phpunit/phpunit:10.4.0"
-        if: "matrix.phpunit-version == '10.4.0'"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version10/phpunit.xml"
 
       - name: "Run end-to-end tests with phpunit/phpunit:9.6.0"
         if: "matrix.phpunit-version == '9.6.0'"
         run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version9/phpunit.xml"
+
+      - name: "Run end-to-end tests with phpunit/phpunit:10.4.0"
+        if: "matrix.phpunit-version == '10.4.0'"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version10/phpunit.xml"

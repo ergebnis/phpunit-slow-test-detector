@@ -17,7 +17,9 @@ use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
-#[Framework\Attributes\CoversClass(Exception\InvalidSeconds::class)]
+/**
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Exception\InvalidSeconds
+ */
 final class InvalidSecondsTest extends Framework\TestCase
 {
     use Test\Util\Helper;
