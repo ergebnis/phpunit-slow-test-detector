@@ -18,7 +18,7 @@ For a full diff see [`2.3.2...2.4.0`][2.3.2...2.4.0].
 
 ### Added
 
-- Added support for `phpunit/phpunit:^9.6.0` ([#341]), by [@localheinz]
+- Added support for `phpunit/phpunit:^9.6.0` ([#341]), by [@localheinz] and [@mvorisek]
 
 ### Changed
 
@@ -203,3 +203,4 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 
 [@HypeMC]: https://github.com/HypeMC
 [@localheinz]: https://github.com/localheinz
+[@mvorisek]: https://github.com/mvorisek
