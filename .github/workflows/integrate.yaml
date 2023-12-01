@@ -192,13 +192,13 @@ jobs:
           key: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}"
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
+      - name: "Remove phpunit/phpunit"
+        run: "composer remove phpunit/phpunit --ansi --no-interaction --no-progress"
+
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
         uses: "ergebnis/.github/actions/composer/install@1.8.0"
         with:
           dependencies: "${{ matrix.dependencies }}"
-
-      - name: "Remove phpunit/phpunit"
-        run: "composer remove phpunit/phpunit --ansi --no-interaction --no-progress"
 
       - name: "Remove git placeholder configuration with jq"
         run: "echo $(cat box.json | jq 'del(.git)') > box.json"
