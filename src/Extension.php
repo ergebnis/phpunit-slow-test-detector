@@ -17,16 +17,16 @@ use PHPUnit\Runner;
 use PHPUnit\TextUI;
 use PHPUnit\Util;
 
-if (1 !== \preg_match('/(?P<major>\d+)\.(?P<minor>\d+)\.(?P<patch>\d+)/', Runner\Version::id(), $matches)) {
+try {
+    $phpUnitVersion = Version\Version::fromString(Runner\Version::id());
+} catch (\InvalidArgumentException $exception) {
     throw new \RuntimeException(\sprintf(
         'Unable to determine PHPUnit version from version identifier "%s".',
         Runner\Version::id(),
     ));
 }
 
-$major = (int) $matches['major'];
-
-if (9 === $major) {
+if ($phpUnitVersion->major()->equals(Version\Major::fromInt(9))) {
     /**
      * @internal
      */
@@ -166,7 +166,7 @@ TXT;
             return $this->maximumDuration;
         }
     }
-} elseif (10 <= $major) {
+} elseif ($phpUnitVersion->major()->equals(Version\Major::fromInt(10))) {
     /**
      * @internal
      */
