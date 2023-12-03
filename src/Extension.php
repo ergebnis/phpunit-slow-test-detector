@@ -166,7 +166,11 @@ TXT;
             return $this->maximumDuration;
         }
     }
-} elseif ($phpUnitVersion->major()->equals(Version\Major::fromInt(10))) {
+
+    return;
+}
+
+if ($phpUnitVersion->major()->equals(Version\Major::fromInt(10))) {
     /**
      * @internal
      */
@@ -215,9 +219,11 @@ TXT;
             );
         }
     }
-} else {
+
+    return;
+}
+
     throw new \RuntimeException(\sprintf(
         'Unable to select extension for PHPUnit version with version identifier "%s".',
         Runner\Version::id(),
     ));
-}
