@@ -18,7 +18,6 @@
     stopOnSkipped="false"
     verbose="true"
 >
-    <coverage includeUncoveredFiles="true"/>
     <testsuites>
         <testsuite name="End-to-end Tests">
             <directory suffix=".phpt">.</directory>

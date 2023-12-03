@@ -23,12 +23,6 @@
     stopOnIncomplete="false"
     stopOnSkipped="false"
 >
-    <coverage includeUncoveredFiles="true"/>
-    <source>
-        <include>
-            <directory suffix=".php">../../../src/</directory>
-        </include>
-    </source>
     <testsuites>
         <testsuite name="End-to-end Tests">
             <directory suffix=".phpt">.</directory>
