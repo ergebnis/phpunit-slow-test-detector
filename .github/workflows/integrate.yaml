@@ -22,7 +22,7 @@ jobs:
           - "7.4"
 
         phpunit-version:
-          - "9.6.0"
+          - "8.5.36"
 
         dependencies:
           - "locked"
@@ -56,6 +56,9 @@ jobs:
           path: "${{ env.COMPOSER_CACHE_DIR }}"
           key: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}"
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
+
+      - name: "Remove incompatible dependencies with composer"
+        run: "composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --ansi --dev --no-interaction --no-progress"
 
       - name: "Require phpunit/phpunit:^${{ matrix.phpunit-version }}"
         run: "composer require phpunit/phpunit:^${{ matrix.phpunit-version }} --ansi --no-interaction --no-progress --update-with-all-dependencies"
@@ -454,13 +457,15 @@ jobs:
     strategy:
       matrix:
         php-version:
+          - "7.4"
+          - "8.0"
           - "8.1"
           - "8.2"
           - "8.3"
 
         phpunit-version:
+          - "8.5.36"
           - "9.6.0"
-          - "10.4.0"
 
         dependencies:
           - "lowest"
@@ -468,28 +473,40 @@ jobs:
           - "highest"
 
         include:
-          - php-version: "7.4"
-            phpunit-version: "9.6.0"
+          - php-version: "8.1"
+            phpunit-version: "10.4.0"
             dependencies: "lowest"
 
-          - php-version: "7.4"
-            phpunit-version: "9.6.0"
+          - php-version: "8.1"
+            phpunit-version: "10.4.0"
             dependencies: "locked"
 
-          - php-version: "7.4"
-            phpunit-version: "9.6.0"
+          - php-version: "8.1"
+            phpunit-version: "10.4.0"
             dependencies: "highest"
 
-          - php-version: "8.0"
-            phpunit-version: "9.6.0"
+          - php-version: "8.2"
+            phpunit-version: "10.4.0"
             dependencies: "lowest"
 
-          - php-version: "8.0"
-            phpunit-version: "9.6.0"
+          - php-version: "8.2"
+            phpunit-version: "10.4.0"
             dependencies: "locked"
 
-          - php-version: "8.0"
-            phpunit-version: "9.6.0"
+          - php-version: "8.2"
+            phpunit-version: "10.4.0"
+            dependencies: "highest"
+
+          - php-version: "8.3"
+            phpunit-version: "10.4.0"
+            dependencies: "lowest"
+
+          - php-version: "8.3"
+            phpunit-version: "10.4.0"
+            dependencies: "locked"
+
+          - php-version: "8.3"
+            phpunit-version: "10.4.0"
             dependencies: "highest"
 
     steps:
@@ -536,6 +553,10 @@ jobs:
       - name: "Run unit tests with phpunit/phpunit:9.6.0"
         if: "matrix.phpunit-version == '9.6.0'"
         run: "vendor/bin/phpunit --colors=always --configuration=test/Unit/phpunit.xml"
+
+      - name: "Run end-to-end tests with phpunit/phpunit:8.5.36"
+        if: "matrix.phpunit-version == '8.5.36'"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version8/phpunit.xml"
 
       - name: "Run end-to-end tests with phpunit/phpunit:9.6.0"
         if: "matrix.phpunit-version == '9.6.0'"

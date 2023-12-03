@@ -4,7 +4,7 @@ it: refactoring coding-standards security-analysis static-code-analysis tests ##
 .PHONY: code-coverage
 code-coverage: ## Collects coverage from running unit tests with phpunit/phpunit
 	mkdir -p .build/phpunit/
-	composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --dev --no-interaction --no-progress; composer require phpunit/phpunit:^9.6.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/Unit/phpunit.xml --coverage-text; git checkout HEAD -- composer.json composer.lock
+	composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --dev --no-interaction --no-progress; composer require phpunit/phpunit:^8.5.36 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/Unit/phpunit.xml --coverage-text; git checkout HEAD -- composer.json composer.lock
 
 .PHONY: coding-standards
 coding-standards: vendor ## Lints YAML files with yamllint, normalizes composer.json with ergebnis/composer-normalize, and fixes code style issues with friendsofphp/php-cs-fixer
@@ -60,7 +60,8 @@ static-code-analysis-baseline: vendor ## Generates a baseline for static code an
 .PHONY: tests
 tests: ## Runs unit and end-to-end tests with phpunit/phpunit
 	mkdir -p .build/phpunit
-	composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --dev --no-interaction --no-progress; composer require phpunit/phpunit:^9.6.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/Unit/phpunit.xml; git checkout HEAD -- composer.json composer.lock
+	composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --dev --no-interaction --no-progress; composer require phpunit/phpunit:^8.5.36 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/Unit/phpunit.xml; git checkout HEAD -- composer.json composer.lock
+	composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --dev --no-interaction --no-progress; composer require phpunit/phpunit:^8.5.36 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/EndToEnd/Version8/phpunit.xml; git checkout HEAD -- composer.json composer.lock
 	composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --dev --no-interaction --no-progress; composer require phpunit/phpunit:^9.6.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/EndToEnd/Version9/phpunit.xml; git checkout HEAD -- composer.json composer.lock
 	composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --dev --no-interaction --no-progress; composer require phpunit/phpunit:^10.4.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/EndToEnd/Version10/phpunit.xml; git checkout HEAD -- composer.json composer.lock
 
