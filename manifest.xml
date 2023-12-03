@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <phar xmlns="https://phar.io/xml/manifest/1.0">
     <contains name="ergebnis/phpunit-slow-test-detector" version="2.6.0" type="extension">
-        <extension for="phpunit/phpunit" compatible="^10.4"/>
+        <extension for="phpunit/phpunit" compatible="^10.0"/>
     </contains>
 
     <copyright>
