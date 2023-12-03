@@ -40,6 +40,25 @@ Download `phpunit-slow-test-detector.phar` from the [latest release](https://git
 
 ### Bootstrapping the extension as a `composer` package
 
+To bootstrap the extension as a `composer` package when using `phpunit/phpunit:^8.5.14` or `phpunit/phpunit:^9.6.0`, adjust your `phpunit.xml` configuration file and configure the [`extensions` element](https://docs.phpunit.de/en/9.6/configuration.html#the-extensions-element):
+
+```diff
+ <phpunit
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+     bootstrap="vendor/autoload.php"
+ >
++    <extensions>
++        <extension class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
++    </extensions>
+     <testsuites>
+         <testsuite name="unit">
+             <directory>test/Unit/</directory>
+         </testsuite>
+     </testsuites>
+ </phpunit>
+```
+
 To bootstrap the extension as a `composer` package when using `phpunit/phpunit:^10.4.0`, adjust your `phpunit.xml` configuration file and configure the [`extensions` element](https://docs.phpunit.de/en/10.4/configuration.html#the-extensions-element):
 
 ```diff
@@ -50,25 +69,6 @@ To bootstrap the extension as a `composer` package when using `phpunit/phpunit:^
  >
 +    <extensions>
 +        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
-+    </extensions>
-     <testsuites>
-         <testsuite name="unit">
-             <directory>test/Unit/</directory>
-         </testsuite>
-     </testsuites>
- </phpunit>
-```
-
-To bootstrap the extension as a `composer` package when using `phpunit/phpunit:^9.6.0`, adjust your `phpunit.xml` configuration file and configure the [`extensions` element](https://docs.phpunit.de/en/9.6/configuration.html#the-extensions-element):
-
-```diff
- <phpunit
-     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
-     bootstrap="vendor/autoload.php"
- >
-+    <extensions>
-+        <extension class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
 +    </extensions>
      <testsuites>
          <testsuite name="unit">
