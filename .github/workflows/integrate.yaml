@@ -22,7 +22,7 @@ jobs:
           - "7.4"
 
         phpunit-version:
-          - "8.5.36"
+          - "8.5.19"
 
         dependencies:
           - "locked"
@@ -465,8 +465,8 @@ jobs:
           - "8.3"
 
         phpunit-version:
-          - "8.5.36"
-          - "9.6.0"
+          - "8.5.19"
+          - "9.0.0"
 
         dependencies:
           - "lowest"
@@ -475,39 +475,39 @@ jobs:
 
         include:
           - php-version: "8.1"
-            phpunit-version: "10.4.0"
+            phpunit-version: "10.0.0"
             dependencies: "lowest"
 
           - php-version: "8.1"
-            phpunit-version: "10.4.0"
+            phpunit-version: "10.0.0"
             dependencies: "locked"
 
           - php-version: "8.1"
-            phpunit-version: "10.4.0"
+            phpunit-version: "10.0.0"
             dependencies: "highest"
 
           - php-version: "8.2"
-            phpunit-version: "10.4.0"
+            phpunit-version: "10.0.0"
             dependencies: "lowest"
 
           - php-version: "8.2"
-            phpunit-version: "10.4.0"
+            phpunit-version: "10.0.0"
             dependencies: "locked"
 
           - php-version: "8.2"
-            phpunit-version: "10.4.0"
+            phpunit-version: "10.0.0"
             dependencies: "highest"
 
           - php-version: "8.3"
-            phpunit-version: "10.4.0"
+            phpunit-version: "10.0.0"
             dependencies: "lowest"
 
           - php-version: "8.3"
-            phpunit-version: "10.4.0"
+            phpunit-version: "10.0.0"
             dependencies: "locked"
 
           - php-version: "8.3"
-            phpunit-version: "10.4.0"
+            phpunit-version: "10.0.0"
             dependencies: "highest"
 
     steps:
@@ -551,18 +551,18 @@ jobs:
         with:
           dependencies: "${{ matrix.dependencies }}"
 
-      - name: "Run unit tests with phpunit/phpunit:9.6.0"
-        if: "matrix.phpunit-version == '9.6.0'"
+      - name: "Run unit tests with phpunit/phpunit:9.0.0"
+        if: "matrix.phpunit-version == '9.0.0'"
         run: "vendor/bin/phpunit --colors=always --configuration=test/Unit/phpunit.xml"
 
-      - name: "Run end-to-end tests with phpunit/phpunit:8.5.36"
-        if: "matrix.phpunit-version == '8.5.36'"
+      - name: "Run end-to-end tests with phpunit/phpunit:8.5.19"
+        if: "matrix.phpunit-version == '8.5.19'"
         run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version8/phpunit.xml"
 
-      - name: "Run end-to-end tests with phpunit/phpunit:9.6.0"
-        if: "matrix.phpunit-version == '9.6.0'"
+      - name: "Run end-to-end tests with phpunit/phpunit:9.0.0"
+        if: "matrix.phpunit-version == '9.0.0'"
         run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version9/phpunit.xml"
 
-      - name: "Run end-to-end tests with phpunit/phpunit:10.4.0"
-        if: "matrix.phpunit-version == '10.4.0'"
+      - name: "Run end-to-end tests with phpunit/phpunit:10.0.0"
+        if: "matrix.phpunit-version == '10.0.0'"
         run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version10/phpunit.xml"

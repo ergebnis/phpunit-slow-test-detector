@@ -15,11 +15,11 @@ $application = new TextUI\Application();
 
 $application->run($_SERVER['argv']);
 --EXPECTF--
-PHPUnit %s by Sebastian Bergmann and contributors.
+PHPUnit %s
 
 Runtime: %s
 Configuration: %Stest/EndToEnd/Version10/DefaultConfiguration/phpunit.xml
-Random Seed:   %s
+Random %seed:   %s
 
 ............                                                      12 / 12 (100%)
 
