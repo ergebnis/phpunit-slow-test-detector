@@ -26,7 +26,10 @@ try {
     ));
 }
 
-if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(9))) {
+if (
+    $phpUnitVersionSeries->major()->equals(Version\Major::fromInt(8))
+    || $phpUnitVersionSeries->major()->equals(Version\Major::fromInt(9))
+) {
     /**
      * @internal
      */

@@ -25,7 +25,7 @@
   },
   "require": {
     "php": "~7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0",
-    "phpunit/phpunit": "^9.6.0 || ^10.4.0"
+    "phpunit/phpunit": "^8.5.36 || ^9.6.0 || ^10.4.0"
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.28.3",

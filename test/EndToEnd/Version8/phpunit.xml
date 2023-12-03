@@ -4,35 +4,23 @@
     beStrictAboutChangesToGlobalState="true"
     beStrictAboutCoversAnnotation="true"
     beStrictAboutOutputDuringTests="true"
-    beStrictAboutResourceUsageDuringSmallTests="true"
     beStrictAboutTestsThatDoNotTestAnything="true"
     beStrictAboutTodoAnnotatedTests="true"
-    bootstrap="../../vendor/autoload.php"
-    cacheResult="true"
-    cacheResultFile="../../.build/phpunit/unit.cache"
+    bootstrap="../../../vendor/autoload.php"
+    cacheResult="false"
     colors="true"
     columns="max"
-    convertErrorsToExceptions="true"
-    convertNoticesToExceptions="true"
-    convertWarningsToExceptions="true"
     executionOrder="random"
+    forceCoversAnnotation="true"
     stopOnError="false"
     stopOnFailure="false"
     stopOnIncomplete="false"
     stopOnSkipped="false"
     verbose="true"
 >
-    <filter>
-        <whitelist>
-            <directory suffix=".php">../../src/</directory>
-            <exclude>
-                <directory suffix=".php">../../src/Subscriber/</directory>
-            </exclude>
-        </whitelist>
-    </filter>
     <testsuites>
-        <testsuite name="Unit Tests">
-            <directory>.</directory>
+        <testsuite name="End-to-end Tests">
+            <directory suffix=".phpt">.</directory>
         </testsuite>
     </testsuites>
 </phpunit>

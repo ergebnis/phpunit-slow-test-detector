@@ -14,6 +14,12 @@
 
 This package provides an extension for detecting slow tests in [`phpunit/phpunit`](https://github.com/sebastianbergmann/phpunit).
 
+The extension is compatible with the following versions of `phpunit/phpunit`:
+
+- [`phpunit/phpunit:^8.5.36`](https://github.com/sebastianbergmann/phpunit/tree/8.5.36)
+- [`phpunit/phpunit:^9.6.0`](https://github.com/sebastianbergmann/phpunit/tree/9.6.0)
+- [`phpunit/phpunit:^10.4.0`](https://github.com/sebastianbergmann/phpunit/tree/10.4.0)
+
 ## Installation
 
 ### Composer
@@ -124,7 +130,7 @@ The following example configures the maximum count of slow tests to three, and t
  </phpunit>
 ```
 
-The following example configures the maximum count of slow tests to three, and the maximum duration for all tests to 250 milliseconds when using `phpunit/phpunit:^9.6.0`:
+The following example configures the maximum count of slow tests to three, and the maximum duration for all tests to 250 milliseconds when using `phpunit/phpunit:^8.5.0` or `phpunit/phpunit:^9.6.0`:
 
 ```diff
  <phpunit
