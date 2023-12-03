@@ -225,6 +225,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#375]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/375
 [#390]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/390
 [#393]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/393
+[#394]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/394
 
 [@HypeMC]: https://github.com/HypeMC
 [@localheinz]: https://github.com/localheinz
