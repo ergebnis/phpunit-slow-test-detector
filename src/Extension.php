@@ -18,15 +18,15 @@ use PHPUnit\TextUI;
 use PHPUnit\Util;
 
 try {
-    $phpUnitVersion = Version\Version::fromString(Runner\Version::id());
+    $phpUnitVersionSeries = Version\Series::fromString(Runner\Version::series());
 } catch (\InvalidArgumentException $exception) {
     throw new \RuntimeException(\sprintf(
-        'Unable to determine PHPUnit version from version identifier "%s".',
-        Runner\Version::id(),
+        'Unable to determine PHPUnit version from version series "%s".',
+        Runner\Version::series(),
     ));
 }
 
-if ($phpUnitVersion->major()->equals(Version\Major::fromInt(9))) {
+if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(9))) {
     /**
      * @internal
      */
@@ -170,7 +170,7 @@ TXT;
     return;
 }
 
-if ($phpUnitVersion->major()->equals(Version\Major::fromInt(10))) {
+if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(10))) {
     /**
      * @internal
      */
@@ -224,6 +224,6 @@ if ($phpUnitVersion->major()->equals(Version\Major::fromInt(10))) {
 }
 
     throw new \RuntimeException(\sprintf(
-        'Unable to select extension for PHPUnit version with version identifier "%s".',
-        Runner\Version::id(),
+        'Unable to select extension for PHPUnit version with version series "%s".',
+        Runner\Version::series(),
     ));
