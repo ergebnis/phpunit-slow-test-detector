@@ -13,11 +13,11 @@ require_once __DIR__ . '/../../../../../vendor/autoload.php';
 
 PHPUnit\TextUI\Command::main();
 --EXPECTF--
-PHPUnit %s by Sebastian Bergmann and contributors.
+PHPUnit %s
 
 Runtime: %s
 Configuration: %Stest/EndToEnd/Version8/MaximumDuration/Fifty/phpunit.xml
-Random seed:   %s
+Random %seed:   %s
 
 ..........                                                        10 / 10 (100%)
 

@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.6.0...main`][2.6.0...main].
 
+### Changed
+
+- Widened version constraints to allow installation with `phpunit/phpunit:^8.5.19`, `phpunit/phpunit:^9.0.0`, and `phpunit/phpunit:^10.0.0` ([#396]), by [@localheinz]
+
 ## [`2.6.0`][2.6.0]
 
 For a full diff see [`2.5.0...2.6.0`][2.5.0...2.6.0].
@@ -226,6 +230,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#390]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/390
 [#393]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/393
 [#394]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/394
+[#396]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/396
 
 [@HypeMC]: https://github.com/HypeMC
 [@localheinz]: https://github.com/localheinz

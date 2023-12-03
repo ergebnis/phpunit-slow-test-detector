@@ -16,9 +16,9 @@ This package provides an extension for detecting slow tests in [`phpunit/phpunit
 
 The extension is compatible with the following versions of `phpunit/phpunit`:
 
-- [`phpunit/phpunit:^8.5.36`](https://github.com/sebastianbergmann/phpunit/tree/8.5.36)
-- [`phpunit/phpunit:^9.6.0`](https://github.com/sebastianbergmann/phpunit/tree/9.6.0)
-- [`phpunit/phpunit:^10.4.0`](https://github.com/sebastianbergmann/phpunit/tree/10.4.0)
+- [`phpunit/phpunit:^8.5.19`](https://github.com/sebastianbergmann/phpunit/tree/8.5.19)
+- [`phpunit/phpunit:^9.0.0`](https://github.com/sebastianbergmann/phpunit/tree/9.0.0)
+- [`phpunit/phpunit:^10.0.0`](https://github.com/sebastianbergmann/phpunit/tree/10.0.0)
 
 ## Installation
 
@@ -40,7 +40,7 @@ Download `phpunit-slow-test-detector.phar` from the [latest release](https://git
 
 ### Bootstrapping the extension as a `composer` package
 
-To bootstrap the extension as a `composer` package when using `phpunit/phpunit:^8.5.14` or `phpunit/phpunit:^9.6.0`, adjust your `phpunit.xml` configuration file and configure the [`extensions` element](https://docs.phpunit.de/en/9.6/configuration.html#the-extensions-element):
+To bootstrap the extension as a `composer` package when using `phpunit/phpunit:^8.5.19` or `phpunit/phpunit:^9.0.0`, adjust your `phpunit.xml` configuration file and configure the [`extensions` element](https://docs.phpunit.de/en/9.6/configuration.html#the-extensions-element):
 
 ```diff
  <phpunit
@@ -59,7 +59,7 @@ To bootstrap the extension as a `composer` package when using `phpunit/phpunit:^
  </phpunit>
 ```
 
-To bootstrap the extension as a `composer` package when using `phpunit/phpunit:^10.4.0`, adjust your `phpunit.xml` configuration file and configure the [`extensions` element](https://docs.phpunit.de/en/10.4/configuration.html#the-extensions-element):
+To bootstrap the extension as a `composer` package when using `phpunit/phpunit:^10.0.0`, adjust your `phpunit.xml` configuration file and configure the [`extensions` element](https://docs.phpunit.de/en/10.4/configuration.html#the-extensions-element):
 
 ```diff
  <phpunit
@@ -80,7 +80,7 @@ To bootstrap the extension as a `composer` package when using `phpunit/phpunit:^
 
 ### Bootstrapping the extension as a PHAR
 
-To bootstrap the extension as a PHAR when using `phpunit/phpunit:^10.4.0`, adjust your `phpunit.xml` configuration file and configure the [`extensionsDirectory` attribute](https://docs.phpunit.de/en/10.4/configuration.html#the-extensionsdirectory-attribute) of the [`<phpunit>` element](https://docs.phpunit.de/en/10.4/configuration.html#the-phpunit-element):
+To bootstrap the extension as a PHAR when using `phpunit/phpunit:^10.0.0`, adjust your `phpunit.xml` configuration file and configure the [`extensionsDirectory` attribute](https://docs.phpunit.de/en/10.4/configuration.html#the-extensionsdirectory-attribute) of the [`<phpunit>` element](https://docs.phpunit.de/en/10.4/configuration.html#the-phpunit-element):
 
 ```diff
  <phpunit
@@ -107,7 +107,7 @@ You can configure the extension with the following parameters in your `phpunit.x
 - `maximum-count`, an `int`, the maximum count of slow test that should be listed, defaults to `10`
 - `maximum-duration`, an `int`, the maximum duration in milliseconds for all tests, defaults to `500`
 
-The following example configures the maximum count of slow tests to three, and the maximum duration for all tests to 250 milliseconds when using `phpunit/phpunit:^10.4.0`:
+The following example configures the maximum count of slow tests to three, and the maximum duration for all tests to 250 milliseconds when using `phpunit/phpunit:^10.0.0`:
 
 ```diff
  <phpunit
@@ -130,7 +130,7 @@ The following example configures the maximum count of slow tests to three, and t
  </phpunit>
 ```
 
-The following example configures the maximum count of slow tests to three, and the maximum duration for all tests to 250 milliseconds when using `phpunit/phpunit:^8.5.0` or `phpunit/phpunit:^9.6.0`:
+The following example configures the maximum count of slow tests to three, and the maximum duration for all tests to 250 milliseconds when using `phpunit/phpunit:^8.5.19` or `phpunit/phpunit:^9.0.0`:
 
 ```diff
  <phpunit
@@ -218,7 +218,7 @@ vendor/bin/phpunit
 When the extension has detected slow tests, it will report them:
 
 ```txt
-PHPUnit 10.4.0 by Sebastian Bergmann and contributors.
+PHPUnit 10.0.0 by Sebastian Bergmann and contributors.
 
 Runtime:       PHP 8.1.0
 Configuration: test/EndToEnd/Default/phpunit.xml
