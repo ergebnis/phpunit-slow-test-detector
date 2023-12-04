@@ -11,7 +11,7 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version8\MaximumDuration\Fifty;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version8\CustomConfiguration;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
