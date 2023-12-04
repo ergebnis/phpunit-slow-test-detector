@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\DefaultConfiguration;
 
+use Ergebnis\PHPUnit\SlowTestDetector\Attribute;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
@@ -21,9 +22,290 @@ final class SleeperTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testSleeperDoesNotSleepAtAll(): void
+    public function testSleeperSleepsShorterThanDefaultMaximumDuration(): void
     {
-        $milliseconds = 0;
+        $milliseconds = 50;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    public function testSleeperSleepsLongerThanDefaultMaximumDuration(): void
+    {
+        $milliseconds = 750;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * This DocBlock is intentionally left without a useful comment or annotation.
+     */
+    public function testSleeperSleepsShorterThanDefaultMaximumDurationWithUselessDocBlock(): void
+    {
+        $milliseconds = 50;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * This DocBlock is intentionally left without a useful comment or annotation.
+     */
+    public function testSleeperSleepsLongerThanDefaultMaximumDurationWithUselessDocBlock(): void
+    {
+        $milliseconds = 800;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * @maximumDuration 3.14
+     */
+    public function testSleeperSleepsShorterThanDefaultMaximumDurationWithInvalidMaximumDurationAnnotation(): void
+    {
+        $milliseconds = 50;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * @maximumDuration 3.14
+     */
+    public function testSleeperSleepsLongerThanDefaultMaximumDurationWithInvalidMaximumDurationAnnotation(): void
+    {
+        $milliseconds = 850;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * @maximumDuration 800
+     */
+    public function testSleeperSleepsShorterThanMaximumDurationFromAnnotationWithValidMaximumDurationAnnotation(): void
+    {
+        $milliseconds = 50;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * @maximumDuration 800
+     */
+    public function testSleeperSleepsLongerThanMaximumDurationFromAnnotationWithValidMaximumDurationAnnotation(): void
+    {
+        $milliseconds = 900;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * @see https://github.com/johnkary/phpunit-speedtrap/blob/1.0/src/JohnKary/PHPUnit/Listener/SpeedTrapListener.php#L309-L331
+     *
+     * @slowThreshold 3.14
+     */
+    public function testSleeperSleepsShorterThanDefaultMaximumDurationWithInvalidSlowThresholdAnnotation(): void
+    {
+        $milliseconds = 50;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * @see https://github.com/johnkary/phpunit-speedtrap/blob/1.0/src/JohnKary/PHPUnit/Listener/SpeedTrapListener.php#L309-L331
+     *
+     * @slowThreshold 3.14
+     */
+    public function testSleeperSleepsLongerThanDefaultMaximumDurationWithInvalidSlowThresholdAnnotation(): void
+    {
+        $milliseconds = 950;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * @see https://github.com/johnkary/phpunit-speedtrap/blob/1.0/src/JohnKary/PHPUnit/Listener/SpeedTrapListener.php#L309-L331
+     *
+     * @slowThreshold 950
+     */
+    public function testSleeperSleepsShorterThanSlowThresholdFromAnnotationWithValidSlowThresholdAnnotation(): void
+    {
+        $milliseconds = 50;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * @see https://github.com/johnkary/phpunit-speedtrap/blob/1.0/src/JohnKary/PHPUnit/Listener/SpeedTrapListener.php#L309-L331
+     *
+     * @slowThreshold 900
+     */
+    public function testSleeperSleepsLongerThanSlowThresholdFromAnnotationWithValidSlowThresholdAnnotation(): void
+    {
+        $milliseconds = 1000;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * @maximumDuration 1000
+     *
+     * @slowThreshold 300
+     */
+    public function testSleeperSleepsShorterThanMaximumDurationFromAnnotationWithValidMaximumDurationAndSlowThresholdAnnotation(): void
+    {
+        $milliseconds = 50;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * @maximumDuration 1000
+     *
+     * @slowThreshold 300
+     */
+    public function testSleeperSleepsLongerThanMaximumDurationFromAnnotationWithValidMaximumDurationAndSlowThresholdAnnotation(): void
+    {
+        $milliseconds = 1050;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * @slowThreshold 300
+     *
+     * @maximumDuration 1000
+     */
+    public function testSleeperSleepsShorterThanMaximumDurationFromAnnotationWithValidSlowThresholdAndMaximumDurationAnnotation(): void
+    {
+        $milliseconds = 50;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * @slowThreshold 300
+     *
+     * @maximumDuration 1000
+     */
+    public function testSleeperSleepsLongerThanMaximumDurationFromAnnotationWithValidSlowThresholdAndMaximumDurationAnnotation(): void
+    {
+        $milliseconds = 1100;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    #[Attribute\MaximumDuration(1100)]
+    public function testSleeperSleepsShorterThanMaximumDurationFromAttribute(): void
+    {
+        $milliseconds = 50;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    #[Attribute\MaximumDuration(1100)]
+    public function testSleeperSleepsLongerThanMaximumDurationFromAttribute(): void
+    {
+        $milliseconds = 1150;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * @maximumDuration 25
+     *
+     * @slowThreshold 30
+     */
+    #[Attribute\MaximumDuration(1150)]
+    public function testSleeperSleepsShorterThanMaximumDurationFromAttributeWithValidMaximumDurationAndSlowThresholdAnnotation(): void
+    {
+        $milliseconds = 50;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * @maximumDuration 25
+     *
+     * @slowThreshold 30
+     */
+    #[Attribute\MaximumDuration(1150)]
+    public function testSleeperSleepsLongerThanMaximumDurationFromAttributeWithValidMaximumDurationAndSlowThresholdAnnotation(): void
+    {
+        $milliseconds = 1200;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
@@ -45,11 +327,11 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @return \Generator<int, array{0: int}>
      */
-    public static function provideMillisecondsGreaterThanDefaultMaximumDuration(): \Generator
+    public static function provideMillisecondsGreaterThanDefaultMaximumDuration(): iterable
     {
         $values = \range(
-            550,
-            1050,
+            500,
+            500,
             50,
         );
 

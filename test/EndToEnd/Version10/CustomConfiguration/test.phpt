@@ -1,5 +1,5 @@
 --TEST--
-Configuring "maximum-count" parameter to 3 and "maximum-duration" parameter to 50 milliseconds
+Configuring "maximum-count" parameter to 3 and "maximum-duration" parameter to 300 milliseconds
 --FILE--
 <?php
 
@@ -21,16 +21,16 @@ Runtime: %s
 Configuration: %Stest/EndToEnd/Version10/CustomConfiguration/phpunit.xml
 Random %seed:   %s
 
-.............                                                     13 / 13 (100%)
+.....                                                               5 / 5 (100%)
 
-Detected 7 tests that took longer than expected.
+Detected 5 tests that took longer than expected.
 
-1. 0.2%s (0.200) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\CustomConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromSlowThresholdAnnotation
-2. 0.2%s (0.180) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\CustomConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromMaximumDurationAnnotationWhenSlowThresholdAnnotationIsPresentBeforeMaximumDuration
-3. 0.1%s (0.160) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\CustomConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromMaximumDurationAnnotationWhenSlowThresholdAnnotationIsPresentAfterMaximumDuration
+1. 0.5%s (0.300) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\CustomConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#4
+2. 0.4%s (0.300) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\CustomConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#3
+3. 0.4%s (0.300) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\CustomConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#2
 
-There are 4 additional slow tests that are not listed here.
+There are 2 additional slow tests that are not listed here.
 
 Time: %s, Memory: %s
 
-OK (13 tests, 13 assertions)
+OK (5 tests, 5 assertions)

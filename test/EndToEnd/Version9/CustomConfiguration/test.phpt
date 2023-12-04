@@ -1,5 +1,5 @@
 --TEST--
-Configuring "maximum-count" parameter to 3 and "maximum-duration" parameter to 50 milliseconds
+Configuring "maximum-count" parameter to 3 and "maximum-duration" parameter to 300 milliseconds
 --FILE--
 <?php
 
@@ -19,16 +19,16 @@ Runtime: %s
 Configuration: %Stest/EndToEnd/Version9/CustomConfiguration/phpunit.xml
 Random %seed:   %s
 
-..........                                                        10 / 10 (100%)
+.....                                                               5 / 5 (100%)
 
-Detected 6 tests that took longer than expected.
+Detected 5 tests that took longer than expected.
 
-1. 0.2%s (0.200) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version9\CustomConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromSlowThresholdAnnotation
-2. 0.2%s (0.180) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version9\CustomConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromMaximumDurationAnnotationWhenSlowThresholdAnnotationIsPresentBeforeMaximumDuration
-3. 0.1%s (0.160) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version9\CustomConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromMaximumDurationAnnotationWhenSlowThresholdAnnotationIsPresentAfterMaximumDuration
+1. 0.5%s (0.300) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version9\CustomConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #4 (500)
+2. 0.4%s (0.300) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version9\CustomConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #3 (450)
+3. 0.4%s (0.300) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version9\CustomConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #2 (400)
 
-There are 3 additional slow tests that are not listed here.
+There are 2 additional slow tests that are not listed here.
 
 Time: %s, Memory: %s
 
-OK (10 tests, 10 assertions)
+OK (5 tests, 5 assertions)
