@@ -21,8 +21,6 @@ use PHPUnit\Framework;
  */
 final class SleeperTest extends Framework\TestCase
 {
-    use Test\Util\Helper;
-
     public function testSleeperSleepsShorterThanDefaultMaximumDuration(): void
     {
         $milliseconds = 50;
