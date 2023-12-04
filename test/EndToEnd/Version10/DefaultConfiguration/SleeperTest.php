@@ -20,6 +20,26 @@ use PHPUnit\Framework;
 #[Framework\Attributes\CoversClass(Test\Fixture\Sleeper::class)]
 final class SleeperTest extends Framework\TestCase
 {
+    public static function setUpBeforeClass(): void
+    {
+        Test\Fixture\Sleeper::fromMilliseconds(50)->sleep();
+    }
+
+    public static function tearDownAfterClass(): void
+    {
+        Test\Fixture\Sleeper::fromMilliseconds(50)->sleep();
+    }
+
+    protected function setUp(): void
+    {
+        Test\Fixture\Sleeper::fromMilliseconds(50)->sleep();
+    }
+
+    protected function tearDown(): void
+    {
+        Test\Fixture\Sleeper::fromMilliseconds(50)->sleep();
+    }
+
     public function testSleeperSleepsShorterThanDefaultMaximumDuration(): void
     {
         $milliseconds = 50;
