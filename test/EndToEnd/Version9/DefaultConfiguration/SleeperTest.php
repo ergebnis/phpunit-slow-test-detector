@@ -23,12 +23,12 @@ final class SleeperTest extends Framework\TestCase
 {
     public static function setUpBeforeClass(): void
     {
-        Test\Fixture\Sleeper::fromMilliseconds(50)->sleep();
+        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
     }
 
     public static function tearDownAfterClass(): void
     {
-        Test\Fixture\Sleeper::fromMilliseconds(50)->sleep();
+        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
     }
 
     protected function setUp(): void
