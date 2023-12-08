@@ -26,10 +26,7 @@ try {
     ));
 }
 
-if (
-    $phpUnitVersionSeries->major()->equals(Version\Major::fromInt(8))
-    || $phpUnitVersionSeries->major()->equals(Version\Major::fromInt(9))
-) {
+if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(8), Version\Major::fromInt(9))) {
     /**
      * @internal
      */

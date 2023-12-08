@@ -49,4 +49,15 @@ final class Major
     {
         return $this->value === $other->value;
     }
+
+    public function isOneOf(self ...$others): bool
+    {
+        foreach ($others as $other) {
+            if ($this->value === $other->value) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

@@ -69,4 +69,28 @@ final class MajorTest extends Framework\TestCase
 
         self::assertTrue($one->equals($two));
     }
+
+    public function testIsOneOfReturnsFalseWhenAllValuesAreDifferent(): void
+    {
+        $faker = self::faker()->unique();
+
+        $one = Version\Major::fromInt($faker->numberBetween(0));
+        $two = Version\Major::fromInt($faker->numberBetween(0));
+        $three = Version\Major::fromInt($faker->numberBetween(0));
+
+        self::assertFalse($one->isOneOf($two, $three));
+    }
+
+    public function testIsOneOfReturnsTrueWhenOneOfTheValuesIsSame(): void
+    {
+        $faker = self::faker()->unique();
+
+        $value = $faker->numberBetween(0);
+
+        $one = Version\Major::fromInt($value);
+        $two = Version\Major::fromInt($faker->numberBetween(0));
+        $three = Version\Major::fromInt($value);
+
+        self::assertTrue($one->isOneOf($two, $three));
+    }
 }
