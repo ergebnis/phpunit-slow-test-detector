@@ -551,8 +551,7 @@ jobs:
         with:
           dependencies: "${{ matrix.dependencies }}"
 
-      - name: "Run unit tests with phpunit/phpunit:8.5.19"
-        if: "matrix.phpunit-version == '8.5.19'"
+      - name: "Run unit tests"
         run: "vendor/bin/phpunit --colors=always --configuration=test/Unit/phpunit.xml"
 
       - name: "Run end-to-end tests with phpunit/phpunit:8.5.19"
