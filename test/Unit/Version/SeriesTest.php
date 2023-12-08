@@ -37,7 +37,7 @@ final class SeriesTest extends Framework\TestCase
     }
 
     /**
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::arbitrary()
+     * @dataProvider \Ergebnis\DataProvider\StringProvider::arbitrary
      * @dataProvider provideInvalidValue
      */
     public function testFromStringRejectsInvalidValue(string $value): void
