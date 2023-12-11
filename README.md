@@ -275,7 +275,7 @@ final class ExtraSlowTest extends Framework\TestCase
 
 > [!NOTE]
 >
-> Support for the `@slowThreshold` exists only to help you move from [`johnkary/phpunit-speedtrap`](https://github.com/johnkary/phpunit-speedtrap). It will be deprecated and removed in the near future.
+> Support for the `@slowThreshold` annotation exists only to help you move from [`johnkary/phpunit-speedtrap`](https://github.com/johnkary/phpunit-speedtrap). It will be deprecated and removed in the near future.
 
 ### Running tests
 
