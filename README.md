@@ -287,7 +287,7 @@ vendor/bin/phpunit
 
 When the extension has detected slow tests, it will report them:
 
-```txt
+```console
 PHPUnit 10.0.0 by Sebastian Bergmann and contributors.
 
 Runtime:       PHP 8.1.0
