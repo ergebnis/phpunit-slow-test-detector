@@ -342,7 +342,8 @@ When phpunit/phpunit invokes `PHPUnit\Framework\TestCase::runBare()`, it will in
 
 - [`PHPUnit\Framework\TestCase::tearDownAfterClass()` and methods annotated with `@afterClass`](https://github.com/sebastianbergmann/phpunit/blob/8.5.19/src/Framework/TestCase.php#L1138-L1142)
 
-Because of this behavior, the measured test durations can and will vary depending on the order in which `phpunit/phpunit` executes tests.
+> [!NOTE]
+> Because of this behavior, the measured test durations can and will vary depending on the order in which `phpunit/phpunit` executes tests.
 
 ### Understanding measured test durations when using  `phpunit/phpunit:^10.0.0`
 
