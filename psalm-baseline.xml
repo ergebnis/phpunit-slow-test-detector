@@ -60,21 +60,6 @@
       <code>$reporter</code>
     </UnusedParam>
   </file>
-  <file src="test/Double/Collector/AppendingCollector.php">
-    <UnusedClass>
-      <code>AppendingCollector</code>
-    </UnusedClass>
-  </file>
-  <file src="test/Double/Reporter/CountingReporter.php">
-    <UnusedClass>
-      <code>CountingReporter</code>
-    </UnusedClass>
-  </file>
-  <file src="test/Double/Reporter/NullReporter.php">
-    <UnusedClass>
-      <code>NullReporter</code>
-    </UnusedClass>
-  </file>
   <file src="test/EndToEnd/Version10/CustomConfiguration/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
