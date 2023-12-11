@@ -33,6 +33,9 @@ final class TestRunnerExecutionFinishedSubscriber implements Event\TestRunner\Ex
         $this->reporter = $reporter;
     }
 
+    /**
+     * @see https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/TextUI/TestRunner.php#L65
+     */
     public function notify(Event\TestRunner\ExecutionFinished $event): void
     {
         $slowTests = $this->collector->collected();

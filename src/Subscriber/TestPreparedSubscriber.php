@@ -30,6 +30,9 @@ final class TestPreparedSubscriber implements Event\Test\PreparedSubscriber
         $this->timeKeeper = $timeKeeper;
     }
 
+    /**
+     * @see https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Framework/TestCase.php#L614-L616
+     */
     public function notify(Event\Test\Prepared $event): void
     {
         $time = $event->telemetryInfo()->time();

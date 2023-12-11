@@ -42,6 +42,9 @@ final class TestPassedSubscriber implements Event\Test\PassedSubscriber
         $this->collector = $collector;
     }
 
+    /**
+     * @see https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Framework/TestCase.php#L664-L666
+     */
     public function notify(Event\Test\Passed $event): void
     {
         $testIdentifier = TestIdentifier::fromString($event->test()->id());
