@@ -316,6 +316,42 @@ Time: 00:12.601, Memory: 8.00 MB
 OK (13 tests, 13 assertions)
 ```
 
+### Understanding measured test durations when using  `phpunit/phpunit:^8.5.19` or `phpunit/phpunit:^9.0.0`
+
+When using `phpunit/phpunit:^8.5.19` or `phpunit/phpunit:^9.0.0`, the extension uses the hooks event system of `phpunit/phpunit`.
+
+The hooks event system supports eleven hook methods that `phpunit/phpunit` invokes during the execution of tests.
+
+When the extension uses the hooks event system, it uses the [`PHPUnit\Runner\AfterSuccessfulTestHook`](https://github.com/sebastianbergmann/phpunit/blob/8.5.19/src/Runner/Hook/AfterSuccessfulTestHook.php#L12-L15), which receives the [duration of invoking `PHPUnit\Framework\TestCase::runBare()` and more](https://github.com/sebastianbergmann/phpunit/blob/8.5.19/src/Framework/TestResult.php#L671-L754).
+
+When `phpunit/phpunit` invokes `PHPUnit\Framework\TestCase::runBare()`, it will invoke the following methods before the first test method in the class:
+
+- [`PHPUnit\Framework\TestCase::setUpBeforeClass()` and methods annotated with `@beforeClass`](https://github.com/sebastianbergmann/phpunit/blob/8.5.19/src/Framework/TestCase.php#L1078-L1082)
+
+When `phpunit/phpunit` invokes `PHPUnit\Framework\TestCase::runBare()`, it will invoke the following methods before every test method in the class:
+
+- [`PHPUnit\Framework\TestCase::setUp()` and methods annotated with `@before`](https://github.com/sebastianbergmann/phpunit/blob/8.5.19/src/Framework/TestCase.php#L1087-L1089)
+- [`PHPUnit\Framework\TestCase::assertPreConditions()`](https://github.com/sebastianbergmann/phpunit/blob/8.5.19/src/Framework/TestCase.php#L1091C20-L1091C39)
+
+When `phpunit/phpunit` invokes `PHPUnit\Framework\TestCase::runBare()`, it will invoke the following methods after every test method in the class:
+
+- [`PHPUnit\Framework\TestCase::assertPostConditions()`](https://github.com/sebastianbergmann/phpunit/blob/8.5.19/src/Framework/TestCase.php#L1094)
+- [`PHPUnit\Framework\TestCase::tearDown()` and methods annotated with `@after`](https://github.com/sebastianbergmann/phpunit/blob/8.5.19/src/Framework/TestCase.php#L1134-L1136)
+
+When phpunit/phpunit invokes `PHPUnit\Framework\TestCase::runBare()`, it will invoke the following methods after the last test method in the class:
+
+- [`PHPUnit\Framework\TestCase::tearDownAfterClass()` and methods annotated with `@afterClass`](https://github.com/sebastianbergmann/phpunit/blob/8.5.19/src/Framework/TestCase.php#L1138-L1142)
+
+Because of this behavior, the measured test durations can and will vary depending on the order in which `phpunit/phpunit` executes tests.
+
+### Understanding measured test durations when using  `phpunit/phpunit:^10.0.0`
+
+When using `phpunit/phpunit:^10.0.0`, the extension uses the new event system of `phpunit/phpunit`.
+
+The new event system supports a wide range of events that `phpunit/phpunit` emits during the execution of tests.
+
+When the extension uses the new event system, it uses and subscribes to the [`PHPUnit\Event\Test\Prepared`](https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Event/Events/Test/Lifecycle/Prepared.php#L22-L50) and [`PHPUnit\Event\Test\Passed`](https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Event/Events/Test/Outcome/Passed.php#L22-L50) events and measures the [duration between the points in time when `phpunit/phpunit` emits the former and the latter](https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Framework/TestCase.php#L614-L666).
+
 ## Changelog
 
 The maintainers of this package record notable changes to this project in a [changelog](CHANGELOG.md).
