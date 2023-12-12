@@ -359,4 +359,28 @@ final class SleeperTest extends Framework\TestCase
             ];
         }
     }
+
+    #[Framework\Attributes\RunInSeparateProcess]
+    public function testSleeperSleepsShorterThanDefaultMaximumDurationWhenRunningInSeparateProcess(): void
+    {
+        $milliseconds = 50;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    #[Framework\Attributes\RunInSeparateProcess]
+    public function testSleeperSleepsLongerThanDefaultMaximumDurationWhenRunningInSeparateProcess(): void
+    {
+        $milliseconds = 750;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
 }

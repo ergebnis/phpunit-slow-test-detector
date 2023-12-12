@@ -9,7 +9,12 @@ use PHPUnit\TextUI;
 
 $_SERVER['argv'][] = '--configuration=test/EndToEnd/Version10/DefaultConfiguration/phpunit.xml';
 
-require_once __DIR__ . '/../../../../vendor/autoload.php';
+/**
+ * @see https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Framework/TestRunner.php#L288-L290
+ */
+define('PHPUNIT_COMPOSER_INSTALL', __DIR__ . '/../../../../vendor/autoload.php');
+
+require_once PHPUNIT_COMPOSER_INSTALL;
 
 $application = new TextUI\Application();
 
@@ -21,9 +26,9 @@ Runtime: %s
 Configuration: %Stest/EndToEnd/Version10/DefaultConfiguration/phpunit.xml
 Random %seed:   %s
 
-.....................                                             21 / 21 (100%)
+.......................                                           23 / 23 (100%)
 
-Detected 11 tests that took longer than expected.
+Detected 12 tests that took longer than expected.
 
  1. 1.2%s (1.150) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromAttributeWithValidMaximumDurationAndSlowThresholdAnnotation
  2. 1.1%s (1.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromAttribute
@@ -34,10 +39,10 @@ Detected 11 tests that took longer than expected.
  7. 0.9%s (0.800) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromAnnotationWithValidMaximumDurationAnnotation
  8. 0.8%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithInvalidMaximumDurationAnnotation
  9. 0.8%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithUselessDocBlock
-10. 0.7%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDuration
+10. 0.7%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWhenRunningInSeparateProcess
 
-There is 1 additional slow test that is not listed here.
+There are 2 additional slow tests that are not listed here.
 
 Time: %s, Memory: %s
 
-OK (21 tests, 21 assertions)
+OK (23 tests, 23 assertions)
