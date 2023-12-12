@@ -541,7 +541,7 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-phpunit-${{ matrix.phpunit-version }}-"
 
       - name: "Remove platform configuration with composer"
-        if: "${{ matrix.php-version }} != 'locked'"
+        if: "matrix.dependencies != 'locked'"
         run: "composer config platform.php --ansi --unset"
 
       - name: "Remove incompatible dependencies with composer"
