@@ -54,6 +54,9 @@
     "audit": {
       "abandoned": "report"
     },
+    "platform": {
+      "php": "7.4.33"
+    },
     "preferred-install": "dist",
     "sort-packages": true
   },
