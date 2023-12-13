@@ -466,7 +466,6 @@ jobs:
 
         phpunit-version:
           - "8.5.19"
-          - "9.0.0"
 
         dependencies:
           - "lowest"
@@ -474,16 +473,44 @@ jobs:
           - "highest"
 
         include:
+          - php-version: "7.4"
+            phpunit-version: "9.0.0"
+            dependencies: "lowest"
+
+          - php-version: "7.4"
+            phpunit-version: "9.0.0"
+            dependencies: "highest"
+
+          - php-version: "8.0"
+            phpunit-version: "9.0.0"
+            dependencies: "lowest"
+
+          - php-version: "8.0"
+            phpunit-version: "9.0.0"
+            dependencies: "highest"
+
+          - php-version: "8.1"
+            phpunit-version: "9.0.0"
+            dependencies: "lowest"
+
+          - php-version: "8.1"
+            phpunit-version: "9.0.0"
+            dependencies: "highest"
+
           - php-version: "8.1"
             phpunit-version: "10.0.0"
             dependencies: "lowest"
 
           - php-version: "8.1"
             phpunit-version: "10.0.0"
-            dependencies: "locked"
+            dependencies: "highest"
 
-          - php-version: "8.1"
-            phpunit-version: "10.0.0"
+          - php-version: "8.2"
+            phpunit-version: "9.0.0"
+            dependencies: "lowest"
+
+          - php-version: "8.2"
+            phpunit-version: "9.0.0"
             dependencies: "highest"
 
           - php-version: "8.2"
@@ -492,19 +519,19 @@ jobs:
 
           - php-version: "8.2"
             phpunit-version: "10.0.0"
-            dependencies: "locked"
+            dependencies: "highest"
 
-          - php-version: "8.2"
-            phpunit-version: "10.0.0"
+          - php-version: "8.3"
+            phpunit-version: "9.0.0"
+            dependencies: "lowest"
+
+          - php-version: "8.3"
+            phpunit-version: "9.0.0"
             dependencies: "highest"
 
           - php-version: "8.3"
             phpunit-version: "10.0.0"
             dependencies: "lowest"
-
-          - php-version: "8.3"
-            phpunit-version: "10.0.0"
-            dependencies: "locked"
 
           - php-version: "8.3"
             phpunit-version: "10.0.0"
@@ -545,9 +572,11 @@ jobs:
         run: "composer config platform.php --ansi --unset"
 
       - name: "Remove incompatible dependencies with composer"
+        if: "matrix.dependencies != 'locked'"
         run: "composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --ansi --dev --no-interaction --no-progress"
 
       - name: "Require phpunit/phpunit:^${{ matrix.phpunit-version }}"
+        if: "matrix.dependencies != 'locked'"
         run: "composer require phpunit/phpunit:^${{ matrix.phpunit-version }} --ansi --no-interaction --no-progress --update-with-all-dependencies"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
