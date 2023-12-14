@@ -8,10 +8,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.7.0...main`][2.7.0...main].
 
-### Changed
-
-- Tighten version constraints to allow installation with `phpunit/phpunit:^8.5.19`, `phpunit/phpunit:^9.4.3`, and `phpunit/phpunit:^10.0.0` ([#416]), by [@localheinz]
-
 ## [`2.7.0`][2.7.0]
 
 For a full diff see [`2.6.0...2.7.0`][2.6.0...2.7.0].

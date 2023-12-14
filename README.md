@@ -17,7 +17,7 @@ This project provides a [`composer`](https://getcomposer.org) package and a [Pha
 The extension is compatible with the following versions of `phpunit/phpunit`:
 
 - [`phpunit/phpunit:^8.5.19`](https://github.com/sebastianbergmann/phpunit/tree/8.5.19)
-- [`phpunit/phpunit:^9.4.3`](https://github.com/sebastianbergmann/phpunit/tree/9.4.3)
+- [`phpunit/phpunit:^9.0.0`](https://github.com/sebastianbergmann/phpunit/tree/9.0.0)
 - [`phpunit/phpunit:^10.0.0`](https://github.com/sebastianbergmann/phpunit/tree/10.0.0)
 
 ## Installation
@@ -30,7 +30,7 @@ Run
 composer require --dev ergebnis/phpunit-slow-test-detector
 ```
 
-to install `ergebnis/phpunit-slow-test-detector` as a `composer` package when using `phpunit/phpunit:^8.5.19`, `phpunit/phpunit:^9.4.3`, or `phpunit/phpunit:^10.0.0`.
+to install `ergebnis/phpunit-slow-test-detector` as a `composer` package when using `phpunit/phpunit:^8.5.19`, `phpunit/phpunit:^9.0.0`, or `phpunit/phpunit:^10.0.0`.
 
 ### Installation as Phar
 
@@ -63,9 +63,9 @@ To bootstrap the extension as a `composer` package when using `phpunit/phpunit:^
  </phpunit>
 ```
 
-### Bootstrapping the extension as a `composer` package when using `phpunit/phpunit:^9.4.3`
+### Bootstrapping the extension as a `composer` package when using `phpunit/phpunit:^9.0.0`
 
-To bootstrap the extension as a `composer` package when using `phpunit/phpunit:^9.4.3`, adjust your `phpunit.xml` configuration file and configure the [`extensions` element](https://docs.phpunit.de/en/9.6/configuration.html#the-extensions-element):
+To bootstrap the extension as a `composer` package when using `phpunit/phpunit:^9.0.0`, adjust your `phpunit.xml` configuration file and configure the [`extensions` element](https://docs.phpunit.de/en/9.6/configuration.html#the-extensions-element):
 
 ```diff
  <phpunit
@@ -169,9 +169,9 @@ The following example configures the maximum count of slow tests to three, and t
  </phpunit>
 ```
 
-### Configuring the extension when using `phpunit/phpunit:^9.4.3`
+### Configuring the extension when using `phpunit/phpunit:^9.0.0`
 
-The following example configures the maximum count of slow tests to three, and the maximum duration for all tests to 250 milliseconds when using `phpunit/phpunit:^9.4.3`:
+The following example configures the maximum count of slow tests to three, and the maximum duration for all tests to 250 milliseconds when using `phpunit/phpunit:^9.0.0`:
 
 ```diff
  <phpunit
@@ -232,8 +232,8 @@ The following example configures the maximum count of slow tests to three, and t
 You can configure the maximum duration for a single test case with
 
 - an `Attribute\MaximumDuration` attribute when using `phpunit/phpunit:^10.0.0`
-- a `@maximumDuration` annotation in the DocBlock when using `phpunit/phpunit:^8.5.19` or `phpunit/phpunit:^9.4.3`
-- a `@slowThreshold` annotation in the DocBlock when using `phpunit/phpunit:^8.5.19` or `phpunit/phpunit:^9.4.3`
+- a `@maximumDuration` annotation in the DocBlock when using `phpunit/phpunit:^8.5.19` or `phpunit/phpunit:^9.0.0`
+- a `@slowThreshold` annotation in the DocBlock when using `phpunit/phpunit:^8.5.19` or `phpunit/phpunit:^9.0.0`
 
 The following example configures the maximum durations for single test cases to 5.000 ms, 4.000 ms, and 3.000 ms:
 
@@ -316,9 +316,9 @@ Time: 00:12.601, Memory: 8.00 MB
 OK (13 tests, 13 assertions)
 ```
 
-### Understanding measured test durations when using  `phpunit/phpunit:^8.5.19` or `phpunit/phpunit:^9.4.3`
+### Understanding measured test durations when using  `phpunit/phpunit:^8.5.19` or `phpunit/phpunit:^9.0.0`
 
-When using `phpunit/phpunit:^8.5.19` or `phpunit/phpunit:^9.4.3`, the extension uses the hooks event system of `phpunit/phpunit`.
+When using `phpunit/phpunit:^8.5.19` or `phpunit/phpunit:^9.0.0`, the extension uses the hooks event system of `phpunit/phpunit`.
 
 The hooks event system supports eleven hook methods that `phpunit/phpunit` invokes during the execution of tests.
 
