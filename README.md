@@ -387,7 +387,7 @@ This project uses the [MIT license](LICENSE.md).
 
 ## Credits
 
-This package is inspired by [`johnkary/phpunit-speedtrap`](https://github.com/johnkary/phpunit-speedtrap), originally licensed under MIT by [John Kary](https://github.com/johnkary)
+This package is inspired by [`johnkary/phpunit-speedtrap`](https://github.com/johnkary/phpunit-speedtrap), originally licensed under MIT by [John Kary](https://github.com/johnkary).
 
 ## Social
 
