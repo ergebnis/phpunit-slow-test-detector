@@ -474,27 +474,27 @@ jobs:
 
         include:
           - php-version: "7.4"
-            phpunit-version: "9.0.0"
+            phpunit-version: "9.4.3"
             dependencies: "lowest"
 
           - php-version: "7.4"
-            phpunit-version: "9.0.0"
+            phpunit-version: "9.4.3"
             dependencies: "highest"
 
           - php-version: "8.0"
-            phpunit-version: "9.0.0"
+            phpunit-version: "9.4.3"
             dependencies: "lowest"
 
           - php-version: "8.0"
-            phpunit-version: "9.0.0"
+            phpunit-version: "9.4.3"
             dependencies: "highest"
 
           - php-version: "8.1"
-            phpunit-version: "9.0.0"
+            phpunit-version: "9.4.3"
             dependencies: "lowest"
 
           - php-version: "8.1"
-            phpunit-version: "9.0.0"
+            phpunit-version: "9.4.3"
             dependencies: "highest"
 
           - php-version: "8.1"
@@ -506,11 +506,11 @@ jobs:
             dependencies: "highest"
 
           - php-version: "8.2"
-            phpunit-version: "9.0.0"
+            phpunit-version: "9.4.3"
             dependencies: "lowest"
 
           - php-version: "8.2"
-            phpunit-version: "9.0.0"
+            phpunit-version: "9.4.3"
             dependencies: "highest"
 
           - php-version: "8.2"
@@ -522,11 +522,11 @@ jobs:
             dependencies: "highest"
 
           - php-version: "8.3"
-            phpunit-version: "9.0.0"
+            phpunit-version: "9.4.3"
             dependencies: "lowest"
 
           - php-version: "8.3"
-            phpunit-version: "9.0.0"
+            phpunit-version: "9.4.3"
             dependencies: "highest"
 
           - php-version: "8.3"
@@ -592,8 +592,8 @@ jobs:
         if: "matrix.phpunit-version == '8.5.19'"
         run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version8/phpunit.xml"
 
-      - name: "Run end-to-end tests with phpunit/phpunit:9.0.0"
-        if: "matrix.phpunit-version == '9.0.0'"
+      - name: "Run end-to-end tests with phpunit/phpunit:9.4.3"
+        if: "matrix.phpunit-version == '9.4.3'"
         run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version9/phpunit.xml"
 
       - name: "Run end-to-end tests with phpunit/phpunit:10.0.0"
