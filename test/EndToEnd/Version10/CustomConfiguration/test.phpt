@@ -23,11 +23,11 @@ Random %seed:   %s
 
 .....                                                               5 / 5 (100%)
 
-Detected 5 tests that took longer than expected.
+Detected 5 tests that took longer than expected (0.300).
 
-1. 0.5%s (0.300) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\CustomConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#4
-2. 0.4%s (0.300) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\CustomConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#3
-3. 0.4%s (0.300) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\CustomConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#2
+1. 0.5%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\CustomConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#4
+2. 0.4%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\CustomConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#3
+3. 0.4%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\CustomConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#2
 
 There are 2 additional slow tests that are not listed here.
 
