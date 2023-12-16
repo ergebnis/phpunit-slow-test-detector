@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Exception;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Exception;
-use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
 /**
@@ -22,8 +21,6 @@ use PHPUnit\Framework;
  */
 final class InvalidTestIdentifierTest extends Framework\TestCase
 {
-    use Test\Util\Helper;
-
     public function testBlankOrEmptyReturnsException(): void
     {
         $exception = Exception\InvalidTestIdentifier::blankOrEmpty();

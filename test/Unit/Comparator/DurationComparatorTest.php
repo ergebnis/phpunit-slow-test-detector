@@ -15,7 +15,6 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Comparator;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Comparator;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
-use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
 /**
@@ -25,8 +24,6 @@ use PHPUnit\Framework;
  */
 final class DurationComparatorTest extends Framework\TestCase
 {
-    use Test\Util\Helper;
-
     public function testReturnsMinusOneWhenOneIsLessThanTwo(): void
     {
         $one = Duration::fromSecondsAndNanoseconds(

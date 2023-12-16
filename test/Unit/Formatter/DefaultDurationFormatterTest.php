@@ -15,7 +15,6 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Formatter;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
-use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
 /**
@@ -25,8 +24,6 @@ use PHPUnit\Framework;
  */
 final class DefaultDurationFormatterTest extends Framework\TestCase
 {
-    use Test\Util\Helper;
-
     /**
      * @dataProvider provideDurationAndFormattedDuration
      */
