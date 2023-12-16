@@ -19,8 +19,6 @@ use PHPUnit\Framework;
 #[Framework\Attributes\CoversClass(Test\Fixture\Sleeper::class)]
 final class SleeperTest extends Framework\TestCase
 {
-    use Test\Util\Helper;
-
     public function testSleeperDoesNotSleepAtAll(): void
     {
         $milliseconds = 0;
