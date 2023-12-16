@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit;
 
+use Ergebnis\PHPUnit\SlowTestDetector\PhaseIdentifier;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
-use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use Ergebnis\PHPUnit\SlowTestDetector\Time;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
 use PHPUnit\Framework;
@@ -23,60 +23,67 @@ use PHPUnit\Framework;
  * @covers \Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper
  *
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
- * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Phase
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\PhaseIdentifier
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\PhaseStart
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Time
  */
 final class TimeKeeperTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testStopReturnsEmptyDurationWhenTestHasNotBeenStarted(): void
+    public function testStopReturnsPhaseWhenPhaseHasNotBeenStarted(): void
     {
         $faker = self::faker();
 
-        $testIdentifier = TestIdentifier::fromString($faker->word());
-        $stoppedTime = Time::fromSecondsAndNanoseconds(
+        $phaseIdentifier = PhaseIdentifier::fromString($faker->word());
+        $stopTime = Time::fromSecondsAndNanoseconds(
             $faker->numberBetween(0),
             $faker->numberBetween(0, 999_999_999),
         );
 
         $timeKeeper = new TimeKeeper();
 
-        $duration = $timeKeeper->stop(
-            $testIdentifier,
-            $stoppedTime,
+        $phase = $timeKeeper->stop(
+            $phaseIdentifier,
+            $stopTime,
         );
 
-        self::assertSame(0, $duration->seconds());
-        self::assertSame(0, $duration->nanoseconds());
+        self::assertSame($phaseIdentifier, $phase->phaseIdentifier());
+        self::assertSame($stopTime, $phase->startTime());
+        self::assertSame($stopTime, $phase->stopTime());
+        self::assertEquals($stopTime->duration($stopTime), $phase->duration());
     }
 
-    public function testStopReturnsDurationWhenTestHasBeenStarted(): void
+    public function testStopReturnsPhaseWhenPhaseHasBeenStarted(): void
     {
         $faker = self::faker();
 
-        $testIdentifier = TestIdentifier::fromString($faker->word());
-        $startedTime = Time::fromSecondsAndNanoseconds(
+        $phaseIdentifier = PhaseIdentifier::fromString($faker->word());
+        $startTime = Time::fromSecondsAndNanoseconds(
             $faker->numberBetween(0),
             $faker->numberBetween(0, 999_999_999 - 1),
         );
-        $stoppedTime = Time::fromSecondsAndNanoseconds(
-            $faker->numberBetween($startedTime->seconds() + 1),
-            $faker->numberBetween($startedTime->nanoseconds() + 1, 999_999_999),
+        $stopTime = Time::fromSecondsAndNanoseconds(
+            $faker->numberBetween($startTime->seconds() + 1),
+            $faker->numberBetween($startTime->nanoseconds() + 1, 999_999_999),
         );
 
         $timeKeeper = new TimeKeeper();
 
         $timeKeeper->start(
-            $testIdentifier,
-            $startedTime,
+            $phaseIdentifier,
+            $startTime,
         );
 
-        $duration = $timeKeeper->stop(
-            $testIdentifier,
-            $stoppedTime,
+        $phase = $timeKeeper->stop(
+            $phaseIdentifier,
+            $stopTime,
         );
 
-        self::assertEquals($stoppedTime->duration($startedTime), $duration);
+        self::assertSame($phaseIdentifier, $phase->phaseIdentifier());
+        self::assertSame($startTime, $phase->startTime());
+        self::assertSame($stopTime, $phase->stopTime());
+        self::assertEquals($stopTime->duration($startTime), $phase->duration());
     }
 }
