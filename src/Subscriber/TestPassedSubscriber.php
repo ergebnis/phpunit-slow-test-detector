@@ -16,6 +16,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Subscriber;
 use Ergebnis\PHPUnit\SlowTestDetector\Attribute;
 use Ergebnis\PHPUnit\SlowTestDetector\Collector;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
+use Ergebnis\PHPUnit\SlowTestDetector\PhaseIdentifier;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use Ergebnis\PHPUnit\SlowTestDetector\Time;
@@ -47,17 +48,19 @@ final class TestPassedSubscriber implements Event\Test\PassedSubscriber
      */
     public function notify(Event\Test\Passed $event): void
     {
-        $testIdentifier = TestIdentifier::fromString($event->test()->id());
+        $phaseIdentifier = PhaseIdentifier::fromString($event->test()->id());
 
         $time = $event->telemetryInfo()->time();
 
-        $duration = $this->timeKeeper->stop(
-            $testIdentifier,
+        $phase = $this->timeKeeper->stop(
+            $phaseIdentifier,
             Time::fromSecondsAndNanoseconds(
                 $time->seconds(),
                 $time->nanoseconds(),
             ),
         );
+
+        $duration = $phase->duration();
 
         $maximumDuration = $this->resolveMaximumDuration($event->test());
 
@@ -66,7 +69,7 @@ final class TestPassedSubscriber implements Event\Test\PassedSubscriber
         }
 
         $slowTest = SlowTest::create(
-            $testIdentifier,
+            TestIdentifier::fromString($event->test()->id()),
             $duration,
             $maximumDuration,
         );

@@ -19,36 +19,44 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
 final class TimeKeeper
 {
     /**
-     * @var array<string, Time>
+     * @var array<string, PhaseStart>
      */
-    private array $startedTimes = [];
+    private array $phaseStarts = [];
 
     public function start(
-        TestIdentifier $testIdentifier,
-        Time $startedTime
+        PhaseIdentifier $phaseIdentifier,
+        Time $startTime
     ): void {
-        $key = $testIdentifier->toString();
+        $key = $phaseIdentifier->toString();
 
-        $this->startedTimes[$key] = $startedTime;
+        $this->phaseStarts[$key] = PhaseStart::create(
+            $phaseIdentifier,
+            $startTime,
+        );
     }
 
     public function stop(
-        TestIdentifier $testIdentifier,
-        Time $stoppedTime
-    ): Duration {
-        $key = $testIdentifier->toString();
+        PhaseIdentifier $phaseIdentifier,
+        Time $stopTime
+    ): Phase {
+        $key = $phaseIdentifier->toString();
 
-        if (!\array_key_exists($key, $this->startedTimes)) {
-            return Duration::fromSecondsAndNanoseconds(
-                0,
-                0,
+        if (!\array_key_exists($key, $this->phaseStarts)) {
+            return Phase::create(
+                $phaseIdentifier,
+                $stopTime,
+                $stopTime,
             );
         }
 
-        $startedTime = $this->startedTimes[$key];
+        $phaseStart = $this->phaseStarts[$key];
 
-        unset($this->startedTimes[$key]);
+        unset($this->phaseStarts[$key]);
 
-        return $stoppedTime->duration($startedTime);
+        return Phase::create(
+            $phaseIdentifier,
+            $phaseStart->startTime(),
+            $stopTime,
+        );
     }
 }
