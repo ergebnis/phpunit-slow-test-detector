@@ -26,7 +26,7 @@ final class InvalidPhaseIdentifierTest extends Framework\TestCase
 
     public function testBlankOrEmptyReturnsException(): void
     {
-        $exception = Exception\InvalidTestIdentifier::blankOrEmpty();
+        $exception = Exception\InvalidPhaseIdentifier::blankOrEmpty();
 
         self::assertSame('Value can not be blank or empty.', $exception->getMessage());
     }
