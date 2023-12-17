@@ -170,7 +170,7 @@ TXT;
     return;
 }
 
-if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(10))) {
+if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\Major::fromInt(11))) {
     /**
      * @internal
      */

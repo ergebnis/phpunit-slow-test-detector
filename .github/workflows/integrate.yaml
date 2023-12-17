@@ -521,6 +521,10 @@ jobs:
             phpunit-version: "10.0.0"
             dependencies: "highest"
 
+          - php-version: "8.2"
+            phpunit-version: "11.0.x-dev"
+            dependencies: "highest"
+
           - php-version: "8.3"
             phpunit-version: "9.0.0"
             dependencies: "lowest"
@@ -535,6 +539,10 @@ jobs:
 
           - php-version: "8.3"
             phpunit-version: "10.0.0"
+            dependencies: "highest"
+
+          - php-version: "8.3"
+            phpunit-version: "11.0.x-dev"
             dependencies: "highest"
 
     steps:
@@ -576,8 +584,12 @@ jobs:
         run: "composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --ansi --dev --no-interaction --no-progress"
 
       - name: "Require phpunit/phpunit:^${{ matrix.phpunit-version }}"
-        if: "matrix.dependencies != 'locked'"
+        if: "matrix.dependencies != 'locked' && matrix.phpunit-version != '11.0.x-dev'"
         run: "composer require phpunit/phpunit:^${{ matrix.phpunit-version }} --ansi --no-interaction --no-progress --update-with-all-dependencies"
+
+      - name: "Require phpunit/phpunit:${{ matrix.phpunit-version }}"
+        if: "matrix.dependencies != 'locked' && matrix.phpunit-version == '11.0.x-dev'"
+        run: "composer require phpunit/phpunit:${{ matrix.phpunit-version }} --ansi --no-interaction --no-progress --update-with-all-dependencies"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
         uses: "ergebnis/.github/actions/composer/install@1.8.0"
@@ -605,4 +617,8 @@ jobs:
 
       - name: "Run end-to-end tests with phpunit/phpunit:10.0.0"
         if: "matrix.phpunit-version == '10.0.0'"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version10/phpunit.xml"
+
+      - name: "Run end-to-end tests with phpunit/phpunit:11.0.x-dev"
+        if: "matrix.phpunit-version == '11.0.x-dev'"
         run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version10/phpunit.xml"

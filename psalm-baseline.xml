@@ -70,6 +70,16 @@
       <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
     </PossiblyUnusedMethod>
   </file>
+  <file src="test/EndToEnd/Version11/CustomConfiguration/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version11/DefaultConfiguration/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
+    </PossiblyUnusedMethod>
+  </file>
   <file src="test/Fixture/Sleeper.php">
     <ArgumentTypeCoercion>
       <code><![CDATA[$this->milliseconds * 1000]]></code>
