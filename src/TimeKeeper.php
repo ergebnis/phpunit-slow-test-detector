@@ -35,6 +35,9 @@ final class TimeKeeper
         );
     }
 
+    /**
+     * @throws Exception\PhaseNotStarted
+     */
     public function stop(
         PhaseIdentifier $phaseIdentifier,
         Time $stopTime
@@ -42,11 +45,7 @@ final class TimeKeeper
         $key = $phaseIdentifier->toString();
 
         if (!\array_key_exists($key, $this->phaseStarts)) {
-            return Phase::create(
-                $phaseIdentifier,
-                $stopTime,
-                $stopTime,
-            );
+            throw Exception\PhaseNotStarted::fromPhaseIdentifier($phaseIdentifier);
         }
 
         $phaseStart = $this->phaseStarts[$key];
