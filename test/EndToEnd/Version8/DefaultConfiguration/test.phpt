@@ -26,18 +26,18 @@ Random %seed:   %s
 
 .....................                                             21 / 21 (100%)
 
-Detected 12 tests that took longer than expected (0.500).
+Detected 12 tests that took longer than expected (500 ms).
 
- 1. 1.2%s (1.000) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version8\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromAnnotationWithValidSlowThresholdAndMaximumDurationAnnotation
- 2. 1.1%s (1.000) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version8\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromAnnotationWithValidMaximumDurationAndSlowThresholdAnnotation
- 3. 1.1%s (0.900) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version8\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanSlowThresholdFromAnnotationWithValidSlowThresholdAnnotation
- 4. 1.0%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version8\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWhenRunningInSeparateProcess
- 5. 1.0%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version8\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithInvalidSlowThresholdAnnotation
- 6. 1.0%s (0.800) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version8\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromAnnotationWithValidMaximumDurationAnnotation
- 7. 0.9%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version8\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithInvalidMaximumDurationAnnotation
- 8. 0.9%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version8\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithUselessDocBlock
- 9. 0.8%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version8\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDuration
-10. 0.7%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version8\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider with data set #2 (600)
+ 1. 1.2%d%d s (1.000 s) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version8\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromAnnotationWithValidSlowThresholdAndMaximumDurationAnnotation
+ 2. 1.1%d%d s (1.000 s) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version8\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromAnnotationWithValidMaximumDurationAndSlowThresholdAnnotation
+ 3. 1.1%d%d s ( 900 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version8\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanSlowThresholdFromAnnotationWithValidSlowThresholdAnnotation
+ 4. 1.0%d%d s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version8\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWhenRunningInSeparateProcess
+ 5. 1.0%d%d s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version8\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithInvalidSlowThresholdAnnotation
+ 6. 1.0%d%d s ( 800 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version8\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromAnnotationWithValidMaximumDurationAnnotation
+ 7.  9%d%d ms Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version8\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithInvalidMaximumDurationAnnotation
+ 8.  9%d%d ms Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version8\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithUselessDocBlock
+ 9.  8%d%d ms Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version8\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDuration
+10.  7%d%d ms Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version8\DefaultConfiguration\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider with data set #2 (600)
 
 There are 2 additional slow tests that are not listed here.
 
