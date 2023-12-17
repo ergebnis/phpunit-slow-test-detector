@@ -21,12 +21,12 @@
       <code>($durationInMilliseconds - $hoursInMilliseconds - $minutesInMilliseconds) / 1_000</code>
     </InvalidOperand>
   </file>
-  <file src="src/Subscriber/TestPassedSubscriber.php">
+  <file src="src/Subscriber/Test/PassedSubscriber.php">
     <UndefinedClass>
       <code>Event\Test\PassedSubscriber</code>
     </UndefinedClass>
     <UnusedClass>
-      <code>TestPassedSubscriber</code>
+      <code>PassedSubscriber</code>
     </UnusedClass>
     <UnusedParam>
       <code>$collector</code>
@@ -35,24 +35,24 @@
       <code>$timeKeeper</code>
     </UnusedParam>
   </file>
-  <file src="src/Subscriber/TestPreparedSubscriber.php">
+  <file src="src/Subscriber/Test/PreparedSubscriber.php">
     <UndefinedClass>
       <code>Event\Test\PreparedSubscriber</code>
     </UndefinedClass>
     <UnusedClass>
-      <code>TestPreparedSubscriber</code>
+      <code>PreparedSubscriber</code>
     </UnusedClass>
     <UnusedParam>
       <code>$event</code>
       <code>$timeKeeper</code>
     </UnusedParam>
   </file>
-  <file src="src/Subscriber/TestRunnerExecutionFinishedSubscriber.php">
+  <file src="src/Subscriber/TestRunner/ExecutionFinishedSubscriber.php">
     <UndefinedClass>
       <code>Event\TestRunner\ExecutionFinishedSubscriber</code>
     </UndefinedClass>
     <UnusedClass>
-      <code>TestRunnerExecutionFinishedSubscriber</code>
+      <code>ExecutionFinishedSubscriber</code>
     </UnusedClass>
     <UnusedParam>
       <code>$collector</code>

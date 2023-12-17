@@ -11,7 +11,7 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector\Subscriber;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Subscriber\Test;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Attribute;
 use Ergebnis\PHPUnit\SlowTestDetector\Collector;
@@ -27,7 +27,7 @@ use PHPUnit\Metadata;
 /**
  * @internal
  */
-final class TestPassedSubscriber implements Event\Test\PassedSubscriber
+final class PassedSubscriber implements Event\Test\PassedSubscriber
 {
     private Collector\Collector $collector;
     private TimeKeeper $timeKeeper;
