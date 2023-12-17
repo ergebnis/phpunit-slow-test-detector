@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.8.0...main`][2.8.0...main].
 
+### Changed
+
+- Consistently included test setup and teardown in duration measurement ([#380]), by [@localheinz] and [@mvorisek]
+
 ### Fixed
 
 - Required at least `phpunit/phpunit:^7.5.0` ([#448]), by [@localheinz]

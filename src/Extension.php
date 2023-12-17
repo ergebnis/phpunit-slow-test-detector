@@ -33,6 +33,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
     final class Extension implements
         Runner\AfterLastTestHook,
         Runner\AfterSuccessfulTestHook,
+        Runner\AfterTestHook,
         Runner\BeforeFirstTestHook
     {
         private int $suites = 0;
@@ -68,7 +69,19 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
             ++$this->suites;
         }
 
+        /**
+         * @see https://github.com/sebastianbergmann/phpunit/pull/3392#issuecomment-1868311482
+         * @see https://github.com/sebastianbergmann/phpunit/blob/7.5.0/src/TextUI/TestRunner.php#L227-L239
+         * @see https://github.com/sebastianbergmann/phpunit/pull/3762
+         */
         public function executeAfterSuccessfulTest(
+            string $test,
+            float $time
+        ): void {
+            // intentionally left blank
+        }
+
+        public function executeAfterTest(
             string $test,
             float $time
         ): void {
@@ -206,8 +219,8 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
             );
 
             $facade->registerSubscribers(
-                new Subscriber\Test\PreparedSubscriber($timeKeeper),
-                new Subscriber\Test\PassedSubscriber(
+                new Subscriber\Test\PreparationStartedSubscriber($timeKeeper),
+                new Subscriber\Test\FinishedSubscriber(
                     $maximumDuration,
                     $timeKeeper,
                     $collector,
