@@ -65,7 +65,7 @@ final class Duration
      */
     public static function fromMilliseconds(int $milliseconds): self
     {
-        if (0 >= $milliseconds) {
+        if (0 > $milliseconds) {
             throw Exception\InvalidMilliseconds::notGreaterThanZero($milliseconds);
         }
 

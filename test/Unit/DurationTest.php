@@ -94,7 +94,6 @@ final class DurationTest extends Framework\TestCase
 
     /**
      * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::zero
      */
     public function testFromMillisecondsRejectsInvalidValue(int $milliseconds): void
     {
@@ -123,6 +122,11 @@ final class DurationTest extends Framework\TestCase
     public static function provideMillisecondsSecondsAndNanoseconds(): iterable
     {
         $values = [
+            'zero' => [
+                0,
+                0,
+                0,
+            ],
             'one' => [
                 1,
                 0,
