@@ -158,6 +158,58 @@ final class DurationTest extends Framework\TestCase
         }
     }
 
+    /**
+     * @dataProvider provideDurationDurationAndResultOfAddingDurations
+     */
+    public function testAddReturnsDuration(
+        Duration $one,
+        Duration $two,
+        Duration $three
+    ): void {
+        self::assertEquals($three, $one->add($two));
+    }
+
+    /**
+     * @return \Generator<string, array{0: Duration, 1: Duration, 2: Duration}>
+     */
+    public static function provideDurationDurationAndResultOfAddingDurations(): iterable
+    {
+        $values = [
+            'zero' => [
+                Duration::fromMilliseconds(0),
+                Duration::fromMilliseconds(0),
+                Duration::fromMilliseconds(0),
+            ],
+            'not-zero' => [
+                Duration::fromMilliseconds(1),
+                Duration::fromMilliseconds(2),
+                Duration::fromMilliseconds(3),
+            ],
+            'more-than-999999999-nanoseconds' => [
+                Duration::fromSecondsAndNanoseconds(
+                    1,
+                    999_999_999,
+                ),
+                Duration::fromSecondsAndNanoseconds(
+                    2,
+                    123_456_789,
+                ),
+                Duration::fromSecondsAndNanoseconds(
+                    4,
+                    123_456_788,
+                ),
+            ],
+        ];
+
+        foreach ($values as $key => [$one, $two, $three]) {
+            yield $key => [
+                $one,
+                $two,
+                $three,
+            ];
+        }
+    }
+
     public function testIsLessThanReturnsFalseWhenSecondsAreGreater(): void
     {
         $one = Duration::fromSecondsAndNanoseconds(

@@ -92,6 +92,24 @@ final class Duration
         return $this->nanoseconds;
     }
 
+    public function add(self $other): self
+    {
+        $seconds = $this->seconds + $other->seconds;
+        $nanoseconds = $this->nanoseconds + $other->nanoseconds;
+
+        if (999_999_999 < $nanoseconds) {
+            return new self(
+                $seconds + 1,
+                $nanoseconds - 1_000_000_000,
+            );
+        }
+
+        return new self(
+            $seconds,
+            $nanoseconds,
+        );
+    }
+
     public function isLessThan(self $other): bool
     {
         if ($this->seconds < $other->seconds) {
