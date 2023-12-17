@@ -15,7 +15,6 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Attribute;
 
 use Ergebnis\DataProvider;
 use Ergebnis\PHPUnit\SlowTestDetector\Attribute;
-use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
@@ -23,7 +22,6 @@ use PHPUnit\Framework;
 /**
  * @covers \Ergebnis\PHPUnit\SlowTestDetector\Attribute\MaximumDuration
  *
- * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Exception\InvalidMilliseconds
  */
 final class MaximumDurationTest extends Framework\TestCase
@@ -38,7 +36,7 @@ final class MaximumDurationTest extends Framework\TestCase
     {
         $this->expectException(Exception\InvalidMilliseconds::class);
 
-        Duration::fromMilliseconds($milliseconds);
+        new Attribute\MaximumDuration($milliseconds);
     }
 
     public function testConstructorSetsValue(): void
