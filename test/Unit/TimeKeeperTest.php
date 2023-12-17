@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit;
 
+use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\PhaseIdentifier;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\Time;
@@ -23,6 +24,7 @@ use PHPUnit\Framework;
  * @covers \Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper
  *
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Exception\PhaseNotStarted
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Phase
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\PhaseIdentifier
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\PhaseStart
@@ -32,7 +34,7 @@ final class TimeKeeperTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testStopReturnsPhaseWhenPhaseHasNotBeenStarted(): void
+    public function testStopThrowsPhaseNotStartedExceptionWhenPhaseHasNotBeenStarted(): void
     {
         $faker = self::faker();
 
@@ -44,15 +46,12 @@ final class TimeKeeperTest extends Framework\TestCase
 
         $timeKeeper = new TimeKeeper();
 
-        $phase = $timeKeeper->stop(
+        $this->expectException(Exception\PhaseNotStarted::class);
+
+        $timeKeeper->stop(
             $phaseIdentifier,
             $stopTime,
         );
-
-        self::assertSame($phaseIdentifier, $phase->phaseIdentifier());
-        self::assertSame($stopTime, $phase->startTime());
-        self::assertSame($stopTime, $phase->stopTime());
-        self::assertEquals($stopTime->duration($stopTime), $phase->duration());
     }
 
     public function testStopReturnsPhaseWhenPhaseHasBeenStarted(): void
