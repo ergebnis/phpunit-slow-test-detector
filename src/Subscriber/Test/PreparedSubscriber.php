@@ -11,7 +11,7 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector\Subscriber;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Subscriber\Test;
 
 use Ergebnis\PHPUnit\SlowTestDetector\PhaseIdentifier;
 use Ergebnis\PHPUnit\SlowTestDetector\Time;
@@ -21,7 +21,7 @@ use PHPUnit\Event;
 /**
  * @internal
  */
-final class TestPreparedSubscriber implements Event\Test\PreparedSubscriber
+final class PreparedSubscriber implements Event\Test\PreparedSubscriber
 {
     private TimeKeeper $timeKeeper;
 

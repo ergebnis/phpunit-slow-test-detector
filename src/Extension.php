@@ -206,13 +206,13 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(10))) {
             );
 
             $facade->registerSubscribers(
-                new Subscriber\TestPreparedSubscriber($timeKeeper),
-                new Subscriber\TestPassedSubscriber(
+                new Subscriber\Test\PreparedSubscriber($timeKeeper),
+                new Subscriber\Test\PassedSubscriber(
                     $maximumDuration,
                     $timeKeeper,
                     $collector,
                 ),
-                new Subscriber\TestRunnerExecutionFinishedSubscriber(
+                new Subscriber\TestRunner\ExecutionFinishedSubscriber(
                     $collector,
                     $reporter,
                 ),
