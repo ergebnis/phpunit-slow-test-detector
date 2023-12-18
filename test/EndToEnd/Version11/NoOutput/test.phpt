@@ -7,7 +7,7 @@ declare(strict_types=1);
 
 use PHPUnit\TextUI;
 
-$_SERVER['argv'][] = '--configuration=test/EndToEnd/Version11/DefaultConfiguration/phpunit.xml';
+$_SERVER['argv'][] = '--configuration=test/EndToEnd/Version11/NoOutput/phpunit.xml';
 $_SERVER['argv'][] = '--no-output';
 
 require_once __DIR__ . '/../../../../vendor/autoload.php';
