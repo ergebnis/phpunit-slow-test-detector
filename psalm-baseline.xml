@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.17.0@c620f6e80d0abfca532b00bda366062aaedf6e5d">
+<files psalm-version="5.18.0@b113f3ed0259fd6e212d87c3df80eec95a6abf19">
   <file src="src/Extension.php">
     <DuplicateClass>
       <code>Extension</code>
@@ -60,22 +60,22 @@
       <code>$reporter</code>
     </UnusedParam>
   </file>
-  <file src="test/EndToEnd/Version10/CustomConfiguration/SleeperTest.php">
+  <file src="test/EndToEnd/Version10/Configuration/WithCustomConfiguration/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
     </PossiblyUnusedMethod>
   </file>
-  <file src="test/EndToEnd/Version10/DefaultConfiguration/SleeperTest.php">
+  <file src="test/EndToEnd/Version10/Configuration/WithDefaultConfiguration/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
     </PossiblyUnusedMethod>
   </file>
-  <file src="test/EndToEnd/Version11/CustomConfiguration/SleeperTest.php">
+  <file src="test/EndToEnd/Version11/Configuration/WithCustomConfiguration/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
     </PossiblyUnusedMethod>
   </file>
-  <file src="test/EndToEnd/Version11/DefaultConfiguration/SleeperTest.php">
+  <file src="test/EndToEnd/Version11/Configuration/WithDefaultConfiguration/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
     </PossiblyUnusedMethod>
