@@ -25,7 +25,7 @@ jobs:
           - "8.5.19"
 
         dependencies:
-          - "locked"
+          - "highest"
 
     steps:
       - name: "Checkout"
@@ -466,51 +466,19 @@ jobs:
 
         phpunit-version:
           - "8.5.19"
+          - "9.0.0"
 
         dependencies:
           - "lowest"
-          - "locked"
           - "highest"
 
         include:
-          - php-version: "7.4"
-            phpunit-version: "9.0.0"
-            dependencies: "lowest"
-
-          - php-version: "7.4"
-            phpunit-version: "9.0.0"
-            dependencies: "highest"
-
-          - php-version: "8.0"
-            phpunit-version: "9.0.0"
-            dependencies: "lowest"
-
-          - php-version: "8.0"
-            phpunit-version: "9.0.0"
-            dependencies: "highest"
-
-          - php-version: "8.1"
-            phpunit-version: "9.0.0"
-            dependencies: "lowest"
-
-          - php-version: "8.1"
-            phpunit-version: "9.0.0"
-            dependencies: "highest"
-
           - php-version: "8.1"
             phpunit-version: "10.0.0"
             dependencies: "lowest"
 
           - php-version: "8.1"
             phpunit-version: "10.0.0"
-            dependencies: "highest"
-
-          - php-version: "8.2"
-            phpunit-version: "9.0.0"
-            dependencies: "lowest"
-
-          - php-version: "8.2"
-            phpunit-version: "9.0.0"
             dependencies: "highest"
 
           - php-version: "8.2"
@@ -523,14 +491,6 @@ jobs:
 
           - php-version: "8.2"
             phpunit-version: "11.0.x-dev"
-            dependencies: "highest"
-
-          - php-version: "8.3"
-            phpunit-version: "9.0.0"
-            dependencies: "lowest"
-
-          - php-version: "8.3"
-            phpunit-version: "9.0.0"
             dependencies: "highest"
 
           - php-version: "8.3"
