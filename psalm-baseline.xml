@@ -60,6 +60,31 @@
       <code>$reporter</code>
     </UnusedParam>
   </file>
+  <file src="test/EndToEnd/Version08/TestCase/Combination/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>sleepWithAfterAnnotation</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version08/TestCase/WithAfterAnnotation/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>sleepWithAfterAnnotation</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version08/TestMethod/WithRunInSeparateProcessAnnotation/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>sleepWithAfterAnnotation</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version09/TestCase/WithAfterAnnotation/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>sleepWithAfterAnnotation</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version09/TestMethod/WithRunInSeparateProcessAnnotation/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>sleepWithAfterAnnotation</code>
+    </PossiblyUnusedMethod>
+  </file>
   <file src="test/EndToEnd/Version10/Configuration/Defaults/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
@@ -83,6 +108,20 @@
   <file src="test/EndToEnd/Version10/TestCase/Combination/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
+      <code>sleepWithAfterAnnotation</code>
+      <code>sleepWithAfterAttribute</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version10/TestCase/WithAfterAnnotation/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
+      <code>sleepWithAfterAnnotation</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version10/TestCase/WithAfterAttribute/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
+      <code>sleepWithAfterAttribute</code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/EndToEnd/Version10/TestCase/WithAssertPostConditions/SleeperTest.php">
@@ -120,6 +159,18 @@
       <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
     </PossiblyUnusedMethod>
   </file>
+  <file src="test/EndToEnd/Version10/TestMethod/WithRunInSeparateProcessAnnotation/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>sleepWithAfterAnnotation</code>
+      <code>sleepWithAfterAttribute</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version10/TestMethod/WithRunInSeparateProcessAttribute/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>sleepWithAfterAnnotation</code>
+      <code>sleepWithAfterAttribute</code>
+    </PossiblyUnusedMethod>
+  </file>
   <file src="test/EndToEnd/Version11/Configuration/Defaults/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
@@ -143,6 +194,13 @@
   <file src="test/EndToEnd/Version11/TestCase/Combination/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
+      <code>sleepWithAfterAttribute</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version11/TestCase/WithAfterAttribute/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
+      <code>sleepWithAfterAttribute</code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/EndToEnd/Version11/TestCase/WithAssertPostConditions/SleeperTest.php">
@@ -178,6 +236,11 @@
   <file src="test/EndToEnd/Version11/TestCase/WithTearDownAfterClass/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version11/TestMethod/WithRunInSeparateProcessAttribute/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>sleepWithAfterAttribute</code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/Fixture/Sleeper.php">
