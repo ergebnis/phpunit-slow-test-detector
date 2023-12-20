@@ -75,6 +75,11 @@
       <code>sleepWithAfterAnnotation</code>
     </PossiblyUnusedMethod>
   </file>
+  <file src="test/EndToEnd/Version09/TestCase/Combination/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>sleepWithAfterAnnotation</code>
+    </PossiblyUnusedMethod>
+  </file>
   <file src="test/EndToEnd/Version09/TestCase/WithAfterAnnotation/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>sleepWithAfterAnnotation</code>
