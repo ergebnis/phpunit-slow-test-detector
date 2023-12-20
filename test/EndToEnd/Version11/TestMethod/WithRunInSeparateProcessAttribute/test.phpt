@@ -10,7 +10,7 @@ use PHPUnit\TextUI;
 $_SERVER['argv'][] = '--configuration=test/EndToEnd/Version11/TestMethod/WithRunInSeparateProcessAttribute/phpunit.xml';
 
 /**
- * @see https://github.com/sebastianbergmann/phpunit/blob/8.5.19/src/Framework/TestCase.php#L754C1-L756
+ * @see https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestRunner.php#L280-L282
  */
 define('PHPUNIT_COMPOSER_INSTALL', __DIR__ . '/../../../../../vendor/autoload.php');
 
