@@ -1,5 +1,5 @@
 --TEST--
-With a test case that has an assertPreConditions() method
+With a test case that sleeps in assertPreConditions() method
 --FILE--
 <?php
 

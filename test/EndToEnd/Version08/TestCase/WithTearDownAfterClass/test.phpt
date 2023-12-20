@@ -1,5 +1,5 @@
 --TEST--
-With a test case that has a tearDownAfterClass() method
+With a test case that sleeps in a tearDownAfterClass() method
 --FILE--
 <?php
 

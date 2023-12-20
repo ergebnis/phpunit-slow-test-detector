@@ -1,5 +1,5 @@
 --TEST--
-With a test case that has a tearDown() method
+With a test case that sleeps in a tearDown() method
 --FILE--
 <?php
 

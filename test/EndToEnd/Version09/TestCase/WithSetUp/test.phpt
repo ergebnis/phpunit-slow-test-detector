@@ -1,5 +1,5 @@
 --TEST--
-With a test case that has a setUp() method
+With a test case that sleeps in a setUp() method
 --FILE--
 <?php
 

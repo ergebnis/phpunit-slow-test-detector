@@ -1,5 +1,5 @@
 --TEST--
-With a test case that does not have any hook methods
+With a test case that does not sleep in methods that are not test methods
 --FILE--
 <?php
 

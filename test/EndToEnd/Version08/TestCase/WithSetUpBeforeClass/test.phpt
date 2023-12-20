@@ -1,5 +1,5 @@
 --TEST--
-With a test case that has a setUpBeforeClass() method
+With a test case that sleeps in a setUpBeforeClass() method
 --FILE--
 <?php
 

@@ -1,5 +1,5 @@
 --TEST--
-With a test case that has an assertPostConditions() method
+With a test case that sleeps in assertPostConditions() method
 --FILE--
 <?php
 

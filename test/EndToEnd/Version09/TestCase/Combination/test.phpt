@@ -1,5 +1,5 @@
 --TEST--
-With a test case that has setUpBeforeClass(), tearDownAfterClass(), setUp(), assertPreConditions(), assertPostConditions(), and tearDown() methods
+With a test case that sleeps in hook and test methods
 --FILE--
 <?php
 
