@@ -34,6 +34,11 @@ final class SleeperTest extends Framework\TestCase
         Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
     }
 
+    protected function assertPreConditions(): void
+    {
+        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
+    }
+
     protected function tearDown(): void
     {
         Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
