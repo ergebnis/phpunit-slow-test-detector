@@ -1,5 +1,5 @@
 --TEST--
-With a test case that has setUpBeforeClass(), tearDownAfterClass(), setUp(), assertPreConditions(), and tearDown() methods
+With a test case that has setUpBeforeClass(), tearDownAfterClass(), setUp(), assertPreConditions(), tearDown() methods and test methods with @runInSeparateProcess annotation
 --FILE--
 <?php
 
