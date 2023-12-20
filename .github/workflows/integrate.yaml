@@ -569,11 +569,11 @@ jobs:
 
       - name: "Run end-to-end tests with phpunit/phpunit:8.5.19"
         if: "matrix.phpunit-version == '8.5.19'"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version8/phpunit.xml"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version08/phpunit.xml"
 
       - name: "Run end-to-end tests with phpunit/phpunit:9.0.0"
         if: "matrix.phpunit-version == '9.0.0'"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version9/phpunit.xml"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version09/phpunit.xml"
 
       - name: "Run end-to-end tests with phpunit/phpunit:10.0.0"
         if: "matrix.phpunit-version == '10.0.0'"
