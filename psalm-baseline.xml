@@ -85,6 +85,14 @@
       <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
     </PossiblyUnusedMethod>
   </file>
+  <file src="test/EndToEnd/Version10/TestCase/WithAssertPreConditions/SleeperTest.php">
+    <UnusedClass>
+      <code>SleeperTest</code>
+    </UnusedClass>
+    <UnusedParam>
+      <code>$milliseconds</code>
+    </UnusedParam>
+  </file>
   <file src="test/EndToEnd/Version10/TestCase/WithSetUp/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
@@ -129,6 +137,11 @@
     <PossiblyUnusedMethod>
       <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
     </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version11/TestCase/WithAssertPreConditions/SleeperTest.php">
+    <DuplicateClass>
+      <code>SleeperTest</code>
+    </DuplicateClass>
   </file>
   <file src="test/EndToEnd/Version11/TestCase/WithSetUp/SleeperTest.php">
     <PossiblyUnusedMethod>
