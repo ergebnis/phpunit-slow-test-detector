@@ -41,6 +41,11 @@ final class SleeperTest extends Framework\TestCase
         Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
     }
 
+    protected function assertPostConditions(): void
+    {
+        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
+    }
+
     protected function tearDown(): void
     {
         Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
@@ -48,7 +53,7 @@ final class SleeperTest extends Framework\TestCase
 
     public function testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration(): void
     {
-        $milliseconds = 1;
+        $milliseconds = 10;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 

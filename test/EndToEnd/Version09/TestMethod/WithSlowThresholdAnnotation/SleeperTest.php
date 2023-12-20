@@ -28,7 +28,7 @@ final class SleeperTest extends Framework\TestCase
      */
     public function testSleeperSleepsShorterThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidSlowThresholdAnnotation(): void
     {
-        $milliseconds = 1;
+        $milliseconds = 10;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
@@ -60,7 +60,7 @@ final class SleeperTest extends Framework\TestCase
      */
     public function testSleeperSleepsShorterThanSlowThresholdFromAnnotationWhenTestMethodHasValidSlowThresholdAnnotation(): void
     {
-        $milliseconds = 1;
+        $milliseconds = 10;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
