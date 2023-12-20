@@ -1,5 +1,5 @@
 --TEST--
-With a test case that sleeps in hook and test methods
+With a test case that sleeps in data provider, hook, and test methods
 --FILE--
 <?php
 
