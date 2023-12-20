@@ -15,7 +15,7 @@
     displayDetailsOnTestsThatTriggerErrors="true"
     displayDetailsOnTestsThatTriggerNotices="true"
     displayDetailsOnTestsThatTriggerWarnings="true"
-    executionOrder="random"
+    executionOrder="default"
     stopOnError="false"
     stopOnFailure="false"
     stopOnIncomplete="false"

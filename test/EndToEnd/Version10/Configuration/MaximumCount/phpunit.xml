@@ -15,7 +15,7 @@
     displayDetailsOnTestsThatTriggerErrors="true"
     displayDetailsOnTestsThatTriggerNotices="true"
     displayDetailsOnTestsThatTriggerWarnings="true"
-    executionOrder="random"
+    executionOrder="default"
     requireCoverageMetadata="true"
     stopOnError="false"
     stopOnFailure="false"

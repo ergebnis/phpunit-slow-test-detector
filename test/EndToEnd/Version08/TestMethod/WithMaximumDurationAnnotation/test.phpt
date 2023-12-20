@@ -8,7 +8,6 @@ declare(strict_types=1);
 use PHPUnit\TextUI;
 
 $_SERVER['argv'][] = '--configuration=test/EndToEnd/Version08/TestMethod/WithMaximumDurationAnnotation/phpunit.xml';
-$_SERVER['argv'][] = '--random-order-seed=1234567890';
 
 require_once __DIR__ . '/../../../../../vendor/autoload.php';
 
@@ -18,7 +17,6 @@ PHPUnit %s
 
 Runtime: %s
 Configuration: %s/EndToEnd/Version08/TestMethod/WithMaximumDurationAnnotation/phpunit.xml
-Random %seed:   %s
 
 ....                                                                4 / 4 (100%)
 

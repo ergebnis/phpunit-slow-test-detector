@@ -9,7 +9,7 @@
     cacheResult="false"
     colors="true"
     columns="max"
-    executionOrder="random"
+    executionOrder="default"
     forceCoversAnnotation="true"
     stopOnError="false"
     stopOnFailure="false"
