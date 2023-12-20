@@ -556,6 +556,10 @@ jobs:
         with:
           dependencies: "${{ matrix.dependencies }}"
 
+      - name: "Determine phpunit/phpunit version"
+        run: |
+          echo "PHPUNIT_VERSION=$(vendor/bin/phpunit --version | grep --extended-regexp \(\\d+\\.\){2}\\d+ --only-matching)" >> $GITHUB_ENV
+
       - name: "Run unit tests with phpunit/phpunit:8.5.19"
         if: "matrix.phpunit-version == '8.5.19'"
         run: "vendor/bin/phpunit --colors=always --configuration=test/Unit/phpunit.xml"
