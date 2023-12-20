@@ -23,7 +23,7 @@ final class SleeperTest extends Framework\TestCase
     #[Attribute\MaximumDuration(200)]
     public function testSleeperSleepsShorterThanMaximumDurationFromAttributeWhenTestMethodHasValidMaximumDurationAttribute(): void
     {
-        $milliseconds = 1;
+        $milliseconds = 10;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 

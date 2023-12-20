@@ -53,7 +53,7 @@ final class SleeperTest extends Framework\TestCase
 
     public function testSleeperSleepsShorterThanMaximumDurationFromXmlConfiguration(): void
     {
-        $milliseconds = 1;
+        $milliseconds = 10;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
@@ -67,7 +67,7 @@ final class SleeperTest extends Framework\TestCase
      */
     public function testSleeperSleepsShorterThanMaximumDurationFromXmlConfigurationWhenMethodHasRunInSeparateProcessAnnotation(): void
     {
-        $milliseconds = 1;
+        $milliseconds = 50;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
