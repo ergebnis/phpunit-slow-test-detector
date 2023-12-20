@@ -11,46 +11,14 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version09\TestCase\Combination;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\TestCase\WithDataProvider;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
-/**
- * @covers \Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\Sleeper
- */
+#[Framework\Attributes\CoversClass(Test\Fixture\Sleeper::class)]
 final class SleeperTest extends Framework\TestCase
 {
-    public static function setUpBeforeClass(): void
-    {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
-    }
-
-    public static function tearDownAfterClass(): void
-    {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
-    }
-
-    protected function setUp(): void
-    {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
-    }
-
-    protected function assertPreConditions(): void
-    {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
-    }
-
-    protected function assertPostConditions(): void
-    {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
-    }
-
-    protected function tearDown(): void
-    {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
-    }
-
     public function testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration(): void
     {
         $milliseconds = 10;
@@ -62,9 +30,7 @@ final class SleeperTest extends Framework\TestCase
         self::assertSame($milliseconds, $sleeper->milliseconds());
     }
 
-    /**
-     * @dataProvider provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration
-     */
+    #[Framework\Attributes\DataProvider('provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration')]
     public function testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider(int $milliseconds): void
     {
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);

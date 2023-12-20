@@ -86,6 +86,8 @@ final class SleeperTest extends Framework\TestCase
         );
 
         foreach ($values as $value) {
+            Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
+
             yield $value => [
                 $value,
             ];
