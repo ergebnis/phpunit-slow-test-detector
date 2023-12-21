@@ -63,6 +63,20 @@ final class SleeperTest extends Framework\TestCase
         Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
     }
 
+    /**
+     * @afterClass
+     */
+    public function sleepWithAfterClassAnnotation(): void
+    {
+        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
+    }
+
+    #[Framework\Attributes\AfterClass]
+    public function sleepWithAfterClassAttribute(): void
+    {
+        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
+    }
+
     public function testSleeperSleepsShorterThanMaximumDurationFromXmlConfiguration(): void
     {
         $milliseconds = 10;
