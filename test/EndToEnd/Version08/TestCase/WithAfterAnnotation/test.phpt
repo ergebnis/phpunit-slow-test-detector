@@ -7,7 +7,7 @@ declare(strict_types=1);
 
 use PHPUnit\TextUI;
 
-$_SERVER['argv'][] = '--configuration=test/EndToEnd/Version08/TestCase/WithTearDown/phpunit.xml';
+$_SERVER['argv'][] = '--configuration=test/EndToEnd/Version08/TestCase/WithAfterAnnotation/phpunit.xml';
 
 require_once __DIR__ . '/../../../../../vendor/autoload.php';
 
@@ -16,15 +16,15 @@ PHPUnit\TextUI\Command::main();
 PHPUnit %s
 
 Runtime: %s
-Configuration: %s/EndToEnd/Version08/TestCase/WithTearDown/phpunit.xml
+Configuration: %s/EndToEnd/Version08/TestCase/WithAfterAnnotation/phpunit.xml
 
 ...                                                                 3 / 3 (100%)
 
 Detected 3 tests that took longer than expected.
 
-1. 0.4%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version08\TestCase\WithTearDown\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #1 (300)
-2. 0.3%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version08\TestCase\WithTearDown\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #0 (200)
-3. 0.1%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version08\TestCase\WithTearDown\SleeperTest::testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration
+1. 0.4%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version08\TestCase\WithAfterAnnotation\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #1 (300)
+2. 0.3%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version08\TestCase\WithAfterAnnotation\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #0 (200)
+3. 0.1%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version08\TestCase\WithAfterAnnotation\SleeperTest::testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration
 
 Time: %s, Memory: %s
 
