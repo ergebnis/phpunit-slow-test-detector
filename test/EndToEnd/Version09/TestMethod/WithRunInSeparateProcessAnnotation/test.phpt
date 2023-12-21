@@ -1,5 +1,5 @@
 --TEST--
-With a test case that has setUpBeforeClass(), tearDownAfterClass(), setUp(), assertPreConditions(), assertPostConditions(), tearDown() methods and test methods with @runInSeparateProcess annotation
+With a test case that sleeps in data provider, hook, and test methods and has test methods with @runInSeparateProcess annotation
 --FILE--
 <?php
 
