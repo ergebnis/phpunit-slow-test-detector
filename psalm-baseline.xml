@@ -64,6 +64,7 @@
     <PossiblyUnusedMethod>
       <code>sleepWithAfterAnnotation</code>
       <code>sleepWithAfterClassAnnotation</code>
+      <code>sleepWithBeforeAnnotation</code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/EndToEnd/Version08/TestCase/WithAfterAnnotation/SleeperTest.php">
@@ -76,16 +77,23 @@
       <code>sleepWithAfterClassAnnotation</code>
     </PossiblyUnusedMethod>
   </file>
+  <file src="test/EndToEnd/Version08/TestCase/WithBeforeAnnotation/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>sleepWithBeforeAnnotation</code>
+    </PossiblyUnusedMethod>
+  </file>
   <file src="test/EndToEnd/Version08/TestMethod/WithRunInSeparateProcessAnnotation/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>sleepWithAfterAnnotation</code>
       <code>sleepWithAfterClassAnnotation</code>
+      <code>sleepWithBeforeAnnotation</code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/EndToEnd/Version09/TestCase/Combination/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>sleepWithAfterAnnotation</code>
       <code>sleepWithAfterClassAnnotation</code>
+      <code>sleepWithBeforeAnnotation</code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/EndToEnd/Version09/TestCase/WithAfterAnnotation/SleeperTest.php">
@@ -98,10 +106,16 @@
       <code>sleepWithAfterClassAnnotation</code>
     </PossiblyUnusedMethod>
   </file>
+  <file src="test/EndToEnd/Version09/TestCase/WithBeforeAnnotation/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>sleepWithBeforeAnnotation</code>
+    </PossiblyUnusedMethod>
+  </file>
   <file src="test/EndToEnd/Version09/TestMethod/WithRunInSeparateProcessAnnotation/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>sleepWithAfterAnnotation</code>
       <code>sleepWithAfterClassAnnotation</code>
+      <code>sleepWithBeforeAnnotation</code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/EndToEnd/Version10/Configuration/Defaults/SleeperTest.php">
@@ -131,6 +145,8 @@
       <code>sleepWithAfterAttribute</code>
       <code>sleepWithAfterClassAnnotation</code>
       <code>sleepWithAfterClassAttribute</code>
+      <code>sleepWithBeforeAnnotation</code>
+      <code>sleepWithBeforeAttribute</code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/EndToEnd/Version10/TestCase/WithAfterAnnotation/SleeperTest.php">
@@ -167,6 +183,18 @@
       <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
     </PossiblyUnusedMethod>
   </file>
+  <file src="test/EndToEnd/Version10/TestCase/WithBeforeAnnotation/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
+      <code>sleepWithBeforeAnnotation</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version10/TestCase/WithBeforeAttribute/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
+      <code>sleepWithBeforeAttribute</code>
+    </PossiblyUnusedMethod>
+  </file>
   <file src="test/EndToEnd/Version10/TestCase/WithDataProvider/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
@@ -198,6 +226,8 @@
       <code>sleepWithAfterAttribute</code>
       <code>sleepWithAfterClassAnnotation</code>
       <code>sleepWithAfterClassAttribute</code>
+      <code>sleepWithBeforeAnnotation</code>
+      <code>sleepWithBeforeAttribute</code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/EndToEnd/Version10/TestMethod/WithRunInSeparateProcessAttribute/SleeperTest.php">
@@ -206,6 +236,8 @@
       <code>sleepWithAfterAttribute</code>
       <code>sleepWithAfterClassAnnotation</code>
       <code>sleepWithAfterClassAttribute</code>
+      <code>sleepWithBeforeAnnotation</code>
+      <code>sleepWithBeforeAttribute</code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/EndToEnd/Version11/Configuration/Defaults/SleeperTest.php">
@@ -233,6 +265,7 @@
       <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
       <code>sleepWithAfterAttribute</code>
       <code>sleepWithAfterClassAttribute</code>
+      <code>sleepWithBeforeAttribute</code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/EndToEnd/Version11/TestCase/WithAfterAttribute/SleeperTest.php">
@@ -255,6 +288,12 @@
   <file src="test/EndToEnd/Version11/TestCase/WithAssertPreConditions/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version11/TestCase/WithBeforeAttribute/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
+      <code>sleepWithBeforeAttribute</code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/EndToEnd/Version11/TestCase/WithDataProvider/SleeperTest.php">
