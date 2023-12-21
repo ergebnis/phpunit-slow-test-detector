@@ -14,13 +14,15 @@ branches:
         required_approving_review_count: 1
       required_status_checks:
         checks:
-          - context: "Code Coverage (8.5.19, 7.4, highest)"
+          - context: "Code Coverage (7.2.0, 7.4, highest)"
           - context: "Coding Standards (7.4, locked)"
           - context: "Compile Phar (8.1, locked)"
           - context: "Dependency Analysis (7.4, locked)"
           - context: "Refactoring (7.4, locked)"
           - context: "Security Analysis (7.4, locked)"
           - context: "Static Code Analysis (7.4, locked)"
+          - context: "Tests (7.2.0, 7.4, highest)"
+          - context: "Tests (7.2.0, 7.4, lowest)"
           - context: "Tests (8.5.19, 7.4, highest)"
           - context: "Tests (8.5.19, 7.4, lowest)"
           - context: "Tests (8.5.19, 8.0, highest)"
