@@ -325,6 +325,7 @@
     <PossiblyUnusedMethod>
       <code>sleepWithAfterAttribute</code>
       <code>sleepWithAfterClassAttribute</code>
+      <code>sleepWithBeforeAttribute</code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/Fixture/Sleeper.php">
