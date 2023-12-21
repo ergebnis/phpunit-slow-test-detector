@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.7.0...main`][2.7.0...main].
 
+### Added
+
+- Added support for `phpunit/phpunit:^7.2.0` ([#447]), by [@localheinz]
+
 ## [`2.7.0`][2.7.0]
 
 For a full diff see [`2.6.0...2.7.0`][2.6.0...2.7.0].
@@ -237,6 +241,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#393]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/393
 [#394]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/394
 [#396]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/396
+[#447]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/447
 
 [@HypeMC]: https://github.com/HypeMC
 [@localheinz]: https://github.com/localheinz

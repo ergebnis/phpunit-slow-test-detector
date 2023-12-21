@@ -60,6 +60,42 @@
       <code>$reporter</code>
     </UnusedParam>
   </file>
+  <file src="test/EndToEnd/Version07/TestCase/Combination/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>sleepWithAfterAnnotation</code>
+      <code>sleepWithAfterClassAnnotation</code>
+      <code>sleepWithBeforeAnnotation</code>
+      <code>sleepWithBeforeClassAnnotation</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version07/TestCase/WithAfterAnnotation/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>sleepWithAfterAnnotation</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version07/TestCase/WithAfterClassAnnotation/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>sleepWithAfterClassAnnotation</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version07/TestCase/WithBeforeAnnotation/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>sleepWithBeforeAnnotation</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version07/TestCase/WithBeforeClassAnnotation/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>sleepWithBeforeClassAnnotation</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version07/TestMethod/WithRunInSeparateProcessAnnotation/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>sleepWithAfterAnnotation</code>
+      <code>sleepWithAfterClassAnnotation</code>
+      <code>sleepWithBeforeAnnotation</code>
+      <code>sleepWithBeforeClassAnnotation</code>
+    </PossiblyUnusedMethod>
+  </file>
   <file src="test/EndToEnd/Version08/TestCase/Combination/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>sleepWithAfterAnnotation</code>
