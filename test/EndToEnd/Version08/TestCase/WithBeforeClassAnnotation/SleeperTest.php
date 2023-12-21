@@ -11,7 +11,7 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version09\TestCase\Combination;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version08\TestCase\WithBeforeClassAnnotation;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
@@ -21,64 +21,10 @@ use PHPUnit\Framework;
  */
 final class SleeperTest extends Framework\TestCase
 {
-    public static function setUpBeforeClass(): void
-    {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
-    }
-
-    public static function tearDownAfterClass(): void
-    {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
-    }
-
-    protected function setUp(): void
-    {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
-    }
-
-    protected function assertPreConditions(): void
-    {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
-    }
-
-    protected function assertPostConditions(): void
-    {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
-    }
-
-    protected function tearDown(): void
-    {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
-    }
-
-    /**
-     * @before
-     */
-    public function sleepWithBeforeAnnotation(): void
-    {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
-    }
-
     /**
      * @beforeClass
      */
     public static function sleepWithBeforeClassAnnotation(): void
-    {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
-    }
-
-    /**
-     * @after
-     */
-    public function sleepWithAfterAnnotation(): void
-    {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
-    }
-
-    /**
-     * @afterClass
-     */
-    public static function sleepWithAfterClassAnnotation(): void
     {
         Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
     }
@@ -118,8 +64,6 @@ final class SleeperTest extends Framework\TestCase
         );
 
         foreach ($values as $value) {
-            Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
-
             yield $value => [
                 $value,
             ];

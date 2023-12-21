@@ -55,6 +55,12 @@ final class SleeperTest extends Framework\TestCase
         Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
     }
 
+    #[Framework\Attributes\BeforeClass]
+    public static function sleepWithBeforeClassAttribute(): void
+    {
+        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
+    }
+
     #[Framework\Attributes\After]
     public function sleepWithAfterAttribute(): void
     {
