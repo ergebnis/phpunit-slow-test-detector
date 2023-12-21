@@ -8,7 +8,6 @@ declare(strict_types=1);
 use PHPUnit\TextUI;
 
 $_SERVER['argv'][] = '--configuration=test/EndToEnd/Version09/TestMethod/WithRunInSeparateProcessAnnotation/phpunit.xml';
-$_SERVER['argv'][] = '--random-order-seed=1234567890';
 
 /**
  * @see https://github.com/sebastianbergmann/phpunit/blob/9.0.0/src/Framework/TestCase.php#L706-L708
@@ -23,7 +22,6 @@ PHPUnit %s
 
 Runtime: %s
 Configuration: %s/EndToEnd/Version09/TestMethod/WithRunInSeparateProcessAnnotation/phpunit.xml
-Random %seed:   %s
 
 ....                                                                4 / 4 (100%)
 
