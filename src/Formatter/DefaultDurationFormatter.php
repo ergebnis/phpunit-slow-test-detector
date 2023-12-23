@@ -17,6 +17,8 @@ use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 
 /**
  * @internal
+ *
+ * @see https://en.wikipedia.org/wiki/ISO_8601#Times
  */
 final class DefaultDurationFormatter implements DurationFormatter
 {
