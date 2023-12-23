@@ -24,16 +24,16 @@ Configuration: %s/EndToEnd/Version11/Configuration/MaximumDuration/phpunit.xml
 
 Detected 11 tests that took longer than expected.
 
- 1. 1.2%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#10
- 2. 1.1%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#9
- 3. 1.0%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#8
- 4. 0.9%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#7
- 5. 0.8%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#6
- 6. 0.7%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#5
- 7. 0.6%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#4
- 8. 0.5%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#3
- 9. 0.4%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#2
-10. 0.3%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#1
+ 1. 1.2%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#10
+ 2. 1.1%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#9
+ 3. 1.0%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#8
+ 4. 0.9%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#7
+ 5. 0.8%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#6
+ 6. 0.7%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#5
+ 7. 0.6%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#4
+ 8. 0.5%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#3
+ 9. 0.4%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#2
+10. 0.3%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#1
 
 There is 1 additional slow test that is not listed here.
 

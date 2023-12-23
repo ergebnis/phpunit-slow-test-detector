@@ -22,8 +22,8 @@ Configuration: %s/EndToEnd/Version07/TestCase/WithDataProvider/phpunit.xml
 
 Detected 2 tests that took longer than expected.
 
-1. 0.3%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version07\TestCase\WithDataProvider\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #1 (300)
-2. 0.2%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version07\TestCase\WithDataProvider\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #0 (200)
+1. 0.3%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version07\TestCase\WithDataProvider\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #1 (300)
+2. 0.2%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version07\TestCase\WithDataProvider\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #0 (200)
 
 Time: %s, Memory: %s
 

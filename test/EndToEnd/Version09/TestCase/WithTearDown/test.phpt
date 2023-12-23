@@ -22,9 +22,9 @@ Configuration: %s/EndToEnd/Version09/TestCase/WithTearDown/phpunit.xml
 
 Detected 3 tests that took longer than expected.
 
-1. 0.4%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version09\TestCase\WithTearDown\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #1 (300)
-2. 0.3%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version09\TestCase\WithTearDown\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #0 (200)
-3. 0.1%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version09\TestCase\WithTearDown\SleeperTest::testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration
+1. 0.4%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version09\TestCase\WithTearDown\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #1 (300)
+2. 0.3%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version09\TestCase\WithTearDown\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #0 (200)
+3. 0.1%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version09\TestCase\WithTearDown\SleeperTest::testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration
 
 Time: %s, Memory: %s
 

@@ -42,7 +42,6 @@ final class DefaultReporterTest extends Framework\TestCase
 
         $reporter = new Reporter\DefaultReporter(
             new Formatter\DefaultDurationFormatter(),
-            Duration::fromMilliseconds($faker->numberBetween(0)),
             Count::fromInt($faker->numberBetween(1)),
         );
 
@@ -52,17 +51,15 @@ final class DefaultReporterTest extends Framework\TestCase
     }
 
     /**
-     * @dataProvider provideExpectedReportMaximumDurationMaximumCountAndSlowTests
+     * @dataProvider provideExpectedReportMaximumCountAndSlowTests
      */
     public function testReportReturnsReportWhenThereAreFewerSlowTestsThanMaximumCount(
         string $expectedReport,
-        Duration $maximumDuration,
         Count $maximumCount,
         SlowTest ...$slowTests
     ): void {
         $reporter = new Reporter\DefaultReporter(
             new Formatter\DefaultDurationFormatter(),
-            $maximumDuration,
             $maximumCount,
         );
 
@@ -71,16 +68,15 @@ final class DefaultReporterTest extends Framework\TestCase
         self::assertSame($expectedReport, $report);
     }
 
-    public static function provideExpectedReportMaximumDurationMaximumCountAndSlowTests(): iterable
+    public static function provideExpectedReportMaximumCountAndSlowTests(): iterable
     {
         $values = [
             'header-singular' => [
                 <<<'TXT'
 Detected 1 test that took longer than expected.
 
-1. 0.300 (0.100) FooTest::test
+1. 0.300 FooTest::test
 TXT,
-                Duration::fromMilliseconds(500),
                 Count::fromInt(1),
                 [
                     SlowTest::create(
@@ -94,10 +90,9 @@ TXT,
                 <<<'TXT'
 Detected 2 tests that took longer than expected.
 
-1. 0.300 (0.100) FooTest::test
-2. 0.275 (0.100) BarTest::test
+1. 0.300 FooTest::test
+2. 0.275 BarTest::test
 TXT,
-                Duration::fromMilliseconds(500),
                 Count::fromInt(2),
                 [
                     SlowTest::create(
@@ -116,11 +111,10 @@ TXT,
                 <<<'TXT'
 Detected 3 tests that took longer than expected.
 
-1. 0.300 (0.100) FooTest::test
-2. 0.275 (0.100) BarTest::test
-3. 0.250 (0.100) BazTest::test
+1. 0.300 FooTest::test
+2. 0.275 BarTest::test
+3. 0.250 BazTest::test
 TXT,
-                Duration::fromMilliseconds(500),
                 Count::fromInt(3),
                 [
                     SlowTest::create(
@@ -144,11 +138,10 @@ TXT,
                 <<<'TXT'
 Detected 3 tests that took longer than expected.
 
-1. 0.300 (0.100) FooTest::test
-2. 0.275 (0.100) BarTest::test
-3. 0.250 (0.100) BazTest::test
+1. 0.300 FooTest::test
+2. 0.275 BarTest::test
+3. 0.250 BazTest::test
 TXT,
-                Duration::fromMilliseconds(500),
                 Count::fromInt(3),
                 [
                     SlowTest::create(
@@ -168,22 +161,21 @@ TXT,
                     ),
                 ],
             ],
-            'list-different-maximum-duration' => [
+            'list-long-durations' => [
                 <<<'TXT'
 Detected 10 tests that took longer than expected.
 
- 1. 20:50.000 (16:40.000) FooTest::test
- 2.  9:35.000 ( 8:20.000) BarTest::test
- 3.     0.250 (    0.100) BazTest::test
- 4.     0.200 (    0.100) QuxTest::test
- 5.     0.160 (    0.100) QuuxTest::test
- 6.     0.150 (    0.100) CorgeTest::test
- 7.     0.140 (    0.100) GraultTest::test
- 8.     0.130 (    0.100) GarplyTest::test
- 9.     0.120 (    0.100) WaldoTest::test
-10.     0.110 (    0.100) FredTest::test
+ 1. 20:50.000 FooTest::test
+ 2.  9:35.000 BarTest::test
+ 3.     0.250 BazTest::test
+ 4.     0.200 QuxTest::test
+ 5.     0.160 QuuxTest::test
+ 6.     0.150 CorgeTest::test
+ 7.     0.140 GraultTest::test
+ 8.     0.130 GarplyTest::test
+ 9.     0.120 WaldoTest::test
+10.     0.110 FredTest::test
 TXT,
-                Duration::fromMilliseconds(500),
                 Count::fromInt(10),
                 [
                     SlowTest::create(
@@ -242,11 +234,10 @@ TXT,
                 <<<'TXT'
 Detected 2 tests that took longer than expected.
 
-1. 0.300 (0.100) FooTest::test
+1. 0.300 FooTest::test
 
 There is 1 additional slow test that is not listed here.
 TXT,
-                Duration::fromMilliseconds(500),
                 Count::fromInt(1),
                 [
                     SlowTest::create(
@@ -265,11 +256,10 @@ TXT,
                 <<<'TXT'
 Detected 3 tests that took longer than expected.
 
-1. 0.300 (0.100) FooTest::test
+1. 0.300 FooTest::test
 
 There are 2 additional slow tests that are not listed here.
 TXT,
-                Duration::fromMilliseconds(500),
                 Count::fromInt(1),
                 [
                     SlowTest::create(
@@ -291,10 +281,9 @@ TXT,
             ],
         ];
 
-        foreach ($values as $key => [$expected, $maximumDuration, $maximumCount, $slowTests]) {
+        foreach ($values as $key => [$expected, $maximumCount, $slowTests]) {
             yield $key => [
                 $expected,
-                $maximumDuration,
                 $maximumCount,
                 ...$slowTests,
             ];

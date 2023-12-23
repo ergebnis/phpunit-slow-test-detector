@@ -24,7 +24,7 @@ Configuration: %s/EndToEnd/Version11/TestMethod/WithMaximumDurationAttribute/php
 
 Detected 1 test that took longer than expected.
 
-1. 0.3%s (0.200) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\TestMethod\WithMaximumDurationAttribute\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromAttributeWhenTestMethodHasValidMaximumDurationAttribute
+1. 0.3%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\TestMethod\WithMaximumDurationAttribute\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromAttributeWhenTestMethodHasValidMaximumDurationAttribute
 
 Time: %s, Memory: %s
 

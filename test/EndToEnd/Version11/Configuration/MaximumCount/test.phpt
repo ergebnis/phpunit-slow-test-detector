@@ -24,9 +24,9 @@ Configuration: %s/EndToEnd/Version11/Configuration/MaximumCount/phpunit.xml
 
 Detected 5 tests that took longer than expected.
 
-1. 1.0%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumCount\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#4
-2. 0.9%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumCount\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#3
-3. 0.8%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumCount\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#2
+1. 1.0%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumCount\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#4
+2. 0.9%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumCount\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#3
+3. 0.8%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\Configuration\MaximumCount\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#2
 
 There are 2 additional slow tests that are not listed here.
 
