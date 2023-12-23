@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         phpunit-version:
-          - "7.2.0"
+          - "7.5.0"
 
         php-version:
           - "7.4"
@@ -473,11 +473,11 @@ jobs:
           - "highest"
 
         include:
-          - phpunit-version: "7.2.0"
+          - phpunit-version: "7.5.0"
             php-version: "7.4"
             dependencies: "lowest"
 
-          - phpunit-version: "7.2.0"
+          - phpunit-version: "7.5.0"
             php-version: "7.4"
             dependencies: "highest"
 
@@ -564,8 +564,8 @@ jobs:
         with:
           dependencies: "${{ matrix.dependencies }}"
 
-      - name: "Run unit tests with phpunit/phpunit:7.2.0"
-        if: "matrix.phpunit-version == '7.2.0'"
+      - name: "Run unit tests with phpunit/phpunit:7.5.0"
+        if: "matrix.phpunit-version == '7.5.0'"
         run: "vendor/bin/phpunit --colors=always --configuration=test/Unit/phpunit.xml"
 
       - name: "Apply patch from https://github.com/sebastianbergmann/phpunit/pull/4486 for phpunit/phpunit:9.0.0"
@@ -575,8 +575,8 @@ jobs:
           wget -O gh-4486.patch https://github.com/sebastianbergmann/phpunit/commit/0a488f22925b3c8732338ef0fbfe7f13cb4cf1d2.patch
           patch -p1 < gh-4486.patch
 
-      - name: "Run end-to-end tests with phpunit/phpunit:7.2.0"
-        if: "matrix.phpunit-version == '7.2.0'"
+      - name: "Run end-to-end tests with phpunit/phpunit:7.5.0"
+        if: "matrix.phpunit-version == '7.5.0'"
         run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version07/phpunit.xml"
 
       - name: "Run end-to-end tests with phpunit/phpunit:8.5.19"
