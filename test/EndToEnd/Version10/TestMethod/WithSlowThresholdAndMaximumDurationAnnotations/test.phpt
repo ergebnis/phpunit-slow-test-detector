@@ -22,7 +22,7 @@ Configuration: %s/EndToEnd/Version10/TestMethod/WithSlowThresholdAndMaximumDurat
 
 ..                                                                  2 / 2 (100%)
 
-Detected 1 test that took longer than expected.
+Detected 1 test where the duration exceeded the maximum duration.
 
 1. 0.3%s (0.200) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\TestMethod\WithSlowThresholdAndMaximumDurationAnnotations\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasMaximumDurationAndSlowThresholdAnnotations
 

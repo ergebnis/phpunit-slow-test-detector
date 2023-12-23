@@ -350,7 +350,7 @@ Random Seed:   1676103726
 
 .............                                                                                                                                                                                                                                                                                                   13 / 13 (100%)
 
-Detected 11 tests that took longer than expected.
+Detected 11 tests where the duration exceeded the maximum duration.
 
  1. 1.604 (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#9
  2. 1.505 (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#8

@@ -20,7 +20,7 @@ Configuration: %s/EndToEnd/Version08/Configuration/Defaults/phpunit.xml
 
 ............                                                      12 / 12 (100%)
 
-Detected 11 tests that took longer than expected.
+Detected 11 tests where the duration exceeded the maximum duration.
 
  1. 1.6%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version08\Configuration\Defaults\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider with data set #10 (1600)
  2. 1.5%s (0.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version08\Configuration\Defaults\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider with data set #9 (1500)

@@ -22,7 +22,7 @@ Configuration: %s/EndToEnd/Version10/TestCase/WithBeforeClassAnnotation/phpunit.
 
 ...                                                                 3 / 3 (100%)
 
-Detected 2 tests that took longer than expected.
+Detected 2 tests where the duration exceeded the maximum duration.
 
 1. 0.3%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\TestCase\WithBeforeClassAnnotation\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#1
 2. 0.2%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\TestCase\WithBeforeClassAnnotation\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider#0
