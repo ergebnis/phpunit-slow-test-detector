@@ -76,7 +76,7 @@ final class DefaultReporterTest extends Framework\TestCase
         $values = [
             'header-singular' => [
                 <<<'TXT'
-Detected 1 test that took longer than expected.
+Detected 1 test where the duration exceeded the maximum duration.
 
 1. 0.300 (0.100) FooTest::test
 TXT,
@@ -92,7 +92,7 @@ TXT,
             ],
             'header-plural' => [
                 <<<'TXT'
-Detected 2 tests that took longer than expected.
+Detected 2 tests where the duration exceeded the maximum duration.
 
 1. 0.300 (0.100) FooTest::test
 2. 0.275 (0.100) BarTest::test
@@ -114,7 +114,7 @@ TXT,
             ],
             'list-sorted' => [
                 <<<'TXT'
-Detected 3 tests that took longer than expected.
+Detected 3 tests where the duration exceeded the maximum duration.
 
 1. 0.300 (0.100) FooTest::test
 2. 0.275 (0.100) BarTest::test
@@ -142,7 +142,7 @@ TXT,
             ],
             'list-unsorted' => [
                 <<<'TXT'
-Detected 3 tests that took longer than expected.
+Detected 3 tests where the duration exceeded the maximum duration.
 
 1. 0.300 (0.100) FooTest::test
 2. 0.275 (0.100) BarTest::test
@@ -170,7 +170,7 @@ TXT,
             ],
             'list-different-maximum-duration' => [
                 <<<'TXT'
-Detected 10 tests that took longer than expected.
+Detected 10 tests where the duration exceeded the maximum duration.
 
  1. 20:50.000 (16:40.000) FooTest::test
  2.  9:35.000 ( 8:20.000) BarTest::test
@@ -240,7 +240,7 @@ TXT,
             ],
             'footer-singular' => [
                 <<<'TXT'
-Detected 2 tests that took longer than expected.
+Detected 2 tests where the duration exceeded the maximum duration.
 
 1. 0.300 (0.100) FooTest::test
 
@@ -263,7 +263,7 @@ TXT,
             ],
             'footer-plural' => [
                 <<<'TXT'
-Detected 3 tests that took longer than expected.
+Detected 3 tests where the duration exceeded the maximum duration.
 
 1. 0.300 (0.100) FooTest::test
 

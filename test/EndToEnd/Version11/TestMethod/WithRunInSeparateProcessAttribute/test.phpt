@@ -27,7 +27,7 @@ Configuration: %s/EndToEnd/Version11/TestMethod/WithRunInSeparateProcessAttribut
 
 ....                                                                4 / 4 (100%)
 
-Detected 4 tests that took longer than expected.
+Detected 4 tests where the duration exceeded the maximum duration.
 
 1. 1.3%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\TestMethod\WithRunInSeparateProcessAttribute\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWhenMethodHasRunInSeparateProcessAttribute
 2. 1.0%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version11\TestMethod\WithRunInSeparateProcessAttribute\SleeperTest::testSleeperSleepsShorterThanMaximumDurationFromXmlConfigurationWhenMethodHasRunInSeparateProcessAttribute

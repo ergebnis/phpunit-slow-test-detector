@@ -70,13 +70,13 @@ TXT;
 
         if (1 === $count) {
             return <<<TXT
-Detected {$count} test that took longer than expected.
+Detected {$count} test where the duration exceeded the maximum duration.
 
 TXT;
         }
 
         return <<<TXT
-Detected {$count} tests that took longer than expected.
+Detected {$count} tests where the duration exceeded the maximum duration.
 
 TXT;
     }

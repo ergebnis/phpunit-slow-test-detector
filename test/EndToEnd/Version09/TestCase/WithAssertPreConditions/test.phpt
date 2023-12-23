@@ -20,7 +20,7 @@ Configuration: %s/EndToEnd/Version09/TestCase/WithAssertPreConditions/phpunit.xm
 
 ...                                                                 3 / 3 (100%)
 
-Detected 3 tests that took longer than expected.
+Detected 3 tests where the duration exceeded the maximum duration.
 
 1. 0.4%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version09\TestCase\WithAssertPreConditions\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #1 (300)
 2. 0.3%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version09\TestCase\WithAssertPreConditions\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #0 (200)
