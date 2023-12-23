@@ -37,6 +37,8 @@
     "rector/rector": "~0.18.13",
     "vimeo/psalm": "^5.18.0"
   },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "autoload": {
     "psr-4": {
       "Ergebnis\\PHPUnit\\SlowTestDetector\\": "src/"
