@@ -27,7 +27,7 @@ use PHPUnit\Metadata;
 /**
  * @internal
  */
-final class PassedSubscriber implements Event\Test\PassedSubscriber
+final class FinishedSubscriber implements Event\Test\FinishedSubscriber
 {
     private Collector\Collector $collector;
     private TimeKeeper $timeKeeper;
@@ -44,9 +44,10 @@ final class PassedSubscriber implements Event\Test\PassedSubscriber
     }
 
     /**
-     * @see https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Framework/TestCase.php#L664-L666
+     * @see https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Framework/TestRunner.php#L198
+     * @see https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Framework/TestRunner.php#L238
      */
-    public function notify(Event\Test\Passed $event): void
+    public function notify(Event\Test\Finished $event): void
     {
         $phaseIdentifier = PhaseIdentifier::fromString($event->test()->id());
 

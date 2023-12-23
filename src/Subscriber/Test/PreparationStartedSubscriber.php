@@ -21,7 +21,7 @@ use PHPUnit\Event;
 /**
  * @internal
  */
-final class PreparedSubscriber implements Event\Test\PreparedSubscriber
+final class PreparationStartedSubscriber implements Event\Test\PreparationStartedSubscriber
 {
     private TimeKeeper $timeKeeper;
 
@@ -31,9 +31,9 @@ final class PreparedSubscriber implements Event\Test\PreparedSubscriber
     }
 
     /**
-     * @see https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Framework/TestCase.php#L614-L616
+     * @see https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Framework/TestCase.php#L585-L587
      */
-    public function notify(Event\Test\Prepared $event): void
+    public function notify(Event\Test\PreparationStarted $event): void
     {
         $time = $event->telemetryInfo()->time();
 
