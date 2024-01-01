@@ -15,7 +15,6 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Comparator;
 use Ergebnis\PHPUnit\SlowTestDetector\Count;
-use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 
@@ -26,16 +25,13 @@ final class DefaultReporter implements Reporter
 {
     private Comparator\DurationComparator $durationComparator;
     private Count $maximumCount;
-    private Duration $maximumDuration;
     private Formatter\DurationFormatter $durationFormatter;
 
     public function __construct(
         Formatter\DurationFormatter $durationFormatter,
-        Duration $maximumDuration,
         Count $maximumCount
     ) {
         $this->durationFormatter = $durationFormatter;
-        $this->maximumDuration = $maximumDuration;
         $this->maximumCount = $maximumCount;
         $this->durationComparator = new Comparator\DurationComparator();
     }
@@ -101,25 +97,12 @@ TXT;
         /** @var SlowTest $slowestTest */
         $slowestTest = \reset($slowTestsToReport);
 
-        $longestMaximumDuration = \array_reduce(
-            $slowTestsToReport,
-            static function (Duration $maximumDuration, SlowTest $slowTest): Duration {
-                if ($maximumDuration->isLessThan($slowTest->maximumDuration())) {
-                    return $slowTest->maximumDuration();
-                }
-
-                return $maximumDuration;
-            },
-            $this->maximumDuration,
-        );
-
         $durationFormatter = $this->durationFormatter;
 
         $numberWidth = \strlen((string) \count($slowTestsToReport));
         $durationWidth = \strlen($durationFormatter->format($slowestTest->duration()));
-        $maximumDurationWidth = \strlen($durationFormatter->format($longestMaximumDuration));
 
-        $items = \array_map(static function (int $number, SlowTest $slowTest) use ($numberWidth, $durationFormatter, $durationWidth, $maximumDurationWidth): string {
+        $items = \array_map(static function (int $number, SlowTest $slowTest) use ($numberWidth, $durationFormatter, $durationWidth): string {
             $formattedNumber = \str_pad(
                 (string) $number,
                 $numberWidth,
@@ -134,20 +117,10 @@ TXT;
                 \STR_PAD_LEFT,
             );
 
-            $formattedMaximumDuration = \sprintf(
-                '(%s)',
-                \str_pad(
-                    $durationFormatter->format($slowTest->maximumDuration()),
-                    $maximumDurationWidth,
-                    ' ',
-                    \STR_PAD_LEFT,
-                ),
-            );
-
             $testName = $slowTest->testIdentifier()->toString();
 
             return <<<TXT
-{$formattedNumber}. {$formattedDuration} {$formattedMaximumDuration} {$testName}
+{$formattedNumber}. {$formattedDuration} {$testName}
 TXT;
         }, \range(1, \count($slowTestsToReport)), $slowTestsToReport);
 
