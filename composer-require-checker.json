@@ -7,6 +7,7 @@
     "int",
     "null",
     "PHPUnit\\Event\\Code\\Test",
+    "PHPUnit\\Event\\Code\\TestMethod",
     "PHPUnit\\Event\\Test\\Finished",
     "PHPUnit\\Event\\Test\\FinishedSubscriber",
     "PHPUnit\\Event\\Test\\PreparationStarted",

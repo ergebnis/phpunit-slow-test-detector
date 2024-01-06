@@ -11,6 +11,12 @@
       <code>$options</code>
     </UnusedParam>
   </file>
+  <file src="src/FileWriter/DefaultFileWriter.php">
+    <InvalidArgument>
+      <code>static function (): void {
+        }</code>
+    </InvalidArgument>
+  </file>
   <file src="src/Formatter/DefaultDurationFormatter.php">
     <InvalidOperand>
       <code><![CDATA[$duration->seconds() * 1_000 + $duration->nanoseconds() / 1_000_000]]></code>
@@ -20,6 +26,27 @@
       <code>$durationInMilliseconds / 60</code>
       <code>($durationInMilliseconds - $hoursInMilliseconds - $minutesInMilliseconds) / 1_000</code>
     </InvalidOperand>
+  </file>
+  <file src="src/Logger/LoggerFactory.php">
+    <MixedInferredReturnType>
+      <code>Logger</code>
+    </MixedInferredReturnType>
+    <UndefinedClass>
+      <code>Runner\Extension\ParameterCollection</code>
+      <code>TextUI\Configuration\Configuration</code>
+    </UndefinedClass>
+    <UnusedClass>
+      <code>LoggerFactory</code>
+    </UnusedClass>
+    <UnusedParam>
+      <code>$configuration</code>
+      <code>$parameters</code>
+    </UnusedParam>
+  </file>
+  <file src="src/Reporter/NullReporter.php">
+    <UnusedClass>
+      <code>NullReporter</code>
+    </UnusedClass>
   </file>
   <file src="src/Subscriber/Test/FinishedSubscriber.php">
     <UndefinedClass>
@@ -57,6 +84,7 @@
     <UnusedParam>
       <code>$collector</code>
       <code>$event</code>
+      <code>$logger</code>
       <code>$reporter</code>
     </UnusedParam>
   </file>
@@ -181,6 +209,21 @@
   <file src="test/EndToEnd/Version10/Configuration/MaximumDuration/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version10/Logger/WithConfigurationAndNoOption/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version10/Logger/WithConfigurationAndOption/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version10/Logger/WithNoConfigurationAndOption/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/EndToEnd/Version10/TestCase/Bare/SleeperTest.php">
@@ -323,6 +366,21 @@
       <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
     </PossiblyUnusedMethod>
   </file>
+  <file src="test/EndToEnd/Version11/Logger/WithConfigurationAndNoOption/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version11/Logger/WithConfigurationAndOption/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version11/Logger/WithNoConfigurationAndOption/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code>provideMillisecondsGreaterThanDefaultMaximumDuration</code>
+    </PossiblyUnusedMethod>
+  </file>
   <file src="test/EndToEnd/Version11/TestCase/Bare/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code>provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration</code>
@@ -409,9 +467,24 @@
       <code><![CDATA[$this->milliseconds * 1000]]></code>
     </ArgumentTypeCoercion>
   </file>
+  <file src="test/Unit/Collector/DefaultCollectorTest.php">
+    <MixedArgument>
+      <code><![CDATA[$faker->filePath()]]></code>
+      <code><![CDATA[$faker->filePath()]]></code>
+      <code><![CDATA[$faker->filePath()]]></code>
+      <code><![CDATA[$faker->filePath()]]></code>
+      <code><![CDATA[$faker->filePath()]]></code>
+      <code><![CDATA[$faker->filePath()]]></code>
+    </MixedArgument>
+  </file>
   <file src="test/Unit/Reporter/DefaultReporterTest.php">
     <MixedInferredReturnType>
       <code>iterable</code>
     </MixedInferredReturnType>
+  </file>
+  <file src="test/Unit/SlowTestTest.php">
+    <MixedArgument>
+      <code><![CDATA[$faker->filePath()]]></code>
+    </MixedArgument>
   </file>
 </files>

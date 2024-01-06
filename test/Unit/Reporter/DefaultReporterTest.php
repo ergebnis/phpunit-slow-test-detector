@@ -19,6 +19,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
 use Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
+use Ergebnis\PHPUnit\SlowTestDetector\TestFile;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use PHPUnit\Framework;
 
@@ -30,6 +31,7 @@ use PHPUnit\Framework;
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Formatter\DefaultDurationFormatter
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestFile
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
  */
 final class DefaultReporterTest extends Framework\TestCase
@@ -85,6 +87,7 @@ TXT,
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
+                        TestFile::fromFilename('/src/FooTest.php'),
                         Duration::fromMilliseconds(300),
                         Duration::fromMilliseconds(100),
                     ),
@@ -102,11 +105,13 @@ TXT,
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
+                        TestFile::fromFilename('/src/FooTest.php'),
                         Duration::fromMilliseconds(300),
                         Duration::fromMilliseconds(100),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
+                        TestFile::fromFilename('/src/BarTest.php'),
                         Duration::fromMilliseconds(275),
                         Duration::fromMilliseconds(100),
                     ),
@@ -125,16 +130,19 @@ TXT,
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
+                        TestFile::fromFilename('/src/FooTest.php'),
                         Duration::fromMilliseconds(300),
                         Duration::fromMilliseconds(100),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
+                        TestFile::fromFilename('/src/BarTest.php'),
                         Duration::fromMilliseconds(275),
                         Duration::fromMilliseconds(100),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
+                        TestFile::fromFilename('/src/BazTest.php'),
                         Duration::fromMilliseconds(250),
                         Duration::fromMilliseconds(100),
                     ),
@@ -153,16 +161,19 @@ TXT,
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
+                        TestFile::fromFilename('/src/BazTest.php'),
                         Duration::fromMilliseconds(250),
                         Duration::fromMilliseconds(100),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
+                        TestFile::fromFilename('/src/BarTest.php'),
                         Duration::fromMilliseconds(275),
                         Duration::fromMilliseconds(100),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
+                        TestFile::fromFilename('/src/FooTest.php'),
                         Duration::fromMilliseconds(300),
                         Duration::fromMilliseconds(100),
                     ),
@@ -188,51 +199,61 @@ TXT,
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
+                        TestFile::fromFilename('/src/FooTest.php'),
                         Duration::fromMilliseconds(1_250_000),
                         Duration::fromMilliseconds(1_000_000),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
+                        TestFile::fromFilename('/src/BarTest.php'),
                         Duration::fromMilliseconds(575_000),
                         Duration::fromMilliseconds(500_000),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
+                        TestFile::fromFilename('/src/BazTest.php'),
                         Duration::fromMilliseconds(250),
                         Duration::fromMilliseconds(100),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('QuxTest::test'),
+                        TestFile::fromFilename('/src/QuxTest.php'),
                         Duration::fromMilliseconds(200),
                         Duration::fromMilliseconds(100),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('QuuxTest::test'),
+                        TestFile::fromFilename('/src/QuuxTest.php'),
                         Duration::fromMilliseconds(160),
                         Duration::fromMilliseconds(100),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('CorgeTest::test'),
+                        TestFile::fromFilename('/src/CorgeTest.php'),
                         Duration::fromMilliseconds(150),
                         Duration::fromMilliseconds(100),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('GraultTest::test'),
+                        TestFile::fromFilename('/src/GraultTest.php'),
                         Duration::fromMilliseconds(140),
                         Duration::fromMilliseconds(100),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('GarplyTest::test'),
+                        TestFile::fromFilename('/src/GarplyTest.php'),
                         Duration::fromMilliseconds(130),
                         Duration::fromMilliseconds(100),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('WaldoTest::test'),
+                        TestFile::fromFilename('/src/WaldoTest.php'),
                         Duration::fromMilliseconds(120),
                         Duration::fromMilliseconds(100),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('FredTest::test'),
+                        TestFile::fromFilename('/src/FredTest.php'),
                         Duration::fromMilliseconds(110),
                         Duration::fromMilliseconds(100),
                     ),
@@ -251,11 +272,13 @@ TXT,
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
+                        TestFile::fromFilename('/src/FooTest.php'),
                         Duration::fromMilliseconds(300),
                         Duration::fromMilliseconds(100),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
+                        TestFile::fromFilename('/src/BarTest.php'),
                         Duration::fromMilliseconds(275),
                         Duration::fromMilliseconds(100),
                     ),
@@ -274,16 +297,19 @@ TXT,
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
+                        TestFile::fromFilename('/src/FooTest.php'),
                         Duration::fromMilliseconds(300),
                         Duration::fromMilliseconds(100),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
+                        TestFile::fromFilename('/src/BarTest.php'),
                         Duration::fromMilliseconds(275),
                         Duration::fromMilliseconds(100),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
+                        TestFile::fromFilename('/src/BazTest.php'),
                         Duration::fromMilliseconds(250),
                         Duration::fromMilliseconds(100),
                     ),

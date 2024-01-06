@@ -1,0 +1,34 @@
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/7.5/phpunit.xsd"
+    beStrictAboutChangesToGlobalState="true"
+    beStrictAboutOutputDuringTests="true"
+    beStrictAboutTestsThatDoNotTestAnything="true"
+    beStrictAboutTodoAnnotatedTests="true"
+    bootstrap="../../../../../vendor/autoload.php"
+    colors="true"
+    columns="max"
+    forceCoversAnnotation="true"
+    stopOnError="false"
+    stopOnFailure="false"
+    stopOnIncomplete="false"
+    stopOnSkipped="false"
+    verbose="true"
+>
+    <extensions>
+        <extension class="Ergebnis\PHPUnit\SlowTestDetector\Extension">
+            <arguments>
+                <array>
+                    <element key="junit-file">
+                        <string>php://stdout</string>
+                    </element>
+                </array>
+            </arguments>
+        </extension>
+    </extensions>
+    <testsuites>
+        <testsuite name="Unit Tests">
+            <directory>.</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

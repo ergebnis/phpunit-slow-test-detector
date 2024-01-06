@@ -17,6 +17,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\Collector;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
+use Ergebnis\PHPUnit\SlowTestDetector\TestFile;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use PHPUnit\Framework;
 
@@ -25,6 +26,7 @@ use PHPUnit\Framework;
  *
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestFile
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
  */
 final class DefaultCollectorTest extends Framework\TestCase
@@ -37,12 +39,14 @@ final class DefaultCollectorTest extends Framework\TestCase
 
         $one = SlowTest::create(
             TestIdentifier::fromString($faker->word()),
+            TestFile::fromFilename($faker->filePath()),
             Duration::fromMilliseconds($faker->numberBetween(0)),
             Duration::fromMilliseconds($faker->numberBetween(0)),
         );
 
         $two = SlowTest::create(
             TestIdentifier::fromString($faker->word()),
+            TestFile::fromFilename($faker->filePath()),
             Duration::fromMilliseconds($faker->numberBetween(0)),
             Duration::fromMilliseconds($faker->numberBetween(0)),
         );
@@ -66,12 +70,14 @@ final class DefaultCollectorTest extends Framework\TestCase
 
         $one = SlowTest::create(
             TestIdentifier::fromString($faker->word()),
+            TestFile::fromFilename($faker->filePath()),
             Duration::fromMilliseconds($faker->numberBetween(0)),
             Duration::fromMilliseconds($faker->numberBetween(0, 999_999_999 - 1)),
         );
 
         $two = SlowTest::create(
             $one->testIdentifier(),
+            TestFile::fromFilename($faker->filePath()),
             Duration::fromSecondsAndNanoseconds(
                 $one->duration()->seconds(),
                 $one->duration()->nanoseconds() + 1,
@@ -97,12 +103,14 @@ final class DefaultCollectorTest extends Framework\TestCase
 
         $one = SlowTest::create(
             TestIdentifier::fromString($faker->word()),
+            TestFile::fromFilename($faker->filePath()),
             Duration::fromMilliseconds($faker->numberBetween(0)),
             Duration::fromMilliseconds($faker->numberBetween(1, 999_999_999)),
         );
 
         $two = SlowTest::create(
             $one->testIdentifier(),
+            TestFile::fromFilename($faker->filePath()),
             Duration::fromSecondsAndNanoseconds(
                 $one->duration()->seconds(),
                 $one->duration()->nanoseconds() - 1,
