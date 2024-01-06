@@ -18,6 +18,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\Collector;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\PhaseIdentifier;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
+use Ergebnis\PHPUnit\SlowTestDetector\TestFile;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use Ergebnis\PHPUnit\SlowTestDetector\Time;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
@@ -49,7 +50,8 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
      */
     public function notify(Event\Test\Finished $event): void
     {
-        $phaseIdentifier = PhaseIdentifier::fromString($event->test()->id());
+        $test = $event->test();
+        $phaseIdentifier = PhaseIdentifier::fromString($test->id());
 
         $time = $event->telemetryInfo()->time();
 
@@ -63,14 +65,19 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
 
         $duration = $phase->duration();
 
-        $maximumDuration = $this->resolveMaximumDuration($event->test());
+        $maximumDuration = $this->resolveMaximumDuration($test);
 
         if (!$duration->isGreaterThan($maximumDuration)) {
             return;
         }
 
+        $testFile = $test instanceof Event\Code\TestMethod
+            ? TestFile::fromFilenameAndLine($test->file(), $test->line())
+            : TestFile::fromFilename($test->file());
+
         $slowTest = SlowTest::create(
-            TestIdentifier::fromString($event->test()->id()),
+            TestIdentifier::fromString($test->id()),
+            $testFile,
             $duration,
             $maximumDuration,
         );

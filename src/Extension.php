@@ -40,6 +40,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
         private Duration $maximumDuration;
         private Collector\Collector $collector;
         private Reporter\Reporter $reporter;
+        private Logger\Logger $logger;
 
         public function __construct(array $options = [])
         {
@@ -57,11 +58,16 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
 
             $this->maximumDuration = $maximumDuration;
             $this->collector = new Collector\DefaultCollector();
+            $durationFormatter = new Formatter\DefaultDurationFormatter();
             $this->reporter = new Reporter\DefaultReporter(
-                new Formatter\DefaultDurationFormatter(),
+                $durationFormatter,
                 $maximumDuration,
                 $maximumCount,
             );
+            $loggerFactory = new Logger\LoggerFactory(
+                $durationFormatter,
+            );
+            $this->logger = $loggerFactory->forArguments($_SERVER['argv'], $options);
         }
 
         public function executeBeforeFirstTest(): void
@@ -100,9 +106,11 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
             }
 
             $testIdentifier = TestIdentifier::fromString($test);
+            $testFile = $this->resolveTestFile($test);
 
             $slowTest = SlowTest::create(
                 $testIdentifier,
+                $testFile,
                 $duration,
                 $maximumDuration,
             );
@@ -119,6 +127,8 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
             }
 
             $slowTests = $this->collector->collected();
+
+            $this->logger->log(...$slowTests);
 
             if ([] === $slowTests) {
                 return;
@@ -178,6 +188,22 @@ TXT;
 
             return $this->maximumDuration;
         }
+
+        private function resolveTestFile(string $test): TestFile
+        {
+            $test = \explode(' ', $test, 2)[0];
+
+            try {
+                $methodReflection = new \ReflectionMethod($test);
+            } catch (\ReflectionException $e) {
+                return TestFile::fromFilename($test);
+            }
+
+            return TestFile::fromFilenameAndLine(
+                $methodReflection->getFileName(),
+                $methodReflection->getStartLine(),
+            );
+        }
     }
 
     return;
@@ -194,10 +220,6 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
             Runner\Extension\Facade $facade,
             Runner\Extension\ParameterCollection $parameters
         ): void {
-            if ($configuration->noOutput()) {
-                return;
-            }
-
             $maximumCount = Count::fromInt(10);
 
             if ($parameters->has('maximum-count')) {
@@ -212,10 +234,16 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
 
             $timeKeeper = new TimeKeeper();
             $collector = new Collector\DefaultCollector();
-            $reporter = new Reporter\DefaultReporter(
-                new Formatter\DefaultDurationFormatter(),
-                $maximumDuration,
-                $maximumCount,
+            $durationFormatter = new Formatter\DefaultDurationFormatter();
+            $reporter = $configuration->noOutput()
+                ? new Reporter\NullReporter()
+                : new Reporter\DefaultReporter(
+                    $durationFormatter,
+                    $maximumDuration,
+                    $maximumCount,
+                );
+            $loggerFactory = new Logger\LoggerFactory(
+                $durationFormatter,
             );
 
             $facade->registerSubscribers(
@@ -228,6 +256,10 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
                 new Subscriber\TestRunner\ExecutionFinishedSubscriber(
                     $collector,
                     $reporter,
+                    $loggerFactory->forConfiguration(
+                        $configuration,
+                        $parameters,
+                    ),
                 ),
             );
         }

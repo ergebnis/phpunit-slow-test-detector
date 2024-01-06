@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Subscriber\TestRunner;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Collector;
+use Ergebnis\PHPUnit\SlowTestDetector\Logger;
 use Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 use PHPUnit\Event;
 
@@ -24,13 +25,16 @@ final class ExecutionFinishedSubscriber implements Event\TestRunner\ExecutionFin
 {
     private Reporter\Reporter $reporter;
     private Collector\Collector $collector;
+    private Logger\Logger $logger;
 
     public function __construct(
         Collector\Collector $collector,
-        Reporter\Reporter $reporter
+        Reporter\Reporter $reporter,
+        Logger\Logger $logger
     ) {
         $this->collector = $collector;
         $this->reporter = $reporter;
+        $this->logger = $logger;
     }
 
     /**
@@ -39,6 +43,8 @@ final class ExecutionFinishedSubscriber implements Event\TestRunner\ExecutionFin
     public function notify(Event\TestRunner\ExecutionFinished $event): void
     {
         $slowTests = $this->collector->collected();
+
+        $this->logger->log(...$slowTests);
 
         if ([] === $slowTests) {
             return;
