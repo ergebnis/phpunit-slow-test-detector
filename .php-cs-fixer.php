@@ -18,7 +18,7 @@ $license = License\Type\MIT::markdown(
     __DIR__ . '/LICENSE.md',
     License\Range::since(
         License\Year::fromString('2021'),
-        new \DateTimeZone('UTC'),
+        new DateTimeZone('UTC'),
     ),
     License\Holder::fromString('Andreas Möller'),
     License\Url::fromString('https://github.com/ergebnis/phpunit-slow-test-detector'),
