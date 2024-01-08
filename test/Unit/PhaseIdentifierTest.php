@@ -45,6 +45,6 @@ final class PhaseIdentifierTest extends Framework\TestCase
 
         $testIdentifier = PhaseIdentifier::fromString($value);
 
-        self::assertSame($value, $testIdentifier->tostring());
+        self::assertSame($value, $testIdentifier->toString());
     }
 }

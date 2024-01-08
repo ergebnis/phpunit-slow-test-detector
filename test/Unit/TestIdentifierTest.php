@@ -45,6 +45,6 @@ final class TestIdentifierTest extends Framework\TestCase
 
         $testIdentifier = TestIdentifier::fromString($value);
 
-        self::assertSame($value, $testIdentifier->tostring());
+        self::assertSame($value, $testIdentifier->toString());
     }
 }
