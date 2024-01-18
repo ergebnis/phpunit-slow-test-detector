@@ -35,7 +35,7 @@
     "fakerphp/faker": "^1.23.1",
     "psalm/plugin-phpunit": "~0.18.4",
     "rector/rector": "~0.19.1",
-    "vimeo/psalm": "^5.19.1"
+    "vimeo/psalm": "^5.20.0"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
