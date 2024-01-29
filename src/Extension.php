@@ -236,7 +236,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
     return;
 }
 
-    throw new \RuntimeException(\sprintf(
-        'Unable to select extension for PHPUnit version with version series "%s".',
-        Runner\Version::series(),
-    ));
+throw new \RuntimeException(\sprintf(
+    'Unable to select extension for PHPUnit version with version series "%s".',
+    Runner\Version::series(),
+));
