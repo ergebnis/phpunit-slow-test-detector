@@ -461,6 +461,7 @@ jobs:
           - "9.0.0"
 
         php-version:
+          - "7.3"
           - "7.4"
           - "8.0"
           - "8.1"
@@ -472,6 +473,14 @@ jobs:
           - "highest"
 
         include:
+          - phpunit-version: "7.5.0"
+            php-version: "7.3"
+            dependencies: "lowest"
+
+          - phpunit-version: "7.5.0"
+            php-version: "7.3"
+            dependencies: "highest"
+
           - phpunit-version: "7.5.0"
             php-version: "7.4"
             dependencies: "lowest"
@@ -555,7 +564,7 @@ jobs:
 
       - name: "Remove incompatible dependencies with composer"
         if: "matrix.dependencies != 'locked'"
-        run: "composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --ansi --dev --no-interaction --no-progress"
+        run: "composer remove ergebnis/composer-normalize ergebnis/license ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --ansi --dev --no-interaction --no-progress"
 
       - name: "Remove platform configuration with composer"
         if: "matrix.dependencies != 'locked'"

@@ -60,6 +60,42 @@
       <code><![CDATA[$reporter]]></code>
     </UnusedParam>
   </file>
+  <file src="test/DataProvider/AbstractProvider.php">
+    <MixedAssignment>
+      <code><![CDATA[$value]]></code>
+    </MixedAssignment>
+  </file>
+  <file src="test/DataProvider/IntProvider.php">
+    <MixedReturnTypeCoercion>
+      <code><![CDATA[\Generator<string, array{0: int}>]]></code>
+      <code><![CDATA[\Generator<string, array{0: int}>]]></code>
+      <code><![CDATA[\Generator<string, array{0: int}>]]></code>
+      <code><![CDATA[\Generator<string, array{0: int}>]]></code>
+      <code><![CDATA[\Generator<string, array{0: int}>]]></code>
+      <code><![CDATA[\Generator<string, array{0: int}>]]></code>
+      <code><![CDATA[\Generator<string, array{0: int}>]]></code>
+    </MixedReturnTypeCoercion>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[arbitrary]]></code>
+      <code><![CDATA[lessThanOne]]></code>
+      <code><![CDATA[one]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/DataProvider/StringProvider.php">
+    <MixedReturnTypeCoercion>
+      <code><![CDATA[\Generator<string, array{0: string}>]]></code>
+      <code><![CDATA[\Generator<string, array{0: string}>]]></code>
+      <code><![CDATA[\Generator<string, array{0: string}>]]></code>
+      <code><![CDATA[\Generator<string, array{0: string}>]]></code>
+      <code><![CDATA[\Generator<string, array{0: string}>]]></code>
+      <code><![CDATA[\Generator<string, array{0: string}>]]></code>
+    </MixedReturnTypeCoercion>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[trimmed]]></code>
+      <code><![CDATA[untrimmed]]></code>
+      <code><![CDATA[withWhitespace]]></code>
+    </PossiblyUnusedMethod>
+  </file>
   <file src="test/EndToEnd/Version07/TestCase/Combination/SleeperTest.php">
     <PossiblyUnusedMethod>
       <code><![CDATA[sleepWithAfterAnnotation]]></code>
