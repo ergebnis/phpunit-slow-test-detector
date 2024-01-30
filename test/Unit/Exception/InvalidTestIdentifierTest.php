@@ -25,6 +25,6 @@ final class InvalidTestIdentifierTest extends Framework\TestCase
     {
         $exception = Exception\InvalidTestIdentifier::blankOrEmpty();
 
-        self::assertSame('Value can not be blank or empty.', $exception->getMessage());
+        self::assertSame('Value cannot be blank or empty.', $exception->getMessage());
     }
 }

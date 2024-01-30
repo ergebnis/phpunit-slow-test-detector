@@ -20,6 +20,6 @@ final class InvalidTestIdentifier extends \InvalidArgumentException
 {
     public static function blankOrEmpty(): self
     {
-        return new self('Value can not be blank or empty.');
+        return new self('Value cannot be blank or empty.');
     }
 }
