@@ -108,7 +108,7 @@ To bootstrap the extension as a `composer` package when using `phpunit/phpunit:^
 
 ### Bootstrapping the extension as a `composer` package when using `phpunit/phpunit:^10.0.0`
 
-To bootstrap the extension as a `composer` package when using `phpunit/phpunit:^10.0.0`, adjust your `phpunit.xml` configuration file and configure the [`extensions` element](https://docs.phpunit.de/en/10.4/configuration.html#the-extensions-element):
+To bootstrap the extension as a `composer` package when using `phpunit/phpunit:^10.0.0`, adjust your `phpunit.xml` configuration file and configure the [`extensions` element](https://docs.phpunit.de/en/10.5/configuration.html#the-extensions-element):
 
 ```diff
  <phpunit
@@ -129,7 +129,7 @@ To bootstrap the extension as a `composer` package when using `phpunit/phpunit:^
 
 ### Bootstrapping the extension as a PHAR when using `phpunit/phpunit:^10.0.0`
 
-To bootstrap the extension as a PHAR when using `phpunit/phpunit:^10.0.0`, adjust your `phpunit.xml` configuration file and configure the [`extensionsDirectory` attribute](https://docs.phpunit.de/en/10.4/configuration.html#the-extensionsdirectory-attribute) of the [`<phpunit>` element](https://docs.phpunit.de/en/10.4/configuration.html#the-phpunit-element):
+To bootstrap the extension as a PHAR when using `phpunit/phpunit:^10.0.0`, adjust your `phpunit.xml` configuration file and configure the [`extensionsDirectory` attribute](https://docs.phpunit.de/en/10.5/configuration.html#the-extensionsdirectory-attribute) of the [`<phpunit>` element](https://docs.phpunit.de/en/10.5/configuration.html#the-phpunit-element):
 
 ```diff
  <phpunit
