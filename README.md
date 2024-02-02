@@ -20,6 +20,7 @@ The extension is compatible with the following versions of `phpunit/phpunit`:
 - [`phpunit/phpunit:^8.5.19`](https://github.com/sebastianbergmann/phpunit/tree/8.5.19)
 - [`phpunit/phpunit:^9.0.0`](https://github.com/sebastianbergmann/phpunit/tree/9.0.0)
 - [`phpunit/phpunit:^10.0.0`](https://github.com/sebastianbergmann/phpunit/tree/10.0.0)
+- [`phpunit/phpunit:^11.0.0`](https://github.com/sebastianbergmann/phpunit/tree/11.0.0)
 
 ## Installation
 
@@ -214,10 +215,12 @@ The following example configures the maximum count of slow tests to three, and t
 To configure the extension when using
 
 - `phpunit/phpunit:^10.0.0`
+- `phpunit/phpunit:^11.0.0`
 
 adjust your `phpunit.xml` configuration file and configure one or more
 
 - [`parameter` elements](https://docs.phpunit.de/en/10.5/configuration.html#the-parameter-element) on [`phpunit/phpunit:^10.0.0`](https://docs.phpunit.de/en/10.5/)
+- [`parameter` elements](https://docs.phpunit.de/en/11.0/configuration.html#the-parameter-element) on [`phpunit/phpunit:^11.0.0`](https://docs.phpunit.de/en/11.0/)
 
 The following example configures the maximum count of slow tests to three, and the maximum duration for all tests to 250 milliseconds:
 
@@ -248,6 +251,7 @@ You can configure the maximum duration for a single test case with
 
 - an `Attribute\MaximumDuration` attribute when using
   - `phpunit/phpunit:^10.0.0`
+  - `phpunit/phpunit:^11.0.0`
 - a `@maximumDuration` annotation in the DocBlock when using
   - `phpunit/phpunit:^7.5.0`
   - `phpunit/phpunit:^8.5.19`
@@ -376,6 +380,7 @@ When phpunit/phpunit invokes `PHPUnit\Framework\TestCase::runBare()`, it will in
 When using
 
 - `phpunit/phpunit:^10.0.0`
+- `phpunit/phpunit:^11.0.0`
 
 the extension uses the new event system of `phpunit/phpunit`.
 

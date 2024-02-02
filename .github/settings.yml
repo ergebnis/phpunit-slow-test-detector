@@ -49,8 +49,10 @@ branches:
           - context: "Tests (10.0.0, 8.2, lowest)"
           - context: "Tests (10.0.0, 8.3, highest)"
           - context: "Tests (10.0.0, 8.3, lowest)"
-          - context: "Tests (11.0.x-dev, 8.2, highest)"
-          - context: "Tests (11.0.x-dev, 8.3, highest)"
+          - context: "Tests (11.0.0, 8.2, lowest)"
+          - context: "Tests (11.0.0, 8.2, highest)"
+          - context: "Tests (11.0.0, 8.3, highest)"
+          - context: "Tests (11.0.0, 8.3, lowest)"
         strict: false
       restrictions:
 
