@@ -396,37 +396,22 @@ When phpunit/phpunit invokes `PHPUnit\Framework\TestCase::runBare()`, it will in
 
 - [`PHPUnit\Framework\TestCase::tearDownAfterClass()` and methods annotated with `@afterClass`](https://github.com/sebastianbergmann/phpunit/blob/8.5.19/src/Framework/TestCase.php#L1138-L1142)
 
-> [!NOTE]
-> Because of this behavior, the measured test durations can and will vary depending on the order in which `phpunit/phpunit` executes tests.
-
 ### Understanding measured test durations when using  `phpunit/phpunit:^10.0.0`
 
-When using `phpunit/phpunit:^10.0.0`, the extension uses the new event system of `phpunit/phpunit`.
-
-The new event system supports a wide range of events that `phpunit/phpunit` emits during the execution of tests.
-
-When the extension uses the new event system, it uses and subscribes to the [`PHPUnit\Event\Test\PreparationStarted`](https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Event/Events/Test/Lifecycle/PreparationStarted.php#L22-L50) and [`PHPUnit\Event\Test\Finished`](https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Event/Events/Test/Lifecycle/Finished.php#L22-L57) events and measures the duration between the points in time when `phpunit/phpunit` emits the former and the latter.
-
-When `phpunit/phpunit` invokes `PHPUnit\Framework\TestCase::runBare()`, it will invoke the following methods before the first test method in the class:
-
-- [`PHPUnit\Framework\TestCase::setUpBeforeClass()` and methods annotated with `@beforeClass`](https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Framework/TestCase.php#L602-L604)
-
-When `phpunit/phpunit` invokes `PHPUnit\Framework\TestCase::runBare()`, it will invoke the following methods before every test method in the class:
+The duration of each test is the time spent in [`PHPUnit\Framework\TestCase::runBare()`](https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Framework/TestCase.php#L581-L711) method where the following test methods are executed:
 
 - [`PHPUnit\Framework\TestCase::setUp()` and methods annotated with `@before`](https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Framework/TestCase.php#L611)
 - [`PHPUnit\Framework\TestCase::assertPreConditions()`](https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Framework/TestCase.php#L612)
-
-When `phpunit/phpunit` invokes `PHPUnit\Framework\TestCase::runBare()`, it will invoke the following methods after every test method in the class:
-
+- [`PHPUnit\Framework\TestCase::runTest()`](https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Framework/TestCase.php#L1016)
 - [`PHPUnit\Framework\TestCase::assertPostConditions()`](https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Framework/TestCase.php#L622)
 - [`PHPUnit\Framework\TestCase::tearDown()` and methods annotated with `@after`](https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Framework/TestCase.php#L680)
 
-When phpunit/phpunit invokes `PHPUnit\Framework\TestCase::runBare()`, it will invoke the following methods after the last test method in the class:
+When `phpunit/phpunit` process isolation for a given test is enabled, the following test class methods are measured too:
 
+- [`PHPUnit\Framework\TestCase::setUpBeforeClass()` and methods annotated with `@beforeClass`](https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Framework/TestCase.php#L603)
 - [`PHPUnit\Framework\TestCase::tearDownAfterClass()` and methods annotated with `@afterClass`](https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Framework/TestCase.php#L683)
 
-> [!NOTE]
-> Because of this behavior, the measured test durations can and will vary depending on the order in which `phpunit/phpunit` executes tests.
+The extension relies on [`PHPUnit\Event\Test\PreparationStarted`](https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Event/Events/Test/Lifecycle/PreparationStarted.php#L22-L50) and [`PHPUnit\Event\Test\Finished`](https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Event/Events/Test/Lifecycle/Finished.php#L22-L57) events and measures the duration between the former and the latter event is emit by `phpunit/phpunit` for each test.
 
 ## Changelog
 
