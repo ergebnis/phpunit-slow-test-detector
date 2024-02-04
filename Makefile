@@ -32,7 +32,7 @@ phar: phive ## Builds a phar with humbug/box
 
 .PHONY: phive
 phive: .phive ## Installs dependencies with phive
-	PHIVE_HOME=.build/phive phive install --trust-gpg-keys=0x2DF45277AEF09A2F,0x033E5F8D801A2F8D
+	PHIVE_HOME=.build/phive phive install --trust-gpg-keys 0x2DF45277AEF09A2F,0x033E5F8D801A2F8D
 
 .PHONY: refactoring
 refactoring: vendor ## Runs automated refactoring with rector/rector
