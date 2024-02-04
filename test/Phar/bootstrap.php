@@ -12,5 +12,3 @@ declare(strict_types=1);
  */
 
 require_once __DIR__ . '/../Fixture/Sleeper.php';
-
-require_once __DIR__ . '/../Util/Helper.php';
