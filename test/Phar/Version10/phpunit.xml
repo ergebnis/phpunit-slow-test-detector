@@ -16,7 +16,7 @@
     displayDetailsOnTestsThatTriggerNotices="true"
     displayDetailsOnTestsThatTriggerWarnings="true"
     executionOrder="random"
-    extensionsDirectory="../../.build/phar/"
+    extensionsDirectory="../../../.build/phar/"
     stopOnError="false"
     stopOnFailure="false"
     stopOnIncomplete="false"

@@ -27,7 +27,7 @@ phar: phive ## Builds a phar with humbug/box
 	.phive/box compile --config=box.json
 	git checkout HEAD -- composer.json composer.lock
 	.phive/box info .build/phar/phpunit-slow-test-detector.phar --list
-	.phive/phpunit --configuration=test/Phar/phpunit.xml
+	.phive/phpunit --configuration=test/Phar/Version10/phpunit.xml
 
 .PHONY: phive
 phive: .phive ## Installs dependencies with phive

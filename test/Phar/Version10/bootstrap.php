@@ -11,4 +11,4 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-require_once __DIR__ . '/../Fixture/Sleeper.php';
+require_once __DIR__ . '/../../Fixture/Sleeper.php';
