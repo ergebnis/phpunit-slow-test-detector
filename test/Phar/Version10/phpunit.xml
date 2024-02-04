@@ -28,6 +28,7 @@
     <testsuites>
         <testsuite name="Unit Tests">
             <directory>.</directory>
+            <exclude>vendor/</exclude>
         </testsuite>
     </testsuites>
 </phpunit>

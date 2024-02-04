@@ -27,11 +27,12 @@ phar: phive ## Builds a phar with humbug/box
 	.phive/box compile --config=box.json
 	git checkout HEAD -- composer.json composer.lock
 	.phive/box info .build/phar/phpunit-slow-test-detector.phar --list
-	.phive/phpunit --configuration=test/Phar/Version10/phpunit.xml
+	composer install --no-interaction --no-progress --working-dir=test/Phar/Version10/
+	test/Phar/Version10/vendor/bin/phpunit --configuration=test/Phar/Version10/phpunit.xml
 
 .PHONY: phive
 phive: .phive ## Installs dependencies with phive
-	PHIVE_HOME=.build/phive phive install --trust-gpg-keys 0x2DF45277AEF09A2F,0x033E5F8D801A2F8D,0x4AA394086372C20A
+	PHIVE_HOME=.build/phive phive install --trust-gpg-keys=0x2DF45277AEF09A2F,0x033E5F8D801A2F8D
 
 .PHONY: refactoring
 refactoring: vendor ## Runs automated refactoring with rector/rector
