@@ -221,7 +221,7 @@ jobs:
         run: ".phive/box info ${{ env.PHPUNIT_SLOW_TEST_DETECTOR_PHAR }} --ansi --list"
 
       - name: "Run phar tests with phpunit/phpunit"
-        run: ".phive/phpunit --colors=always --configuration=test/Phar/phpunit.xml"
+        run: ".phive/phpunit --colors=always --configuration=test/Phar/Version10/phpunit.xml"
 
   dependency-analysis:
     name: "Dependency Analysis"

@@ -11,7 +11,7 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Phar;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Phar\Version10;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
