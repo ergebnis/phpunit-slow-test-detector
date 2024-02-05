@@ -111,11 +111,13 @@ adjust your `phpunit.xml` configuration file and configure the
 
 To bootstrap the extension as a PHAR when using
 
+- `phpunit/phpunit:^7.5.0`
 - `phpunit/phpunit:^8.5.19`
 - `phpunit/phpunit:^9.0.0`
 
 adjust your `phpunit.xml` configuration file and configure the
 
+- [`extensionsDirectory` attribute](https://docs.phpunit.de/en/7.5/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/7.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^7.5.0`](https://docs.phpunit.de/en/7.5/)
 - [`extensionsDirectory` attribute](https://docs.phpunit.de/en/8.5/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/8.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^8.5.19`](https://docs.phpunit.de/en/8.5/)
 - [`extensionsDirectory` attribute](https://docs.phpunit.de/en/9.6/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/9.6/configuration.html#the-extensions-element) on [`phpunit/phpunit:^9.0.0`](https://docs.phpunit.de/en/9.5/)
 
