@@ -220,14 +220,13 @@ jobs:
       - name: "Show info about phpunit-slow-test-detector.phar with humbug/box"
         run: ".phive/box info ${{ env.PHPUNIT_SLOW_TEST_DETECTOR_PHAR }} --ansi --list"
 
-      - name: "Install ${{ matrix.dependencies }} dependencies for running phar tests with composer"
-        uses: "ergebnis/.github/actions/composer/install@1.9.0"
+      - name: "Upload Phar"
+        uses: "actions/upload-artifact@v4.3.0"
         with:
-          dependencies: "${{ matrix.dependencies }}"
-          working-directory: "test/Phar/Version10/"
-
-      - name: "Run phar tests with phpunit/phpunit"
-        run: "test/Phar/Version10/vendor/bin/phpunit --colors=always --configuration=test/Phar/Version10/phpunit.xml"
+          name: "phpunit-slow-test-detector-phar"
+          overwrite: true
+          path: "${{ env.PHPUNIT_SLOW_TEST_DETECTOR_PHAR }}"
+          retention-days: 1
 
   dependency-analysis:
     name: "Dependency Analysis"
@@ -451,6 +450,9 @@ jobs:
 
     timeout-minutes: 5
 
+    needs:
+      - "compile-phar"
+
     strategy:
       fail-fast: false
       matrix:
@@ -509,6 +511,9 @@ jobs:
           - phpunit-version: "11.0.x-dev"
             php-version: "8.3"
             dependencies: "highest"
+
+    env:
+      PHPUNIT_SLOW_TEST_DETECTOR_PHAR: ".build/phar/phpunit-slow-test-detector.phar"
 
     steps:
       - name: "Checkout"
@@ -591,3 +596,21 @@ jobs:
       - name: "Run end-to-end tests with phpunit/phpunit:11.0.x-dev"
         if: "matrix.phpunit-version == '11.0.x-dev'"
         run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version11/phpunit.xml"
+
+      - name: "Download Phar"
+        if: "matrix.phpunit-version == '10.0.0'"
+        uses: "actions/download-artifact@v4.1.1"
+        with:
+          name: "phpunit-slow-test-detector-phar"
+          path: "${{ env.PHPUNIT_SLOW_TEST_DETECTOR_PHAR }}"
+
+      - name: "Install ${{ matrix.dependencies }} dependencies for running phar tests with composer"
+        if: "matrix.phpunit-version == '10.0.0'"
+        uses: "ergebnis/.github/actions/composer/install@1.9.0"
+        with:
+          dependencies: "${{ matrix.dependencies }}"
+          working-directory: "test/Phar/Version10/"
+
+      - name: "Run phar tests with phpunit/phpunit:10.0.0"
+        if: "matrix.phpunit-version == '10.0.0'"
+        run: "test/Phar/Version10/vendor/bin/phpunit --colors=always --configuration=test/Phar/Version10/phpunit.xml"
