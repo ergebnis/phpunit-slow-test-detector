@@ -31,19 +31,11 @@ Run
 composer require --dev ergebnis/phpunit-slow-test-detector
 ```
 
-to install `ergebnis/phpunit-slow-test-detector` as a `composer` package when using
-
-- `phpunit/phpunit:^7.5.0`
-- `phpunit/phpunit:^8.5.19`
-- `phpunit/phpunit:^9.0.0`
-- `phpunit/phpunit:^10.0.0`
+to install `ergebnis/phpunit-slow-test-detector` as a `composer` package.
 
 ### Installation as Phar
 
-Download `phpunit-slow-test-detector.phar` from the [latest release](https://github.com/ergebnis/phpunit-slow-test-detector/releases/latest) when using
-
-- `phpunit/phpunit:^9.0.0`
-- `phpunit/phpunit:^10.0.0`
+Download `phpunit-slow-test-detector.phar` from the [latest release](https://github.com/ergebnis/phpunit-slow-test-detector/releases/latest).
 
 ## Usage
 
