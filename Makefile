@@ -27,8 +27,6 @@ phar: phive ## Builds a phar with humbug/box
 	.phive/box compile --config=box.json
 	git checkout HEAD -- composer.json composer.lock
 	.phive/box info .build/phar/phpunit-slow-test-detector.phar --list
-	composer install --no-interaction --no-progress --working-dir=test/Phar/Version10/
-	test/Phar/Version10/vendor/bin/phpunit --configuration=test/Phar/Version10/phpunit.xml
 
 .PHONY: phive
 phive: .phive ## Installs dependencies with phive
@@ -53,13 +51,14 @@ static-code-analysis-baseline: vendor ## Generates a baseline for static code an
 	vendor/bin/psalm --config=psalm.xml --set-baseline=psalm-baseline.xml
 
 .PHONY: tests
-tests: ## Runs unit and end-to-end tests with phpunit/phpunit
+tests: phar ## Runs unit, end-to-end, and phar tests with phpunit/phpunit
 	composer config platform.php --unset; composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --dev --no-interaction --quiet; composer require phpunit/phpunit:^7.5.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/Unit/phpunit.xml; git checkout HEAD -- composer.json composer.lock
 	composer config platform.php --unset; composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --dev --no-interaction --quiet; composer require phpunit/phpunit:^7.5.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/EndToEnd/Version07/phpunit.xml; git checkout HEAD -- composer.json composer.lock
 	composer config platform.php --unset; composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --dev --no-interaction --quiet; composer require phpunit/phpunit:^8.5.19 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/EndToEnd/Version08/phpunit.xml; git checkout HEAD -- composer.json composer.lock
 	composer config platform.php --unset; composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --dev --no-interaction --quiet; composer require phpunit/phpunit:^9.0.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/EndToEnd/Version09/phpunit.xml; git checkout HEAD -- composer.json composer.lock
 	composer config platform.php --unset; composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --dev --no-interaction --quiet; composer require phpunit/phpunit:^10.0.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/EndToEnd/Version10/phpunit.xml; git checkout HEAD -- composer.json composer.lock
 	composer config platform.php --unset; composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --dev --no-interaction --quiet; composer require phpunit/phpunit:11.0.x-dev --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/EndToEnd/Version11/phpunit.xml; git checkout HEAD -- composer.json composer.lock
+	composer config platform.php --unset; composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --dev --no-interaction --quiet; composer require phpunit/phpunit:^10.0.0 --no-interaction --quiet --update-with-all-dependencies; composer install --no-autoloader --no-interaction --quiet; vendor/bin/phpunit --configuration=test/Phar/Version10/phpunit.xml; git checkout HEAD -- composer.json composer.lock
 
 vendor: composer.json composer.lock
 	composer validate --strict
