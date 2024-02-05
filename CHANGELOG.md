@@ -11,7 +11,7 @@ For a full diff see [`2.9.0...main`][2.9.0...main].
 ### Changed
 
 - Added support for using `phpunit-slow-test-detector.phar` with `phpunit/phpunit:^9.0.0` ([#491]), by [@localheinz]
-- Added support for using `phpunit-slow-test-detector.phar` with `phpunit/phpunit:^8.0.0` ([#494]), by [@localheinz]
+- Added support for using `phpunit-slow-test-detector.phar` with `phpunit/phpunit:^8.5.19` ([#494]), by [@localheinz]
 
 ## [`2.9.0`][2.9.0]
 
