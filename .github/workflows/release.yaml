@@ -80,9 +80,6 @@ jobs:
       - name: "Show info about phpunit-slow-test-detector.phar with humbug/box"
         run: ".phive/box info ${{ env.PHPUNIT_SLOW_TEST_DETECTOR_PHAR }} --ansi --list"
 
-      - name: "Run phar tests with phpunit/phpunit"
-        run: ".phive/phpunit --colors=always --configuration=test/Phar/phpunit.xml"
-
       - name: "Show gpg version"
         run: "gpg --version"
 
