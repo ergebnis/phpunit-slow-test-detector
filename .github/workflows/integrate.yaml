@@ -598,7 +598,7 @@ jobs:
         run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version11/phpunit.xml"
 
       - name: "Download Phar"
-        if: "matrix.phpunit-version == '10.0.0'"
+        if: "matrix.phpunit-version == '9.0.0' || matrix.phpunit-version == '10.0.0'"
         uses: "actions/download-artifact@v4.1.1"
         with:
           name: "phpunit-slow-test-detector-phar"
@@ -606,6 +606,10 @@ jobs:
 
       - name: "Remove autoloader for composer"
         run: "composer install --ansi --no-autoloader --no-interaction"
+
+      - name: "Run phar tests with phpunit/phpunit:9.0.0"
+        if: "matrix.phpunit-version == '9.0.0'"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/Phar/Version09/phpunit.xml"
 
       - name: "Run phar tests with phpunit/phpunit:10.0.0"
         if: "matrix.phpunit-version == '10.0.0'"

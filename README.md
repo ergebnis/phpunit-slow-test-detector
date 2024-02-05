@@ -35,7 +35,7 @@ to install `ergebnis/phpunit-slow-test-detector` as a `composer` package when us
 
 ### Installation as Phar
 
-Download `phpunit-slow-test-detector.phar` from the [latest release](https://github.com/ergebnis/phpunit-slow-test-detector/releases/latest) when using `phpunit/phpunit:^10.0.0`.
+Download `phpunit-slow-test-detector.phar` from the [latest release](https://github.com/ergebnis/phpunit-slow-test-detector/releases/latest) when using `phpunit/phpunit:^9.0.0` or `phpunit/phpunit:^10.0.0`.
 
 ## Usage
 
@@ -106,6 +106,27 @@ To bootstrap the extension as a `composer` package when using `phpunit/phpunit:^
  </phpunit>
 ```
 
+### Bootstrapping the extension as a PHAR when using `phpunit/phpunit:^10.0.0`
+
+To bootstrap the extension as a PHAR when using `phpunit/phpunit:^9.0.0`, adjust your `phpunit.xml` configuration file and configure the [`extensionsDirectory` attribute](https://docs.phpunit.de/en/9.6/configuration.html#the-extensionsdirectory-attribute) of the [`<phpunit>` element](https://docs.phpunit.de/en/9.6/configuration.html#the-phpunit-element):
+
+```diff
+ <phpunit
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+     bootstrap="vendor/autoload.php"
++    extensionsDirectory="directory/where/you/saved/the/extension/phars"
+ >
++    <extensions>
++        <extension class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
++    </extensions>
+     <testsuites>
+         <testsuite name="unit">
+             <directory>test/Unit/</directory>
+         </testsuite>
+     </testsuites>
+ </phpunit>
+```
 ### Bootstrapping the extension as a `composer` package when using `phpunit/phpunit:^10.0.0`
 
 To bootstrap the extension as a `composer` package when using `phpunit/phpunit:^10.0.0`, adjust your `phpunit.xml` configuration file and configure the [`extensions` element](https://docs.phpunit.de/en/10.5/configuration.html#the-extensions-element):
