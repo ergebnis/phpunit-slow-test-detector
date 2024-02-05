@@ -78,10 +78,12 @@ adjust your `phpunit.xml` configuration file and configure the
 To bootstrap the extension as a `composer` package when using
 
 - `phpunit/phpunit:^10.0.0`
+- `phpunit/phpunit:^11.0.0`
 
 adjust your `phpunit.xml` configuration file and configure the
 
 - [`extensions` element](https://docs.phpunit.de/en/10.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^10.0.0`](https://docs.phpunit.de/en/10.5/)
+- [`extensions` element](https://docs.phpunit.de/en/11.0/configuration.html#the-extensions-element) on [`phpunit/phpunit:^11.0.0`](https://docs.phpunit.de/en/11.0/)
 
 ```diff
  <phpunit
@@ -135,10 +137,12 @@ adjust your `phpunit.xml` configuration file and configure the
 To bootstrap the extension as a PHAR when using
 
 - `phpunit/phpunit:^10.0.0`
+- `phpunit/phpunit:^11.0.0`
 
 adjust your `phpunit.xml` configuration file and configure the
 
-- [`extensions` element](https://docs.phpunit.de/en/10.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^10.0.0`](https://docs.phpunit.de/en/10.5/)
+- [`extensionsDirectory` attribute](https://docs.phpunit.de/en/10.5/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/10.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^10.0.0`](https://docs.phpunit.de/en/10.5/)
+- [`extensionsDirectory` attribute](https://docs.phpunit.de/en/11.0/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/11.0/configuration.html#the-extensions-element) on [`phpunit/phpunit:^11.0.0`](https://docs.phpunit.de/en/11.0/)
 
 ```diff
  <phpunit
