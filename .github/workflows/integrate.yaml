@@ -605,7 +605,7 @@ jobs:
           path: "${{ env.PHPUNIT_SLOW_TEST_DETECTOR_PHAR }}"
 
       - name: "Remove autoloader for composer"
-        run: "composer install --ansi --no-autoloader --no-interaction"
+        run: "rm -rf vendor/autoload.php"
 
       - name: "Run phar tests with phpunit/phpunit:10.0.0"
         if: "matrix.phpunit-version == '10.0.0'"
