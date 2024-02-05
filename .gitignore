@@ -1,6 +1,5 @@
 /.build/
 /.note/
 /.phive/
-/test/Phar/Version10/vendor/
 /vendor/
 !/.phive/phars.xml

@@ -604,13 +604,9 @@ jobs:
           name: "phpunit-slow-test-detector-phar"
           path: "${{ env.PHPUNIT_SLOW_TEST_DETECTOR_PHAR }}"
 
-      - name: "Install ${{ matrix.dependencies }} dependencies for running phar tests with composer"
-        if: "matrix.phpunit-version == '10.0.0'"
-        uses: "ergebnis/.github/actions/composer/install@1.9.0"
-        with:
-          dependencies: "${{ matrix.dependencies }}"
-          working-directory: "test/Phar/Version10/"
+      - name: "Remove autoloader for composer"
+        run: "composer install --ansi --no-autoloader --no-interaction"
 
       - name: "Run phar tests with phpunit/phpunit:10.0.0"
         if: "matrix.phpunit-version == '10.0.0'"
-        run: "test/Phar/Version10/vendor/bin/phpunit --colors=always --configuration=test/Phar/Version10/phpunit.xml"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/Phar/Version10/phpunit.xml"
