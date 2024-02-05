@@ -22,8 +22,8 @@ help: ## Displays this list of targets with descriptions
 .PHONY: phar
 phar: phive ## Builds a phar with humbug/box
 	.phive/box validate box.json
-	composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --dev --no-interaction --no-progress
-	composer remove phpunit/phpunit --no-interaction --no-progress
+	composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --dev --no-interaction --quiet
+	composer remove phpunit/phpunit --no-interaction --quiet
 	.phive/box compile --config=box.json
 	git checkout HEAD -- composer.json composer.lock
 	.phive/box info .build/phar/phpunit-slow-test-detector.phar --list
