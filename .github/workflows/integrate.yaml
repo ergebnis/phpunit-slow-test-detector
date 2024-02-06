@@ -277,7 +277,7 @@ jobs:
         run: ".phive/box info ${{ env.PHPUNIT_SLOW_TEST_DETECTOR_PHAR }} --ansi --list"
 
       - name: "Upload Phar"
-        uses: "actions/upload-artifact@v4.3.0"
+        uses: "actions/upload-artifact@v4.3.1"
         with:
           name: "phpunit-slow-test-detector-phar"
           overwrite: true
