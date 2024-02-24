@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Version;
 
-use Ergebnis\DataProvider;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\Version;
 use PHPUnit\Framework;
@@ -26,7 +25,7 @@ final class MajorTest extends Framework\TestCase
     use Test\Util\Helper;
 
     /**
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero
+     * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::lessThanZero
      */
     public function testFromIntRejectsInvalidValue(int $value): void
     {
@@ -40,8 +39,8 @@ final class MajorTest extends Framework\TestCase
     }
 
     /**
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::greaterThanZero
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::zero
+     * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::greaterThanZero
+     * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::zero
      */
     public function testFromStringReturnsMajor(int $value): void
     {

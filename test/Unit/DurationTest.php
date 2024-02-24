@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit;
 
-use Ergebnis\DataProvider;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
@@ -31,7 +30,7 @@ final class DurationTest extends Framework\TestCase
     use Test\Util\Helper;
 
     /**
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero
+     * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::lessThanZero
      */
     public function testFromSecondsAndNanosecondsRejectsSecondsLessThanZero(int $seconds): void
     {
@@ -46,7 +45,7 @@ final class DurationTest extends Framework\TestCase
     }
 
     /**
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero
+     * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::lessThanZero
      */
     public function testFromSecondsAndNanosecondsRejectsNanosecondsLessThanZero(int $nanoseconds): void
     {
@@ -61,7 +60,7 @@ final class DurationTest extends Framework\TestCase
     }
 
     /**
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::greaterThanOne
+     * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::greaterThanOne
      */
     public function testFromSecondsAndNanosecondsRejectsNanosecondsGreaterThan999999999(int $offset): void
     {
@@ -93,7 +92,7 @@ final class DurationTest extends Framework\TestCase
     }
 
     /**
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero
+     * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::lessThanZero
      */
     public function testFromMillisecondsRejectsInvalidValue(int $milliseconds): void
     {
