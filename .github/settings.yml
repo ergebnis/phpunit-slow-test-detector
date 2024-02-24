@@ -17,7 +17,7 @@ branches:
           - context: "Code Coverage (7.5.0, 7.4, highest)"
           - context: "Coding Standards (7.4, locked)"
           - context: "Dependency Analysis (7.4, locked)"
-          - context: "Phar (8.1, locked)"
+          - context: "Phar (7.4, locked)"
           - context: "Refactoring (7.4, locked)"
           - context: "Security Analysis (7.4, locked)"
           - context: "Static Code Analysis (7.4, locked)"
