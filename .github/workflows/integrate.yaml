@@ -214,7 +214,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.1"
+          - "7.4"
 
         dependencies:
           - "locked"
