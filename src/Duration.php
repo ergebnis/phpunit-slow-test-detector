@@ -18,8 +18,8 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
  */
 final class Duration
 {
-    private int $nanoseconds;
     private int $seconds;
+    private int $nanoseconds;
 
     private function __construct(
         int $seconds,
