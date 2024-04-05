@@ -34,7 +34,7 @@
     "ergebnis/php-cs-fixer-config": "^6.25.1",
     "fakerphp/faker": "^1.23.1",
     "psalm/plugin-phpunit": "~0.18.4",
-    "rector/rector": "^1.0.3",
+    "rector/rector": "^1.0.4",
     "vimeo/psalm": "^5.23.1"
   },
   "minimum-stability": "dev",
