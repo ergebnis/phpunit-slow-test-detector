@@ -37,6 +37,8 @@ branches:
           - context: "Tests (8.5.19, 8.2, lowest)"
           - context: "Tests (8.5.19, 8.3, highest)"
           - context: "Tests (8.5.19, 8.3, lowest)"
+          - context: "Tests (9.0.0, 7.3, highest)"
+          - context: "Tests (9.0.0, 7.3, lowest)"
           - context: "Tests (9.0.0, 7.4, highest)"
           - context: "Tests (9.0.0, 7.4, lowest)"
           - context: "Tests (9.0.0, 8.0, highest)"
