@@ -41,6 +41,7 @@ final class ColorTest extends Framework\TestCase
         $expected = <<<TXT
 \e[2m{$output}\e[22m
 TXT;
+
         self::assertSame($expected, Console\Color::dim($output));
     }
 }

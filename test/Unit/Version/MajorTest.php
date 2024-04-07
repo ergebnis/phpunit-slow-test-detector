@@ -33,7 +33,7 @@ final class MajorTest extends Framework\TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(\sprintf(
             'Value "%d" does not appear to be a valid value for a major version.',
-            $value,
+            $value
         ));
 
         Version\Major::fromInt($value);

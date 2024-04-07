@@ -48,7 +48,7 @@ final class SleeperTest extends Framework\TestCase
         $values = \range(
             600,
             1600,
-            100,
+            100
         );
 
         foreach ($values as $value) {

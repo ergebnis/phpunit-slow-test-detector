@@ -22,7 +22,7 @@ final class InvalidSeconds extends \InvalidArgumentException
     {
         return new self(\sprintf(
             'Value should be greater than 0, but %d is not.',
-            $value,
+            $value
         ));
     }
 
@@ -30,7 +30,7 @@ final class InvalidSeconds extends \InvalidArgumentException
     {
         return new self(\sprintf(
             'Value should be greater than or equal to 0, but %d is not.',
-            $value,
+            $value
         ));
     }
 }

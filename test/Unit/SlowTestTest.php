@@ -40,7 +40,7 @@ final class SlowTestTest extends Framework\TestCase
         $slowTest = SlowTest::create(
             $testIdentifier,
             $duration,
-            $maximumDuration,
+            $maximumDuration
         );
 
         self::assertSame($testIdentifier, $slowTest->testIdentifier());

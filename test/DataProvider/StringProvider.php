@@ -98,10 +98,10 @@ final class StringProvider extends AbstractProvider
             \array_map(static function (string $key): string {
                 return \sprintf(
                     'string-blank-%s',
-                    $key,
+                    $key
                 );
             }, \array_keys($whitespaceCharacters)),
-            $whitespaceCharacters,
+            $whitespaceCharacters
         );
 
         $emptyValues = [
@@ -112,7 +112,7 @@ final class StringProvider extends AbstractProvider
             \array_map(static function (string $key): string {
                 return \sprintf(
                     'string-untrimmed-%s',
-                    $key,
+                    $key
                 );
             }, \array_keys($whitespaceCharacters)),
             \array_map(static function (string $whitespaceCharacter) use ($faker): string {
@@ -120,22 +120,22 @@ final class StringProvider extends AbstractProvider
                     '%s%s%s',
                     \str_repeat(
                         $whitespaceCharacter,
-                        $faker->numberBetween(1, 5),
+                        $faker->numberBetween(1, 5)
                     ),
                     $faker->word(),
                     \str_repeat(
                         $whitespaceCharacter,
-                        $faker->numberBetween(1, 5),
-                    ),
+                        $faker->numberBetween(1, 5)
+                    )
                 );
-            }, $whitespaceCharacters),
+            }, $whitespaceCharacters)
         );
 
         $withWhitespaceValues = \array_combine(
             \array_map(static function (string $key): string {
                 return \sprintf(
                     'string-with-whitespace-%s',
-                    $key,
+                    $key
                 );
             }, \array_keys($whitespaceCharacters)),
             \array_map(static function (string $whitespaceCharacter) use ($faker): string {
@@ -144,9 +144,9 @@ final class StringProvider extends AbstractProvider
 
                 return \implode(
                     $whitespaceCharacter,
-                    $words,
+                    $words
                 );
-            }, $whitespaceCharacters),
+            }, $whitespaceCharacters)
         );
 
         return \array_merge(
@@ -154,7 +154,7 @@ final class StringProvider extends AbstractProvider
             $blankValues,
             $emptyValues,
             $untrimmedValues,
-            $withWhitespaceValues,
+            $withWhitespaceValues
         );
     }
 

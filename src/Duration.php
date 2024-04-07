@@ -57,13 +57,13 @@ final class Duration
         if ($maxNanoseconds < $nanoseconds) {
             throw Exception\InvalidNanoseconds::notLessThanOrEqualTo(
                 $nanoseconds,
-                $maxNanoseconds,
+                $maxNanoseconds
             );
         }
 
         return new self(
             $seconds,
-            $nanoseconds,
+            $nanoseconds
         );
     }
 
@@ -78,14 +78,14 @@ final class Duration
 
         $seconds = \intdiv(
             $milliseconds,
-            1000,
+            1000
         );
 
         $nanoseconds = ($milliseconds - $seconds * 1000) * 1000000;
 
         return new self(
             $seconds,
-            $nanoseconds,
+            $nanoseconds
         );
     }
 
@@ -107,13 +107,13 @@ final class Duration
         if (999999999 < $nanoseconds) {
             return new self(
                 $seconds + 1,
-                $nanoseconds - 1000000000,
+                $nanoseconds - 1000000000
             );
         }
 
         return new self(
             $seconds,
-            $nanoseconds,
+            $nanoseconds
         );
     }
 

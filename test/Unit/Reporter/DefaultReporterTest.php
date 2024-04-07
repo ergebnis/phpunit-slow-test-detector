@@ -43,7 +43,7 @@ final class DefaultReporterTest extends Framework\TestCase
         $reporter = new Reporter\DefaultReporter(
             new Formatter\DefaultDurationFormatter(),
             Duration::fromMilliseconds($faker->numberBetween(0)),
-            Count::fromInt($faker->numberBetween(1)),
+            Count::fromInt($faker->numberBetween(1))
         );
 
         $report = $reporter->report();
@@ -65,7 +65,7 @@ final class DefaultReporterTest extends Framework\TestCase
         $reporter = new Reporter\DefaultReporter(
             new Formatter\DefaultDurationFormatter(),
             $maximumDuration,
-            $maximumCount,
+            $maximumCount
         );
 
         $report = $reporter->report(...$slowTests);
@@ -84,14 +84,15 @@ final class DefaultReporterTest extends Framework\TestCase
 Detected 1 test where the duration exceeded the maximum duration.
 
 1. 0.300 (0.100) FooTest::test
-TXT,
+TXT
+                ,
                 Duration::fromMilliseconds(500),
                 Count::fromInt(1),
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         Duration::fromMilliseconds(300),
-                        Duration::fromMilliseconds(100),
+                        Duration::fromMilliseconds(100)
                     ),
                 ],
             ],
@@ -101,19 +102,20 @@ Detected 2 tests where the duration exceeded the maximum duration.
 
 1. 0.300 (0.100) FooTest::test
 2. 0.275 (0.100) BarTest::test
-TXT,
+TXT
+                ,
                 Duration::fromMilliseconds(500),
                 Count::fromInt(2),
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         Duration::fromMilliseconds(300),
-                        Duration::fromMilliseconds(100),
+                        Duration::fromMilliseconds(100)
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         Duration::fromMilliseconds(275),
-                        Duration::fromMilliseconds(100),
+                        Duration::fromMilliseconds(100)
                     ),
                 ],
             ],
@@ -124,24 +126,25 @@ Detected 3 tests where the duration exceeded the maximum duration.
 1. 0.300 (0.100) FooTest::test
 2. 0.275 (0.100) BarTest::test
 3. 0.250 (0.100) BazTest::test
-TXT,
+TXT
+                ,
                 Duration::fromMilliseconds(500),
                 Count::fromInt(3),
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         Duration::fromMilliseconds(300),
-                        Duration::fromMilliseconds(100),
+                        Duration::fromMilliseconds(100)
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         Duration::fromMilliseconds(275),
-                        Duration::fromMilliseconds(100),
+                        Duration::fromMilliseconds(100)
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
                         Duration::fromMilliseconds(250),
-                        Duration::fromMilliseconds(100),
+                        Duration::fromMilliseconds(100)
                     ),
                 ],
             ],
@@ -152,24 +155,25 @@ Detected 3 tests where the duration exceeded the maximum duration.
 1. 0.300 (0.100) FooTest::test
 2. 0.275 (0.100) BarTest::test
 3. 0.250 (0.100) BazTest::test
-TXT,
+TXT
+                ,
                 Duration::fromMilliseconds(500),
                 Count::fromInt(3),
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
                         Duration::fromMilliseconds(250),
-                        Duration::fromMilliseconds(100),
+                        Duration::fromMilliseconds(100)
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         Duration::fromMilliseconds(275),
-                        Duration::fromMilliseconds(100),
+                        Duration::fromMilliseconds(100)
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         Duration::fromMilliseconds(300),
-                        Duration::fromMilliseconds(100),
+                        Duration::fromMilliseconds(100)
                     ),
                 ],
             ],
@@ -187,59 +191,60 @@ Detected 10 tests where the duration exceeded the maximum duration.
  8.     0.130 (    0.100) GarplyTest::test
  9.     0.120 (    0.100) WaldoTest::test
 10.     0.110 (    0.100) FredTest::test
-TXT,
+TXT
+                ,
                 Duration::fromMilliseconds(500),
                 Count::fromInt(10),
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         Duration::fromMilliseconds(1250000),
-                        Duration::fromMilliseconds(1000000),
+                        Duration::fromMilliseconds(1000000)
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         Duration::fromMilliseconds(575000),
-                        Duration::fromMilliseconds(500000),
+                        Duration::fromMilliseconds(500000)
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
                         Duration::fromMilliseconds(250),
-                        Duration::fromMilliseconds(100),
+                        Duration::fromMilliseconds(100)
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('QuxTest::test'),
                         Duration::fromMilliseconds(200),
-                        Duration::fromMilliseconds(100),
+                        Duration::fromMilliseconds(100)
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('QuuxTest::test'),
                         Duration::fromMilliseconds(160),
-                        Duration::fromMilliseconds(100),
+                        Duration::fromMilliseconds(100)
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('CorgeTest::test'),
                         Duration::fromMilliseconds(150),
-                        Duration::fromMilliseconds(100),
+                        Duration::fromMilliseconds(100)
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('GraultTest::test'),
                         Duration::fromMilliseconds(140),
-                        Duration::fromMilliseconds(100),
+                        Duration::fromMilliseconds(100)
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('GarplyTest::test'),
                         Duration::fromMilliseconds(130),
-                        Duration::fromMilliseconds(100),
+                        Duration::fromMilliseconds(100)
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('WaldoTest::test'),
                         Duration::fromMilliseconds(120),
-                        Duration::fromMilliseconds(100),
+                        Duration::fromMilliseconds(100)
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('FredTest::test'),
                         Duration::fromMilliseconds(110),
-                        Duration::fromMilliseconds(100),
+                        Duration::fromMilliseconds(100)
                     ),
                 ],
             ],
@@ -250,19 +255,20 @@ Detected 2 tests where the duration exceeded the maximum duration.
 1. 0.300 (0.100) FooTest::test
 
 There is 1 additional slow test that is not listed here.
-TXT,
+TXT
+                ,
                 Duration::fromMilliseconds(500),
                 Count::fromInt(1),
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         Duration::fromMilliseconds(300),
-                        Duration::fromMilliseconds(100),
+                        Duration::fromMilliseconds(100)
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         Duration::fromMilliseconds(275),
-                        Duration::fromMilliseconds(100),
+                        Duration::fromMilliseconds(100)
                     ),
                 ],
             ],
@@ -273,24 +279,25 @@ Detected 3 tests where the duration exceeded the maximum duration.
 1. 0.300 (0.100) FooTest::test
 
 There are 2 additional slow tests that are not listed here.
-TXT,
+TXT
+                ,
                 Duration::fromMilliseconds(500),
                 Count::fromInt(1),
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         Duration::fromMilliseconds(300),
-                        Duration::fromMilliseconds(100),
+                        Duration::fromMilliseconds(100)
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         Duration::fromMilliseconds(275),
-                        Duration::fromMilliseconds(100),
+                        Duration::fromMilliseconds(100)
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
                         Duration::fromMilliseconds(250),
-                        Duration::fromMilliseconds(100),
+                        Duration::fromMilliseconds(100)
                     ),
                 ],
             ],

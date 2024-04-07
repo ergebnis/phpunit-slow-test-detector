@@ -22,7 +22,7 @@ final class InvalidCount extends \InvalidArgumentException
     {
         return new self(\sprintf(
             'Value should be greater than 0, but %d is not.',
-            $value,
+            $value
         ));
     }
 }

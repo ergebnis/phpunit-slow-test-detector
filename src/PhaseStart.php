@@ -42,7 +42,7 @@ final class PhaseStart
     ): self {
         return new self(
             $phaseIdentifier,
-            $startTime,
+            $startTime
         );
     }
 

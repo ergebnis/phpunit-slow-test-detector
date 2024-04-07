@@ -44,8 +44,8 @@ final class PreparationStartedSubscriber implements Event\Test\PreparationStarte
             PhaseIdentifier::fromString($event->test()->id()),
             Time::fromSecondsAndNanoseconds(
                 $time->seconds(),
-                $time->nanoseconds(),
-            ),
+                $time->nanoseconds()
+            )
         );
     }
 }

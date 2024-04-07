@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.11.0...main`][2.11.0...main].
 
+### Changed
+
+- Added support for PHP 7.2 ([#531]), by [@localheinz]
+
 ## [`2.11.0`][2.11.0]
 
 For a full diff see [`2.10.0...2.11.0`][2.10.0...2.11.0].
@@ -291,6 +295,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#491]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/491
 [#494]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/494
 [#495]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/495
+[#531]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/531
 
 [@HypeMC]: https://github.com/HypeMC
 [@localheinz]: https://github.com/localheinz
