@@ -3,6 +3,7 @@
   <file src="src/Extension.php">
     <DuplicateClass>
       <code><![CDATA[Extension]]></code>
+      <code><![CDATA[Extension]]></code>
     </DuplicateClass>
     <UnusedClass>
       <code><![CDATA[Extension]]></code>
@@ -103,6 +104,42 @@
       <code><![CDATA[trimmed]]></code>
       <code><![CDATA[untrimmed]]></code>
       <code><![CDATA[withWhitespace]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version06/TestCase/Combination/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[sleepWithAfterAnnotation]]></code>
+      <code><![CDATA[sleepWithAfterClassAnnotation]]></code>
+      <code><![CDATA[sleepWithBeforeAnnotation]]></code>
+      <code><![CDATA[sleepWithBeforeClassAnnotation]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version06/TestCase/WithAfterAnnotation/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[sleepWithAfterAnnotation]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version06/TestCase/WithAfterClassAnnotation/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[sleepWithAfterClassAnnotation]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version06/TestCase/WithBeforeAnnotation/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[sleepWithBeforeAnnotation]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version06/TestCase/WithBeforeClassAnnotation/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[sleepWithBeforeClassAnnotation]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version06/TestMethod/WithRunInSeparateProcessAnnotation/SleeperTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[sleepWithAfterAnnotation]]></code>
+      <code><![CDATA[sleepWithAfterClassAnnotation]]></code>
+      <code><![CDATA[sleepWithBeforeAnnotation]]></code>
+      <code><![CDATA[sleepWithBeforeClassAnnotation]]></code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/EndToEnd/Version07/TestCase/Combination/SleeperTest.php">

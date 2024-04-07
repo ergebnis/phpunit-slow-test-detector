@@ -30,6 +30,7 @@ $ruleSet = PhpCsFixer\Config\RuleSet\Php71::create()
     ->withHeader($license->header())
     ->withRules(PhpCsFixer\Config\Rules::fromArray([
         'mb_str_functions' => false,
+        'void_return' => false,
     ]));
 
 $config = PhpCsFixer\Config\Factory::fromRuleSet($ruleSet);

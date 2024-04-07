@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector;
 
+use PHPUnit\Framework;
 use PHPUnit\Runner;
 use PHPUnit\TextUI;
 use PHPUnit\Util;
@@ -24,6 +25,204 @@ try {
         'Unable to determine PHPUnit version from version series "%s".',
         Runner\Version::series()
     ));
+}
+
+if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
+    final class Extension implements Framework\TestListener
+    {
+        /**
+         * @var int
+         */
+        private $suites = 0;
+
+        /**
+         * @var Duration
+         */
+        private $maximumDuration;
+
+        /**
+         * @var Collector\Collector
+         */
+        private $collector;
+
+        /**
+         * @var Reporter\Reporter
+         */
+        private $reporter;
+
+        public function __construct(array $options = [])
+        {
+            $maximumCount = Count::fromInt(10);
+
+            if (\array_key_exists('maximum-count', $options)) {
+                $maximumCount = Count::fromInt((int) $options['maximum-count']);
+            }
+
+            $maximumDuration = Duration::fromMilliseconds(500);
+
+            if (\array_key_exists('maximum-duration', $options)) {
+                $maximumDuration = Duration::fromMilliseconds((int) $options['maximum-duration']);
+            }
+
+            $this->maximumDuration = $maximumDuration;
+            $this->collector = new Collector\DefaultCollector();
+            $this->reporter = new Reporter\DefaultReporter(
+                new Formatter\DefaultDurationFormatter(),
+                $maximumDuration,
+                $maximumCount
+            );
+        }
+
+        public function addError(
+            Framework\Test $test,
+            \Exception $e,
+            $time
+        ) {
+        }
+
+        public function addWarning(
+            Framework\Test $test,
+            Framework\Warning $e,
+            $time
+        ) {
+        }
+
+        public function addFailure(
+            Framework\Test $test,
+            Framework\AssertionFailedError $e,
+            $time
+        ) {
+        }
+
+        public function addIncompleteTest(
+            Framework\Test $test,
+            \Exception $e,
+            $time
+        ) {
+        }
+
+        public function addRiskyTest(
+            Framework\Test $test,
+            \Exception $e,
+            $time
+        ) {
+        }
+
+        public function addSkippedTest(
+            Framework\Test $test,
+            \Exception $e,
+            $time
+        ) {
+        }
+
+        public function startTestSuite(Framework\TestSuite $suite)
+        {
+            ++$this->suites;
+        }
+
+        public function endTestSuite(Framework\TestSuite $suite)
+        {
+            --$this->suites;
+
+            if (0 < $this->suites) {
+                return;
+            }
+
+            $slowTests = $this->collector->collected();
+
+            if ([] === $slowTests) {
+                return;
+            }
+
+            $report = $this->reporter->report(...$slowTests);
+
+            if ('' === $report) {
+                return;
+            }
+
+            echo <<<TXT
+
+
+{$report}
+TXT;
+        }
+
+        public function startTest(Framework\Test $test)
+        {
+        }
+
+        public function endTest(
+            Framework\Test $test,
+            $time
+        ) {
+            $seconds = (int) \floor($time);
+            $nanoseconds = (int) (($time - $seconds) * 1000000000);
+
+            $duration = Duration::fromSecondsAndNanoseconds(
+                $seconds,
+                $nanoseconds
+            );
+
+            $maximumDuration = $this->resolveMaximumDuration($test);
+
+            if (!$duration->isGreaterThan($maximumDuration)) {
+                return;
+            }
+
+            $testIdentifier = TestIdentifier::fromString(\sprintf(
+                '%s::%s',
+                \get_class($test),
+                $test->getName()
+            ));
+
+            $slowTest = SlowTest::create(
+                $testIdentifier,
+                $duration,
+                $maximumDuration
+            );
+
+            $this->collector->collect($slowTest);
+        }
+
+        private function resolveMaximumDuration(Framework\Test $test): Duration
+        {
+            $annotations = [
+                'maximumDuration',
+                'slowThreshold',
+            ];
+
+            $symbolAnnotations = Util\Test::parseTestMethodAnnotations(
+                \get_class($test),
+                $test->getName(false)
+            );
+
+            foreach ($annotations as $annotation) {
+                if (!\is_array($symbolAnnotations['method'])) {
+                    continue;
+                }
+
+                if (!\array_key_exists($annotation, $symbolAnnotations['method'])) {
+                    continue;
+                }
+
+                if (!\is_array($symbolAnnotations['method'][$annotation])) {
+                    continue;
+                }
+
+                $maximumDuration = \reset($symbolAnnotations['method'][$annotation]);
+
+                if (1 !== \preg_match('/^\d+$/', $maximumDuration)) {
+                    continue;
+                }
+
+                return Duration::fromMilliseconds((int) $maximumDuration);
+            }
+
+            return $this->maximumDuration;
+        }
+    }
+
+    return;
 }
 
 if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\Major::fromInt(8), Version\Major::fromInt(9))) {

@@ -457,7 +457,7 @@ jobs:
       fail-fast: false
       matrix:
         phpunit-version:
-          - "7.5.0"
+          - "6.5.0"
 
         php-version:
           - "7.1"
@@ -470,6 +470,38 @@ jobs:
           - "highest"
 
         include:
+          - phpunit-version: "7.5.0"
+            php-version: "7.1"
+            dependencies: "lowest"
+
+          - phpunit-version: "7.5.0"
+            php-version: "7.1"
+            dependencies: "highest"
+
+          - phpunit-version: "7.5.0"
+            php-version: "7.2"
+            dependencies: "lowest"
+
+          - phpunit-version: "7.5.0"
+            php-version: "7.2"
+            dependencies: "highest"
+
+          - phpunit-version: "7.5.0"
+            php-version: "7.3"
+            dependencies: "lowest"
+
+          - phpunit-version: "7.5.0"
+            php-version: "7.3"
+            dependencies: "highest"
+
+          - phpunit-version: "7.5.0"
+            php-version: "7.4"
+            dependencies: "lowest"
+
+          - phpunit-version: "7.5.0"
+            php-version: "7.4"
+            dependencies: "highest"
+
           - phpunit-version: "8.5.19"
             php-version: "7.2"
             dependencies: "lowest"
@@ -674,6 +706,10 @@ jobs:
           cd vendor/phpunit/phpunit
           wget -O gh-4486.patch https://github.com/sebastianbergmann/phpunit/commit/0a488f22925b3c8732338ef0fbfe7f13cb4cf1d2.patch
           patch -p1 < gh-4486.patch
+
+      - name: "Run end-to-end tests with phpunit/phpunit:6.5.0"
+        if: "matrix.phpunit-version == '6.5.0'"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version06/phpunit.xml"
 
       - name: "Run end-to-end tests with phpunit/phpunit:7.5.0"
         if: "matrix.phpunit-version == '7.5.0'"
