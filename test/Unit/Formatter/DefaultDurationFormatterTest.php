@@ -30,7 +30,7 @@ final class DefaultDurationFormatterTest extends Framework\TestCase
     public function testFormatFormats(
         Duration $duration,
         string $formattedDuration
-    ): void {
+    ) {
         $formatter = new Formatter\DefaultDurationFormatter();
 
         self::assertSame($formattedDuration, $formatter->format($duration));
@@ -100,7 +100,7 @@ final class DefaultDurationFormatterTest extends Framework\TestCase
             ],
         ];
 
-        foreach ($values as $key => [$duration, $formattedDuration]) {
+        foreach ($values as $key => list($duration, $formattedDuration)) {
             yield $key => [
                 $duration,
                 $formattedDuration,

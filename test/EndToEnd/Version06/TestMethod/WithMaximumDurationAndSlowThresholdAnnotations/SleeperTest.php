@@ -26,7 +26,7 @@ final class SleeperTest extends Framework\TestCase
      *
      * @slowThreshold 400
      */
-    public function testSleeperSleepsShorterThanMaximumDurationFromAnnotationWhenTestMethodHasMaximumDurationAndSlowThresholdAnnotations(): void
+    public function testSleeperSleepsShorterThanMaximumDurationFromAnnotationWhenTestMethodHasMaximumDurationAndSlowThresholdAnnotations()
     {
         $milliseconds = 50;
 
@@ -42,7 +42,7 @@ final class SleeperTest extends Framework\TestCase
      *
      * @slowThreshold 400
      */
-    public function testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasMaximumDurationAndSlowThresholdAnnotations(): void
+    public function testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasMaximumDurationAndSlowThresholdAnnotations()
     {
         $milliseconds = 300;
 

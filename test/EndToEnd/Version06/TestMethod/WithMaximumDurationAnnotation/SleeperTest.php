@@ -24,7 +24,7 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @maximumDuration 3.14
      */
-    public function testSleeperSleepsShorterThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidMaximumDurationAnnotation(): void
+    public function testSleeperSleepsShorterThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidMaximumDurationAnnotation()
     {
         $milliseconds = 10;
 
@@ -38,7 +38,7 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @maximumDuration 3.14
      */
-    public function testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidMaximumDurationAnnotation(): void
+    public function testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidMaximumDurationAnnotation()
     {
         $milliseconds = 200;
 
@@ -52,7 +52,7 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @maximumDuration 200
      */
-    public function testSleeperSleepsShorterThanMaximumDurationFromAnnotationWhenTestMethodHasValidMaximumDurationAnnotation(): void
+    public function testSleeperSleepsShorterThanMaximumDurationFromAnnotationWhenTestMethodHasValidMaximumDurationAnnotation()
     {
         $milliseconds = 10;
 
@@ -66,7 +66,7 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @maximumDuration 200
      */
-    public function testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasValidMaximumDurationAnnotation(): void
+    public function testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasValidMaximumDurationAnnotation()
     {
         $milliseconds = 300;
 

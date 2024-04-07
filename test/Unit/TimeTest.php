@@ -31,7 +31,7 @@ final class TimeTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testFromSecondsAndNanosecondsRejectsNegativeSeconds(): void
+    public function testFromSecondsAndNanosecondsRejectsNegativeSeconds()
     {
         $this->expectException(Exception\InvalidSeconds::class);
 
@@ -41,7 +41,7 @@ final class TimeTest extends Framework\TestCase
         );
     }
 
-    public function testFromSecondsAndNanosecondsRejectsNegativeNanoseconds(): void
+    public function testFromSecondsAndNanosecondsRejectsNegativeNanoseconds()
     {
         $this->expectException(Exception\InvalidNanoseconds::class);
 
@@ -51,7 +51,7 @@ final class TimeTest extends Framework\TestCase
         );
     }
 
-    public function testFromSecondsAndNanosecondsRejectsNanosecondsGreaterThan999999999(): void
+    public function testFromSecondsAndNanosecondsRejectsNanosecondsGreaterThan999999999()
     {
         $this->expectException(Exception\InvalidNanoseconds::class);
 
@@ -61,7 +61,7 @@ final class TimeTest extends Framework\TestCase
         );
     }
 
-    public function testFromSecondsAndNanosecondsReturnsTime(): void
+    public function testFromSecondsAndNanosecondsReturnsTime()
     {
         $faker = self::faker();
 
@@ -85,7 +85,7 @@ final class TimeTest extends Framework\TestCase
         int $startNanoseconds,
         int $endSeconds,
         int $endNanoseconds
-    ): void {
+    ) {
         $start = Time::fromSecondsAndNanoseconds(
             $startSeconds,
             $startNanoseconds
@@ -127,7 +127,7 @@ final class TimeTest extends Framework\TestCase
             ],
         ];
 
-        foreach ($values as $key => [$startSeconds, $startNanoseconds, $endSeconds, $endNanoseconds]) {
+        foreach ($values as $key => list($startSeconds, $startNanoseconds, $endSeconds, $endNanoseconds)) {
             yield $key => [
                 $startSeconds,
                 $startNanoseconds,
@@ -146,7 +146,7 @@ final class TimeTest extends Framework\TestCase
         int $endSeconds,
         int $endNanoseconds,
         Duration $duration
-    ): void {
+    ) {
         $start = Time::fromSecondsAndNanoseconds(
             $startSeconds,
             $startNanoseconds
@@ -198,7 +198,7 @@ final class TimeTest extends Framework\TestCase
             ],
         ];
 
-        foreach ($values as $key => [$startSeconds, $startNanoseconds, $endSeconds, $endNanoseconds, $duration]) {
+        foreach ($values as $key => list($startSeconds, $startNanoseconds, $endSeconds, $endNanoseconds, $duration)) {
             yield $key => [
                 $startSeconds,
                 $startNanoseconds,

@@ -29,7 +29,7 @@ final class SlowTestTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testCreateReturnsSlowTest(): void
+    public function testCreateReturnsSlowTest()
     {
         $faker = self::faker();
 

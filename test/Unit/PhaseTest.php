@@ -31,7 +31,7 @@ final class PhaseTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testCreateReturnsPhase(): void
+    public function testCreateReturnsPhase()
     {
         $faker = self::faker();
 

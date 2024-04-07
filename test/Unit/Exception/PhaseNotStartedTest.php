@@ -27,7 +27,7 @@ final class PhaseNotStartedTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testFromPhaseIdentifierReturnsException(): void
+    public function testFromPhaseIdentifierReturnsException()
     {
         $phaseIdentifier = PhaseIdentifier::fromString(self::faker()->word());
 

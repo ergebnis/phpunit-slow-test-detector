@@ -24,7 +24,7 @@ use PHPUnit\Framework;
  */
 final class DurationComparatorTest extends Framework\TestCase
 {
-    public function testReturnsMinusOneWhenOneIsLessThanTwo(): void
+    public function testReturnsMinusOneWhenOneIsLessThanTwo()
     {
         $one = Duration::fromSecondsAndNanoseconds(
             5,
@@ -41,7 +41,7 @@ final class DurationComparatorTest extends Framework\TestCase
         self::assertSame(-1, $comparator->compare($one, $two));
     }
 
-    public function testReturnsZeroWhenOneEqualsTwo(): void
+    public function testReturnsZeroWhenOneEqualsTwo()
     {
         $one = Duration::fromSecondsAndNanoseconds(
             5,
@@ -58,7 +58,7 @@ final class DurationComparatorTest extends Framework\TestCase
         self::assertSame(0, $comparator->compare($one, $two));
     }
 
-    public function testReturnsPlusOneWhenOneIsGreaterThanTwo(): void
+    public function testReturnsPlusOneWhenOneIsGreaterThanTwo()
     {
         $one = Duration::fromSecondsAndNanoseconds(
             5,

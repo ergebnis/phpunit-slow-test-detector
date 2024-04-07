@@ -31,7 +31,7 @@ final class DefaultCollectorTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testCollectCollectsSlowTests(): void
+    public function testCollectCollectsSlowTests()
     {
         $faker = self::faker()->unique();
 
@@ -60,7 +60,7 @@ final class DefaultCollectorTest extends Framework\TestCase
         self::assertSame($expected, $collector->collected());
     }
 
-    public function testCollectCollectsSlowerTestWithSameTestIdentifier(): void
+    public function testCollectCollectsSlowerTestWithSameTestIdentifier()
     {
         $faker = self::faker();
 
@@ -91,7 +91,7 @@ final class DefaultCollectorTest extends Framework\TestCase
         self::assertSame($expected, $collector->collected());
     }
 
-    public function testCollectDoesNotCollectFasterTestWithSameTestIdentifier(): void
+    public function testCollectDoesNotCollectFasterTestWithSameTestIdentifier()
     {
         $faker = self::faker();
 

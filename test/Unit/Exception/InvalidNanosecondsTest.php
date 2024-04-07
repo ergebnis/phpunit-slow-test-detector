@@ -24,7 +24,7 @@ final class InvalidNanosecondsTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testNotGreaterThanOrEqualToZeroReturnsException(): void
+    public function testNotGreaterThanOrEqualToZeroReturnsException()
     {
         $value = self::faker()->numberBetween();
 
@@ -38,7 +38,7 @@ final class InvalidNanosecondsTest extends Framework\TestCase
         self::assertSame($message, $exception->getMessage());
     }
 
-    public function testNotLessThanOrEqualToReturnsException(): void
+    public function testNotLessThanOrEqualToReturnsException()
     {
         $faker = self::faker();
 

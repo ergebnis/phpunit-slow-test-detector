@@ -11,6 +11,7 @@ For a full diff see [`2.13.0...main`][2.13.0...main].
 ### Changed
 
 - Added support for `phpunit/phpunit:^6.5.0` ([#533]), by [@localheinz]
+- Added support for PHP 7.0 ([#534]), by [@localheinz]
 
 ## [`2.13.0`][2.13.0]
 
@@ -318,6 +319,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#531]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/531
 [#532]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/532
 [#533]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/533
+[#534]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/534
 
 [@HypeMC]: https://github.com/HypeMC
 [@localheinz]: https://github.com/localheinz

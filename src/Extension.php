@@ -353,7 +353,7 @@ TXT;
 
         private function resolveMaximumDuration(string $test): Duration
         {
-            [$testClassName, $testMethodName] = \explode(
+            list($testClassName, $testMethodName) = \explode(
                 '::',
                 $test
             );
