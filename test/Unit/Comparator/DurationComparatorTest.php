@@ -28,12 +28,12 @@ final class DurationComparatorTest extends Framework\TestCase
     {
         $one = Duration::fromSecondsAndNanoseconds(
             5,
-            0,
+            0
         );
 
         $two = Duration::fromSecondsAndNanoseconds(
             5,
-            1,
+            1
         );
 
         $comparator = new Comparator\DurationComparator();
@@ -45,12 +45,12 @@ final class DurationComparatorTest extends Framework\TestCase
     {
         $one = Duration::fromSecondsAndNanoseconds(
             5,
-            0,
+            0
         );
 
         $two = Duration::fromSecondsAndNanoseconds(
             5,
-            0,
+            0
         );
 
         $comparator = new Comparator\DurationComparator();
@@ -62,12 +62,12 @@ final class DurationComparatorTest extends Framework\TestCase
     {
         $one = Duration::fromSecondsAndNanoseconds(
             5,
-            1,
+            1
         );
 
         $two = Duration::fromSecondsAndNanoseconds(
             5,
-            0,
+            0
         );
 
         $comparator = new Comparator\DurationComparator();

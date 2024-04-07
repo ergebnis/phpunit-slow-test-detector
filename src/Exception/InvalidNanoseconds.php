@@ -22,7 +22,7 @@ final class InvalidNanoseconds extends \InvalidArgumentException
     {
         return new self(\sprintf(
             'Value should be greater than or equal to 0, but %d is not.',
-            $value,
+            $value
         ));
     }
 
@@ -33,7 +33,7 @@ final class InvalidNanoseconds extends \InvalidArgumentException
         return new self(\sprintf(
             'Value should be less than or equal to %d, but %d is not.',
             $two,
-            $one,
+            $one
         ));
     }
 }

@@ -41,7 +41,7 @@ final class TimeKeeperTest extends Framework\TestCase
         $phaseIdentifier = PhaseIdentifier::fromString($faker->word());
         $stopTime = Time::fromSecondsAndNanoseconds(
             $faker->numberBetween(0),
-            $faker->numberBetween(0, 999999999),
+            $faker->numberBetween(0, 999999999)
         );
 
         $timeKeeper = new TimeKeeper();
@@ -50,7 +50,7 @@ final class TimeKeeperTest extends Framework\TestCase
 
         $timeKeeper->stop(
             $phaseIdentifier,
-            $stopTime,
+            $stopTime
         );
     }
 
@@ -61,23 +61,23 @@ final class TimeKeeperTest extends Framework\TestCase
         $phaseIdentifier = PhaseIdentifier::fromString($faker->word());
         $startTime = Time::fromSecondsAndNanoseconds(
             $faker->numberBetween(0),
-            $faker->numberBetween(0, 999999999 - 1),
+            $faker->numberBetween(0, 999999999 - 1)
         );
         $stopTime = Time::fromSecondsAndNanoseconds(
             $faker->numberBetween($startTime->seconds() + 1),
-            $faker->numberBetween($startTime->nanoseconds() + 1, 999999999),
+            $faker->numberBetween($startTime->nanoseconds() + 1, 999999999)
         );
 
         $timeKeeper = new TimeKeeper();
 
         $timeKeeper->start(
             $phaseIdentifier,
-            $startTime,
+            $startTime
         );
 
         $phase = $timeKeeper->stop(
             $phaseIdentifier,
-            $stopTime,
+            $stopTime
         );
 
         self::assertSame($phaseIdentifier, $phase->phaseIdentifier());

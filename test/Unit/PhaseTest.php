@@ -38,17 +38,17 @@ final class PhaseTest extends Framework\TestCase
         $phaseIdentifier = PhaseIdentifier::fromString($faker->word());
         $startTime = Time::fromSecondsAndNanoseconds(
             $faker->numberBetween(0, 100),
-            $faker->numberBetween(0, 999999999),
+            $faker->numberBetween(0, 999999999)
         );
         $stopTime = Time::fromSecondsAndNanoseconds(
             $faker->numberBetween(101, 999),
-            $faker->numberBetween(0, 999999999),
+            $faker->numberBetween(0, 999999999)
         );
 
         $phase = Phase::create(
             $phaseIdentifier,
             $startTime,
-            $stopTime,
+            $stopTime
         );
 
         self::assertSame($phaseIdentifier, $phase->phaseIdentifier());

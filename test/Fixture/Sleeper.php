@@ -33,7 +33,7 @@ final class Sleeper
         if (0 > $milliseconds) {
             throw new \InvalidArgumentException(\sprintf(
                 'Value for milliseconds should be greater than or equal to 0, but %d is not.',
-                $milliseconds,
+                $milliseconds
             ));
         }
 

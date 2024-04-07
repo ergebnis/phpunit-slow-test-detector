@@ -103,14 +103,14 @@ TXT;
         \usort($slowTests, static function (SlowTest $one, SlowTest $two) use ($durationComparator): int {
             return $durationComparator->compare(
                 $two->duration(),
-                $one->duration(),
+                $one->duration()
             );
         });
 
         $slowTestsToReport = \array_slice(
             $slowTests,
             0,
-            $this->maximumCount->toInt(),
+            $this->maximumCount->toInt()
         );
 
         /** @var SlowTest $slowestTest */
@@ -125,7 +125,7 @@ TXT;
 
                 return $maximumDuration;
             },
-            $this->maximumDuration,
+            $this->maximumDuration
         );
 
         $durationFormatter = $this->durationFormatter;
@@ -139,14 +139,14 @@ TXT;
                 (string) $number,
                 $numberWidth,
                 ' ',
-                \STR_PAD_LEFT,
+                \STR_PAD_LEFT
             );
 
             $formattedDuration = \str_pad(
                 $durationFormatter->format($slowTest->duration()),
                 $durationWidth,
                 ' ',
-                \STR_PAD_LEFT,
+                \STR_PAD_LEFT
             );
 
             $formattedMaximumDuration = \sprintf(
@@ -155,8 +155,8 @@ TXT;
                     $durationFormatter->format($slowTest->maximumDuration()),
                     $maximumDurationWidth,
                     ' ',
-                    \STR_PAD_LEFT,
-                ),
+                    \STR_PAD_LEFT
+                )
             );
 
             $testName = $slowTest->testIdentifier()->toString();
@@ -168,7 +168,7 @@ TXT;
 
         return \implode(
             "\n",
-            $items,
+            $items
         );
     }
 
@@ -176,7 +176,7 @@ TXT;
     {
         $remainingCount = \max(
             \count($slowTests) - $this->maximumCount->toInt(),
-            0,
+            0
         );
 
         if (0 === $remainingCount) {

@@ -45,56 +45,56 @@ final class DefaultDurationFormatterTest extends Framework\TestCase
             'zero' => [
                 Duration::fromSecondsAndNanoseconds(
                     0,
-                    0,
+                    0
                 ),
                 '0.000',
             ],
             'milliseconds' => [
                 Duration::fromSecondsAndNanoseconds(
                     0,
-                    123999000,
+                    123999000
                 ),
                 '0.123',
             ],
             'seconds-digits-one' => [
                 Duration::fromSecondsAndNanoseconds(
                     1,
-                    234456789,
+                    234456789
                 ),
                 '1.234',
             ],
             'seconds-digits-two' => [
                 Duration::fromSecondsAndNanoseconds(
                     12,
-                    345678912,
+                    345678912
                 ),
                 '12.345',
             ],
             'minutes-digits-one' => [
                 Duration::fromSecondsAndNanoseconds(
                     1 * 60 + 23,
-                    456789012,
+                    456789012
                 ),
                 '1:23.456',
             ],
             'minutes-digits-two' => [
                 Duration::fromSecondsAndNanoseconds(
                     12 * 60 + 34,
-                    567890123,
+                    567890123
                 ),
                 '12:34.567',
             ],
             'hours-digits-one' => [
                 Duration::fromSecondsAndNanoseconds(
                     60 * 60 + 23 * 60 + 45,
-                    567890123,
+                    567890123
                 ),
                 '1:23:45.567',
             ],
             'hours-digits-two' => [
                 Duration::fromSecondsAndNanoseconds(
                     12 * 60 * 60 + 34 * 60 + 56,
-                    789012345,
+                    789012345
                 ),
                 '12:34:56.789',
             ],

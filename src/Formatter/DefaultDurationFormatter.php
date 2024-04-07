@@ -46,7 +46,7 @@ final class DefaultDurationFormatter implements DurationFormatter
                 $hours,
                 $minutes,
                 $seconds,
-                $milliseconds,
+                $milliseconds
             );
         }
 
@@ -55,14 +55,14 @@ final class DefaultDurationFormatter implements DurationFormatter
                 '%d:%02d.%03d',
                 $minutes,
                 $seconds,
-                $milliseconds,
+                $milliseconds
             );
         }
 
         return \sprintf(
             '%d.%03d',
             $seconds,
-            $milliseconds,
+            $milliseconds
         );
     }
 }

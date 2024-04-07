@@ -57,13 +57,13 @@ final class Time
         if ($maxNanoseconds < $nanoseconds) {
             throw Exception\InvalidNanoseconds::notLessThanOrEqualTo(
                 $nanoseconds,
-                $maxNanoseconds,
+                $maxNanoseconds
             );
         }
 
         return new self(
             $seconds,
-            $nanoseconds,
+            $nanoseconds
         );
     }
 
@@ -97,7 +97,7 @@ final class Time
 
         return Duration::fromSecondsAndNanoseconds(
             $seconds,
-            $nanoseconds,
+            $nanoseconds
         );
     }
 }

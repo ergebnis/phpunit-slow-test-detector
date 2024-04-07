@@ -22,7 +22,7 @@ try {
 } catch (\InvalidArgumentException $exception) {
     throw new \RuntimeException(\sprintf(
         'Unable to determine PHPUnit version from version series "%s".',
-        Runner\Version::series(),
+        Runner\Version::series()
     ));
 }
 
@@ -75,7 +75,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
             $this->reporter = new Reporter\DefaultReporter(
                 new Formatter\DefaultDurationFormatter(),
                 $maximumDuration,
-                $maximumCount,
+                $maximumCount
             );
         }
 
@@ -105,7 +105,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
 
             $duration = Duration::fromSecondsAndNanoseconds(
                 $seconds,
-                $nanoseconds,
+                $nanoseconds
             );
 
             $maximumDuration = $this->resolveMaximumDuration($test);
@@ -119,7 +119,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
             $slowTest = SlowTest::create(
                 $testIdentifier,
                 $duration,
-                $maximumDuration,
+                $maximumDuration
             );
 
             $this->collector->collect($slowTest);
@@ -156,7 +156,7 @@ TXT;
         {
             [$testClassName, $testMethodName] = \explode(
                 '::',
-                $test,
+                $test
             );
 
             $annotations = [
@@ -166,7 +166,7 @@ TXT;
 
             $symbolAnnotations = Util\Test::parseTestMethodAnnotations(
                 $testClassName,
-                $testMethodName,
+                $testMethodName
             );
 
             foreach ($annotations as $annotation) {
@@ -230,7 +230,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
             $reporter = new Reporter\DefaultReporter(
                 new Formatter\DefaultDurationFormatter(),
                 $maximumDuration,
-                $maximumCount,
+                $maximumCount
             );
 
             $facade->registerSubscribers(
@@ -238,12 +238,12 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
                 new Subscriber\Test\FinishedSubscriber(
                     $maximumDuration,
                     $timeKeeper,
-                    $collector,
+                    $collector
                 ),
                 new Subscriber\TestRunner\ExecutionFinishedSubscriber(
                     $collector,
-                    $reporter,
-                ),
+                    $reporter
+                )
             );
         }
     }
@@ -253,5 +253,5 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
 
 throw new \RuntimeException(\sprintf(
     'Unable to select extension for PHPUnit version with version series "%s".',
-    Runner\Version::series(),
+    Runner\Version::series()
 ));

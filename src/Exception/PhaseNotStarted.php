@@ -24,7 +24,7 @@ final class PhaseNotStarted extends \InvalidArgumentException
     {
         return new self(\sprintf(
             'Phase identified by "%s" has not been started.',
-            $phaseIdentifier->toString(),
+            $phaseIdentifier->toString()
         ));
     }
 }

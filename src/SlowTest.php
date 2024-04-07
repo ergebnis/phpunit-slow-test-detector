@@ -51,7 +51,7 @@ final class SlowTest
         return new self(
             $testIdentifier,
             $duration,
-            $maximumDuration,
+            $maximumDuration
         );
     }
 

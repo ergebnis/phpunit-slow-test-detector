@@ -31,7 +31,7 @@ final class TimeKeeper
 
         $this->phaseStarts[$key] = PhaseStart::create(
             $phaseIdentifier,
-            $startTime,
+            $startTime
         );
     }
 
@@ -55,7 +55,7 @@ final class TimeKeeper
         return Phase::create(
             $phaseIdentifier,
             $phaseStart->startTime(),
-            $stopTime,
+            $stopTime
         );
     }
 }

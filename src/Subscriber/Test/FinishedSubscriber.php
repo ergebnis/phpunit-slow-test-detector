@@ -68,8 +68,8 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
             $phaseIdentifier,
             Time::fromSecondsAndNanoseconds(
                 $time->seconds(),
-                $time->nanoseconds(),
-            ),
+                $time->nanoseconds()
+            )
         );
 
         $duration = $phase->duration();
@@ -83,7 +83,7 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
         $slowTest = SlowTest::create(
             TestIdentifier::fromString($event->test()->id()),
             $duration,
-            $maximumDuration,
+            $maximumDuration
         );
 
         $this->collector->collect($slowTest);
@@ -111,7 +111,7 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
         /** @var Event\Code\TestMethod $test */
         $methodReflection = new \ReflectionMethod(
             $test->className(),
-            $test->methodName(),
+            $test->methodName()
         );
 
         $attributeReflections = $methodReflection->getAttributes(Attribute\MaximumDuration::class);
@@ -137,7 +137,7 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
         /** @var Event\Code\TestMethod $test */
         $docBlock = Metadata\Annotation\Parser\Registry::getInstance()->forMethod(
             $test->className(),
-            $test->methodName(),
+            $test->methodName()
         );
 
         $symbolAnnotations = $docBlock->symbolAnnotations();

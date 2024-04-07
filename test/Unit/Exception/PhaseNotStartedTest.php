@@ -35,7 +35,7 @@ final class PhaseNotStartedTest extends Framework\TestCase
 
         $message = \sprintf(
             'Phase identified by "%s" has not been started.',
-            $phaseIdentifier->toString(),
+            $phaseIdentifier->toString()
         );
 
         self::assertSame($message, $exception->getMessage());

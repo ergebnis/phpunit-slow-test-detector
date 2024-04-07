@@ -32,7 +32,7 @@ final class InvalidNanosecondsTest extends Framework\TestCase
 
         $message = \sprintf(
             'Value should be greater than or equal to 0, but %d is not.',
-            $value,
+            $value
         );
 
         self::assertSame($message, $exception->getMessage());
@@ -47,13 +47,13 @@ final class InvalidNanosecondsTest extends Framework\TestCase
 
         $exception = Exception\InvalidNanoseconds::notLessThanOrEqualTo(
             $one,
-            $two,
+            $two
         );
 
         $message = \sprintf(
             'Value should be less than or equal to %d, but %d is not.',
             $two,
-            $one,
+            $one
         );
 
         self::assertSame($message, $exception->getMessage());

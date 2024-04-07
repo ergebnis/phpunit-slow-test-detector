@@ -36,7 +36,7 @@ final class Major
         if (0 > $value) {
             throw new \InvalidArgumentException(\sprintf(
                 'Value "%d" does not appear to be a valid value for a major version.',
-                $value,
+                $value
             ));
         }
 

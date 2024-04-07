@@ -460,6 +460,7 @@ jobs:
           - "7.5.0"
 
         php-version:
+          - "7.2"
           - "7.3"
           - "7.4"
 
@@ -468,6 +469,14 @@ jobs:
           - "highest"
 
         include:
+          - phpunit-version: "8.5.19"
+            php-version: "7.2"
+            dependencies: "lowest"
+
+          - phpunit-version: "8.5.19"
+            php-version: "7.2"
+            dependencies: "highest"
+
           - phpunit-version: "8.5.19"
             php-version: "7.3"
             dependencies: "lowest"

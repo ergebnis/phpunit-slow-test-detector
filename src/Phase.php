@@ -59,7 +59,7 @@ final class Phase
             $phaseIdentifier,
             $startTime,
             $stopTime,
-            $stopTime->duration($startTime),
+            $stopTime->duration($startTime)
         );
     }
 

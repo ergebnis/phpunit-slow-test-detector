@@ -41,7 +41,7 @@ final class DurationTest extends Framework\TestCase
 
         Duration::fromSecondsAndNanoseconds(
             $seconds,
-            $nanoseconds,
+            $nanoseconds
         );
     }
 
@@ -56,7 +56,7 @@ final class DurationTest extends Framework\TestCase
 
         Duration::fromSecondsAndNanoseconds(
             $seconds,
-            $nanoseconds,
+            $nanoseconds
         );
     }
 
@@ -72,7 +72,7 @@ final class DurationTest extends Framework\TestCase
 
         Duration::fromSecondsAndNanoseconds(
             $seconds,
-            $nanoseconds,
+            $nanoseconds
         );
     }
 
@@ -85,7 +85,7 @@ final class DurationTest extends Framework\TestCase
 
         $duration = Duration::fromSecondsAndNanoseconds(
             $seconds,
-            $nanoseconds,
+            $nanoseconds
         );
 
         self::assertSame($seconds, $duration->seconds());
@@ -188,15 +188,15 @@ final class DurationTest extends Framework\TestCase
             'more-than-999999999-nanoseconds' => [
                 Duration::fromSecondsAndNanoseconds(
                     1,
-                    999999999,
+                    999999999
                 ),
                 Duration::fromSecondsAndNanoseconds(
                     2,
-                    123456789,
+                    123456789
                 ),
                 Duration::fromSecondsAndNanoseconds(
                     4,
-                    123456788,
+                    123456788
                 ),
             ],
         ];
@@ -214,12 +214,12 @@ final class DurationTest extends Framework\TestCase
     {
         $one = Duration::fromSecondsAndNanoseconds(
             123,
-            456,
+            456
         );
 
         $two = Duration::fromSecondsAndNanoseconds(
             122,
-            456,
+            456
         );
 
         self::assertFalse($one->isLessThan($two));
@@ -229,12 +229,12 @@ final class DurationTest extends Framework\TestCase
     {
         $one = Duration::fromSecondsAndNanoseconds(
             123,
-            456,
+            456
         );
 
         $two = Duration::fromSecondsAndNanoseconds(
             123,
-            455,
+            455
         );
 
         self::assertFalse($one->isLessThan($two));
@@ -244,12 +244,12 @@ final class DurationTest extends Framework\TestCase
     {
         $one = Duration::fromSecondsAndNanoseconds(
             123,
-            456,
+            456
         );
 
         $two = Duration::fromSecondsAndNanoseconds(
             123,
-            456,
+            456
         );
 
         self::assertFalse($one->isLessThan($two));
@@ -259,12 +259,12 @@ final class DurationTest extends Framework\TestCase
     {
         $one = Duration::fromSecondsAndNanoseconds(
             123,
-            456,
+            456
         );
 
         $two = Duration::fromSecondsAndNanoseconds(
             124,
-            456,
+            456
         );
 
         self::assertTrue($one->isLessThan($two));
@@ -274,12 +274,12 @@ final class DurationTest extends Framework\TestCase
     {
         $one = Duration::fromSecondsAndNanoseconds(
             123,
-            456,
+            456
         );
 
         $two = Duration::fromSecondsAndNanoseconds(
             123,
-            457,
+            457
         );
 
         self::assertTrue($one->isLessThan($two));
@@ -289,12 +289,12 @@ final class DurationTest extends Framework\TestCase
     {
         $one = Duration::fromSecondsAndNanoseconds(
             123,
-            456,
+            456
         );
 
         $two = Duration::fromSecondsAndNanoseconds(
             124,
-            456,
+            456
         );
 
         self::assertFalse($one->isGreaterThan($two));
@@ -304,12 +304,12 @@ final class DurationTest extends Framework\TestCase
     {
         $one = Duration::fromSecondsAndNanoseconds(
             123,
-            456,
+            456
         );
 
         $two = Duration::fromSecondsAndNanoseconds(
             123,
-            457,
+            457
         );
 
         self::assertFalse($one->isGreaterThan($two));
@@ -319,12 +319,12 @@ final class DurationTest extends Framework\TestCase
     {
         $one = Duration::fromSecondsAndNanoseconds(
             123,
-            456,
+            456
         );
 
         $two = Duration::fromSecondsAndNanoseconds(
             123,
-            456,
+            456
         );
 
         self::assertFalse($one->isGreaterThan($two));
@@ -334,12 +334,12 @@ final class DurationTest extends Framework\TestCase
     {
         $one = Duration::fromSecondsAndNanoseconds(
             123,
-            456,
+            456
         );
 
         $two = Duration::fromSecondsAndNanoseconds(
             122,
-            456,
+            456
         );
 
         self::assertTrue($one->isGreaterThan($two));
@@ -349,12 +349,12 @@ final class DurationTest extends Framework\TestCase
     {
         $one = Duration::fromSecondsAndNanoseconds(
             123,
-            456,
+            456
         );
 
         $two = Duration::fromSecondsAndNanoseconds(
             123,
-            455,
+            455
         );
 
         self::assertTrue($one->isGreaterThan($two));

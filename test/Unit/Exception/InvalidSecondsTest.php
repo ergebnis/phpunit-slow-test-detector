@@ -32,7 +32,7 @@ final class InvalidSecondsTest extends Framework\TestCase
 
         $message = \sprintf(
             'Value should be greater than 0, but %d is not.',
-            $value,
+            $value
         );
 
         self::assertSame($message, $exception->getMessage());
@@ -46,7 +46,7 @@ final class InvalidSecondsTest extends Framework\TestCase
 
         $message = \sprintf(
             'Value should be greater than or equal to 0, but %d is not.',
-            $value,
+            $value
         );
 
         self::assertSame($message, $exception->getMessage());
