@@ -36,7 +36,7 @@ final class PhaseStartTest extends Framework\TestCase
         $phaseIdentifier = PhaseIdentifier::fromString($faker->word());
         $startTime = Time::fromSecondsAndNanoseconds(
             $faker->numberBetween(0, 999),
-            $faker->numberBetween(0, 999_999_999),
+            $faker->numberBetween(0, 999999999),
         );
 
         $phaseStart = PhaseStart::create(

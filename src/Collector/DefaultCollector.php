@@ -23,7 +23,7 @@ final class DefaultCollector implements Collector
     /**
      * @var array<string, SlowTest>
      */
-    private array $slowTests = [];
+    private $slowTests = [];
 
     public function collect(SlowTest $slowTest): void
     {

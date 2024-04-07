@@ -53,12 +53,14 @@ final class DefaultReporterTest extends Framework\TestCase
 
     /**
      * @dataProvider provideExpectedReportMaximumDurationMaximumCountAndSlowTests
+     *
+     * @param list<SlowTest> $slowTests
      */
     public function testReportReturnsReportWhenThereAreFewerSlowTestsThanMaximumCount(
         string $expectedReport,
         Duration $maximumDuration,
         Count $maximumCount,
-        SlowTest ...$slowTests
+        array $slowTests
     ): void {
         $reporter = new Reporter\DefaultReporter(
             new Formatter\DefaultDurationFormatter(),
@@ -71,6 +73,9 @@ final class DefaultReporterTest extends Framework\TestCase
         self::assertSame($expectedReport, $report);
     }
 
+    /**
+     * @return \Generator<string, array{0: string, 1: Duration, 2: Count, 3: list<SlowTest>}>
+     */
     public static function provideExpectedReportMaximumDurationMaximumCountAndSlowTests(): iterable
     {
         $values = [
@@ -188,13 +193,13 @@ TXT,
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
-                        Duration::fromMilliseconds(1_250_000),
-                        Duration::fromMilliseconds(1_000_000),
+                        Duration::fromMilliseconds(1250000),
+                        Duration::fromMilliseconds(1000000),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
-                        Duration::fromMilliseconds(575_000),
-                        Duration::fromMilliseconds(500_000),
+                        Duration::fromMilliseconds(575000),
+                        Duration::fromMilliseconds(500000),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
@@ -296,7 +301,7 @@ TXT,
                 $expected,
                 $maximumDuration,
                 $maximumCount,
-                ...$slowTests,
+                $slowTests,
             ];
         }
     }

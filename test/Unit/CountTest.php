@@ -26,8 +26,8 @@ use PHPUnit\Framework;
 final class CountTest extends Framework\TestCase
 {
     /**
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::zero
+     * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::lessThanZero
+     * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::zero
      */
     public function testFromIntRejectsInvalidValue(int $value): void
     {
@@ -37,7 +37,7 @@ final class CountTest extends Framework\TestCase
     }
 
     /**
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::greaterThanZero
+     * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::greaterThanZero
      */
     public function testFromIntReturnsCount(int $value): void
     {

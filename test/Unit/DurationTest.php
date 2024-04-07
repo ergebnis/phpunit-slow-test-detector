@@ -31,11 +31,11 @@ final class DurationTest extends Framework\TestCase
     use Test\Util\Helper;
 
     /**
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero
+     * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::lessThanZero
      */
     public function testFromSecondsAndNanosecondsRejectsSecondsLessThanZero(int $seconds): void
     {
-        $nanoseconds = self::faker()->numberBetween(0, 999_999_999);
+        $nanoseconds = self::faker()->numberBetween(0, 999999999);
 
         $this->expectException(Exception\InvalidSeconds::class);
 
@@ -46,7 +46,7 @@ final class DurationTest extends Framework\TestCase
     }
 
     /**
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero
+     * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::lessThanZero
      */
     public function testFromSecondsAndNanosecondsRejectsNanosecondsLessThanZero(int $nanoseconds): void
     {
@@ -61,12 +61,12 @@ final class DurationTest extends Framework\TestCase
     }
 
     /**
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::greaterThanOne
+     * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::greaterThanOne
      */
     public function testFromSecondsAndNanosecondsRejectsNanosecondsGreaterThan999999999(int $offset): void
     {
         $seconds = self::faker()->numberBetween(0, 123);
-        $nanoseconds = 999_999_999 + $offset;
+        $nanoseconds = 999999999 + $offset;
 
         $this->expectException(Exception\InvalidNanoseconds::class);
 
@@ -81,7 +81,7 @@ final class DurationTest extends Framework\TestCase
         $faker = self::faker();
 
         $seconds = $faker->numberBetween(0, 999);
-        $nanoseconds = $faker->numberBetween(0, 999_999_999);
+        $nanoseconds = $faker->numberBetween(0, 999999999);
 
         $duration = Duration::fromSecondsAndNanoseconds(
             $seconds,
@@ -93,7 +93,7 @@ final class DurationTest extends Framework\TestCase
     }
 
     /**
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero
+     * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::lessThanZero
      */
     public function testFromMillisecondsRejectsInvalidValue(int $milliseconds): void
     {
@@ -130,22 +130,22 @@ final class DurationTest extends Framework\TestCase
             'one' => [
                 1,
                 0,
-                1_000_000,
+                1000000,
             ],
             'nine-hundred-ninety-nine' => [
                 999,
                 0,
-                999_000_000,
+                999000000,
             ],
             'one-thousand' => [
-                1_000,
+                1000,
                 1,
                 0,
             ],
             'one-thousand-and-something' => [
-                1_234,
+                1234,
                 1,
-                234_000_000,
+                234000000,
             ],
         ];
 
@@ -188,15 +188,15 @@ final class DurationTest extends Framework\TestCase
             'more-than-999999999-nanoseconds' => [
                 Duration::fromSecondsAndNanoseconds(
                     1,
-                    999_999_999,
+                    999999999,
                 ),
                 Duration::fromSecondsAndNanoseconds(
                     2,
-                    123_456_789,
+                    123456789,
                 ),
                 Duration::fromSecondsAndNanoseconds(
                     4,
-                    123_456_788,
+                    123456788,
                 ),
             ],
         ];

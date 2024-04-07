@@ -15,7 +15,10 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture;
 
 final class Sleeper
 {
-    private int $milliseconds;
+    /**
+     * @var int
+     */
+    private $milliseconds;
 
     private function __construct(int $milliseconds)
     {

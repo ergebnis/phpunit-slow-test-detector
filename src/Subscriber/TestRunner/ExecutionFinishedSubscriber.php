@@ -22,8 +22,15 @@ use PHPUnit\Event;
  */
 final class ExecutionFinishedSubscriber implements Event\TestRunner\ExecutionFinishedSubscriber
 {
-    private Reporter\Reporter $reporter;
-    private Collector\Collector $collector;
+    /**
+     * @var Collector\Collector
+     */
+    private $collector;
+
+    /**
+     * @var Reporter\Reporter
+     */
+    private $reporter;
 
     public function __construct(
         Collector\Collector $collector,
