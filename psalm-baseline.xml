@@ -13,12 +13,12 @@
   </file>
   <file src="src/Formatter/DefaultDurationFormatter.php">
     <InvalidOperand>
-      <code><![CDATA[$duration->seconds() * 1_000 + $duration->nanoseconds() / 1_000_000]]></code>
+      <code><![CDATA[$duration->seconds() * 1000 + $duration->nanoseconds() / 1000000]]></code>
       <code><![CDATA[$durationInMilliseconds - $hoursInMilliseconds]]></code>
       <code><![CDATA[$durationInMilliseconds - $hoursInMilliseconds]]></code>
       <code><![CDATA[$durationInMilliseconds / 60]]></code>
       <code><![CDATA[$durationInMilliseconds / 60]]></code>
-      <code><![CDATA[($durationInMilliseconds - $hoursInMilliseconds - $minutesInMilliseconds) / 1_000]]></code>
+      <code><![CDATA[($durationInMilliseconds - $hoursInMilliseconds - $minutesInMilliseconds) / 1000]]></code>
     </InvalidOperand>
   </file>
   <file src="src/Subscriber/Test/FinishedSubscriber.php">
@@ -59,6 +59,51 @@
       <code><![CDATA[$event]]></code>
       <code><![CDATA[$reporter]]></code>
     </UnusedParam>
+  </file>
+  <file src="test/DataProvider/AbstractProvider.php">
+    <MixedAssignment>
+      <code><![CDATA[$value]]></code>
+    </MixedAssignment>
+    <UndefinedClass>
+      <code><![CDATA[Exception\EmptyValues]]></code>
+      <code><![CDATA[Exception\EmptyValues]]></code>
+      <code><![CDATA[Exception\EmptyValues]]></code>
+    </UndefinedClass>
+    <UndefinedDocblockClass>
+      <code><![CDATA[Exception\EmptyValues]]></code>
+      <code><![CDATA[Exception\EmptyValues]]></code>
+    </UndefinedDocblockClass>
+  </file>
+  <file src="test/DataProvider/IntProvider.php">
+    <MixedReturnTypeCoercion>
+      <code><![CDATA[\Generator<string, array{0: int}>]]></code>
+      <code><![CDATA[\Generator<string, array{0: int}>]]></code>
+      <code><![CDATA[\Generator<string, array{0: int}>]]></code>
+      <code><![CDATA[\Generator<string, array{0: int}>]]></code>
+      <code><![CDATA[\Generator<string, array{0: int}>]]></code>
+      <code><![CDATA[\Generator<string, array{0: int}>]]></code>
+      <code><![CDATA[\Generator<string, array{0: int}>]]></code>
+    </MixedReturnTypeCoercion>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[arbitrary]]></code>
+      <code><![CDATA[lessThanOne]]></code>
+      <code><![CDATA[one]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/DataProvider/StringProvider.php">
+    <MixedReturnTypeCoercion>
+      <code><![CDATA[\Generator<string, array{0: string}>]]></code>
+      <code><![CDATA[\Generator<string, array{0: string}>]]></code>
+      <code><![CDATA[\Generator<string, array{0: string}>]]></code>
+      <code><![CDATA[\Generator<string, array{0: string}>]]></code>
+      <code><![CDATA[\Generator<string, array{0: string}>]]></code>
+      <code><![CDATA[\Generator<string, array{0: string}>]]></code>
+    </MixedReturnTypeCoercion>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[trimmed]]></code>
+      <code><![CDATA[untrimmed]]></code>
+      <code><![CDATA[withWhitespace]]></code>
+    </PossiblyUnusedMethod>
   </file>
   <file src="test/EndToEnd/Version07/TestCase/Combination/SleeperTest.php">
     <PossiblyUnusedMethod>
@@ -408,10 +453,5 @@
     <ArgumentTypeCoercion>
       <code><![CDATA[$this->milliseconds * 1000]]></code>
     </ArgumentTypeCoercion>
-  </file>
-  <file src="test/Unit/Reporter/DefaultReporterTest.php">
-    <MixedReturnStatement>
-      <code><![CDATA[iterable]]></code>
-    </MixedReturnStatement>
   </file>
 </files>

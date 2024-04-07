@@ -58,7 +58,7 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
       - name: "Remove incompatible dependencies with composer"
-        run: "composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --ansi --dev --no-interaction --no-progress"
+        run: "composer remove ergebnis/composer-normalize ergebnis/license ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --ansi --dev --no-interaction --no-progress"
 
       - name: "Require phpunit/phpunit:^${{ matrix.phpunit-version }}"
         run: "composer require phpunit/phpunit:^${{ matrix.phpunit-version }} --ansi --no-interaction --no-progress --update-with-all-dependencies"
@@ -249,7 +249,7 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
       - name: "Remove incompatible dependencies with composer"
-        run: "composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --ansi --dev --no-interaction --no-progress"
+        run: "composer remove ergebnis/composer-normalize ergebnis/license ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --ansi --dev --no-interaction --no-progress"
 
       - name: "Remove phpunit/phpunit with composer"
         run: "composer remove phpunit/phpunit --ansi --no-interaction --ignore-platform-reqs --no-progress"
@@ -461,6 +461,7 @@ jobs:
           - "9.0.0"
 
         php-version:
+          - "7.3"
           - "7.4"
           - "8.0"
           - "8.1"
@@ -472,6 +473,14 @@ jobs:
           - "highest"
 
         include:
+          - phpunit-version: "7.5.0"
+            php-version: "7.3"
+            dependencies: "lowest"
+
+          - phpunit-version: "7.5.0"
+            php-version: "7.3"
+            dependencies: "highest"
+
           - phpunit-version: "7.5.0"
             php-version: "7.4"
             dependencies: "lowest"
@@ -555,7 +564,7 @@ jobs:
 
       - name: "Remove incompatible dependencies with composer"
         if: "matrix.dependencies != 'locked'"
-        run: "composer remove ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --ansi --dev --no-interaction --no-progress"
+        run: "composer remove ergebnis/composer-normalize ergebnis/license ergebnis/php-cs-fixer-config psalm/plugin-phpunit vimeo/psalm --ansi --dev --no-interaction --no-progress"
 
       - name: "Remove platform configuration with composer"
         if: "matrix.dependencies != 'locked'"

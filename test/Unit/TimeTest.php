@@ -66,7 +66,7 @@ final class TimeTest extends Framework\TestCase
         $faker = self::faker();
 
         $seconds = $faker->numberBetween(0, 999);
-        $nanoseconds = $faker->numberBetween(0, 999_999_999);
+        $nanoseconds = $faker->numberBetween(0, 999999999);
 
         $time = Time::fromSecondsAndNanoseconds(
             $seconds,

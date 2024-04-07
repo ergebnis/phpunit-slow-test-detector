@@ -29,8 +29,8 @@ final class PhaseIdentifierTest extends Framework\TestCase
     use Test\Util\Helper;
 
     /**
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::blank
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::empty
+     * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\StringProvider::blank
+     * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\StringProvider::empty
      */
     public function testFromStringRejectsInvalidValue(string $value): void
     {

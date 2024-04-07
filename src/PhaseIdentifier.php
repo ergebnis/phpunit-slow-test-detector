@@ -18,7 +18,10 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
  */
 final class PhaseIdentifier
 {
-    private string $value;
+    /**
+     * @var string
+     */
+    private $value;
 
     private function __construct(string $value)
     {

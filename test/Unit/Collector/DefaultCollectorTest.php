@@ -67,7 +67,7 @@ final class DefaultCollectorTest extends Framework\TestCase
         $one = SlowTest::create(
             TestIdentifier::fromString($faker->word()),
             Duration::fromMilliseconds($faker->numberBetween(0)),
-            Duration::fromMilliseconds($faker->numberBetween(0, 999_999_999 - 1)),
+            Duration::fromMilliseconds($faker->numberBetween(0, 999999999 - 1)),
         );
 
         $two = SlowTest::create(
@@ -98,7 +98,7 @@ final class DefaultCollectorTest extends Framework\TestCase
         $one = SlowTest::create(
             TestIdentifier::fromString($faker->word()),
             Duration::fromMilliseconds($faker->numberBetween(0)),
-            Duration::fromMilliseconds($faker->numberBetween(1, 999_999_999)),
+            Duration::fromMilliseconds($faker->numberBetween(1, 999999999)),
         );
 
         $two = SlowTest::create(

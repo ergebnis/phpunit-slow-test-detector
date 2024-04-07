@@ -29,8 +29,8 @@ final class MaximumDurationTest extends Framework\TestCase
     use Test\Util\Helper;
 
     /**
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::zero
+     * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::lessThanZero
+     * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::zero
      */
     public function testConstructorRejectsInvalidValue(int $milliseconds): void
     {

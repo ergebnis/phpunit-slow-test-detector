@@ -18,7 +18,10 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Version;
  */
 final class Series
 {
-    private Major $major;
+    /**
+     * @var Major
+     */
+    private $major;
 
     private function __construct(Major $major)
     {
