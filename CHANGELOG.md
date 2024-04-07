@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.13.0...main`][2.13.0...main].
 
+### Changed
+
+- Added support for `phpunit/phpunit:^6.5.0` ([#533]), by [@localheinz]
+
 ## [`2.13.0`][2.13.0]
 
 For a full diff see [`2.12.0...2.13.0`][2.12.0...2.13.0].
@@ -313,6 +317,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#495]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/495
 [#531]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/531
 [#532]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/532
+[#533]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/533
 
 [@HypeMC]: https://github.com/HypeMC
 [@localheinz]: https://github.com/localheinz

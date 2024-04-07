@@ -16,6 +16,7 @@ This project provides a [`composer`](https://getcomposer.org) package and a [Pha
 
 The extension is compatible with the following versions of `phpunit/phpunit`:
 
+- [`phpunit/phpunit:^6.5.0`](https://github.com/sebastianbergmann/phpunit/tree/6.5.0)
 - [`phpunit/phpunit:^7.5.0`](https://github.com/sebastianbergmann/phpunit/tree/7.5.0)
 - [`phpunit/phpunit:^8.5.19`](https://github.com/sebastianbergmann/phpunit/tree/8.5.19)
 - [`phpunit/phpunit:^9.0.0`](https://github.com/sebastianbergmann/phpunit/tree/9.0.0)
@@ -45,6 +46,31 @@ Download `phpunit-slow-test-detector.phar` from the [latest release](https://git
 Before the extension can detect slow tests in `phpunit/phpunit`, you need to bootstrap it. The bootstrapping mechanism depends on the version of `phpunit/phpunit` you are using.
 
 ### Bootstrapping the extension as a `composer` package
+
+To bootstrap the extension as a `composer` package when using
+
+- `phpunit/phpunit:^6.5.0`
+
+adjust your `phpunit.xml` configuration file and configure the
+
+- [`listeners` element](https://phpunit.de/manual/6.5/en/appendixes.configuration.html#appendixes.configuration.test-listeners) on [`phpunit/phpunit:^6.5.0`](https://phpunit.de/manual/6.5/en/)
+
+```diff
+ <phpunit
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+     bootstrap="vendor/autoload.php"
+ >
++    <listeners>
++        <listener class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
++    </listeners>
+     <testsuites>
+         <testsuite name="unit">
+             <directory>test/Unit/</directory>
+         </testsuite>
+     </testsuites>
+ </phpunit>
+```
 
 To bootstrap the extension as a `composer` package when using
 
@@ -175,6 +201,45 @@ The configuration mechanism depends on the version of `phpunit/phpunit` you are 
 
 To configure the extension when using
 
+- `phpunit/phpunit:^6.5.0`
+
+adjust your `phpunit.xml` configuration file and configure the
+
+- [`arguments` element](https://phpunit.de/manual/6.5/en/appendixes.configuration.html#appendixes.configuration.test-listeners) on [`phpunit/phpunit:^6.5.0`](https://phpunit.de/manual/6.5/en/)
+
+The following example configures the maximum count of slow tests to three, and the maximum duration for all tests to 250 milliseconds:
+
+```diff
+ <phpunit
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+     bootstrap="vendor/autoload.php"
+ >
+     <listeners>
+-        <listener class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
++        <listener class="Ergebnis\PHPUnit\SlowTestDetector\Extension">
++            <arguments>
++                <array>
++                    <element key="maximum-count">
++                        <integer>3</integer>
++                    </element>
++                    <element key="maximum-duration">
++                        <integer>250</integer>
++                    </element>
++                </array>
++            </arguments>
++        </listener>
+     </listeners>
+     <testsuites>
+         <testsuite name="unit">
+             <directory>test/Unit/</directory>
+        </testsuite>
+     </testsuites>
+ </phpunit>
+```
+
+To configure the extension when using
+
 - `phpunit/phpunit:^7.5.0`
 - `phpunit/phpunit:^8.5.19`
 - `phpunit/phpunit:^9.0.0`
@@ -257,10 +322,12 @@ You can configure the maximum duration for a single test case with
   - `phpunit/phpunit:^10.0.0`
   - `phpunit/phpunit:^11.0.0`
 - a `@maximumDuration` annotation in the DocBlock when using
+  - `phpunit/phpunit:^6.5.0`
   - `phpunit/phpunit:^7.5.0`
   - `phpunit/phpunit:^8.5.19`
   - `phpunit/phpunit:^9.0.0`
 - a `@slowThreshold` annotation in the DocBlock when using
+  - `phpunit/phpunit:^6.5.0`
   - `phpunit/phpunit:^7.5.0`
   - `phpunit/phpunit:^8.5.19`
   - `phpunit/phpunit:^9.0.0`
@@ -350,6 +417,7 @@ OK (13 tests, 13 assertions)
 
 When using
 
+- `phpunit/phpunit:^6.5.0`
 - `phpunit/phpunit:^7.5.0`
 - `phpunit/phpunit:^8.5.19`
 - `phpunit/phpunit:^9.0.0`
