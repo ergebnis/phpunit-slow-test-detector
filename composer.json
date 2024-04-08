@@ -33,7 +33,7 @@
     "ergebnis/php-cs-fixer-config": "^6.25.1",
     "fakerphp/faker": "~1.20.0",
     "psalm/plugin-phpunit": "~0.19.0",
-    "psr/container": "~1.0.0",
+    "psr/container": "~2.0.2",
     "rector/rector": "^1.0.4",
     "vimeo/psalm": "^5.23.1"
   },
