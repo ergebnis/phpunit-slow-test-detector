@@ -28,7 +28,7 @@ final class MajorTest extends Framework\TestCase
     /**
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::lessThanZero
      */
-    public function testFromIntRejectsInvalidValue(int $value): void
+    public function testFromIntRejectsInvalidValue(int $value)
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(\sprintf(
@@ -43,14 +43,14 @@ final class MajorTest extends Framework\TestCase
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::greaterThanZero
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::zero
      */
-    public function testFromStringReturnsMajor(int $value): void
+    public function testFromStringReturnsMajor(int $value)
     {
         $major = Version\Major::fromInt($value);
 
         self::assertSame($value, $major->toInt());
     }
 
-    public function testEqualsReturnsFalseWhenValueIsDifferent(): void
+    public function testEqualsReturnsFalseWhenValueIsDifferent()
     {
         $faker = self::faker()->unique();
 
@@ -60,7 +60,7 @@ final class MajorTest extends Framework\TestCase
         self::assertFalse($one->equals($two));
     }
 
-    public function testEqualsReturnsTrueWhenValueIsSame(): void
+    public function testEqualsReturnsTrueWhenValueIsSame()
     {
         $value = self::faker()->numberBetween(0);
 
@@ -70,7 +70,7 @@ final class MajorTest extends Framework\TestCase
         self::assertTrue($one->equals($two));
     }
 
-    public function testIsOneOfReturnsFalseWhenAllValuesAreDifferent(): void
+    public function testIsOneOfReturnsFalseWhenAllValuesAreDifferent()
     {
         $faker = self::faker()->unique();
 
@@ -81,7 +81,7 @@ final class MajorTest extends Framework\TestCase
         self::assertFalse($one->isOneOf($two, $three));
     }
 
-    public function testIsOneOfReturnsTrueWhenOneOfTheValuesIsSame(): void
+    public function testIsOneOfReturnsTrueWhenOneOfTheValuesIsSame()
     {
         $faker = self::faker()->unique();
 

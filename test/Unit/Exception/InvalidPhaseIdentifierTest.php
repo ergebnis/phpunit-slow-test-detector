@@ -21,7 +21,7 @@ use PHPUnit\Framework;
  */
 final class InvalidPhaseIdentifierTest extends Framework\TestCase
 {
-    public function testBlankOrEmptyReturnsException(): void
+    public function testBlankOrEmptyReturnsException()
     {
         $exception = Exception\InvalidPhaseIdentifier::blankOrEmpty();
 

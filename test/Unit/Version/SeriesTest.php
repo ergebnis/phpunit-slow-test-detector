@@ -27,7 +27,7 @@ final class SeriesTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testCreateReturnsSeries(): void
+    public function testCreateReturnsSeries()
     {
         $major = Version\Major::fromInt(self::faker()->numberBetween(0));
 
@@ -40,7 +40,7 @@ final class SeriesTest extends Framework\TestCase
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\StringProvider::arbitrary
      * @dataProvider provideInvalidValue
      */
-    public function testFromStringRejectsInvalidValue(string $value): void
+    public function testFromStringRejectsInvalidValue(string $value)
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(\sprintf(
@@ -170,7 +170,7 @@ final class SeriesTest extends Framework\TestCase
     public function testFromStringReturnsSeries(
         string $value,
         Version\Major $major
-    ): void {
+    ) {
         $series = Version\Series::fromString($value);
 
         self::assertEquals($major, $series->major());
@@ -196,7 +196,7 @@ final class SeriesTest extends Framework\TestCase
             ],
         ];
 
-        foreach ($values as $key => [$value, $major]) {
+        foreach ($values as $key => list($value, $major)) {
             yield $key => [
                 $value,
                 $major,

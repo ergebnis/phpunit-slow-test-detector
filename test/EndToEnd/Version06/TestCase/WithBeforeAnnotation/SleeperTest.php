@@ -24,12 +24,12 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @before
      */
-    public function sleepWithBeforeAnnotation(): void
+    public function sleepWithBeforeAnnotation()
     {
         Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
     }
 
-    public function testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration(): void
+    public function testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration()
     {
         $milliseconds = 10;
 
@@ -43,7 +43,7 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @dataProvider provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration
      */
-    public function testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider(int $milliseconds): void
+    public function testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider(int $milliseconds)
     {
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
@@ -55,7 +55,7 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @return \Generator<int, array{0: int}>
      */
-    public static function provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration(): iterable
+    public static function provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration(): \Generator
     {
         $values = \range(
             200,

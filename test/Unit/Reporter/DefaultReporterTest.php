@@ -36,7 +36,7 @@ final class DefaultReporterTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testReportReturnsEmptyStringWhenThereAreNoSlowTests(): void
+    public function testReportReturnsEmptyStringWhenThereAreNoSlowTests()
     {
         $faker = self::faker();
 
@@ -61,7 +61,7 @@ final class DefaultReporterTest extends Framework\TestCase
         Duration $maximumDuration,
         Count $maximumCount,
         array $slowTests
-    ): void {
+    ) {
         $reporter = new Reporter\DefaultReporter(
             new Formatter\DefaultDurationFormatter(),
             $maximumDuration,
@@ -303,7 +303,7 @@ TXT
             ],
         ];
 
-        foreach ($values as $key => [$expected, $maximumDuration, $maximumCount, $slowTests]) {
+        foreach ($values as $key => list($expected, $maximumDuration, $maximumCount, $slowTests)) {
             yield $key => [
                 $expected,
                 $maximumDuration,

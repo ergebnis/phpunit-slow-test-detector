@@ -21,7 +21,7 @@ use PHPUnit\Framework;
  */
 final class InvalidTestIdentifierTest extends Framework\TestCase
 {
-    public function testBlankOrEmptyReturnsException(): void
+    public function testBlankOrEmptyReturnsException()
     {
         $exception = Exception\InvalidTestIdentifier::blankOrEmpty();
 

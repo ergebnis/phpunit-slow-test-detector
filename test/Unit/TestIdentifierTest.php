@@ -32,14 +32,14 @@ final class TestIdentifierTest extends Framework\TestCase
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\StringProvider::blank
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\StringProvider::empty
      */
-    public function testFromStringRejectsInvalidValue(string $value): void
+    public function testFromStringRejectsInvalidValue(string $value)
     {
         $this->expectException(Exception\InvalidTestIdentifier::class);
 
         TestIdentifier::fromString($value);
     }
 
-    public function testFromStringReturnsTestIdentifier(): void
+    public function testFromStringReturnsTestIdentifier()
     {
         $value = self::faker()->word();
 

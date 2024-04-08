@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="5.23.1@8471a896ccea3526b26d082f4461eeea467f10a4">
+  <file src="src/Collector/Collector.php">
+    <MissingReturnType>
+      <code><![CDATA[collect]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="src/Collector/DefaultCollector.php">
+    <MissingReturnType>
+      <code><![CDATA[collect]]></code>
+    </MissingReturnType>
+  </file>
   <file src="src/Extension.php">
     <DuplicateClass>
       <code><![CDATA[Extension]]></code>
@@ -106,7 +116,47 @@
       <code><![CDATA[withWhitespace]]></code>
     </PossiblyUnusedMethod>
   </file>
+  <file src="test/EndToEnd/Version06/Configuration/Defaults/SleeperTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testSleeperSleepsLessThanDefaultMaximumDuration]]></code>
+      <code><![CDATA[testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/EndToEnd/Version06/Configuration/MaximumCount/SleeperTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testSleeperSleepsLessThanDefaultMaximumDuration]]></code>
+      <code><![CDATA[testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/EndToEnd/Version06/Configuration/MaximumDuration/SleeperTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration]]></code>
+      <code><![CDATA[testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/EndToEnd/Version06/TestCase/Bare/SleeperTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration]]></code>
+      <code><![CDATA[testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider]]></code>
+    </MissingReturnType>
+  </file>
   <file src="test/EndToEnd/Version06/TestCase/Combination/SleeperTest.php">
+    <MethodSignatureMismatch>
+      <code><![CDATA[protected function assertPostConditions()]]></code>
+      <code><![CDATA[protected function assertPreConditions()]]></code>
+      <code><![CDATA[protected function setUp()]]></code>
+      <code><![CDATA[protected function tearDown()]]></code>
+      <code><![CDATA[public static function setUpBeforeClass()]]></code>
+      <code><![CDATA[public static function tearDownAfterClass()]]></code>
+    </MethodSignatureMismatch>
+    <MissingReturnType>
+      <code><![CDATA[sleepWithAfterAnnotation]]></code>
+      <code><![CDATA[sleepWithAfterClassAnnotation]]></code>
+      <code><![CDATA[sleepWithBeforeAnnotation]]></code>
+      <code><![CDATA[sleepWithBeforeClassAnnotation]]></code>
+      <code><![CDATA[testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration]]></code>
+      <code><![CDATA[testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider]]></code>
+    </MissingReturnType>
     <PossiblyUnusedMethod>
       <code><![CDATA[sleepWithAfterAnnotation]]></code>
       <code><![CDATA[sleepWithAfterClassAnnotation]]></code>
@@ -115,32 +165,158 @@
     </PossiblyUnusedMethod>
   </file>
   <file src="test/EndToEnd/Version06/TestCase/WithAfterAnnotation/SleeperTest.php">
+    <MissingReturnType>
+      <code><![CDATA[sleepWithAfterAnnotation]]></code>
+      <code><![CDATA[testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration]]></code>
+      <code><![CDATA[testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider]]></code>
+    </MissingReturnType>
     <PossiblyUnusedMethod>
       <code><![CDATA[sleepWithAfterAnnotation]]></code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/EndToEnd/Version06/TestCase/WithAfterClassAnnotation/SleeperTest.php">
+    <MissingReturnType>
+      <code><![CDATA[sleepWithAfterClassAnnotation]]></code>
+      <code><![CDATA[testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration]]></code>
+      <code><![CDATA[testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider]]></code>
+    </MissingReturnType>
     <PossiblyUnusedMethod>
       <code><![CDATA[sleepWithAfterClassAnnotation]]></code>
     </PossiblyUnusedMethod>
   </file>
+  <file src="test/EndToEnd/Version06/TestCase/WithAssertPostConditions/SleeperTest.php">
+    <MethodSignatureMismatch>
+      <code><![CDATA[protected function assertPostConditions()]]></code>
+    </MethodSignatureMismatch>
+    <MissingReturnType>
+      <code><![CDATA[testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration]]></code>
+      <code><![CDATA[testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/EndToEnd/Version06/TestCase/WithAssertPreConditions/SleeperTest.php">
+    <MethodSignatureMismatch>
+      <code><![CDATA[protected function assertPreConditions()]]></code>
+    </MethodSignatureMismatch>
+    <MissingReturnType>
+      <code><![CDATA[testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration]]></code>
+      <code><![CDATA[testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider]]></code>
+    </MissingReturnType>
+  </file>
   <file src="test/EndToEnd/Version06/TestCase/WithBeforeAnnotation/SleeperTest.php">
+    <MissingReturnType>
+      <code><![CDATA[sleepWithBeforeAnnotation]]></code>
+      <code><![CDATA[testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration]]></code>
+      <code><![CDATA[testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider]]></code>
+    </MissingReturnType>
     <PossiblyUnusedMethod>
       <code><![CDATA[sleepWithBeforeAnnotation]]></code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/EndToEnd/Version06/TestCase/WithBeforeClassAnnotation/SleeperTest.php">
+    <MissingReturnType>
+      <code><![CDATA[sleepWithBeforeClassAnnotation]]></code>
+      <code><![CDATA[testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration]]></code>
+      <code><![CDATA[testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider]]></code>
+    </MissingReturnType>
     <PossiblyUnusedMethod>
       <code><![CDATA[sleepWithBeforeClassAnnotation]]></code>
     </PossiblyUnusedMethod>
   </file>
+  <file src="test/EndToEnd/Version06/TestCase/WithDataProvider/SleeperTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration]]></code>
+      <code><![CDATA[testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/EndToEnd/Version06/TestCase/WithSetUp/SleeperTest.php">
+    <MethodSignatureMismatch>
+      <code><![CDATA[protected function setUp()]]></code>
+    </MethodSignatureMismatch>
+    <MissingReturnType>
+      <code><![CDATA[testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration]]></code>
+      <code><![CDATA[testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/EndToEnd/Version06/TestCase/WithSetUpBeforeClass/SleeperTest.php">
+    <MethodSignatureMismatch>
+      <code><![CDATA[public static function setUpBeforeClass()]]></code>
+    </MethodSignatureMismatch>
+    <MissingReturnType>
+      <code><![CDATA[testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration]]></code>
+      <code><![CDATA[testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/EndToEnd/Version06/TestCase/WithTearDown/SleeperTest.php">
+    <MethodSignatureMismatch>
+      <code><![CDATA[protected function tearDown()]]></code>
+    </MethodSignatureMismatch>
+    <MissingReturnType>
+      <code><![CDATA[testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration]]></code>
+      <code><![CDATA[testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/EndToEnd/Version06/TestCase/WithTearDownAfterClass/SleeperTest.php">
+    <MethodSignatureMismatch>
+      <code><![CDATA[public static function tearDownAfterClass()]]></code>
+    </MethodSignatureMismatch>
+    <MissingReturnType>
+      <code><![CDATA[testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration]]></code>
+      <code><![CDATA[testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/EndToEnd/Version06/TestMethod/WithMaximumDurationAndSlowThresholdAnnotations/SleeperTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasMaximumDurationAndSlowThresholdAnnotations]]></code>
+      <code><![CDATA[testSleeperSleepsShorterThanMaximumDurationFromAnnotationWhenTestMethodHasMaximumDurationAndSlowThresholdAnnotations]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/EndToEnd/Version06/TestMethod/WithMaximumDurationAnnotation/SleeperTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasValidMaximumDurationAnnotation]]></code>
+      <code><![CDATA[testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidMaximumDurationAnnotation]]></code>
+      <code><![CDATA[testSleeperSleepsShorterThanMaximumDurationFromAnnotationWhenTestMethodHasValidMaximumDurationAnnotation]]></code>
+      <code><![CDATA[testSleeperSleepsShorterThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidMaximumDurationAnnotation]]></code>
+    </MissingReturnType>
+  </file>
   <file src="test/EndToEnd/Version06/TestMethod/WithRunInSeparateProcessAnnotation/SleeperTest.php">
+    <MethodSignatureMismatch>
+      <code><![CDATA[protected function assertPostConditions()]]></code>
+      <code><![CDATA[protected function assertPreConditions()]]></code>
+      <code><![CDATA[protected function setUp()]]></code>
+      <code><![CDATA[protected function tearDown()]]></code>
+      <code><![CDATA[public static function setUpBeforeClass()]]></code>
+      <code><![CDATA[public static function tearDownAfterClass()]]></code>
+    </MethodSignatureMismatch>
+    <MissingReturnType>
+      <code><![CDATA[sleepWithAfterAnnotation]]></code>
+      <code><![CDATA[sleepWithAfterClassAnnotation]]></code>
+      <code><![CDATA[sleepWithBeforeAnnotation]]></code>
+      <code><![CDATA[sleepWithBeforeClassAnnotation]]></code>
+      <code><![CDATA[testSleeperSleepsLongerThanMaximumDurationFromXmlConfiguration]]></code>
+      <code><![CDATA[testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWhenMethodHasRunInSeparateProcessAnnotation]]></code>
+      <code><![CDATA[testSleeperSleepsShorterThanMaximumDurationFromXmlConfiguration]]></code>
+      <code><![CDATA[testSleeperSleepsShorterThanMaximumDurationFromXmlConfigurationWhenMethodHasRunInSeparateProcessAnnotation]]></code>
+    </MissingReturnType>
     <PossiblyUnusedMethod>
       <code><![CDATA[sleepWithAfterAnnotation]]></code>
       <code><![CDATA[sleepWithAfterClassAnnotation]]></code>
       <code><![CDATA[sleepWithBeforeAnnotation]]></code>
       <code><![CDATA[sleepWithBeforeClassAnnotation]]></code>
     </PossiblyUnusedMethod>
+  </file>
+  <file src="test/EndToEnd/Version06/TestMethod/WithSlowThresholdAndMaximumDurationAnnotations/SleeperTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasMaximumDurationAndSlowThresholdAnnotations]]></code>
+      <code><![CDATA[testSleeperSleepsShorterThanMaximumDurationFromAnnotationWhenTestMethodHasMaximumDurationAndSlowThresholdAnnotations]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/EndToEnd/Version06/TestMethod/WithSlowThresholdAnnotation/SleeperTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidSlowThresholdAnnotation]]></code>
+      <code><![CDATA[testSleeperSleepsLongerThanSlowThresholdFromAnnotationWhenTestMethodHasValidSlowThresholdAnnotation]]></code>
+      <code><![CDATA[testSleeperSleepsShorterThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidSlowThresholdAnnotation]]></code>
+      <code><![CDATA[testSleeperSleepsShorterThanSlowThresholdFromAnnotationWhenTestMethodHasValidSlowThresholdAnnotation]]></code>
+    </MissingReturnType>
   </file>
   <file src="test/EndToEnd/Version07/TestCase/Combination/SleeperTest.php">
     <PossiblyUnusedMethod>
@@ -490,5 +666,174 @@
     <ArgumentTypeCoercion>
       <code><![CDATA[$this->milliseconds * 1000]]></code>
     </ArgumentTypeCoercion>
+    <MissingReturnType>
+      <code><![CDATA[sleep]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/Attribute/MaximumDurationTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testConstructorRejectsInvalidValue]]></code>
+      <code><![CDATA[testConstructorSetsValue]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/Collector/DefaultCollectorTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testCollectCollectsSlowTests]]></code>
+      <code><![CDATA[testCollectCollectsSlowerTestWithSameTestIdentifier]]></code>
+      <code><![CDATA[testCollectDoesNotCollectFasterTestWithSameTestIdentifier]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/Comparator/DurationComparatorTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testReturnsMinusOneWhenOneIsLessThanTwo]]></code>
+      <code><![CDATA[testReturnsPlusOneWhenOneIsGreaterThanTwo]]></code>
+      <code><![CDATA[testReturnsZeroWhenOneEqualsTwo]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/Console/ColorTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testDimReturnsDimmedStringWhenItIsNotWhitespaceOnly]]></code>
+      <code><![CDATA[testDimReturnsOriginalStringWhenItIsWhitespaceOnly]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/CountTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testFromIntRejectsInvalidValue]]></code>
+      <code><![CDATA[testFromIntReturnsCount]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/DurationTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testAddReturnsDuration]]></code>
+      <code><![CDATA[testFromMillisecondsRejectsInvalidValue]]></code>
+      <code><![CDATA[testFromMillisecondsReturnsDuration]]></code>
+      <code><![CDATA[testFromSecondsAndNanosecondsRejectsNanosecondsGreaterThan999999999]]></code>
+      <code><![CDATA[testFromSecondsAndNanosecondsRejectsNanosecondsLessThanZero]]></code>
+      <code><![CDATA[testFromSecondsAndNanosecondsRejectsSecondsLessThanZero]]></code>
+      <code><![CDATA[testFromSecondsAndNanosecondsReturnsDuration]]></code>
+      <code><![CDATA[testIsGreaterThanReturnsFalseWhenSecondsAreEqualAndNanosecondsAreLess]]></code>
+      <code><![CDATA[testIsGreaterThanReturnsFalseWhenSecondsAreLess]]></code>
+      <code><![CDATA[testIsGreaterThanReturnsFalseWhenValuesAreSame]]></code>
+      <code><![CDATA[testIsGreaterThanReturnsTrueWhenSecondsAreEqualAndNanosecondsAreGreater]]></code>
+      <code><![CDATA[testIsGreaterThanReturnsTrueWhenSecondsAreGreater]]></code>
+      <code><![CDATA[testIsLessThanReturnsFalseWhenSecondsAreEqualAndNanosecondsAreGreater]]></code>
+      <code><![CDATA[testIsLessThanReturnsFalseWhenSecondsAreGreater]]></code>
+      <code><![CDATA[testIsLessThanReturnsFalseWhenValuesAreSame]]></code>
+      <code><![CDATA[testIsLessThanReturnsTrueWhenSecondsAreEqualAndNanosecondsAreLess]]></code>
+      <code><![CDATA[testIsLessThanReturnsTrueWhenSecondsAreLess]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/Exception/InvalidCountTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testNotGreaterThanZeroReturnsException]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/Exception/InvalidMillisecondsTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testNotGreaterThanZeroReturnsException]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/Exception/InvalidNanosecondsTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testNotGreaterThanOrEqualToZeroReturnsException]]></code>
+      <code><![CDATA[testNotLessThanOrEqualToReturnsException]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/Exception/InvalidPhaseIdentifierTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testBlankOrEmptyReturnsException]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/Exception/InvalidSecondsTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testNotGreaterThanOrEqualToZeroReturnsException]]></code>
+      <code><![CDATA[testNotGreaterThanZeroReturnsException]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/Exception/InvalidStartTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testNotLessThanOrEqualToEndReturnsException]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/Exception/InvalidTestIdentifierTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testBlankOrEmptyReturnsException]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/Exception/PhaseNotStartedTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testFromPhaseIdentifierReturnsException]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/Formatter/DefaultDurationFormatterTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testFormatFormats]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/PhaseIdentifierTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testFromStringRejectsInvalidValue]]></code>
+      <code><![CDATA[testFromStringReturnsPhaseIdentifier]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/PhaseStartTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testCreateReturnsPhaseStart]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/PhaseTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testCreateReturnsPhase]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/Reporter/DefaultReporterTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testReportReturnsEmptyStringWhenThereAreNoSlowTests]]></code>
+      <code><![CDATA[testReportReturnsReportWhenThereAreFewerSlowTestsThanMaximumCount]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/SlowTestTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testCreateReturnsSlowTest]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/TestIdentifierTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testFromStringRejectsInvalidValue]]></code>
+      <code><![CDATA[testFromStringReturnsTestIdentifier]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/TimeKeeperTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testStopReturnsPhaseWhenPhaseHasBeenStarted]]></code>
+      <code><![CDATA[testStopThrowsPhaseNotStartedExceptionWhenPhaseHasNotBeenStarted]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/TimeTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testDurationRejectsStartGreaterThanEnd]]></code>
+      <code><![CDATA[testDurationReturnsDifferenceBetweenEndAndStart]]></code>
+      <code><![CDATA[testFromSecondsAndNanosecondsRejectsNanosecondsGreaterThan999999999]]></code>
+      <code><![CDATA[testFromSecondsAndNanosecondsRejectsNegativeNanoseconds]]></code>
+      <code><![CDATA[testFromSecondsAndNanosecondsRejectsNegativeSeconds]]></code>
+      <code><![CDATA[testFromSecondsAndNanosecondsReturnsTime]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/Version/MajorTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testEqualsReturnsFalseWhenValueIsDifferent]]></code>
+      <code><![CDATA[testEqualsReturnsTrueWhenValueIsSame]]></code>
+      <code><![CDATA[testFromIntRejectsInvalidValue]]></code>
+      <code><![CDATA[testFromStringReturnsMajor]]></code>
+      <code><![CDATA[testIsOneOfReturnsFalseWhenAllValuesAreDifferent]]></code>
+      <code><![CDATA[testIsOneOfReturnsTrueWhenOneOfTheValuesIsSame]]></code>
+    </MissingReturnType>
+  </file>
+  <file src="test/Unit/Version/SeriesTest.php">
+    <MissingReturnType>
+      <code><![CDATA[testCreateReturnsSeries]]></code>
+      <code><![CDATA[testFromStringRejectsInvalidValue]]></code>
+      <code><![CDATA[testFromStringReturnsSeries]]></code>
+    </MissingReturnType>
   </file>
 </files>

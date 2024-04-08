@@ -21,7 +21,7 @@ use PHPUnit\Framework;
  */
 final class InvalidStartTest extends Framework\TestCase
 {
-    public function testNotLessThanOrEqualToEndReturnsException(): void
+    public function testNotLessThanOrEqualToEndReturnsException()
     {
         $exception = Exception\InvalidStart::notLessThanOrEqualToEnd();
 

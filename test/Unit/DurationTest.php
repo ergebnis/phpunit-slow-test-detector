@@ -33,7 +33,7 @@ final class DurationTest extends Framework\TestCase
     /**
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::lessThanZero
      */
-    public function testFromSecondsAndNanosecondsRejectsSecondsLessThanZero(int $seconds): void
+    public function testFromSecondsAndNanosecondsRejectsSecondsLessThanZero(int $seconds)
     {
         $nanoseconds = self::faker()->numberBetween(0, 999999999);
 
@@ -48,7 +48,7 @@ final class DurationTest extends Framework\TestCase
     /**
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::lessThanZero
      */
-    public function testFromSecondsAndNanosecondsRejectsNanosecondsLessThanZero(int $nanoseconds): void
+    public function testFromSecondsAndNanosecondsRejectsNanosecondsLessThanZero(int $nanoseconds)
     {
         $seconds = self::faker()->numberBetween(0, 123);
 
@@ -63,7 +63,7 @@ final class DurationTest extends Framework\TestCase
     /**
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::greaterThanOne
      */
-    public function testFromSecondsAndNanosecondsRejectsNanosecondsGreaterThan999999999(int $offset): void
+    public function testFromSecondsAndNanosecondsRejectsNanosecondsGreaterThan999999999(int $offset)
     {
         $seconds = self::faker()->numberBetween(0, 123);
         $nanoseconds = 999999999 + $offset;
@@ -76,7 +76,7 @@ final class DurationTest extends Framework\TestCase
         );
     }
 
-    public function testFromSecondsAndNanosecondsReturnsDuration(): void
+    public function testFromSecondsAndNanosecondsReturnsDuration()
     {
         $faker = self::faker();
 
@@ -95,7 +95,7 @@ final class DurationTest extends Framework\TestCase
     /**
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::lessThanZero
      */
-    public function testFromMillisecondsRejectsInvalidValue(int $milliseconds): void
+    public function testFromMillisecondsRejectsInvalidValue(int $milliseconds)
     {
         $this->expectException(Exception\InvalidMilliseconds::class);
 
@@ -109,7 +109,7 @@ final class DurationTest extends Framework\TestCase
         int $milliseconds,
         int $seconds,
         int $nanoseconds
-    ): void {
+    ) {
         $duration = Duration::fromMilliseconds($milliseconds);
 
         self::assertSame($seconds, $duration->seconds());
@@ -149,7 +149,7 @@ final class DurationTest extends Framework\TestCase
             ],
         ];
 
-        foreach ($values as $key => [$milliseconds, $seconds, $nanoseconds]) {
+        foreach ($values as $key => list($milliseconds, $seconds, $nanoseconds)) {
             yield $key => [
                 $milliseconds,
                 $seconds,
@@ -165,7 +165,7 @@ final class DurationTest extends Framework\TestCase
         Duration $one,
         Duration $two,
         Duration $three
-    ): void {
+    ) {
         self::assertEquals($three, $one->add($two));
     }
 
@@ -201,7 +201,7 @@ final class DurationTest extends Framework\TestCase
             ],
         ];
 
-        foreach ($values as $key => [$one, $two, $three]) {
+        foreach ($values as $key => list($one, $two, $three)) {
             yield $key => [
                 $one,
                 $two,
@@ -210,7 +210,7 @@ final class DurationTest extends Framework\TestCase
         }
     }
 
-    public function testIsLessThanReturnsFalseWhenSecondsAreGreater(): void
+    public function testIsLessThanReturnsFalseWhenSecondsAreGreater()
     {
         $one = Duration::fromSecondsAndNanoseconds(
             123,
@@ -225,7 +225,7 @@ final class DurationTest extends Framework\TestCase
         self::assertFalse($one->isLessThan($two));
     }
 
-    public function testIsLessThanReturnsFalseWhenSecondsAreEqualAndNanosecondsAreGreater(): void
+    public function testIsLessThanReturnsFalseWhenSecondsAreEqualAndNanosecondsAreGreater()
     {
         $one = Duration::fromSecondsAndNanoseconds(
             123,
@@ -240,7 +240,7 @@ final class DurationTest extends Framework\TestCase
         self::assertFalse($one->isLessThan($two));
     }
 
-    public function testIsLessThanReturnsFalseWhenValuesAreSame(): void
+    public function testIsLessThanReturnsFalseWhenValuesAreSame()
     {
         $one = Duration::fromSecondsAndNanoseconds(
             123,
@@ -255,7 +255,7 @@ final class DurationTest extends Framework\TestCase
         self::assertFalse($one->isLessThan($two));
     }
 
-    public function testIsLessThanReturnsTrueWhenSecondsAreLess(): void
+    public function testIsLessThanReturnsTrueWhenSecondsAreLess()
     {
         $one = Duration::fromSecondsAndNanoseconds(
             123,
@@ -270,7 +270,7 @@ final class DurationTest extends Framework\TestCase
         self::assertTrue($one->isLessThan($two));
     }
 
-    public function testIsLessThanReturnsTrueWhenSecondsAreEqualAndNanosecondsAreLess(): void
+    public function testIsLessThanReturnsTrueWhenSecondsAreEqualAndNanosecondsAreLess()
     {
         $one = Duration::fromSecondsAndNanoseconds(
             123,
@@ -285,7 +285,7 @@ final class DurationTest extends Framework\TestCase
         self::assertTrue($one->isLessThan($two));
     }
 
-    public function testIsGreaterThanReturnsFalseWhenSecondsAreLess(): void
+    public function testIsGreaterThanReturnsFalseWhenSecondsAreLess()
     {
         $one = Duration::fromSecondsAndNanoseconds(
             123,
@@ -300,7 +300,7 @@ final class DurationTest extends Framework\TestCase
         self::assertFalse($one->isGreaterThan($two));
     }
 
-    public function testIsGreaterThanReturnsFalseWhenSecondsAreEqualAndNanosecondsAreLess(): void
+    public function testIsGreaterThanReturnsFalseWhenSecondsAreEqualAndNanosecondsAreLess()
     {
         $one = Duration::fromSecondsAndNanoseconds(
             123,
@@ -315,7 +315,7 @@ final class DurationTest extends Framework\TestCase
         self::assertFalse($one->isGreaterThan($two));
     }
 
-    public function testIsGreaterThanReturnsFalseWhenValuesAreSame(): void
+    public function testIsGreaterThanReturnsFalseWhenValuesAreSame()
     {
         $one = Duration::fromSecondsAndNanoseconds(
             123,
@@ -330,7 +330,7 @@ final class DurationTest extends Framework\TestCase
         self::assertFalse($one->isGreaterThan($two));
     }
 
-    public function testIsGreaterThanReturnsTrueWhenSecondsAreGreater(): void
+    public function testIsGreaterThanReturnsTrueWhenSecondsAreGreater()
     {
         $one = Duration::fromSecondsAndNanoseconds(
             123,
@@ -345,7 +345,7 @@ final class DurationTest extends Framework\TestCase
         self::assertTrue($one->isGreaterThan($two));
     }
 
-    public function testIsGreaterThanReturnsTrueWhenSecondsAreEqualAndNanosecondsAreGreater(): void
+    public function testIsGreaterThanReturnsTrueWhenSecondsAreEqualAndNanosecondsAreGreater()
     {
         $one = Duration::fromSecondsAndNanoseconds(
             123,

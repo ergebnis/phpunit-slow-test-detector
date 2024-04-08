@@ -24,7 +24,7 @@ final class InvalidMillisecondsTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testNotGreaterThanZeroReturnsException(): void
+    public function testNotGreaterThanZeroReturnsException()
     {
         $value = self::faker()->numberBetween();
 

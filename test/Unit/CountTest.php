@@ -29,7 +29,7 @@ final class CountTest extends Framework\TestCase
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::lessThanZero
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::zero
      */
-    public function testFromIntRejectsInvalidValue(int $value): void
+    public function testFromIntRejectsInvalidValue(int $value)
     {
         $this->expectException(Exception\InvalidCount::class);
 
@@ -39,7 +39,7 @@ final class CountTest extends Framework\TestCase
     /**
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::greaterThanZero
      */
-    public function testFromIntReturnsCount(int $value): void
+    public function testFromIntReturnsCount(int $value)
     {
         $count = Count::fromInt($value);
 
