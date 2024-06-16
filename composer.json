@@ -30,7 +30,7 @@
   "require-dev": {
     "ergebnis/composer-normalize": "^2.42.0",
     "ergebnis/license": "^2.4.0",
-    "ergebnis/php-cs-fixer-config": "^6.30.0",
+    "ergebnis/php-cs-fixer-config": "^6.30.1",
     "fakerphp/faker": "~1.20.0",
     "psalm/plugin-phpunit": "~0.19.0",
     "psr/container": "~1.0.0",
