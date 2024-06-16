@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.14.0...main`][2.14.0...main].
 
+### Changed
+
+- Started showing data provider details in list of slow tests ([#559]), by [@mvorisek]
+
 ## [`2.14.0`][2.14.0]
 
 For a full diff see [`2.13.0...2.14.0`][2.13.0...2.14.0].
@@ -326,6 +330,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#532]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/532
 [#533]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/533
 [#534]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/534
+[#559]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/559
 
 [@HypeMC]: https://github.com/HypeMC
 [@localheinz]: https://github.com/localheinz

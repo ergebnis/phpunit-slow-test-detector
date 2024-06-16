@@ -23,6 +23,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use Ergebnis\PHPUnit\SlowTestDetector\Time;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
 use PHPUnit\Event;
+use PHPUnit\Framework;
 use PHPUnit\Metadata;
 
 /**
@@ -83,12 +84,64 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
 
         $slowTest = SlowTest::create(
             TestIdentifier::fromString($event->test()->id()),
-            TestDescription::fromString($event->test()->id()),
+            self::descriptionFromTest($event->test()),
             $duration,
             $maximumDuration
         );
 
         $this->collector->collect($slowTest);
+    }
+
+    /**
+     * @see https://github.com/sebastianbergmann/phpunit/blob/11.1.3/src/TextUI/Output/Default/ResultPrinter.php#L511-L521
+     */
+    private static function descriptionFromTest(Event\Code\Test $test): TestDescription
+    {
+        if (!$test->isTestMethod()) {
+            return TestDescription::fromString($test->name());
+        }
+
+        /** @var Event\Code\TestMethod $test */
+        if (!$test->testData()->hasDataFromDataProvider()) {
+            return TestDescription::fromString($test->nameWithClass());
+        }
+
+        $dataProvider = $test->testData()->dataFromDataProvider();
+
+        /**
+         * @see https://github.com/sebastianbergmann/phpunit/commit/5d049893b8
+         */
+        if (!\method_exists($dataProvider, 'dataAsStringForResultOutput')) {
+            $dataAsStringForResultOutput = null;
+
+            foreach (\debug_backtrace() as $frame) {
+                if (!isset($frame['object'])) {
+                    continue;
+                }
+
+                $object = $frame['object'];
+
+                if (!$object instanceof Framework\TestCase) {
+                    continue;
+                }
+
+                $dataAsStringForResultOutput = $object->dataSetAsStringWithData();
+            }
+
+            return TestDescription::fromString(\sprintf(
+                '%s::%s%s',
+                $test->className(),
+                $test->methodName(),
+                $dataAsStringForResultOutput
+            ));
+        }
+
+        return TestDescription::fromString(\sprintf(
+            '%s::%s%s',
+            $test->className(),
+            $test->methodName(),
+            $test->testData()->dataFromDataProvider()->dataAsStringForResultOutput()
+        ));
     }
 
     private function resolveMaximumDuration(Event\Code\Test $test): Duration
