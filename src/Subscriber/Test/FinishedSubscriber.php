@@ -18,6 +18,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\Collector;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\PhaseIdentifier;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
+use Ergebnis\PHPUnit\SlowTestDetector\TestDescription;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use Ergebnis\PHPUnit\SlowTestDetector\Time;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
@@ -82,6 +83,7 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
 
         $slowTest = SlowTest::create(
             TestIdentifier::fromString($event->test()->id()),
+            TestDescription::fromString($event->test()->id()),
             $duration,
             $maximumDuration
         );
