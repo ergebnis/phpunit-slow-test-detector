@@ -16,6 +16,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
+use Ergebnis\PHPUnit\SlowTestDetector\TestDescription;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use PHPUnit\Framework;
 
@@ -23,6 +24,7 @@ use PHPUnit\Framework;
  * @covers \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
  *
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDescription
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
  */
 final class SlowTestTest extends Framework\TestCase
@@ -34,16 +36,19 @@ final class SlowTestTest extends Framework\TestCase
         $faker = self::faker();
 
         $testIdentifier = TestIdentifier::fromString($faker->word());
+        $testDescription = TestDescription::fromString($faker->word());
         $duration = Duration::fromMilliseconds($faker->numberBetween(0));
         $maximumDuration = Duration::fromMilliseconds($faker->numberBetween(0));
 
         $slowTest = SlowTest::create(
             $testIdentifier,
+            $testDescription,
             $duration,
             $maximumDuration
         );
 
         self::assertSame($testIdentifier, $slowTest->testIdentifier());
+        self::assertSame($testDescription, $slowTest->testDescription());
         self::assertSame($duration, $slowTest->duration());
         self::assertSame($maximumDuration, $slowTest->maximumDuration());
     }

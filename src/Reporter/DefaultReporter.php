@@ -159,10 +159,10 @@ TXT;
                 )
             );
 
-            $testName = $slowTest->testIdentifier()->toString();
+            $testDescription = $slowTest->testDescription()->toString();
 
             return <<<TXT
-{$formattedNumber}. {$formattedDuration} {$formattedMaximumDuration} {$testName}
+{$formattedNumber}. {$formattedDuration} {$formattedMaximumDuration} {$testDescription}
 TXT;
         }, \range(1, \count($slowTestsToReport)), $slowTestsToReport);
 

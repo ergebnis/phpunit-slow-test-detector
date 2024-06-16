@@ -175,8 +175,15 @@ TXT;
                 $test->getName()
             ));
 
+            $testDescription = TestDescription::fromString(\sprintf(
+                '%s::%s',
+                \get_class($test),
+                $test->getName()
+            ));
+
             $slowTest = SlowTest::create(
                 $testIdentifier,
+                $testDescription,
                 $duration,
                 $maximumDuration
             );
@@ -314,9 +321,11 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
             }
 
             $testIdentifier = TestIdentifier::fromString($test);
+            $testDescription = TestDescription::fromString($test);
 
             $slowTest = SlowTest::create(
                 $testIdentifier,
+                $testDescription,
                 $duration,
                 $maximumDuration
             );

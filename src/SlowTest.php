@@ -24,6 +24,11 @@ final class SlowTest
     private $testIdentifier;
 
     /**
+     * @var TestDescription
+     */
+    private $testDescription;
+
+    /**
      * @var Duration
      */
     private $duration;
@@ -35,21 +40,25 @@ final class SlowTest
 
     private function __construct(
         TestIdentifier $testIdentifier,
+        TestDescription $testDescription,
         Duration $duration,
         Duration $maximumDuration
     ) {
         $this->testIdentifier = $testIdentifier;
+        $this->testDescription = $testDescription;
         $this->duration = $duration;
         $this->maximumDuration = $maximumDuration;
     }
 
     public static function create(
         TestIdentifier $testIdentifier,
+        TestDescription $testDescription,
         Duration $duration,
         Duration $maximumDuration
     ): self {
         return new self(
             $testIdentifier,
+            $testDescription,
             $duration,
             $maximumDuration
         );
@@ -58,6 +67,11 @@ final class SlowTest
     public function testIdentifier(): TestIdentifier
     {
         return $this->testIdentifier;
+    }
+
+    public function testDescription(): TestDescription
+    {
+        return $this->testDescription;
     }
 
     public function duration(): Duration
