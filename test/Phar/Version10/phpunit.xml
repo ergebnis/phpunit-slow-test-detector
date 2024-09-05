@@ -4,7 +4,6 @@
     beStrictAboutChangesToGlobalState="true"
     beStrictAboutOutputDuringTests="true"
     beStrictAboutTestsThatDoNotTestAnything="true"
-    beStrictAboutTodoAnnotatedTests="true"
     bootstrap="bootstrap.php"
     cacheResult="false"
     colors="true"
