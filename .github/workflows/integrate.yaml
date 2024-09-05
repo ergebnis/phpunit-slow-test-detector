@@ -742,8 +742,13 @@ jobs:
           name: "phpunit-slow-test-detector-phar"
           path: "${{ env.PHPUNIT_SLOW_TEST_DETECTOR_PHAR }}"
 
-      - name: "Remove autoloader for composer"
-        run: "composer install --ansi --no-autoloader --no-interaction"
+      - name: "Remove autoload configuration for composer"
+        run: "php bin/remove-autoload-configuration.php"
+
+      - name: "Install ${{ matrix.dependencies }} dependencies with composer"
+        uses: "ergebnis/.github/actions/composer/install@1.9.2"
+        with:
+          dependencies: "${{ matrix.dependencies }}"
 
       - name: "Run phar tests with phpunit/phpunit:7.5.0"
         if: "matrix.phpunit-version == '7.5.0'"
