@@ -5,7 +5,6 @@
     beStrictAboutCoverageMetadata="true"
     beStrictAboutOutputDuringTests="true"
     beStrictAboutTestsThatDoNotTestAnything="true"
-    beStrictAboutTodoAnnotatedTests="true"
     bootstrap="../../../vendor/autoload.php"
     cacheResult="false"
     colors="true"
