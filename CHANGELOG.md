@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.15.0...main`][2.15.0...main].
 
+### Fixed
+
+- Explicitly included `src/` directory when building PHAR ([#598]), by [@localheinz]
+
 ## [`2.15.0`][2.15.0]
 
 For a full diff see [`2.14.0...2.15.0`][2.14.0...2.15.0].
@@ -337,6 +341,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#533]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/533
 [#534]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/534
 [#559]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/559
+[#598]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/598
 
 [@HypeMC]: https://github.com/HypeMC
 [@localheinz]: https://github.com/localheinz
