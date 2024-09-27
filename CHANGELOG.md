@@ -6,7 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Unreleased
 
-For a full diff see [`2.15.1...main`][2.15.1...main].
+For a full diff see [`2.16.0...main`][2.16.0...main].
+
+## [`2.16.0`][2.16.0]
+
+For a full diff see [`2.15.1...2.16.0`][2.15.1...2.16.0].
 
 ### Changed
 
@@ -287,7 +291,8 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [2.13.0...2.14.0]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/2.13.0...2.14.0
 [2.14.0...2.15.0]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/2.14.0...2.15.0
 [2.15.0...2.15.1]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/2.15.0...2.15.1
-[2.15.1...main]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/2.15.1...main
+[2.15.1...2.16.0]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/2.15.1...2.16.0
+[2.16.0...main]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/2.16.0...main
 
 [#6]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/6
 [#8]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/8
