@@ -269,6 +269,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [2.14.0]: https://github.com/ergebnis/phpunit-slow-test-detector/releases/tag/2.14.0
 [2.15.0]: https://github.com/ergebnis/phpunit-slow-test-detector/releases/tag/2.15.0
 [2.15.1]: https://github.com/ergebnis/phpunit-slow-test-detector/releases/tag/2.15.1
+[2.16.0]: https://github.com/ergebnis/phpunit-slow-test-detector/releases/tag/2.16.0
 
 [7afa59c...1.0.0]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/7afa59c...1.0.0
 [1.0.0...2.0.0]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/1.0.0...2.0.0
