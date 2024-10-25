@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.16.0...main`][2.16.0...main].
 
+### Fixed
+
+- Explicitly included `vendor/composer/installed.php` and `vendor/composer/InstalledVersions.php` when building PHAR ([#621]), by [@dantleech]
+
 ## [`2.16.0`][2.16.0]
 
 For a full diff see [`2.15.1...2.16.0`][2.15.1...2.16.0].
@@ -360,6 +364,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#598]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/598
 [#604]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/604
 
+[@dantleech]: https://github.com/dantleech
 [@HypeMC]: https://github.com/HypeMC
 [@localheinz]: https://github.com/localheinz
 [@mvorisek]: https://github.com/mvorisek

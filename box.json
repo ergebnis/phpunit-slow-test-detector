@@ -9,7 +9,9 @@
     "src/"
   ],
   "files": [
-    "manifest.xml"
+    "manifest.xml",
+    "vendor/composer/installed.php",
+    "vendor/composer/InstalledVersions.php"
   ],
   "git": "git",
   "main": "phar/phpunit-slow-test-detector.php",
