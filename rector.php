@@ -12,7 +12,6 @@ declare(strict_types=1);
  */
 
 use Rector\Config;
-use Rector\PHPUnit;
 use Rector\ValueObject;
 
 return static function (Config\RectorConfig $rectorConfig): void {
@@ -21,6 +20,8 @@ return static function (Config\RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
         __DIR__ . '/src/',
         __DIR__ . '/test/',
+        __DIR__ . '/.php-cs-fixer.php',
+        __DIR__ . '/rector.php',
     ]);
 
     $rectorConfig->phpVersion(ValueObject\PhpVersion::PHP_70);
