@@ -1,0 +1,407 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Collector\\\\Collector\\:\\:collect\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Collector/Collector.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Collector\\\\DefaultCollector\\:\\:collect\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Collector/DefaultCollector.php
+
+		-
+			message: "#^Offset 'major' does not exist on array\\{0\\?\\: string, major\\?\\: numeric\\-string, 1\\?\\: numeric\\-string, 2\\?\\: '0'\\|\\(non\\-falsy\\-string&numeric\\-string\\), minor\\?\\: ''\\|numeric\\-string, 3\\?\\: ''\\|numeric\\-string, 4\\?\\: '0'\\|\\(non\\-falsy\\-string&numeric\\-string\\)\\}\\.$#"
+			count: 1
+			path: src/Version/Series.php
+
+		-
+			message: "#^Call to static method create\\(\\) on an unknown class Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\DataProvider\\\\Exception\\\\EmptyValues\\.$#"
+			count: 2
+			path: test/DataProvider/AbstractProvider.php
+
+		-
+			message: "#^Call to static method filtered\\(\\) on an unknown class Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\DataProvider\\\\Exception\\\\EmptyValues\\.$#"
+			count: 1
+			path: test/DataProvider/AbstractProvider.php
+
+		-
+			message: "#^PHPDoc tag @throws with type Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\DataProvider\\\\Exception\\\\EmptyValues is not subtype of Throwable$#"
+			count: 2
+			path: test/DataProvider/AbstractProvider.php
+
+		-
+			message: "#^Generator expects value type array\\{int\\}, array\\{mixed\\} given\\.$#"
+			count: 7
+			path: test/DataProvider/IntProvider.php
+
+		-
+			message: "#^Generator expects value type array\\{string\\}, array\\{mixed\\} given\\.$#"
+			count: 6
+			path: test/DataProvider/StringProvider.php
+
+		-
+			message: "#^Parameter \\#2 \\.\\.\\.\\$args of function array_merge expects array, array\\<string, string\\>\\|false given\\.$#"
+			count: 1
+			path: test/DataProvider/StringProvider.php
+
+		-
+			message: "#^Parameter \\#4 \\.\\.\\.\\$args of function array_merge expects array, array\\<string, string\\>\\|false given\\.$#"
+			count: 1
+			path: test/DataProvider/StringProvider.php
+
+		-
+			message: "#^Parameter \\#5 \\.\\.\\.\\$args of function array_merge expects array, array\\<string, string\\>\\|false given\\.$#"
+			count: 1
+			path: test/DataProvider/StringProvider.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Fixture\\\\Sleeper\\:\\:sleep\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Fixture/Sleeper.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Attribute\\\\MaximumDurationTest\\:\\:testConstructorRejectsInvalidValue\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Attribute/MaximumDurationTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Attribute\\\\MaximumDurationTest\\:\\:testConstructorSetsValue\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Attribute/MaximumDurationTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Collector\\\\DefaultCollectorTest\\:\\:testCollectCollectsSlowTests\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Collector/DefaultCollectorTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Collector\\\\DefaultCollectorTest\\:\\:testCollectCollectsSlowerTestWithSameTestIdentifier\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Collector/DefaultCollectorTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Collector\\\\DefaultCollectorTest\\:\\:testCollectDoesNotCollectFasterTestWithSameTestIdentifier\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Collector/DefaultCollectorTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Comparator\\\\DurationComparatorTest\\:\\:testReturnsMinusOneWhenOneIsLessThanTwo\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Comparator/DurationComparatorTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Comparator\\\\DurationComparatorTest\\:\\:testReturnsPlusOneWhenOneIsGreaterThanTwo\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Comparator/DurationComparatorTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Comparator\\\\DurationComparatorTest\\:\\:testReturnsZeroWhenOneEqualsTwo\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Comparator/DurationComparatorTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Console\\\\ColorTest\\:\\:testDimReturnsDimmedStringWhenItIsNotWhitespaceOnly\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Console/ColorTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Console\\\\ColorTest\\:\\:testDimReturnsOriginalStringWhenItIsWhitespaceOnly\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Console/ColorTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\CountTest\\:\\:testFromIntRejectsInvalidValue\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/CountTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\CountTest\\:\\:testFromIntReturnsCount\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/CountTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\DurationTest\\:\\:testAddReturnsDuration\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/DurationTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\DurationTest\\:\\:testFromMillisecondsRejectsInvalidValue\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/DurationTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\DurationTest\\:\\:testFromMillisecondsReturnsDuration\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/DurationTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\DurationTest\\:\\:testFromSecondsAndNanosecondsRejectsNanosecondsGreaterThan999999999\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/DurationTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\DurationTest\\:\\:testFromSecondsAndNanosecondsRejectsNanosecondsLessThanZero\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/DurationTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\DurationTest\\:\\:testFromSecondsAndNanosecondsRejectsSecondsLessThanZero\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/DurationTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\DurationTest\\:\\:testFromSecondsAndNanosecondsReturnsDuration\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/DurationTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\DurationTest\\:\\:testIsGreaterThanReturnsFalseWhenSecondsAreEqualAndNanosecondsAreLess\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/DurationTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\DurationTest\\:\\:testIsGreaterThanReturnsFalseWhenSecondsAreLess\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/DurationTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\DurationTest\\:\\:testIsGreaterThanReturnsFalseWhenValuesAreSame\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/DurationTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\DurationTest\\:\\:testIsGreaterThanReturnsTrueWhenSecondsAreEqualAndNanosecondsAreGreater\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/DurationTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\DurationTest\\:\\:testIsGreaterThanReturnsTrueWhenSecondsAreGreater\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/DurationTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\DurationTest\\:\\:testIsLessThanReturnsFalseWhenSecondsAreEqualAndNanosecondsAreGreater\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/DurationTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\DurationTest\\:\\:testIsLessThanReturnsFalseWhenSecondsAreGreater\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/DurationTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\DurationTest\\:\\:testIsLessThanReturnsFalseWhenValuesAreSame\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/DurationTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\DurationTest\\:\\:testIsLessThanReturnsTrueWhenSecondsAreEqualAndNanosecondsAreLess\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/DurationTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\DurationTest\\:\\:testIsLessThanReturnsTrueWhenSecondsAreLess\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/DurationTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Exception\\\\InvalidCountTest\\:\\:testNotGreaterThanZeroReturnsException\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Exception/InvalidCountTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Exception\\\\InvalidMillisecondsTest\\:\\:testNotGreaterThanZeroReturnsException\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Exception/InvalidMillisecondsTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Exception\\\\InvalidNanosecondsTest\\:\\:testNotGreaterThanOrEqualToZeroReturnsException\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Exception/InvalidNanosecondsTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Exception\\\\InvalidNanosecondsTest\\:\\:testNotLessThanOrEqualToReturnsException\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Exception/InvalidNanosecondsTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Exception\\\\InvalidPhaseIdentifierTest\\:\\:testBlankOrEmptyReturnsException\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Exception/InvalidPhaseIdentifierTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Exception\\\\InvalidSecondsTest\\:\\:testNotGreaterThanOrEqualToZeroReturnsException\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Exception/InvalidSecondsTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Exception\\\\InvalidSecondsTest\\:\\:testNotGreaterThanZeroReturnsException\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Exception/InvalidSecondsTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Exception\\\\InvalidStartTest\\:\\:testNotLessThanOrEqualToEndReturnsException\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Exception/InvalidStartTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Exception\\\\InvalidTestDescriptionTest\\:\\:testBlankOrEmptyReturnsException\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Exception/InvalidTestDescriptionTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Exception\\\\InvalidTestIdentifierTest\\:\\:testBlankOrEmptyReturnsException\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Exception/InvalidTestIdentifierTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Exception\\\\PhaseNotStartedTest\\:\\:testFromPhaseIdentifierReturnsException\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Exception/PhaseNotStartedTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Formatter\\\\DefaultDurationFormatterTest\\:\\:testFormatFormats\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Formatter/DefaultDurationFormatterTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\PhaseIdentifierTest\\:\\:testFromStringRejectsInvalidValue\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/PhaseIdentifierTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\PhaseIdentifierTest\\:\\:testFromStringReturnsPhaseIdentifier\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/PhaseIdentifierTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\PhaseStartTest\\:\\:testCreateReturnsPhaseStart\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/PhaseStartTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\PhaseTest\\:\\:testCreateReturnsPhase\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/PhaseTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\DefaultReporterTest\\:\\:testReportReturnsEmptyStringWhenThereAreNoSlowTests\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Reporter/DefaultReporterTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\DefaultReporterTest\\:\\:testReportReturnsReportWhenThereAreFewerSlowTestsThanMaximumCount\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Reporter/DefaultReporterTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\SlowTestTest\\:\\:testCreateReturnsSlowTest\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/SlowTestTest.php
+
+		-
+			message: "#^Method TestDescriptionTest\\:\\:testFromStringRejectsInvalidValue\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/TestDescriptionTest.php
+
+		-
+			message: "#^Method TestDescriptionTest\\:\\:testFromStringReturnsTestDescription\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/TestDescriptionTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\TestIdentifierTest\\:\\:testFromStringRejectsInvalidValue\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/TestIdentifierTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\TestIdentifierTest\\:\\:testFromStringReturnsTestIdentifier\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/TestIdentifierTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\TimeKeeperTest\\:\\:testStopReturnsPhaseWhenPhaseHasBeenStarted\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/TimeKeeperTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\TimeKeeperTest\\:\\:testStopThrowsPhaseNotStartedExceptionWhenPhaseHasNotBeenStarted\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/TimeKeeperTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\TimeTest\\:\\:testDurationRejectsStartGreaterThanEnd\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/TimeTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\TimeTest\\:\\:testDurationReturnsDifferenceBetweenEndAndStart\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/TimeTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\TimeTest\\:\\:testFromSecondsAndNanosecondsRejectsNanosecondsGreaterThan999999999\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/TimeTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\TimeTest\\:\\:testFromSecondsAndNanosecondsRejectsNegativeNanoseconds\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/TimeTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\TimeTest\\:\\:testFromSecondsAndNanosecondsRejectsNegativeSeconds\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/TimeTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\TimeTest\\:\\:testFromSecondsAndNanosecondsReturnsTime\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/TimeTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Version\\\\MajorTest\\:\\:testEqualsReturnsFalseWhenValueIsDifferent\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Version/MajorTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Version\\\\MajorTest\\:\\:testEqualsReturnsTrueWhenValueIsSame\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Version/MajorTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Version\\\\MajorTest\\:\\:testFromIntRejectsInvalidValue\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Version/MajorTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Version\\\\MajorTest\\:\\:testFromStringReturnsMajor\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Version/MajorTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Version\\\\MajorTest\\:\\:testIsOneOfReturnsFalseWhenAllValuesAreDifferent\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Version/MajorTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Version\\\\MajorTest\\:\\:testIsOneOfReturnsTrueWhenOneOfTheValuesIsSame\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Version/MajorTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Version\\\\SeriesTest\\:\\:testCreateReturnsSeries\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Version/SeriesTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Version\\\\SeriesTest\\:\\:testFromStringRejectsInvalidValue\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Version/SeriesTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Version\\\\SeriesTest\\:\\:testFromStringReturnsSeries\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Version/SeriesTest.php
+

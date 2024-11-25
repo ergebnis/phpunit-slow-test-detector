@@ -58,7 +58,7 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
       - name: "Remove incompatible dependencies with composer"
-        run: "composer remove ergebnis/composer-normalize ergebnis/license ergebnis/php-cs-fixer-config psalm/plugin-phpunit rector/rector vimeo/psalm --ansi --dev --no-interaction --no-progress"
+        run: "composer remove ergebnis/php-cs-fixer-config --ansi --dev --no-interaction --no-progress"
 
       - name: "Require phpunit/phpunit:^${{ matrix.phpunit-version }}"
         run: "composer require phpunit/phpunit:^${{ matrix.phpunit-version }} --ansi --no-interaction --no-progress --update-with-all-dependencies"
@@ -249,7 +249,7 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
       - name: "Remove incompatible dependencies with composer"
-        run: "composer remove ergebnis/composer-normalize ergebnis/license ergebnis/php-cs-fixer-config psalm/plugin-phpunit rector/rector vimeo/psalm --ansi --dev --no-interaction --no-progress"
+        run: "composer remove phpstan/extension-installer --ansi --dev --no-interaction --no-progress"
 
       - name: "Remove phpunit/phpunit with composer"
         run: "composer remove phpunit/phpunit --ansi --no-interaction --ignore-platform-reqs --no-progress"
@@ -440,8 +440,8 @@ jobs:
         with:
           dependencies: "${{ matrix.dependencies }}"
 
-      - name: "Run vimeo/psalm"
-        run: "vendor/bin/psalm --config=psalm.xml --output-format=github --shepherd --show-info=false --stats --threads=4"
+      - name: "Run phpstan/phpstan"
+        run: "vendor/bin/phpstan --ansi --configuration=phpstan.neon --memory-limit=-1"
 
   tests:
     name: "Tests"
@@ -682,7 +682,7 @@ jobs:
 
       - name: "Remove incompatible dependencies with composer"
         if: "matrix.dependencies != 'locked'"
-        run: "composer remove ergebnis/composer-normalize ergebnis/license ergebnis/php-cs-fixer-config psalm/plugin-phpunit rector/rector vimeo/psalm --ansi --dev --no-interaction --no-progress"
+        run: "composer remove ergebnis/composer-normalize ergebnis/license ergebnis/php-cs-fixer-config phpstan/extension-installer phpstan/phpstan phpstan/phpstan-deprecation-rules phpstan/phpstan-phpunit phpstan/phpstan-strict-rules rector/rector --ansi --dev --no-interaction --no-progress"
 
       - name: "Remove platform configuration with composer"
         if: "matrix.dependencies != 'locked'"
