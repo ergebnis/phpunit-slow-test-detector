@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.16.1...main`][2.16.1...main].
 
+### Added
+
+- Added support for PHP 8.4 ([#635]), by [@localheinz]
+
 ## [`2.16.1`][2.16.1]
 
 For a full diff see [`2.16.0...2.16.1`][2.16.0...2.16.1].
@@ -369,6 +373,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#559]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/559
 [#598]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/598
 [#604]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/604
+[#635]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/635
 
 [@dantleech]: https://github.com/dantleech
 [@HypeMC]: https://github.com/HypeMC
