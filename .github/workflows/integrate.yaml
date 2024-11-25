@@ -555,8 +555,16 @@ jobs:
             php-version: "8.3"
             dependencies: "lowest"
 
+          - phpunit-version: "8.5.40"
+            php-version: "8.3"
+            dependencies: "highest"
+
+          - phpunit-version: "8.5.40"
+            php-version: "8.4"
+            dependencies: "lowest"
+
           - phpunit-version: "8.5.19"
-            php-version: "8.3"
+            php-version: "8.4"
             dependencies: "highest"
 
           - phpunit-version: "9.0.0"
@@ -607,6 +615,14 @@ jobs:
             php-version: "8.3"
             dependencies: "highest"
 
+          - phpunit-version: "9.6.21"
+            php-version: "8.4"
+            dependencies: "lowest"
+
+          - phpunit-version: "9.6.21"
+            php-version: "8.4"
+            dependencies: "highest"
+
           - phpunit-version: "10.0.0"
             php-version: "8.1"
             dependencies: "lowest"
@@ -631,6 +647,14 @@ jobs:
             php-version: "8.3"
             dependencies: "highest"
 
+          - phpunit-version: "10.5.35"
+            php-version: "8.4"
+            dependencies: "lowest"
+
+          - phpunit-version: "10.5.35"
+            php-version: "8.4"
+            dependencies: "highest"
+
           - phpunit-version: "11.0.0"
             php-version: "8.2"
             dependencies: "lowest"
@@ -645,6 +669,14 @@ jobs:
 
           - phpunit-version: "11.0.0"
             php-version: "8.3"
+            dependencies: "highest"
+
+          - phpunit-version: "11.3.6"
+            php-version: "8.4"
+            dependencies: "lowest"
+
+          - phpunit-version: "11.3.6"
+            php-version: "8.4"
             dependencies: "highest"
 
     env:
@@ -706,7 +738,7 @@ jobs:
         run: "vendor/bin/phpunit --colors=always --configuration=test/Unit/phpunit.xml"
 
       - name: "Apply patch from https://github.com/sebastianbergmann/phpunit/pull/4486 for phpunit/phpunit:9.0.0"
-        if: "matrix.php-version == '8.3' && matrix.phpunit-version == '9.0.0' && matrix.dependencies == 'lowest'"
+        if: "(matrix.php-version == '8.3' || matrix.php-version == '8.4') && matrix.phpunit-version == '9.0.0' && matrix.dependencies == 'lowest'"
         run: |
           cd vendor/phpunit/phpunit
           wget -O gh-4486.patch https://github.com/sebastianbergmann/phpunit/commit/0a488f22925b3c8732338ef0fbfe7f13cb4cf1d2.patch
