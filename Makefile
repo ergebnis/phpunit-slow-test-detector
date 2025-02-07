@@ -22,7 +22,7 @@ help: ## Displays this list of targets with descriptions
 .PHONY: phar
 phar: phive ## Builds a phar with humbug/box
 	.phive/box validate box.json
-	composer remove phpstan/extension-installer --dev --no-interaction
+	composer remove phpstan/extension-installer --dev --no-interaction --quiet
 	composer remove phpunit/phpunit --no-interaction --quiet
 	.phive/box compile --config=box.json
 	git checkout HEAD -- composer.json composer.lock
@@ -51,17 +51,18 @@ static-code-analysis-baseline: vendor ## Generates a baseline for static code an
 	vendor/bin/phpstan --allow-empty-baseline --configuration=phpstan.neon --generate-baseline=phpstan-baseline.neon --memory-limit=-1
 
 .PHONY: tests
-tests: phar ## Runs unit, end-to-end, and phar tests with phpunit/phpunit
-	composer config platform.php --unset; composer remove ergebnis/php-cs-fixer-config --dev --no-interaction --quiet; composer require phpunit/phpunit:^7.5.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/Unit/phpunit.xml; git checkout HEAD -- composer.json composer.lock
-	composer config platform.php --unset; composer remove ergebnis/php-cs-fixer-config --dev --no-interaction --quiet; composer require phpunit/phpunit:^7.5.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/EndToEnd/Version07/phpunit.xml; git checkout HEAD -- composer.json composer.lock
-	composer config platform.php --unset; composer remove ergebnis/php-cs-fixer-config --dev --no-interaction --quiet; composer require phpunit/phpunit:^8.5.19 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/EndToEnd/Version08/phpunit.xml; git checkout HEAD -- composer.json composer.lock
-	composer config platform.php --unset; composer remove ergebnis/php-cs-fixer-config --dev --no-interaction --quiet; composer require phpunit/phpunit:^9.0.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/EndToEnd/Version09/phpunit.xml; git checkout HEAD -- composer.json composer.lock
-	composer config platform.php --unset; composer remove ergebnis/php-cs-fixer-config --dev --no-interaction --quiet; composer require phpunit/phpunit:^10.0.0 --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/EndToEnd/Version10/phpunit.xml; git checkout HEAD -- composer.json composer.lock
-	composer config platform.php --unset; composer remove ergebnis/php-cs-fixer-config --dev --no-interaction --quiet; composer require phpunit/phpunit:11.0.x-dev --no-interaction --quiet --update-with-all-dependencies; vendor/bin/phpunit --configuration=test/EndToEnd/Version11/phpunit.xml; git checkout HEAD -- composer.json composer.lock
-	composer config platform.php --unset; composer remove ergebnis/php-cs-fixer-config --dev --no-interaction --quiet; composer require phpunit/phpunit:^7.5.0 --no-interaction --quiet --update-with-all-dependencies; composer install --no-autoloader --no-interaction --quiet; vendor/bin/phpunit --configuration=test/Phar/Version07/phpunit.xml; git checkout HEAD -- composer.json composer.lock
-	composer config platform.php --unset; composer remove ergebnis/php-cs-fixer-config --dev --no-interaction --quiet; composer require phpunit/phpunit:^8.5.19 --no-interaction --quiet --update-with-all-dependencies; composer install --no-autoloader --no-interaction --quiet; vendor/bin/phpunit --configuration=test/Phar/Version08/phpunit.xml; git checkout HEAD -- composer.json composer.lock
-	composer config platform.php --unset; composer remove ergebnis/php-cs-fixer-config --dev --no-interaction --quiet; composer require phpunit/phpunit:^9.0.0 --no-interaction --quiet --update-with-all-dependencies; composer install --no-autoloader --no-interaction --quiet; vendor/bin/phpunit --configuration=test/Phar/Version09/phpunit.xml; git checkout HEAD -- composer.json composer.lock
-	composer config platform.php --unset; composer remove ergebnis/php-cs-fixer-config --dev --no-interaction --quiet; composer require phpunit/phpunit:^10.0.0 --no-interaction --quiet --update-with-all-dependencies; composer install --no-autoloader --no-interaction --quiet; vendor/bin/phpunit --configuration=test/Phar/Version10/phpunit.xml; git checkout HEAD -- composer.json composer.lock
+tests: phar ## Runs unit, end-to-end, and phar tests with phpunit/phpunit on PHP 7.4
+	composer config platform.php --unset && composer remove ergebnis/php-cs-fixer-config phpstan/phpstan-phpunit --dev --no-interaction --quiet && composer require phpunit/phpunit:^6.5.0 --no-interaction --quiet --update-with-all-dependencies && vendor/bin/phpunit --configuration=test/Unit/phpunit.xml; git checkout HEAD -- composer.json composer.lock
+
+	composer config platform.php --unset && composer remove ergebnis/php-cs-fixer-config phpstan/phpstan-phpunit --dev --no-interaction --quiet && composer require phpunit/phpunit:^6.5.0 --no-interaction --quiet --update-with-all-dependencies && vendor/bin/phpunit --configuration=test/EndToEnd/Version06/phpunit.xml; git checkout HEAD -- composer.json composer.lock
+	composer config platform.php --unset && composer remove ergebnis/php-cs-fixer-config phpstan/phpstan-phpunit --dev --no-interaction --quiet && composer require phpunit/phpunit:^7.5.0 --no-interaction --quiet --update-with-all-dependencies && vendor/bin/phpunit --configuration=test/EndToEnd/Version07/phpunit.xml; git checkout HEAD -- composer.json composer.lock
+	composer config platform.php --unset && composer remove ergebnis/php-cs-fixer-config phpstan/phpstan-phpunit --dev --no-interaction --quiet && composer require phpunit/phpunit:^8.5.19 --no-interaction --quiet --update-with-all-dependencies && vendor/bin/phpunit --configuration=test/EndToEnd/Version08/phpunit.xml; git checkout HEAD -- composer.json composer.lock
+	composer config platform.php --unset && composer remove ergebnis/php-cs-fixer-config phpstan/phpstan-phpunit --dev --no-interaction --quiet && composer require phpunit/phpunit:^9.0.0 --no-interaction --quiet --update-with-all-dependencies && vendor/bin/phpunit --configuration=test/EndToEnd/Version09/phpunit.xml; git checkout HEAD -- composer.json composer.lock
+
+	composer config platform.php --unset && composer remove ergebnis/php-cs-fixer-config phpstan/phpstan-phpunit --dev --no-interaction --quiet && composer require phpunit/phpunit:^6.5.0 --no-interaction --quiet --update-with-all-dependencies && vendor/bin/phpunit --configuration=test/Phar/Version06/phpunit.xml; git checkout HEAD -- composer.json composer.lock
+	composer config platform.php --unset && composer remove ergebnis/php-cs-fixer-config phpstan/phpstan-phpunit --dev --no-interaction --quiet && composer require phpunit/phpunit:^7.5.0 --no-interaction --quiet --update-with-all-dependencies && vendor/bin/phpunit --configuration=test/Phar/Version07/phpunit.xml; git checkout HEAD -- composer.json composer.lock
+	composer config platform.php --unset && composer remove ergebnis/php-cs-fixer-config phpstan/phpstan-phpunit --dev --no-interaction --quiet && composer require phpunit/phpunit:^8.5.19 --no-interaction --quiet --update-with-all-dependencies && vendor/bin/phpunit --configuration=test/Phar/Version08/phpunit.xml; git checkout HEAD -- composer.json composer.lock
+	composer config platform.php --unset && composer remove ergebnis/php-cs-fixer-config phpstan/phpstan-phpunit --dev --no-interaction --quiet && composer require phpunit/phpunit:^9.0.0 --no-interaction --quiet --update-with-all-dependencies && vendor/bin/phpunit --configuration=test/Phar/Version09/phpunit.xml; git checkout HEAD -- composer.json composer.lock
 
 vendor: composer.json composer.lock
 	composer validate --strict
