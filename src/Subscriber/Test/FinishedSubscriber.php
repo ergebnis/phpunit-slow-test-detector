@@ -22,6 +22,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\TestDescription;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use Ergebnis\PHPUnit\SlowTestDetector\Time;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
+use Ergebnis\PHPUnit\SlowTestDetector\Version;
 use PHPUnit\Event;
 use PHPUnit\Framework;
 use PHPUnit\Metadata;
@@ -46,14 +47,21 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
      */
     private $collector;
 
+    /**
+     * @var Version\Series
+     */
+    private $versionSeries;
+
     public function __construct(
         Duration $maximumDuration,
         TimeKeeper $timeKeeper,
-        Collector\Collector $collector
+        Collector\Collector $collector,
+        Version\Series $versionSeries
     ) {
         $this->maximumDuration = $maximumDuration;
         $this->timeKeeper = $timeKeeper;
         $this->collector = $collector;
+        $this->versionSeries = $versionSeries;
     }
 
     /**
@@ -152,10 +160,12 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
             return $maximumDurationFromAttribute;
         }
 
-        $maximumDurationFromAnnotation = self::resolveMaximumDurationFromAnnotation($test);
+        if ($this->versionSeries->major()->isLessThan(Version\Major::fromInt(12))) {
+            $maximumDurationFromAnnotation = self::resolveMaximumDurationFromAnnotation($test);
 
-        if ($maximumDurationFromAnnotation instanceof Duration) {
-            return $maximumDurationFromAnnotation;
+            if ($maximumDurationFromAnnotation instanceof Duration) {
+                return $maximumDurationFromAnnotation;
+            }
         }
 
         return $this->maximumDuration;

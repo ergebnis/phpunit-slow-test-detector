@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector;
 
+use Ergebnis\PHPUnit;
 use PHPUnit\Framework;
 use PHPUnit\Runner;
 use PHPUnit\TextUI;
@@ -406,7 +407,7 @@ TXT;
     return;
 }
 
-if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\Major::fromInt(11))) {
+if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\Major::fromInt(11), Version\Major::fromInt(12))) {
     /**
      * @internal
      */
@@ -446,7 +447,8 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
                 new Subscriber\Test\FinishedSubscriber(
                     $maximumDuration,
                     $timeKeeper,
-                    $collector
+                    $collector,
+                    Version\Series::fromString(Runner\Version::series())
                 ),
                 new Subscriber\TestRunner\ExecutionFinishedSubscriber(
                     $collector,
