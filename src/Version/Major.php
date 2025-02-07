@@ -53,6 +53,11 @@ final class Major
         return $this->value === $other->value;
     }
 
+    public function isLessThan(self $other): bool
+    {
+        return $this->value < $other->value;
+    }
+
     public function isOneOf(self ...$others): bool
     {
         foreach ($others as $other) {

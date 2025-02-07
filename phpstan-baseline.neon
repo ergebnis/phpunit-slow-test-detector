@@ -381,6 +381,21 @@ parameters:
 			path: test/Unit/Version/MajorTest.php
 
 		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Version\\\\MajorTest\\:\\:testIsLessThanReturnsFalseWhenValueIsGreater\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Version/MajorTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Version\\\\MajorTest\\:\\:testIsLessThanReturnsFalseWhenValueIsSame\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Version/MajorTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Version\\\\MajorTest\\:\\:testIsLessThanReturnsTrueWhenValueIsLess\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Version/MajorTest.php
+
+		-
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Version\\\\MajorTest\\:\\:testIsOneOfReturnsFalseWhenAllValuesAreDifferent\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/Version/MajorTest.php
