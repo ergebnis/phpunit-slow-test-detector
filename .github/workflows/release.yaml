@@ -56,7 +56,7 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
       - name: "Remove incompatible dependencies with composer"
-        run: "composer remove ergebnis/composer-normalize ergebnis/license ergebnis/php-cs-fixer-config rector/rector --ansi --dev --no-interaction --no-progress"
+        run: "composer remove phpstan/extension-installer --ansi --dev --no-interaction --no-progress"
 
       - name: "Remove phpunit/phpunit with composer"
         run: "composer remove phpunit/phpunit --ansi --no-interaction --ignore-platform-reqs --no-progress"
