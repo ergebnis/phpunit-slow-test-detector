@@ -555,7 +555,7 @@ jobs:
             php-version: "8.3"
             dependencies: "lowest"
 
-          - phpunit-version: "8.5.40"
+          - phpunit-version: "8.5.19"
             php-version: "8.3"
             dependencies: "highest"
 
@@ -563,7 +563,7 @@ jobs:
             php-version: "8.4"
             dependencies: "lowest"
 
-          - phpunit-version: "8.5.19"
+          - phpunit-version: "8.5.40"
             php-version: "8.4"
             dependencies: "highest"
 
