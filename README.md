@@ -343,8 +343,6 @@ use Ergebnis\PHPUnit\SlowTestDetector;
 
 final class ExtraSlowTest extends Framework\TestCase
 {
-    /**
-     */
     #[SlowTestDetector\Attribute\MaximumDuration(5000)]
     public function testExtraExtraSlow(): void
     {
