@@ -47,28 +47,28 @@ final class DefaultDurationFormatterTest extends Framework\TestCase
                     0,
                     0
                 ),
-                '0.000',
+                '0 ms',
             ],
             'milliseconds' => [
                 Duration::fromSecondsAndNanoseconds(
                     0,
                     123999000
                 ),
-                '0.123',
+                '123 ms',
             ],
             'seconds-digits-one' => [
                 Duration::fromSecondsAndNanoseconds(
                     1,
                     234456789
                 ),
-                '1.234',
+                '1.234 s',
             ],
             'seconds-digits-two' => [
                 Duration::fromSecondsAndNanoseconds(
                     12,
                     345678912
                 ),
-                '12.345',
+                '12.345 s',
             ],
             'minutes-digits-one' => [
                 Duration::fromSecondsAndNanoseconds(
