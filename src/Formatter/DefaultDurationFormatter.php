@@ -59,9 +59,16 @@ final class DefaultDurationFormatter implements DurationFormatter
             );
         }
 
+        if (0 < $seconds) {
+            return \sprintf(
+                '%d.%03d s',
+                $seconds,
+                $milliseconds
+            );
+        }
+
         return \sprintf(
-            '%d.%03d',
-            $seconds,
+            '%d ms',
             $milliseconds
         );
     }

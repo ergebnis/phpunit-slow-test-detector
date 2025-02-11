@@ -85,7 +85,7 @@ final class DefaultReporterTest extends Framework\TestCase
                 <<<'TXT'
 Detected 1 test where the duration exceeded the maximum duration.
 
-1. 0.300 (0.100) FooTest::test
+1. 300 ms (100 ms) FooTest::test
 TXT
                 ,
                 Duration::fromMilliseconds(500),
@@ -103,8 +103,8 @@ TXT
                 <<<'TXT'
 Detected 2 tests where the duration exceeded the maximum duration.
 
-1. 0.300 (0.100) FooTest::test
-2. 0.275 (0.100) BarTest::test
+1. 300 ms (100 ms) FooTest::test
+2. 275 ms (100 ms) BarTest::test
 TXT
                 ,
                 Duration::fromMilliseconds(500),
@@ -128,9 +128,9 @@ TXT
                 <<<'TXT'
 Detected 3 tests where the duration exceeded the maximum duration.
 
-1. 0.300 (0.100) FooTest::test
-2. 0.275 (0.100) BarTest::test
-3. 0.250 (0.100) BazTest::test
+1. 300 ms (100 ms) FooTest::test
+2. 275 ms (100 ms) BarTest::test
+3. 250 ms (100 ms) BazTest::test
 TXT
                 ,
                 Duration::fromMilliseconds(500),
@@ -160,9 +160,9 @@ TXT
                 <<<'TXT'
 Detected 3 tests where the duration exceeded the maximum duration.
 
-1. 0.300 (0.100) FooTest::test
-2. 0.275 (0.100) BarTest::test
-3. 0.250 (0.100) BazTest::test
+1. 300 ms (100 ms) FooTest::test
+2. 275 ms (100 ms) BarTest::test
+3. 250 ms (100 ms) BazTest::test
 TXT
                 ,
                 Duration::fromMilliseconds(500),
@@ -194,14 +194,14 @@ Detected 10 tests where the duration exceeded the maximum duration.
 
  1. 20:50.000 (16:40.000) FooTest::test
  2.  9:35.000 ( 8:20.000) BarTest::test
- 3.     0.250 (    0.100) BazTest::test
- 4.     0.200 (    0.100) QuxTest::test
- 5.     0.160 (    0.100) QuuxTest::test
- 6.     0.150 (    0.100) CorgeTest::test
- 7.     0.140 (    0.100) GraultTest::test
- 8.     0.130 (    0.100) GarplyTest::test
- 9.     0.120 (    0.100) WaldoTest::test
-10.     0.110 (    0.100) FredTest::test
+ 3.    250 ms (   100 ms) BazTest::test
+ 4.    200 ms (   100 ms) QuxTest::test
+ 5.    160 ms (   100 ms) QuuxTest::test
+ 6.    150 ms (   100 ms) CorgeTest::test
+ 7.    140 ms (   100 ms) GraultTest::test
+ 8.    130 ms (   100 ms) GarplyTest::test
+ 9.    120 ms (   100 ms) WaldoTest::test
+10.    110 ms (   100 ms) FredTest::test
 TXT
                 ,
                 Duration::fromMilliseconds(500),
@@ -273,7 +273,7 @@ TXT
                 <<<'TXT'
 Detected 2 tests where the duration exceeded the maximum duration.
 
-1. 0.300 (0.100) FooTest::test
+1. 300 ms (100 ms) FooTest::test
 
 There is 1 additional slow test that is not listed here.
 TXT
@@ -299,7 +299,7 @@ TXT
                 <<<'TXT'
 Detected 3 tests where the duration exceeded the maximum duration.
 
-1. 0.300 (0.100) FooTest::test
+1. 300 ms (100 ms) FooTest::test
 
 There are 2 additional slow tests that are not listed here.
 TXT
