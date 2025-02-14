@@ -20,18 +20,18 @@ Configuration: %s/EndToEnd/Version06/Configuration/MaximumDuration/phpunit.xml
 
 ............                                                      12 / 12 (100%)
 
-Detected 11 tests where the duration exceeded the maximum duration.
+Detected 11 tests where the duration exceeded the maximum duration (100 ms).
 
- 1. 1.2%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #10
- 2. 1.1%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #9
- 3. 1.0%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #8
- 4. 0.9%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #7
- 5. 0.8%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #6
- 6. 0.7%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #5
- 7. 0.6%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #4
- 8. 0.5%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #3
- 9. 0.4%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #2
-10. 0.3%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #1
+ 1. 1.2%s s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #10
+ 2. 1.1%s s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #9
+ 3. 1.0%s s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #8
+ 4.  9%s ms Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #7
+ 5.  8%s ms Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #6
+ 6.  7%s ms Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #5
+ 7.  6%s ms Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #4
+ 8.  5%s ms Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #3
+ 9.  4%s ms Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #2
+10.  3%s ms Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\Configuration\MaximumDuration\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #1
 
 There is 1 additional slow test that is not listed here.
 

@@ -20,11 +20,11 @@ Configuration: %s/EndToEnd/Version09/TestCase/WithBeforeAnnotation/phpunit.xml
 
 ...                                                                 3 / 3 (100%)
 
-Detected 3 tests where the duration exceeded the maximum duration.
+Detected 3 tests where the duration exceeded the maximum duration (100 ms).
 
-1. 0.4%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version09\TestCase\WithBeforeAnnotation\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #1 (300)
-2. 0.3%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version09\TestCase\WithBeforeAnnotation\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #0 (200)
-3. 0.1%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version09\TestCase\WithBeforeAnnotation\SleeperTest::testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration
+1. 4%s ms Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version09\TestCase\WithBeforeAnnotation\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #1 (300)
+2. 3%s ms Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version09\TestCase\WithBeforeAnnotation\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #0 (200)
+3. 1%s ms Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version09\TestCase\WithBeforeAnnotation\SleeperTest::testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration
 
 Time: %s, Memory: %s
 

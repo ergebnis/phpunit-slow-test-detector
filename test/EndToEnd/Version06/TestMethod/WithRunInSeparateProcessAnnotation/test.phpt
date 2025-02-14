@@ -25,12 +25,12 @@ Configuration: %s/EndToEnd/Version06/TestMethod/WithRunInSeparateProcessAnnotati
 
 ....                                                                4 / 4 (100%)
 
-Detected 4 tests where the duration exceeded the maximum duration.
+Detected 4 tests where the duration exceeded the maximum duration (100 ms).
 
-1. 1.3%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\TestMethod\WithRunInSeparateProcessAnnotation\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWhenMethodHasRunInSeparateProcessAnnotation
-2. 1.0%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\TestMethod\WithRunInSeparateProcessAnnotation\SleeperTest::testSleeperSleepsShorterThanMaximumDurationFromXmlConfigurationWhenMethodHasRunInSeparateProcessAnnotation
-3. 0.8%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\TestMethod\WithRunInSeparateProcessAnnotation\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfiguration
-4. 0.6%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\TestMethod\WithRunInSeparateProcessAnnotation\SleeperTest::testSleeperSleepsShorterThanMaximumDurationFromXmlConfiguration
+1. 1.3%s s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\TestMethod\WithRunInSeparateProcessAnnotation\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWhenMethodHasRunInSeparateProcessAnnotation
+2. 1.0%s s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\TestMethod\WithRunInSeparateProcessAnnotation\SleeperTest::testSleeperSleepsShorterThanMaximumDurationFromXmlConfigurationWhenMethodHasRunInSeparateProcessAnnotation
+3.  8%s ms Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\TestMethod\WithRunInSeparateProcessAnnotation\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfiguration
+4.  6%s ms Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\TestMethod\WithRunInSeparateProcessAnnotation\SleeperTest::testSleeperSleepsShorterThanMaximumDurationFromXmlConfiguration
 
 Time: %s, Memory: %s
 

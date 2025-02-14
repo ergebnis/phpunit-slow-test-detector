@@ -20,9 +20,9 @@ Configuration: %s/EndToEnd/Version09/TestMethod/WithMaximumDurationAndSlowThresh
 
 ..                                                                  2 / 2 (100%)
 
-Detected 1 test where the duration exceeded the maximum duration.
+Detected 1 test where the duration exceeded the maximum duration (100 ms).
 
-1. 0.3%s (0.200) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version09\TestMethod\WithMaximumDurationAndSlowThresholdAnnotations\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasMaximumDurationAndSlowThresholdAnnotations
+1. 3%s ms (200 ms) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version09\TestMethod\WithMaximumDurationAndSlowThresholdAnnotations\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasMaximumDurationAndSlowThresholdAnnotations
 
 Time: %s, Memory: %s
 

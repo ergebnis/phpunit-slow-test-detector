@@ -22,10 +22,10 @@ Configuration: %s/EndToEnd/Version12/TestCase/Bare/phpunit.xml
 
 ...                                                                 3 / 3 (100%)
 
-Detected 2 tests where the duration exceeded the maximum duration.
+Detected 2 tests where the duration exceeded the maximum duration (100 ms).
 
-1. 0.3%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version12\TestCase\Bare\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #1 (300)
-2. 0.2%s (0.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version12\TestCase\Bare\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #0 (200)
+1. 3%s ms Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version12\TestCase\Bare\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #1 (300)
+2. 2%s ms Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version12\TestCase\Bare\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #0 (200)
 
 Time: %s, Memory: %s
 

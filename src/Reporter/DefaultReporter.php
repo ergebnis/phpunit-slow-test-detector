@@ -83,15 +83,18 @@ TXT;
     {
         $count = \count($slowTests);
 
+        $durationFormatter = $this->durationFormatter;
+        $formattedMaximumDuration = $durationFormatter->format($this->maximumDuration);
+
         if (1 === $count) {
             return <<<TXT
-Detected {$count} test where the duration exceeded the maximum duration.
+Detected {$count} test where the duration exceeded the maximum duration ({$formattedMaximumDuration}).
 
 TXT;
         }
 
         return <<<TXT
-Detected {$count} tests where the duration exceeded the maximum duration.
+Detected {$count} tests where the duration exceeded the maximum duration ({$formattedMaximumDuration}).
 
 TXT;
     }
@@ -134,7 +137,14 @@ TXT;
         $durationWidth = \strlen($durationFormatter->format($slowestTest->duration()));
         $maximumDurationWidth = \strlen($durationFormatter->format($longestMaximumDuration));
 
-        $items = \array_map(static function (int $number, SlowTest $slowTest) use ($numberWidth, $durationFormatter, $durationWidth, $maximumDurationWidth): string {
+        $formattedMaximumGlobalDuration = \str_pad(
+            $durationFormatter->format($this->maximumDuration),
+            $maximumDurationWidth,
+            ' ',
+            \STR_PAD_LEFT
+        );
+
+        $items = \array_map(static function (int $number, SlowTest $slowTest) use ($numberWidth, $durationFormatter, $durationWidth, $formattedMaximumGlobalDuration, $maximumDurationWidth): string {
             $formattedNumber = \str_pad(
                 (string) $number,
                 $numberWidth,
@@ -149,20 +159,21 @@ TXT;
                 \STR_PAD_LEFT
             );
 
-            $formattedMaximumDuration = \sprintf(
-                '(%s)',
-                \str_pad(
-                    $durationFormatter->format($slowTest->maximumDuration()),
-                    $maximumDurationWidth,
-                    ' ',
-                    \STR_PAD_LEFT
-                )
+            $formattedMaximumDuration = \str_pad(
+                $durationFormatter->format($slowTest->maximumDuration()),
+                $maximumDurationWidth,
+                ' ',
+                \STR_PAD_LEFT
             );
+
+            $formattedMaximumDurationIfNotGlobal = $formattedMaximumDuration === $formattedMaximumGlobalDuration
+                ? ''
+                : \sprintf(' (%s)', $formattedMaximumDuration);
 
             $testDescription = $slowTest->testDescription()->toString();
 
             return <<<TXT
-{$formattedNumber}. {$formattedDuration} {$formattedMaximumDuration} {$testDescription}
+{$formattedNumber}. {$formattedDuration}{$formattedMaximumDurationIfNotGlobal} {$testDescription}
 TXT;
         }, \range(1, \count($slowTestsToReport)), $slowTestsToReport);
 
