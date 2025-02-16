@@ -174,16 +174,16 @@ TXT;
 
     private function footer(SlowTest ...$slowTests): string
     {
-        $remainingCount = \max(
+        $additionalSlowTestCount = \max(
             \count($slowTests) - $this->maximumCount->toInt(),
             0
         );
 
-        if (0 === $remainingCount) {
+        if (0 === $additionalSlowTestCount) {
             return '';
         }
 
-        if (1 === $remainingCount) {
+        if (1 === $additionalSlowTestCount) {
             return <<<'TXT'
 
 There is 1 additional slow test that is not listed here.
@@ -192,7 +192,7 @@ TXT;
 
         return <<<TXT
 
-There are {$remainingCount} additional slow tests that are not listed here.
+There are {$additionalSlowTestCount} additional slow tests that are not listed here.
 TXT;
     }
 }
