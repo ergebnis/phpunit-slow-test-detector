@@ -189,7 +189,7 @@ TXT;
                 $maximumDuration
             );
 
-            $this->collector->collect($slowTest);
+            $this->collector->collectSlowTest($slowTest);
         }
 
         private function resolveMaximumDuration(Framework\Test $test): Duration
@@ -331,7 +331,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
                 $maximumDuration
             );
 
-            $this->collector->collect($slowTest);
+            $this->collector->collectSlowTest($slowTest);
         }
 
         public function executeAfterLastTest(): void

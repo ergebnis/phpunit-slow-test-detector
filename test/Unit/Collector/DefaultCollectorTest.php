@@ -33,7 +33,7 @@ final class DefaultCollectorTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testCollectCollectsSlowTests()
+    public function testCollectSlowTestCollectsSlowTests()
     {
         $faker = self::faker()->unique();
 
@@ -53,8 +53,8 @@ final class DefaultCollectorTest extends Framework\TestCase
 
         $collector = new Collector\DefaultCollector();
 
-        $collector->collect($one);
-        $collector->collect($two);
+        $collector->collectSlowTest($one);
+        $collector->collectSlowTest($two);
 
         $expected = [
             $one,
@@ -64,7 +64,7 @@ final class DefaultCollectorTest extends Framework\TestCase
         self::assertSame($expected, $collector->collected());
     }
 
-    public function testCollectCollectsSlowerTestWithSameTestIdentifier()
+    public function testCollectSlowTestCollectsSlowerTestWithSameTestIdentifier()
     {
         $faker = self::faker();
 
@@ -87,8 +87,8 @@ final class DefaultCollectorTest extends Framework\TestCase
 
         $collector = new Collector\DefaultCollector();
 
-        $collector->collect($one);
-        $collector->collect($two);
+        $collector->collectSlowTest($one);
+        $collector->collectSlowTest($two);
 
         $expected = [
             $two,
@@ -97,7 +97,7 @@ final class DefaultCollectorTest extends Framework\TestCase
         self::assertSame($expected, $collector->collected());
     }
 
-    public function testCollectDoesNotCollectFasterTestWithSameTestIdentifier()
+    public function testCollectSlowTestDoesNotCollectFasterTestWithSameTestIdentifier()
     {
         $faker = self::faker();
 
@@ -120,8 +120,8 @@ final class DefaultCollectorTest extends Framework\TestCase
 
         $collector = new Collector\DefaultCollector();
 
-        $collector->collect($one);
-        $collector->collect($two);
+        $collector->collectSlowTest($one);
+        $collector->collectSlowTest($two);
 
         $expected = [
             $one,

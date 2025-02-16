@@ -97,7 +97,7 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
             $maximumDuration
         );
 
-        $this->collector->collect($slowTest);
+        $this->collector->collectSlowTest($slowTest);
     }
 
     /**

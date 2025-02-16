@@ -1,12 +1,12 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Collector\\\\Collector\\:\\:collect\\(\\) has no return type specified\\.$#"
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Collector\\\\Collector\\:\\:collectSlowTest\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: src/Collector/Collector.php
 
 		-
-			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Collector\\\\DefaultCollector\\:\\:collect\\(\\) has no return type specified\\.$#"
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Collector\\\\DefaultCollector\\:\\:collectSlowTest\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: src/Collector/DefaultCollector.php
 

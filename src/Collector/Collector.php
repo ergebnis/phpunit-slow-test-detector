@@ -20,7 +20,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
  */
 interface Collector
 {
-    public function collect(SlowTest $slowTest);
+    public function collectSlowTest(SlowTest $slowTest);
 
     /**
      * @phpstan-return list<SlowTest>
