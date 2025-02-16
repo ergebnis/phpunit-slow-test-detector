@@ -71,17 +71,17 @@ parameters:
 			path: test/Unit/Attribute/MaximumDurationTest.php
 
 		-
-			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Collector\\\\DefaultCollectorTest\\:\\:testCollectCollectsSlowTests\\(\\) has no return type specified\\.$#"
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Collector\\\\DefaultCollectorTest\\:\\:testCollectSlowTestCollectsSlowTests\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/Collector/DefaultCollectorTest.php
 
 		-
-			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Collector\\\\DefaultCollectorTest\\:\\:testCollectCollectsSlowerTestWithSameTestIdentifier\\(\\) has no return type specified\\.$#"
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Collector\\\\DefaultCollectorTest\\:\\:testCollectSlowTestCollectsSlowerTestWithSameTestIdentifier\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/Collector/DefaultCollectorTest.php
 
 		-
-			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Collector\\\\DefaultCollectorTest\\:\\:testCollectDoesNotCollectFasterTestWithSameTestIdentifier\\(\\) has no return type specified\\.$#"
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Collector\\\\DefaultCollectorTest\\:\\:testCollectSlowTestDoesNotCollectFasterTestWithSameTestIdentifier\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/Collector/DefaultCollectorTest.php
 
