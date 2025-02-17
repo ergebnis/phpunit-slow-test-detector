@@ -20,6 +20,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
+use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\TestDescription;
 use Ergebnis\PHPUnit\SlowTestDetector\TestDuration;
@@ -36,6 +37,8 @@ use PHPUnit\Framework;
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumCount
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTestCount
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTestList
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDescription
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDuration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
@@ -44,47 +47,44 @@ final class DefaultReporterTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testReportReturnsEmptyStringWhenThereAreNoSlowTests()
+    public function testReportReturnsEmptyStringWhenSlowTestListIsEmpty()
     {
         $faker = self::faker();
 
+        $slowTestList = SlowTestList::create();
+
         $reporter = new Reporter\DefaultReporter(
             new Formatter\DefaultDurationFormatter(),
-            MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
             MaximumCount::fromCount(Count::fromInt($faker->numberBetween(1)))
         );
 
-        $report = $reporter->report();
+        $report = $reporter->report($slowTestList);
 
         self::assertSame('', $report);
     }
 
     /**
-     * @dataProvider provideExpectedReportMaximumDurationMaximumCountAndSlowTests
-     *
-     * @param list<SlowTest> $slowTests
+     * @dataProvider provideExpectedReportMaximumCountAndSlowTestList
      */
-    public function testReportReturnsReportWhenThereAreFewerSlowTestsThanMaximumCount(
+    public function testReportReturnsReportWhenSlowTestListHasFewerSlowTestsThanMaximumCount(
         string $expectedReport,
-        MaximumDuration $maximumDuration,
         MaximumCount $maximumCount,
-        array $slowTests
+        SlowTestList $slowTestList
     ) {
         $reporter = new Reporter\DefaultReporter(
             new Formatter\DefaultDurationFormatter(),
-            $maximumDuration,
             $maximumCount
         );
 
-        $report = $reporter->report(...$slowTests);
+        $report = $reporter->report($slowTestList);
 
         self::assertSame($expectedReport, $report);
     }
 
     /**
-     * @return \Generator<string, array{0: string, 1: MaximumDuration, 2: MaximumCount, 3: list<SlowTest>}>
+     * @return \Generator<string, array{0: string, 1: MaximumCount, 2: SlowTestList}>
      */
-    public static function provideExpectedReportMaximumDurationMaximumCountAndSlowTests(): iterable
+    public static function provideExpectedReportMaximumCountAndSlowTestList(): iterable
     {
         $values = [
             'header-singular' => [
@@ -94,16 +94,15 @@ Detected 1 test where the duration exceeded the maximum duration.
 1. 0.300 (0.100) FooTest::test
 TXT
                 ,
-                MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
                 MaximumCount::fromCount(Count::fromInt(1)),
-                [
+                SlowTestList::create(
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
                         TestDuration::fromDuration(Duration::fromMilliseconds(300)),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
-                    ),
-                ],
+                    )
+                ),
             ],
             'header-plural' => [
                 <<<'TXT'
@@ -113,9 +112,8 @@ Detected 2 tests where the duration exceeded the maximum duration.
 2. 0.275 (0.100) BarTest::test
 TXT
                 ,
-                MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
                 MaximumCount::fromCount(Count::fromInt(2)),
-                [
+                SlowTestList::create(
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
@@ -127,8 +125,8 @@ TXT
                         TestDescription::fromString('BarTest::test'),
                         TestDuration::fromDuration(Duration::fromMilliseconds(275)),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
-                    ),
-                ],
+                    )
+                ),
             ],
             'list-sorted' => [
                 <<<'TXT'
@@ -139,9 +137,8 @@ Detected 3 tests where the duration exceeded the maximum duration.
 3. 0.250 (0.100) BazTest::test
 TXT
                 ,
-                MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
                 MaximumCount::fromCount(Count::fromInt(3)),
-                [
+                SlowTestList::create(
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
@@ -159,8 +156,8 @@ TXT
                         TestDescription::fromString('BazTest::test'),
                         TestDuration::fromDuration(Duration::fromMilliseconds(250)),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
-                    ),
-                ],
+                    )
+                ),
             ],
             'list-unsorted' => [
                 <<<'TXT'
@@ -171,9 +168,8 @@ Detected 3 tests where the duration exceeded the maximum duration.
 3. 0.250 (0.100) BazTest::test
 TXT
                 ,
-                MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
                 MaximumCount::fromCount(Count::fromInt(3)),
-                [
+                SlowTestList::create(
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
                         TestDescription::fromString('BazTest::test'),
@@ -191,8 +187,8 @@ TXT
                         TestDescription::fromString('FooTest::test'),
                         TestDuration::fromDuration(Duration::fromMilliseconds(300)),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
-                    ),
-                ],
+                    )
+                ),
             ],
             'list-different-maximum-duration' => [
                 <<<'TXT'
@@ -210,9 +206,8 @@ Detected 10 tests where the duration exceeded the maximum duration.
 10.     0.110 (    0.100) FredTest::test
 TXT
                 ,
-                MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
                 MaximumCount::fromCount(Count::fromInt(10)),
-                [
+                SlowTestList::create(
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
@@ -272,8 +267,8 @@ TXT
                         TestDescription::fromString('FredTest::test'),
                         TestDuration::fromDuration(Duration::fromMilliseconds(110)),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
-                    ),
-                ],
+                    )
+                ),
             ],
             'footer-singular' => [
                 <<<'TXT'
@@ -284,9 +279,8 @@ Detected 2 tests where the duration exceeded the maximum duration.
 There is 1 additional slow test that is not listed here.
 TXT
                 ,
-                MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
                 MaximumCount::fromCount(Count::fromInt(1)),
-                [
+                SlowTestList::create(
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
@@ -298,8 +292,8 @@ TXT
                         TestDescription::fromString('BarTest::test'),
                         TestDuration::fromDuration(Duration::fromMilliseconds(275)),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
-                    ),
-                ],
+                    )
+                ),
             ],
             'footer-plural' => [
                 <<<'TXT'
@@ -310,9 +304,8 @@ Detected 3 tests where the duration exceeded the maximum duration.
 There are 2 additional slow tests that are not listed here.
 TXT
                 ,
-                MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
                 MaximumCount::fromCount(Count::fromInt(1)),
-                [
+                SlowTestList::create(
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
@@ -330,17 +323,16 @@ TXT
                         TestDescription::fromString('BazTest::test'),
                         TestDuration::fromDuration(Duration::fromMilliseconds(250)),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
-                    ),
-                ],
+                    )
+                ),
             ],
         ];
 
-        foreach ($values as $key => list($expected, $maximumDuration, $maximumCount, $slowTests)) {
+        foreach ($values as $key => list($expected, $maximumCount, $slowTestList)) {
             yield $key => [
                 $expected,
-                $maximumDuration,
                 $maximumCount,
-                $slowTests,
+                $slowTestList,
             ];
         }
     }

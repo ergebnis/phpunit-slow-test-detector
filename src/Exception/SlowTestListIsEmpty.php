@@ -11,14 +11,15 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector\Reporter;
-
-use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Exception;
 
 /**
  * @internal
  */
-interface Reporter
+final class SlowTestListIsEmpty extends \RuntimeException
 {
-    public function report(SlowTestList $slowTestList): string;
+    public static function create(): self
+    {
+        return new self('Slow test list is empty.');
+    }
 }

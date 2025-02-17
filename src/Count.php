@@ -40,6 +40,11 @@ final class Count
         return new self($value);
     }
 
+    public function equals(self $other): bool
+    {
+        return $this->value === $other->value;
+    }
+
     public function toInt(): int
     {
         return $this->value;

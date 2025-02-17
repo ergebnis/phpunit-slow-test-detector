@@ -17,6 +17,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\Collector;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
+use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\TestDescription;
 use Ergebnis\PHPUnit\SlowTestDetector\TestDuration;
@@ -29,6 +30,7 @@ use PHPUnit\Framework;
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTestList
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDescription
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDuration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
@@ -60,12 +62,12 @@ final class DefaultCollectorTest extends Framework\TestCase
         $collector->collectSlowTest($one);
         $collector->collectSlowTest($two);
 
-        $expected = [
+        $expected = SlowTestList::create(
             $one,
-            $two,
-        ];
+            $two
+        );
 
-        self::assertSame($expected, $collector->collected());
+        self::assertEquals($expected, $collector->slowTestList());
     }
 
     public function testCollectSlowTestCollectsSlowerTestWithSameTestIdentifier()
@@ -94,11 +96,9 @@ final class DefaultCollectorTest extends Framework\TestCase
         $collector->collectSlowTest($one);
         $collector->collectSlowTest($two);
 
-        $expected = [
-            $two,
-        ];
+        $expected = SlowTestList::create($two);
 
-        self::assertSame($expected, $collector->collected());
+        self::assertEquals($expected, $collector->slowTestList());
     }
 
     public function testCollectSlowTestDoesNotCollectFasterTestWithSameTestIdentifier()
@@ -127,10 +127,8 @@ final class DefaultCollectorTest extends Framework\TestCase
         $collector->collectSlowTest($one);
         $collector->collectSlowTest($two);
 
-        $expected = [
-            $one,
-        ];
+        $expected = SlowTestList::create($one);
 
-        self::assertSame($expected, $collector->collected());
+        self::assertEquals($expected, $collector->slowTestList());
     }
 }

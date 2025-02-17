@@ -69,7 +69,6 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
             $this->collector = new Collector\DefaultCollector();
             $this->reporter = new Reporter\DefaultReporter(
                 new Formatter\DefaultDurationFormatter(),
-                $maximumDuration,
                 $maximumCount
             );
         }
@@ -129,13 +128,13 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
                 return;
             }
 
-            $slowTests = $this->collector->collected();
+            $slowTestList = $this->collector->slowTestList();
 
-            if ([] === $slowTests) {
+            if ($slowTestList->isEmpty()) {
                 return;
             }
 
-            $report = $this->reporter->report(...$slowTests);
+            $report = $this->reporter->report($slowTestList);
 
             if ('' === $report) {
                 return;
@@ -277,7 +276,6 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
             $this->collector = new Collector\DefaultCollector();
             $this->reporter = new Reporter\DefaultReporter(
                 new Formatter\DefaultDurationFormatter(),
-                $maximumDuration,
                 $maximumCount
             );
         }
@@ -335,13 +333,13 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
                 return;
             }
 
-            $slowTests = $this->collector->collected();
+            $slowTestList = $this->collector->slowTestList();
 
-            if ([] === $slowTests) {
+            if ($slowTestList->isEmpty()) {
                 return;
             }
 
-            $report = $this->reporter->report(...$slowTests);
+            $report = $this->reporter->report($slowTestList);
 
             if ('' === $report) {
                 return;
@@ -431,7 +429,6 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
             $collector = new Collector\DefaultCollector();
             $reporter = new Reporter\DefaultReporter(
                 new Formatter\DefaultDurationFormatter(),
-                $maximumDuration,
                 $maximumCount
             );
 

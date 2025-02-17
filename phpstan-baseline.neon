@@ -111,6 +111,16 @@ parameters:
 			path: test/Unit/Console/ColorTest.php
 
 		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\CountTest\\:\\:testEqualsReturnsFalseWhenValueIsDifferent\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/CountTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\CountTest\\:\\:testEqualsReturnsTrueWhenValueIsSame\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/CountTest.php
+
+		-
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\CountTest\\:\\:testFromIntRejectsInvalidValue\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/CountTest.php
@@ -266,6 +276,11 @@ parameters:
 			path: test/Unit/Exception/PhaseNotStartedTest.php
 
 		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Exception\\\\SlowTestListIsEmptyTest\\:\\:testFromPhaseIdentifierReturnsException\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Exception/SlowTestListIsEmptyTest.php
+
+		-
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Formatter\\\\DefaultDurationFormatterTest\\:\\:testFormatFormats\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/Formatter/DefaultDurationFormatterTest.php
@@ -316,14 +331,79 @@ parameters:
 			path: test/Unit/PhaseTest.php
 
 		-
-			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\DefaultReporterTest\\:\\:testReportReturnsEmptyStringWhenThereAreNoSlowTests\\(\\) has no return type specified\\.$#"
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\DefaultReporterTest\\:\\:testReportReturnsEmptyStringWhenSlowTestListIsEmpty\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/Reporter/DefaultReporterTest.php
 
 		-
-			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\DefaultReporterTest\\:\\:testReportReturnsReportWhenThereAreFewerSlowTestsThanMaximumCount\\(\\) has no return type specified\\.$#"
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\DefaultReporterTest\\:\\:testReportReturnsReportWhenSlowTestListHasFewerSlowTestsThanMaximumCount\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/Reporter/DefaultReporterTest.php
+
+		-
+			message: "#^Method SlowTestCountTest\\:\\:testEqualsReturnsFalseWhenValueIsDifferent\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/SlowTestCountTest.php
+
+		-
+			message: "#^Method SlowTestCountTest\\:\\:testEqualsReturnsFalseWhenValueIsSame\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/SlowTestCountTest.php
+
+		-
+			message: "#^Method SlowTestCountTest\\:\\:testFromCountReturnsMaximumCount\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/SlowTestCountTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\SlowTestListTest\\:\\:testCreateReturnsSlowTestList\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/SlowTestListTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\SlowTestListTest\\:\\:testFirstReturnsFirstSlowTestWhenSlowTestListIsNotEmpty\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/SlowTestListTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\SlowTestListTest\\:\\:testFirstThrowsExceptionWhenSlowTestListIsEmpty\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/SlowTestListTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\SlowTestListTest\\:\\:testIsEmptyReturnsFalseWhenSlowTestListIsNotEmpty\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/SlowTestListTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\SlowTestListTest\\:\\:testIsEmptyReturnsTrueWhenSlowTestListIsEmpty\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/SlowTestListTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\SlowTestListTest\\:\\:testLimitToReturnsSlowTestListLimitedToMaximumCountWhenSlowTestListHasFewerSlowTests\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/SlowTestListTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\SlowTestListTest\\:\\:testLimitToReturnsSlowTestListLimitedToMaximumCountWhenSlowTestListHasMoreSlowTests\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/SlowTestListTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\SlowTestListTest\\:\\:testSlowTestCountReturnsCountOfSlowTests\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/SlowTestListTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\SlowTestListTest\\:\\:testSortByMaximumDurationDescendingReturnsSlowTestListWhereSlowTestsAreSortedByMaximumDurationDescending\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/SlowTestListTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\SlowTestListTest\\:\\:testSortByTestDurationDescendingReturnsSlowTestListWhereSlowTestsAreSortedByTestDurationDescending\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/SlowTestListTest.php
 
 		-
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\SlowTestTest\\:\\:testCreateReturnsSlowTest\\(\\) has no return type specified\\.$#"
