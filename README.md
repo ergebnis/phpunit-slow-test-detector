@@ -339,7 +339,7 @@ You can configure the maximum duration for a single test case with
   - `phpunit/phpunit:^8.5.19`
   - `phpunit/phpunit:^9.0.0`
 
-The following example configures the maximum durations for single test cases to 5.000 s, 4.000 s, and 3.000 s:
+The following example configures the maximum durations for single test cases to 5, 4, and 3 seconds:
 
 ```php
 <?php
