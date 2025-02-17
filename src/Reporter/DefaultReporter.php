@@ -113,8 +113,8 @@ TXT;
             $this->maximumCount->toInt()
         );
 
-        /** @var SlowTest $slowestTest */
-        $slowestTest = \reset($slowTestsToReport);
+        /** @var SlowTest $slowTestWithLongestDuration */
+        $slowTestWithLongestDuration = \reset($slowTestsToReport);
 
         $longestMaximumDuration = \array_reduce(
             $slowTestsToReport,
@@ -131,7 +131,7 @@ TXT;
         $durationFormatter = $this->durationFormatter;
 
         $numberWidth = \strlen((string) \count($slowTestsToReport));
-        $durationWidth = \strlen($durationFormatter->format($slowestTest->duration()));
+        $durationWidth = \strlen($durationFormatter->format($slowTestWithLongestDuration->duration()));
         $maximumDurationWidth = \strlen($durationFormatter->format($longestMaximumDuration));
 
         $items = \array_map(static function (int $number, SlowTest $slowTest) use ($numberWidth, $durationFormatter, $durationWidth, $maximumDurationWidth): string {
