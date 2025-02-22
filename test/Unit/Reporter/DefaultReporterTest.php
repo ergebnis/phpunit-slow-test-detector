@@ -16,6 +16,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Reporter;
 use Ergebnis\PHPUnit\SlowTestDetector\Count;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
+use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
@@ -49,7 +50,7 @@ final class DefaultReporterTest extends Framework\TestCase
         $reporter = new Reporter\DefaultReporter(
             new Formatter\DefaultDurationFormatter(),
             MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
-            Count::fromInt($faker->numberBetween(1))
+            MaximumCount::fromCount(Count::fromInt($faker->numberBetween(1)))
         );
 
         $report = $reporter->report();
@@ -65,7 +66,7 @@ final class DefaultReporterTest extends Framework\TestCase
     public function testReportReturnsReportWhenThereAreFewerSlowTestsThanMaximumCount(
         string $expectedReport,
         MaximumDuration $maximumDuration,
-        Count $maximumCount,
+        MaximumCount $maximumCount,
         array $slowTests
     ) {
         $reporter = new Reporter\DefaultReporter(
@@ -80,7 +81,7 @@ final class DefaultReporterTest extends Framework\TestCase
     }
 
     /**
-     * @return \Generator<string, array{0: string, 1: MaximumDuration, 2: Count, 3: list<SlowTest>}>
+     * @return \Generator<string, array{0: string, 1: MaximumDuration, 2: MaximumCount, 3: list<SlowTest>}>
      */
     public static function provideExpectedReportMaximumDurationMaximumCountAndSlowTests(): iterable
     {
@@ -93,7 +94,7 @@ Detected 1 test where the duration exceeded the maximum duration.
 TXT
                 ,
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
-                Count::fromInt(1),
+                MaximumCount::fromCount(Count::fromInt(1)),
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
@@ -112,7 +113,7 @@ Detected 2 tests where the duration exceeded the maximum duration.
 TXT
                 ,
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
-                Count::fromInt(2),
+                MaximumCount::fromCount(Count::fromInt(2)),
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
@@ -138,7 +139,7 @@ Detected 3 tests where the duration exceeded the maximum duration.
 TXT
                 ,
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
-                Count::fromInt(3),
+                MaximumCount::fromCount(Count::fromInt(3)),
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
@@ -170,7 +171,7 @@ Detected 3 tests where the duration exceeded the maximum duration.
 TXT
                 ,
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
-                Count::fromInt(3),
+                MaximumCount::fromCount(Count::fromInt(3)),
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
@@ -209,7 +210,7 @@ Detected 10 tests where the duration exceeded the maximum duration.
 TXT
                 ,
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
-                Count::fromInt(10),
+                MaximumCount::fromCount(Count::fromInt(10)),
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
@@ -283,7 +284,7 @@ There is 1 additional slow test that is not listed here.
 TXT
                 ,
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
-                Count::fromInt(1),
+                MaximumCount::fromCount(Count::fromInt(1)),
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
@@ -309,7 +310,7 @@ There are 2 additional slow tests that are not listed here.
 TXT
                 ,
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
-                Count::fromInt(1),
+                MaximumCount::fromCount(Count::fromInt(1)),
                 [
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
