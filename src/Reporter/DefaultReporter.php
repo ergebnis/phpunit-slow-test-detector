@@ -14,8 +14,8 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Comparator;
-use Ergebnis\PHPUnit\SlowTestDetector\Count;
 use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
+use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 
@@ -35,7 +35,7 @@ final class DefaultReporter implements Reporter
     private $maximumDuration;
 
     /**
-     * @var Count
+     * @var MaximumCount
      */
     private $maximumCount;
 
@@ -47,7 +47,7 @@ final class DefaultReporter implements Reporter
     public function __construct(
         Formatter\DurationFormatter $durationFormatter,
         MaximumDuration $maximumDuration,
-        Count $maximumCount
+        MaximumCount $maximumCount
     ) {
         $this->durationFormatter = $durationFormatter;
         $this->maximumDuration = $maximumDuration;
@@ -110,7 +110,7 @@ TXT;
         $slowTestsToReport = \array_slice(
             $slowTests,
             0,
-            $this->maximumCount->toInt()
+            $this->maximumCount->toCount()->toInt()
         );
 
         /** @var SlowTest $slowTestWithLongestTestDuration */
@@ -175,7 +175,7 @@ TXT;
     private function footer(SlowTest ...$slowTests): string
     {
         $additionalSlowTestCount = \max(
-            \count($slowTests) - $this->maximumCount->toInt(),
+            \count($slowTests) - $this->maximumCount->toCount()->toInt(),
             0
         );
 

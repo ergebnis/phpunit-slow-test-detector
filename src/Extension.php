@@ -53,10 +53,10 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
 
         public function __construct(array $options = [])
         {
-            $maximumCount = Count::fromInt(10);
+            $maximumCount = MaximumCount::default();
 
             if (\array_key_exists('maximum-count', $options)) {
-                $maximumCount = Count::fromInt((int) $options['maximum-count']);
+                $maximumCount = MaximumCount::fromCount(Count::fromInt((int) $options['maximum-count']));
             }
 
             $maximumDuration = MaximumDuration::default();
@@ -261,10 +261,10 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
 
         public function __construct(array $options = [])
         {
-            $maximumCount = Count::fromInt(10);
+            $maximumCount = MaximumCount::default();
 
             if (\array_key_exists('maximum-count', $options)) {
-                $maximumCount = Count::fromInt((int) $options['maximum-count']);
+                $maximumCount = MaximumCount::fromCount(Count::fromInt((int) $options['maximum-count']));
             }
 
             $maximumDuration = MaximumDuration::default();
@@ -415,10 +415,10 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
                 return;
             }
 
-            $maximumCount = Count::fromInt(10);
+            $maximumCount = MaximumCount::default();
 
             if ($parameters->has('maximum-count')) {
-                $maximumCount = Count::fromInt((int) $parameters->get('maximum-count'));
+                $maximumCount = MaximumCount::fromCount(Count::fromInt((int) $parameters->get('maximum-count')));
             }
 
             $maximumDuration = MaximumDuration::default();

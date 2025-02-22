@@ -211,6 +211,11 @@ parameters:
 			path: test/Unit/Exception/InvalidCountTest.php
 
 		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Exception\\\\InvalidMaximumCountTest\\:\\:testNotGreaterThanZeroReturnsException\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Exception/InvalidMaximumCountTest.php
+
+		-
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Exception\\\\InvalidMillisecondsTest\\:\\:testNotGreaterThanZeroReturnsException\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/Exception/InvalidMillisecondsTest.php
@@ -264,6 +269,21 @@ parameters:
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Formatter\\\\DefaultDurationFormatterTest\\:\\:testFormatFormats\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/Formatter/DefaultDurationFormatterTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\MaximumCountTest\\:\\:testDefaultReturnsMaximumCount\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/MaximumCountTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\MaximumCountTest\\:\\:testFromCountRejectsInvalidCount\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/MaximumCountTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\MaximumCountTest\\:\\:testFromCountReturnsMaximumCount\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/MaximumCountTest.php
 
 		-
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\MaximumDurationTest\\:\\:testDefaultReturnsMaximumDuration\\(\\) has no return type specified\\.$#"

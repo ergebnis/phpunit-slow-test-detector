@@ -33,8 +33,8 @@ final class Count
      */
     public static function fromInt(int $value): self
     {
-        if (0 >= $value) {
-            throw Exception\InvalidCount::notGreaterThanZero($value);
+        if (0 > $value) {
+            throw Exception\InvalidCount::notGreaterThanOrEqualToZero($value);
         }
 
         return new self($value);
