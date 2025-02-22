@@ -13,11 +13,12 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 
-use Ergebnis\PHPUnit\SlowTestDetector\Comparator;
+use Ergebnis\PHPUnit\SlowTestDetector\Count;
 use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
-use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
+use Ergebnis\PHPUnit\SlowTestDetector\SlowTestCount;
+use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
 
 /**
  * @internal
@@ -30,40 +31,27 @@ final class DefaultReporter implements Reporter
     private $durationFormatter;
 
     /**
-     * @var MaximumDuration
-     */
-    private $maximumDuration;
-
-    /**
      * @var MaximumCount
      */
     private $maximumCount;
 
-    /**
-     * @var Comparator\DurationComparator
-     */
-    private $durationComparator;
-
     public function __construct(
         Formatter\DurationFormatter $durationFormatter,
-        MaximumDuration $maximumDuration,
         MaximumCount $maximumCount
     ) {
         $this->durationFormatter = $durationFormatter;
-        $this->maximumDuration = $maximumDuration;
         $this->maximumCount = $maximumCount;
-        $this->durationComparator = new Comparator\DurationComparator();
     }
 
-    public function report(SlowTest ...$slowTests): string
+    public function report(SlowTestList $slowTestList): string
     {
-        if ([] === $slowTests) {
+        if ($slowTestList->isEmpty()) {
             return '';
         }
 
-        $header = $this->header(...$slowTests);
-        $list = $this->list(...$slowTests);
-        $footer = $this->footer(...$slowTests);
+        $header = $this->header($slowTestList);
+        $list = $this->list($slowTestList);
+        $footer = $this->footer($slowTestList);
 
         if ('' === $footer) {
             return <<<TXT
@@ -79,60 +67,42 @@ TXT;
 TXT;
     }
 
-    private function header(SlowTest ...$slowTests): string
+    private function header(SlowTestList $slowTestList): string
     {
-        $count = \count($slowTests);
+        $slowTestCount = $slowTestList->slowTestCount();
 
-        if (1 === $count) {
-            return <<<TXT
-Detected {$count} test where the duration exceeded the maximum duration.
+        if ($slowTestCount->toCount()->equals(Count::fromInt(1))) {
+            return <<<'TXT'
+Detected 1 test where the duration exceeded the maximum duration.
 
 TXT;
         }
 
-        return <<<TXT
-Detected {$count} tests where the duration exceeded the maximum duration.
+        return \sprintf(
+            <<<'TXT'
+Detected %d tests where the duration exceeded the maximum duration.
 
-TXT;
+TXT
+            ,
+            $slowTestCount->toCount()->toInt()
+        );
     }
 
-    private function list(SlowTest ...$slowTests): string
+    private function list(SlowTestList $slowTestList): string
     {
-        $durationComparator = $this->durationComparator;
+        $slowTestListThatWillBeReported = $slowTestList
+            ->sortByTestDurationDescending()
+            ->limitTo($this->maximumCount);
 
-        \usort($slowTests, static function (SlowTest $one, SlowTest $two) use ($durationComparator): int {
-            return $durationComparator->compare(
-                $two->testDuration()->toDuration(),
-                $one->testDuration()->toDuration()
-            );
-        });
+        $slowTestWithLongestTestDuration = $slowTestListThatWillBeReported->first();
 
-        $slowTestsToReport = \array_slice(
-            $slowTests,
-            0,
-            $this->maximumCount->toCount()->toInt()
-        );
-
-        /** @var SlowTest $slowTestWithLongestTestDuration */
-        $slowTestWithLongestTestDuration = \reset($slowTestsToReport);
-
-        $longestMaximumDuration = \array_reduce(
-            $slowTestsToReport,
-            static function (MaximumDuration $maximumDuration, SlowTest $slowTest): MaximumDuration {
-                if ($maximumDuration->toDuration()->isLessThan($slowTest->maximumDuration()->toDuration())) {
-                    return $slowTest->maximumDuration();
-                }
-
-                return $maximumDuration;
-            },
-            $this->maximumDuration
-        );
+        $slowTestWithLongestMaximumDuration = $slowTestListThatWillBeReported->sortByMaximumDurationDescending()->first();
 
         $durationFormatter = $this->durationFormatter;
 
-        $numberWidth = \strlen((string) \count($slowTestsToReport));
+        $numberWidth = \strlen((string) $slowTestListThatWillBeReported->slowTestCount()->toCount()->toInt());
         $testDurationWidth = \strlen($durationFormatter->format($slowTestWithLongestTestDuration->testDuration()->toDuration()));
-        $maximumDurationWidth = \strlen($durationFormatter->format($longestMaximumDuration->toDuration()));
+        $maximumDurationWidth = \strlen($durationFormatter->format($slowTestWithLongestMaximumDuration->maximumDuration()->toDuration()));
 
         $items = \array_map(static function (int $number, SlowTest $slowTest) use ($numberWidth, $durationFormatter, $testDurationWidth, $maximumDurationWidth): string {
             $formattedNumber = \str_pad(
@@ -164,7 +134,7 @@ TXT;
             return <<<TXT
 {$formattedNumber}. {$formattedDuration} {$formattedMaximumDuration} {$testDescription}
 TXT;
-        }, \range(1, \count($slowTestsToReport)), $slowTestsToReport);
+        }, \range(1, $slowTestListThatWillBeReported->slowTestCount()->toCount()->toInt()), $slowTestListThatWillBeReported->toArray());
 
         return \implode(
             "\n",
@@ -172,27 +142,31 @@ TXT;
         );
     }
 
-    private function footer(SlowTest ...$slowTests): string
+    private function footer(SlowTestList $slowTestList): string
     {
-        $additionalSlowTestCount = \max(
-            \count($slowTests) - $this->maximumCount->toCount()->toInt(),
-            0
-        );
+        $additionalSlowTestCount = SlowTestCount::fromCount(Count::fromInt(\max(
+            0,
+            $slowTestList->slowTestCount()->toCount()->toInt() - $this->maximumCount->toCount()->toInt()
+        )));
 
-        if (0 === $additionalSlowTestCount) {
+        if ($additionalSlowTestCount->equals(SlowTestCount::fromCount(Count::fromInt(0)))) {
             return '';
         }
 
-        if (1 === $additionalSlowTestCount) {
+        if ($additionalSlowTestCount->equals(SlowTestCount::fromCount(Count::fromInt(1)))) {
             return <<<'TXT'
 
 There is 1 additional slow test that is not listed here.
 TXT;
         }
 
-        return <<<TXT
+        return \sprintf(
+            <<<'TXT'
 
-There are {$additionalSlowTestCount} additional slow tests that are not listed here.
-TXT;
+There are %d additional slow tests that are not listed here.
+TXT
+            ,
+            $additionalSlowTestCount->toCount()->toInt()
+        );
     }
 }

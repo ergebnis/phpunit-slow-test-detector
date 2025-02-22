@@ -45,13 +45,13 @@ final class ExecutionFinishedSubscriber implements Event\TestRunner\ExecutionFin
      */
     public function notify(Event\TestRunner\ExecutionFinished $event): void
     {
-        $slowTests = $this->collector->collected();
+        $slowTestList = $this->collector->slowTestList();
 
-        if ([] === $slowTests) {
+        if ($slowTestList->isEmpty()) {
             return;
         }
 
-        $report = $this->reporter->report(...$slowTests);
+        $report = $this->reporter->report($slowTestList);
 
         if ('' === $report) {
             return;

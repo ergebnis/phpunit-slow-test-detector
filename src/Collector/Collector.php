@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Collector;
 
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
+use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
 
 /**
  * @internal
@@ -22,10 +23,5 @@ interface Collector
 {
     public function collectSlowTest(SlowTest $slowTest);
 
-    /**
-     * @phpstan-return list<SlowTest>
-     *
-     * @return list<SlowTest>
-     */
-    public function collected(): array;
+    public function slowTestList(): SlowTestList;
 }

@@ -15,6 +15,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Count;
 use Ergebnis\PHPUnit\SlowTestDetector\Exception;
+use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
 /**
@@ -24,6 +25,8 @@ use PHPUnit\Framework;
  */
 final class CountTest extends Framework\TestCase
 {
+    use Test\Util\Helper;
+
     /**
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::lessThanZero
      */
@@ -43,5 +46,25 @@ final class CountTest extends Framework\TestCase
         $count = Count::fromInt($value);
 
         self::assertSame($value, $count->toInt());
+    }
+
+    public function testEqualsReturnsFalseWhenValueIsDifferent()
+    {
+        $faker = self::faker()->unique();
+
+        $one = Count::fromInt($faker->numberBetween(0));
+        $two = Count::fromInt($faker->numberBetween(0));
+
+        self::assertFalse($one->equals($two));
+    }
+
+    public function testEqualsReturnsTrueWhenValueIsSame()
+    {
+        $value = self::faker()->numberBetween(0);
+
+        $one = Count::fromInt($value);
+        $two = Count::fromInt($value);
+
+        self::assertTrue($one->equals($two));
     }
 }
