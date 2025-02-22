@@ -16,9 +16,11 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Subscriber\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\Attribute;
 use Ergebnis\PHPUnit\SlowTestDetector\Collector;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
+use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\PhaseIdentifier;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\TestDescription;
+use Ergebnis\PHPUnit\SlowTestDetector\TestDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use Ergebnis\PHPUnit\SlowTestDetector\Time;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
@@ -33,7 +35,7 @@ use PHPUnit\Metadata;
 final class FinishedSubscriber implements Event\Test\FinishedSubscriber
 {
     /**
-     * @var Duration
+     * @var MaximumDuration
      */
     private $maximumDuration;
 
@@ -53,7 +55,7 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
     private $versionSeries;
 
     public function __construct(
-        Duration $maximumDuration,
+        MaximumDuration $maximumDuration,
         TimeKeeper $timeKeeper,
         Collector\Collector $collector,
         Version\Series $versionSeries
@@ -82,18 +84,18 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
             )
         );
 
-        $duration = $phase->duration();
+        $testDuration = TestDuration::fromDuration($phase->duration());
 
         $maximumDuration = $this->resolveMaximumDuration($event->test());
 
-        if (!$duration->isGreaterThan($maximumDuration)) {
+        if (!$testDuration->toDuration()->isGreaterThan($maximumDuration->toDuration())) {
             return;
         }
 
         $slowTest = SlowTest::create(
             TestIdentifier::fromString($event->test()->id()),
             self::descriptionFromTest($event->test()),
-            $duration,
+            $testDuration,
             $maximumDuration
         );
 
@@ -152,18 +154,18 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
         ));
     }
 
-    private function resolveMaximumDuration(Event\Code\Test $test): Duration
+    private function resolveMaximumDuration(Event\Code\Test $test): MaximumDuration
     {
         $maximumDurationFromAttribute = self::resolveMaximumDurationFromAttribute($test);
 
-        if ($maximumDurationFromAttribute instanceof Duration) {
+        if ($maximumDurationFromAttribute instanceof MaximumDuration) {
             return $maximumDurationFromAttribute;
         }
 
         if ($this->versionSeries->major()->isLessThan(Version\Major::fromInt(12))) {
             $maximumDurationFromAnnotation = self::resolveMaximumDurationFromAnnotation($test);
 
-            if ($maximumDurationFromAnnotation instanceof Duration) {
+            if ($maximumDurationFromAnnotation instanceof MaximumDuration) {
                 return $maximumDurationFromAnnotation;
             }
         }
@@ -171,7 +173,7 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
         return $this->maximumDuration;
     }
 
-    private static function resolveMaximumDurationFromAttribute(Event\Code\Test $test): ?Duration
+    private static function resolveMaximumDurationFromAttribute(Event\Code\Test $test): ?MaximumDuration
     {
         /** @var Event\Code\TestMethod $test */
         $methodReflection = new \ReflectionMethod(
@@ -186,13 +188,13 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
 
             $attribute = $attributeReflection->newInstance();
 
-            return Duration::fromMilliseconds($attribute->milliseconds());
+            return MaximumDuration::fromDuration(Duration::fromMilliseconds($attribute->milliseconds()));
         }
 
         return null;
     }
 
-    private static function resolveMaximumDurationFromAnnotation(Event\Code\Test $test): ?Duration
+    private static function resolveMaximumDurationFromAnnotation(Event\Code\Test $test): ?MaximumDuration
     {
         $annotations = [
             'maximumDuration',
@@ -222,7 +224,7 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
                 continue;
             }
 
-            return Duration::fromMilliseconds((int) $maximumDuration);
+            return MaximumDuration::fromDuration(Duration::fromMilliseconds((int) $maximumDuration));
         }
 
         return null;

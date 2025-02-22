@@ -15,8 +15,8 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Comparator;
 use Ergebnis\PHPUnit\SlowTestDetector\Count;
-use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
+use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 
 /**
@@ -30,7 +30,7 @@ final class DefaultReporter implements Reporter
     private $durationFormatter;
 
     /**
-     * @var Duration
+     * @var MaximumDuration
      */
     private $maximumDuration;
 
@@ -46,7 +46,7 @@ final class DefaultReporter implements Reporter
 
     public function __construct(
         Formatter\DurationFormatter $durationFormatter,
-        Duration $maximumDuration,
+        MaximumDuration $maximumDuration,
         Count $maximumCount
     ) {
         $this->durationFormatter = $durationFormatter;
@@ -102,8 +102,8 @@ TXT;
 
         \usort($slowTests, static function (SlowTest $one, SlowTest $two) use ($durationComparator): int {
             return $durationComparator->compare(
-                $two->duration(),
-                $one->duration()
+                $two->testDuration()->toDuration(),
+                $one->testDuration()->toDuration()
             );
         });
 
@@ -113,13 +113,13 @@ TXT;
             $this->maximumCount->toInt()
         );
 
-        /** @var SlowTest $slowTestWithLongestDuration */
-        $slowTestWithLongestDuration = \reset($slowTestsToReport);
+        /** @var SlowTest $slowTestWithLongestTestDuration */
+        $slowTestWithLongestTestDuration = \reset($slowTestsToReport);
 
         $longestMaximumDuration = \array_reduce(
             $slowTestsToReport,
-            static function (Duration $maximumDuration, SlowTest $slowTest): Duration {
-                if ($maximumDuration->isLessThan($slowTest->maximumDuration())) {
+            static function (MaximumDuration $maximumDuration, SlowTest $slowTest): MaximumDuration {
+                if ($maximumDuration->toDuration()->isLessThan($slowTest->maximumDuration()->toDuration())) {
                     return $slowTest->maximumDuration();
                 }
 
@@ -131,8 +131,8 @@ TXT;
         $durationFormatter = $this->durationFormatter;
 
         $numberWidth = \strlen((string) \count($slowTestsToReport));
-        $durationWidth = \strlen($durationFormatter->format($slowTestWithLongestDuration->duration()));
-        $maximumDurationWidth = \strlen($durationFormatter->format($longestMaximumDuration));
+        $durationWidth = \strlen($durationFormatter->format($slowTestWithLongestTestDuration->testDuration()->toDuration()));
+        $maximumDurationWidth = \strlen($durationFormatter->format($longestMaximumDuration->toDuration()));
 
         $items = \array_map(static function (int $number, SlowTest $slowTest) use ($numberWidth, $durationFormatter, $durationWidth, $maximumDurationWidth): string {
             $formattedNumber = \str_pad(
@@ -143,7 +143,7 @@ TXT;
             );
 
             $formattedDuration = \str_pad(
-                $durationFormatter->format($slowTest->duration()),
+                $durationFormatter->format($slowTest->testDuration()->toDuration()),
                 $durationWidth,
                 ' ',
                 \STR_PAD_LEFT
@@ -152,7 +152,7 @@ TXT;
             $formattedMaximumDuration = \sprintf(
                 '(%s)',
                 \str_pad(
-                    $durationFormatter->format($slowTest->maximumDuration()),
+                    $durationFormatter->format($slowTest->maximumDuration()->toDuration()),
                     $maximumDurationWidth,
                     ' ',
                     \STR_PAD_LEFT

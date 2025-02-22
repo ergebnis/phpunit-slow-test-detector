@@ -37,7 +37,7 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
         private $suites = 0;
 
         /**
-         * @var Duration
+         * @var MaximumDuration
          */
         private $maximumDuration;
 
@@ -59,10 +59,10 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
                 $maximumCount = Count::fromInt((int) $options['maximum-count']);
             }
 
-            $maximumDuration = Duration::fromMilliseconds(500);
+            $maximumDuration = MaximumDuration::default();
 
             if (\array_key_exists('maximum-duration', $options)) {
-                $maximumDuration = Duration::fromMilliseconds((int) $options['maximum-duration']);
+                $maximumDuration = MaximumDuration::fromDuration(Duration::fromMilliseconds((int) $options['maximum-duration']));
             }
 
             $this->maximumDuration = $maximumDuration;
@@ -159,14 +159,14 @@ TXT;
             $seconds = (int) \floor($time);
             $nanoseconds = (int) (($time - $seconds) * 1000000000);
 
-            $duration = Duration::fromSecondsAndNanoseconds(
+            $testDuration = TestDuration::fromDuration(Duration::fromSecondsAndNanoseconds(
                 $seconds,
                 $nanoseconds
-            );
+            ));
 
             $maximumDuration = $this->resolveMaximumDuration($test);
 
-            if (!$duration->isGreaterThan($maximumDuration)) {
+            if (!$testDuration->toDuration()->isGreaterThan($maximumDuration->toDuration())) {
                 return;
             }
 
@@ -181,14 +181,14 @@ TXT;
                     \get_class($test),
                     $test->getName()
                 )),
-                $duration,
+                $testDuration,
                 $maximumDuration
             );
 
             $this->collector->collectSlowTest($slowTest);
         }
 
-        private function resolveMaximumDuration(Framework\Test $test): Duration
+        private function resolveMaximumDuration(Framework\Test $test): MaximumDuration
         {
             $annotations = [
                 'maximumDuration',
@@ -219,7 +219,7 @@ TXT;
                     continue;
                 }
 
-                return Duration::fromMilliseconds((int) $maximumDuration);
+                return MaximumDuration::fromDuration(Duration::fromMilliseconds((int) $maximumDuration));
             }
 
             return $this->maximumDuration;
@@ -267,10 +267,10 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
                 $maximumCount = Count::fromInt((int) $options['maximum-count']);
             }
 
-            $maximumDuration = Duration::fromMilliseconds(500);
+            $maximumDuration = MaximumDuration::default();
 
             if (\array_key_exists('maximum-duration', $options)) {
-                $maximumDuration = Duration::fromMilliseconds((int) $options['maximum-duration']);
+                $maximumDuration = MaximumDuration::fromDuration(Duration::fromMilliseconds((int) $options['maximum-duration']));
             }
 
             $this->maximumDuration = $maximumDuration;
@@ -306,21 +306,21 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
             $seconds = (int) \floor($time);
             $nanoseconds = (int) (($time - $seconds) * 1000000000);
 
-            $duration = Duration::fromSecondsAndNanoseconds(
+            $testDuration = TestDuration::fromDuration(Duration::fromSecondsAndNanoseconds(
                 $seconds,
                 $nanoseconds
-            );
+            ));
 
             $maximumDuration = $this->resolveMaximumDuration($test);
 
-            if (!$duration->isGreaterThan($maximumDuration)) {
+            if (!$testDuration->toDuration()->isGreaterThan($maximumDuration->toDuration())) {
                 return;
             }
 
             $slowTest = SlowTest::create(
                 TestIdentifier::fromString($test),
                 TestDescription::fromString($test),
-                $duration,
+                $testDuration,
                 $maximumDuration
             );
 
@@ -354,7 +354,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
 TXT;
         }
 
-        private function resolveMaximumDuration(string $test): Duration
+        private function resolveMaximumDuration(string $test): MaximumDuration
         {
             list($testClassName, $testMethodName) = \explode(
                 '::',
@@ -390,7 +390,7 @@ TXT;
                     continue;
                 }
 
-                return Duration::fromMilliseconds((int) $maximumDuration);
+                return MaximumDuration::fromDuration(Duration::fromMilliseconds((int) $maximumDuration));
             }
 
             return $this->maximumDuration;
@@ -421,10 +421,10 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
                 $maximumCount = Count::fromInt((int) $parameters->get('maximum-count'));
             }
 
-            $maximumDuration = Duration::fromMilliseconds(500);
+            $maximumDuration = MaximumDuration::default();
 
             if ($parameters->has('maximum-duration')) {
-                $maximumDuration = Duration::fromMilliseconds((int) $parameters->get('maximum-duration'));
+                $maximumDuration = MaximumDuration::fromDuration(Duration::fromMilliseconds((int) $parameters->get('maximum-duration')));
             }
 
             $timeKeeper = new TimeKeeper();
