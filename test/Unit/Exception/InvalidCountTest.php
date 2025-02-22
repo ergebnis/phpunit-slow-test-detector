@@ -24,7 +24,7 @@ final class InvalidCountTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testNotGreaterThanZeroReturnsException()
+    public function testNotGreaterThanOrEqualToZeroReturnsException()
     {
         $value = self::faker()->numberBetween();
 

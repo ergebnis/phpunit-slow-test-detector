@@ -206,7 +206,7 @@ parameters:
 			path: test/Unit/DurationTest.php
 
 		-
-			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Exception\\\\InvalidCountTest\\:\\:testNotGreaterThanZeroReturnsException\\(\\) has no return type specified\\.$#"
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Exception\\\\InvalidCountTest\\:\\:testNotGreaterThanOrEqualToZeroReturnsException\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/Exception/InvalidCountTest.php
 
