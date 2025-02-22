@@ -23,7 +23,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 final class DefaultDurationFormatter implements DurationFormatter
 {
     /**
-     * @see https://github.com/sebastianbergmann/php-timer/blob/6.0.0/src/Duration.php
+     * @see https://github.com/sebastianbergmann/php-timer/blob/4.0.0/src/Duration.php
      */
     public function format(Duration $duration): string
     {
@@ -42,7 +42,7 @@ final class DefaultDurationFormatter implements DurationFormatter
 
         if (0 < $hours) {
             return \sprintf(
-                '%d:%02d:%02d.%03d',
+                '%02d:%02d:%02d.%03d',
                 $hours,
                 $minutes,
                 $seconds,
@@ -50,17 +50,9 @@ final class DefaultDurationFormatter implements DurationFormatter
             );
         }
 
-        if (0 < $minutes) {
-            return \sprintf(
-                '%d:%02d.%03d',
-                $minutes,
-                $seconds,
-                $milliseconds
-            );
-        }
-
         return \sprintf(
-            '%d.%03d',
+            '%02d:%02d.%03d',
+            $minutes,
             $seconds,
             $milliseconds
         );

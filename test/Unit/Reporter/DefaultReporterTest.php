@@ -91,7 +91,7 @@ final class DefaultReporterTest extends Framework\TestCase
                 <<<'TXT'
 Detected 1 test where the duration exceeded the maximum duration.
 
-1. 0.300 (0.100) FooTest::test
+1. 00:00.300 (00:00.100) FooTest::test
 TXT
                 ,
                 MaximumCount::fromCount(Count::fromInt(1)),
@@ -108,8 +108,8 @@ TXT
                 <<<'TXT'
 Detected 2 tests where the duration exceeded the maximum duration.
 
-1. 0.300 (0.100) FooTest::test
-2. 0.275 (0.100) BarTest::test
+1. 00:00.300 (00:00.100) FooTest::test
+2. 00:00.275 (00:00.100) BarTest::test
 TXT
                 ,
                 MaximumCount::fromCount(Count::fromInt(2)),
@@ -132,9 +132,9 @@ TXT
                 <<<'TXT'
 Detected 3 tests where the duration exceeded the maximum duration.
 
-1. 0.300 (0.100) FooTest::test
-2. 0.275 (0.100) BarTest::test
-3. 0.250 (0.100) BazTest::test
+1. 00:00.300 (00:00.100) FooTest::test
+2. 00:00.275 (00:00.100) BarTest::test
+3. 00:00.250 (00:00.100) BazTest::test
 TXT
                 ,
                 MaximumCount::fromCount(Count::fromInt(3)),
@@ -163,9 +163,9 @@ TXT
                 <<<'TXT'
 Detected 3 tests where the duration exceeded the maximum duration.
 
-1. 0.300 (0.100) FooTest::test
-2. 0.275 (0.100) BarTest::test
-3. 0.250 (0.100) BazTest::test
+1. 00:00.300 (00:00.100) FooTest::test
+2. 00:00.275 (00:00.100) BarTest::test
+3. 00:00.250 (00:00.100) BazTest::test
 TXT
                 ,
                 MaximumCount::fromCount(Count::fromInt(3)),
@@ -195,15 +195,15 @@ TXT
 Detected 10 tests where the duration exceeded the maximum duration.
 
  1. 20:50.000 (16:40.000) FooTest::test
- 2.  9:35.000 ( 8:20.000) BarTest::test
- 3.     0.250 (    0.100) BazTest::test
- 4.     0.200 (    0.100) QuxTest::test
- 5.     0.160 (    0.100) QuuxTest::test
- 6.     0.150 (    0.100) CorgeTest::test
- 7.     0.140 (    0.100) GraultTest::test
- 8.     0.130 (    0.100) GarplyTest::test
- 9.     0.120 (    0.100) WaldoTest::test
-10.     0.110 (    0.100) FredTest::test
+ 2. 09:35.000 (08:20.000) BarTest::test
+ 3. 00:00.250 (00:00.100) BazTest::test
+ 4. 00:00.200 (00:00.100) QuxTest::test
+ 5. 00:00.160 (00:00.100) QuuxTest::test
+ 6. 00:00.150 (00:00.100) CorgeTest::test
+ 7. 00:00.140 (00:00.100) GraultTest::test
+ 8. 00:00.130 (00:00.100) GarplyTest::test
+ 9. 00:00.120 (00:00.100) WaldoTest::test
+10. 00:00.110 (00:00.100) FredTest::test
 TXT
                 ,
                 MaximumCount::fromCount(Count::fromInt(10)),
@@ -274,7 +274,7 @@ TXT
                 <<<'TXT'
 Detected 2 tests where the duration exceeded the maximum duration.
 
-1. 0.300 (0.100) FooTest::test
+1. 00:00.300 (00:00.100) FooTest::test
 
 There is 1 additional slow test that is not listed here.
 TXT
@@ -299,7 +299,7 @@ TXT
                 <<<'TXT'
 Detected 3 tests where the duration exceeded the maximum duration.
 
-1. 0.300 (0.100) FooTest::test
+1. 00:00.300 (00:00.100) FooTest::test
 
 There are 2 additional slow tests that are not listed here.
 TXT

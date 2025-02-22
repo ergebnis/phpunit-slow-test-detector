@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.18.0...main`][2.18.0...main].
 
+### Changed
+
+- Started formatting durations similar to `phpunit/php-timer:^4.0.0`, but always showing minutes ([#664]), by [@localheinz]
+
 ## [`2.18.0`][2.18.0]
 
 For a full diff see [`2.17.0...2.18.0`][2.17.0...2.18.0].
@@ -391,6 +395,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#604]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/604
 [#635]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/635
 [#651]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/651
+[#664]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/664
 
 [@dantleech]: https://github.com/dantleech
 [@HypeMC]: https://github.com/HypeMC

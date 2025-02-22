@@ -47,35 +47,35 @@ final class DefaultDurationFormatterTest extends Framework\TestCase
                     0,
                     0
                 ),
-                '0.000',
+                '00:00.000',
             ],
             'milliseconds' => [
                 Duration::fromSecondsAndNanoseconds(
                     0,
                     123999000
                 ),
-                '0.123',
+                '00:00.123',
             ],
             'seconds-digits-one' => [
                 Duration::fromSecondsAndNanoseconds(
                     1,
                     234456789
                 ),
-                '1.234',
+                '00:01.234',
             ],
             'seconds-digits-two' => [
                 Duration::fromSecondsAndNanoseconds(
                     12,
                     345678912
                 ),
-                '12.345',
+                '00:12.345',
             ],
             'minutes-digits-one' => [
                 Duration::fromSecondsAndNanoseconds(
                     1 * 60 + 23,
                     456789012
                 ),
-                '1:23.456',
+                '01:23.456',
             ],
             'minutes-digits-two' => [
                 Duration::fromSecondsAndNanoseconds(
@@ -89,7 +89,7 @@ final class DefaultDurationFormatterTest extends Framework\TestCase
                     60 * 60 + 23 * 60 + 45,
                     567890123
                 ),
-                '1:23:45.567',
+                '01:23:45.567',
             ],
             'hours-digits-two' => [
                 Duration::fromSecondsAndNanoseconds(
@@ -97,6 +97,20 @@ final class DefaultDurationFormatterTest extends Framework\TestCase
                     789012345
                 ),
                 '12:34:56.789',
+            ],
+            'hours-digits-two-nanoseconds-zero' => [
+                Duration::fromSecondsAndNanoseconds(
+                    12 * 60 * 60 + 34 * 60 + 56,
+                    00
+                ),
+                '12:34:56.000',
+            ],
+            'hours-digits-two-seconds-zero' => [
+                Duration::fromSecondsAndNanoseconds(
+                    12 * 60 * 60 + 34 * 60,
+                    00
+                ),
+                '12:34:00.000',
             ],
         ];
 
