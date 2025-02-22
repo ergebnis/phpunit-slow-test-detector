@@ -14,9 +14,11 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
+use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\TestDescription;
+use Ergebnis\PHPUnit\SlowTestDetector\TestDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use PHPUnit\Framework;
 
@@ -24,7 +26,9 @@ use PHPUnit\Framework;
  * @covers \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
  *
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDescription
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDuration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
  */
 final class SlowTestTest extends Framework\TestCase
@@ -37,19 +41,19 @@ final class SlowTestTest extends Framework\TestCase
 
         $testIdentifier = TestIdentifier::fromString($faker->word());
         $testDescription = TestDescription::fromString($faker->word());
-        $duration = Duration::fromMilliseconds($faker->numberBetween(0));
-        $maximumDuration = Duration::fromMilliseconds($faker->numberBetween(0));
+        $testDuration = TestDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)));
+        $maximumDuration = MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)));
 
         $slowTest = SlowTest::create(
             $testIdentifier,
             $testDescription,
-            $duration,
+            $testDuration,
             $maximumDuration
         );
 
         self::assertSame($testIdentifier, $slowTest->testIdentifier());
         self::assertSame($testDescription, $slowTest->testDescription());
-        self::assertSame($duration, $slowTest->duration());
+        self::assertSame($testDuration, $slowTest->testDuration());
         self::assertSame($maximumDuration, $slowTest->maximumDuration());
     }
 }

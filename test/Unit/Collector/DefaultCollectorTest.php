@@ -15,9 +15,11 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Collector;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Collector;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
+use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\TestDescription;
+use Ergebnis\PHPUnit\SlowTestDetector\TestDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use PHPUnit\Framework;
 
@@ -25,8 +27,10 @@ use PHPUnit\Framework;
  * @covers \Ergebnis\PHPUnit\SlowTestDetector\Collector\DefaultCollector
  *
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDescription
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDuration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
  */
 final class DefaultCollectorTest extends Framework\TestCase
@@ -40,15 +44,15 @@ final class DefaultCollectorTest extends Framework\TestCase
         $one = SlowTest::create(
             TestIdentifier::fromString($faker->word()),
             TestDescription::fromString($faker->word()),
-            Duration::fromMilliseconds($faker->numberBetween(0)),
-            Duration::fromMilliseconds($faker->numberBetween(0))
+            TestDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+            MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)))
         );
 
         $two = SlowTest::create(
             TestIdentifier::fromString($faker->word()),
             TestDescription::fromString($faker->word()),
-            Duration::fromMilliseconds($faker->numberBetween(0)),
-            Duration::fromMilliseconds($faker->numberBetween(0))
+            TestDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+            MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)))
         );
 
         $collector = new Collector\DefaultCollector();
@@ -71,17 +75,17 @@ final class DefaultCollectorTest extends Framework\TestCase
         $one = SlowTest::create(
             TestIdentifier::fromString($faker->word()),
             TestDescription::fromString($faker->word()),
-            Duration::fromMilliseconds($faker->numberBetween(0)),
-            Duration::fromMilliseconds($faker->numberBetween(0, 999999999 - 1))
+            TestDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+            MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0, 999999999 - 1)))
         );
 
         $two = SlowTest::create(
             $one->testIdentifier(),
             TestDescription::fromString($faker->word()),
-            Duration::fromSecondsAndNanoseconds(
-                $one->duration()->seconds(),
-                $one->duration()->nanoseconds() + 1
-            ),
+            TestDuration::fromDuration(Duration::fromSecondsAndNanoseconds(
+                $one->testDuration()->toDuration()->seconds(),
+                $one->testDuration()->toDuration()->nanoseconds() + 1
+            )),
             $one->maximumDuration()
         );
 
@@ -104,17 +108,17 @@ final class DefaultCollectorTest extends Framework\TestCase
         $one = SlowTest::create(
             TestIdentifier::fromString($faker->word()),
             TestDescription::fromString($faker->word()),
-            Duration::fromMilliseconds($faker->numberBetween(0)),
-            Duration::fromMilliseconds($faker->numberBetween(1, 999999999))
+            TestDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+            MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(1, 999999999)))
         );
 
         $two = SlowTest::create(
             $one->testIdentifier(),
             TestDescription::fromString($faker->word()),
-            Duration::fromSecondsAndNanoseconds(
-                $one->duration()->seconds(),
-                $one->duration()->nanoseconds() - 1
-            ),
+            TestDuration::fromDuration(Duration::fromSecondsAndNanoseconds(
+                $one->testDuration()->toDuration()->seconds(),
+                $one->testDuration()->toDuration()->nanoseconds() - 1
+            )),
             $one->maximumDuration()
         );
 

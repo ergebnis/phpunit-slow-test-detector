@@ -266,6 +266,16 @@ parameters:
 			path: test/Unit/Formatter/DefaultDurationFormatterTest.php
 
 		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\MaximumDurationTest\\:\\:testDefaultReturnsMaximumDuration\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/MaximumDurationTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\MaximumDurationTest\\:\\:testFromDurationReturnsMaximumDuration\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/MaximumDurationTest.php
+
+		-
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\PhaseIdentifierTest\\:\\:testFromStringRejectsInvalidValue\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/PhaseIdentifierTest.php
@@ -309,6 +319,11 @@ parameters:
 			message: "#^Method TestDescriptionTest\\:\\:testFromStringReturnsTestDescription\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/TestDescriptionTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\TestDurationTest\\:\\:testFromDurationReturnsTestDuration\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/TestDurationTest.php
 
 		-
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\TestIdentifierTest\\:\\:testFromStringRejectsInvalidValue\\(\\) has no return type specified\\.$#"
