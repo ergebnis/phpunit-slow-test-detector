@@ -33,6 +33,7 @@ use PHPUnit\Framework;
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Count
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Formatter\DefaultDurationFormatter
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumCount
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDescription
