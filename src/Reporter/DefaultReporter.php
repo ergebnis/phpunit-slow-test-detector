@@ -49,46 +49,40 @@ final class DefaultReporter implements Reporter
             return '';
         }
 
-        $header = $this->header($slowTestList);
-        $list = $this->list($slowTestList);
-        $footer = $this->footer($slowTestList);
-
-        if ('' === $footer) {
-            return <<<TXT
-{$header}
-{$list}
-TXT;
-        }
-
-        return <<<TXT
-{$header}
-{$list}
-{$footer}
-TXT;
+        return \implode("\n", \array_merge(
+            $this->header($slowTestList),
+            $this->list($slowTestList),
+            $this->footer($slowTestList)
+        ));
     }
 
-    private function header(SlowTestList $slowTestList): string
+    /**
+     * @return list<string>
+     */
+    private function header(SlowTestList $slowTestList): array
     {
         $slowTestCount = $slowTestList->slowTestCount();
 
         if ($slowTestCount->toCount()->equals(Count::fromInt(1))) {
-            return <<<'TXT'
-Detected 1 test where the duration exceeded the maximum duration.
-
-TXT;
+            return [
+                'Detected 1 test where the duration exceeded the maximum duration.',
+                '',
+            ];
         }
 
-        return \sprintf(
-            <<<'TXT'
-Detected %d tests where the duration exceeded the maximum duration.
-
-TXT
-            ,
-            $slowTestCount->toCount()->toInt()
-        );
+        return [
+            \sprintf(
+                'Detected %d tests where the duration exceeded the maximum duration.',
+                $slowTestCount->toCount()->toInt(),
+            ),
+            '',
+        ];
     }
 
-    private function list(SlowTestList $slowTestList): string
+    /**
+     * @return list<string>
+     */
+    private function list(SlowTestList $slowTestList): array
     {
         $slowTestListThatWillBeReported = $slowTestList
             ->sortByTestDurationDescending()
@@ -104,7 +98,7 @@ TXT
         $testDurationWidth = \strlen($durationFormatter->format($slowTestWithLongestTestDuration->testDuration()->toDuration()));
         $maximumDurationWidth = \strlen($durationFormatter->format($slowTestWithLongestMaximumDuration->maximumDuration()->toDuration()));
 
-        $items = \array_map(static function (int $number, SlowTest $slowTest) use ($numberWidth, $durationFormatter, $testDurationWidth, $maximumDurationWidth): string {
+        return \array_map(static function (int $number, SlowTest $slowTest) use ($numberWidth, $durationFormatter, $testDurationWidth, $maximumDurationWidth): string {
             $formattedNumber = \str_pad(
                 (string) $number,
                 $numberWidth,
@@ -135,14 +129,12 @@ TXT
 {$formattedNumber}. {$formattedDuration} {$formattedMaximumDuration} {$testDescription}
 TXT;
         }, \range(1, $slowTestListThatWillBeReported->slowTestCount()->toCount()->toInt()), $slowTestListThatWillBeReported->toArray());
-
-        return \implode(
-            "\n",
-            $items
-        );
     }
 
-    private function footer(SlowTestList $slowTestList): string
+    /**
+     * @return list<string>
+     */
+    private function footer(SlowTestList $slowTestList): array
     {
         $additionalSlowTestCount = SlowTestCount::fromCount(Count::fromInt(\max(
             0,
@@ -150,23 +142,22 @@ TXT;
         )));
 
         if ($additionalSlowTestCount->equals(SlowTestCount::fromCount(Count::fromInt(0)))) {
-            return '';
+            return [];
         }
 
         if ($additionalSlowTestCount->equals(SlowTestCount::fromCount(Count::fromInt(1)))) {
-            return <<<'TXT'
-
-There is 1 additional slow test that is not listed here.
-TXT;
+            return [
+                '',
+                'There is 1 additional slow test that is not listed here.',
+            ];
         }
 
-        return \sprintf(
-            <<<'TXT'
-
-There are %d additional slow tests that are not listed here.
-TXT
-            ,
-            $additionalSlowTestCount->toCount()->toInt()
-        );
+        return [
+            '',
+            \sprintf(
+                'There are %d additional slow tests that are not listed here.',
+                $additionalSlowTestCount->toCount()->toInt()
+            ),
+        ];
     }
 }
