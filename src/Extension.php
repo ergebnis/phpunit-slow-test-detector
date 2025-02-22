@@ -170,21 +170,17 @@ TXT;
                 return;
             }
 
-            $testIdentifier = TestIdentifier::fromString(\sprintf(
-                '%s::%s',
-                \get_class($test),
-                $test->getName()
-            ));
-
-            $testDescription = TestDescription::fromString(\sprintf(
-                '%s::%s',
-                \get_class($test),
-                $test->getName()
-            ));
-
             $slowTest = SlowTest::create(
-                $testIdentifier,
-                $testDescription,
+                TestIdentifier::fromString(\sprintf(
+                    '%s::%s',
+                    \get_class($test),
+                    $test->getName()
+                )),
+                TestDescription::fromString(\sprintf(
+                    '%s::%s',
+                    \get_class($test),
+                    $test->getName()
+                )),
                 $duration,
                 $maximumDuration
             );
@@ -321,12 +317,9 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
                 return;
             }
 
-            $testIdentifier = TestIdentifier::fromString($test);
-            $testDescription = TestDescription::fromString($test);
-
             $slowTest = SlowTest::create(
-                $testIdentifier,
-                $testDescription,
+                TestIdentifier::fromString($test),
+                TestDescription::fromString($test),
                 $duration,
                 $maximumDuration
             );
