@@ -73,7 +73,7 @@ final class DefaultReporter implements Reporter
         return [
             \sprintf(
                 'Detected %d tests where the duration exceeded the maximum duration.',
-                $slowTestCount->toCount()->toInt(),
+                $slowTestCount->toCount()->toInt()
             ),
             '',
         ];
