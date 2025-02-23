@@ -77,11 +77,9 @@ final class DefaultReporter implements Reporter
 
         $slowTestWithLongestMaximumDuration = $slowTestListThatWillBeReported->sortByMaximumDurationDescending()->first();
 
-        $durationFormatter = $this->durationFormatter;
-
         $numberWidth = \strlen((string) $slowTestListThatWillBeReported->slowTestCount()->toCount()->toInt());
-        $testDurationWidth = \strlen($durationFormatter->format($slowTestWithLongestTestDuration->testDuration()->toDuration()));
-        $maximumDurationWidth = \strlen($durationFormatter->format($slowTestWithLongestMaximumDuration->maximumDuration()->toDuration()));
+        $testDurationWidth = \strlen($this->durationFormatter->format($slowTestWithLongestTestDuration->testDuration()->toDuration()));
+        $maximumDurationWidth = \strlen($this->durationFormatter->format($slowTestWithLongestMaximumDuration->maximumDuration()->toDuration()));
 
         $template = \sprintf(
             '%%%dd. %%%ds (%%%ds) %%s',
@@ -96,8 +94,8 @@ final class DefaultReporter implements Reporter
             yield \sprintf(
                 $template,
                 (string) $number,
-                $durationFormatter->format($slowTest->testDuration()->toDuration()),
-                $durationFormatter->format($slowTest->maximumDuration()->toDuration()),
+                $this->durationFormatter->format($slowTest->testDuration()->toDuration()),
+                $this->durationFormatter->format($slowTest->maximumDuration()->toDuration()),
                 $slowTest->testDescription()->toString()
             );
 
