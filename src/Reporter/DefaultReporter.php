@@ -113,20 +113,17 @@ final class DefaultReporter implements Reporter
                 \STR_PAD_LEFT
             );
 
-            $formattedMaximumDuration = \sprintf(
-                '(%s)',
-                \str_pad(
-                    $durationFormatter->format($slowTest->maximumDuration()->toDuration()),
-                    $maximumDurationWidth,
-                    ' ',
-                    \STR_PAD_LEFT
-                )
+            $formattedMaximumDuration = \str_pad(
+                $durationFormatter->format($slowTest->maximumDuration()->toDuration()),
+                $maximumDurationWidth,
+                ' ',
+                \STR_PAD_LEFT
             );
 
             $testDescription = $slowTest->testDescription()->toString();
 
             return \sprintf(
-                '%s. %s %s %s',
+                '%s. %s (%s) %s',
                 $formattedNumber,
                 $formattedDuration,
                 $formattedMaximumDuration,
