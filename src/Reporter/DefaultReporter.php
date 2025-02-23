@@ -16,7 +16,6 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 use Ergebnis\PHPUnit\SlowTestDetector\Count;
 use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
-use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTestCount;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
 
@@ -49,41 +48,27 @@ final class DefaultReporter implements Reporter
             return '';
         }
 
-        return \implode("\n", \array_merge(
-            $this->header($slowTestList),
-            $this->list($slowTestList),
-            $this->footer($slowTestList)
-        ));
+        return \implode("\n", \iterator_to_array($this->lines($slowTestList)));
     }
 
     /**
-     * @return list<string>
+     * @return \Generator<string>
      */
-    private function header(SlowTestList $slowTestList): array
+    private function lines(SlowTestList $slowTestList): \Generator
     {
         $slowTestCount = $slowTestList->slowTestCount();
 
         if ($slowTestCount->toCount()->equals(Count::fromInt(1))) {
-            return [
-                'Detected 1 test where the duration exceeded the maximum duration.',
-                '',
-            ];
-        }
-
-        return [
-            \sprintf(
+            yield 'Detected 1 test where the duration exceeded the maximum duration.';
+        } else {
+            yield \sprintf(
                 'Detected %d tests where the duration exceeded the maximum duration.',
                 $slowTestCount->toCount()->toInt()
-            ),
-            '',
-        ];
-    }
+            );
+        }
 
-    /**
-     * @return list<string>
-     */
-    private function list(SlowTestList $slowTestList): array
-    {
+        yield '';
+
         $slowTestListThatWillBeReported = $slowTestList
             ->sortByTestDurationDescending()
             ->limitTo($this->maximumCount);
@@ -105,44 +90,38 @@ final class DefaultReporter implements Reporter
             $maximumDurationWidth
         );
 
-        return \array_map(static function (int $number, SlowTest $slowTest) use ($template, $durationFormatter): string {
-            return \sprintf(
+        $number = 1;
+
+        foreach ($slowTestListThatWillBeReported->toArray() as $slowTest) {
+            yield \sprintf(
                 $template,
                 (string) $number,
                 $durationFormatter->format($slowTest->testDuration()->toDuration()),
                 $durationFormatter->format($slowTest->maximumDuration()->toDuration()),
                 $slowTest->testDescription()->toString()
             );
-        }, \range(1, $slowTestListThatWillBeReported->slowTestCount()->toCount()->toInt()), $slowTestListThatWillBeReported->toArray());
-    }
 
-    /**
-     * @return list<string>
-     */
-    private function footer(SlowTestList $slowTestList): array
-    {
+            ++$number;
+        }
+
         $additionalSlowTestCount = SlowTestCount::fromCount(Count::fromInt(\max(
             0,
             $slowTestList->slowTestCount()->toCount()->toInt() - $this->maximumCount->toCount()->toInt()
         )));
 
         if ($additionalSlowTestCount->equals(SlowTestCount::fromCount(Count::fromInt(0)))) {
-            return [];
+            return;
         }
+
+        yield '';
 
         if ($additionalSlowTestCount->equals(SlowTestCount::fromCount(Count::fromInt(1)))) {
-            return [
-                '',
-                'There is 1 additional slow test that is not listed here.',
-            ];
-        }
-
-        return [
-            '',
-            \sprintf(
+            yield 'There is 1 additional slow test that is not listed here.';
+        } else {
+            yield \sprintf(
                 'There are %d additional slow tests that are not listed here.',
                 $additionalSlowTestCount->toCount()->toInt()
-            ),
-        ];
+            );
+        }
     }
 }
