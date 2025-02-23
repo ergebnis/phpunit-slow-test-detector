@@ -35,9 +35,9 @@ final class SlowTestList
         return new self(...$slowTests);
     }
 
-    public function slowTestCount(): SlowTestCount
+    public function count(): Count
     {
-        return SlowTestCount::fromCount(Count::fromInt(\count($this->slowTests)));
+        return Count::fromInt(\count($this->slowTests));
     }
 
     /**

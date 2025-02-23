@@ -20,7 +20,6 @@ use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
-use Ergebnis\PHPUnit\SlowTestDetector\SlowTestCount;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\TestDescription;
@@ -38,7 +37,6 @@ use PHPUnit\Framework;
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumCount
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
- * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTestCount
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDescription
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDuration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
@@ -65,7 +63,7 @@ final class SlowTestListTest extends Framework\TestCase
         self::assertSame($slowTests, $slowTestList->toArray());
     }
 
-    public function testSlowTestCountReturnsCountOfSlowTests()
+    public function testCountReturnsCountOfSlowTests()
     {
         $faker = self::faker();
 
@@ -80,9 +78,9 @@ final class SlowTestListTest extends Framework\TestCase
 
         $slowTestList = SlowTestList::create(...$slowTests);
 
-        $expected = SlowTestCount::fromCount(Count::fromInt(\count($slowTests)));
+        $expected = Count::fromInt(\count($slowTests));
 
-        self::assertEquals($expected, $slowTestList->slowTestCount());
+        self::assertEquals($expected, $slowTestList->count());
     }
 
     public function testFirstThrowsExceptionWhenSlowTestListIsEmpty()

@@ -16,7 +16,6 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 use Ergebnis\PHPUnit\SlowTestDetector\Count;
 use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
-use Ergebnis\PHPUnit\SlowTestDetector\SlowTestCount;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
 
 /**
@@ -56,14 +55,14 @@ final class DefaultReporter implements Reporter
      */
     private function lines(SlowTestList $slowTestList): \Generator
     {
-        $slowTestCount = $slowTestList->slowTestCount();
+        $slowTestCount = $slowTestList->count();
 
-        if ($slowTestCount->toCount()->equals(Count::fromInt(1))) {
+        if ($slowTestCount->equals(Count::fromInt(1))) {
             yield 'Detected 1 test where the duration exceeded the maximum duration.';
         } else {
             yield \sprintf(
                 'Detected %d tests where the duration exceeded the maximum duration.',
-                $slowTestCount->toCount()->toInt()
+                $slowTestCount->toInt()
             );
         }
 
@@ -77,7 +76,7 @@ final class DefaultReporter implements Reporter
 
         $slowTestWithLongestMaximumDuration = $slowTestListThatWillBeReported->sortByMaximumDurationDescending()->first();
 
-        $numberWidth = \strlen((string) $slowTestListThatWillBeReported->slowTestCount()->toCount()->toInt());
+        $numberWidth = \strlen((string) $slowTestListThatWillBeReported->count()->toInt());
         $testDurationWidth = \strlen($this->durationFormatter->format($slowTestWithLongestTestDuration->testDuration()->toDuration()));
         $maximumDurationWidth = \strlen($this->durationFormatter->format($slowTestWithLongestMaximumDuration->maximumDuration()->toDuration()));
 
@@ -102,23 +101,23 @@ final class DefaultReporter implements Reporter
             ++$number;
         }
 
-        $additionalSlowTestCount = SlowTestCount::fromCount(Count::fromInt(\max(
+        $additionalSlowTestCount = Count::fromInt(\max(
             0,
-            $slowTestList->slowTestCount()->toCount()->toInt() - $this->maximumCount->toCount()->toInt()
-        )));
+            $slowTestList->count()->toInt() - $this->maximumCount->toCount()->toInt()
+        ));
 
-        if ($additionalSlowTestCount->equals(SlowTestCount::fromCount(Count::fromInt(0)))) {
+        if ($additionalSlowTestCount->equals(Count::fromInt(0))) {
             return;
         }
 
         yield '';
 
-        if ($additionalSlowTestCount->equals(SlowTestCount::fromCount(Count::fromInt(1)))) {
+        if ($additionalSlowTestCount->equals(Count::fromInt(1))) {
             yield 'There is 1 additional slow test that is not listed here.';
         } else {
             yield \sprintf(
                 'There are %d additional slow tests that are not listed here.',
-                $additionalSlowTestCount->toCount()->toInt()
+                $additionalSlowTestCount->toInt()
             );
         }
     }
