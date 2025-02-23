@@ -98,36 +98,20 @@ final class DefaultReporter implements Reporter
         $testDurationWidth = \strlen($durationFormatter->format($slowTestWithLongestTestDuration->testDuration()->toDuration()));
         $maximumDurationWidth = \strlen($durationFormatter->format($slowTestWithLongestMaximumDuration->maximumDuration()->toDuration()));
 
-        return \array_map(static function (int $number, SlowTest $slowTest) use ($numberWidth, $durationFormatter, $testDurationWidth, $maximumDurationWidth): string {
-            $formattedNumber = \str_pad(
-                (string) $number,
-                $numberWidth,
-                ' ',
-                \STR_PAD_LEFT
-            );
+        $template = \sprintf(
+            '%%%dd. %%%ds (%%%ds) %%s',
+            $numberWidth,
+            $testDurationWidth,
+            $maximumDurationWidth
+        );
 
-            $formattedDuration = \str_pad(
-                $durationFormatter->format($slowTest->testDuration()->toDuration()),
-                $testDurationWidth,
-                ' ',
-                \STR_PAD_LEFT
-            );
-
-            $formattedMaximumDuration = \str_pad(
-                $durationFormatter->format($slowTest->maximumDuration()->toDuration()),
-                $maximumDurationWidth,
-                ' ',
-                \STR_PAD_LEFT
-            );
-
-            $testDescription = $slowTest->testDescription()->toString();
-
+        return \array_map(static function (int $number, SlowTest $slowTest) use ($template, $durationFormatter): string {
             return \sprintf(
-                '%s. %s (%s) %s',
-                $formattedNumber,
-                $formattedDuration,
-                $formattedMaximumDuration,
-                $testDescription
+                $template,
+                (string) $number,
+                $durationFormatter->format($slowTest->testDuration()->toDuration()),
+                $durationFormatter->format($slowTest->maximumDuration()->toDuration()),
+                $slowTest->testDescription()->toString()
             );
         }, \range(1, $slowTestListThatWillBeReported->slowTestCount()->toCount()->toInt()), $slowTestListThatWillBeReported->toArray());
     }
