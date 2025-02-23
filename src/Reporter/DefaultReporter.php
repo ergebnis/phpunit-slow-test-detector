@@ -125,9 +125,13 @@ final class DefaultReporter implements Reporter
 
             $testDescription = $slowTest->testDescription()->toString();
 
-            return <<<TXT
-{$formattedNumber}. {$formattedDuration} {$formattedMaximumDuration} {$testDescription}
-TXT;
+            return \sprintf(
+                '%s. %s %s %s',
+                $formattedNumber,
+                $formattedDuration,
+                $formattedMaximumDuration,
+                $testDescription
+            );
         }, \range(1, $slowTestListThatWillBeReported->slowTestCount()->toCount()->toInt()), $slowTestListThatWillBeReported->toArray());
     }
 
