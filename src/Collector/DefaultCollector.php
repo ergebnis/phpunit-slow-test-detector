@@ -33,7 +33,7 @@ final class DefaultCollector implements Collector
         if (\array_key_exists($key, $this->slowTests)) {
             $previousSlowTest = $this->slowTests[$key];
 
-            if (!$slowTest->testDuration()->toDuration()->isGreaterThan($previousSlowTest->testDuration()->toDuration())) {
+            if (!$slowTest->duration()->isGreaterThan($previousSlowTest->duration())) {
                 return;
             }
 

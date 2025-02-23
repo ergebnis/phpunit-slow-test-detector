@@ -23,7 +23,6 @@ use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\TestDescription;
-use Ergebnis\PHPUnit\SlowTestDetector\TestDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use PHPUnit\Framework;
 
@@ -38,7 +37,6 @@ use PHPUnit\Framework;
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDescription
- * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDuration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
  */
 final class SlowTestListTest extends Framework\TestCase
@@ -53,7 +51,7 @@ final class SlowTestListTest extends Framework\TestCase
             return SlowTest::create(
                 TestIdentifier::fromString($faker->word()),
                 TestDescription::fromString($faker->word()),
-                TestDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+                Duration::fromMilliseconds($faker->numberBetween(0)),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)))
             );
         }, \range(1, $faker->numberBetween(1, 10)));
@@ -71,7 +69,7 @@ final class SlowTestListTest extends Framework\TestCase
             return SlowTest::create(
                 TestIdentifier::fromString($faker->word()),
                 TestDescription::fromString($faker->word()),
-                TestDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+                Duration::fromMilliseconds($faker->numberBetween(0)),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)))
             );
         }, \range(1, $faker->numberBetween(1, 10)));
@@ -100,7 +98,7 @@ final class SlowTestListTest extends Framework\TestCase
             return SlowTest::create(
                 TestIdentifier::fromString($faker->word()),
                 TestDescription::fromString($faker->word()),
-                TestDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+                Duration::fromMilliseconds($faker->numberBetween(0)),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)))
             );
         }, \range(1, $faker->numberBetween(1, 10)));
@@ -127,7 +125,7 @@ final class SlowTestListTest extends Framework\TestCase
             return SlowTest::create(
                 TestIdentifier::fromString($faker->word()),
                 TestDescription::fromString($faker->word()),
-                TestDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+                Duration::fromMilliseconds($faker->numberBetween(0)),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)))
             );
         }, \range(1, $faker->numberBetween(1, 10)));
@@ -147,7 +145,7 @@ final class SlowTestListTest extends Framework\TestCase
             return SlowTest::create(
                 TestIdentifier::fromString($faker->word()),
                 TestDescription::fromString($faker->word()),
-                TestDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+                Duration::fromMilliseconds($faker->numberBetween(0)),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)))
             );
         }, \range(1, $faker->numberBetween(1, $maximumCount->toCount()->toInt() - 1)));
@@ -177,7 +175,7 @@ final class SlowTestListTest extends Framework\TestCase
             return SlowTest::create(
                 TestIdentifier::fromString($faker->word()),
                 TestDescription::fromString($faker->word()),
-                TestDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+                Duration::fromMilliseconds($faker->numberBetween(0)),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)))
             );
         }, \range(1, $faker->numberBetween($maximumCount->toCount()->toInt() + 1, $maximumCount->toCount()->toInt() + 10)));
@@ -197,7 +195,7 @@ final class SlowTestListTest extends Framework\TestCase
         self::assertEquals($expected, $limitedToMaximumCount->toArray());
     }
 
-    public function testSortByTestDurationDescendingReturnsSlowTestListWhereSlowTestsAreSortedByTestDurationDescending()
+    public function testSortByDurationDescendingReturnsSlowTestListWhereSlowTestsAreSortedByDurationDescending()
     {
         $faker = self::faker();
 
@@ -207,27 +205,27 @@ final class SlowTestListTest extends Framework\TestCase
             return SlowTest::create(
                 TestIdentifier::fromString($faker->word()),
                 TestDescription::fromString($faker->word()),
-                TestDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+                Duration::fromMilliseconds($faker->numberBetween(0)),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)))
             );
         }, \range(1, $faker->numberBetween(1, 10)));
 
         $slowTestList = SlowTestList::create(...$slowTests);
 
-        $sortedByTestDurationDescending = $slowTestList->sortByTestDurationDescending();
+        $sortedByDurationDescending = $slowTestList->sortByDurationDescending();
 
-        self::assertNotSame($slowTestList, $sortedByTestDurationDescending);
+        self::assertNotSame($slowTestList, $sortedByDurationDescending);
 
         $expected = $slowTests;
 
         \usort($expected, static function (SlowTest $one, SlowTest $two) use ($durationComparator): int {
             return $durationComparator->compare(
-                $two->testDuration()->toDuration(),
-                $one->testDuration()->toDuration()
+                $two->duration(),
+                $one->duration()
             );
         });
 
-        self::assertEquals($expected, $sortedByTestDurationDescending->toArray());
+        self::assertEquals($expected, $sortedByDurationDescending->toArray());
     }
 
     public function testSortByMaximumDurationDescendingReturnsSlowTestListWhereSlowTestsAreSortedByMaximumDurationDescending()
@@ -240,7 +238,7 @@ final class SlowTestListTest extends Framework\TestCase
             return SlowTest::create(
                 TestIdentifier::fromString($faker->word()),
                 TestDescription::fromString($faker->word()),
-                TestDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+                Duration::fromMilliseconds($faker->numberBetween(0)),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)))
             );
         }, \range(1, $faker->numberBetween(1, 10)));

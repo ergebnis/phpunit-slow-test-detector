@@ -23,7 +23,6 @@ use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\TestDescription;
-use Ergebnis\PHPUnit\SlowTestDetector\TestDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use PHPUnit\Framework;
 
@@ -39,7 +38,6 @@ use PHPUnit\Framework;
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTestList
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDescription
- * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDuration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
  */
 final class DefaultReporterTest extends Framework\TestCase
@@ -98,7 +96,7 @@ TXT
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(300)),
+                        Duration::fromMilliseconds(300),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
                     )
                 ),
@@ -116,13 +114,13 @@ TXT
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(300)),
+                        Duration::fromMilliseconds(300),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(275)),
+                        Duration::fromMilliseconds(275),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
                     )
                 ),
@@ -141,19 +139,19 @@ TXT
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(300)),
+                        Duration::fromMilliseconds(300),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(275)),
+                        Duration::fromMilliseconds(275),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
                         TestDescription::fromString('BazTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(250)),
+                        Duration::fromMilliseconds(250),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
                     )
                 ),
@@ -172,19 +170,19 @@ TXT
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
                         TestDescription::fromString('BazTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(250)),
+                        Duration::fromMilliseconds(250),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(275)),
+                        Duration::fromMilliseconds(275),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(300)),
+                        Duration::fromMilliseconds(300),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
                     )
                 ),
@@ -210,61 +208,61 @@ TXT
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(1250000)),
+                        Duration::fromMilliseconds(1250000),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(1000000))
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(575000)),
+                        Duration::fromMilliseconds(575000),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(500000))
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
                         TestDescription::fromString('BazTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(250)),
+                        Duration::fromMilliseconds(250),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('QuxTest::test'),
                         TestDescription::fromString('QuxTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(200)),
+                        Duration::fromMilliseconds(200),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('QuuxTest::test'),
                         TestDescription::fromString('QuuxTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(160)),
+                        Duration::fromMilliseconds(160),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('CorgeTest::test'),
                         TestDescription::fromString('CorgeTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(150)),
+                        Duration::fromMilliseconds(150),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('GraultTest::test'),
                         TestDescription::fromString('GraultTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(140)),
+                        Duration::fromMilliseconds(140),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('GarplyTest::test'),
                         TestDescription::fromString('GarplyTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(130)),
+                        Duration::fromMilliseconds(130),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('WaldoTest::test'),
                         TestDescription::fromString('WaldoTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(120)),
+                        Duration::fromMilliseconds(120),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('FredTest::test'),
                         TestDescription::fromString('FredTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(110)),
+                        Duration::fromMilliseconds(110),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
                     )
                 ),
@@ -283,13 +281,13 @@ TXT
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(300)),
+                        Duration::fromMilliseconds(300),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(275)),
+                        Duration::fromMilliseconds(275),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
                     )
                 ),
@@ -308,19 +306,19 @@ TXT
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(300)),
+                        Duration::fromMilliseconds(300),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(275)),
+                        Duration::fromMilliseconds(275),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
                         TestDescription::fromString('BazTest::test'),
-                        TestDuration::fromDuration(Duration::fromMilliseconds(250)),
+                        Duration::fromMilliseconds(250),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
                     )
                 ),

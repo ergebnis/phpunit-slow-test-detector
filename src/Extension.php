@@ -158,14 +158,14 @@ TXT;
             $seconds = (int) \floor($time);
             $nanoseconds = (int) (($time - $seconds) * 1000000000);
 
-            $testDuration = TestDuration::fromDuration(Duration::fromSecondsAndNanoseconds(
+            $duration = Duration::fromSecondsAndNanoseconds(
                 $seconds,
                 $nanoseconds
-            ));
+            );
 
             $maximumDuration = $this->resolveMaximumDuration($test);
 
-            if (!$testDuration->toDuration()->isGreaterThan($maximumDuration->toDuration())) {
+            if (!$duration->isGreaterThan($maximumDuration->toDuration())) {
                 return;
             }
 
@@ -180,7 +180,7 @@ TXT;
                     \get_class($test),
                     $test->getName()
                 )),
-                $testDuration,
+                $duration,
                 $maximumDuration
             );
 
@@ -304,21 +304,21 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
             $seconds = (int) \floor($time);
             $nanoseconds = (int) (($time - $seconds) * 1000000000);
 
-            $testDuration = TestDuration::fromDuration(Duration::fromSecondsAndNanoseconds(
+            $duration = Duration::fromSecondsAndNanoseconds(
                 $seconds,
                 $nanoseconds
-            ));
+            );
 
             $maximumDuration = $this->resolveMaximumDuration($test);
 
-            if (!$testDuration->toDuration()->isGreaterThan($maximumDuration->toDuration())) {
+            if (!$duration->isGreaterThan($maximumDuration->toDuration())) {
                 return;
             }
 
             $slowTest = SlowTest::create(
                 TestIdentifier::fromString($test),
                 TestDescription::fromString($test),
-                $testDuration,
+                $duration,
                 $maximumDuration
             );
 

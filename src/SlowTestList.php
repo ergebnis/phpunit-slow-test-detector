@@ -66,7 +66,7 @@ final class SlowTestList
         ));
     }
 
-    public function sortByTestDurationDescending(): self
+    public function sortByDurationDescending(): self
     {
         $durationComparator = new DurationComparator();
 
@@ -74,8 +74,8 @@ final class SlowTestList
 
         \usort($slowTests, static function (SlowTest $one, SlowTest $two) use ($durationComparator): int {
             return $durationComparator->compare(
-                $two->testDuration()->toDuration(),
-                $one->testDuration()->toDuration()
+                $two->duration(),
+                $one->duration()
             );
         });
 

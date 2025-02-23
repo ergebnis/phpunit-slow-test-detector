@@ -20,7 +20,6 @@ use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\PhaseIdentifier;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\TestDescription;
-use Ergebnis\PHPUnit\SlowTestDetector\TestDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
 use Ergebnis\PHPUnit\SlowTestDetector\Time;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
@@ -84,18 +83,18 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
             )
         );
 
-        $testDuration = TestDuration::fromDuration($phase->duration());
+        $duration = $phase->duration();
 
         $maximumDuration = $this->resolveMaximumDuration($event->test());
 
-        if (!$testDuration->toDuration()->isGreaterThan($maximumDuration->toDuration())) {
+        if (!$duration->isGreaterThan($maximumDuration->toDuration())) {
             return;
         }
 
         $slowTest = SlowTest::create(
             TestIdentifier::fromString($event->test()->id()),
             self::descriptionFromTest($event->test()),
-            $testDuration,
+            $duration,
             $maximumDuration
         );
 

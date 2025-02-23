@@ -381,12 +381,12 @@ parameters:
 			path: test/Unit/SlowTestListTest.php
 
 		-
-			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\SlowTestListTest\\:\\:testSortByMaximumDurationDescendingReturnsSlowTestListWhereSlowTestsAreSortedByMaximumDurationDescending\\(\\) has no return type specified\\.$#"
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\SlowTestListTest\\:\\:testSortByDurationDescendingReturnsSlowTestListWhereSlowTestsAreSortedByDurationDescending\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/SlowTestListTest.php
 
 		-
-			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\SlowTestListTest\\:\\:testSortByTestDurationDescendingReturnsSlowTestListWhereSlowTestsAreSortedByTestDurationDescending\\(\\) has no return type specified\\.$#"
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\SlowTestListTest\\:\\:testSortByMaximumDurationDescendingReturnsSlowTestListWhereSlowTestsAreSortedByMaximumDurationDescending\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/SlowTestListTest.php
 
@@ -404,11 +404,6 @@ parameters:
 			message: "#^Method TestDescriptionTest\\:\\:testFromStringReturnsTestDescription\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/TestDescriptionTest.php
-
-		-
-			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\TestDurationTest\\:\\:testFromDurationReturnsTestDuration\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: test/Unit/TestDurationTest.php
 
 		-
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\TestIdentifierTest\\:\\:testFromStringRejectsInvalidValue\\(\\) has no return type specified\\.$#"
