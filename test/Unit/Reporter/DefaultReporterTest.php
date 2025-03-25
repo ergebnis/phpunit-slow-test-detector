@@ -89,7 +89,7 @@ final class DefaultReporterTest extends Framework\TestCase
         $values = [
             'header-singular' => [
                 <<<'TXT'
-Detected 1 test where the duration exceeded the maximum duration.
+Detected 1 test where the duration exceeded the maximum duration (00:00.500).
 
 1. 00:00.300 (00:00.100) FooTest::test
 TXT
@@ -107,7 +107,7 @@ TXT
             ],
             'header-plural' => [
                 <<<'TXT'
-Detected 2 tests where the duration exceeded the maximum duration.
+Detected 2 tests where the duration exceeded the maximum duration (00:00.500).
 
 1. 00:00.300 (00:00.100) FooTest::test
 2. 00:00.275 (00:00.100) BarTest::test
@@ -132,7 +132,7 @@ TXT
             ],
             'list-sorted' => [
                 <<<'TXT'
-Detected 3 tests where the duration exceeded the maximum duration.
+Detected 3 tests where the duration exceeded the maximum duration (00:00.500).
 
 1. 00:00.300 (00:00.100) FooTest::test
 2. 00:00.275 (00:00.100) BarTest::test
@@ -164,7 +164,7 @@ TXT
             ],
             'list-unsorted' => [
                 <<<'TXT'
-Detected 3 tests where the duration exceeded the maximum duration.
+Detected 3 tests where the duration exceeded the maximum duration (00:00.500).
 
 1. 00:00.300 (00:00.100) FooTest::test
 2. 00:00.275 (00:00.100) BarTest::test
@@ -196,7 +196,7 @@ TXT
             ],
             'list-different-maximum-duration' => [
                 <<<'TXT'
-Detected 10 tests where the duration exceeded the maximum duration.
+Detected 10 tests where the duration exceeded the maximum duration (00:00.500).
 
  1. 20:50.000 (16:40.000) FooTest::test
  2. 09:35.000 (08:20.000) BarTest::test
@@ -277,7 +277,7 @@ TXT
             ],
             'footer-singular' => [
                 <<<'TXT'
-Detected 2 tests where the duration exceeded the maximum duration.
+Detected 2 tests where the duration exceeded the maximum duration (00:00.500).
 
 1. 00:00.300 (00:00.100) FooTest::test
 
@@ -303,7 +303,7 @@ TXT
             ],
             'footer-plural' => [
                 <<<'TXT'
-Detected 3 tests where the duration exceeded the maximum duration.
+Detected 3 tests where the duration exceeded the maximum duration (00:00.500).
 
 1. 00:00.300 (00:00.100) FooTest::test
 
