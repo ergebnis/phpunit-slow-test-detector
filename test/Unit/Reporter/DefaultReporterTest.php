@@ -52,6 +52,7 @@ final class DefaultReporterTest extends Framework\TestCase
 
         $reporter = new Reporter\DefaultReporter(
             new Formatter\DefaultDurationFormatter(),
+            MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
             MaximumCount::fromCount(Count::fromInt($faker->numberBetween(1)))
         );
 
@@ -65,11 +66,13 @@ final class DefaultReporterTest extends Framework\TestCase
      */
     public function testReportReturnsReportWhenSlowTestListHasFewerSlowTestsThanMaximumCount(
         string $expectedReport,
+        MaximumDuration $maximumDuration,
         MaximumCount $maximumCount,
         SlowTestList $slowTestList
     ) {
         $reporter = new Reporter\DefaultReporter(
             new Formatter\DefaultDurationFormatter(),
+            $maximumDuration,
             $maximumCount
         );
 
@@ -79,7 +82,7 @@ final class DefaultReporterTest extends Framework\TestCase
     }
 
     /**
-     * @return \Generator<string, array{0: string, 1: MaximumCount, 2: SlowTestList}>
+     * @return \Generator<string, array{0: string, 1: MaximumDuration, 2: MaximumCount, 3: SlowTestList}>
      */
     public static function provideExpectedReportMaximumCountAndSlowTestList(): iterable
     {
@@ -91,6 +94,7 @@ Detected 1 test where the duration exceeded the maximum duration.
 1. 00:00.300 (00:00.100) FooTest::test
 TXT
                 ,
+                MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
                 MaximumCount::fromCount(Count::fromInt(1)),
                 SlowTestList::create(
                     SlowTest::create(
@@ -109,6 +113,7 @@ Detected 2 tests where the duration exceeded the maximum duration.
 2. 00:00.275 (00:00.100) BarTest::test
 TXT
                 ,
+                MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
                 MaximumCount::fromCount(Count::fromInt(2)),
                 SlowTestList::create(
                     SlowTest::create(
@@ -134,6 +139,7 @@ Detected 3 tests where the duration exceeded the maximum duration.
 3. 00:00.250 (00:00.100) BazTest::test
 TXT
                 ,
+                MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
                 MaximumCount::fromCount(Count::fromInt(3)),
                 SlowTestList::create(
                     SlowTest::create(
@@ -165,6 +171,7 @@ Detected 3 tests where the duration exceeded the maximum duration.
 3. 00:00.250 (00:00.100) BazTest::test
 TXT
                 ,
+                MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
                 MaximumCount::fromCount(Count::fromInt(3)),
                 SlowTestList::create(
                     SlowTest::create(
@@ -203,6 +210,7 @@ Detected 10 tests where the duration exceeded the maximum duration.
 10. 00:00.110 (00:00.100) FredTest::test
 TXT
                 ,
+                MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
                 MaximumCount::fromCount(Count::fromInt(10)),
                 SlowTestList::create(
                     SlowTest::create(
@@ -276,6 +284,7 @@ Detected 2 tests where the duration exceeded the maximum duration.
 There is 1 additional slow test that is not listed here.
 TXT
                 ,
+                MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
                 MaximumCount::fromCount(Count::fromInt(1)),
                 SlowTestList::create(
                     SlowTest::create(
@@ -301,6 +310,7 @@ Detected 3 tests where the duration exceeded the maximum duration.
 There are 2 additional slow tests that are not listed here.
 TXT
                 ,
+                MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
                 MaximumCount::fromCount(Count::fromInt(1)),
                 SlowTestList::create(
                     SlowTest::create(
@@ -325,9 +335,10 @@ TXT
             ],
         ];
 
-        foreach ($values as $key => list($expected, $maximumCount, $slowTestList)) {
+        foreach ($values as $key => list($expected, $maximumDuration, $maximumCount, $slowTestList)) {
             yield $key => [
                 $expected,
+                $maximumDuration,
                 $maximumCount,
                 $slowTestList,
             ];
