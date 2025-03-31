@@ -20,7 +20,7 @@ PHPUnit %s
 Runtime: %s
 Configuration: %s/EndToEnd/Version11/TestMethod/WithMaximumDurationAnnotation/phpunit.xml
 
-....                                                                4 / 4 (100%)
+.....                                                               5 / 5 (100%)
 
 Detected 2 tests where the duration exceeded the maximum duration.
 
@@ -29,4 +29,4 @@ Detected 2 tests where the duration exceeded the maximum duration.
 
 Time: %s, Memory: %s
 
-OK (4 tests, 4 assertions)
+OK (5 tests, 5 assertions)
