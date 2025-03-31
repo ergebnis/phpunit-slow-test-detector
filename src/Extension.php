@@ -356,7 +356,7 @@ TXT;
         {
             list($testClassName, $testMethodName) = \explode(
                 '::',
-                $test
+                preg_replace('/ with data set \#.*/', '', $test)
             );
 
             $annotations = [
