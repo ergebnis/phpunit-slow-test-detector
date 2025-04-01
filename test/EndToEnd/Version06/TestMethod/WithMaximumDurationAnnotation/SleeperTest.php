@@ -84,6 +84,21 @@ final class SleeperTest extends Framework\TestCase
 
     /**
      * @maximumDuration 200
+     * @dataProvider mockDataProvider
+     */
+    public function testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasValidMaximumDurationAnnotationAndDataProvider()
+    {
+        $milliseconds = 300;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * @maximumDuration 200
      */
     public function testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasValidMaximumDurationAnnotation()
     {
