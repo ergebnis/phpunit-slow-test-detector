@@ -356,8 +356,9 @@ TXT;
         {
             list($testClassName, $testMethodName) = \explode(
                 '::',
-                preg_replace('/ with data set \#.*/', '', $test)
+                $test
             );
+            $testMethodName = explode(' with data set #', $testMethodName)[0];
 
             $annotations = [
                 'maximumDuration',
