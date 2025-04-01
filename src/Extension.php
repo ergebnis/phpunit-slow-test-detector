@@ -358,6 +358,7 @@ TXT;
                 '::',
                 $test
             );
+            $testMethodName = explode(' with data set #', $testMethodName)[0];
 
             $annotations = [
                 'maximumDuration',
