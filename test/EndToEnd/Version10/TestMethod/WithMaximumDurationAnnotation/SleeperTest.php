@@ -62,6 +62,62 @@ final class SleeperTest extends Framework\TestCase
     }
 
     /**
+     * @dataProvider provideDataWhereDataNameIsInteger
+     *
+     * @maximumDuration 200
+     */
+    public function testSleeperSleepsShorterThanMaximumDurationFromAnnotationWithNumericDataProvider(): void
+    {
+        $milliseconds = 150;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * @return list<array{0: string}>
+     */
+    public static function provideDataWhereDataNameIsInteger(): array
+    {
+        return [
+            [
+                'bar',
+            ],
+        ];
+    }
+
+    /**
+     * @dataProvider provideDataWhereDataNameIsString
+     *
+     * @maximumDuration 200
+     */
+    public function testSleeperSleepsShorterThanMaximumDurationFromAnnotationWithNamedDataProvider(): void
+    {
+        $milliseconds = 150;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    /**
+     * @return array<string, array{0: string}>
+     */
+    public static function provideDataWhereDataNameIsString(): array
+    {
+        return [
+            'foo' => [
+                'bar',
+            ],
+        ];
+    }
+
+    /**
      * @maximumDuration 200
      */
     public function testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasValidMaximumDurationAnnotation(): void

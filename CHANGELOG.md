@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.19.0...main`][2.19.0...main].
 
+### Fixed
+
+- Fixed discovery of `@maximumDuration` annotation when using data providers ([#675]), by [@morgan-atproperties]
+
 ## [`2.19.0`][2.19.0]
 
 For a full diff see [`2.18.0...2.19.0`][2.18.0...2.19.0].
@@ -406,4 +410,5 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [@dantleech]: https://github.com/dantleech
 [@HypeMC]: https://github.com/HypeMC
 [@localheinz]: https://github.com/localheinz
+[@morgan-atproperties]: https://github.com/morgan-atproperties
 [@mvorisek]: https://github.com/mvorisek

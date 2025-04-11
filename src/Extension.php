@@ -354,6 +354,23 @@ TXT;
 
         private function resolveMaximumDuration(string $test): MaximumDuration
         {
+            /**
+             * @see https://github.com/sebastianbergmann/phpunit/blob/6.5.0/src/Framework/TestCase.php#L352-L368
+             * @see https://github.com/sebastianbergmann/phpunit/blob/6.5.0/src/Framework/TestCase.php#L1966-L1992
+             */
+            $dataSetPosition = \strpos(
+                $test,
+                ' with data set'
+            );
+
+            if (false !== $dataSetPosition) {
+                $test = \substr(
+                    $test,
+                    0,
+                    $dataSetPosition
+                );
+            }
+
             list($testClassName, $testMethodName) = \explode(
                 '::',
                 $test
