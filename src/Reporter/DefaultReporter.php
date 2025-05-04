@@ -16,6 +16,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 use Ergebnis\PHPUnit\SlowTestDetector\Count;
 use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
+use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
 
 /**
@@ -29,15 +30,22 @@ final class DefaultReporter implements Reporter
     private $durationFormatter;
 
     /**
+     * @var MaximumDuration
+     */
+    private $maximumDuration;
+
+    /**
      * @var MaximumCount
      */
     private $maximumCount;
 
     public function __construct(
         Formatter\DurationFormatter $durationFormatter,
+        MaximumDuration $maximumDuration,
         MaximumCount $maximumCount
     ) {
         $this->durationFormatter = $durationFormatter;
+        $this->maximumDuration = $maximumDuration;
         $this->maximumCount = $maximumCount;
     }
 
@@ -55,14 +63,21 @@ final class DefaultReporter implements Reporter
      */
     private function lines(SlowTestList $slowTestList): \Generator
     {
+        $durationFormatter = $this->durationFormatter;
+        $formattedMaximumGlobalDuration = $durationFormatter->format($this->maximumDuration->toDuration());
+
         $slowTestCount = $slowTestList->count();
 
         if ($slowTestCount->equals(Count::fromInt(1))) {
-            yield 'Detected 1 test where the duration exceeded the maximum duration.';
+            yield \sprintf(
+                'Detected 1 test where the duration exceeded the maximum duration (%s).',
+                $formattedMaximumGlobalDuration
+            );
         } else {
             yield \sprintf(
-                'Detected %d tests where the duration exceeded the maximum duration.',
-                $slowTestCount->toInt()
+                'Detected %d tests where the duration exceeded the maximum duration (%s).',
+                $slowTestCount->toInt(),
+                $formattedMaximumGlobalDuration
             );
         }
 
@@ -80,23 +95,40 @@ final class DefaultReporter implements Reporter
         $durationWidth = \strlen($this->durationFormatter->format($slowTestWithLongestDuration->duration()));
         $maximumDurationWidth = \strlen($this->durationFormatter->format($slowTestWithLongestMaximumDuration->maximumDuration()->toDuration()));
 
-        $template = \sprintf(
-            '%%%dd. %%%ds (%%%ds) %%s',
-            $numberWidth,
-            $durationWidth,
-            $maximumDurationWidth
-        );
-
         $number = 1;
 
         foreach ($slowTestListThatWillBeReported->toArray() as $slowTest) {
-            yield \sprintf(
-                $template,
-                (string) $number,
-                $this->durationFormatter->format($slowTest->duration()),
-                $this->durationFormatter->format($slowTest->maximumDuration()->toDuration()),
-                $slowTest->testDescription()->toString()
-            );
+            $formattedMaximumDuration = $this->durationFormatter->format($slowTest->maximumDuration()->toDuration());
+
+            if ($formattedMaximumDuration === $formattedMaximumGlobalDuration) {
+                $template = \sprintf(
+                    '%%%dd. %%%ds %%s',
+                    $numberWidth,
+                    $durationWidth
+                );
+
+                yield \sprintf(
+                    $template,
+                    (string) $number,
+                    $this->durationFormatter->format($slowTest->duration()),
+                    $slowTest->testDescription()->toString()
+                );
+            } else {
+                $template = \sprintf(
+                    '%%%dd. %%%ds (%%%ds) %%s',
+                    $numberWidth,
+                    $durationWidth,
+                    $maximumDurationWidth
+                );
+
+                yield \sprintf(
+                    $template,
+                    (string) $number,
+                    $this->durationFormatter->format($slowTest->duration()),
+                    $formattedMaximumDuration,
+                    $slowTest->testDescription()->toString()
+                );
+            }
 
             ++$number;
         }
