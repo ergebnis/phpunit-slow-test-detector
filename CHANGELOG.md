@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.19.1...main`][2.19.1...main].
 
+### Fixed
+
+- Fixed discovery of `@maximumDuration` annotation when a test case does not have any test methods ([#687]), by [@courtney-miles]
+
 ## [`2.19.1`][2.19.1]
 
 For a full diff see [`2.19.0...2.19.1`][2.19.0...2.19.1].
@@ -413,6 +417,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#664]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/664
 
 [@dantleech]: https://github.com/dantleech
+[@courtney-miles]: https://github.com/courtney-miles
 [@HypeMC]: https://github.com/HypeMC
 [@localheinz]: https://github.com/localheinz
 [@morgan-atproperties]: https://github.com/morgan-atproperties
