@@ -13,10 +13,7 @@ require_once __DIR__ . '/../../../../../vendor/autoload.php';
 
 PHPUnit\TextUI\Command::main();
 --EXPECTF--
-PHPUnit %s
-
-Runtime: %s
-Configuration: %s/EndToEnd/Version09/Configuration/MaximumCount/phpunit.xml
+%a
 
 ......                                                              6 / 6 (100%)
 
@@ -28,6 +25,4 @@ Detected 5 tests where the duration exceeded the maximum duration.
 
 There are 2 additional slow tests that are not listed here.
 
-Time: %s, Memory: %s
-
-OK (6 tests, 6 assertions)
+%a

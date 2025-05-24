@@ -15,10 +15,7 @@ $application = new TextUI\Application();
 
 $application->run($_SERVER['argv']);
 --EXPECTF--
-PHPUnit %s
-
-Runtime: %s
-Configuration: %s/EndToEnd/Version11/Configuration/Defaults/phpunit.xml
+%a
 
 ............                                                      12 / 12 (100%)
 
@@ -37,6 +34,4 @@ Detected 11 tests where the duration exceeded the maximum duration.
 
 There is 1 additional slow test that is not listed here.
 
-Time: %s, Memory: %s
-
-OK (12 tests, 12 assertions)
+%a

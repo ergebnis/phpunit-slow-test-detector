@@ -15,10 +15,7 @@ $application = new TextUI\Application();
 
 $application->run($_SERVER['argv']);
 --EXPECTF--
-PHPUnit %s
-
-Runtime: %s
-Configuration: %s/EndToEnd/Version10/TestMethod/WithMaximumDurationAnnotation/phpunit.xml
+%a
 
 ......                                                              6 / 6 (100%)
 
@@ -27,6 +24,4 @@ Detected 2 tests where the duration exceeded the maximum duration.
 1. 00:00.3%s (00:00.200) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\TestMethod\WithMaximumDurationAnnotation\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasValidMaximumDurationAnnotation
 2. 00:00.2%s (00:00.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\TestMethod\WithMaximumDurationAnnotation\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidMaximumDurationAnnotation
 
-Time: %s, Memory: %s
-
-OK (6 tests, 6 assertions)
+%a

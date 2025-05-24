@@ -15,10 +15,7 @@ $application = new TextUI\Application();
 
 $application->run($_SERVER['argv']);
 --EXPECTF--
-PHPUnit %s
-
-Runtime: %s
-Configuration: %s/EndToEnd/Version10/TestCase/WithBeforeAttribute/phpunit.xml
+%a
 
 ...                                                                 3 / 3 (100%)
 
@@ -28,6 +25,4 @@ Detected 3 tests where the duration exceeded the maximum duration.
 2. 00:00.3%s (00:00.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\TestCase\WithBeforeAttribute\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #0 (200)
 3. 00:00.1%s (00:00.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\TestCase\WithBeforeAttribute\SleeperTest::testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration
 
-Time: %s, Memory: %s
-
-OK (3 tests, 3 assertions)
+%a

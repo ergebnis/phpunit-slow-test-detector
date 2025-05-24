@@ -18,10 +18,7 @@ require_once PHPUNIT_COMPOSER_INSTALL;
 
 PHPUnit\TextUI\Command::main();
 --EXPECTF--
-PHPUnit %s
-
-Runtime: %s
-Configuration: %s/EndToEnd/Version06/TestMethod/WithRunInSeparateProcessAnnotation/phpunit.xml
+%a
 
 ....                                                                4 / 4 (100%)
 
@@ -32,6 +29,4 @@ Detected 4 tests where the duration exceeded the maximum duration.
 3. 00:00.8%s (00:00.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\TestMethod\WithRunInSeparateProcessAnnotation\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfiguration
 4. 00:00.6%s (00:00.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version06\TestMethod\WithRunInSeparateProcessAnnotation\SleeperTest::testSleeperSleepsShorterThanMaximumDurationFromXmlConfiguration
 
-Time: %s, Memory: %s
-
-OK (4 tests, 4 assertions)
+%a
