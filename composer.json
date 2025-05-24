@@ -60,6 +60,7 @@
     "audit": {
       "abandoned": "report"
     },
+    "cache-dir": ".build/composer/",
     "platform": {
       "php": "7.4.33"
     },
