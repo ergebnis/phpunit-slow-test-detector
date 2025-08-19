@@ -4,13 +4,13 @@
 
 The following versions of `ergebnis/phpunit-slow-test-detector` have active support:
 
-- `^2.19.1`
+- `^2.20.0`
 
 ## Unsupported Versions
 
 The following versions of `ergebnis/phpunit-slow-test-detector` have reached their end of life:
 
-- `<2.19.1`
+- `<2.20.0`
 
 ## Reporting a Vulnerability
 
