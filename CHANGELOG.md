@@ -318,6 +318,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [2.17.0]: https://github.com/ergebnis/phpunit-slow-test-detector/releases/tag/2.17.0
 [2.18.0]: https://github.com/ergebnis/phpunit-slow-test-detector/releases/tag/2.18.0
 [2.19.0]: https://github.com/ergebnis/phpunit-slow-test-detector/releases/tag/2.19.0
+[2.19.1]: https://github.com/ergebnis/phpunit-slow-test-detector/releases/tag/2.19.1
 
 [7afa59c...1.0.0]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/7afa59c...1.0.0
 [1.0.0...2.0.0]: https://github.com/ergebnis/phpunit-slow-test-detector/compare/1.0.0...2.0.0
