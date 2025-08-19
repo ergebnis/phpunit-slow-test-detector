@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.19.1...main`][2.19.1...main].
 
+### Changed
+
+- Allowed installation on PHP 8.5 ([#704]), by [@localheinz]
+
 ## [`2.19.1`][2.19.1]
 
 For a full diff see [`2.19.0...2.19.1`][2.19.0...2.19.1].
@@ -411,6 +415,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#635]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/635
 [#651]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/651
 [#664]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/664
+[#704]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/704
 
 [@dantleech]: https://github.com/dantleech
 [@HypeMC]: https://github.com/HypeMC
