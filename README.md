@@ -152,7 +152,7 @@ adjust your `phpunit.xml` configuration file and configure the
 +    extensionsDirectory="directory/where/you/saved/the/extension/phars"
  >
 +    <extensions>
-+        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
++        <extension class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
 +    </extensions>
      <testsuites>
          <testsuite name="unit">
@@ -182,7 +182,7 @@ adjust your `phpunit.xml` configuration file and configure the
 +    extensionsDirectory="directory/where/you/saved/the/extension/phars"
  >
 +    <extensions>
-+        <extension class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
++        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
 +    </extensions>
      <testsuites>
          <testsuite name="unit">
