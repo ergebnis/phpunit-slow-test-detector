@@ -72,6 +72,8 @@ adjust your `phpunit.xml` configuration file and configure the
  </phpunit>
 ```
 
+---
+
 To bootstrap the extension as a `composer` package when using
 
 - `phpunit/phpunit:^7.5.0`
@@ -100,6 +102,8 @@ adjust your `phpunit.xml` configuration file and configure the
      </testsuites>
  </phpunit>
 ```
+
+---
 
 To bootstrap the extension as a `composer` package when using
 
@@ -161,6 +165,8 @@ adjust your `phpunit.xml` configuration file and configure the
      </testsuites>
  </phpunit>
 ```
+
+---
 
 To bootstrap the extension as a PHAR when using
 
@@ -242,6 +248,8 @@ The following example configures the maximum count of slow tests to three, and t
  </phpunit>
 ```
 
+---
+
 To configure the extension when using
 
 - `phpunit/phpunit:^7.5.0`
@@ -284,6 +292,8 @@ The following example configures the maximum count of slow tests to three, and t
      </testsuites>
  </phpunit>
 ```
+
+---
 
 To configure the extension when using
 
