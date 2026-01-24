@@ -61,6 +61,21 @@ parameters:
 			path: test/Fixture/Sleeper.php
 
 		-
+			message: "#^Attribute class PHPUnit\\\\Framework\\\\Attributes\\\\CoversClass does not exist\\.$#"
+			count: 1
+			path: test/Phar/Version10/SleeperTest.php
+
+		-
+			message: "#^Attribute class PHPUnit\\\\Framework\\\\Attributes\\\\CoversClass does not exist\\.$#"
+			count: 1
+			path: test/Phar/Version11/SleeperTest.php
+
+		-
+			message: "#^Attribute class PHPUnit\\\\Framework\\\\Attributes\\\\CoversClass does not exist\\.$#"
+			count: 1
+			path: test/Phar/Version12/SleeperTest.php
+
+		-
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Attribute\\\\MaximumDurationTest\\:\\:testConstructorRejectsInvalidValue\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/Attribute/MaximumDurationTest.php
