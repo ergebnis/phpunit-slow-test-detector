@@ -371,6 +371,10 @@ TXT;
                 );
             }
 
+            if (!\str_contains($test, '::')) {
+                return $this->maximumDuration;
+            }
+
             list($testClassName, $testMethodName) = \explode(
                 '::',
                 $test
