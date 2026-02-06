@@ -97,6 +97,10 @@ branches:
           - context: "Tests (12.0.0, 8.4, lowest)"
           - context: "Tests (12.0.0, 8.5, highest)"
           - context: "Tests (12.0.0, 8.5, lowest)"
+          - context: "Tests (13.0.0, 8.4, highest)"
+          - context: "Tests (13.0.0, 8.4, lowest)"
+          - context: "Tests (13.0.0, 8.5, highest)"
+          - context: "Tests (13.0.0, 8.5, lowest)"
         strict: false
       restrictions:
 
