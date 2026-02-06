@@ -15,13 +15,13 @@ This project provides a [`composer`](https://getcomposer.org) package and a [Pha
 
 The extension is compatible with the following versions of `phpunit/phpunit`:
 
-- [`phpunit/phpunit:^6.5.0`](https://github.com/sebastianbergmann/phpunit/tree/6.5.0)
-- [`phpunit/phpunit:^7.5.0`](https://github.com/sebastianbergmann/phpunit/tree/7.5.0)
-- [`phpunit/phpunit:^8.5.19`](https://github.com/sebastianbergmann/phpunit/tree/8.5.19)
-- [`phpunit/phpunit:^9.0.0`](https://github.com/sebastianbergmann/phpunit/tree/9.0.0)
-- [`phpunit/phpunit:^10.0.0`](https://github.com/sebastianbergmann/phpunit/tree/10.0.0)
-- [`phpunit/phpunit:^11.0.0`](https://github.com/sebastianbergmann/phpunit/tree/11.0.0)
 - [`phpunit/phpunit:^12.0.0`](https://github.com/sebastianbergmann/phpunit/tree/12.0.0)
+- [`phpunit/phpunit:^11.0.0`](https://github.com/sebastianbergmann/phpunit/tree/11.0.0)
+- [`phpunit/phpunit:^10.0.0`](https://github.com/sebastianbergmann/phpunit/tree/10.0.0)
+- [`phpunit/phpunit:^9.0.0`](https://github.com/sebastianbergmann/phpunit/tree/9.0.0)
+- [`phpunit/phpunit:^8.5.19`](https://github.com/sebastianbergmann/phpunit/tree/8.5.19)
+- [`phpunit/phpunit:^7.5.0`](https://github.com/sebastianbergmann/phpunit/tree/7.5.0)
+- [`phpunit/phpunit:^6.5.0`](https://github.com/sebastianbergmann/phpunit/tree/6.5.0)
 
 ## Installation
 
@@ -49,11 +49,15 @@ Before the extension can detect slow tests in `phpunit/phpunit`, you need to boo
 
 To bootstrap the extension as a `composer` package when using
 
-- `phpunit/phpunit:^6.5.0`
+- `phpunit/phpunit:^12.0.0`
+- `phpunit/phpunit:^11.0.0`
+- `phpunit/phpunit:^10.0.0`
 
 adjust your `phpunit.xml` configuration file and configure the
 
-- [`listeners` element](https://phpunit.de/manual/6.5/en/appendixes.configuration.html#appendixes.configuration.test-listeners) on [`phpunit/phpunit:^6.5.0`](https://phpunit.de/manual/6.5/en/)
+- [`extensions` element](https://docs.phpunit.de/en/10.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^10.0.0`](https://docs.phpunit.de/en/10.5/)
+- [`extensions` element](https://docs.phpunit.de/en/11.0/configuration.html#the-extensions-element) on [`phpunit/phpunit:^11.0.0`](https://docs.phpunit.de/en/11.0/)
+- [`extensions` element](https://docs.phpunit.de/en/12.0/configuration.html#the-extensions-element) on [`phpunit/phpunit:^12.0.0`](https://docs.phpunit.de/en/12.0/)
 
 ```diff
  <phpunit
@@ -61,9 +65,9 @@ adjust your `phpunit.xml` configuration file and configure the
      xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
      bootstrap="vendor/autoload.php"
  >
-+    <listeners>
-+        <listener class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
-+    </listeners>
++    <extensions>
++        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
++    </extensions>
      <testsuites>
          <testsuite name="unit">
              <directory>test/Unit/</directory>
@@ -76,9 +80,9 @@ adjust your `phpunit.xml` configuration file and configure the
 
 To bootstrap the extension as a `composer` package when using
 
-- `phpunit/phpunit:^7.5.0`
-- `phpunit/phpunit:^8.5.19`
 - `phpunit/phpunit:^9.0.0`
+- `phpunit/phpunit:^8.5.19`
+- `phpunit/phpunit:^7.5.0`
 
 adjust your `phpunit.xml` configuration file and configure the
 
@@ -107,15 +111,11 @@ adjust your `phpunit.xml` configuration file and configure the
 
 To bootstrap the extension as a `composer` package when using
 
-- `phpunit/phpunit:^10.0.0`
-- `phpunit/phpunit:^11.0.0`
-- `phpunit/phpunit:^12.0.0`
+- `phpunit/phpunit:^6.5.0`
 
 adjust your `phpunit.xml` configuration file and configure the
 
-- [`extensions` element](https://docs.phpunit.de/en/10.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^10.0.0`](https://docs.phpunit.de/en/10.5/)
-- [`extensions` element](https://docs.phpunit.de/en/11.0/configuration.html#the-extensions-element) on [`phpunit/phpunit:^11.0.0`](https://docs.phpunit.de/en/11.0/)
-- [`extensions` element](https://docs.phpunit.de/en/12.0/configuration.html#the-extensions-element) on [`phpunit/phpunit:^12.0.0`](https://docs.phpunit.de/en/12.0/)
+- [`listeners` element](https://phpunit.de/manual/6.5/en/appendixes.configuration.html#appendixes.configuration.test-listeners) on [`phpunit/phpunit:^6.5.0`](https://phpunit.de/manual/6.5/en/)
 
 ```diff
  <phpunit
@@ -123,9 +123,9 @@ adjust your `phpunit.xml` configuration file and configure the
      xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
      bootstrap="vendor/autoload.php"
  >
-+    <extensions>
-+        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
-+    </extensions>
++    <listeners>
++        <listener class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
++    </listeners>
      <testsuites>
          <testsuite name="unit">
              <directory>test/Unit/</directory>
@@ -138,41 +138,9 @@ adjust your `phpunit.xml` configuration file and configure the
 
 To bootstrap the extension as a PHAR when using
 
-- `phpunit/phpunit:^7.5.0`
-- `phpunit/phpunit:^8.5.19`
-- `phpunit/phpunit:^9.0.0`
-
-adjust your `phpunit.xml` configuration file and configure the
-
-- [`extensionsDirectory` attribute](https://docs.phpunit.de/en/7.5/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/7.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^7.5.0`](https://docs.phpunit.de/en/7.5/)
-- [`extensionsDirectory` attribute](https://docs.phpunit.de/en/8.5/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/8.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^8.5.19`](https://docs.phpunit.de/en/8.5/)
-- [`extensionsDirectory` attribute](https://docs.phpunit.de/en/9.6/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/9.6/configuration.html#the-extensions-element) on [`phpunit/phpunit:^9.0.0`](https://docs.phpunit.de/en/9.5/)
-
-```diff
- <phpunit
-     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
-     bootstrap="vendor/autoload.php"
-+    extensionsDirectory="directory/where/you/saved/the/extension/phars"
- >
-+    <extensions>
-+        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
-+    </extensions>
-     <testsuites>
-         <testsuite name="unit">
-             <directory>test/Unit/</directory>
-         </testsuite>
-     </testsuites>
- </phpunit>
-```
-
----
-
-To bootstrap the extension as a PHAR when using
-
-- `phpunit/phpunit:^10.0.0`
-- `phpunit/phpunit:^11.0.0`
 - `phpunit/phpunit:^12.0.0`
+- `phpunit/phpunit:^11.0.0`
+- `phpunit/phpunit:^10.0.0`
 
 adjust your `phpunit.xml` configuration file and configure the
 
@@ -198,6 +166,38 @@ adjust your `phpunit.xml` configuration file and configure the
  </phpunit>
 ```
 
+---
+
+To bootstrap the extension as a PHAR when using
+
+- `phpunit/phpunit:^9.0.0`
+- `phpunit/phpunit:^8.5.19`
+- `phpunit/phpunit:^7.5.0`
+
+adjust your `phpunit.xml` configuration file and configure the
+
+- [`extensionsDirectory` attribute](https://docs.phpunit.de/en/7.5/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/7.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^7.5.0`](https://docs.phpunit.de/en/7.5/)
+- [`extensionsDirectory` attribute](https://docs.phpunit.de/en/8.5/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/8.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^8.5.19`](https://docs.phpunit.de/en/8.5/)
+- [`extensionsDirectory` attribute](https://docs.phpunit.de/en/9.6/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/9.6/configuration.html#the-extensions-element) on [`phpunit/phpunit:^9.0.0`](https://docs.phpunit.de/en/9.5/)
+
+```diff
+ <phpunit
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+     bootstrap="vendor/autoload.php"
++    extensionsDirectory="directory/where/you/saved/the/extension/phars"
+ >
++    <extensions>
++        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
++    </extensions>
+     <testsuites>
+         <testsuite name="unit">
+             <directory>test/Unit/</directory>
+         </testsuite>
+     </testsuites>
+ </phpunit>
+```
+
 ### Configuring the extension
 
 You can configure the extension with the following options in your `phpunit.xml` configuration file:
@@ -211,11 +211,15 @@ The configuration mechanism depends on the version of `phpunit/phpunit` you are 
 
 To configure the extension when using
 
-- `phpunit/phpunit:^6.5.0`
+- `phpunit/phpunit:^12.0.0`
+- `phpunit/phpunit:^11.0.0`
+- `phpunit/phpunit:^10.0.0`
 
-adjust your `phpunit.xml` configuration file and configure the
+adjust your `phpunit.xml` configuration file and configure one or more
 
-- [`arguments` element](https://phpunit.de/manual/6.5/en/appendixes.configuration.html#appendixes.configuration.test-listeners) on [`phpunit/phpunit:^6.5.0`](https://phpunit.de/manual/6.5/en/)
+- [`parameter` elements](https://docs.phpunit.de/en/10.5/configuration.html#the-parameter-element) on [`phpunit/phpunit:^10.0.0`](https://docs.phpunit.de/en/10.5/)
+- [`parameter` elements](https://docs.phpunit.de/en/11.0/configuration.html#the-parameter-element) on [`phpunit/phpunit:^11.0.0`](https://docs.phpunit.de/en/11.0/)
+- [`parameter` elements](https://docs.phpunit.de/en/12.0/configuration.html#the-parameter-element) on [`phpunit/phpunit:^12.0.0`](https://docs.phpunit.de/en/12.0/)
 
 The following example configures the maximum count of slow tests to three, and the maximum duration for all tests to 250 milliseconds:
 
@@ -225,21 +229,13 @@ The following example configures the maximum count of slow tests to three, and t
      xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
      bootstrap="vendor/autoload.php"
  >
-     <listeners>
--        <listener class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
-+        <listener class="Ergebnis\PHPUnit\SlowTestDetector\Extension">
-+            <arguments>
-+                <array>
-+                    <element key="maximum-count">
-+                        <integer>3</integer>
-+                    </element>
-+                    <element key="maximum-duration">
-+                        <integer>250</integer>
-+                    </element>
-+                </array>
-+            </arguments>
-+        </listener>
-     </listeners>
+     <extensions>
+-        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
++        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension">
++            <parameter name="maximum-count" value="3"/>
++            <parameter name="maximum-duration" value="250"/>
++        </bootstrap>
+     </extensions>
      <testsuites>
          <testsuite name="unit">
              <directory>test/Unit/</directory>
@@ -252,9 +248,9 @@ The following example configures the maximum count of slow tests to three, and t
 
 To configure the extension when using
 
-- `phpunit/phpunit:^7.5.0`
-- `phpunit/phpunit:^8.5.19`
 - `phpunit/phpunit:^9.0.0`
+- `phpunit/phpunit:^8.5.19`
+- `phpunit/phpunit:^7.5.0`
 
 adjust your `phpunit.xml` configuration file and configure the
 
@@ -297,15 +293,11 @@ The following example configures the maximum count of slow tests to three, and t
 
 To configure the extension when using
 
-- `phpunit/phpunit:^10.0.0`
-- `phpunit/phpunit:^11.0.0`
-- `phpunit/phpunit:^12.0.0`
+- `phpunit/phpunit:^6.5.0`
 
-adjust your `phpunit.xml` configuration file and configure one or more
+adjust your `phpunit.xml` configuration file and configure the
 
-- [`parameter` elements](https://docs.phpunit.de/en/10.5/configuration.html#the-parameter-element) on [`phpunit/phpunit:^10.0.0`](https://docs.phpunit.de/en/10.5/)
-- [`parameter` elements](https://docs.phpunit.de/en/11.0/configuration.html#the-parameter-element) on [`phpunit/phpunit:^11.0.0`](https://docs.phpunit.de/en/11.0/)
-- [`parameter` elements](https://docs.phpunit.de/en/12.0/configuration.html#the-parameter-element) on [`phpunit/phpunit:^12.0.0`](https://docs.phpunit.de/en/12.0/)
+- [`arguments` element](https://phpunit.de/manual/6.5/en/appendixes.configuration.html#appendixes.configuration.test-listeners) on [`phpunit/phpunit:^6.5.0`](https://phpunit.de/manual/6.5/en/)
 
 The following example configures the maximum count of slow tests to three, and the maximum duration for all tests to 250 milliseconds:
 
@@ -315,13 +307,21 @@ The following example configures the maximum count of slow tests to three, and t
      xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
      bootstrap="vendor/autoload.php"
  >
-     <extensions>
--        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
-+        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension">
-+            <parameter name="maximum-count" value="3"/>
-+            <parameter name="maximum-duration" value="250"/>
-+        </bootstrap>
-     </extensions>
+     <listeners>
+-        <listener class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
++        <listener class="Ergebnis\PHPUnit\SlowTestDetector\Extension">
++            <arguments>
++                <array>
++                    <element key="maximum-count">
++                        <integer>3</integer>
++                    </element>
++                    <element key="maximum-duration">
++                        <integer>250</integer>
++                    </element>
++                </array>
++            </arguments>
++        </listener>
+     </listeners>
      <testsuites>
          <testsuite name="unit">
              <directory>test/Unit/</directory>
@@ -335,19 +335,19 @@ The following example configures the maximum count of slow tests to three, and t
 You can configure the maximum duration for a single test case with
 
 - an `Attribute\MaximumDuration` attribute when using
-  - `phpunit/phpunit:^10.0.0`
-  - `phpunit/phpunit:^11.0.0`
   - `phpunit/phpunit:^12.0.0`
+  - `phpunit/phpunit:^11.0.0`
+  - `phpunit/phpunit:^10.0.0`
 - a `@maximumDuration` annotation in the DocBlock when using
-  - `phpunit/phpunit:^6.5.0`
-  - `phpunit/phpunit:^7.5.0`
-  - `phpunit/phpunit:^8.5.19`
   - `phpunit/phpunit:^9.0.0`
+  - `phpunit/phpunit:^8.5.19`
+  - `phpunit/phpunit:^7.5.0`
+  - `phpunit/phpunit:^6.5.0`
 - a `@slowThreshold` annotation in the DocBlock when using
-  - `phpunit/phpunit:^6.5.0`
-  - `phpunit/phpunit:^7.5.0`
-  - `phpunit/phpunit:^8.5.19`
   - `phpunit/phpunit:^9.0.0`
+  - `phpunit/phpunit:^8.5.19`
+  - `phpunit/phpunit:^7.5.0`
+  - `phpunit/phpunit:^6.5.0`
 
 The following example configures the maximum durations for single test cases to 5,000 ms, 4,000 ms, and 3,000 ms:
 
@@ -430,29 +430,29 @@ OK (13 tests, 13 assertions)
 
 ### Understanding measured test durations
 
+#### Understanding measured test durations when using the new event system
+
+When using
+
+- `phpunit/phpunit:^12.0.0`
+- `phpunit/phpunit:^11.0.0`
+- `phpunit/phpunit:^10.0.0`
+
+the extension uses the new event system of `phpunit/phpunit`, and measures the duration between the points in time when the [`PHPUnit\Event\Test\PreparationStarted`](https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Event/Events/Test/Lifecycle/PreparationStarted.php#L22-L50) and [`PHPUnit\Event\Test\Finished`](https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Event/Events/Test/Lifecycle/Finished.php#L22-L57) are emitted.
+
 #### Understanding measured test durations when using the hooks event system
 
 When using
 
-- `phpunit/phpunit:^6.5.0`
-- `phpunit/phpunit:^7.5.0`
-- `phpunit/phpunit:^8.5.19`
 - `phpunit/phpunit:^9.0.0`
+- `phpunit/phpunit:^8.5.19`
+- `phpunit/phpunit:^7.5.0`
+- `phpunit/phpunit:^6.5.0`
 
 the extension uses the hooks event system of `phpunit/phpunit`, and measures the duration that is passed to the [`PHPUnit\Runner\AfterTestHook`](https://github.com/sebastianbergmann/phpunit/blob/7.5.0/src/Runner/Hook/AfterTestHook.php#L12-L21). This is the [duration of invoking `PHPUnit\Framework\TestCase::runBare()` and more](https://github.com/sebastianbergmann/phpunit/blob/8.5.19/src/Framework/TestResult.php#L671-L754).
 
 > [!NOTE]
 > Because of this behavior, the measured test durations can and will vary depending on the order in which `phpunit/phpunit` executes tests.
-
-#### Understanding measured test durations when using the new event system
-
-When using
-
-- `phpunit/phpunit:^10.0.0`
-- `phpunit/phpunit:^11.0.0`
-- `phpunit/phpunit:^12.0.0`
-
-the extension uses the new event system of `phpunit/phpunit`, and measures the duration between the points in time when the [`PHPUnit\Event\Test\PreparationStarted`](https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Event/Events/Test/Lifecycle/PreparationStarted.php#L22-L50) and [`PHPUnit\Event\Test\Finished`](https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/Event/Events/Test/Lifecycle/Finished.php#L22-L57) are emitted.
 
 ## Changelog
 
