@@ -23,6 +23,7 @@ docker-build: docker-lint ## Builds Docker images
 	docker build --quiet --tag phpunit-slow-test-detector-php81 .docker/php81/
 	docker build --quiet --tag phpunit-slow-test-detector-php82 .docker/php82/
 	docker build --quiet --tag phpunit-slow-test-detector-php83 .docker/php83/
+	docker build --quiet --tag phpunit-slow-test-detector-php85 .docker/php85/
 
 .PHONY: docker-lint
 docker-lint: ## Lints Dockerfiles with hadolint
@@ -31,6 +32,7 @@ docker-lint: ## Lints Dockerfiles with hadolint
 	docker run --rm --interactive hadolint/hadolint < .docker/php81/Dockerfile
 	docker run --rm --interactive hadolint/hadolint < .docker/php82/Dockerfile
 	docker run --rm --interactive hadolint/hadolint < .docker/php83/Dockerfile
+	docker run --rm --interactive hadolint/hadolint < .docker/php85/Dockerfile
 
 .PHONY: help
 help: ## Displays this list of targets with descriptions
@@ -77,6 +79,7 @@ tests-end-to-end: docker-build ## Runs end-to-end tests with phpunit/phpunit in 
 	docker run --rm --volume $(CURDIR):/app/src:ro --volume composer-cache:/root/.composer phpunit-slow-test-detector-php82 -c "/app/src/.docker/tests-end-to-end.sh 11.0.0 highest"
 	docker run --rm --volume $(CURDIR):/app/src:ro --volume composer-cache:/root/.composer phpunit-slow-test-detector-php83 -c "/app/src/.docker/tests-end-to-end.sh 12.0.0 lowest"
 	docker run --rm --volume $(CURDIR):/app/src:ro --volume composer-cache:/root/.composer phpunit-slow-test-detector-php83 -c "/app/src/.docker/tests-end-to-end.sh 12.0.0 highest"
+	docker run --rm --volume $(CURDIR):/app/src:ro --volume composer-cache:/root/.composer phpunit-slow-test-detector-php85 -c "/app/src/.docker/tests-end-to-end.sh 12.0.0 lowest"
 
 .PHONY: tests-phar
 tests-phar: phar docker-build ## Runs phar tests with phpunit/phpunit in Docker containers

@@ -51,14 +51,24 @@ else
     composer update --ansi --no-interaction --no-progress --quiet
 fi
 
-if [ "${PHPUNIT_VERSION}" = "9.0.0" ] && [ "${DEPENDENCIES}" = "lowest" ]; then
-    PHP_MAJOR=$(php --run 'echo PHP_MAJOR_VERSION;')
-    PHP_MINOR=$(php --run 'echo PHP_MINOR_VERSION;')
+PHP_MAJOR=$(php --run 'echo PHP_MAJOR_VERSION;')
+PHP_MINOR=$(php --run 'echo PHP_MINOR_VERSION;')
 
+if [ "${PHPUNIT_VERSION}" = "9.0.0" ] && [ "${DEPENDENCIES}" = "lowest" ]; then
     if [ "${PHP_MAJOR}" -ge 8 ] && [ "${PHP_MINOR}" -ge 3 ]; then
         cd vendor/phpunit/phpunit
         wget --output-document=gh-4486.patch --quiet https://github.com/sebastianbergmann/phpunit/commit/0a488f22925b3c8732338ef0fbfe7f13cb4cf1d2.patch
         patch --strip=1 < gh-4486.patch
+        cd /app/work
+    fi
+fi
+
+if [ "${PHPUNIT_VERSION}" = "12.0.0" ] && [ "${DEPENDENCIES}" = "lowest" ]; then
+    if [ "${PHP_MAJOR}" -ge 8 ] && [ "${PHP_MINOR}" -ge 5 ]; then
+        cd vendor/phpunit/phpunit
+        wget --output-document=report-memleaks.patch --quiet https://github.com/sebastianbergmann/phpunit/commit/0eae11435093a25c88b5269de9481f32b26dbe20.patch
+        sed -i 's|src/Runner/PhptTestCase.php|src/Runner/PHPT/PhptTestCase.php|g' report-memleaks.patch
+        patch --strip=1 < report-memleaks.patch
         cd /app/work
     fi
 fi

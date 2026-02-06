@@ -567,6 +567,14 @@ jobs:
             php-version: "8.4"
             dependencies: "highest"
 
+          - phpunit-version: "8.5.40"
+            php-version: "8.5"
+            dependencies: "lowest"
+
+          - phpunit-version: "8.5.40"
+            php-version: "8.5"
+            dependencies: "highest"
+
           - phpunit-version: "9.0.0"
             php-version: "7.3"
             dependencies: "lowest"
@@ -623,6 +631,14 @@ jobs:
             php-version: "8.4"
             dependencies: "highest"
 
+          - phpunit-version: "9.6.21"
+            php-version: "8.5"
+            dependencies: "lowest"
+
+          - phpunit-version: "9.6.21"
+            php-version: "8.5"
+            dependencies: "highest"
+
           - phpunit-version: "10.0.0"
             php-version: "8.1"
             dependencies: "lowest"
@@ -655,6 +671,14 @@ jobs:
             php-version: "8.4"
             dependencies: "highest"
 
+          - phpunit-version: "10.5.35"
+            php-version: "8.5"
+            dependencies: "lowest"
+
+          - phpunit-version: "10.5.35"
+            php-version: "8.5"
+            dependencies: "highest"
+
           - phpunit-version: "11.0.0"
             php-version: "8.2"
             dependencies: "lowest"
@@ -679,6 +703,14 @@ jobs:
             php-version: "8.4"
             dependencies: "highest"
 
+          - phpunit-version: "11.3.6"
+            php-version: "8.5"
+            dependencies: "lowest"
+
+          - phpunit-version: "11.3.6"
+            php-version: "8.5"
+            dependencies: "highest"
+
           - phpunit-version: "12.0.0"
             php-version: "8.3"
             dependencies: "lowest"
@@ -693,6 +725,14 @@ jobs:
 
           - phpunit-version: "12.0.0"
             php-version: "8.4"
+            dependencies: "highest"
+
+          - phpunit-version: "12.0.0"
+            php-version: "8.5"
+            dependencies: "lowest"
+
+          - phpunit-version: "12.0.0"
+            php-version: "8.5"
             dependencies: "highest"
 
     env:
@@ -754,7 +794,7 @@ jobs:
         run: "vendor/bin/phpunit --colors=always --configuration=test/Unit/phpunit.xml"
 
       - name: "Apply patch from https://github.com/sebastianbergmann/phpunit/pull/4486 for phpunit/phpunit:9.0.0"
-        if: "(matrix.php-version == '8.3' || matrix.php-version == '8.4') && matrix.phpunit-version == '9.0.0' && matrix.dependencies == 'lowest'"
+        if: "(matrix.php-version == '8.3' || matrix.php-version == '8.4' || matrix.php-version == '8.5' ) && matrix.phpunit-version == '9.0.0' && matrix.dependencies == 'lowest'"
         run: |
           cd vendor/phpunit/phpunit
           wget -O gh-4486.patch https://github.com/sebastianbergmann/phpunit/commit/0a488f22925b3c8732338ef0fbfe7f13cb4cf1d2.patch
@@ -787,6 +827,14 @@ jobs:
       - name: "Run end-to-end tests with phpunit/phpunit:11.0.0"
         if: "matrix.phpunit-version == '11.0.0'"
         run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version11/phpunit.xml"
+
+      - name: "Apply patch from https://github.com/sebastianbergmann/phpunit/commit/0eae1143 for phpunit/phpunit:12.0.0"
+        if: "matrix.php-version == '8.5' && matrix.phpunit-version == '12.0.0' && matrix.dependencies == 'lowest'"
+        run: |
+          cd vendor/phpunit/phpunit
+          wget -O report-memleaks.patch https://github.com/sebastianbergmann/phpunit/commit/0eae11435093a25c88b5269de9481f32b26dbe20.patch
+          sed -i 's|src/Runner/PhptTestCase.php|src/Runner/PHPT/PhptTestCase.php|g' report-memleaks.patch
+          patch -p1 < report-memleaks.patch
 
       - name: "Run end-to-end tests with phpunit/phpunit:12.0.0"
         if: "matrix.phpunit-version == '12.0.0'"
