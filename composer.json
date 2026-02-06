@@ -58,6 +58,9 @@
       "phpstan/extension-installer": true
     },
     "audit": {
+      "ignore": {
+        "CVE-2026-24765": "This package needs to support versions of phpunit/phpunit affected by this vulnerability."
+      },
       "abandoned": "report"
     },
     "platform": {

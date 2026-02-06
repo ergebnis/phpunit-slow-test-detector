@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.20.0...main`][2.20.0...main].
 
+### Security
+
+- Ignored `CVE-2026-24765` security advisory in `composer.json` configuration because this package needs to support versions of `phpunit/phpunit` affected by this vulnerability ([#754]), by [@localheinz]
+
 ## [`2.20.0`][2.20.0]
 
 For a full diff see [`2.19.1...2.20.0`][2.19.1...2.20.0].
@@ -423,6 +427,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#651]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/651
 [#664]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/664
 [#704]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/704
+[#754]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/754
 
 [@dantleech]: https://github.com/dantleech
 [@HypeMC]: https://github.com/HypeMC
