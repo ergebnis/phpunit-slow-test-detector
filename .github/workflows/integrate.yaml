@@ -48,7 +48,7 @@ jobs:
         run: "composer validate --ansi --strict"
 
       - name: "Determine composer cache directory"
-        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.9.3"
+        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.10.0"
 
       - name: "Cache dependencies installed with composer"
         uses: "actions/cache@v4.2.4"
@@ -64,7 +64,7 @@ jobs:
         run: "composer require phpunit/phpunit:^${{ matrix.phpunit-version }} --ansi --no-interaction --no-progress --update-with-all-dependencies"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
-        uses: "ergebnis/.github/actions/composer/install@1.9.3"
+        uses: "ergebnis/.github/actions/composer/install@1.10.0"
         with:
           dependencies: "${{ matrix.dependencies }}"
 
@@ -119,7 +119,7 @@ jobs:
         run: "composer validate --ansi --strict"
 
       - name: "Determine composer cache directory"
-        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.9.3"
+        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.10.0"
 
       - name: "Cache dependencies installed with composer"
         uses: "actions/cache@v4.2.4"
@@ -129,7 +129,7 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
-        uses: "ergebnis/.github/actions/composer/install@1.9.3"
+        uses: "ergebnis/.github/actions/composer/install@1.10.0"
         with:
           dependencies: "${{ matrix.dependencies }}"
 
@@ -182,7 +182,7 @@ jobs:
         run: "composer validate --ansi --strict"
 
       - name: "Determine composer cache directory"
-        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.9.3"
+        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.10.0"
 
       - name: "Cache dependencies installed with composer"
         uses: "actions/cache@v4.2.4"
@@ -192,12 +192,12 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
-        uses: "ergebnis/.github/actions/composer/install@1.9.3"
+        uses: "ergebnis/.github/actions/composer/install@1.10.0"
         with:
           dependencies: "${{ matrix.dependencies }}"
 
       - name: "Install dependencies with phive"
-        uses: "ergebnis/.github/actions/phive/install@1.9.3"
+        uses: "ergebnis/.github/actions/phive/install@1.10.0"
         with:
           trust-gpg-keys: "0x2DF45277AEF09A2F,0x033E5F8D801A2F8D"
 
@@ -239,7 +239,7 @@ jobs:
         run: "echo \"::add-matcher::${{ runner.tool_cache }}/php.json\""
 
       - name: "Determine composer cache directory"
-        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.9.3"
+        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.10.0"
 
       - name: "Cache dependencies installed with composer"
         uses: "actions/cache@v4.2.4"
@@ -255,7 +255,7 @@ jobs:
         run: "composer remove phpunit/phpunit --ansi --no-interaction --ignore-platform-reqs --no-progress"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
-        uses: "ergebnis/.github/actions/composer/install@1.9.3"
+        uses: "ergebnis/.github/actions/composer/install@1.10.0"
         with:
           dependencies: "${{ matrix.dependencies }}"
 
@@ -263,7 +263,7 @@ jobs:
         run: "echo $(cat box.json | jq 'del(.git)') > box.json"
 
       - name: "Install dependencies with phive"
-        uses: "ergebnis/.github/actions/phive/install@1.9.3"
+        uses: "ergebnis/.github/actions/phive/install@1.10.0"
         with:
           trust-gpg-keys: "0x2DF45277AEF09A2F,0x033E5F8D801A2F8D"
 
@@ -317,7 +317,7 @@ jobs:
         run: "composer validate --ansi --strict"
 
       - name: "Determine composer cache directory"
-        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.9.3"
+        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.10.0"
 
       - name: "Cache dependencies installed with composer"
         uses: "actions/cache@v4.2.4"
@@ -327,7 +327,7 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
-        uses: "ergebnis/.github/actions/composer/install@1.9.3"
+        uses: "ergebnis/.github/actions/composer/install@1.10.0"
         with:
           dependencies: "${{ matrix.dependencies }}"
 
@@ -376,7 +376,7 @@ jobs:
         run: "composer validate --ansi --strict"
 
       - name: "Determine composer cache directory"
-        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.9.3"
+        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.10.0"
 
       - name: "Cache dependencies installed with composer"
         uses: "actions/cache@v4.2.4"
@@ -386,7 +386,7 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
-        uses: "ergebnis/.github/actions/composer/install@1.9.3"
+        uses: "ergebnis/.github/actions/composer/install@1.10.0"
         with:
           dependencies: "${{ matrix.dependencies }}"
 
@@ -426,7 +426,7 @@ jobs:
         run: "composer validate --ansi --strict"
 
       - name: "Determine composer cache directory"
-        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.9.3"
+        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.10.0"
 
       - name: "Cache dependencies installed with composer"
         uses: "actions/cache@v4.2.4"
@@ -436,7 +436,7 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
-        uses: "ergebnis/.github/actions/composer/install@1.9.3"
+        uses: "ergebnis/.github/actions/composer/install@1.10.0"
         with:
           dependencies: "${{ matrix.dependencies }}"
 
@@ -719,7 +719,7 @@ jobs:
         run: "composer validate --ansi --strict"
 
       - name: "Determine composer cache directory"
-        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.9.3"
+        uses: "ergebnis/.github/actions/composer/determine-cache-directory@1.10.0"
 
       - name: "Cache dependencies installed with composer"
         uses: "actions/cache@v4.2.4"
@@ -745,7 +745,7 @@ jobs:
         run: "composer require fakerphp/faker:^1.9.2 phpunit/phpunit:^${{ matrix.phpunit-version }} --ansi --no-interaction --no-progress --update-with-all-dependencies"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
-        uses: "ergebnis/.github/actions/composer/install@1.9.3"
+        uses: "ergebnis/.github/actions/composer/install@1.10.0"
         with:
           dependencies: "${{ matrix.dependencies }}"
 
@@ -802,7 +802,7 @@ jobs:
         run: "php bin/remove-autoload-configuration.php"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
-        uses: "ergebnis/.github/actions/composer/install@1.9.3"
+        uses: "ergebnis/.github/actions/composer/install@1.10.0"
         with:
           dependencies: "${{ matrix.dependencies }}"
 
