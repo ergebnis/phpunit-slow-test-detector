@@ -371,6 +371,10 @@ TXT;
                 );
             }
 
+            if (\strpos($test, '::') === false) {
+                return $this->maximumDuration;
+            }
+
             list($testClassName, $testMethodName) = \explode(
                 '::',
                 $test

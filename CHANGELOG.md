@@ -13,6 +13,10 @@ For a full diff see [`2.20.0...main`][2.20.0...main].
 - Added support for `phpunit/phpunit:^13.0.0` ([#757]), by [@localheinz]
 - Added support for PHP 8.5 ([#713]), by [@localheinz]
 
+### Fixed
+
+- Fixed discovery of `@maximumDuration` annotation when a test case does not have any test methods ([#687]), by [@courtney-miles]
+
 ### Security
 
 - Ignored `CVE-2026-24765` security advisory in `composer.json` configuration because this package needs to support versions of `phpunit/phpunit` affected by this vulnerability ([#754]), by [@localheinz]
@@ -436,6 +440,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#754]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/754
 [#757]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/757
 
+[@courtney-miles]: https://github.com/courtney-miles
 [@dantleech]: https://github.com/dantleech
 [@HypeMC]: https://github.com/HypeMC
 [@localheinz]: https://github.com/localheinz
