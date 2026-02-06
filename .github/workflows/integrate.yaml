@@ -735,6 +735,22 @@ jobs:
             php-version: "8.5"
             dependencies: "highest"
 
+          - phpunit-version: "13.0.0"
+            php-version: "8.4"
+            dependencies: "lowest"
+
+          - phpunit-version: "13.0.0"
+            php-version: "8.4"
+            dependencies: "highest"
+
+          - phpunit-version: "13.0.0"
+            php-version: "8.5"
+            dependencies: "lowest"
+
+          - phpunit-version: "13.0.0"
+            php-version: "8.5"
+            dependencies: "highest"
+
     env:
       PHPUNIT_SLOW_TEST_DETECTOR_PHAR: ".build/phar/phpunit-slow-test-detector.phar"
 
@@ -840,6 +856,10 @@ jobs:
         if: "matrix.phpunit-version == '12.0.0'"
         run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version12/phpunit.xml"
 
+      - name: "Run end-to-end tests with phpunit/phpunit:13.0.0"
+        if: "matrix.phpunit-version == '13.0.0'"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version13/phpunit.xml"
+
       - name: "Download Phar"
         uses: "actions/download-artifact@v7.0.0"
         with:
@@ -881,3 +901,7 @@ jobs:
       - name: "Run phar tests with phpunit/phpunit:12.0.0"
         if: "matrix.phpunit-version == '12.0.0'"
         run: "vendor/bin/phpunit --colors=always --configuration=test/Phar/Version12/phpunit.xml"
+
+      - name: "Run phar tests with phpunit/phpunit:13.0.0"
+        if: "matrix.phpunit-version == '13.0.0'"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/Phar/Version13/phpunit.xml"

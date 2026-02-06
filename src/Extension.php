@@ -415,7 +415,7 @@ TXT;
     return;
 }
 
-if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\Major::fromInt(11), Version\Major::fromInt(12))) {
+if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\Major::fromInt(11), Version\Major::fromInt(12), Version\Major::fromInt(13))) {
     /**
      * @internal
      */

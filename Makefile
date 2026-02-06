@@ -80,6 +80,8 @@ tests-end-to-end: docker-build ## Runs end-to-end tests with phpunit/phpunit in 
 	docker run --rm --volume $(CURDIR):/app/src:ro --volume composer-cache:/root/.composer phpunit-slow-test-detector-php83 -c "/app/src/.docker/tests-end-to-end.sh 12.0.0 lowest"
 	docker run --rm --volume $(CURDIR):/app/src:ro --volume composer-cache:/root/.composer phpunit-slow-test-detector-php83 -c "/app/src/.docker/tests-end-to-end.sh 12.0.0 highest"
 	docker run --rm --volume $(CURDIR):/app/src:ro --volume composer-cache:/root/.composer phpunit-slow-test-detector-php85 -c "/app/src/.docker/tests-end-to-end.sh 12.0.0 lowest"
+	docker run --rm --volume $(CURDIR):/app/src:ro --volume composer-cache:/root/.composer phpunit-slow-test-detector-php85 -c "/app/src/.docker/tests-end-to-end.sh 13.0.0 lowest"
+	docker run --rm --volume $(CURDIR):/app/src:ro --volume composer-cache:/root/.composer phpunit-slow-test-detector-php85 -c "/app/src/.docker/tests-end-to-end.sh 13.0.0 highest"
 
 .PHONY: tests-phar
 tests-phar: phar docker-build ## Runs phar tests with phpunit/phpunit in Docker containers
@@ -89,6 +91,7 @@ tests-phar: phar docker-build ## Runs phar tests with phpunit/phpunit in Docker 
 	docker run --rm --volume $(CURDIR):/app/src:ro --volume composer-cache:/root/.composer phpunit-slow-test-detector-php81 -c "/app/src/.docker/tests-phar.sh 10.0.0"
 	docker run --rm --volume $(CURDIR):/app/src:ro --volume composer-cache:/root/.composer phpunit-slow-test-detector-php82 -c "/app/src/.docker/tests-phar.sh 11.0.0"
 	docker run --rm --volume $(CURDIR):/app/src:ro --volume composer-cache:/root/.composer phpunit-slow-test-detector-php83 -c "/app/src/.docker/tests-phar.sh 12.0.0"
+	docker run --rm --volume $(CURDIR):/app/src:ro --volume composer-cache:/root/.composer phpunit-slow-test-detector-php85 -c "/app/src/.docker/tests-phar.sh 13.0.0"
 
 .PHONY: tests-unit
 tests-unit: docker-build vendor ## Runs unit tests with phpunit/phpunit in a Docker container

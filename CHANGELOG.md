@@ -10,6 +10,7 @@ For a full diff see [`2.20.0...main`][2.20.0...main].
 
 ### Added
 
+- Added support for `phpunit/phpunit:^13.0.0` ([#757]), by [@localheinz]
 - Added support for PHP 8.5 ([#713]), by [@localheinz]
 
 ### Security
@@ -433,6 +434,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#704]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/704
 [#713]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/713
 [#754]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/754
+[#757]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/757
 
 [@dantleech]: https://github.com/dantleech
 [@HypeMC]: https://github.com/HypeMC
