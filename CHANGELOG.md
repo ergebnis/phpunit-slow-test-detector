@@ -13,6 +13,10 @@ For a full diff see [`2.20.0...main`][2.20.0...main].
 - Added support for `phpunit/phpunit:^13.0.0` ([#757]), by [@localheinz]
 - Added support for PHP 8.5 ([#713]), by [@localheinz]
 
+### Changed
+
+- Started showing output when no tests could be detected with a duration exceeding the maximum duration ([#714]), by [@localheinz]
+
 ### Fixed
 
 - Fixed discovery of `@maximumDuration` annotation when a test case does not have any test methods ([#687]), by [@courtney-miles]
@@ -437,6 +441,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#664]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/664
 [#704]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/704
 [#713]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/713
+[#714]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/714
 [#754]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/754
 [#757]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/757
 

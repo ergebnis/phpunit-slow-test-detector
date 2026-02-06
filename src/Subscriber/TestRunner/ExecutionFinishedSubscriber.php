@@ -47,10 +47,6 @@ final class ExecutionFinishedSubscriber implements Event\TestRunner\ExecutionFin
     {
         $slowTestList = $this->collector->slowTestList();
 
-        if ($slowTestList->isEmpty()) {
-            return;
-        }
-
         $report = $this->reporter->report($slowTestList);
 
         if ('' === $report) {
