@@ -29,7 +29,7 @@
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.47.0",
-    "ergebnis/license": "^2.6.0",
+    "ergebnis/license": "^2.7.0",
     "ergebnis/php-cs-fixer-config": "^6.52.0",
     "fakerphp/faker": "~1.20.0",
     "phpstan/extension-installer": "^1.4.3",
