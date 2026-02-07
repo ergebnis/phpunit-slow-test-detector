@@ -17,6 +17,7 @@ $application->run($_SERVER['argv']);
 --EXPECTF--
 %a
 
+Could not detect any tests where the duration exceeded the maximum duration.
 There was 1 PHPUnit test runner warning:
 
 1) No tests found in class "Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version12\TestCase\WithoutTestMethods\SleeperTest".

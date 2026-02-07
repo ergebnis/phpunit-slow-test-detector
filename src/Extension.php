@@ -130,10 +130,6 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
 
             $slowTestList = $this->collector->slowTestList();
 
-            if ($slowTestList->isEmpty()) {
-                return;
-            }
-
             $report = $this->reporter->report($slowTestList);
 
             if ('' === $report) {
@@ -330,10 +326,6 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
             }
 
             $slowTestList = $this->collector->slowTestList();
-
-            if ($slowTestList->isEmpty()) {
-                return;
-            }
 
             $report = $this->reporter->report($slowTestList);
 

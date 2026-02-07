@@ -43,10 +43,6 @@ final class DefaultReporter implements Reporter
 
     public function report(SlowTestList $slowTestList): string
     {
-        if ($slowTestList->isEmpty()) {
-            return '';
-        }
-
         return \implode("\n", \iterator_to_array($this->lines($slowTestList)));
     }
 
@@ -56,6 +52,14 @@ final class DefaultReporter implements Reporter
     private function lines(SlowTestList $slowTestList): \Generator
     {
         $slowTestCount = $slowTestList->count();
+
+        if ($slowTestCount->equals(Count::fromInt(0))) {
+            yield 'Could not detect any tests where the duration exceeded the maximum duration.';
+
+            yield '';
+
+            return;
+        }
 
         if ($slowTestCount->equals(Count::fromInt(1))) {
             yield 'Detected 1 test where the duration exceeded the maximum duration.';

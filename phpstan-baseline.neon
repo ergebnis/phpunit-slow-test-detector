@@ -331,7 +331,7 @@ parameters:
 			path: test/Unit/PhaseTest.php
 
 		-
-			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\DefaultReporterTest\\:\\:testReportReturnsEmptyStringWhenSlowTestListIsEmpty\\(\\) has no return type specified\\.$#"
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\DefaultReporterTest\\:\\:testReportReturnsNoticeWhenSlowTestListIsEmpty\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/Reporter/DefaultReporterTest.php
 

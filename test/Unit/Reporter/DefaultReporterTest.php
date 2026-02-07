@@ -44,7 +44,7 @@ final class DefaultReporterTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testReportReturnsEmptyStringWhenSlowTestListIsEmpty()
+    public function testReportReturnsNoticeWhenSlowTestListIsEmpty()
     {
         $faker = self::faker();
 
@@ -57,7 +57,12 @@ final class DefaultReporterTest extends Framework\TestCase
 
         $report = $reporter->report($slowTestList);
 
-        self::assertSame('', $report);
+        $expectedReport = <<<'TXT'
+Could not detect any tests where the duration exceeded the maximum duration.
+
+TXT;
+
+        self::assertSame($expectedReport, $report);
     }
 
     /**
