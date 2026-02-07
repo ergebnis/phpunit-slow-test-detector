@@ -27,8 +27,9 @@ final class Color
             return $output;
         }
 
-        return <<<TXT
-\e[2m{$output}\e[22m
-TXT;
+        return \sprintf(
+            "\e[2m%s\e[22m",
+            $output
+        );
     }
 }

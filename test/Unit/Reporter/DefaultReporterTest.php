@@ -85,12 +85,11 @@ final class DefaultReporterTest extends Framework\TestCase
     {
         $values = [
             'header-singular' => [
-                <<<'TXT'
-Detected 1 test where the duration exceeded the maximum duration.
-
-1. 00:00.300 (00:00.100) FooTest::test
-TXT
-                ,
+                \implode("\n", [
+                    'Detected 1 test where the duration exceeded the maximum duration.',
+                    '',
+                    '1. 00:00.300 (00:00.100) FooTest::test',
+                ]),
                 MaximumCount::fromCount(Count::fromInt(1)),
                 SlowTestList::create(
                     SlowTest::create(
@@ -102,13 +101,12 @@ TXT
                 ),
             ],
             'header-plural' => [
-                <<<'TXT'
-Detected 2 tests where the duration exceeded the maximum duration.
-
-1. 00:00.300 (00:00.100) FooTest::test
-2. 00:00.275 (00:00.100) BarTest::test
-TXT
-                ,
+                \implode("\n", [
+                    'Detected 2 tests where the duration exceeded the maximum duration.',
+                    '',
+                    '1. 00:00.300 (00:00.100) FooTest::test',
+                    '2. 00:00.275 (00:00.100) BarTest::test',
+                ]),
                 MaximumCount::fromCount(Count::fromInt(2)),
                 SlowTestList::create(
                     SlowTest::create(
@@ -126,14 +124,13 @@ TXT
                 ),
             ],
             'list-sorted' => [
-                <<<'TXT'
-Detected 3 tests where the duration exceeded the maximum duration.
-
-1. 00:00.300 (00:00.100) FooTest::test
-2. 00:00.275 (00:00.100) BarTest::test
-3. 00:00.250 (00:00.100) BazTest::test
-TXT
-                ,
+                \implode("\n", [
+                    'Detected 3 tests where the duration exceeded the maximum duration.',
+                    '',
+                    '1. 00:00.300 (00:00.100) FooTest::test',
+                    '2. 00:00.275 (00:00.100) BarTest::test',
+                    '3. 00:00.250 (00:00.100) BazTest::test',
+                ]),
                 MaximumCount::fromCount(Count::fromInt(3)),
                 SlowTestList::create(
                     SlowTest::create(
@@ -157,14 +154,13 @@ TXT
                 ),
             ],
             'list-unsorted' => [
-                <<<'TXT'
-Detected 3 tests where the duration exceeded the maximum duration.
-
-1. 00:00.300 (00:00.100) FooTest::test
-2. 00:00.275 (00:00.100) BarTest::test
-3. 00:00.250 (00:00.100) BazTest::test
-TXT
-                ,
+                \implode("\n", [
+                    'Detected 3 tests where the duration exceeded the maximum duration.',
+                    '',
+                    '1. 00:00.300 (00:00.100) FooTest::test',
+                    '2. 00:00.275 (00:00.100) BarTest::test',
+                    '3. 00:00.250 (00:00.100) BazTest::test',
+                ]),
                 MaximumCount::fromCount(Count::fromInt(3)),
                 SlowTestList::create(
                     SlowTest::create(
@@ -188,21 +184,20 @@ TXT
                 ),
             ],
             'list-different-maximum-duration' => [
-                <<<'TXT'
-Detected 10 tests where the duration exceeded the maximum duration.
-
- 1. 20:50.000 (16:40.000) FooTest::test
- 2. 09:35.000 (08:20.000) BarTest::test
- 3. 00:00.250 (00:00.100) BazTest::test
- 4. 00:00.200 (00:00.100) QuxTest::test
- 5. 00:00.160 (00:00.100) QuuxTest::test
- 6. 00:00.150 (00:00.100) CorgeTest::test
- 7. 00:00.140 (00:00.100) GraultTest::test
- 8. 00:00.130 (00:00.100) GarplyTest::test
- 9. 00:00.120 (00:00.100) WaldoTest::test
-10. 00:00.110 (00:00.100) FredTest::test
-TXT
-                ,
+                \implode("\n", [
+                    'Detected 10 tests where the duration exceeded the maximum duration.',
+                    '',
+                    ' 1. 20:50.000 (16:40.000) FooTest::test',
+                    ' 2. 09:35.000 (08:20.000) BarTest::test',
+                    ' 3. 00:00.250 (00:00.100) BazTest::test',
+                    ' 4. 00:00.200 (00:00.100) QuxTest::test',
+                    ' 5. 00:00.160 (00:00.100) QuuxTest::test',
+                    ' 6. 00:00.150 (00:00.100) CorgeTest::test',
+                    ' 7. 00:00.140 (00:00.100) GraultTest::test',
+                    ' 8. 00:00.130 (00:00.100) GarplyTest::test',
+                    ' 9. 00:00.120 (00:00.100) WaldoTest::test',
+                    '10. 00:00.110 (00:00.100) FredTest::test',
+                ]),
                 MaximumCount::fromCount(Count::fromInt(10)),
                 SlowTestList::create(
                     SlowTest::create(
@@ -268,14 +263,13 @@ TXT
                 ),
             ],
             'footer-singular' => [
-                <<<'TXT'
-Detected 2 tests where the duration exceeded the maximum duration.
-
-1. 00:00.300 (00:00.100) FooTest::test
-
-There is 1 additional slow test that is not listed here.
-TXT
-                ,
+                \implode("\n", [
+                    'Detected 2 tests where the duration exceeded the maximum duration.',
+                    '',
+                    '1. 00:00.300 (00:00.100) FooTest::test',
+                    '',
+                    'There is 1 additional slow test that is not listed here.',
+                ]),
                 MaximumCount::fromCount(Count::fromInt(1)),
                 SlowTestList::create(
                     SlowTest::create(
@@ -293,14 +287,13 @@ TXT
                 ),
             ],
             'footer-plural' => [
-                <<<'TXT'
-Detected 3 tests where the duration exceeded the maximum duration.
-
-1. 00:00.300 (00:00.100) FooTest::test
-
-There are 2 additional slow tests that are not listed here.
-TXT
-                ,
+                \implode("\n", [
+                    'Detected 3 tests where the duration exceeded the maximum duration.',
+                    '',
+                    '1. 00:00.300 (00:00.100) FooTest::test',
+                    '',
+                    'There are 2 additional slow tests that are not listed here.',
+                ]),
                 MaximumCount::fromCount(Count::fromInt(1)),
                 SlowTestList::create(
                     SlowTest::create(

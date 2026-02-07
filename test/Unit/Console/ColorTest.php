@@ -37,9 +37,10 @@ final class ColorTest extends Framework\TestCase
     {
         $output = self::faker()->sentence();
 
-        $expected = <<<TXT
-\e[2m{$output}\e[22m
-TXT;
+        $expected = \sprintf(
+            "\e[2m%s\e[22m",
+            $output
+        );
 
         self::assertSame($expected, Console\Color::dim($output));
     }
