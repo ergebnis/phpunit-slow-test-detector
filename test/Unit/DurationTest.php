@@ -209,6 +209,51 @@ final class DurationTest extends Framework\TestCase
         }
     }
 
+    public function testEqualsReturnsFalseWhenSecondsAreDifferent()
+    {
+        $one = Duration::fromSecondsAndNanoseconds(
+            123,
+            456
+        );
+
+        $two = Duration::fromSecondsAndNanoseconds(
+            124,
+            456
+        );
+
+        self::assertFalse($one->equals($two));
+    }
+
+    public function testEqualsReturnsFalseWhenNanosecondsAreDifferent()
+    {
+        $one = Duration::fromSecondsAndNanoseconds(
+            123,
+            456
+        );
+
+        $two = Duration::fromSecondsAndNanoseconds(
+            123,
+            457
+        );
+
+        self::assertFalse($one->equals($two));
+    }
+
+    public function testEqualsReturnsTrueWhenValuesAreSame()
+    {
+        $one = Duration::fromSecondsAndNanoseconds(
+            123,
+            456
+        );
+
+        $two = Duration::fromSecondsAndNanoseconds(
+            123,
+            456
+        );
+
+        self::assertTrue($one->equals($two));
+    }
+
     public function testIsLessThanReturnsFalseWhenSecondsAreGreater()
     {
         $one = Duration::fromSecondsAndNanoseconds(

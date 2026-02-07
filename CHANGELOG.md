@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.21.0...main`][2.21.0...main].
 
+### Changed
+
+- Started reporting the global maximum duration only once in the header instead of repeating it on every line ([#396]), by [@mvorisek]
+
 ## [`2.21.0`][2.21.0]
 
 For a full diff see [`2.20.0...2.21.0`][2.20.0...2.21.0].

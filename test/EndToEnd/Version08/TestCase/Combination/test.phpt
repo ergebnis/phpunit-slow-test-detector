@@ -17,10 +17,10 @@ PHPUnit\TextUI\Command::main();
 
 ...                                                                 3 / 3 (100%)
 
-Detected 3 tests where the duration exceeded the maximum duration.
+Detected 3 tests where the duration exceeded the global maximum duration (00:00.100).
 
-1. 00:00.9%s (00:00.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version08\TestCase\Combination\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #1 (300)
-2. 00:00.8%s (00:00.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version08\TestCase\Combination\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #0 (200)
-3. 00:00.6%s (00:00.100) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version08\TestCase\Combination\SleeperTest::testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration
+1. 00:00.9%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version08\TestCase\Combination\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #1 (300)
+2. 00:00.8%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version08\TestCase\Combination\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #0 (200)
+3. 00:00.6%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version08\TestCase\Combination\SleeperTest::testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration
 
 %a
