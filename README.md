@@ -57,10 +57,10 @@ To bootstrap the extension as a `composer` package when using
 
 adjust your `phpunit.xml` configuration file and configure the
 
-- [`extensions` element](https://docs.phpunit.de/en/10.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^10.0.0`](https://docs.phpunit.de/en/10.5/)
-- [`extensions` element](https://docs.phpunit.de/en/11.0/configuration.html#the-extensions-element) on [`phpunit/phpunit:^11.0.0`](https://docs.phpunit.de/en/11.0/)
-- [`extensions` element](https://docs.phpunit.de/en/12.0/configuration.html#the-extensions-element) on [`phpunit/phpunit:^12.0.0`](https://docs.phpunit.de/en/12.0/)
 - [`extensions` element](https://docs.phpunit.de/en/13.0/configuration.html#the-extensions-element) on [`phpunit/phpunit:^13.0.0`](https://docs.phpunit.de/en/13.0/)
+- [`extensions` element](https://docs.phpunit.de/en/12.0/configuration.html#the-extensions-element) on [`phpunit/phpunit:^12.0.0`](https://docs.phpunit.de/en/12.0/)
+- [`extensions` element](https://docs.phpunit.de/en/11.0/configuration.html#the-extensions-element) on [`phpunit/phpunit:^11.0.0`](https://docs.phpunit.de/en/11.0/)
+- [`extensions` element](https://docs.phpunit.de/en/10.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^10.0.0`](https://docs.phpunit.de/en/10.5/)
 
 ```diff
  <phpunit
@@ -89,9 +89,9 @@ To bootstrap the extension as a `composer` package when using
 
 adjust your `phpunit.xml` configuration file and configure the
 
-- [`extensions` element](https://docs.phpunit.de/en/7.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^7.5.0`](https://docs.phpunit.de/en/7.5/)
-- [`extensions` element](https://docs.phpunit.de/en/8.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^8.5.19`](https://docs.phpunit.de/en/8.5/)
 - [`extensions` element](https://docs.phpunit.de/en/9.6/configuration.html#the-extensions-element) on [`phpunit/phpunit:^9.0.0`](https://docs.phpunit.de/en/9.6/)
+- [`extensions` element](https://docs.phpunit.de/en/8.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^8.5.19`](https://docs.phpunit.de/en/8.5/)
+- [`extensions` element](https://docs.phpunit.de/en/7.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^7.5.0`](https://docs.phpunit.de/en/7.5/)
 
 ```diff
  <phpunit
@@ -148,10 +148,10 @@ To bootstrap the extension as a PHAR when using
 
 adjust your `phpunit.xml` configuration file and configure the
 
-- [`extensionsDirectory` attribute](https://docs.phpunit.de/en/10.5/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/10.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^10.0.0`](https://docs.phpunit.de/en/10.5/)
-- [`extensionsDirectory` attribute](https://docs.phpunit.de/en/11.0/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/11.0/configuration.html#the-extensions-element) on [`phpunit/phpunit:^11.0.0`](https://docs.phpunit.de/en/11.0/)
-- [`extensionsDirectory` attribute](https://docs.phpunit.de/en/12.0/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/12.0/configuration.html#the-extensions-element) on [`phpunit/phpunit:^12.0.0`](https://docs.phpunit.de/en/12.0/)
 - [`extensionsDirectory` attribute](https://docs.phpunit.de/en/13.0/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/13.0/configuration.html#the-extensions-element) on [`phpunit/phpunit:^13.0.0`](https://docs.phpunit.de/en/13.0/)
+- [`extensionsDirectory` attribute](https://docs.phpunit.de/en/12.0/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/12.0/configuration.html#the-extensions-element) on [`phpunit/phpunit:^12.0.0`](https://docs.phpunit.de/en/12.0/)
+- [`extensionsDirectory` attribute](https://docs.phpunit.de/en/11.0/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/11.0/configuration.html#the-extensions-element) on [`phpunit/phpunit:^11.0.0`](https://docs.phpunit.de/en/11.0/)
+- [`extensionsDirectory` attribute](https://docs.phpunit.de/en/10.5/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/10.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^10.0.0`](https://docs.phpunit.de/en/10.5/)
 
 ```diff
  <phpunit
@@ -181,9 +181,9 @@ To bootstrap the extension as a PHAR when using
 
 adjust your `phpunit.xml` configuration file and configure the
 
-- [`extensionsDirectory` attribute](https://docs.phpunit.de/en/7.5/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/7.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^7.5.0`](https://docs.phpunit.de/en/7.5/)
-- [`extensionsDirectory` attribute](https://docs.phpunit.de/en/8.5/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/8.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^8.5.19`](https://docs.phpunit.de/en/8.5/)
 - [`extensionsDirectory` attribute](https://docs.phpunit.de/en/9.6/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/9.6/configuration.html#the-extensions-element) on [`phpunit/phpunit:^9.0.0`](https://docs.phpunit.de/en/9.5/)
+- [`extensionsDirectory` attribute](https://docs.phpunit.de/en/8.5/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/8.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^8.5.19`](https://docs.phpunit.de/en/8.5/)
+- [`extensionsDirectory` attribute](https://docs.phpunit.de/en/7.5/configuration.html#the-extensionsdirectory-attribute) and the [`extensions` element](https://docs.phpunit.de/en/7.5/configuration.html#the-extensions-element) on [`phpunit/phpunit:^7.5.0`](https://docs.phpunit.de/en/7.5/)
 
 ```diff
  <phpunit
@@ -223,10 +223,10 @@ To configure the extension when using
 
 adjust your `phpunit.xml` configuration file and configure one or more
 
-- [`parameter` elements](https://docs.phpunit.de/en/10.5/configuration.html#the-parameter-element) on [`phpunit/phpunit:^10.0.0`](https://docs.phpunit.de/en/10.5/)
-- [`parameter` elements](https://docs.phpunit.de/en/11.0/configuration.html#the-parameter-element) on [`phpunit/phpunit:^11.0.0`](https://docs.phpunit.de/en/11.0/)
-- [`parameter` elements](https://docs.phpunit.de/en/12.0/configuration.html#the-parameter-element) on [`phpunit/phpunit:^12.0.0`](https://docs.phpunit.de/en/12.0/)
 - [`parameter` elements](https://docs.phpunit.de/en/13.0/configuration.html#the-parameter-element) on [`phpunit/phpunit:^13.0.0`](https://docs.phpunit.de/en/13.0/)
+- [`parameter` elements](https://docs.phpunit.de/en/12.0/configuration.html#the-parameter-element) on [`phpunit/phpunit:^12.0.0`](https://docs.phpunit.de/en/12.0/)
+- [`parameter` elements](https://docs.phpunit.de/en/11.0/configuration.html#the-parameter-element) on [`phpunit/phpunit:^11.0.0`](https://docs.phpunit.de/en/11.0/)
+- [`parameter` elements](https://docs.phpunit.de/en/10.5/configuration.html#the-parameter-element) on [`phpunit/phpunit:^10.0.0`](https://docs.phpunit.de/en/10.5/)
 
 The following example configures the maximum count of slow tests to three, and the maximum duration for all tests to 250 milliseconds:
 
@@ -261,9 +261,9 @@ To configure the extension when using
 
 adjust your `phpunit.xml` configuration file and configure the
 
-- [`arguments` element](https://docs.phpunit.de/en/7.5/configuration.html#the-arguments-element) on [`phpunit/phpunit:^7.5.0`](https://docs.phpunit.de/en/7.5/)
-- [`arguments` element](https://docs.phpunit.de/en/8.5/configuration.html#the-arguments-element) on [`phpunit/phpunit:^8.5.19`](https://docs.phpunit.de/en/8.5/)
 - [`arguments` element](https://docs.phpunit.de/en/9.6/configuration.html#the-arguments-element) on [`phpunit/phpunit:^9.0.0`](https://docs.phpunit.de/en/9.6/)
+- [`arguments` element](https://docs.phpunit.de/en/8.5/configuration.html#the-arguments-element) on [`phpunit/phpunit:^8.5.19`](https://docs.phpunit.de/en/8.5/)
+- [`arguments` element](https://docs.phpunit.de/en/7.5/configuration.html#the-arguments-element) on [`phpunit/phpunit:^7.5.0`](https://docs.phpunit.de/en/7.5/)
 
 The following example configures the maximum count of slow tests to three, and the maximum duration for all tests to 250 milliseconds:
 
