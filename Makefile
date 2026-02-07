@@ -94,8 +94,8 @@ tests-phar: phar docker-build ## Runs phar tests with phpunit/phpunit in Docker 
 	docker run --rm --volume $(CURDIR):/app/src:ro --volume composer-cache:/root/.composer phpunit-slow-test-detector-php85 -c "/app/src/.docker/tests-phar.sh 13.0.0"
 
 .PHONY: tests-unit
-tests-unit: docker-build vendor ## Runs unit tests with phpunit/phpunit in a Docker container
-	docker run --rm --volume $(CURDIR):/app --volume composer-cache:/root/.composer phpunit-slow-test-detector-php74 -c "vendor/bin/phpunit --colors=always --configuration=test/Unit/phpunit.xml"
+tests-unit: docker-build ## Runs unit tests with phpunit/phpunit in a Docker container
+	docker run --rm --volume $(CURDIR):/app/src:ro --volume composer-cache:/root/.composer phpunit-slow-test-detector-php74 -c "/app/src/.docker/tests-unit.sh"
 
 vendor: docker-build composer.json composer.lock ## Installs dependencies with composer
 	docker run --rm --volume $(CURDIR):/app --volume composer-cache:/root/.composer phpunit-slow-test-detector-php74 -c "composer validate --ansi --strict"
