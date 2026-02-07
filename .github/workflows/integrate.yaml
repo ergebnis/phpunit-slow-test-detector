@@ -806,7 +806,7 @@ jobs:
           dependencies: "${{ matrix.dependencies }}"
 
       - name: "Run unit tests with phpunit/phpunit:7.5.0"
-        if: "matrix.phpunit-version == '7.5.0'"
+        if: "matrix.php-version == '7.4' && matrix.phpunit-version == '7.5.0' && matrix.dependencies == 'highest'"
         run: "vendor/bin/phpunit --colors=always --configuration=test/Unit/phpunit.xml"
 
       - name: "Apply patch from https://github.com/sebastianbergmann/phpunit/pull/4486 for phpunit/phpunit:9.0.0"
