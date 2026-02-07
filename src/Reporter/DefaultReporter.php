@@ -43,11 +43,15 @@ final class DefaultReporter implements Reporter
 
     public function report(SlowTestList $slowTestList): string
     {
-        if ($slowTestList->isEmpty()) {
+        $lines = \iterator_to_array($this->lines($slowTestList));
+
+        if ([] === $lines) {
             return '';
         }
 
-        return \implode("\n", \iterator_to_array($this->lines($slowTestList)));
+        return \implode('', \array_map(static function (string $line): string {
+            return $line . "\n";
+        }, $lines));
     }
 
     /**
@@ -56,6 +60,14 @@ final class DefaultReporter implements Reporter
     private function lines(SlowTestList $slowTestList): \Generator
     {
         $slowTestCount = $slowTestList->count();
+
+        if ($slowTestCount->equals(Count::fromInt(0))) {
+            return;
+        }
+
+        yield '';
+
+        yield '';
 
         if ($slowTestCount->equals(Count::fromInt(1))) {
             yield 'Detected 1 test where the duration exceeded the maximum duration.';
@@ -101,16 +113,16 @@ final class DefaultReporter implements Reporter
             ++$number;
         }
 
+        yield '';
+
         $additionalSlowTestCount = Count::fromInt(\max(
             0,
-            $slowTestList->count()->toInt() - $this->maximumCount->toCount()->toInt()
+            $slowTestCount->toInt() - $this->maximumCount->toCount()->toInt()
         ));
 
         if ($additionalSlowTestCount->equals(Count::fromInt(0))) {
             return;
         }
-
-        yield '';
 
         if ($additionalSlowTestCount->equals(Count::fromInt(1))) {
             yield 'There is 1 additional slow test that is not listed here.';
@@ -120,5 +132,7 @@ final class DefaultReporter implements Reporter
                 $additionalSlowTestCount->toInt()
             );
         }
+
+        yield '';
     }
 }

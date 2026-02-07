@@ -83,12 +83,21 @@ final class DefaultReporterTest extends Framework\TestCase
      */
     public static function provideExpectedReportMaximumCountAndSlowTestList(): iterable
     {
+        $print = static function (array $lines): string {
+            return \implode('', \array_map(static function (string $line): string {
+                return $line . "\n";
+            }, $lines));
+        };
+
         $values = [
             'header-singular' => [
-                \implode("\n", [
+                $print([
+                    '',
+                    '',
                     'Detected 1 test where the duration exceeded the maximum duration.',
                     '',
                     '1. 00:00.300 (00:00.100) FooTest::test',
+                    '',
                 ]),
                 MaximumCount::fromCount(Count::fromInt(1)),
                 SlowTestList::create(
@@ -101,11 +110,14 @@ final class DefaultReporterTest extends Framework\TestCase
                 ),
             ],
             'header-plural' => [
-                \implode("\n", [
+                $print([
+                    '',
+                    '',
                     'Detected 2 tests where the duration exceeded the maximum duration.',
                     '',
                     '1. 00:00.300 (00:00.100) FooTest::test',
                     '2. 00:00.275 (00:00.100) BarTest::test',
+                    '',
                 ]),
                 MaximumCount::fromCount(Count::fromInt(2)),
                 SlowTestList::create(
@@ -124,12 +136,15 @@ final class DefaultReporterTest extends Framework\TestCase
                 ),
             ],
             'list-sorted' => [
-                \implode("\n", [
+                $print([
+                    '',
+                    '',
                     'Detected 3 tests where the duration exceeded the maximum duration.',
                     '',
                     '1. 00:00.300 (00:00.100) FooTest::test',
                     '2. 00:00.275 (00:00.100) BarTest::test',
                     '3. 00:00.250 (00:00.100) BazTest::test',
+                    '',
                 ]),
                 MaximumCount::fromCount(Count::fromInt(3)),
                 SlowTestList::create(
@@ -154,12 +169,15 @@ final class DefaultReporterTest extends Framework\TestCase
                 ),
             ],
             'list-unsorted' => [
-                \implode("\n", [
+                $print([
+                    '',
+                    '',
                     'Detected 3 tests where the duration exceeded the maximum duration.',
                     '',
                     '1. 00:00.300 (00:00.100) FooTest::test',
                     '2. 00:00.275 (00:00.100) BarTest::test',
                     '3. 00:00.250 (00:00.100) BazTest::test',
+                    '',
                 ]),
                 MaximumCount::fromCount(Count::fromInt(3)),
                 SlowTestList::create(
@@ -184,7 +202,9 @@ final class DefaultReporterTest extends Framework\TestCase
                 ),
             ],
             'list-different-maximum-duration' => [
-                \implode("\n", [
+                $print([
+                    '',
+                    '',
                     'Detected 10 tests where the duration exceeded the maximum duration.',
                     '',
                     ' 1. 20:50.000 (16:40.000) FooTest::test',
@@ -197,6 +217,7 @@ final class DefaultReporterTest extends Framework\TestCase
                     ' 8. 00:00.130 (00:00.100) GarplyTest::test',
                     ' 9. 00:00.120 (00:00.100) WaldoTest::test',
                     '10. 00:00.110 (00:00.100) FredTest::test',
+                    '',
                 ]),
                 MaximumCount::fromCount(Count::fromInt(10)),
                 SlowTestList::create(
@@ -263,12 +284,15 @@ final class DefaultReporterTest extends Framework\TestCase
                 ),
             ],
             'footer-singular' => [
-                \implode("\n", [
+                $print([
+                    '',
+                    '',
                     'Detected 2 tests where the duration exceeded the maximum duration.',
                     '',
                     '1. 00:00.300 (00:00.100) FooTest::test',
                     '',
                     'There is 1 additional slow test that is not listed here.',
+                    '',
                 ]),
                 MaximumCount::fromCount(Count::fromInt(1)),
                 SlowTestList::create(
@@ -287,12 +311,15 @@ final class DefaultReporterTest extends Framework\TestCase
                 ),
             ],
             'footer-plural' => [
-                \implode("\n", [
+                $print([
+                    '',
+                    '',
                     'Detected 3 tests where the duration exceeded the maximum duration.',
                     '',
                     '1. 00:00.300 (00:00.100) FooTest::test',
                     '',
                     'There are 2 additional slow tests that are not listed here.',
+                    '',
                 ]),
                 MaximumCount::fromCount(Count::fromInt(1)),
                 SlowTestList::create(
