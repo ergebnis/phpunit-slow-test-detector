@@ -57,10 +57,6 @@ final class ExecutionFinishedSubscriber implements Event\TestRunner\ExecutionFin
             return;
         }
 
-        echo <<<TXT
-
-
-{$report}
-TXT;
+        echo "\n\n" . $report;
     }
 }
