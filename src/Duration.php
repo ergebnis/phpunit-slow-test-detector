@@ -117,6 +117,19 @@ final class Duration
         );
     }
 
+    public function equals(self $other): bool
+    {
+        if ($this->seconds !== $other->seconds) {
+            return false;
+        }
+
+        if ($this->nanoseconds !== $other->nanoseconds) {
+            return false;
+        }
+
+        return true;
+    }
+
     public function isLessThan(self $other): bool
     {
         if ($this->seconds < $other->seconds) {

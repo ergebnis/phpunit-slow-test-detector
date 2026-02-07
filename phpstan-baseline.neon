@@ -136,6 +136,21 @@ parameters:
 			path: test/Unit/DurationTest.php
 
 		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\DurationTest\\:\\:testEqualsReturnsFalseWhenNanosecondsAreDifferent\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/DurationTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\DurationTest\\:\\:testEqualsReturnsFalseWhenSecondsAreDifferent\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/DurationTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\DurationTest\\:\\:testEqualsReturnsTrueWhenValuesAreSame\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/DurationTest.php
+
+		-
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\DurationTest\\:\\:testFromMillisecondsRejectsInvalidValue\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/DurationTest.php
