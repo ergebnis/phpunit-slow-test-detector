@@ -140,7 +140,7 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
                 return;
             }
 
-            echo "\n\n" . $report;
+            echo $report;
         }
 
         public function startTest(Framework\Test $test)
@@ -341,7 +341,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
                 return;
             }
 
-            echo "\n\n" . $report;
+            echo $report;
         }
 
         private function resolveMaximumDuration(string $test): MaximumDuration
