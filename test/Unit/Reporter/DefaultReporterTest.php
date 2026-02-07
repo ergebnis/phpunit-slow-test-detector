@@ -52,6 +52,7 @@ final class DefaultReporterTest extends Framework\TestCase
 
         $reporter = new Reporter\DefaultReporter(
             new Formatter\DefaultDurationFormatter(),
+            MaximumDuration::default(),
             MaximumCount::fromCount(Count::fromInt($faker->numberBetween(1)))
         );
 
@@ -61,15 +62,17 @@ final class DefaultReporterTest extends Framework\TestCase
     }
 
     /**
-     * @dataProvider provideExpectedReportMaximumCountAndSlowTestList
+     * @dataProvider provideExpectedReportMaximumDurationMaximumCountAndSlowTestList
      */
     public function testReportReturnsReportWhenSlowTestListHasFewerSlowTestsThanMaximumCount(
         string $expectedReport,
+        MaximumDuration $maximumDuration,
         MaximumCount $maximumCount,
         SlowTestList $slowTestList
     ) {
         $reporter = new Reporter\DefaultReporter(
             new Formatter\DefaultDurationFormatter(),
+            $maximumDuration,
             $maximumCount
         );
 
@@ -79,9 +82,9 @@ final class DefaultReporterTest extends Framework\TestCase
     }
 
     /**
-     * @return \Generator<string, array{0: string, 1: MaximumCount, 2: SlowTestList}>
+     * @return \Generator<string, array{0: string, 1: MaximumDuration, 2: MaximumCount, 3: SlowTestList}>
      */
-    public static function provideExpectedReportMaximumCountAndSlowTestList(): iterable
+    public static function provideExpectedReportMaximumDurationMaximumCountAndSlowTestList(): iterable
     {
         $print = static function (array $lines): string {
             return \implode('', \array_map(static function (string $line): string {
@@ -90,15 +93,16 @@ final class DefaultReporterTest extends Framework\TestCase
         };
 
         $values = [
-            'header-singular' => [
+            'header-singular-global-only' => [
                 $print([
                     '',
                     '',
-                    'Detected 1 test where the duration exceeded the maximum duration.',
+                    'Detected 1 test where the duration exceeded the global maximum duration (00:00.100).',
                     '',
-                    '1. 00:00.300 (00:00.100) FooTest::test',
+                    '1. 00:00.300 FooTest::test',
                     '',
                 ]),
+                MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                 MaximumCount::fromCount(Count::fromInt(1)),
                 SlowTestList::create(
                     SlowTest::create(
@@ -109,16 +113,37 @@ final class DefaultReporterTest extends Framework\TestCase
                     )
                 ),
             ],
-            'header-plural' => [
+            'header-singular-custom' => [
                 $print([
                     '',
                     '',
-                    'Detected 2 tests where the duration exceeded the maximum duration.',
+                    'Detected 1 test where the duration exceeded a custom or the global maximum duration (00:00.100).',
                     '',
-                    '1. 00:00.300 (00:00.100) FooTest::test',
-                    '2. 00:00.275 (00:00.100) BarTest::test',
+                    '1. 00:00.300 (00:00.200) FooTest::test',
                     '',
                 ]),
+                MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                MaximumCount::fromCount(Count::fromInt(1)),
+                SlowTestList::create(
+                    SlowTest::create(
+                        TestIdentifier::fromString('FooTest::test'),
+                        TestDescription::fromString('FooTest::test'),
+                        Duration::fromMilliseconds(300),
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(200))
+                    )
+                ),
+            ],
+            'header-plural-global-only' => [
+                $print([
+                    '',
+                    '',
+                    'Detected 2 tests where the duration exceeded the global maximum duration (00:00.100).',
+                    '',
+                    '1. 00:00.300 FooTest::test',
+                    '2. 00:00.275 BarTest::test',
+                    '',
+                ]),
+                MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                 MaximumCount::fromCount(Count::fromInt(2)),
                 SlowTestList::create(
                     SlowTest::create(
@@ -135,17 +160,45 @@ final class DefaultReporterTest extends Framework\TestCase
                     )
                 ),
             ],
+            'header-plural-custom' => [
+                $print([
+                    '',
+                    '',
+                    'Detected 2 tests where the duration exceeded a custom or the global maximum duration (00:00.100).',
+                    '',
+                    '1. 00:00.300 (00:00.200) FooTest::test',
+                    '2. 00:00.275             BarTest::test',
+                    '',
+                ]),
+                MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                MaximumCount::fromCount(Count::fromInt(2)),
+                SlowTestList::create(
+                    SlowTest::create(
+                        TestIdentifier::fromString('FooTest::test'),
+                        TestDescription::fromString('FooTest::test'),
+                        Duration::fromMilliseconds(300),
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(200))
+                    ),
+                    SlowTest::create(
+                        TestIdentifier::fromString('BarTest::test'),
+                        TestDescription::fromString('BarTest::test'),
+                        Duration::fromMilliseconds(275),
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
+                    )
+                ),
+            ],
             'list-sorted' => [
                 $print([
                     '',
                     '',
-                    'Detected 3 tests where the duration exceeded the maximum duration.',
+                    'Detected 3 tests where the duration exceeded the global maximum duration (00:00.100).',
                     '',
-                    '1. 00:00.300 (00:00.100) FooTest::test',
-                    '2. 00:00.275 (00:00.100) BarTest::test',
-                    '3. 00:00.250 (00:00.100) BazTest::test',
+                    '1. 00:00.300 FooTest::test',
+                    '2. 00:00.275 BarTest::test',
+                    '3. 00:00.250 BazTest::test',
                     '',
                 ]),
+                MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                 MaximumCount::fromCount(Count::fromInt(3)),
                 SlowTestList::create(
                     SlowTest::create(
@@ -172,13 +225,14 @@ final class DefaultReporterTest extends Framework\TestCase
                 $print([
                     '',
                     '',
-                    'Detected 3 tests where the duration exceeded the maximum duration.',
+                    'Detected 3 tests where the duration exceeded the global maximum duration (00:00.100).',
                     '',
-                    '1. 00:00.300 (00:00.100) FooTest::test',
-                    '2. 00:00.275 (00:00.100) BarTest::test',
-                    '3. 00:00.250 (00:00.100) BazTest::test',
+                    '1. 00:00.300 FooTest::test',
+                    '2. 00:00.275 BarTest::test',
+                    '3. 00:00.250 BazTest::test',
                     '',
                 ]),
+                MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                 MaximumCount::fromCount(Count::fromInt(3)),
                 SlowTestList::create(
                     SlowTest::create(
@@ -205,20 +259,21 @@ final class DefaultReporterTest extends Framework\TestCase
                 $print([
                     '',
                     '',
-                    'Detected 10 tests where the duration exceeded the maximum duration.',
+                    'Detected 10 tests where the duration exceeded a custom or the global maximum duration (00:00.100).',
                     '',
                     ' 1. 20:50.000 (16:40.000) FooTest::test',
                     ' 2. 09:35.000 (08:20.000) BarTest::test',
-                    ' 3. 00:00.250 (00:00.100) BazTest::test',
-                    ' 4. 00:00.200 (00:00.100) QuxTest::test',
-                    ' 5. 00:00.160 (00:00.100) QuuxTest::test',
-                    ' 6. 00:00.150 (00:00.100) CorgeTest::test',
-                    ' 7. 00:00.140 (00:00.100) GraultTest::test',
-                    ' 8. 00:00.130 (00:00.100) GarplyTest::test',
-                    ' 9. 00:00.120 (00:00.100) WaldoTest::test',
-                    '10. 00:00.110 (00:00.100) FredTest::test',
+                    ' 3. 00:00.250             BazTest::test',
+                    ' 4. 00:00.200             QuxTest::test',
+                    ' 5. 00:00.160             QuuxTest::test',
+                    ' 6. 00:00.150             CorgeTest::test',
+                    ' 7. 00:00.140             GraultTest::test',
+                    ' 8. 00:00.130             GarplyTest::test',
+                    ' 9. 00:00.120             WaldoTest::test',
+                    '10. 00:00.110             FredTest::test',
                     '',
                 ]),
+                MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                 MaximumCount::fromCount(Count::fromInt(10)),
                 SlowTestList::create(
                     SlowTest::create(
@@ -287,13 +342,14 @@ final class DefaultReporterTest extends Framework\TestCase
                 $print([
                     '',
                     '',
-                    'Detected 2 tests where the duration exceeded the maximum duration.',
+                    'Detected 2 tests where the duration exceeded the global maximum duration (00:00.100).',
                     '',
-                    '1. 00:00.300 (00:00.100) FooTest::test',
+                    '1. 00:00.300 FooTest::test',
                     '',
                     'There is 1 additional slow test that is not listed here.',
                     '',
                 ]),
+                MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                 MaximumCount::fromCount(Count::fromInt(1)),
                 SlowTestList::create(
                     SlowTest::create(
@@ -314,13 +370,14 @@ final class DefaultReporterTest extends Framework\TestCase
                 $print([
                     '',
                     '',
-                    'Detected 3 tests where the duration exceeded the maximum duration.',
+                    'Detected 3 tests where the duration exceeded the global maximum duration (00:00.100).',
                     '',
-                    '1. 00:00.300 (00:00.100) FooTest::test',
+                    '1. 00:00.300 FooTest::test',
                     '',
                     'There are 2 additional slow tests that are not listed here.',
                     '',
                 ]),
+                MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                 MaximumCount::fromCount(Count::fromInt(1)),
                 SlowTestList::create(
                     SlowTest::create(
@@ -345,9 +402,10 @@ final class DefaultReporterTest extends Framework\TestCase
             ],
         ];
 
-        foreach ($values as $key => list($expected, $maximumCount, $slowTestList)) {
+        foreach ($values as $key => list($expected, $maximumDuration, $maximumCount, $slowTestList)) {
             yield $key => [
                 $expected,
+                $maximumDuration,
                 $maximumCount,
                 $slowTestList,
             ];

@@ -19,18 +19,18 @@ $application->run($_SERVER['argv']);
 
 ............                                                      12 / 12 (100%)
 
-Detected 11 tests where the duration exceeded the maximum duration.
+Detected 11 tests where the duration exceeded the global maximum duration (00:00.500).
 
- 1. 00:01.6%s (00:00.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version13\Configuration\Defaults\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(1600)
- 2. 00:01.5%s (00:00.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version13\Configuration\Defaults\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(1500)
- 3. 00:01.4%s (00:00.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version13\Configuration\Defaults\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(1400)
- 4. 00:01.3%s (00:00.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version13\Configuration\Defaults\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(1300)
- 5. 00:01.2%s (00:00.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version13\Configuration\Defaults\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(1200)
- 6. 00:01.1%s (00:00.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version13\Configuration\Defaults\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(1100)
- 7. 00:01.0%s (00:00.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version13\Configuration\Defaults\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(1000)
- 8. 00:00.9%s (00:00.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version13\Configuration\Defaults\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(900)
- 9. 00:00.8%s (00:00.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version13\Configuration\Defaults\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(800)
-10. 00:00.7%s (00:00.500) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version13\Configuration\Defaults\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(700)
+ 1. 00:01.6%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version13\Configuration\Defaults\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(1600)
+ 2. 00:01.5%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version13\Configuration\Defaults\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(1500)
+ 3. 00:01.4%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version13\Configuration\Defaults\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(1400)
+ 4. 00:01.3%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version13\Configuration\Defaults\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(1300)
+ 5. 00:01.2%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version13\Configuration\Defaults\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(1200)
+ 6. 00:01.1%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version13\Configuration\Defaults\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(1100)
+ 7. 00:01.0%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version13\Configuration\Defaults\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(1000)
+ 8. 00:00.9%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version13\Configuration\Defaults\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(900)
+ 9. 00:00.8%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version13\Configuration\Defaults\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(800)
+10. 00:00.7%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version13\Configuration\Defaults\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(700)
 
 There is 1 additional slow test that is not listed here.
 

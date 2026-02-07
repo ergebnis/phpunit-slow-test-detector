@@ -19,7 +19,7 @@ $application->run($_SERVER['argv']);
 
 ..                                                                  2 / 2 (100%)
 
-Detected 1 test where the duration exceeded the maximum duration.
+Detected 1 test where the duration exceeded a custom or the global maximum duration (00:00.100).
 
 1. 00:00.3%s (00:00.200) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Version10\TestMethod\WithMaximumDurationAndSlowThresholdAnnotations\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasMaximumDurationAndSlowThresholdAnnotations
 

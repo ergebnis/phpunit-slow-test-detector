@@ -14,8 +14,10 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Count;
+use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
+use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
 
 /**
@@ -29,15 +31,22 @@ final class DefaultReporter implements Reporter
     private $durationFormatter;
 
     /**
+     * @var MaximumDuration
+     */
+    private $maximumDuration;
+
+    /**
      * @var MaximumCount
      */
     private $maximumCount;
 
     public function __construct(
         Formatter\DurationFormatter $durationFormatter,
+        MaximumDuration $maximumDuration,
         MaximumCount $maximumCount
     ) {
         $this->durationFormatter = $durationFormatter;
+        $this->maximumDuration = $maximumDuration;
         $this->maximumCount = $maximumCount;
     }
 
@@ -65,52 +74,37 @@ final class DefaultReporter implements Reporter
             return;
         }
 
-        yield '';
-
-        yield '';
-
-        if ($slowTestCount->equals(Count::fromInt(1))) {
-            yield 'Detected 1 test where the duration exceeded the maximum duration.';
-        } else {
-            yield \sprintf(
-                'Detected %d tests where the duration exceeded the maximum duration.',
-                $slowTestCount->toInt()
-            );
-        }
-
-        yield '';
-
         $slowTestListThatWillBeReported = $slowTestList
             ->sortByDurationDescending()
             ->limitTo($this->maximumCount);
 
-        $slowTestWithLongestDuration = $slowTestListThatWillBeReported->first();
+        $globalMaximumDuration = $this->maximumDuration->toDuration();
 
-        $slowTestWithLongestMaximumDuration = $slowTestListThatWillBeReported->sortByMaximumDurationDescending()->first();
-
-        $numberWidth = \strlen((string) $slowTestListThatWillBeReported->count()->toInt());
-        $durationWidth = \strlen($this->durationFormatter->format($slowTestWithLongestDuration->duration()));
-        $maximumDurationWidth = \strlen($this->durationFormatter->format($slowTestWithLongestMaximumDuration->maximumDuration()->toDuration()));
-
-        $template = \sprintf(
-            '%%%dd. %%%ds (%%%ds) %%s',
-            $numberWidth,
-            $durationWidth,
-            $maximumDurationWidth
+        $hasCustomMaximumDuration = self::hasCustomMaximumDuration(
+            $slowTestListThatWillBeReported,
+            $globalMaximumDuration
         );
 
-        $number = 1;
+        yield '';
 
-        foreach ($slowTestListThatWillBeReported->toArray() as $slowTest) {
-            yield \sprintf(
-                $template,
-                (string) $number,
-                $this->durationFormatter->format($slowTest->duration()),
-                $this->durationFormatter->format($slowTest->maximumDuration()->toDuration()),
-                $slowTest->testDescription()->toString()
-            );
+        yield '';
 
-            ++$number;
+        yield $this->header(
+            $slowTestCount,
+            $globalMaximumDuration,
+            $hasCustomMaximumDuration
+        );
+
+        yield '';
+
+        if ($hasCustomMaximumDuration) {
+            foreach ($this->listLinesWithCustomMaximumDuration($slowTestListThatWillBeReported, $globalMaximumDuration) as $line) {
+                yield $line;
+            }
+        } else {
+            foreach ($this->listLinesWithGlobalMaximumDurationOnly($slowTestListThatWillBeReported) as $line) {
+                yield $line;
+            }
         }
 
         yield '';
@@ -134,5 +128,142 @@ final class DefaultReporter implements Reporter
         }
 
         yield '';
+    }
+
+    private static function hasCustomMaximumDuration(
+        SlowTestList $slowTestList,
+        Duration $globalMaximumDuration
+    ): bool {
+        foreach ($slowTestList->toArray() as $slowTest) {
+            $slowTestMaximumDuration = $slowTest->maximumDuration()->toDuration();
+
+            if (!$slowTestMaximumDuration->equals($globalMaximumDuration)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private function header(
+        Count $slowTestCount,
+        Duration $globalMaximumDuration,
+        bool $hasCustomMaximumDuration
+    ): string {
+        $formattedGlobalMaximumDuration = $this->durationFormatter->format($globalMaximumDuration);
+
+        if ($hasCustomMaximumDuration) {
+            if ($slowTestCount->equals(Count::fromInt(1))) {
+                return \sprintf(
+                    'Detected 1 test where the duration exceeded a custom or the global maximum duration (%s).',
+                    $formattedGlobalMaximumDuration
+                );
+            }
+
+            return \sprintf(
+                'Detected %d tests where the duration exceeded a custom or the global maximum duration (%s).',
+                $slowTestCount->toInt(),
+                $formattedGlobalMaximumDuration
+            );
+        }
+
+        if ($slowTestCount->equals(Count::fromInt(1))) {
+            return \sprintf(
+                'Detected 1 test where the duration exceeded the global maximum duration (%s).',
+                $formattedGlobalMaximumDuration
+            );
+        }
+
+        return \sprintf(
+            'Detected %d tests where the duration exceeded the global maximum duration (%s).',
+            $slowTestCount->toInt(),
+            $formattedGlobalMaximumDuration
+        );
+    }
+
+    /**
+     * @return \Generator<string>
+     */
+    private function listLinesWithGlobalMaximumDurationOnly(SlowTestList $slowTestList): \Generator
+    {
+        $slowTestWithLongestDuration = $slowTestList->first();
+
+        $numberWidth = \strlen((string) $slowTestList->count()->toInt());
+        $durationWidth = \strlen($this->durationFormatter->format($slowTestWithLongestDuration->duration()));
+
+        $template = \sprintf(
+            '%%%dd. %%%ds %%s',
+            $numberWidth,
+            $durationWidth
+        );
+
+        $number = 1;
+
+        foreach ($slowTestList->toArray() as $slowTest) {
+            yield \sprintf(
+                $template,
+                (string) $number,
+                $this->durationFormatter->format($slowTest->duration()),
+                $slowTest->testDescription()->toString()
+            );
+
+            ++$number;
+        }
+    }
+
+    /**
+     * @return \Generator<string>
+     */
+    private function listLinesWithCustomMaximumDuration(
+        SlowTestList $slowTestList,
+        Duration $globalMaximumDuration
+    ): \Generator {
+        $slowTestWithLongestDuration = $slowTestList->first();
+        $slowTestWithLongestMaximumDuration = $slowTestList->sortByMaximumDurationDescending()->first();
+
+        $numberWidth = \strlen((string) $slowTestList->count()->toInt());
+        $durationWidth = \strlen($this->durationFormatter->format($slowTestWithLongestDuration->duration()));
+        $maximumDurationWidth = \strlen($this->durationFormatter->format($slowTestWithLongestMaximumDuration->maximumDuration()->toDuration()));
+
+        $templateWithCustomMaximumDuration = \sprintf(
+            '%%%dd. %%%ds (%%%ds) %%s',
+            $numberWidth,
+            $durationWidth,
+            $maximumDurationWidth
+        );
+
+        $maximumDurationPadding = \str_repeat(' ', $maximumDurationWidth + 3);
+
+        $templateWithGlobalMaximumDuration = \sprintf(
+            '%%%dd. %%%ds %%s%%s',
+            $numberWidth,
+            $durationWidth
+        );
+
+        $number = 1;
+
+        foreach ($slowTestList->toArray() as $slowTest) {
+            $slowTestMaximumDuration = $slowTest->maximumDuration()->toDuration();
+
+            if (!$slowTestMaximumDuration->equals($globalMaximumDuration)) {
+                yield \sprintf(
+                    $templateWithCustomMaximumDuration,
+                    (string) $number,
+                    $this->durationFormatter->format($slowTest->duration()),
+                    $this->durationFormatter->format($slowTestMaximumDuration),
+                    $slowTest->testDescription()->toString()
+                );
+            } else {
+                yield \sprintf(
+                    $templateWithGlobalMaximumDuration,
+                    (string) $number,
+                    $this->durationFormatter->format($slowTest->duration()),
+                    $maximumDurationPadding,
+                    $slowTest->testDescription()->toString()
+                );
+            }
+
+            ++$number;
+        }
     }
 }
