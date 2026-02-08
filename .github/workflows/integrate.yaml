@@ -818,31 +818,31 @@ jobs:
 
       - name: "Run end-to-end tests with phpunit/phpunit:6.5.0"
         if: "matrix.phpunit-version == '6.5.0'"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version06/phpunit.xml"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/PHPUnit06/phpunit.xml"
 
       - name: "Run end-to-end tests with phpunit/phpunit:7.5.0"
         if: "matrix.phpunit-version == '7.5.0'"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version07/phpunit.xml"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/PHPUnit07/phpunit.xml"
 
       - name: "Run end-to-end tests with phpunit/phpunit:8.5.19"
         if: "matrix.phpunit-version == '8.5.19'"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version08/phpunit.xml"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/PHPUnit08/phpunit.xml"
 
       - name: "Run end-to-end tests with phpunit/phpunit:8.5.40"
         if: "matrix.phpunit-version == '8.5.40'"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version08/phpunit.xml"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/PHPUnit08/phpunit.xml"
 
       - name: "Run end-to-end tests with phpunit/phpunit:9.0.0"
         if: "matrix.phpunit-version == '9.0.0'"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version09/phpunit.xml"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/PHPUnit09/phpunit.xml"
 
       - name: "Run end-to-end tests with phpunit/phpunit:10.0.0"
         if: "matrix.phpunit-version == '10.0.0'"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version10/phpunit.xml"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/PHPUnit10/phpunit.xml"
 
       - name: "Run end-to-end tests with phpunit/phpunit:11.0.0"
         if: "matrix.phpunit-version == '11.0.0'"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version11/phpunit.xml"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/PHPUnit11/phpunit.xml"
 
       - name: "Apply patch from https://github.com/sebastianbergmann/phpunit/commit/0eae1143 for phpunit/phpunit:12.0.0"
         if: "matrix.php-version == '8.5' && matrix.phpunit-version == '12.0.0' && matrix.dependencies == 'lowest'"
@@ -854,11 +854,11 @@ jobs:
 
       - name: "Run end-to-end tests with phpunit/phpunit:12.0.0"
         if: "matrix.phpunit-version == '12.0.0'"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version12/phpunit.xml"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/PHPUnit12/phpunit.xml"
 
       - name: "Run end-to-end tests with phpunit/phpunit:13.0.0"
         if: "matrix.phpunit-version == '13.0.0'"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/Version13/phpunit.xml"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/PHPUnit13/phpunit.xml"
 
       - name: "Download Phar"
         uses: "actions/download-artifact@v7.0.0"
@@ -876,32 +876,32 @@ jobs:
 
       - name: "Run phar tests with phpunit/phpunit:7.5.0"
         if: "matrix.phpunit-version == '7.5.0'"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/Phar/Version07/phpunit.xml"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/Phar/PHPUnit07/phpunit.xml"
 
       - name: "Run phar tests with phpunit/phpunit:8.5.19"
         if: "matrix.phpunit-version == '8.5.19'"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/Phar/Version08/phpunit.xml"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/Phar/PHPUnit08/phpunit.xml"
 
       - name: "Run phar tests with phpunit/phpunit:8.5.40"
         if: "matrix.phpunit-version == '8.5.40'"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/Phar/Version08/phpunit.xml"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/Phar/PHPUnit08/phpunit.xml"
 
       - name: "Run phar tests with phpunit/phpunit:9.0.0"
         if: "matrix.phpunit-version == '9.0.0'"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/Phar/Version09/phpunit.xml"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/Phar/PHPUnit09/phpunit.xml"
 
       - name: "Run phar tests with phpunit/phpunit:10.0.0"
         if: "matrix.phpunit-version == '10.0.0'"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/Phar/Version10/phpunit.xml"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/Phar/PHPUnit10/phpunit.xml"
 
       - name: "Run phar tests with phpunit/phpunit:11.0.0"
         if: "matrix.phpunit-version == '11.0.0'"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/Phar/Version11/phpunit.xml"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/Phar/PHPUnit11/phpunit.xml"
 
       - name: "Run phar tests with phpunit/phpunit:12.0.0"
         if: "matrix.phpunit-version == '12.0.0'"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/Phar/Version12/phpunit.xml"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/Phar/PHPUnit12/phpunit.xml"
 
       - name: "Run phar tests with phpunit/phpunit:13.0.0"
         if: "matrix.phpunit-version == '13.0.0'"
-        run: "vendor/bin/phpunit --colors=always --configuration=test/Phar/Version13/phpunit.xml"
+        run: "vendor/bin/phpunit --colors=always --configuration=test/Phar/PHPUnit13/phpunit.xml"
