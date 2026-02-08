@@ -11,13 +11,13 @@ if [ -z "${PHPUNIT_VERSION}" ]; then
 fi
 
 case "${PHPUNIT_VERSION}" in
-    7.5.0)  DIRECTORY="Version07" ;;
-    8.5.19) DIRECTORY="Version08" ;;
-    9.0.0)  DIRECTORY="Version09" ;;
-    10.0.0) DIRECTORY="Version10" ;;
-    11.0.0) DIRECTORY="Version11" ;;
-    12.0.0) DIRECTORY="Version12" ;;
-    13.0.0) DIRECTORY="Version13" ;;
+    7.5.0)  DIRECTORY="PHPUnit07" ;;
+    8.5.19) DIRECTORY="PHPUnit08" ;;
+    9.0.0)  DIRECTORY="PHPUnit09" ;;
+    10.0.0) DIRECTORY="PHPUnit10" ;;
+    11.0.0) DIRECTORY="PHPUnit11" ;;
+    12.0.0) DIRECTORY="PHPUnit12" ;;
+    13.0.0) DIRECTORY="PHPUnit13" ;;
     *)
         echo "Unknown PHPUnit version: ${PHPUNIT_VERSION}"
         exit 1
