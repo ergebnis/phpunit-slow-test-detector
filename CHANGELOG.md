@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.22.0...main`][2.22.0...main].
 
+### Fixed
+
+- Started sending output to `stderr` when PHPUnit is configured with `stderr="true"` in `phpunit.xml` for `phpunit/phpunit:^10.0.0`, `phpunit/phpunit:^11.0.0`, `phpunit/phpunit:^12.0.0`, `phpunit/phpunit:^13.0.0` ([#762]), by [@localheinz]
+
 ## [`2.22.0`][2.22.0]
 
 For a full diff see [`2.21.0...2.22.0`][2.21.0...2.22.0].
@@ -455,6 +459,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#713]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/713
 [#754]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/754
 [#757]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/757
+[#762]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/762
 
 [@courtney-miles]: https://github.com/courtney-miles
 [@dantleech]: https://github.com/dantleech

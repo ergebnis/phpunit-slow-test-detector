@@ -448,6 +448,18 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
                 $maximumCount
             );
 
+            $output = \fopen(
+                'php://stdout',
+                'wb'
+            );
+
+            if ($configuration->outputToStandardErrorStream()) {
+                $output = \fopen(
+                    'php://stderr',
+                    'wb'
+                );
+            }
+
             $facade->registerSubscribers(
                 new Subscriber\Test\PreparationStartedSubscriber($timeKeeper),
                 new Subscriber\Test\FinishedSubscriber(
@@ -458,7 +470,8 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
                 ),
                 new Subscriber\TestRunner\ExecutionFinishedSubscriber(
                     $collector,
-                    $reporter
+                    $reporter,
+                    $output
                 )
             );
         }

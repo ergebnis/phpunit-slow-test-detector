@@ -32,12 +32,22 @@ final class ExecutionFinishedSubscriber implements Event\TestRunner\ExecutionFin
      */
     private $reporter;
 
+    /**
+     * @var resource
+     */
+    private $output;
+
+    /**
+     * @param resource $output
+     */
     public function __construct(
         Collector\Collector $collector,
-        Reporter\Reporter $reporter
+        Reporter\Reporter $reporter,
+        $output
     ) {
         $this->collector = $collector;
         $this->reporter = $reporter;
+        $this->output = $output;
     }
 
     /**
@@ -57,6 +67,9 @@ final class ExecutionFinishedSubscriber implements Event\TestRunner\ExecutionFin
             return;
         }
 
-        echo $report;
+        \fwrite(
+            $this->output,
+            $report
+        );
     }
 }
