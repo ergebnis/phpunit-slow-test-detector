@@ -13,6 +13,41 @@
 
 This project provides a [`composer`](https://getcomposer.org) package and a [Phar archive](https://www.php.net/manual/en/book.phar.php) with an extension for detecting slow tests in [`phpunit/phpunit`](https://github.com/sebastianbergmann/phpunit).
 
+## Example
+
+After installing, configuring, and bootstrapping the extension, when running your tests with `phpunit/phpunit`, the extension will report slow tests:
+
+```console
+PHPUnit 10.0.0 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.1.0
+Configuration: test/EndToEnd/Default/phpunit.xml
+Random Seed:   1676103726
+
+.............                                                                                                                                                                                                                                                                                                   13 / 13 (100%)
+
+Detected 11 tests where the duration exceeded the global maximum duration (00:00.500).
+
+ 1. 00:01.604 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#9
+ 2. 00:01.505 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#8
+ 3. 00:01.403 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#7
+ 4. 00:01.303 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#6
+ 5. 00:01.205 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#5
+ 6. 00:01.103 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#4
+ 7. 00:01.005 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#3
+ 8. 00:00.905 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#2
+ 9. 00:00.805 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#1
+10. 00:00.705 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#0
+
+There is 1 additional slow test that is not listed here.
+
+Time: 00:12.601, Memory: 8.00 MB
+
+OK (13 tests, 13 assertions)
+```
+
+## Compatibility
+
 The extension is compatible with the following versions of `phpunit/phpunit`:
 
 - [`phpunit/phpunit:^13.0.0`](https://github.com/sebastianbergmann/phpunit/tree/13.0.0)
@@ -396,45 +431,6 @@ final class ExtraSlowTest extends Framework\TestCase
 > [!NOTE]
 >
 > Support for the `@slowThreshold` annotation exists only to help you move from [`johnkary/phpunit-speedtrap`](https://github.com/johnkary/phpunit-speedtrap). It will be deprecated and removed in the near future.
-
-### Running tests
-
-When you have bootstrapped the extension, you can run your tests as usually:
-
-```sh
-vendor/bin/phpunit
-```
-
-When the extension has detected slow tests, it will report them:
-
-```console
-PHPUnit 10.0.0 by Sebastian Bergmann and contributors.
-
-Runtime:       PHP 8.1.0
-Configuration: test/EndToEnd/Default/phpunit.xml
-Random Seed:   1676103726
-
-.............                                                                                                                                                                                                                                                                                                   13 / 13 (100%)
-
-Detected 11 tests where the duration exceeded the global maximum duration (00:00.500).
-
- 1. 00:01.604 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#9
- 2. 00:01.505 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#8
- 3. 00:01.403 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#7
- 4. 00:01.303 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#6
- 5. 00:01.205 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#5
- 6. 00:01.103 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#4
- 7. 00:01.005 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#3
- 8. 00:00.905 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#2
- 9. 00:00.805 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#1
-10. 00:00.705 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\Default\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider#0
-
-There is 1 additional slow test that is not listed here.
-
-Time: 00:12.601, Memory: 8.00 MB
-
-OK (13 tests, 13 assertions)
-```
 
 ### Understanding measured test durations
 
