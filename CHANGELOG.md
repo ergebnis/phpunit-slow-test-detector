@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.22.1...main`][2.22.1...main].
 
+### Fixed
+
+- Excluded `.docker/` directory from archive exports via `.gitattributes` ([#765]), by [@localheinz]
+
 ## [`2.22.1`][2.22.1]
 
 For a full diff see [`2.22.0...2.22.1`][2.22.0...2.22.1].
@@ -466,6 +470,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#754]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/754
 [#757]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/757
 [#762]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/762
+[#765]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/765
 
 [@courtney-miles]: https://github.com/courtney-miles
 [@dantleech]: https://github.com/dantleech
