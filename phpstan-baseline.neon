@@ -356,6 +356,16 @@ parameters:
 			path: test/Unit/Reporter/DefaultReporterTest.php
 
 		-
+			message: "#^Binary operation \"\\+\" between Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Duration and 1 results in an error\\.$#"
+			count: 1
+			path: test/Unit/SlowTestListTest.php
+
+		-
+			message: "#^Binary operation \"\\-\" between Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Duration and 1 results in an error\\.$#"
+			count: 1
+			path: test/Unit/SlowTestListTest.php
+
+		-
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\SlowTestListTest\\:\\:testCountReturnsCountOfSlowTests\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/SlowTestListTest.php
@@ -392,6 +402,16 @@ parameters:
 
 		-
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\SlowTestListTest\\:\\:testLimitToReturnsSlowTestListLimitedToMaximumCountWhenSlowTestListHasMoreSlowTests\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/SlowTestListTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\SlowTestListTest\\:\\:testSlowTestWithMaximumDurationDifferentFromReturnsFalseWhenAllSlowTestsHaveGlobalMaximumDuration\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/SlowTestListTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\SlowTestListTest\\:\\:testSlowTestWithMaximumDurationDifferentFromReturnsTrueWhenAtLeastOneSlowTestHasCustomMaximumDuration\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/SlowTestListTest.php
 
