@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Count;
-use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
@@ -80,18 +79,13 @@ final class DefaultReporter implements Reporter
 
         $globalMaximumDuration = $this->maximumDuration->toDuration();
 
-        $hasCustomMaximumDuration = self::hasCustomMaximumDuration(
-            $slowTestListThatWillBeReported,
-            $globalMaximumDuration
-        );
-
         $formattedGlobalMaximumDuration = $this->durationFormatter->format($globalMaximumDuration);
 
         yield '';
 
         yield '';
 
-        if ($hasCustomMaximumDuration) {
+        if ($slowTestListThatWillBeReported->hasSlowTestWithMaximumDurationDifferentFrom($globalMaximumDuration)) {
             yield \sprintf(
                 'Detected %d %s where the duration exceeded a custom or the global maximum duration (%s).',
                 $slowTestCount->toInt(),
@@ -204,20 +198,5 @@ final class DefaultReporter implements Reporter
         }
 
         yield '';
-    }
-
-    private static function hasCustomMaximumDuration(
-        SlowTestList $slowTestList,
-        Duration $globalMaximumDuration
-    ): bool {
-        foreach ($slowTestList->toArray() as $slowTest) {
-            $slowTestMaximumDuration = $slowTest->maximumDuration()->toDuration();
-
-            if (!$slowTestMaximumDuration->equals($globalMaximumDuration)) {
-                return true;
-            }
-        }
-
-        return false;
     }
 }

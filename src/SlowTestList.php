@@ -98,6 +98,19 @@ final class SlowTestList
         return self::create(...$slowTests);
     }
 
+    public function hasSlowTestWithMaximumDurationDifferentFrom(Duration $duration): bool
+    {
+        foreach ($this->slowTests as $slowTest) {
+            $slowTestMaximumDuration = $slowTest->maximumDuration()->toDuration();
+
+            if (!$slowTestMaximumDuration->equals($duration)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     /**
      * @return list<SlowTest>
      */

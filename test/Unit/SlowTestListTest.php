@@ -195,6 +195,55 @@ final class SlowTestListTest extends Framework\TestCase
         self::assertEquals($expected, $limitedToMaximumCount->toArray());
     }
 
+    public function testSlowTestWithMaximumDurationDifferentFromReturnsFalseWhenAllSlowTestsHaveGlobalMaximumDuration()
+    {
+        $faker = self::faker();
+
+        $globalMaximumDuration = Duration::fromMilliseconds($faker->numberBetween(0));
+
+        $slowTests = \array_map(static function () use ($faker, $globalMaximumDuration): SlowTest {
+            return SlowTest::create(
+                TestIdentifier::fromString($faker->word()),
+                TestDescription::fromString($faker->word()),
+                Duration::fromMilliseconds($faker->numberBetween(0)),
+                MaximumDuration::fromDuration($globalMaximumDuration)
+            );
+        }, \range(1, $faker->numberBetween(1, 10)));
+
+        $slowTestList = SlowTestList::create(...$slowTests);
+
+        self::assertFalse($slowTestList->hasSlowTestWithMaximumDurationDifferentFrom($globalMaximumDuration));
+    }
+
+    public function testSlowTestWithMaximumDurationDifferentFromReturnsTrueWhenAtLeastOneSlowTestHasCustomMaximumDuration()
+    {
+        $faker = self::faker();
+
+        $globalMaximumDuration = Duration::fromMilliseconds($faker->numberBetween(0));
+
+        $slowTests = \array_map(static function () use ($faker, $globalMaximumDuration): SlowTest {
+            if ($faker->boolean()) {
+                return SlowTest::create(
+                    TestIdentifier::fromString($faker->word()),
+                    TestDescription::fromString($faker->word()),
+                    Duration::fromMilliseconds($faker->numberBetween(0)),
+                    MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween($globalMaximumDuration + 1)))
+                );
+            }
+
+            return SlowTest::create(
+                TestIdentifier::fromString($faker->word()),
+                TestDescription::fromString($faker->word()),
+                Duration::fromMilliseconds($faker->numberBetween(0)),
+                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0, $globalMaximumDuration - 1)))
+            );
+        }, \range(1, $faker->numberBetween(1, 10)));
+
+        $slowTestList = SlowTestList::create(...$slowTests);
+
+        self::assertTrue($slowTestList->hasSlowTestWithMaximumDurationDifferentFrom($globalMaximumDuration));
+    }
+
     public function testSortByDurationDescendingReturnsSlowTestListWhereSlowTestsAreSortedByDurationDescending()
     {
         $faker = self::faker();
