@@ -310,4 +310,32 @@ final class SlowTestListTest extends Framework\TestCase
 
         self::assertEquals($expected, $sortedByMaximumDurationDescending->toArray());
     }
+
+    public function testSortByLengthOfTestDescriptionDescendingReturnsSlowTestListWhereSlowTestsAreSortedByLengthOfTestDescriptionDescending(): void
+    {
+        $faker = self::faker();
+
+        $slowTests = \array_map(static function () use ($faker): SlowTest {
+            return SlowTest::create(
+                TestIdentifier::fromString($faker->word()),
+                TestDescription::fromString($faker->sentence()),
+                Duration::fromMilliseconds($faker->numberBetween(0)),
+                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)))
+            );
+        }, \range(1, $faker->numberBetween(1, 10)));
+
+        $slowTestList = SlowTestList::create(...$slowTests);
+
+        $sortedByLengthOfTestDescriptionDescending = $slowTestList->sortByLengthOfTestDescriptionDescending();
+
+        self::assertNotSame($slowTestList, $sortedByLengthOfTestDescriptionDescending);
+
+        $expected = $slowTests;
+
+        \usort($expected, static function (SlowTest $one, SlowTest $two): int {
+            return \strlen($two->testDescription()->toString()) <=> \strlen($one->testDescription()->toString());
+        });
+
+        self::assertEquals($expected, $sortedByLengthOfTestDescriptionDescending->toArray());
+    }
 }

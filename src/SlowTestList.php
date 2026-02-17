@@ -98,6 +98,17 @@ final class SlowTestList
         return self::create(...$slowTests);
     }
 
+    public function sortByLengthOfTestDescriptionDescending(): self
+    {
+        $slowTests = $this->slowTests;
+
+        \usort($slowTests, static function (SlowTest $one, SlowTest $two): int {
+            return \strlen($two->testDescription()->toString()) <=> \strlen($one->testDescription()->toString());
+        });
+
+        return self::create(...$slowTests);
+    }
+
     public function hasSlowTestWithMaximumDurationDifferentFrom(Duration $duration): bool
     {
         foreach ($this->slowTests as $slowTest) {
