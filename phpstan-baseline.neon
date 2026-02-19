@@ -101,16 +101,6 @@ parameters:
 			path: test/Unit/Comparator/DurationComparatorTest.php
 
 		-
-			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Console\\\\ColorTest\\:\\:testDimReturnsDimmedStringWhenItIsNotWhitespaceOnly\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: test/Unit/Console/ColorTest.php
-
-		-
-			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Console\\\\ColorTest\\:\\:testDimReturnsOriginalStringWhenItIsWhitespaceOnly\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: test/Unit/Console/ColorTest.php
-
-		-
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\CountTest\\:\\:testEqualsReturnsFalseWhenValueIsDifferent\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/CountTest.php
@@ -339,6 +329,16 @@ parameters:
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\PhaseTest\\:\\:testCreateReturnsPhase\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/PhaseTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\ColorTest\\:\\:testDimReturnsDimmedStringWhenItIsNotWhitespaceOnly\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Reporter/ColorTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\ColorTest\\:\\:testDimReturnsOriginalStringWhenItIsWhitespaceOnly\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Reporter/ColorTest.php
 
 		-
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\DefaultReporterTest\\:\\:testReportReturnsEmptyStringWhenSlowTestListIsEmpty\\(\\) has no return type specified\\.$#"

@@ -11,14 +11,14 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Console;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Reporter;
 
-use Ergebnis\PHPUnit\SlowTestDetector\Console;
+use Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
 /**
- * @covers \Ergebnis\PHPUnit\SlowTestDetector\Console\Color
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Color
  */
 final class ColorTest extends Framework\TestCase
 {
@@ -30,7 +30,7 @@ final class ColorTest extends Framework\TestCase
      */
     public function testDimReturnsOriginalStringWhenItIsWhitespaceOnly(string $output)
     {
-        self::assertSame($output, Console\Color::dim($output));
+        self::assertSame($output, Reporter\Color::dim($output));
     }
 
     public function testDimReturnsDimmedStringWhenItIsNotWhitespaceOnly()
@@ -42,6 +42,6 @@ final class ColorTest extends Framework\TestCase
             $output
         );
 
-        self::assertSame($expected, Console\Color::dim($output));
+        self::assertSame($expected, Reporter\Color::dim($output));
     }
 }
