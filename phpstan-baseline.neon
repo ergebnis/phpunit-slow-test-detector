@@ -296,11 +296,6 @@ parameters:
 			path: test/Unit/Exception/SlowTestListIsEmptyTest.php
 
 		-
-			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Formatter\\\\DefaultDurationFormatterTest\\:\\:testFormatFormats\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: test/Unit/Formatter/DefaultDurationFormatterTest.php
-
-		-
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\MaximumCountTest\\:\\:testDefaultReturnsMaximumCount\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/MaximumCountTest.php
@@ -354,6 +349,11 @@ parameters:
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\DefaultReporterTest\\:\\:testReportReturnsReportWhenSlowTestListHasFewerSlowTestsThanMaximumCount\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/Reporter/DefaultReporterTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\Formatter\\\\DefaultDurationFormatterTest\\:\\:testFormatFormats\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Reporter/Formatter/DefaultDurationFormatterTest.php
 
 		-
 			message: "#^Binary operation \"\\+\" between Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Duration and 1 results in an error\\.$#"

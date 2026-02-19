@@ -11,14 +11,14 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Formatter;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Reporter\Formatter;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
-use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
+use Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 use PHPUnit\Framework;
 
 /**
- * @covers \Ergebnis\PHPUnit\SlowTestDetector\Formatter\DefaultDurationFormatter
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Formatter\DefaultDurationFormatter
  *
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
  */
@@ -31,7 +31,7 @@ final class DefaultDurationFormatterTest extends Framework\TestCase
         Duration $duration,
         string $formattedDuration
     ) {
-        $formatter = new Formatter\DefaultDurationFormatter();
+        $formatter = new Reporter\Formatter\DefaultDurationFormatter();
 
         self::assertSame($formattedDuration, $formatter->format($duration));
     }

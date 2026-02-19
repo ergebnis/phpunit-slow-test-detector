@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Count;
-use Ergebnis\PHPUnit\SlowTestDetector\Formatter;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
