@@ -219,15 +219,16 @@ final class SlowTestListTest extends Framework\TestCase
     {
         $faker = self::faker();
 
-        $globalMaximumDuration = Duration::fromMilliseconds($faker->numberBetween(0));
+        $globalMaximumDurationInMilliseconds = $faker->numberBetween(1);
+        $globalMaximumDuration = Duration::fromMilliseconds($globalMaximumDurationInMilliseconds);
 
-        $slowTests = \array_map(static function () use ($faker, $globalMaximumDuration): SlowTest {
+        $slowTests = \array_map(static function () use ($faker, $globalMaximumDurationInMilliseconds): SlowTest {
             if ($faker->boolean()) {
                 return SlowTest::create(
                     TestIdentifier::fromString($faker->word()),
                     TestDescription::fromString($faker->word()),
                     Duration::fromMilliseconds($faker->numberBetween(0)),
-                    MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween($globalMaximumDuration + 1)))
+                    MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween($globalMaximumDurationInMilliseconds + 1)))
                 );
             }
 
@@ -235,7 +236,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestIdentifier::fromString($faker->word()),
                 TestDescription::fromString($faker->word()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
-                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0, $globalMaximumDuration - 1)))
+                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0, $globalMaximumDurationInMilliseconds - 1)))
             );
         }, \range(1, $faker->numberBetween(1, 10)));
 
