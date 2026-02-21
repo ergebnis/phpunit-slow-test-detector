@@ -62,7 +62,7 @@ final class DefaultReporter implements Reporter
     }
 
     /**
-     * @return \Generator<string>
+     * @return \Generator<int, string>
      */
     private function lines(SlowTestList $slowTestList): \Generator
     {
