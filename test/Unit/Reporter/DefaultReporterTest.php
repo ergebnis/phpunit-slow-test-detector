@@ -86,9 +86,10 @@ final class DefaultReporterTest extends Framework\TestCase
     public static function provideExpectedReportMaximumDurationMaximumCountAndSlowTestList(): iterable
     {
         $print = static function (array $lines): string {
-            return \implode('', \array_map(static function (string $line): string {
-                return $line . "\n";
-            }, $lines));
+            return \implode(
+                "\n",
+                $lines
+            );
         };
 
         $values = [
@@ -102,7 +103,6 @@ final class DefaultReporterTest extends Framework\TestCase
                     '-------------------------',
                     '1 00:00.300 FooTest::test',
                     '-------------------------',
-                    '',
                 ]),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                 MaximumCount::fromCount(Count::fromInt(1)),
@@ -126,7 +126,6 @@ final class DefaultReporterTest extends Framework\TestCase
                     '-----------------------------------',
                     '1 00:00.300 00:00.200 FooTest::test',
                     '-----------------------------------',
-                    '',
                 ]),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                 MaximumCount::fromCount(Count::fromInt(1)),
@@ -150,7 +149,6 @@ final class DefaultReporterTest extends Framework\TestCase
                     '1 00:00.300 FooTest::test',
                     '2 00:00.275 BarTest::test',
                     '-------------------------',
-                    '',
                 ]),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                 MaximumCount::fromCount(Count::fromInt(2)),
@@ -181,7 +179,6 @@ final class DefaultReporterTest extends Framework\TestCase
                     '1 00:00.300 00:00.200 FooTest::test',
                     '2 00:00.275           BarTest::test',
                     '-----------------------------------',
-                    '',
                 ]),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                 MaximumCount::fromCount(Count::fromInt(2)),
@@ -212,7 +209,6 @@ final class DefaultReporterTest extends Framework\TestCase
                     '2 00:00.275 BarTest::test',
                     '3 00:00.250 BazTest::test',
                     '-------------------------',
-                    '',
                 ]),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                 MaximumCount::fromCount(Count::fromInt(3)),
@@ -249,7 +245,6 @@ final class DefaultReporterTest extends Framework\TestCase
                     '2 00:00.275 BarTest::test',
                     '3 00:00.250 BazTest::test',
                     '-------------------------',
-                    '',
                 ]),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                 MaximumCount::fromCount(Count::fromInt(3)),
@@ -294,7 +289,6 @@ final class DefaultReporterTest extends Framework\TestCase
                     ' 9 00:00.120           WaldoTest::test',
                     '10 00:00.110           FredTest::test',
                     '---------------------------------------',
-                    '',
                 ]),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                 MaximumCount::fromCount(Count::fromInt(10)),
@@ -373,7 +367,6 @@ final class DefaultReporterTest extends Framework\TestCase
                     '-------------------------',
                     '',
                     'There is 1 additional slow test that is not listed here.',
-                    '',
                 ]),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                 MaximumCount::fromCount(Count::fromInt(1)),
@@ -404,7 +397,6 @@ final class DefaultReporterTest extends Framework\TestCase
                     '-------------------------',
                     '',
                     'There are 2 additional slow tests that are not listed here.',
-                    '',
                 ]),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                 MaximumCount::fromCount(Count::fromInt(1)),

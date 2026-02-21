@@ -26,4 +26,5 @@ Detected 2 tests where the duration exceeded a custom or the global maximum dura
 2 00:00.2%s           Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit07\TestMethod\WithSlowThresholdAnnotation\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidSlowThresholdAnnotation
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Time: %s
 %a
