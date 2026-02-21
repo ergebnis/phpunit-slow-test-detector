@@ -59,9 +59,10 @@ final class DefaultReporter implements Reporter
             return '';
         }
 
-        return \implode('', \array_map(static function (string $line): string {
-            return $line . "\n";
-        }, $lines));
+        return \implode(
+            "\n",
+            $lines
+        );
     }
 
     /**
@@ -177,8 +178,6 @@ final class DefaultReporter implements Reporter
 
         yield $separator;
 
-        yield '';
-
         yield from $this->footer($slowTestCount);
     }
 
@@ -246,8 +245,6 @@ final class DefaultReporter implements Reporter
 
         yield $separator;
 
-        yield '';
-
         yield from $this->footer($slowTestCount);
     }
 
@@ -265,6 +262,8 @@ final class DefaultReporter implements Reporter
             return;
         }
 
+        yield '';
+
         if ($additionalSlowTestCount->equals(Count::fromInt(1))) {
             yield 'There is 1 additional slow test that is not listed here.';
         } else {
@@ -273,7 +272,5 @@ final class DefaultReporter implements Reporter
                 $additionalSlowTestCount->toInt()
             );
         }
-
-        yield '';
     }
 }

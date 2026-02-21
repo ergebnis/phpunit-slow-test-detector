@@ -17,4 +17,5 @@ PHPUnit\TextUI\Command::main();
 
 W                                                                   1 / 1 (100%)
 
+Time: %s
 %a
