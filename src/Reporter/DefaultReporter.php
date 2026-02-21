@@ -116,49 +116,61 @@ final class DefaultReporter implements Reporter
 
         $slowTestWithLongestActualDuration = $slowTestListThatWillBeReported->first();
         $slowTestWithLongestMaximumDuration = $slowTestListThatWillBeReported->sortByMaximumDurationDescending()->first();
+        $slowTestWithLongestTestDescription = $slowTestListThatWillBeReported->sortByLengthOfTestDescriptionDescending()->first();
 
         $numberColumnWidth = \strlen((string) $slowTestListThatWillBeReported->count()->toInt());
         $actualDurationColumnWidth = \strlen($this->durationFormatter->format($slowTestWithLongestActualDuration->duration()));
         $maximumDurationColumnWidth = \strlen($this->durationFormatter->format($slowTestWithLongestMaximumDuration->maximumDuration()->toDuration()));
+        $testDescriptionColumnWidth = \strlen($slowTestWithLongestTestDescription->testDescription()->toString());
 
-        $rowTemplateWithCustomMaximumDuration = \sprintf(
-            '%%%dd. %%%ds (%%%ds) %%s',
+        $headerTemplate = \sprintf(
+            '%%%ds %%-%ds %%s',
+            $numberColumnWidth,
+            $actualDurationColumnWidth + 1 + $maximumDurationColumnWidth
+        );
+
+        yield \sprintf(
+            $headerTemplate,
+            '#',
+            'Duration',
+            'Test'
+        );
+
+        $subHeaderTemplate = \sprintf(
+            '%%%ds %%-%ds %%s',
+            $numberColumnWidth,
+            $actualDurationColumnWidth
+        );
+
+        yield \sprintf(
+            $subHeaderTemplate,
+            '',
+            'Actual',
+            'Maximum'
+        );
+
+        yield \str_repeat(
+            '-',
+            $numberColumnWidth + 1 + $actualDurationColumnWidth + 1 + $maximumDurationColumnWidth + 1 + $testDescriptionColumnWidth
+        );
+
+        $rowTemplate = \sprintf(
+            '%%%dd %%%ds %%%ds %%s',
             $numberColumnWidth,
             $actualDurationColumnWidth,
             $maximumDurationColumnWidth
         );
 
-        $maximumDurationPadding = \str_repeat(
-            ' ',
-            $maximumDurationColumnWidth + 3
-        );
-
-        $rowTemplateWithGlobalMaximumDuration = \sprintf(
-            '%%%dd. %%%ds %%s%%s',
-            $numberColumnWidth,
-            $actualDurationColumnWidth
-        );
-
         foreach ($slowTestListThatWillBeReported->toArray() as $i => $slowTest) {
             $slowTestMaximumDuration = $slowTest->maximumDuration()->toDuration();
 
-            if (!$slowTestMaximumDuration->equals($this->maximumDuration->toDuration())) {
-                yield \sprintf(
-                    $rowTemplateWithCustomMaximumDuration,
-                    $i + 1,
-                    $this->durationFormatter->format($slowTest->duration()),
-                    $this->durationFormatter->format($slowTestMaximumDuration),
-                    $slowTest->testDescription()->toString()
-                );
-            } else {
-                yield \sprintf(
-                    $rowTemplateWithGlobalMaximumDuration,
-                    $i + 1,
-                    $this->durationFormatter->format($slowTest->duration()),
-                    $maximumDurationPadding,
-                    $slowTest->testDescription()->toString()
-                );
-            }
+            yield \sprintf(
+                $rowTemplate,
+                $i + 1,
+                $this->durationFormatter->format($slowTest->duration()),
+                $slowTestMaximumDuration->equals($this->maximumDuration->toDuration()) ? '' : $this->durationFormatter->format($slowTestMaximumDuration),
+                $slowTest->testDescription()->toString()
+            );
         }
 
         yield '';
@@ -187,19 +199,39 @@ final class DefaultReporter implements Reporter
         yield '';
 
         $slowTestWithLongestDuration = $slowTestListThatWillBeReported->first();
+        $slowTestWithLongestTestDescription = $slowTestListThatWillBeReported->sortByLengthOfTestDescriptionDescending()->first();
 
         $numberColumnWidth = \strlen((string) $slowTestListThatWillBeReported->count()->toInt());
         $durationColumnWidth = \strlen($this->durationFormatter->format($slowTestWithLongestDuration->duration()));
+        $testDescriptionColumnWidth = \strlen($slowTestWithLongestTestDescription->testDescription()->toString());
 
-        $template = \sprintf(
-            '%%%dd. %%%ds %%s',
+        $headerTemplate = \sprintf(
+            '%%%ds %%-%ds %%s',
+            $numberColumnWidth,
+            $durationColumnWidth
+        );
+
+        yield \sprintf(
+            $headerTemplate,
+            '#',
+            'Duration',
+            'Test'
+        );
+
+        yield \str_repeat(
+            '-',
+            $numberColumnWidth + 1 + $durationColumnWidth + 1 + $testDescriptionColumnWidth
+        );
+
+        $rowTemplate = \sprintf(
+            '%%%dd %%%ds %%s',
             $numberColumnWidth,
             $durationColumnWidth
         );
 
         foreach ($slowTestListThatWillBeReported->toArray() as $i => $slowTest) {
             yield \sprintf(
-                $template,
+                $rowTemplate,
                 $i + 1,
                 $this->durationFormatter->format($slowTest->duration()),
                 $slowTest->testDescription()->toString()

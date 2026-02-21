@@ -19,6 +19,9 @@ PHPUnit\TextUI\Command::main();
 
 Detected 1 test where the duration exceeded a custom or the global maximum duration (00:00.100).
 
-1. 00:00.3%s (00:00.200) Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit08\TestMethod\WithSlowThresholdAndMaximumDurationAnnotations\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasMaximumDurationAndSlowThresholdAnnotations
+# Duration            Test
+  Actual    Maximum
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1 00:00.3%s 00:00.200 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit08\TestMethod\WithSlowThresholdAndMaximumDurationAnnotations\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasMaximumDurationAndSlowThresholdAnnotations
 
 %a

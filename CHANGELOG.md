@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.22.2...main`][2.22.2...main].
 
+### Changed
+
+- Added table headers to slow test report output ([#768]), by [@localheinz]
+
 ## [`2.22.2`][2.22.2]
 
 For a full diff see [`2.22.1...2.22.2`][2.22.1...2.22.2].
@@ -477,6 +481,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#757]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/757
 [#762]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/762
 [#765]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/765
+[#768]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/768
 
 [@courtney-miles]: https://github.com/courtney-miles
 [@dantleech]: https://github.com/dantleech
