@@ -30,9 +30,42 @@ final class SleeperTest extends Framework\TestCase
         self::assertSame($milliseconds, $sleeper->milliseconds());
     }
 
-    public function testSleeperSleepsJustAboveDefaultMaximumDuration(): void
+    public function testSleeperSleepsSeventyFiveMilliseconds(): void
     {
-        $milliseconds = 600;
+        $milliseconds = 75;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    public function testSleeperSleepsOneHundredMilliseconds(): void
+    {
+        $milliseconds = 100;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    public function testSleeperSleepsOneHundredAndTwentyFiveMilliseconds(): void
+    {
+        $milliseconds = 125;
+
+        $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
+
+        $sleeper->sleep();
+
+        self::assertSame($milliseconds, $sleeper->milliseconds());
+    }
+
+    public function testSleeperSleepsOneHundredAndFiftyMilliseconds(): void
+    {
+        $milliseconds = 150;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
