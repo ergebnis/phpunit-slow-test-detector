@@ -33,6 +33,7 @@ Detected 11 tests where the duration exceeded the global maximum duration (00:00
  8 00:00.9%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit10\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider with data set #3 (900)
  9 00:00.8%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit10\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider with data set #2 (800)
 10 00:00.7%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit10\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider with data set #1 (700)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 There is 1 additional slow test that is not listed here.
 

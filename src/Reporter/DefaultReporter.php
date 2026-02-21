@@ -149,10 +149,12 @@ final class DefaultReporter implements Reporter
             'Maximum'
         );
 
-        yield \str_repeat(
+        $separator = \str_repeat(
             '-',
             $numberColumnWidth + 1 + $actualDurationColumnWidth + 1 + $maximumDurationColumnWidth + 1 + $testDescriptionColumnWidth
         );
+
+        yield $separator;
 
         $rowTemplate = \sprintf(
             '%%%dd %%%ds %%%ds %%s',
@@ -172,6 +174,8 @@ final class DefaultReporter implements Reporter
                 $slowTest->testDescription()->toString()
             );
         }
+
+        yield $separator;
 
         yield '';
 
@@ -218,10 +222,12 @@ final class DefaultReporter implements Reporter
             'Test'
         );
 
-        yield \str_repeat(
+        $separator = \str_repeat(
             '-',
             $numberColumnWidth + 1 + $durationColumnWidth + 1 + $testDescriptionColumnWidth
         );
+
+        yield $separator;
 
         $rowTemplate = \sprintf(
             '%%%dd %%%ds %%s',
@@ -237,6 +243,8 @@ final class DefaultReporter implements Reporter
                 $slowTest->testDescription()->toString()
             );
         }
+
+        yield $separator;
 
         yield '';
 
