@@ -356,16 +356,6 @@ parameters:
 			path: test/Unit/Reporter/Formatter/DefaultDurationFormatterTest.php
 
 		-
-			message: "#^Binary operation \"\\+\" between Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Duration and 1 results in an error\\.$#"
-			count: 1
-			path: test/Unit/SlowTestListTest.php
-
-		-
-			message: "#^Binary operation \"\\-\" between Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Duration and 1 results in an error\\.$#"
-			count: 1
-			path: test/Unit/SlowTestListTest.php
-
-		-
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\SlowTestListTest\\:\\:testCountReturnsCountOfSlowTests\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/SlowTestListTest.php
