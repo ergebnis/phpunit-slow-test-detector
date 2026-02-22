@@ -47,9 +47,9 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
         private $collector;
 
         /**
-         * @var Reporter\Reporter
+         * @var list<Reporter\Reporter>
          */
-        private $reporter;
+        private $reporters;
 
         public function __construct(array $options = [])
         {
@@ -65,13 +65,28 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
                 $maximumDuration = MaximumDuration::fromDuration(Duration::fromMilliseconds((int) $options['maximum-duration']));
             }
 
+            $durationFormatter = new Reporter\Formatter\DefaultDurationFormatter();
+
             $this->maximumDuration = $maximumDuration;
             $this->collector = new Collector\DefaultCollector();
-            $this->reporter = new Reporter\ConsoleReporter(
-                new Reporter\Formatter\DefaultDurationFormatter(),
-                $maximumDuration,
-                $maximumCount
-            );
+
+            $reporters = [
+                new Reporter\ConsoleReporter(
+                    $durationFormatter,
+                    $maximumDuration,
+                    $maximumCount
+                ),
+            ];
+
+            if (Environment::isGitHubActions()) {
+                $reporters[] = new Reporter\GitHubReporter(
+                    $durationFormatter,
+                    $maximumDuration,
+                    $maximumCount
+                );
+            }
+
+            $this->reporters = $reporters;
         }
 
         public function addError(
@@ -135,13 +150,15 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
                 return;
             }
 
-            $report = $this->reporter->report($slowTestList);
+            foreach ($this->reporters as $reporter) {
+                $report = $reporter->report($slowTestList);
 
-            if ('' === $report) {
-                return;
+                if ('' === $report) {
+                    continue;
+                }
+
+                echo $report;
             }
-
-            echo $report;
         }
 
         public function startTest(Framework\Test $test)
@@ -251,9 +268,9 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
         private $collector;
 
         /**
-         * @var Reporter\Reporter
+         * @var list<Reporter\Reporter>
          */
-        private $reporter;
+        private $reporters;
 
         public function __construct(array $options = [])
         {
@@ -269,13 +286,28 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
                 $maximumDuration = MaximumDuration::fromDuration(Duration::fromMilliseconds((int) $options['maximum-duration']));
             }
 
+            $durationFormatter = new Reporter\Formatter\DefaultDurationFormatter();
+
             $this->maximumDuration = $maximumDuration;
             $this->collector = new Collector\DefaultCollector();
-            $this->reporter = new Reporter\ConsoleReporter(
-                new Reporter\Formatter\DefaultDurationFormatter(),
-                $maximumDuration,
-                $maximumCount
-            );
+
+            $reporters = [
+                new Reporter\ConsoleReporter(
+                    $durationFormatter,
+                    $maximumDuration,
+                    $maximumCount
+                ),
+            ];
+
+            if (Environment::isGitHubActions()) {
+                $reporters[] = new Reporter\GitHubReporter(
+                    $durationFormatter,
+                    $maximumDuration,
+                    $maximumCount
+                );
+            }
+
+            $this->reporters = $reporters;
         }
 
         public function executeBeforeFirstTest(): void
@@ -337,13 +369,15 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
                 return;
             }
 
-            $report = $this->reporter->report($slowTestList);
+            foreach ($this->reporters as $reporter) {
+                $report = $reporter->report($slowTestList);
 
-            if ('' === $report) {
-                return;
+                if ('' === $report) {
+                    continue;
+                }
+
+                echo $report;
             }
-
-            echo $report;
         }
 
         private function resolveMaximumDuration(string $test): MaximumDuration
@@ -440,10 +474,12 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
                 $maximumDuration = MaximumDuration::fromDuration(Duration::fromMilliseconds((int) $parameters->get('maximum-duration')));
             }
 
+            $durationFormatter = new Reporter\Formatter\DefaultDurationFormatter();
+
             $timeKeeper = new TimeKeeper();
             $collector = new Collector\DefaultCollector();
-            $reporter = new Reporter\ConsoleReporter(
-                new Reporter\Formatter\DefaultDurationFormatter(),
+            $consoleReporter = new Reporter\ConsoleReporter(
+                $durationFormatter,
                 $maximumDuration,
                 $maximumCount
             );
@@ -460,7 +496,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
                 );
             }
 
-            $facade->registerSubscribers(
+            $subscribers = [
                 new Subscriber\Test\PreparationStartedSubscriber($timeKeeper),
                 new Subscriber\Test\FinishedSubscriber(
                     $maximumDuration,
@@ -470,10 +506,26 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
                 ),
                 new Subscriber\TestRunner\ExecutionFinishedSubscriber(
                     $collector,
-                    $reporter,
+                    $consoleReporter,
                     $output
-                )
-            );
+                ),
+            ];
+
+            if (Environment::isGitHubActions()) {
+                $gitHubActionsReporter = new Reporter\GitHubReporter(
+                    $durationFormatter,
+                    $maximumDuration,
+                    $maximumCount
+                );
+
+                $subscribers[] = new Subscriber\TestRunner\ExecutionFinishedSubscriber(
+                    $collector,
+                    $gitHubActionsReporter,
+                    $output
+                );
+            }
+
+            $facade->registerSubscribers(...$subscribers);
         }
     }
 
