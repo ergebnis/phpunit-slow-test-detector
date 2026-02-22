@@ -1,0 +1,40 @@
+--TEST--
+With a test case that sleeps in data provider, hook, and test methods and has test methods with RunInSeparateProcess attribute
+--FILE--
+<?php
+
+declare(strict_types=1);
+
+use PHPUnit\TextUI;
+
+$_SERVER['argv'][] = '--configuration=test/EndToEnd/PHPUnit10/Console/TestMethod/WithRunInSeparateProcessAttribute/phpunit.xml';
+
+/**
+ * @see https://github.com/sebastianbergmann/phpunit/blob/00:010.0.0/src/Framework/TestRunner.php#L288-L290
+ */
+define('PHPUNIT_COMPOSER_INSTALL', __DIR__ . '/../../../../../../vendor/autoload.php');
+
+require_once PHPUNIT_COMPOSER_INSTALL;
+
+$application = new TextUI\Application();
+
+$application->run($_SERVER['argv']);
+--EXPECTF--
+%a
+
+....                                                                4 / 4 (100%)
+
+Detected 4 tests where the duration exceeded the global maximum duration (0.100).
+
+# Duration Test
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1 %s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit10\Console\TestMethod\WithRunInSeparateProcessAttribute\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWhenMethodHasRunInSeparateProcessAttribute
+2 %s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit10\Console\TestMethod\WithRunInSeparateProcessAttribute\SleeperTest::testSleeperSleepsShorterThanMaximumDurationFromXmlConfigurationWhenMethodHasRunInSeparateProcessAttribute
+3 %s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit10\Console\TestMethod\WithRunInSeparateProcessAttribute\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfiguration
+4 %s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit10\Console\TestMethod\WithRunInSeparateProcessAttribute\SleeperTest::testSleeperSleepsShorterThanMaximumDurationFromXmlConfiguration
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+     0.000
+      └─── seconds
+
+Time: %s
+%a
