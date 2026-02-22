@@ -356,6 +356,51 @@ parameters:
 			path: test/Unit/Reporter/Formatter/DefaultDurationFormatterTest.php
 
 		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\Formatter\\\\UnitTest\\:\\:testEqualsReturnsFalseWhenUnitsAreNotEqual\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Reporter/Formatter/UnitTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\Formatter\\\\UnitTest\\:\\:testEqualsReturnsTrueWhenUnitsAreEqual\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Reporter/Formatter/UnitTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\Formatter\\\\UnitTest\\:\\:testFromDurationReturnsExpectedUnit\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Reporter/Formatter/UnitTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\Formatter\\\\UnitTest\\:\\:testFromDurationsReturnsLargestUnit\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Reporter/Formatter/UnitTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\Formatter\\\\UnitTest\\:\\:testHoursReturnsUnit\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Reporter/Formatter/UnitTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\Formatter\\\\UnitTest\\:\\:testIsGreaterThanReturnsFalseWhenUnitIsNotGreater\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Reporter/Formatter/UnitTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\Formatter\\\\UnitTest\\:\\:testIsGreaterThanReturnsTrueWhenUnitIsGreater\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Reporter/Formatter/UnitTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\Formatter\\\\UnitTest\\:\\:testMinutesReturnsUnit\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Reporter/Formatter/UnitTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\Formatter\\\\UnitTest\\:\\:testSecondsReturnsUnit\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Reporter/Formatter/UnitTest.php
+
+		-
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\SlowTestListTest\\:\\:testCountReturnsCountOfSlowTests\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/SlowTestListTest.php
