@@ -17,14 +17,16 @@ PHPUnit\TextUI\Command::main();
 
 ....                                                                4 / 4 (100%)
 
-Detected 2 tests where the duration exceeded a custom or the global maximum duration (00:00.100).
+Detected 2 tests where the duration exceeded a custom or the global maximum duration (0.100).
 
-# Duration            Test
-  Actual    Maximum
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-1 00:00.3%s 00:00.200 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit07\TestMethod\WithSlowThresholdAnnotation\SleeperTest::testSleeperSleepsLongerThanSlowThresholdFromAnnotationWhenTestMethodHasValidSlowThresholdAnnotation
-2 00:00.2%s           Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit07\TestMethod\WithSlowThresholdAnnotation\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidSlowThresholdAnnotation
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Duration          Test
+  Actual   Maximum
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1    0.3%s    0.200 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit07\TestMethod\WithSlowThresholdAnnotation\SleeperTest::testSleeperSleepsLongerThanSlowThresholdFromAnnotationWhenTestMethodHasValidSlowThresholdAnnotation
+2    0.2%s          Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit07\TestMethod\WithSlowThresholdAnnotation\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidSlowThresholdAnnotation
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+     0.000
+      └─── seconds
 
 Time: %s
 %a

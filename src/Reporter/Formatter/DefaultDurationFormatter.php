@@ -17,16 +17,13 @@ use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 
 /**
  * @internal
- *
- * @see https://en.wikipedia.org/wiki/ISO_8601#Times
  */
 final class DefaultDurationFormatter implements DurationFormatter
 {
-    /**
-     * @see https://github.com/sebastianbergmann/php-timer/blob/4.0.0/src/Duration.php
-     */
-    public function format(Duration $duration): string
-    {
+    public function format(
+        Unit $unit,
+        Duration $duration
+    ): string {
         $durationInMilliseconds = $duration->seconds() * 1000 + $duration->nanoseconds() / 1000000;
 
         $hours = (int) \floor($durationInMilliseconds / 60 / 60 / 1000);
@@ -40,9 +37,9 @@ final class DefaultDurationFormatter implements DurationFormatter
 
         $milliseconds = (int) ($durationInMilliseconds - $hoursInMilliseconds - $minutesInMilliseconds - $secondsInMilliseconds);
 
-        if (0 < $hours) {
+        if ($unit->equals(Unit::hours())) {
             return \sprintf(
-                '%02d:%02d:%02d.%03d',
+                '%d:%02d:%02d.%03d',
                 $hours,
                 $minutes,
                 $seconds,
@@ -50,10 +47,18 @@ final class DefaultDurationFormatter implements DurationFormatter
             );
         }
 
+        if ($unit->equals(Unit::minutes())) {
+            return \sprintf(
+                '%d:%02d.%03d',
+                $minutes + $hours * 60,
+                $seconds,
+                $milliseconds
+            );
+        }
+
         return \sprintf(
-            '%02d:%02d.%03d',
-            $minutes,
-            $seconds,
+            '%d.%03d',
+            $seconds + $minutes * 60 + $hours * 3600,
             $milliseconds
         );
     }

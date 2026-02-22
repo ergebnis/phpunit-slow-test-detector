@@ -20,5 +20,8 @@ use Ergebnis\PHPUnit\SlowTestDetector\Duration;
  */
 interface DurationFormatter
 {
-    public function format(Duration $duration): string;
+    public function format(
+        Unit $unit,
+        Duration $duration
+    ): string;
 }

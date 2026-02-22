@@ -15,13 +15,15 @@ PHPUnit\TextUI\Command::main();
 --EXPECTF--
 %a
 
-Detected 2 tests where the duration exceeded the global maximum duration (00:00.100).
+Detected 2 tests where the duration exceeded the global maximum duration (0.100).
 
-# Duration  Test
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-1 00:00.3%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit06\TestCase\Bare\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #1
-2 00:00.2%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit06\TestCase\Bare\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #0
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Duration Test
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1    0.3%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit06\TestCase\Bare\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #1
+2    0.2%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit06\TestCase\Bare\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #0
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+     0.000
+      └─── seconds
 
 Time: %s
 %a

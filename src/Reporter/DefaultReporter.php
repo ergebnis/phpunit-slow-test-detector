@@ -14,8 +14,10 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Count;
+use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
+use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
 
 /**
@@ -106,28 +108,51 @@ final class DefaultReporter implements Reporter
 
         yield '';
 
+        $unit = Formatter\Unit::fromDurations(
+            $this->maximumDuration->toDuration(),
+            ...\array_merge(
+                \array_map(static function (SlowTest $slowTest): Duration {
+                    return $slowTest->duration();
+                }, $slowTestListThatWillBeReported->toArray()),
+                \array_map(static function (SlowTest $slowTest): Duration {
+                    return $slowTest->maximumDuration()->toDuration();
+                }, $slowTestListThatWillBeReported->toArray())
+            )
+        );
+
+        $globalMaximumDurationFormatted = $this->durationFormatter->format(
+            $unit,
+            $this->maximumDuration->toDuration()
+        );
+
         yield \sprintf(
             'Detected %d %s where the duration exceeded a custom or the global maximum duration (%s).',
             $slowTestCount->toInt(),
             $slowTestCount->equals(Count::fromInt(1)) ? 'test' : 'tests',
-            $this->durationFormatter->format($this->maximumDuration->toDuration())
+            $globalMaximumDurationFormatted
         );
 
         yield '';
 
-        $slowTestWithLongestActualDuration = $slowTestListThatWillBeReported->first();
-        $slowTestWithLongestMaximumDuration = $slowTestListThatWillBeReported->sortByMaximumDurationDescending()->first();
-        $slowTestWithLongestTestDescription = $slowTestListThatWillBeReported->sortByLengthOfTestDescriptionDescending()->first();
-
         $numberColumnWidth = \strlen((string) $slowTestListThatWillBeReported->count()->toInt());
-        $actualDurationColumnWidth = \strlen($this->durationFormatter->format($slowTestWithLongestActualDuration->duration()));
-        $maximumDurationColumnWidth = \strlen($this->durationFormatter->format($slowTestWithLongestMaximumDuration->maximumDuration()->toDuration()));
-        $testDescriptionColumnWidth = \strlen($slowTestWithLongestTestDescription->testDescription()->toString());
+        $durationColumnWidth = $this->durationColumnWidth(
+            $unit,
+            $this->maximumDuration->toDuration(),
+            ...\array_merge(
+                \array_map(static function (SlowTest $slowTest): Duration {
+                    return $slowTest->duration();
+                }, $slowTestListThatWillBeReported->toArray()),
+                \array_map(static function (SlowTest $slowTest): Duration {
+                    return $slowTest->maximumDuration()->toDuration();
+                }, $slowTestListThatWillBeReported->toArray())
+            )
+        );
+        $testDescriptionColumnWidth = \strlen($slowTestListThatWillBeReported->sortByLengthOfTestDescriptionDescending()->first()->testDescription()->toString());
 
         $headerTemplate = \sprintf(
             '%%%ds %%-%ds %%s',
             $numberColumnWidth,
-            $actualDurationColumnWidth + 1 + $maximumDurationColumnWidth
+            $durationColumnWidth + 1 + $durationColumnWidth
         );
 
         yield \sprintf(
@@ -140,7 +165,7 @@ final class DefaultReporter implements Reporter
         $subHeaderTemplate = \sprintf(
             '%%%ds %%-%ds %%s',
             $numberColumnWidth,
-            $actualDurationColumnWidth
+            $durationColumnWidth
         );
 
         yield \sprintf(
@@ -152,7 +177,7 @@ final class DefaultReporter implements Reporter
 
         $separator = \str_repeat(
             '-',
-            $numberColumnWidth + 1 + $actualDurationColumnWidth + 1 + $maximumDurationColumnWidth + 1 + $testDescriptionColumnWidth
+            $numberColumnWidth + 1 + $durationColumnWidth + 1 + $durationColumnWidth + 1 + $testDescriptionColumnWidth
         );
 
         yield $separator;
@@ -160,23 +185,43 @@ final class DefaultReporter implements Reporter
         $rowTemplate = \sprintf(
             '%%%dd %%%ds %%%ds %%s',
             $numberColumnWidth,
-            $actualDurationColumnWidth,
-            $maximumDurationColumnWidth
+            $durationColumnWidth,
+            $durationColumnWidth
         );
 
         foreach ($slowTestListThatWillBeReported->toArray() as $i => $slowTest) {
-            $slowTestMaximumDuration = $slowTest->maximumDuration()->toDuration();
+            $actualDurationFormatted = $this->durationFormatter->format(
+                $unit,
+                $slowTest->duration()
+            );
+
+            $maximumDurationFormatted = '';
+
+            $maximumDuration = $slowTest->maximumDuration()->toDuration();
+
+            if (!$maximumDuration->equals($this->maximumDuration->toDuration())) {
+                $maximumDurationFormatted = $this->durationFormatter->format(
+                    $unit,
+                    $maximumDuration
+                );
+            }
 
             yield \sprintf(
                 $rowTemplate,
                 $i + 1,
-                $this->durationFormatter->format($slowTest->duration()),
-                $slowTestMaximumDuration->equals($this->maximumDuration->toDuration()) ? '' : $this->durationFormatter->format($slowTestMaximumDuration),
+                $actualDurationFormatted,
+                $maximumDurationFormatted,
                 $slowTest->testDescription()->toString()
             );
         }
 
         yield $separator;
+
+        yield from $this->legend(
+            $unit,
+            $numberColumnWidth + 1,
+            $durationColumnWidth
+        );
 
         yield from $this->footer($slowTestCount);
     }
@@ -192,21 +237,36 @@ final class DefaultReporter implements Reporter
 
         yield '';
 
+        $unit = Formatter\Unit::fromDurations(
+            $this->maximumDuration->toDuration(),
+            ...\array_map(static function (SlowTest $slowTest): Duration {
+                return $slowTest->duration();
+            }, $slowTestListThatWillBeReported->toArray())
+        );
+
+        $globalMaximumDurationFormatted = $this->durationFormatter->format(
+            $unit,
+            $this->maximumDuration->toDuration()
+        );
+
         yield \sprintf(
             'Detected %d %s where the duration exceeded the global maximum duration (%s).',
             $slowTestCount->toInt(),
             $slowTestCount->equals(Count::fromInt(1)) ? 'test' : 'tests',
-            $this->durationFormatter->format($this->maximumDuration->toDuration())
+            $globalMaximumDurationFormatted
         );
 
         yield '';
 
-        $slowTestWithLongestDuration = $slowTestListThatWillBeReported->first();
-        $slowTestWithLongestTestDescription = $slowTestListThatWillBeReported->sortByLengthOfTestDescriptionDescending()->first();
-
         $numberColumnWidth = \strlen((string) $slowTestListThatWillBeReported->count()->toInt());
-        $durationColumnWidth = \strlen($this->durationFormatter->format($slowTestWithLongestDuration->duration()));
-        $testDescriptionColumnWidth = \strlen($slowTestWithLongestTestDescription->testDescription()->toString());
+        $durationColumnWidth = $this->durationColumnWidth(
+            $unit,
+            $this->maximumDuration->toDuration(),
+            ...\array_map(static function (SlowTest $slowTest): Duration {
+                return $slowTest->duration();
+            }, $slowTestListThatWillBeReported->toArray())
+        );
+        $testDescriptionColumnWidth = \strlen($slowTestListThatWillBeReported->sortByLengthOfTestDescriptionDescending()->first()->testDescription()->toString());
 
         $headerTemplate = \sprintf(
             '%%%ds %%-%ds %%s',
@@ -235,17 +295,89 @@ final class DefaultReporter implements Reporter
         );
 
         foreach ($slowTestListThatWillBeReported->toArray() as $i => $slowTest) {
+            $durationFormatted = $this->durationFormatter->format(
+                $unit,
+                $slowTest->duration()
+            );
+
             yield \sprintf(
                 $rowTemplate,
                 $i + 1,
-                $this->durationFormatter->format($slowTest->duration()),
+                $durationFormatted,
                 $slowTest->testDescription()->toString()
             );
         }
 
         yield $separator;
 
+        yield from $this->legend(
+            $unit,
+            $numberColumnWidth + 1,
+            $durationColumnWidth
+        );
+
         yield from $this->footer($slowTestCount);
+    }
+
+    private function durationColumnWidth(
+        Formatter\Unit $unit,
+        Duration ...$durations
+    ): int {
+        return \max(
+            \strlen('Duration'),
+            \strlen('Maximum'),
+            ...\array_map(function (Duration $duration) use ($unit): int {
+                $durationFormatted = $this->durationFormatter->format($unit, $duration);
+
+                return \strlen($durationFormatted);
+            }, $durations)
+        );
+    }
+
+    /**
+     * @return \Generator<int, string>
+     */
+    private function legend(
+        Formatter\Unit $unit,
+        int $columnStart,
+        int $columnWidth
+    ): \Generator {
+        $durationOfZero = Duration::fromSecondsAndNanoseconds(
+            0,
+            0
+        );
+
+        $durationOfZeroFormatted = $this->durationFormatter->format(
+            $unit,
+            $durationOfZero
+        );
+
+        $padding = \str_repeat(
+            ' ',
+            $columnStart + $columnWidth - \strlen($durationOfZeroFormatted)
+        );
+
+        yield $padding . $durationOfZeroFormatted;
+
+        if ($unit->equals(Formatter\Unit::hours())) {
+            yield $padding . ' │  │  └─── seconds';
+
+            yield $padding . ' │  └────── minutes';
+
+            yield $padding . ' └───────── hours';
+
+            return;
+        }
+
+        if ($unit->equals(Formatter\Unit::minutes())) {
+            yield $padding . ' │  └─── seconds';
+
+            yield $padding . ' └────── minutes';
+
+            return;
+        }
+
+        yield $padding . ' └─── seconds';
     }
 
     /**
