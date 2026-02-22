@@ -67,8 +67,8 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
 
             $this->maximumDuration = $maximumDuration;
             $this->collector = new Collector\DefaultCollector();
-            $this->reporter = new Reporter\ConsoleReporter(
-                new Reporter\Formatter\DefaultDurationFormatter(),
+            $this->reporter = new Reporter\Console\ConsoleReporter(
+                new Reporter\Console\DefaultDurationFormatter(),
                 $maximumDuration,
                 $maximumCount
             );
@@ -271,8 +271,8 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
 
             $this->maximumDuration = $maximumDuration;
             $this->collector = new Collector\DefaultCollector();
-            $this->reporter = new Reporter\ConsoleReporter(
-                new Reporter\Formatter\DefaultDurationFormatter(),
+            $this->reporter = new Reporter\Console\ConsoleReporter(
+                new Reporter\Console\DefaultDurationFormatter(),
                 $maximumDuration,
                 $maximumCount
             );
@@ -442,8 +442,8 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
 
             $timeKeeper = new TimeKeeper();
             $collector = new Collector\DefaultCollector();
-            $reporter = new Reporter\ConsoleReporter(
-                new Reporter\Formatter\DefaultDurationFormatter(),
+            $reporter = new Reporter\Console\ConsoleReporter(
+                new Reporter\Console\DefaultDurationFormatter(),
                 $maximumDuration,
                 $maximumCount
             );
