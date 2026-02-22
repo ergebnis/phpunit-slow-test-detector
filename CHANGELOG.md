@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.23.0...main`][2.23.0...main].
 
+### Added
+
+- Added `GitHubReporter` that emits `::warning` workflow commands when running on GitHub Actions ([#775]), by [@localheinz]
+
 ### Fixed
 
 - Renamed `DefaultReporter` to `ConsoleReporter` ([#774]), by [@localheinz]
@@ -495,6 +499,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#768]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/768
 [#773]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/773
 [#774]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/774
+[#775]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/775
 
 [@courtney-miles]: https://github.com/courtney-miles
 [@dantleech]: https://github.com/dantleech
