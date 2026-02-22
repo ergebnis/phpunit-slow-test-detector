@@ -23,7 +23,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
 /**
  * @internal
  */
-final class DefaultReporter implements Reporter
+final class ConsoleReporter implements Reporter
 {
     /**
      * @var Formatter\DurationFormatter
