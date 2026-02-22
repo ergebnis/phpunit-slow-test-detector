@@ -341,14 +341,14 @@ parameters:
 			path: test/Unit/Reporter/ColorTest.php
 
 		-
-			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\DefaultReporterTest\\:\\:testReportReturnsEmptyStringWhenSlowTestListIsEmpty\\(\\) has no return type specified\\.$#"
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\ConsoleReporterTest\\:\\:testReportReturnsEmptyStringWhenSlowTestListIsEmpty\\(\\) has no return type specified\\.$#"
 			count: 1
-			path: test/Unit/Reporter/DefaultReporterTest.php
+			path: test/Unit/Reporter/ConsoleReporterTest.php
 
 		-
-			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\DefaultReporterTest\\:\\:testReportReturnsReportWhenSlowTestListHasFewerSlowTestsThanMaximumCount\\(\\) has no return type specified\\.$#"
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\ConsoleReporterTest\\:\\:testReportReturnsReportWhenSlowTestListHasFewerSlowTestsThanMaximumCount\\(\\) has no return type specified\\.$#"
 			count: 1
-			path: test/Unit/Reporter/DefaultReporterTest.php
+			path: test/Unit/Reporter/ConsoleReporterTest.php
 
 		-
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\Formatter\\\\DefaultDurationFormatterTest\\:\\:testFormatFormats\\(\\) has no return type specified\\.$#"
