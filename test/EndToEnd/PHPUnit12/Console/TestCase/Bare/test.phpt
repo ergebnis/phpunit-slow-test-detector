@@ -23,8 +23,8 @@ Detected 2 tests where the duration exceeded the global maximum duration (0.100)
 
 # Duration Test
 ---------%s
-1    0.3%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit12\Console\TestCase\Bare\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider%s(300)
-2    0.2%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit12\Console\TestCase\Bare\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider%s(200)
+1    0.3%s Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\PHPUnit12\TestCase\Bare\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider%s(300)
+2    0.2%s Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\PHPUnit12\TestCase\Bare\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider%s(200)
 ---------%s
      0.000
       └─── seconds

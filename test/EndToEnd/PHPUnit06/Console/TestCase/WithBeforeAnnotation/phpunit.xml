@@ -28,7 +28,7 @@
     </listeners>
     <testsuites>
         <testsuite name="Unit Tests">
-            <directory>.</directory>
+            <directory>../../../../../Fixture/PHPUnit06/TestCase/WithBeforeAnnotation</directory>
         </testsuite>
     </testsuites>
 </phpunit>
