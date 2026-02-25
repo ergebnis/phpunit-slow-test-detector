@@ -27,7 +27,7 @@
     </extensions>
     <testsuites>
         <testsuite name="Unit Tests">
-            <directory>.</directory>
+            <directory>../../../../../Fixture/PHPUnit12/TestCase/WithSetUp</directory>
         </testsuite>
     </testsuites>
 </phpunit>

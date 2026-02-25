@@ -27,7 +27,7 @@
     </extensions>
     <testsuites>
         <testsuite name="Unit Tests">
-            <directory>.</directory>
+            <directory>../../../../../Fixture/PHPUnit13/TestMethod/WithMaximumDurationAttribute</directory>
         </testsuite>
     </testsuites>
 </phpunit>

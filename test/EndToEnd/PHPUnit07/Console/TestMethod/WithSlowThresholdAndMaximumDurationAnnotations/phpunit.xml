@@ -28,7 +28,7 @@
     </extensions>
     <testsuites>
         <testsuite name="Unit Tests">
-            <directory>.</directory>
+            <directory>../../../../../Fixture/PHPUnit07/TestMethod/WithSlowThresholdAndMaximumDurationAnnotations</directory>
         </testsuite>
     </testsuites>
 </phpunit>
