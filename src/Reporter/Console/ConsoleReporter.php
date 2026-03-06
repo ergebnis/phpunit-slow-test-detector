@@ -17,17 +17,17 @@ use Ergebnis\PHPUnit\SlowTestDetector\Count;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
-use Ergebnis\PHPUnit\SlowTestDetector\Reporter\Reporter;
+use Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
 
 /**
  * @internal
  */
-final class ConsoleReporter implements Reporter
+final class ConsoleReporter implements Reporter\Reporter
 {
     /**
-     * @var \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\DurationFormatter
+     * @var DurationFormatter
      */
     private $durationFormatter;
 
@@ -42,7 +42,7 @@ final class ConsoleReporter implements Reporter
     private $maximumCount;
 
     public function __construct(
-        \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\DurationFormatter $durationFormatter,
+        DurationFormatter $durationFormatter,
         MaximumDuration $maximumDuration,
         MaximumCount $maximumCount
     ) {
@@ -109,7 +109,7 @@ final class ConsoleReporter implements Reporter
 
         yield '';
 
-        $unit = \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\Unit::fromDurations(
+        $unit = Unit::fromDurations(
             $this->maximumDuration->toDuration(),
             ...\array_merge(
                 \array_map(static function (SlowTest $slowTest): Duration {
@@ -238,7 +238,7 @@ final class ConsoleReporter implements Reporter
 
         yield '';
 
-        $unit = \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\Unit::fromDurations(
+        $unit = Unit::fromDurations(
             $this->maximumDuration->toDuration(),
             ...\array_map(static function (SlowTest $slowTest): Duration {
                 return $slowTest->duration();
@@ -321,7 +321,7 @@ final class ConsoleReporter implements Reporter
     }
 
     private function durationColumnWidth(
-        \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\Unit $unit,
+        Unit $unit,
         Duration ...$durations
     ): int {
         return \max(
@@ -339,7 +339,7 @@ final class ConsoleReporter implements Reporter
      * @return \Generator<int, string>
      */
     private function legend(
-        \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\Unit $unit,
+        Unit $unit,
         int $columnStart,
         int $columnWidth
     ): \Generator {
@@ -360,7 +360,7 @@ final class ConsoleReporter implements Reporter
 
         yield $padding . $durationOfZeroFormatted;
 
-        if ($unit->equals(\Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\Unit::hours())) {
+        if ($unit->equals(Unit::hours())) {
             yield $padding . ' │  │  └─── seconds';
 
             yield $padding . ' │  └────── minutes';
@@ -370,7 +370,7 @@ final class ConsoleReporter implements Reporter
             return;
         }
 
-        if ($unit->equals(\Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\Unit::minutes())) {
+        if ($unit->equals(Unit::minutes())) {
             yield $padding . ' │  └─── seconds';
 
             yield $padding . ' └────── minutes';
