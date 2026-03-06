@@ -443,17 +443,16 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
             $timeKeeper = new TimeKeeper();
             $collector = new Collector\DefaultCollector();
 
-            $output = \fopen(
-                'php://stdout',
-                'wb'
-            );
+            $target = 'php://stdout';
 
             if ($configuration->outputToStandardErrorStream()) {
-                $output = \fopen(
-                    'php://stderr',
-                    'wb'
-                );
+                $target = 'php://stderr';
             }
+
+            $output = \fopen(
+                $target,
+                'wb'
+            );
 
             $facade->registerSubscribers(
                 new Subscriber\Test\PreparationStartedSubscriber($timeKeeper),
