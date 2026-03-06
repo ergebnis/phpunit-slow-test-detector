@@ -346,9 +346,9 @@ parameters:
 			path: test/Unit/Reporter/Console/ConsoleReporterTest.php
 
 		-
-			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\Console\\\\DefaultDurationFormatterTest\\:\\:testFormatFormats\\(\\) has no return type specified\\.$#"
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\Console\\\\DurationFormatterTest\\:\\:testFormatFormats\\(\\) has no return type specified\\.$#"
 			count: 1
-			path: test/Unit/Reporter/Console/DefaultDurationFormatterTest.php
+			path: test/Unit/Reporter/Console/DurationFormatterTest.php
 
 		-
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\Console\\\\UnitTest\\:\\:testEqualsReturnsFalseWhenUnitsAreNotEqual\\(\\) has no return type specified\\.$#"

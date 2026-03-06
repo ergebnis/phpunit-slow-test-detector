@@ -18,12 +18,12 @@ use Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 use PHPUnit\Framework;
 
 /**
- * @covers \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\DefaultDurationFormatter
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\DurationFormatter
  *
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\Unit
  */
-final class DefaultDurationFormatterTest extends Framework\TestCase
+final class DurationFormatterTest extends Framework\TestCase
 {
     /**
      * @dataProvider provideDurationUnitAndFormattedDuration
@@ -33,7 +33,7 @@ final class DefaultDurationFormatterTest extends Framework\TestCase
         Duration $duration,
         string $formattedDuration
     ) {
-        $formatter = new Reporter\Console\DefaultDurationFormatter();
+        $formatter = new Reporter\Console\DurationFormatter();
 
         $formatted = $formatter->format(
             $unit,

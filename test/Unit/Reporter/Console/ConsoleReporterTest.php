@@ -33,7 +33,7 @@ use PHPUnit\Framework;
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumCount
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration
- * @uses \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\DefaultDurationFormatter
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\DurationFormatter
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\Unit
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTestList
@@ -51,7 +51,7 @@ final class ConsoleReporterTest extends Framework\TestCase
         $slowTestList = SlowTestList::create();
 
         $reporter = new Reporter\Console\ConsoleReporter(
-            new Reporter\Console\DefaultDurationFormatter(),
+            new Reporter\Console\DurationFormatter(),
             MaximumDuration::default(),
             MaximumCount::fromCount(Count::fromInt($faker->numberBetween(1)))
         );
@@ -71,7 +71,7 @@ final class ConsoleReporterTest extends Framework\TestCase
         SlowTestList $slowTestList
     ) {
         $reporter = new Reporter\Console\ConsoleReporter(
-            new Reporter\Console\DefaultDurationFormatter(),
+            new Reporter\Console\DurationFormatter(),
             $maximumDuration,
             $maximumCount
         );
