@@ -442,11 +442,6 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
 
             $timeKeeper = new TimeKeeper();
             $collector = new Collector\DefaultCollector();
-            $reporter = new Reporter\Console\ConsoleReporter(
-                new Reporter\Console\DurationFormatter(),
-                $maximumDuration,
-                $maximumCount
-            );
 
             $output = \fopen(
                 'php://stdout',
@@ -470,7 +465,11 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
                 ),
                 new Subscriber\TestRunner\ExecutionFinishedSubscriber(
                     $collector,
-                    $reporter,
+                    new Reporter\Console\ConsoleReporter(
+                        new Reporter\Console\DurationFormatter(),
+                        $maximumDuration,
+                        $maximumCount
+                    ),
                     $output
                 )
             );
