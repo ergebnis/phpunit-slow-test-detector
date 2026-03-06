@@ -20,5 +20,5 @@ use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
  */
 interface Reporter
 {
-    public function report(SlowTestList $slowTestList): string;
+    public function report(SlowTestList $slowTestList);
 }

@@ -11,6 +11,41 @@ parameters:
 			path: src/Collector/DefaultCollector.php
 
 		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Reporter\\\\Console\\\\ConsolePrinter\\:\\:printLine\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Reporter/Console/ConsolePrinter.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Reporter\\\\Console\\\\ConsoleReporter\\:\\:printFooter\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Reporter/Console/ConsoleReporter.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Reporter\\\\Console\\\\ConsoleReporter\\:\\:printLegend\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Reporter/Console/ConsoleReporter.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Reporter\\\\Console\\\\ConsoleReporter\\:\\:report\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Reporter/Console/ConsoleReporter.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Reporter\\\\Console\\\\ConsoleReporter\\:\\:reportWithCustomAndGlobalMaximumDuration\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Reporter/Console/ConsoleReporter.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Reporter\\\\Console\\\\ConsoleReporter\\:\\:reportWithGlobalMaximumDuration\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Reporter/Console/ConsoleReporter.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Reporter\\\\Reporter\\:\\:report\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Reporter/Reporter.php
+
+		-
 			message: "#^Offset 'major' does not exist on array\\{0\\?\\: string, major\\?\\: numeric\\-string, 1\\?\\: numeric\\-string, 2\\?\\: '0'\\|\\(non\\-falsy\\-string&numeric\\-string\\), minor\\?\\: ''\\|numeric\\-string, 3\\?\\: ''\\|numeric\\-string, 4\\?\\: '0'\\|\\(non\\-falsy\\-string&numeric\\-string\\)\\}\\.$#"
 			count: 1
 			path: src/Version/Series.php
@@ -241,6 +276,11 @@ parameters:
 			path: test/Unit/Exception/InvalidNanosecondsTest.php
 
 		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Exception\\\\InvalidOutputTest\\:\\:testNotResourceReturnsException\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Exception/InvalidOutputTest.php
+
+		-
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Exception\\\\InvalidPhaseIdentifierTest\\:\\:testBlankOrEmptyReturnsException\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/Exception/InvalidPhaseIdentifierTest.php
@@ -336,13 +376,48 @@ parameters:
 			path: test/Unit/Reporter/Console/ColorTest.php
 
 		-
-			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\Console\\\\ConsoleReporterTest\\:\\:testReportReturnsEmptyStringWhenSlowTestListIsEmpty\\(\\) has no return type specified\\.$#"
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\Console\\\\ConsolePrinterTest\\:\\:testPrintLineWritesLineFollowedByNewlineToResource\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Unit/Reporter/Console/ConsolePrinterTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$fp of function rewind expects resource, resource\\|false given\\.$#"
+			count: 1
+			path: test/Unit/Reporter/Console/ConsolePrinterTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$output of class Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Reporter\\\\Console\\\\ConsolePrinter constructor expects resource, resource\\|false given\\.$#"
+			count: 1
+			path: test/Unit/Reporter/Console/ConsolePrinterTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$source of function stream_get_contents expects resource, resource\\|false given\\.$#"
+			count: 1
+			path: test/Unit/Reporter/Console/ConsolePrinterTest.php
+
+		-
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\Console\\\\ConsoleReporterTest\\:\\:testReportPrintsNothingWhenSlowTestListIsEmpty\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/Reporter/Console/ConsoleReporterTest.php
 
 		-
-			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\Console\\\\ConsoleReporterTest\\:\\:testReportReturnsReportWhenSlowTestListHasFewerSlowTestsThanMaximumCount\\(\\) has no return type specified\\.$#"
+			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Reporter\\\\Console\\\\ConsoleReporterTest\\:\\:testReportPrintsReportWhenSlowTestListHasFewerSlowTestsThanMaximumCount\\(\\) has no return type specified\\.$#"
 			count: 1
+			path: test/Unit/Reporter/Console/ConsoleReporterTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$fp of function rewind expects resource, resource\\|false given\\.$#"
+			count: 2
+			path: test/Unit/Reporter/Console/ConsoleReporterTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$output of class Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Reporter\\\\Console\\\\ConsolePrinter constructor expects resource, resource\\|false given\\.$#"
+			count: 2
+			path: test/Unit/Reporter/Console/ConsoleReporterTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$source of function stream_get_contents expects resource, resource\\|false given\\.$#"
+			count: 2
 			path: test/Unit/Reporter/Console/ConsoleReporterTest.php
 
 		-
