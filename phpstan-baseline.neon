@@ -56,11 +56,6 @@ parameters:
 			path: test/DataProvider/StringProvider.php
 
 		-
-			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Fixture\\\\Sleeper\\:\\:sleep\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: test/Fixture/Sleeper.php
-
-		-
 			message: "#^Method Ergebnis\\\\PHPUnit\\\\SlowTestDetector\\\\Test\\\\Unit\\\\Attribute\\\\MaximumDurationTest\\:\\:testConstructorRejectsInvalidValue\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: test/Unit/Attribute/MaximumDurationTest.php

@@ -30,7 +30,7 @@
     </extensions>
     <testsuites>
         <testsuite name="Unit Tests">
-            <directory>.</directory>
+            <directory>../../../../../Fixture/PHPUnit08/TestCase/WithAssertPreConditions</directory>
         </testsuite>
     </testsuites>
 </phpunit>

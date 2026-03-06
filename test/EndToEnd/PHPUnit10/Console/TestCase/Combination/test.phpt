@@ -22,11 +22,11 @@ $application->run($_SERVER['argv']);
 Detected 3 tests where the duration exceeded the global maximum duration (0.100).
 
 # Duration Test
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-1    1.%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit10\Console\TestCase\Combination\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #1 (300)
-2    1.%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit10\Console\TestCase\Combination\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #0 (200)
-3    0.%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit10\Console\TestCase\Combination\SleeperTest::testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1    1.%s Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\PHPUnit10\TestCase\Combination\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #1 (300)
+2    1.%s Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\PHPUnit10\TestCase\Combination\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #0 (200)
+3    0.%s Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\PHPUnit10\TestCase\Combination\SleeperTest::testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
      0.000
       └─── seconds
 

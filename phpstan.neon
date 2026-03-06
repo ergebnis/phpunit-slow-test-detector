@@ -5,7 +5,7 @@ parameters:
 	excludePaths:
 		analyse:
 			- src/Subscriber/
-			- test/EndToEnd/
+			- test/Fixture/
 			- src/Extension.php
 
 	inferPrivatePropertyTypeFromConstructor: true

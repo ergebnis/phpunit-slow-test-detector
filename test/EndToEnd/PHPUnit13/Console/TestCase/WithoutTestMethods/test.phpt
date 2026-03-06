@@ -19,6 +19,6 @@ $application->run($_SERVER['argv']);
 
 There was 1 PHPUnit test runner warning:
 
-1) No tests found in class "Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit13\Console\TestCase\WithoutTestMethods\SleeperTest".
+1) No tests found in class "Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture\PHPUnit13\TestCase\WithoutTestMethods\SleeperTest".
 
 No tests executed!
