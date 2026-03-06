@@ -104,7 +104,7 @@ final class ConsoleReporterTest extends Framework\TestCase
             return \implode(
                 "\n",
                 $lines,
-            );
+            ) . "\n";
         };
 
         $values = [
@@ -576,7 +576,7 @@ final class ConsoleReporterTest extends Framework\TestCase
             return \implode(
                 "\n",
                 $lines,
-            );
+            ) . "\n";
         };
 
         $testDescription = 'FooTest::testSleeperSleepsLongerThanMaximumDuration with data set #0 (1000)';

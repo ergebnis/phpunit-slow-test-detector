@@ -34,5 +34,6 @@ Detected 4 tests where the duration exceeded the global maximum duration (0.100)
      0.000
       └─── seconds
 
+
 Time: %s
 %a

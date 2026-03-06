@@ -63,7 +63,7 @@ final class ConsoleReporter implements Reporter\Reporter
         $this->printer->print(\implode(
             "\n",
             $lines,
-        ));
+        ) . "\n");
     }
 
     /**

@@ -30,5 +30,6 @@ Detected 5 tests where the duration exceeded the global maximum duration (0.500)
 
 There are 2 additional slow tests that are not listed here.
 
+
 Time: %s
 %a
