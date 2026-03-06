@@ -87,10 +87,14 @@ final class ConsoleReporterTest extends Framework\TestCase
     public static function provideExpectedReportMaximumDurationMaximumCountAndSlowTestList(): iterable
     {
         $print = static function (array $lines): string {
-            return \implode(
-                "\n",
-                $lines
-            );
+            if ($lines === []) {
+                return '';
+            } else {
+                return \implode(
+                    "\n",
+                    $lines
+                ) . "\n";
+            }
         };
 
         $values = [
