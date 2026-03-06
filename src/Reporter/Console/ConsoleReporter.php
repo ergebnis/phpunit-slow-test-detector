@@ -65,7 +65,7 @@ final class ConsoleReporter implements Reporter
         return \implode(
             "\n",
             $lines
-        );
+        ) . "\n";
     }
 
     /**
