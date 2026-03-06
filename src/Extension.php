@@ -68,6 +68,10 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
             $this->maximumDuration = $maximumDuration;
             $this->collector = new Collector\DefaultCollector();
             $this->reporter = new Reporter\Console\ConsoleReporter(
+                new Reporter\Console\ConsolePrinter(\fopen(
+                    'php://stdout',
+                    'wb'
+                )),
                 new Reporter\Console\DurationFormatter(),
                 $maximumDuration,
                 $maximumCount
@@ -135,13 +139,7 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
                 return;
             }
 
-            $report = $this->reporter->report($slowTestList);
-
-            if ('' === $report) {
-                return;
-            }
-
-            echo $report;
+            $this->reporter->report($slowTestList);
         }
 
         public function startTest(Framework\Test $test)
@@ -272,6 +270,10 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
             $this->maximumDuration = $maximumDuration;
             $this->collector = new Collector\DefaultCollector();
             $this->reporter = new Reporter\Console\ConsoleReporter(
+                new Reporter\Console\ConsolePrinter(\fopen(
+                    'php://stdout',
+                    'wb'
+                )),
                 new Reporter\Console\DurationFormatter(),
                 $maximumDuration,
                 $maximumCount
@@ -337,13 +339,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
                 return;
             }
 
-            $report = $this->reporter->report($slowTestList);
-
-            if ('' === $report) {
-                return;
-            }
-
-            echo $report;
+            $this->reporter->report($slowTestList);
         }
 
         private function resolveMaximumDuration(string $test): MaximumDuration
@@ -465,11 +461,11 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
                 new Subscriber\TestRunner\ExecutionFinishedSubscriber(
                     $collector,
                     new Reporter\Console\ConsoleReporter(
+                        new Reporter\Console\ConsolePrinter($output),
                         new Reporter\Console\DurationFormatter(),
                         $maximumDuration,
                         $maximumCount
-                    ),
-                    $output
+                    )
                 )
             );
         }

@@ -33,6 +33,7 @@ use PHPUnit\Framework;
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumCount
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\ConsolePrinter
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\DurationFormatter
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\Unit
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
@@ -44,41 +45,57 @@ final class ConsoleReporterTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testReportReturnsEmptyStringWhenSlowTestListIsEmpty()
+    public function testReportPrintsNothingWhenSlowTestListIsEmpty()
     {
         $faker = self::faker();
 
         $slowTestList = SlowTestList::create();
 
+        $output = \fopen(
+            'php://memory',
+            'rb+'
+        );
+
         $reporter = new Reporter\Console\ConsoleReporter(
+            new Reporter\Console\ConsolePrinter($output),
             new Reporter\Console\DurationFormatter(),
             MaximumDuration::default(),
             MaximumCount::fromCount(Count::fromInt($faker->numberBetween(1)))
         );
 
-        $report = $reporter->report($slowTestList);
+        $reporter->report($slowTestList);
 
-        self::assertSame('', $report);
+        \rewind($output);
+
+        self::assertSame('', \stream_get_contents($output));
     }
 
     /**
      * @dataProvider provideExpectedReportMaximumDurationMaximumCountAndSlowTestList
      */
-    public function testReportReturnsReportWhenSlowTestListHasFewerSlowTestsThanMaximumCount(
+    public function testReportPrintsReportWhenSlowTestListHasFewerSlowTestsThanMaximumCount(
         string $expectedReport,
         MaximumDuration $maximumDuration,
         MaximumCount $maximumCount,
         SlowTestList $slowTestList
     ) {
+        $output = \fopen(
+            'php://memory',
+            'rb+'
+        );
+
         $reporter = new Reporter\Console\ConsoleReporter(
+            new Reporter\Console\ConsolePrinter($output),
             new Reporter\Console\DurationFormatter(),
             $maximumDuration,
             $maximumCount
         );
 
-        $report = $reporter->report($slowTestList);
+        $reporter->report($slowTestList);
 
-        self::assertSame($expectedReport, $report);
+        \rewind($output);
+
+        self::assertSame($expectedReport, \stream_get_contents($output));
     }
 
     /**
@@ -88,8 +105,10 @@ final class ConsoleReporterTest extends Framework\TestCase
     {
         $print = static function (array $lines): string {
             return \implode(
-                "\n",
-                $lines
+                '',
+                \array_map(static function (string $line): string {
+                    return $line . "\n";
+                }, $lines)
             );
         };
 

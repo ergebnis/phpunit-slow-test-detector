@@ -27,6 +27,11 @@ use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
 final class ConsoleReporter implements Reporter\Reporter
 {
     /**
+     * @var ConsolePrinter
+     */
+    private $printer;
+
+    /**
      * @var DurationFormatter
      */
     private $durationFormatter;
@@ -42,36 +47,18 @@ final class ConsoleReporter implements Reporter\Reporter
     private $maximumCount;
 
     public function __construct(
+        ConsolePrinter $printer,
         DurationFormatter $durationFormatter,
         MaximumDuration $maximumDuration,
         MaximumCount $maximumCount
     ) {
+        $this->printer = $printer;
         $this->durationFormatter = $durationFormatter;
         $this->maximumDuration = $maximumDuration;
         $this->maximumCount = $maximumCount;
     }
 
-    public function report(SlowTestList $slowTestList): string
-    {
-        $lines = \iterator_to_array(
-            $this->lines($slowTestList),
-            false
-        );
-
-        if ([] === $lines) {
-            return '';
-        }
-
-        return \implode(
-            "\n",
-            $lines
-        );
-    }
-
-    /**
-     * @return \Generator<int, string>
-     */
-    private function lines(SlowTestList $slowTestList): \Generator
+    public function report(SlowTestList $slowTestList)
     {
         $slowTestCount = $slowTestList->count();
 
@@ -84,7 +71,7 @@ final class ConsoleReporter implements Reporter\Reporter
             ->limitTo($this->maximumCount);
 
         if ($slowTestListThatWillBeReported->hasSlowTestWithMaximumDurationDifferentFrom($this->maximumDuration->toDuration())) {
-            yield from $this->reportWithCustomAndGlobalMaximumDuration(
+            $this->reportWithCustomAndGlobalMaximumDuration(
                 $slowTestCount,
                 $slowTestListThatWillBeReported
             );
@@ -92,22 +79,19 @@ final class ConsoleReporter implements Reporter\Reporter
             return;
         }
 
-        yield from $this->reportWithGlobalMaximumDuration(
+        $this->reportWithGlobalMaximumDuration(
             $slowTestCount,
             $slowTestListThatWillBeReported
         );
     }
 
-    /**
-     * @return \Generator<int, string>
-     */
     private function reportWithCustomAndGlobalMaximumDuration(
         Count $slowTestCount,
         SlowTestList $slowTestListThatWillBeReported
-    ): \Generator {
-        yield '';
+    ) {
+        $this->printer->printLine('');
 
-        yield '';
+        $this->printer->printLine('');
 
         $unit = Unit::fromDurations(
             $this->maximumDuration->toDuration(),
@@ -126,14 +110,14 @@ final class ConsoleReporter implements Reporter\Reporter
             $this->maximumDuration->toDuration()
         );
 
-        yield \sprintf(
+        $this->printer->printLine(\sprintf(
             'Detected %d %s where the duration exceeded a custom or the global maximum duration (%s).',
             $slowTestCount->toInt(),
             $slowTestCount->equals(Count::fromInt(1)) ? 'test' : 'tests',
             $globalMaximumDurationFormatted
-        );
+        ));
 
-        yield '';
+        $this->printer->printLine('');
 
         $numberColumnWidth = \strlen((string) $slowTestListThatWillBeReported->count()->toInt());
         $durationColumnWidth = $this->durationColumnWidth(
@@ -156,12 +140,12 @@ final class ConsoleReporter implements Reporter\Reporter
             $durationColumnWidth + 1 + $durationColumnWidth
         );
 
-        yield \sprintf(
+        $this->printer->printLine(\sprintf(
             $headerTemplate,
             '#',
             'Duration',
             'Test'
-        );
+        ));
 
         $subHeaderTemplate = \sprintf(
             '%%%ds %%-%ds %%s',
@@ -169,19 +153,19 @@ final class ConsoleReporter implements Reporter\Reporter
             $durationColumnWidth
         );
 
-        yield \sprintf(
+        $this->printer->printLine(\sprintf(
             $subHeaderTemplate,
             '',
             'Actual',
             'Maximum'
-        );
+        ));
 
         $separator = \str_repeat(
             '-',
             $numberColumnWidth + 1 + $durationColumnWidth + 1 + $durationColumnWidth + 1 + $testDescriptionColumnWidth
         );
 
-        yield $separator;
+        $this->printer->printLine($separator);
 
         $rowTemplate = \sprintf(
             '%%%dd %%%ds %%%ds %%s',
@@ -207,36 +191,33 @@ final class ConsoleReporter implements Reporter\Reporter
                 );
             }
 
-            yield \sprintf(
+            $this->printer->printLine(\sprintf(
                 $rowTemplate,
                 $i + 1,
                 $actualDurationFormatted,
                 $maximumDurationFormatted,
                 $slowTest->testDescription()->toString()
-            );
+            ));
         }
 
-        yield $separator;
+        $this->printer->printLine($separator);
 
-        yield from $this->legend(
+        $this->printLegend(
             $unit,
             $numberColumnWidth + 1,
             $durationColumnWidth
         );
 
-        yield from $this->footer($slowTestCount);
+        $this->printFooter($slowTestCount);
     }
 
-    /**
-     * @return \Generator<int, string>
-     */
     private function reportWithGlobalMaximumDuration(
         Count $slowTestCount,
         SlowTestList $slowTestListThatWillBeReported
-    ): \Generator {
-        yield '';
+    ) {
+        $this->printer->printLine('');
 
-        yield '';
+        $this->printer->printLine('');
 
         $unit = Unit::fromDurations(
             $this->maximumDuration->toDuration(),
@@ -250,14 +231,14 @@ final class ConsoleReporter implements Reporter\Reporter
             $this->maximumDuration->toDuration()
         );
 
-        yield \sprintf(
+        $this->printer->printLine(\sprintf(
             'Detected %d %s where the duration exceeded the global maximum duration (%s).',
             $slowTestCount->toInt(),
             $slowTestCount->equals(Count::fromInt(1)) ? 'test' : 'tests',
             $globalMaximumDurationFormatted
-        );
+        ));
 
-        yield '';
+        $this->printer->printLine('');
 
         $numberColumnWidth = \strlen((string) $slowTestListThatWillBeReported->count()->toInt());
         $durationColumnWidth = $this->durationColumnWidth(
@@ -275,19 +256,19 @@ final class ConsoleReporter implements Reporter\Reporter
             $durationColumnWidth
         );
 
-        yield \sprintf(
+        $this->printer->printLine(\sprintf(
             $headerTemplate,
             '#',
             'Duration',
             'Test'
-        );
+        ));
 
         $separator = \str_repeat(
             '-',
             $numberColumnWidth + 1 + $durationColumnWidth + 1 + $testDescriptionColumnWidth
         );
 
-        yield $separator;
+        $this->printer->printLine($separator);
 
         $rowTemplate = \sprintf(
             '%%%dd %%%ds %%s',
@@ -301,23 +282,23 @@ final class ConsoleReporter implements Reporter\Reporter
                 $slowTest->duration()
             );
 
-            yield \sprintf(
+            $this->printer->printLine(\sprintf(
                 $rowTemplate,
                 $i + 1,
                 $durationFormatted,
                 $slowTest->testDescription()->toString()
-            );
+            ));
         }
 
-        yield $separator;
+        $this->printer->printLine($separator);
 
-        yield from $this->legend(
+        $this->printLegend(
             $unit,
             $numberColumnWidth + 1,
             $durationColumnWidth
         );
 
-        yield from $this->footer($slowTestCount);
+        $this->printFooter($slowTestCount);
     }
 
     private function durationColumnWidth(
@@ -335,14 +316,11 @@ final class ConsoleReporter implements Reporter\Reporter
         );
     }
 
-    /**
-     * @return \Generator<int, string>
-     */
-    private function legend(
+    private function printLegend(
         Unit $unit,
         int $columnStart,
         int $columnWidth
-    ): \Generator {
+    ) {
         $durationOfZero = Duration::fromSecondsAndNanoseconds(
             0,
             0
@@ -358,33 +336,30 @@ final class ConsoleReporter implements Reporter\Reporter
             $columnStart + $columnWidth - \strlen($durationOfZeroFormatted)
         );
 
-        yield $padding . $durationOfZeroFormatted;
+        $this->printer->printLine($padding . $durationOfZeroFormatted);
 
         if ($unit->equals(Unit::hours())) {
-            yield $padding . ' │  │  └─── seconds';
+            $this->printer->printLine($padding . ' │  │  └─── seconds');
 
-            yield $padding . ' │  └────── minutes';
+            $this->printer->printLine($padding . ' │  └────── minutes');
 
-            yield $padding . ' └───────── hours';
+            $this->printer->printLine($padding . ' └───────── hours');
 
             return;
         }
 
         if ($unit->equals(Unit::minutes())) {
-            yield $padding . ' │  └─── seconds';
+            $this->printer->printLine($padding . ' │  └─── seconds');
 
-            yield $padding . ' └────── minutes';
+            $this->printer->printLine($padding . ' └────── minutes');
 
             return;
         }
 
-        yield $padding . ' └─── seconds';
+        $this->printer->printLine($padding . ' └─── seconds');
     }
 
-    /**
-     * @return \Generator<int, string>
-     */
-    private function footer(Count $slowTestCount): \Generator
+    private function printFooter(Count $slowTestCount)
     {
         $additionalSlowTestCount = Count::fromInt(\max(
             0,
@@ -395,15 +370,17 @@ final class ConsoleReporter implements Reporter\Reporter
             return;
         }
 
-        yield '';
+        $this->printer->printLine('');
 
         if ($additionalSlowTestCount->equals(Count::fromInt(1))) {
-            yield 'There is 1 additional slow test that is not listed here.';
-        } else {
-            yield \sprintf(
-                'There are %d additional slow tests that are not listed here.',
-                $additionalSlowTestCount->toInt()
-            );
+            $this->printer->printLine('There is 1 additional slow test that is not listed here.');
+
+            return;
         }
+
+        $this->printer->printLine(\sprintf(
+            'There are %d additional slow tests that are not listed here.',
+            $additionalSlowTestCount->toInt()
+        ));
     }
 }
