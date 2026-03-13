@@ -28,7 +28,7 @@
     </listeners>
     <testsuites>
         <testsuite name="Unit Tests">
-            <directory>../../../../../Fixture/PHPUnit06/TestCase/WithAssertPostConditions</directory>
+            <directory>.</directory>
         </testsuite>
     </testsuites>
 </phpunit>

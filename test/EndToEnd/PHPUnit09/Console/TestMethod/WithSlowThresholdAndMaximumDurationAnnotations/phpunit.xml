@@ -30,7 +30,7 @@
     </extensions>
     <testsuites>
         <testsuite name="Unit Tests">
-            <directory>../../../../../Fixture/PHPUnit09/TestMethod/WithSlowThresholdAndMaximumDurationAnnotations</directory>
+            <directory>.</directory>
         </testsuite>
     </testsuites>
 </phpunit>

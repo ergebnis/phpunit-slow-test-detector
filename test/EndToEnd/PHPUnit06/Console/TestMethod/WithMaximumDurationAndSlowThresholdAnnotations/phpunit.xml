@@ -28,7 +28,7 @@
     </listeners>
     <testsuites>
         <testsuite name="Unit Tests">
-            <directory>../../../../../Fixture/PHPUnit06/TestMethod/WithMaximumDurationAndSlowThresholdAnnotations</directory>
+            <directory>.</directory>
         </testsuite>
     </testsuites>
 </phpunit>

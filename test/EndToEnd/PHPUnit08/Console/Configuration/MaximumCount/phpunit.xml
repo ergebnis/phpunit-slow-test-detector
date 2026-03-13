@@ -30,7 +30,7 @@
     </extensions>
     <testsuites>
         <testsuite name="Unit Tests">
-            <directory>../../../../../Fixture/PHPUnit08/Configuration/MaximumCount</directory>
+            <directory>.</directory>
         </testsuite>
     </testsuites>
 </phpunit>
