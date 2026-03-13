@@ -22,7 +22,7 @@
 >
     <extensions>
         <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension">
-            <parameter name="maximum-duration" value="100"/>
+            <parameter name="maximum-duration" value="50"/>
         </bootstrap>
     </extensions>
     <testsuites>
