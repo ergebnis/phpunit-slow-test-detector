@@ -17,7 +17,15 @@
     verbose="true"
 >
     <extensions>
-        <extension class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
+        <extension class="Ergebnis\PHPUnit\SlowTestDetector\Extension">
+            <arguments>
+                <array>
+                    <element key="stderr">
+                        <boolean>true</boolean>
+                    </element>
+                </array>
+            </arguments>
+        </extension>
     </extensions>
     <testsuites>
         <testsuite name="Unit Tests">
