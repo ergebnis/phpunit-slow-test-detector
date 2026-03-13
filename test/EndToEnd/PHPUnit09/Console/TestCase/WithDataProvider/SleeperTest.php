@@ -50,13 +50,13 @@ final class SleeperTest extends Framework\TestCase
     public static function provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration(): iterable
     {
         $values = \range(
-            200,
-            300,
-            100
+            100,
+            150,
+            50
         );
 
         foreach ($values as $value) {
-            Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
+            Test\Fixture\Sleeper::fromMilliseconds(50)->sleep();
 
             yield $value => [
                 $value,

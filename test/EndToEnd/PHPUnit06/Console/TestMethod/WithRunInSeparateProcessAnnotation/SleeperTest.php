@@ -23,32 +23,32 @@ final class SleeperTest extends Framework\TestCase
 {
     public static function setUpBeforeClass()
     {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
+        Test\Fixture\Sleeper::fromMilliseconds(50)->sleep();
     }
 
     public static function tearDownAfterClass()
     {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
+        Test\Fixture\Sleeper::fromMilliseconds(50)->sleep();
     }
 
     protected function setUp()
     {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
+        Test\Fixture\Sleeper::fromMilliseconds(50)->sleep();
     }
 
     protected function assertPreConditions()
     {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
+        Test\Fixture\Sleeper::fromMilliseconds(50)->sleep();
     }
 
     protected function assertPostConditions()
     {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
+        Test\Fixture\Sleeper::fromMilliseconds(50)->sleep();
     }
 
     protected function tearDown()
     {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
+        Test\Fixture\Sleeper::fromMilliseconds(50)->sleep();
     }
 
     /**
@@ -56,7 +56,7 @@ final class SleeperTest extends Framework\TestCase
      */
     public function sleepWithBeforeAnnotation()
     {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
+        Test\Fixture\Sleeper::fromMilliseconds(50)->sleep();
     }
 
     /**
@@ -64,7 +64,7 @@ final class SleeperTest extends Framework\TestCase
      */
     public static function sleepWithBeforeClassAnnotation()
     {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
+        Test\Fixture\Sleeper::fromMilliseconds(50)->sleep();
     }
 
     /**
@@ -72,7 +72,7 @@ final class SleeperTest extends Framework\TestCase
      */
     public function sleepWithAfterAnnotation()
     {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
+        Test\Fixture\Sleeper::fromMilliseconds(50)->sleep();
     }
 
     /**
@@ -80,7 +80,7 @@ final class SleeperTest extends Framework\TestCase
      */
     public static function sleepWithAfterClassAnnotation()
     {
-        Test\Fixture\Sleeper::fromMilliseconds(100)->sleep();
+        Test\Fixture\Sleeper::fromMilliseconds(50)->sleep();
     }
 
     public function testSleeperSleepsShorterThanMaximumDurationFromXmlConfiguration()
@@ -99,7 +99,7 @@ final class SleeperTest extends Framework\TestCase
      */
     public function testSleeperSleepsShorterThanMaximumDurationFromXmlConfigurationWhenMethodHasRunInSeparateProcessAnnotation()
     {
-        $milliseconds = 50;
+        $milliseconds = 25;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
@@ -110,7 +110,7 @@ final class SleeperTest extends Framework\TestCase
 
     public function testSleeperSleepsLongerThanMaximumDurationFromXmlConfiguration()
     {
-        $milliseconds = 200;
+        $milliseconds = 100;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
@@ -124,7 +124,7 @@ final class SleeperTest extends Framework\TestCase
      */
     public function testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWhenMethodHasRunInSeparateProcessAnnotation()
     {
-        $milliseconds = 300;
+        $milliseconds = 150;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
