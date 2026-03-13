@@ -33,7 +33,7 @@
     </extensions>
     <testsuites>
         <testsuite name="Unit Tests">
-            <directory>../../Fixture/PHPUnit09/TestCase/Bare</directory>
+            <directory>.</directory>
         </testsuite>
     </testsuites>
 </phpunit>

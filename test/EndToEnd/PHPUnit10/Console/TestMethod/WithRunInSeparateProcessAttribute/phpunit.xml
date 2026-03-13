@@ -27,7 +27,7 @@
     </extensions>
     <testsuites>
         <testsuite name="Unit Tests">
-            <directory>../../../../../Fixture/PHPUnit10/TestMethod/WithRunInSeparateProcessAttribute</directory>
+            <directory>.</directory>
         </testsuite>
     </testsuites>
 </phpunit>

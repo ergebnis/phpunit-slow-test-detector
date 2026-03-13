@@ -27,7 +27,7 @@
     </extensions>
     <testsuites>
         <testsuite name="Unit Tests">
-            <directory>../../../../../Fixture/PHPUnit13/TestCase/WithAfterAttribute</directory>
+            <directory>.</directory>
         </testsuite>
     </testsuites>
 </phpunit>

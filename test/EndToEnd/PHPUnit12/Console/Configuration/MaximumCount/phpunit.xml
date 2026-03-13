@@ -28,7 +28,7 @@
     </extensions>
     <testsuites>
         <testsuite name="Unit Tests">
-            <directory>../../../../../Fixture/PHPUnit12/Configuration/MaximumCount</directory>
+            <directory>.</directory>
         </testsuite>
     </testsuites>
 </phpunit>
