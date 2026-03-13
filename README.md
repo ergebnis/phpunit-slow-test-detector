@@ -249,6 +249,7 @@ You can configure the extension with the following options in your `phpunit.xml`
 
 - `maximum-count`, an `int`, the maximum count of slow test that should be reported, defaults to `10`
 - `maximum-duration`, an `int`, the maximum duration in milliseconds for a test before the extension considers it as a slow test, defaults to `500`
+- `stderr`, a `bool`, directs the slow test report output to `stderr`, defaults to `false`, only available on `phpunit/phpunit:^6.5.0`, `phpunit/phpunit:^7.5.0`, `phpunit/phpunit:^8.5.19`, and `phpunit/phpunit:^9.0.0` (on `phpunit/phpunit:^10.0.0` and later, the extension automatically respects the `stderr` configuration `phpunit/phpunit`)
 
 The configuration mechanism depends on the version of `phpunit/phpunit` you are using.
 
@@ -305,7 +306,7 @@ adjust your `phpunit.xml` configuration file and configure the
 - [`arguments` element](https://docs.phpunit.de/en/8.5/configuration.html#the-arguments-element) on [`phpunit/phpunit:^8.5.19`](https://docs.phpunit.de/en/8.5/)
 - [`arguments` element](https://docs.phpunit.de/en/7.5/configuration.html#the-arguments-element) on [`phpunit/phpunit:^7.5.0`](https://docs.phpunit.de/en/7.5/)
 
-The following example configures the maximum count of slow tests to three, and the maximum duration for all tests to 250 milliseconds:
+The following example configures the maximum count of slow tests to three, the maximum duration for all tests to 250 milliseconds, and directs the slow test report output to `stderr`:
 
 ```diff
  <phpunit
@@ -323,6 +324,9 @@ The following example configures the maximum count of slow tests to three, and t
 +                    </element>
 +                    <element key="maximum-duration">
 +                        <integer>250</integer>
++                    </element>
++                    <element key="stderr">
++                        <boolean>true</boolean>
 +                    </element>
 +                </array>
 +            </arguments>
@@ -346,7 +350,7 @@ adjust your `phpunit.xml` configuration file and configure the
 
 - [`arguments` element](https://phpunit.de/manual/6.5/en/appendixes.configuration.html#appendixes.configuration.test-listeners) on [`phpunit/phpunit:^6.5.0`](https://phpunit.de/manual/6.5/en/)
 
-The following example configures the maximum count of slow tests to three, and the maximum duration for all tests to 250 milliseconds:
+The following example configures the maximum count of slow tests to three, the maximum duration for all tests to 250 milliseconds, and directs the slow test report output to `stderr`:
 
 ```diff
  <phpunit
@@ -364,6 +368,9 @@ The following example configures the maximum count of slow tests to three, and t
 +                    </element>
 +                    <element key="maximum-duration">
 +                        <integer>250</integer>
++                    </element>
++                    <element key="stderr">
++                        <boolean>true</boolean>
 +                    </element>
 +                </array>
 +            </arguments>

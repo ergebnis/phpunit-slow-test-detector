@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.23.0...main`][2.23.0...main].
 
+### Added
+
+- Added a `stderr` option to allow directing the output of the slow test report to `stderr` on `phpunit/phpunit:^6`, `phpunit/phpunit:^7`, `phpunit/phpunit:^8`, and `phpunit/phpunit:^9` ([#788]), by [@tstarling]
+
 ## [`2.23.0`][2.23.0]
 
 For a full diff see [`2.22.2...2.23.0`][2.22.2...2.23.0].
@@ -490,6 +494,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#765]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/765
 [#768]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/768
 [#773]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/773
+[#788]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/788
 
 [@courtney-miles]: https://github.com/courtney-miles
 [@dantleech]: https://github.com/dantleech
@@ -497,3 +502,4 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [@localheinz]: https://github.com/localheinz
 [@morgan-atproperties]: https://github.com/morgan-atproperties
 [@mvorisek]: https://github.com/mvorisek
+[@tstarling]: https://github.com/tstarling

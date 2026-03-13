@@ -51,6 +51,11 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
          */
         private $reporter;
 
+        /**
+         * @var resource
+         */
+        private $output;
+
         public function __construct(array $options = [])
         {
             $maximumCount = MaximumCount::default();
@@ -66,6 +71,21 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
             }
 
             $this->maximumDuration = $maximumDuration;
+
+            $target = 'php://stdout';
+
+            if (
+                \array_key_exists('stderr', $options)
+                && true === $options['stderr']
+            ) {
+                $target = 'php://stderr';
+            }
+
+            $this->output = \fopen(
+                $target,
+                'wb'
+            );
+
             $this->collector = new Collector\DefaultCollector();
             $this->reporter = new Reporter\Console\ConsoleReporter(
                 new Reporter\Console\DurationFormatter(),
@@ -141,7 +161,10 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
                 return;
             }
 
-            echo $report;
+            \fwrite(
+                $this->output,
+                $report
+            );
         }
 
         public function startTest(Framework\Test $test)
@@ -255,6 +278,11 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
          */
         private $reporter;
 
+        /**
+         * @var resource
+         */
+        private $output;
+
         public function __construct(array $options = [])
         {
             $maximumCount = MaximumCount::default();
@@ -270,6 +298,21 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
             }
 
             $this->maximumDuration = $maximumDuration;
+
+            $target = 'php://stdout';
+
+            if (
+                \array_key_exists('stderr', $options)
+                && true === $options['stderr']
+            ) {
+                $target = 'php://stderr';
+            }
+
+            $this->output = \fopen(
+                $target,
+                'wb'
+            );
+
             $this->collector = new Collector\DefaultCollector();
             $this->reporter = new Reporter\Console\ConsoleReporter(
                 new Reporter\Console\DurationFormatter(),
@@ -343,7 +386,10 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
                 return;
             }
 
-            echo $report;
+            \fwrite(
+                $this->output,
+                $report
+            );
         }
 
         private function resolveMaximumDuration(string $test): MaximumDuration
