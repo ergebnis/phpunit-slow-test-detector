@@ -861,7 +861,7 @@ jobs:
         run: "vendor/bin/phpunit --colors=always --configuration=test/EndToEnd/PHPUnit13/phpunit.xml"
 
       - name: "Download Phar"
-        uses: "actions/download-artifact@v8.0.0"
+        uses: "actions/download-artifact@v8.0.1"
         with:
           name: "phpunit-slow-test-detector-phar"
           path: "${{ env.PHPUNIT_SLOW_TEST_DETECTOR_PHAR }}"
