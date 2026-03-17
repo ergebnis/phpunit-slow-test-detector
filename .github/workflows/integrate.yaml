@@ -786,7 +786,7 @@ jobs:
 
       - name: "Remove incompatible dependencies with composer"
         if: "matrix.dependencies != 'locked'"
-        run: "composer remove ergebnis/composer-normalize ergebnis/license ergebnis/php-cs-fixer-config phpstan/extension-installer phpstan/phpstan phpstan/phpstan-deprecation-rules phpstan/phpstan-phpunit phpstan/phpstan-strict-rules rector/rector --ansi --dev --no-interaction --no-progress"
+        run: "composer remove ergebnis/composer-normalize ergebnis/license ergebnis/php-cs-fixer-config ergebnis/rector-rules phpstan/extension-installer phpstan/phpstan phpstan/phpstan-deprecation-rules phpstan/phpstan-phpunit phpstan/phpstan-strict-rules rector/rector --ansi --dev --no-interaction --no-progress"
 
       - name: "Remove platform configuration with composer"
         if: "matrix.dependencies != 'locked'"
