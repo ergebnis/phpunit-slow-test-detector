@@ -37,7 +37,7 @@ esac
 cp --archive /app/src/. /app/work
 cd /app/work
 
-composer remove ergebnis/composer-normalize ergebnis/license ergebnis/php-cs-fixer-config phpstan/extension-installer phpstan/phpstan phpstan/phpstan-deprecation-rules phpstan/phpstan-phpunit phpstan/phpstan-strict-rules rector/rector --ansi --dev --no-interaction --no-progress --quiet
+composer remove ergebnis/composer-normalize ergebnis/license ergebnis/php-cs-fixer-config ergebnis/rector-rules phpstan/extension-installer phpstan/phpstan phpstan/phpstan-deprecation-rules phpstan/phpstan-phpunit phpstan/phpstan-strict-rules rector/rector --ansi --dev --no-interaction --no-progress --quiet
 composer config platform.php --unset
 
 if [ "${PHPUNIT_VERSION}" = "6.5.0" ]; then
