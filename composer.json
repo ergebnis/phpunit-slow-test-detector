@@ -33,12 +33,12 @@
     "ergebnis/php-cs-fixer-config": "^6.60.2",
     "fakerphp/faker": "~1.20.0",
     "phpstan/extension-installer": "^1.4.3",
-    "phpstan/phpstan": "^1.12.11",
-    "phpstan/phpstan-deprecation-rules": "^1.2.1",
-    "phpstan/phpstan-phpunit": "^1.4.1",
-    "phpstan/phpstan-strict-rules": "^1.6.1",
+    "phpstan/phpstan": "^2.1.42",
+    "phpstan/phpstan-deprecation-rules": "^2.0.4",
+    "phpstan/phpstan-phpunit": "^2.0.16",
+    "phpstan/phpstan-strict-rules": "^2.0.10",
     "psr/container": "~1.0.0",
-    "rector/rector": "^1.2.10"
+    "rector/rector": "^2.3.9"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
