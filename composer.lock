@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eff8936294078793850c8f4a93578507",
+    "content-hash": "d84e220b9367a02145bc6cb5ac0fada9",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -2631,16 +2631,16 @@
         },
         {
             "name": "ergebnis/rector-rules",
-            "version": "1.13.1",
+            "version": "1.13.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/rector-rules.git",
-                "reference": "ccec01c4fc0875040832717216d2973ecfac79d4"
+                "reference": "2b88d252a1f4e5d37d6779921a9f1f3ed29073f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/rector-rules/zipball/ccec01c4fc0875040832717216d2973ecfac79d4",
-                "reference": "ccec01c4fc0875040832717216d2973ecfac79d4",
+                "url": "https://api.github.com/repos/ergebnis/rector-rules/zipball/2b88d252a1f4e5d37d6779921a9f1f3ed29073f6",
+                "reference": "2b88d252a1f4e5d37d6779921a9f1f3ed29073f6",
                 "shasum": ""
             },
             "require": {
@@ -2691,7 +2691,7 @@
                 "security": "https://github.com/ergebnis/rector-rules/blob/main/.github/SECURITY.md",
                 "source": "https://github.com/ergebnis/rector-rules"
             },
-            "time": "2026-03-18T08:22:13+00:00"
+            "time": "2026-03-18T09:19:42+00:00"
         },
         {
             "name": "erickskrauch/php-cs-fixer-custom-fixers",
