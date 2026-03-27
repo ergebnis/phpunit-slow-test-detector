@@ -44,7 +44,7 @@ final class DurationFormatterTest extends Framework\TestCase
     }
 
     /**
-     * @return \Generator<string, array{0: \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\Unit, 1: Duration, 2: string}>
+     * @return \Generator<string, array{0: Reporter\Console\Unit, 1: Duration, 2: string}>
      */
     public static function provideDurationUnitAndFormattedDuration(): iterable
     {
