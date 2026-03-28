@@ -20,7 +20,7 @@ use PHPUnit\Framework;
 #[Framework\Attributes\CoversClass(Test\Fixture\Sleeper::class)]
 final class SleeperTest extends Framework\TestCase
 {
-    #[Attribute\MaximumDuration(200)]
+    #[Attribute\MaximumDuration(100)]
     public function testSleeperSleepsShorterThanMaximumDurationFromAttributeWhenTestMethodHasValidMaximumDurationAttribute(): void
     {
         $milliseconds = 10;
@@ -32,10 +32,10 @@ final class SleeperTest extends Framework\TestCase
         self::assertSame($milliseconds, $sleeper->milliseconds());
     }
 
-    #[Attribute\MaximumDuration(200)]
+    #[Attribute\MaximumDuration(100)]
     public function testSleeperSleepsLongerThanMaximumDurationFromAttributeWhenTestMethodHasValidMaximumDurationAttribute(): void
     {
-        $milliseconds = 300;
+        $milliseconds = 150;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 

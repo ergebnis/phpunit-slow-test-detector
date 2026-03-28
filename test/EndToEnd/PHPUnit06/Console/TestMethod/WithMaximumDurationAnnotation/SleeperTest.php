@@ -40,7 +40,7 @@ final class SleeperTest extends Framework\TestCase
      */
     public function testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidMaximumDurationAnnotation()
     {
-        $milliseconds = 200;
+        $milliseconds = 100;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
@@ -50,7 +50,7 @@ final class SleeperTest extends Framework\TestCase
     }
 
     /**
-     * @maximumDuration 200
+     * @maximumDuration 100
      */
     public function testSleeperSleepsShorterThanMaximumDurationFromAnnotationWhenTestMethodHasValidMaximumDurationAnnotation()
     {
@@ -66,11 +66,11 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @dataProvider provideDataWhereDataNameIsInteger
      *
-     * @maximumDuration 200
+     * @maximumDuration 100
      */
     public function testSleeperSleepsShorterThanMaximumDurationFromAnnotationWithNumericDataProvider()
     {
-        $milliseconds = 150;
+        $milliseconds = 75;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
@@ -94,11 +94,11 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @dataProvider provideDataWhereDataNameIsString
      *
-     * @maximumDuration 200
+     * @maximumDuration 100
      */
     public function testSleeperSleepsShorterThanMaximumDurationFromAnnotationWithNamedDataProvider()
     {
-        $milliseconds = 150;
+        $milliseconds = 75;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
@@ -120,11 +120,11 @@ final class SleeperTest extends Framework\TestCase
     }
 
     /**
-     * @maximumDuration 200
+     * @maximumDuration 100
      */
     public function testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasValidMaximumDurationAnnotation()
     {
-        $milliseconds = 300;
+        $milliseconds = 150;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 

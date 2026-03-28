@@ -17,13 +17,13 @@ PHPUnit\TextUI\Command::main();
 
 ......                                                              6 / 6 (100%)
 
-Detected 2 tests where the duration exceeded a custom or the global maximum duration (0.100).
+Detected 2 tests where the duration exceeded a custom or the global maximum duration (0.050).
 
 # Duration          Test
   Actual   Maximum
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-1    0.3%s    0.200 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit09\Console\TestMethod\WithMaximumDurationAnnotation\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasValidMaximumDurationAnnotation
-2    0.2%s          Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit09\Console\TestMethod\WithMaximumDurationAnnotation\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidMaximumDurationAnnotation
+1    0.1%s    0.100 Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit09\Console\TestMethod\WithMaximumDurationAnnotation\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasValidMaximumDurationAnnotation
+2    0.1%s          Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit09\Console\TestMethod\WithMaximumDurationAnnotation\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidMaximumDurationAnnotation
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
      0.000
       └─── seconds
