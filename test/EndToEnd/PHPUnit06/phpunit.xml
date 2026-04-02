@@ -17,7 +17,7 @@
     verbose="true"
 >
     <testsuites>
-        <testsuite name="End-to-end Tests">
+        <testsuite name="End-to-End Tests">
             <directory suffix=".phpt">.</directory>
         </testsuite>
     </testsuites>
