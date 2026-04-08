@@ -1,0 +1,15 @@
+# https://docs.github.com/en/actions
+
+name: "Nightly"
+
+on: # yamllint disable-line rule:truthy
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  integrate:
+    name: "Integrate"
+
+    uses: "./.github/workflows/integrate.yaml"
+
+    secrets: "inherit"
