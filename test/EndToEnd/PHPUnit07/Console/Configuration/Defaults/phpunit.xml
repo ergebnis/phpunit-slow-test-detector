@@ -6,7 +6,7 @@
     beStrictAboutTestsThatDoNotTestAnything="true"
     beStrictAboutTodoAnnotatedTests="true"
     bootstrap="../../../../../../vendor/autoload.php"
-    colors="true"
+    colors="false"
     columns="max"
     forceCoversAnnotation="true"
     stopOnError="false"

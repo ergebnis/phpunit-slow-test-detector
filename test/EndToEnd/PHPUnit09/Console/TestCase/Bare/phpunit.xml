@@ -7,7 +7,7 @@
     beStrictAboutTodoAnnotatedTests="true"
     bootstrap="../../../../../../vendor/autoload.php"
     cacheResult="false"
-    colors="true"
+    colors="false"
     columns="max"
     executionOrder="default"
     forceCoversAnnotation="true"

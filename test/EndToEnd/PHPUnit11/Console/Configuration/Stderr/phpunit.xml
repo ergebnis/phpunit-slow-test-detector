@@ -6,7 +6,7 @@
     beStrictAboutTestsThatDoNotTestAnything="true"
     bootstrap="../../../../../../vendor/autoload.php"
     cacheResult="false"
-    colors="true"
+    colors="false"
     columns="max"
     displayDetailsOnIncompleteTests="true"
     displayDetailsOnSkippedTests="true"
