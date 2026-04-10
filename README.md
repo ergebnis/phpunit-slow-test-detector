@@ -491,9 +491,21 @@ You can support the maintenance of this project by [sponsoring @ergebnis](https:
 
 ## PHP Version Support Policy
 
-This project supports PHP versions with [active and security support](https://www.php.net/supported-versions.php).
+This project currently supports the following PHP versions:
 
-The maintainers of this project add support for a PHP version following its initial release and drop support for a PHP version when it has reached the end of security support.
+- [PHP 7.0](https://www.php.net/releases/#7.0.0) (has reached its end of life on January 10, 2019)
+- [PHP 7.1](https://www.php.net/releases/#7.1.0) (has reached its end of life on December 1, 2019)
+- [PHP 7.2](https://www.php.net/releases/#7.2.0) (has reached its end of life on November 30, 2020)
+- [PHP 7.3](https://www.php.net/releases/#7.3.0) (has reached its end of life on December 6, 2021)
+- [PHP 7.4](https://www.php.net/releases/#7.4.0) (has reached its end of life on November 28, 2022)
+- [PHP 8.0](https://www.php.net/releases/#8.0.0) (has reached its end of life on November 26, 2023)
+- [PHP 8.1](https://www.php.net/releases/#8.1.0) (has reached its end of life on December 31, 2025)
+- [PHP 8.2](https://www.php.net/releases/#8.2.0)
+- [PHP 8.3](https://www.php.net/releases/#8.3.0)
+- [PHP 8.4](https://www.php.net/releases/#8.4.0)
+- [PHP 8.5](https://www.php.net/releases/#8.5.0)
+
+The maintainers of this project add support for a PHP version following its initial release and _may_ drop support for a PHP version when it has reached its [end of life](https://www.php.net/supported-versions.php).
 
 ## Security Policy
 
