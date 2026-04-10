@@ -7,6 +7,7 @@ on: # yamllint disable-line rule:truthy
   push:
     branches:
       - "main"
+  workflow_call: null
 
 jobs:
   code-coverage:
