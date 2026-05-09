@@ -22,13 +22,13 @@ use PHPUnit\Framework;
 final class SleeperTest extends Framework\TestCase
 {
     /**
-     * @slowThreshold 400
+     * @slowThreshold 200
      *
-     * @maximumDuration 200
+     * @maximumDuration 100
      */
     public function testSleeperSleepsShorterThanMaximumDurationFromAnnotationWhenTestMethodHasMaximumDurationAndSlowThresholdAnnotations(): void
     {
-        $milliseconds = 50;
+        $milliseconds = 25;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
@@ -38,13 +38,13 @@ final class SleeperTest extends Framework\TestCase
     }
 
     /**
-     * @slowThreshold 400
+     * @slowThreshold 200
      *
-     * @maximumDuration 200
+     * @maximumDuration 100
      */
     public function testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasMaximumDurationAndSlowThresholdAnnotations(): void
     {
-        $milliseconds = 300;
+        $milliseconds = 150;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
