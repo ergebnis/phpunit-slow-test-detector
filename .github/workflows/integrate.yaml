@@ -9,9 +9,14 @@ on: # yamllint disable-line rule:truthy
       - "main"
   workflow_call: null
 
+permissions: {}
+
 jobs:
   code-coverage:
     name: "Code Coverage"
+
+    permissions:
+      contents: "read"
 
     runs-on: "ubuntu-latest"
 
@@ -83,6 +88,9 @@ jobs:
   coding-standards:
     name: "Coding Standards"
 
+    permissions:
+      contents: "read"
+
     runs-on: "ubuntu-latest"
 
     timeout-minutes: 5
@@ -152,6 +160,9 @@ jobs:
   dependency-analysis:
     name: "Dependency Analysis"
 
+    permissions:
+      contents: "read"
+
     runs-on: "ubuntu-latest"
 
     timeout-minutes: 5
@@ -208,6 +219,9 @@ jobs:
   github-actions-analysis:
     name: "GitHub Actions Analysis"
 
+    permissions:
+      contents: "read"
+
     runs-on: "ubuntu-latest"
 
     timeout-minutes: 5
@@ -227,6 +241,9 @@ jobs:
 
   phar:
     name: "Phar"
+
+    permissions:
+      contents: "read"
 
     runs-on: "ubuntu-latest"
 
@@ -308,6 +325,9 @@ jobs:
   refactoring:
     name: "Refactoring"
 
+    permissions:
+      contents: "read"
+
     runs-on: "ubuntu-latest"
 
     timeout-minutes: 5
@@ -367,6 +387,9 @@ jobs:
   security-analysis:
     name: "Security Analysis"
 
+    permissions:
+      contents: "read"
+
     runs-on: "ubuntu-latest"
 
     timeout-minutes: 5
@@ -417,6 +440,9 @@ jobs:
   static-code-analysis:
     name: "Static Code Analysis"
 
+    permissions:
+      contents: "read"
+
     runs-on: "ubuntu-latest"
 
     timeout-minutes: 5
@@ -466,6 +492,9 @@ jobs:
 
   tests:
     name: "Tests"
+
+    permissions:
+      contents: "read"
 
     runs-on: "ubuntu-latest"
 
