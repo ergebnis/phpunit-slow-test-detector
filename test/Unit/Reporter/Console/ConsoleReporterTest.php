@@ -109,14 +109,12 @@ final class ConsoleReporterTest extends Framework\TestCase
                 ]),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                 MaximumCount::fromCount(Count::fromInt(1)),
-                SlowTestList::create(
-                    SlowTest::create(
-                        TestIdentifier::fromString('FooTest::test'),
-                        TestDescription::fromString('FooTest::test'),
-                        Duration::fromMilliseconds(300),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
-                    )
-                ),
+                SlowTestList::create(SlowTest::create(
+                    TestIdentifier::fromString('FooTest::test'),
+                    TestDescription::fromString('FooTest::test'),
+                    Duration::fromMilliseconds(300),
+                    MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
+                )),
             ],
             'header-singular-custom' => [
                 $print([
@@ -134,14 +132,12 @@ final class ConsoleReporterTest extends Framework\TestCase
                 ]),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                 MaximumCount::fromCount(Count::fromInt(1)),
-                SlowTestList::create(
-                    SlowTest::create(
-                        TestIdentifier::fromString('FooTest::test'),
-                        TestDescription::fromString('FooTest::test'),
-                        Duration::fromMilliseconds(300),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(200))
-                    )
-                ),
+                SlowTestList::create(SlowTest::create(
+                    TestIdentifier::fromString('FooTest::test'),
+                    TestDescription::fromString('FooTest::test'),
+                    Duration::fromMilliseconds(300),
+                    MaximumDuration::fromDuration(Duration::fromMilliseconds(200))
+                )),
             ],
             'header-plural-global-only' => [
                 $print([
