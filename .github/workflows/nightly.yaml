@@ -6,10 +6,13 @@ on: # yamllint disable-line rule:truthy
   schedule:
     - cron: "0 0 * * *"
 
+permissions: {}
+
 jobs:
   integrate:
     name: "Integrate"
 
     uses: "./.github/workflows/integrate.yaml"
 
-    secrets: "inherit"
+    secrets:
+      CODECOV_TOKEN: "${{ secrets.CODECOV_TOKEN }}"
