@@ -34,7 +34,7 @@
     "ergebnis/rector-rules": "^1.18.1",
     "fakerphp/faker": "~1.20.0",
     "phpstan/extension-installer": "^1.4.3",
-    "phpstan/phpstan": "^2.1.54",
+    "phpstan/phpstan": "^2.2.2",
     "phpstan/phpstan-deprecation-rules": "^2.0.4",
     "phpstan/phpstan-phpunit": "^2.0.16",
     "phpstan/phpstan-strict-rules": "^2.0.11",
