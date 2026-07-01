@@ -24,7 +24,7 @@ $application->run($_SERVER['argv']);
 
 ....                                                                4 / 4 (100%)
 
-Detected 4 tests where the duration exceeded the global maximum duration (0.100).
+Detected 4 tests where the duration exceeded the global maximum duration (0.050).
 
 # Duration Test
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
