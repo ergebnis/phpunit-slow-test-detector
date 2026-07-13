@@ -13,7 +13,7 @@ parameters:
 			path: src/Collector/DefaultCollector.php
 
 		-
-			message: '#^Offset ''major'' might not exist on array\{\}\|array\{0\: non\-falsy\-string, major\: numeric\-string, 1\: numeric\-string, 2\: ''0''\|\(non\-falsy\-string&numeric\-string\), minor\?\: ''''\|numeric\-string, 3\?\: ''''\|numeric\-string, 4\?\: ''0''\|\(non\-falsy\-string&numeric\-string\)\}\.$#'
+			message: '#^Offset ''major'' might not exist on array\{\}\|array\{0\: non\-falsy\-string, major\: non\-empty\-string, 1\: non\-empty\-string, 2\: numeric\-string, minor\?\: string, 3\?\: string, 4\?\: numeric\-string\}\.$#'
 			identifier: offsetAccess.notFound
 			count: 1
 			path: src/Version/Series.php
