@@ -39,7 +39,7 @@
     "phpstan/phpstan-phpunit": "^2.0.16",
     "phpstan/phpstan-strict-rules": "^2.0.11",
     "psr/container": "~1.0.0",
-    "rector/rector": "^2.4.2"
+    "rector/rector": "^2.5.4"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
