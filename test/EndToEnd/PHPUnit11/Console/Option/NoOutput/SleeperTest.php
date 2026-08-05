@@ -21,7 +21,7 @@ final class SleeperTest extends Framework\TestCase
 {
     public function testSleeperSleepsLongerThanMaximumDurationFromXmlConfiguration(): void
     {
-        $milliseconds = 200;
+        $milliseconds = 100;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
