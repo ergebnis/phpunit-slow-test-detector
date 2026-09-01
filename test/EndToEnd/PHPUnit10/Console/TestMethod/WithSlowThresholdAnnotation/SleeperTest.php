@@ -42,7 +42,7 @@ final class SleeperTest extends Framework\TestCase
      */
     public function testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidSlowThresholdAnnotation(): void
     {
-        $milliseconds = 200;
+        $milliseconds = 100;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
@@ -52,7 +52,7 @@ final class SleeperTest extends Framework\TestCase
     }
 
     /**
-     * @slowThreshold 200
+     * @slowThreshold 100
      *
      * @see https://github.com/johnkary/phpunit-speedtrap/blob/1.0/src/JohnKary/PHPUnit/Listener/SpeedTrapListener.php#L309-L331
      */
@@ -68,13 +68,13 @@ final class SleeperTest extends Framework\TestCase
     }
 
     /**
-     * @slowThreshold 200
+     * @slowThreshold 100
      *
      * @see https://github.com/johnkary/phpunit-speedtrap/blob/1.0/src/JohnKary/PHPUnit/Listener/SpeedTrapListener.php#L309-L331
      */
     public function testSleeperSleepsLongerThanSlowThresholdFromAnnotationWhenTestMethodHasValidSlowThresholdAnnotation(): void
     {
-        $milliseconds = 300;
+        $milliseconds = 150;
 
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
