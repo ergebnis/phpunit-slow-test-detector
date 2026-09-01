@@ -13,8 +13,6 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector;
 
-use Ergebnis\PHPUnit\SlowTestDetector\Comparator\DurationComparator;
-
 /**
  * @internal
  */
@@ -68,7 +66,7 @@ final class SlowTestList
 
     public function sortByDurationDescending(): self
     {
-        $durationComparator = new DurationComparator();
+        $durationComparator = new Comparator\DurationComparator();
 
         $slowTests = $this->slowTests;
 
@@ -84,7 +82,7 @@ final class SlowTestList
 
     public function sortByMaximumDurationDescending(): self
     {
-        $durationComparator = new DurationComparator();
+        $durationComparator = new Comparator\DurationComparator();
 
         $slowTests = $this->slowTests;
 

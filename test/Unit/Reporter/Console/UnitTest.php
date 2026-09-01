@@ -92,7 +92,7 @@ final class UnitTest extends Framework\TestCase
     }
 
     /**
-     * @return \Generator<string, array{0: \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\Unit, 1: Duration}>
+     * @return \Generator<string, array{0: Reporter\Console\Unit, 1: Duration}>
      */
     public static function provideExpectedUnitAndDuration(): iterable
     {
@@ -146,7 +146,7 @@ final class UnitTest extends Framework\TestCase
     }
 
     /**
-     * @return \Generator<string, array{0: \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\Unit, 1: list<Duration>}>
+     * @return \Generator<string, array{0: Reporter\Console\Unit, 1: list<Duration>}>
      */
     public static function provideExpectedUnitAndDurations(): iterable
     {
