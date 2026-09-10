@@ -70,6 +70,19 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
                 $maximumDuration = MaximumDuration::fromDuration(Duration::fromMilliseconds((int) $options['maximum-duration']));
             }
 
+            $maximumWidth = MaximumWidth::unlimited();
+
+            if (\array_key_exists('maximum-width', $options)) {
+                if ('max' === $options['maximum-width']) {
+                    $maximumWidth = MaximumWidth::fromWidth(Width::max(
+                        MaximumWidth::minimum()->toWidth(),
+                        Reporter\Console\Terminal::width()->toWidth()
+                    ));
+                } else {
+                    $maximumWidth = MaximumWidth::fromWidth(Width::fromInt((int) $options['maximum-width']));
+                }
+            }
+
             $this->maximumDuration = $maximumDuration;
 
             $target = 'php://stdout';
@@ -90,7 +103,8 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
             $this->reporter = new Reporter\Console\ConsoleReporter(
                 new Reporter\Console\DurationFormatter(),
                 $maximumDuration,
-                $maximumCount
+                $maximumCount,
+                $maximumWidth
             );
         }
 
@@ -297,6 +311,19 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
                 $maximumDuration = MaximumDuration::fromDuration(Duration::fromMilliseconds((int) $options['maximum-duration']));
             }
 
+            $maximumWidth = MaximumWidth::unlimited();
+
+            if (\array_key_exists('maximum-width', $options)) {
+                if ('max' === $options['maximum-width']) {
+                    $maximumWidth = MaximumWidth::fromWidth(Width::max(
+                        MaximumWidth::minimum()->toWidth(),
+                        Reporter\Console\Terminal::width()->toWidth()
+                    ));
+                } else {
+                    $maximumWidth = MaximumWidth::fromWidth(Width::fromInt((int) $options['maximum-width']));
+                }
+            }
+
             $this->maximumDuration = $maximumDuration;
 
             $target = 'php://stdout';
@@ -317,7 +344,8 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
             $this->reporter = new Reporter\Console\ConsoleReporter(
                 new Reporter\Console\DurationFormatter(),
                 $maximumDuration,
-                $maximumCount
+                $maximumCount,
+                $maximumWidth
             );
         }
 
@@ -486,6 +514,19 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
                 $maximumDuration = MaximumDuration::fromDuration(Duration::fromMilliseconds((int) $parameters->get('maximum-duration')));
             }
 
+            $maximumWidth = MaximumWidth::unlimited();
+
+            if ($parameters->has('maximum-width')) {
+                if ('max' === $parameters->get('maximum-width')) {
+                    $maximumWidth = MaximumWidth::fromWidth(Width::max(
+                        MaximumWidth::minimum()->toWidth(),
+                        Reporter\Console\Terminal::width()->toWidth()
+                    ));
+                } else {
+                    $maximumWidth = MaximumWidth::fromWidth(Width::fromInt((int) $parameters->get('maximum-width')));
+                }
+            }
+
             $timeKeeper = new TimeKeeper();
             $collector = new Collector\DefaultCollector();
 
@@ -513,7 +554,8 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
                     new Reporter\Console\ConsoleReporter(
                         new Reporter\Console\DurationFormatter(),
                         $maximumDuration,
-                        $maximumCount
+                        $maximumCount,
+                        $maximumWidth
                     ),
                     $output
                 )

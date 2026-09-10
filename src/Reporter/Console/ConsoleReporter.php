@@ -17,9 +17,11 @@ use Ergebnis\PHPUnit\SlowTestDetector\Count;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
+use Ergebnis\PHPUnit\SlowTestDetector\MaximumWidth;
 use Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
+use Ergebnis\PHPUnit\SlowTestDetector\Width;
 
 /**
  * @internal
@@ -41,14 +43,21 @@ final class ConsoleReporter implements Reporter\Reporter
      */
     private $maximumCount;
 
+    /**
+     * @var MaximumWidth
+     */
+    private $maximumWidth;
+
     public function __construct(
         Reporter\Console\DurationFormatter $durationFormatter,
         MaximumDuration $maximumDuration,
-        MaximumCount $maximumCount
+        MaximumCount $maximumCount,
+        MaximumWidth $maximumWidth
     ) {
         $this->durationFormatter = $durationFormatter;
         $this->maximumDuration = $maximumDuration;
         $this->maximumCount = $maximumCount;
+        $this->maximumWidth = $maximumWidth;
     }
 
     public function report(SlowTestList $slowTestList): string
@@ -135,7 +144,8 @@ final class ConsoleReporter implements Reporter\Reporter
 
         yield '';
 
-        $numberColumnWidth = \strlen((string) $slowTestListThatWillBeReported->count()->toInt());
+        $columnGap = Width::fromInt(1);
+        $numberColumnWidth = Width::fromString((string) $slowTestListThatWillBeReported->count()->toInt());
         $durationColumnWidth = $this->durationColumnWidth(
             $unit,
             $this->maximumDuration->toDuration(),
@@ -148,12 +158,32 @@ final class ConsoleReporter implements Reporter\Reporter
                 }, $slowTestListThatWillBeReported->toArray())
             )
         );
-        $testDescriptionColumnWidth = \strlen($slowTestListThatWillBeReported->sortByLengthOfTestDescriptionDescending()->first()->testDescription()->toString());
+
+        $testDescriptionColumnIndentation = Width::sum(
+            $numberColumnWidth,
+            $columnGap,
+            $durationColumnWidth,
+            $columnGap,
+            $durationColumnWidth,
+            $columnGap
+        );
+
+        $maximumTestDescriptionWidth = $this->maximumTestDescriptionWidth($testDescriptionColumnIndentation);
+        $testDescriptionColumnWidth = self::testDescriptionColumnWidth(
+            $slowTestListThatWillBeReported,
+            $maximumTestDescriptionWidth
+        );
+
+        $durationHeaderWidth = Width::sum(
+            $durationColumnWidth,
+            $columnGap,
+            $durationColumnWidth
+        );
 
         $headerTemplate = \sprintf(
             '%%%ds %%-%ds %%s',
-            $numberColumnWidth,
-            $durationColumnWidth + 1 + $durationColumnWidth
+            $numberColumnWidth->toInt(),
+            $durationHeaderWidth->toInt()
         );
 
         yield \sprintf(
@@ -165,8 +195,8 @@ final class ConsoleReporter implements Reporter\Reporter
 
         $subHeaderTemplate = \sprintf(
             '%%%ds %%-%ds %%s',
-            $numberColumnWidth,
-            $durationColumnWidth
+            $numberColumnWidth->toInt(),
+            $durationColumnWidth->toInt()
         );
 
         yield \sprintf(
@@ -176,18 +206,23 @@ final class ConsoleReporter implements Reporter\Reporter
             'Maximum'
         );
 
+        $tableWidth = Width::sum(
+            $testDescriptionColumnIndentation,
+            $testDescriptionColumnWidth
+        );
+
         $separator = \str_repeat(
             '-',
-            $numberColumnWidth + 1 + $durationColumnWidth + 1 + $durationColumnWidth + 1 + $testDescriptionColumnWidth
+            $tableWidth->toInt()
         );
 
         yield $separator;
 
         $rowTemplate = \sprintf(
             '%%%dd %%%ds %%%ds %%s',
-            $numberColumnWidth,
-            $durationColumnWidth,
-            $durationColumnWidth
+            $numberColumnWidth->toInt(),
+            $durationColumnWidth->toInt(),
+            $durationColumnWidth->toInt()
         );
 
         foreach ($slowTestListThatWillBeReported->toArray() as $i => $slowTest) {
@@ -212,15 +247,20 @@ final class ConsoleReporter implements Reporter\Reporter
                 $i + 1,
                 $actualDurationFormatted,
                 $maximumDurationFormatted,
-                $slowTest->testDescription()->toString()
+                $slowTest->testDescription()->truncatedTo($maximumTestDescriptionWidth)->toString()
             );
         }
 
         yield $separator;
 
+        $durationColumnIndentation = Width::sum(
+            $numberColumnWidth,
+            $columnGap
+        );
+
         yield from $this->legend(
             $unit,
-            $numberColumnWidth + 1,
+            $durationColumnIndentation,
             $durationColumnWidth
         );
 
@@ -259,7 +299,8 @@ final class ConsoleReporter implements Reporter\Reporter
 
         yield '';
 
-        $numberColumnWidth = \strlen((string) $slowTestListThatWillBeReported->count()->toInt());
+        $columnGap = Width::fromInt(1);
+        $numberColumnWidth = Width::fromString((string) $slowTestListThatWillBeReported->count()->toInt());
         $durationColumnWidth = $this->durationColumnWidth(
             $unit,
             $this->maximumDuration->toDuration(),
@@ -267,12 +308,22 @@ final class ConsoleReporter implements Reporter\Reporter
                 return $slowTest->duration();
             }, $slowTestListThatWillBeReported->toArray())
         );
-        $testDescriptionColumnWidth = \strlen($slowTestListThatWillBeReported->sortByLengthOfTestDescriptionDescending()->first()->testDescription()->toString());
+        $testDescriptionColumnIndentation = Width::sum(
+            $numberColumnWidth,
+            $columnGap,
+            $durationColumnWidth,
+            $columnGap
+        );
+        $maximumTestDescriptionWidth = $this->maximumTestDescriptionWidth($testDescriptionColumnIndentation);
+        $testDescriptionColumnWidth = self::testDescriptionColumnWidth(
+            $slowTestListThatWillBeReported,
+            $maximumTestDescriptionWidth
+        );
 
         $headerTemplate = \sprintf(
             '%%%ds %%-%ds %%s',
-            $numberColumnWidth,
-            $durationColumnWidth
+            $numberColumnWidth->toInt(),
+            $durationColumnWidth->toInt()
         );
 
         yield \sprintf(
@@ -282,17 +333,22 @@ final class ConsoleReporter implements Reporter\Reporter
             'Test'
         );
 
+        $tableWidth = Width::sum(
+            $testDescriptionColumnIndentation,
+            $testDescriptionColumnWidth
+        );
+
         $separator = \str_repeat(
             '-',
-            $numberColumnWidth + 1 + $durationColumnWidth + 1 + $testDescriptionColumnWidth
+            $tableWidth->toInt()
         );
 
         yield $separator;
 
         $rowTemplate = \sprintf(
             '%%%dd %%%ds %%s',
-            $numberColumnWidth,
-            $durationColumnWidth
+            $numberColumnWidth->toInt(),
+            $durationColumnWidth->toInt()
         );
 
         foreach ($slowTestListThatWillBeReported->toArray() as $i => $slowTest) {
@@ -305,32 +361,56 @@ final class ConsoleReporter implements Reporter\Reporter
                 $rowTemplate,
                 $i + 1,
                 $durationFormatted,
-                $slowTest->testDescription()->toString()
+                $slowTest->testDescription()->truncatedTo($maximumTestDescriptionWidth)->toString()
             );
         }
 
         yield $separator;
 
+        $durationColumnIndentation = Width::sum(
+            $numberColumnWidth,
+            $columnGap
+        );
+
         yield from $this->legend(
             $unit,
-            $numberColumnWidth + 1,
+            $durationColumnIndentation,
             $durationColumnWidth
         );
 
         yield from $this->footer($slowTestCount);
     }
 
+    private function maximumTestDescriptionWidth(Width $testDescriptionColumnIndentation): Width
+    {
+        return $this->maximumWidth->toWidth()->minus($testDescriptionColumnIndentation);
+    }
+
+    private static function testDescriptionColumnWidth(
+        SlowTestList $slowTestList,
+        Width $maximumTestDescriptionWidth
+    ): Width {
+        $width = $slowTestList->sortByLengthOfTestDescriptionDescending()->first()->testDescription()->width();
+
+        if ($width->isGreaterThan($maximumTestDescriptionWidth)) {
+            return $maximumTestDescriptionWidth;
+        }
+
+        return $width;
+    }
+
     private function durationColumnWidth(
         Reporter\Console\Unit $unit,
         Duration ...$durations
-    ): int {
-        return \max(
-            \strlen('Duration'),
-            \strlen('Maximum'),
-            ...\array_map(function (Duration $duration) use ($unit): int {
-                $durationFormatted = $this->durationFormatter->format($unit, $duration);
-
-                return \strlen($durationFormatted);
+    ): Width {
+        return Width::max(
+            Width::fromString('Duration'),
+            Width::fromString('Maximum'),
+            ...\array_map(function (Duration $duration) use ($unit): Width {
+                return Width::fromString($this->durationFormatter->format(
+                    $unit,
+                    $duration
+                ));
             }, $durations)
         );
     }
@@ -340,8 +420,8 @@ final class ConsoleReporter implements Reporter\Reporter
      */
     private function legend(
         Reporter\Console\Unit $unit,
-        int $columnStart,
-        int $columnWidth
+        Width $durationColumnIndentation,
+        Width $durationColumnWidth
     ): \Generator {
         $durationOfZero = Duration::fromSecondsAndNanoseconds(
             0,
@@ -353,9 +433,14 @@ final class ConsoleReporter implements Reporter\Reporter
             $durationOfZero
         );
 
+        $paddingWidth = Width::sum(
+            $durationColumnIndentation,
+            $durationColumnWidth->minus(Width::fromString($durationOfZeroFormatted))
+        );
+
         $padding = \str_repeat(
             ' ',
-            $columnStart + $columnWidth - \strlen($durationOfZeroFormatted)
+            $paddingWidth->toInt()
         );
 
         yield $padding . $durationOfZeroFormatted;

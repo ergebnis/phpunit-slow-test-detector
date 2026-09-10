@@ -101,7 +101,7 @@ final class SlowTestList
         $slowTests = $this->slowTests;
 
         \usort($slowTests, static function (SlowTest $one, SlowTest $two): int {
-            return \strlen($two->testDescription()->toString()) <=> \strlen($one->testDescription()->toString());
+            return $two->testDescription()->width()->toInt() <=> $one->testDescription()->width()->toInt();
         });
 
         return self::create(...$slowTests);
