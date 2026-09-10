@@ -27,7 +27,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
 final class ConsoleReporter implements Reporter\Reporter
 {
     /**
-     * @var DurationFormatter
+     * @var Reporter\Console\DurationFormatter
      */
     private $durationFormatter;
 
@@ -42,7 +42,7 @@ final class ConsoleReporter implements Reporter\Reporter
     private $maximumCount;
 
     public function __construct(
-        DurationFormatter $durationFormatter,
+        Reporter\Console\DurationFormatter $durationFormatter,
         MaximumDuration $maximumDuration,
         MaximumCount $maximumCount
     ) {
@@ -109,7 +109,7 @@ final class ConsoleReporter implements Reporter\Reporter
 
         yield '';
 
-        $unit = Unit::fromDurations(
+        $unit = Reporter\Console\Unit::fromDurations(
             $this->maximumDuration->toDuration(),
             ...\array_merge(
                 \array_map(static function (SlowTest $slowTest): Duration {
@@ -238,7 +238,7 @@ final class ConsoleReporter implements Reporter\Reporter
 
         yield '';
 
-        $unit = Unit::fromDurations(
+        $unit = Reporter\Console\Unit::fromDurations(
             $this->maximumDuration->toDuration(),
             ...\array_map(static function (SlowTest $slowTest): Duration {
                 return $slowTest->duration();
@@ -321,7 +321,7 @@ final class ConsoleReporter implements Reporter\Reporter
     }
 
     private function durationColumnWidth(
-        Unit $unit,
+        Reporter\Console\Unit $unit,
         Duration ...$durations
     ): int {
         return \max(
@@ -339,7 +339,7 @@ final class ConsoleReporter implements Reporter\Reporter
      * @return \Generator<int, string>
      */
     private function legend(
-        Unit $unit,
+        Reporter\Console\Unit $unit,
         int $columnStart,
         int $columnWidth
     ): \Generator {
@@ -360,7 +360,7 @@ final class ConsoleReporter implements Reporter\Reporter
 
         yield $padding . $durationOfZeroFormatted;
 
-        if ($unit->equals(Unit::hours())) {
+        if ($unit->equals(Reporter\Console\Unit::hours())) {
             yield $padding . ' │  │  └─── seconds';
 
             yield $padding . ' │  └────── minutes';
@@ -370,7 +370,7 @@ final class ConsoleReporter implements Reporter\Reporter
             return;
         }
 
-        if ($unit->equals(Unit::minutes())) {
+        if ($unit->equals(Reporter\Console\Unit::minutes())) {
             yield $padding . ' │  └─── seconds';
 
             yield $padding . ' └────── minutes';
