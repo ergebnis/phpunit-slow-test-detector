@@ -11,6 +11,7 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
+use Ergebnis\Rector;
 use Rector\Config;
 use Rector\ValueObject;
 
@@ -25,4 +26,10 @@ return static function (Config\RectorConfig $rectorConfig): void {
     ]);
 
     $rectorConfig->phpVersion(ValueObject\PhpVersion::PHP_70);
+
+    $rectorConfig->ruleWithConfiguration(Rector\Rules\Files\ReferenceNamespacedSymbolsRelativeToNamespacePrefixRector::class, [
+        'parentNamespacePrefixes' => [
+            'Ergebnis\PHPUnit\SlowTestDetector',
+        ],
+    ]);
 };
