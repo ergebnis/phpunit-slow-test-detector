@@ -12,7 +12,7 @@ jobs:
   integrate:
     name: "Integrate"
 
-    uses: "./.github/workflows/integrate.yaml"
+    uses: "$/.github/workflows/integrate.yaml"
 
     secrets:
       CODECOV_TOKEN: "${{ secrets.CODECOV_TOKEN }}"
