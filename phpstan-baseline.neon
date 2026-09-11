@@ -289,6 +289,12 @@ parameters:
 			path: test/Unit/Exception/InvalidMaximumCountTest.php
 
 		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\Exception\\InvalidMaximumWidthTest\:\:testLessThanMinimumReturnsException\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/Exception/InvalidMaximumWidthTest.php
+
+		-
 			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\Exception\\InvalidMillisecondsTest\:\:testNotGreaterThanZeroReturnsException\(\) has no return type specified\.$#'
 			identifier: missingType.return
 			count: 1
@@ -331,6 +337,12 @@ parameters:
 			path: test/Unit/Exception/InvalidStartTest.php
 
 		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\Exception\\InvalidTerminalWidthTest\:\:testNotGreaterThanZeroReturnsException\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/Exception/InvalidTerminalWidthTest.php
+
+		-
 			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\Exception\\InvalidTestDescriptionTest\:\:testBlankOrEmptyReturnsException\(\) has no return type specified\.$#'
 			identifier: missingType.return
 			count: 1
@@ -341,6 +353,18 @@ parameters:
 			identifier: missingType.return
 			count: 1
 			path: test/Unit/Exception/InvalidTestIdentifierTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\Exception\\InvalidWidthTest\:\:testNotGreaterThanZeroReturnsException\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/Exception/InvalidWidthTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\Exception\\InvalidWidthTest\:\:testSubtrahendGreaterThanMinuendReturnsException\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/Exception/InvalidWidthTest.php
 
 		-
 			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\Exception\\PhaseNotStartedTest\:\:testFromPhaseIdentifierReturnsException\(\) has no return type specified\.$#'
@@ -383,6 +407,36 @@ parameters:
 			identifier: missingType.return
 			count: 1
 			path: test/Unit/MaximumDurationTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\MaximumWidthTest\:\:testFromWidthRejectsWidthLessThanMinimum\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/MaximumWidthTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\MaximumWidthTest\:\:testFromWidthReturnsMaximumWidthWhenWidthIsGreaterThanMinimum\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/MaximumWidthTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\MaximumWidthTest\:\:testFromWidthReturnsMaximumWidthWhenWidthIsMinimum\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/MaximumWidthTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\MaximumWidthTest\:\:testMinimumReturnsMaximumWidth\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/MaximumWidthTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\MaximumWidthTest\:\:testUnlimitedReturnsMaximumWidth\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/MaximumWidthTest.php
 
 		-
 			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\PhaseIdentifierTest\:\:testFromStringRejectsInvalidValue\(\) has no return type specified\.$#'
@@ -433,9 +487,15 @@ parameters:
 			path: test/Unit/Reporter/Console/ConsoleReporterTest.php
 
 		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\Reporter\\Console\\ConsoleReporterTest\:\:testReportReturnsReportWithTestDescriptionsTruncatedToMaximumWidth\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/Reporter/Console/ConsoleReporterTest.php
+
+		-
 			message: '#^Parameter \#2 \$array of function implode expects array\<string\>, array given\.$#'
 			identifier: argument.type
-			count: 1
+			count: 2
 			path: test/Unit/Reporter/Console/ConsoleReporterTest.php
 
 		-
@@ -443,6 +503,30 @@ parameters:
 			identifier: missingType.return
 			count: 1
 			path: test/Unit/Reporter/Console/DurationFormatterTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\Reporter\\Console\\TerminalTest\:\:testWidthReturnsTerminalWidthGreaterThanZero\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/Reporter/Console/TerminalTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\Reporter\\Console\\TerminalWidthTest\:\:testDefaultReturnsTerminalWidth\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/Reporter/Console/TerminalWidthTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\Reporter\\Console\\TerminalWidthTest\:\:testFromWidthReturnsTerminalWidthWhenWidthIsGreaterThanZero\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/Reporter/Console/TerminalWidthTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\Reporter\\Console\\TerminalWidthTest\:\:testFromWidthThrowsInvalidTerminalWidthWhenWidthIsNotGreaterThanZero\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/Reporter/Console/TerminalWidthTest.php
 
 		-
 			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\Reporter\\Console\\UnitTest\:\:testEqualsReturnsFalseWhenUnitsAreNotEqual\(\) has no return type specified\.$#'
@@ -589,6 +673,18 @@ parameters:
 			path: test/Unit/TestDescriptionTest.php
 
 		-
+			message: '#^Method TestDescriptionTest\:\:testTruncatedToReturnsTestDescriptionWhenWidthIsNotGreaterThanMaximumWidth\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/TestDescriptionTest.php
+
+		-
+			message: '#^Method TestDescriptionTest\:\:testTruncatedToReturnsTruncatedTestDescriptionWhenWidthIsGreaterThanMaximumWidth\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/TestDescriptionTest.php
+
+		-
 			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\TestIdentifierTest\:\:testFromStringRejectsInvalidValue\(\) has no return type specified\.$#'
 			identifier: missingType.return
 			count: 1
@@ -719,4 +815,100 @@ parameters:
 			identifier: missingType.return
 			count: 1
 			path: test/Unit/Version/SeriesTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\WidthTest\:\:testFromIntRejectsInvalidValue\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/WidthTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\WidthTest\:\:testFromIntReturnsWidth\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/WidthTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\WidthTest\:\:testFromStringReturnsWidthWhenValueContainsWideCharacters\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/WidthTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\WidthTest\:\:testFromStringReturnsWidthWhenValueContainsZeroWidthCharacters\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/WidthTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\WidthTest\:\:testFromStringReturnsWidthWhenValueIsEmpty\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/WidthTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\WidthTest\:\:testFromStringReturnsWidthWhenValueIsMultibyte\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/WidthTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\WidthTest\:\:testFromStringReturnsWidthWhenValueIsSingleByte\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/WidthTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\WidthTest\:\:testIsGreaterThanReturnsFalseWhenValueIsLess\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/WidthTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\WidthTest\:\:testIsGreaterThanReturnsFalseWhenValuesAreSame\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/WidthTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\WidthTest\:\:testIsGreaterThanReturnsTrueWhenValueIsGreater\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/WidthTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\WidthTest\:\:testMaxReturnsGreatestWidthWhenMoreThanOneWidthIsProvided\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/WidthTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\WidthTest\:\:testMaxReturnsWidthWhenOnlyOneWidthIsProvided\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/WidthTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\WidthTest\:\:testMinusReturnsWidthWhenOtherIsNotGreater\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/WidthTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\WidthTest\:\:testMinusThrowsInvalidWidthWhenOtherIsGreater\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/WidthTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\WidthTest\:\:testSumReturnsWidthWhenWidthsAreEmpty\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/WidthTest.php
+
+		-
+			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Test\\Unit\\WidthTest\:\:testSumReturnsWidthWhenWidthsAreNotEmpty\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: test/Unit/WidthTest.php
 

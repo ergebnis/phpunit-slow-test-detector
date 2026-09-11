@@ -250,6 +250,7 @@ You can configure the extension with the following options in your `phpunit.xml`
 
 - `maximum-count`, an `int`, the maximum count of slow test that should be reported, defaults to `10`
 - `maximum-duration`, an `int`, the maximum duration in milliseconds for a test before the extension considers it as a slow test, defaults to `500`
+- `maximum-width`, an `int` of at least `80` or `max`, the maximum width in columns of the table of slow tests, where `max` detects the width of the terminal (and uses `80` for narrower terminals); test descriptions that do not fit are truncated in the middle, defaults to no truncation at all
 - `stderr`, a `bool`, directs the slow test report output to `stderr`, defaults to `false`, only available on `phpunit/phpunit:^6.5.0`, `phpunit/phpunit:^7.5.0`, `phpunit/phpunit:^8.5.19`, and `phpunit/phpunit:^9.0.0` (on `phpunit/phpunit:^10.0.0` and later, the extension automatically respects the `stderr` configuration `phpunit/phpunit`)
 
 The configuration mechanism depends on the version of `phpunit/phpunit` you are using.
@@ -270,7 +271,7 @@ adjust your `phpunit.xml` configuration file and configure one or more
 - [`parameter` elements](https://docs.phpunit.de/en/11.0/configuration.html#the-parameter-element) on [`phpunit/phpunit:^11.0.0`](https://docs.phpunit.de/en/11.0/)
 - [`parameter` elements](https://docs.phpunit.de/en/10.5/configuration.html#the-parameter-element) on [`phpunit/phpunit:^10.0.0`](https://docs.phpunit.de/en/10.5/)
 
-The following example configures the maximum count of slow tests to three, and the maximum duration for all tests to 250 milliseconds:
+The following example configures the maximum count of slow tests to three, the maximum duration for all tests to 250 milliseconds, and the maximum width of the slow test report to the width of the terminal:
 
 ```diff
  <phpunit
@@ -283,6 +284,7 @@ The following example configures the maximum count of slow tests to three, and t
 +        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension">
 +            <parameter name="maximum-count" value="3"/>
 +            <parameter name="maximum-duration" value="250"/>
++            <parameter name="maximum-width" value="max"/>
 +        </bootstrap>
      </extensions>
      <testsuites>
@@ -307,7 +309,7 @@ adjust your `phpunit.xml` configuration file and configure the
 - [`arguments` element](https://docs.phpunit.de/en/8.5/configuration.html#the-arguments-element) on [`phpunit/phpunit:^8.5.19`](https://docs.phpunit.de/en/8.5/)
 - [`arguments` element](https://docs.phpunit.de/en/7.5/configuration.html#the-arguments-element) on [`phpunit/phpunit:^7.5.0`](https://docs.phpunit.de/en/7.5/)
 
-The following example configures the maximum count of slow tests to three, the maximum duration for all tests to 250 milliseconds, and directs the slow test report output to `stderr`:
+The following example configures the maximum count of slow tests to three, the maximum duration for all tests to 250 milliseconds, the maximum width of the slow test report to the width of the terminal, and directs the slow test report output to `stderr`:
 
 ```diff
  <phpunit
@@ -325,6 +327,9 @@ The following example configures the maximum count of slow tests to three, the m
 +                    </element>
 +                    <element key="maximum-duration">
 +                        <integer>250</integer>
++                    </element>
++                    <element key="maximum-width">
++                        <string>max</string>
 +                    </element>
 +                    <element key="stderr">
 +                        <boolean>true</boolean>
@@ -351,7 +356,7 @@ adjust your `phpunit.xml` configuration file and configure the
 
 - [`arguments` element](https://phpunit.de/manual/6.5/en/appendixes.configuration.html#appendixes.configuration.test-listeners) on [`phpunit/phpunit:^6.5.0`](https://phpunit.de/manual/6.5/en/)
 
-The following example configures the maximum count of slow tests to three, the maximum duration for all tests to 250 milliseconds, and directs the slow test report output to `stderr`:
+The following example configures the maximum count of slow tests to three, the maximum duration for all tests to 250 milliseconds, the maximum width of the slow test report to the width of the terminal, and directs the slow test report output to `stderr`:
 
 ```diff
  <phpunit
@@ -369,6 +374,9 @@ The following example configures the maximum count of slow tests to three, the m
 +                    </element>
 +                    <element key="maximum-duration">
 +                        <integer>250</integer>
++                    </element>
++                    <element key="maximum-width">
++                        <string>max</string>
 +                    </element>
 +                    <element key="stderr">
 +                        <boolean>true</boolean>

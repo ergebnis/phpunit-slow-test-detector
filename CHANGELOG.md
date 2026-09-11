@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.24.0...main`][2.24.0...main].
 
+### Added
+
+- Allowed configuring the maximum width of the slow test report via `maximum-width` parameter ([#891]), by [@localheinz]
+
 ## [`2.24.0`][2.24.0]
 
 For a full diff see [`2.23.0...2.24.0`][2.23.0...2.24.0].
@@ -501,6 +505,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#768]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/768
 [#773]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/773
 [#788]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/788
+[#891]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/891
 
 [@courtney-miles]: https://github.com/courtney-miles
 [@dantleech]: https://github.com/dantleech

@@ -38,6 +38,7 @@ use PHPUnit\Framework;
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDescription
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Width
  */
 final class SlowTestListTest extends Framework\TestCase
 {
@@ -333,7 +334,7 @@ final class SlowTestListTest extends Framework\TestCase
         $expected = $slowTests;
 
         \usort($expected, static function (SlowTest $one, SlowTest $two): int {
-            return \strlen($two->testDescription()->toString()) <=> \strlen($one->testDescription()->toString());
+            return $two->testDescription()->width()->toInt() <=> $one->testDescription()->width()->toInt();
         });
 
         self::assertEquals($expected, $sortedByLengthOfTestDescriptionDescending->toArray());
