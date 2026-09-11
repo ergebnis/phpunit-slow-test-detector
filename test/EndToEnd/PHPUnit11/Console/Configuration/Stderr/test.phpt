@@ -19,21 +19,21 @@ $application->run($_SERVER['argv']);
 
 ............                                                      12 / 12 (100%)
 
-Detected 11 tests where the duration exceeded the global maximum duration (0.500).
+Detected 11 tests where the duration exceeded the global maximum duration (0.100).
 
  # Duration Test
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- 1    1.6%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit11\Console\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider with data set #10 (1600)
- 2    1.5%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit11\Console\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider with data set #9 (1500)
- 3    1.4%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit11\Console\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider with data set #8 (1400)
- 4    1.3%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit11\Console\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider with data set #7 (1300)
- 5    1.2%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit11\Console\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider with data set #6 (1200)
- 6    1.1%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit11\Console\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider with data set #5 (1100)
- 7    1.0%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit11\Console\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider with data set #4 (1000)
- 8    0.9%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit11\Console\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider with data set #3 (900)
- 9    0.8%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit11\Console\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider with data set #2 (800)
-10    0.7%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit11\Console\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider with data set #1 (700)
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 1    %s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit11\Console\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #10 (650)
+ 2    %s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit11\Console\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #9 (600)
+ 3    %s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit11\Console\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #8 (550)
+ 4    %s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit11\Console\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #7 (500)
+ 5    %s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit11\Console\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #6 (450)
+ 6    %s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit11\Console\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #5 (400)
+ 7    %s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit11\Console\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #4 (350)
+ 8    %s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit11\Console\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #3 (300)
+ 9    %s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit11\Console\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #2 (250)
+10    %s Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit11\Console\Configuration\Stderr\SleeperTest::testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider with data set #1 (200)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       0.000
        └─── seconds
 

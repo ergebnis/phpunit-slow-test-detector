@@ -19,6 +19,9 @@
         <extension class="Ergebnis\PHPUnit\SlowTestDetector\Extension">
             <arguments>
                 <array>
+                    <element key="maximum-duration">
+                        <integer>100</integer>
+                    </element>
                     <element key="maximum-width">
                         <integer>100</integer>
                     </element>

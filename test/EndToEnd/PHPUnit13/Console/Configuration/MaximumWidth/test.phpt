@@ -19,15 +19,15 @@ $application->run($_SERVER['argv']);
 
 ......                                                              6 / 6 (100%)
 
-Detected 5 tests where the duration exceeded the global maximum duration (0.500).
+Detected 5 tests where the duration exceeded the global maximum duration (0.100).
 
 # Duration Test
 ----------------------------------------------------------------------------------------------------
-1    1.0%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndTo…%s(1000)
-2    0.9%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndTo…%s(900)
-3    0.8%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndTo…%s(800)
-4    0.7%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndTo…%s(700)
-5    0.6%s Ergebnis\PHPUnit\SlowTestDetector\Test\EndTo…%s(600)
+1    %s Ergebnis\PHPUnit\SlowTestDetector\Test\EndTo…%s(350)
+2    %s Ergebnis\PHPUnit\SlowTestDetector\Test\EndTo…%s(300)
+3    %s Ergebnis\PHPUnit\SlowTestDetector\Test\EndTo…%s(250)
+4    %s Ergebnis\PHPUnit\SlowTestDetector\Test\EndTo…%s(200)
+5    %s Ergebnis\PHPUnit\SlowTestDetector\Test\EndTo…%s(150)
 ----------------------------------------------------------------------------------------------------
      0.000
       └─── seconds

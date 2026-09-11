@@ -46,9 +46,9 @@ final class SleeperTest extends Framework\TestCase
     public static function provideMillisecondsGreaterThanDefaultMaximumDuration(): iterable
     {
         $values = \range(
-            600,
-            1600,
-            100
+            550,
+            1050,
+            50
         );
 
         foreach ($values as $value) {
