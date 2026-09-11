@@ -1,10 +1,10 @@
 # phpunit-slow-test-detector
 
-[![Integrate](https://github.com/ergebnis/phpunit-slow-test-detector/workflows/Integrate/badge.svg)](https://github.com/ergebnis/phpunit-slow-test-detector/actions)
-[![Merge](https://github.com/ergebnis/phpunit-slow-test-detector/workflows/Merge/badge.svg)](https://github.com/ergebnis/phpunit-slow-test-detector/actions)
-[![Nightly](https://github.com/ergebnis/phpunit-slow-test-detector/workflows/Nightly/badge.svg)](https://github.com/ergebnis/phpunit-slow-test-detector/actions)
-[![Release](https://github.com/ergebnis/phpunit-slow-test-detector/workflows/Release/badge.svg)](https://github.com/ergebnis/phpunit-slow-test-detector/actions)
-[![Renew](https://github.com/ergebnis/phpunit-slow-test-detector/workflows/Renew/badge.svg)](https://github.com/ergebnis/phpunit-slow-test-detector/actions)
+[![Integrate](https://github.com/ergebnis/phpunit-slow-test-detector/actions/workflows/integrate.yaml/badge.svg?branch=main)](https://github.com/ergebnis/phpunit-slow-test-detector/actions/workflows/integrate.yaml)
+[![Merge](https://github.com/ergebnis/phpunit-slow-test-detector/actions/workflows/merge.yaml/badge.svg)](https://github.com/ergebnis/phpunit-slow-test-detector/actions/workflows/merge.yaml)
+[![Nightly](https://github.com/ergebnis/phpunit-slow-test-detector/actions/workflows/nightly.yaml/badge.svg)](https://github.com/ergebnis/phpunit-slow-test-detector/actions/workflows/nightly.yaml)
+[![Release](https://github.com/ergebnis/phpunit-slow-test-detector/actions/workflows/release.yaml/badge.svg)](https://github.com/ergebnis/phpunit-slow-test-detector/actions/workflows/release.yaml)
+[![Renew](https://github.com/ergebnis/phpunit-slow-test-detector/actions/workflows/renew.yaml/badge.svg)](https://github.com/ergebnis/phpunit-slow-test-detector/actions/workflows/renew.yaml)
 
 [![Code Coverage](https://codecov.io/gh/ergebnis/phpunit-slow-test-detector/branch/main/graph/badge.svg)](https://codecov.io/gh/ergebnis/phpunit-slow-test-detector)
 
