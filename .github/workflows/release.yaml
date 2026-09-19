@@ -66,7 +66,7 @@ jobs:
         run: "composer remove phpunit/phpunit --ansi --no-interaction --ignore-platform-reqs --no-progress"
 
       - name: "Install ${{ matrix.dependencies }} dependencies with composer"
-        uses: "ergebnis/.github/actions/composer/install@fa753ba19f89b4923380b19dfcd80ad7eca4def9" # 1.13.0
+        uses: "ergebnis/.github/actions/composer/install@f5048b197f24b30496f4989821523d688959fbc3" # 1.13.1
         with:
           dependencies: "${{ matrix.dependencies }}"
 
