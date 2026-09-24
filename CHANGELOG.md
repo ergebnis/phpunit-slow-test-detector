@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.25.0...main`][2.25.0...main].
 
+### Changed
+
+- Allowed installation on PHP 8.6 ([#912]), by [@localheinz]
+
 ## [`2.25.0`][2.25.0]
 
 For a full diff see [`2.24.0...2.25.0`][2.24.0...2.25.0].
@@ -516,6 +520,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#773]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/773
 [#788]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/788
 [#891]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/891
+[#912]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/912
 
 [@courtney-miles]: https://github.com/courtney-miles
 [@dantleech]: https://github.com/dantleech
