@@ -481,6 +481,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#357]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/357
 [#367]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/367
 [#375]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/375
+[#380]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/380
 [#390]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/390
 [#393]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/393
 [#394]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/394
@@ -499,9 +500,12 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#559]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/559
 [#598]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/598
 [#604]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/604
+[#621]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/621
 [#635]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/635
 [#651]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/651
 [#664]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/664
+[#675]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/675
+[#687]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/687
 [#704]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/704
 [#713]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/713
 [#754]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/754
