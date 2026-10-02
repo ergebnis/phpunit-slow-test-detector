@@ -32,7 +32,7 @@
     "ergebnis/composer-normalize": "^2.54.0",
     "ergebnis/license": "^2.8.0",
     "ergebnis/php-cs-fixer-config": "^6.64.0",
-    "ergebnis/rector-rules": "^1.18.3",
+    "ergebnis/rector-rules": "^1.18.5",
     "fakerphp/faker": "~1.20.0",
     "phpstan/extension-installer": "^1.4.3",
     "phpstan/phpstan": "^2.2.14",
