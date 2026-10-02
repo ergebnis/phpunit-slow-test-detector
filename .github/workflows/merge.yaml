@@ -4,7 +4,6 @@ name: "Merge"
 
 on: # yamllint disable-line rule:truthy
   # zizmor: ignore[dangerous-triggers] -- merge only calls bot-token API actions.
-  # zizmor: ignore[dangerous-triggers] -- merge only calls bot-token API actions.
   workflow_run:
     types:
       - "completed"
