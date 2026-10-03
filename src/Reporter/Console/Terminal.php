@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console;
 
-use Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 use Ergebnis\PHPUnit\SlowTestDetector\Width;
 
 /**
@@ -24,10 +23,10 @@ final class Terminal
     /**
      * @see https://github.com/sebastianbergmann/environment/blob/5.1.5/src/Console.php#L84-L95
      */
-    public static function width(): Reporter\Console\TerminalWidth
+    public static function width(): TerminalWidth
     {
         if (!self::isInteractive()) {
-            return Reporter\Console\TerminalWidth::default();
+            return TerminalWidth::default();
         }
 
         if (self::isWindows()) {
@@ -68,10 +67,10 @@ final class Terminal
     /**
      * @see https://github.com/sebastianbergmann/environment/blob/5.1.5/src/Console.php#L132-L147
      */
-    private static function widthOnUnix(): Reporter\Console\TerminalWidth
+    private static function widthOnUnix(): TerminalWidth
     {
         if (!\function_exists('shell_exec')) {
-            return Reporter\Console\TerminalWidth::default();
+            return TerminalWidth::default();
         }
 
         $sizeOutput = \shell_exec('stty size 2>/dev/null');
@@ -81,7 +80,7 @@ final class Terminal
             && 1 === \preg_match('/\d+ (?P<numberOfColumns>\d+)/', $sizeOutput, $matches)
             && 0 < (int) $matches['numberOfColumns']
         ) {
-            return Reporter\Console\TerminalWidth::fromWidth(Width::fromInt((int) $matches['numberOfColumns']));
+            return TerminalWidth::fromWidth(Width::fromInt((int) $matches['numberOfColumns']));
         }
 
         $output = \shell_exec('stty 2>/dev/null');
@@ -91,16 +90,16 @@ final class Terminal
             && 1 === \preg_match('/columns = (?P<numberOfColumns>\d+);/', $output, $matches)
             && 0 < (int) $matches['numberOfColumns']
         ) {
-            return Reporter\Console\TerminalWidth::fromWidth(Width::fromInt((int) $matches['numberOfColumns']));
+            return TerminalWidth::fromWidth(Width::fromInt((int) $matches['numberOfColumns']));
         }
 
-        return Reporter\Console\TerminalWidth::default();
+        return TerminalWidth::default();
     }
 
     /**
      * @see https://github.com/sebastianbergmann/environment/blob/5.1.5/src/Console.php#L152-L187
      */
-    private static function widthOnWindows(): Reporter\Console\TerminalWidth
+    private static function widthOnWindows(): TerminalWidth
     {
         $ansicon = \getenv('ANSICON');
 
@@ -109,9 +108,9 @@ final class Terminal
             && 1 === \preg_match('/^(?P<numberOfColumns>\d+)x\d+ \(\d+x\d+\)$/', \trim($ansicon), $matches)
             && 0 < (int) $matches['numberOfColumns']
         ) {
-            return Reporter\Console\TerminalWidth::fromWidth(Width::fromInt((int) $matches['numberOfColumns']));
+            return TerminalWidth::fromWidth(Width::fromInt((int) $matches['numberOfColumns']));
         }
 
-        return Reporter\Console\TerminalWidth::default();
+        return TerminalWidth::default();
     }
 }
