@@ -528,4 +528,4 @@ This package is inspired by [`johnkary/phpunit-speedtrap`](https://github.com/jo
 
 ## Social
 
-Follow [@localheinz](https://twitter.com/intent/follow?screen_name=localheinz) and [@ergebnis](https://twitter.com/intent/follow?screen_name=ergebnis) on Twitter.
+Follow [@localheinz](https://x.com/intent/follow?screen_name=localheinz) and [@ergebnis](https://x.com/intent/follow?screen_name=ergebnis) on X.
