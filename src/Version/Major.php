@@ -18,10 +18,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Version;
  */
 final class Major
 {
-    /**
-     * @var int
-     */
-    private $value;
+    private int $value;
 
     private function __construct(int $value)
     {

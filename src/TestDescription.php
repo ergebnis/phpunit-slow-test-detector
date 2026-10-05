@@ -18,10 +18,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
  */
 final class TestDescription
 {
-    /**
-     * @var string
-     */
-    private $value;
+    private string $value;
 
     private function __construct(string $value)
     {

@@ -28,25 +28,10 @@ use Ergebnis\PHPUnit\SlowTestDetector\Width;
  */
 final class ConsoleReporter implements Reporter\Reporter
 {
-    /**
-     * @var DurationFormatter
-     */
-    private $durationFormatter;
-
-    /**
-     * @var MaximumDuration
-     */
-    private $maximumDuration;
-
-    /**
-     * @var MaximumCount
-     */
-    private $maximumCount;
-
-    /**
-     * @var MaximumWidth
-     */
-    private $maximumWidth;
+    private DurationFormatter $durationFormatter;
+    private MaximumDuration $maximumDuration;
+    private MaximumCount $maximumCount;
+    private MaximumWidth $maximumWidth;
 
     public function __construct(
         DurationFormatter $durationFormatter,

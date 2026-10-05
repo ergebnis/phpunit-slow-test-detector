@@ -21,7 +21,7 @@ final class SlowTestList
     /**
      * @var list<SlowTest>
      */
-    private $slowTests;
+    private array $slowTests;
 
     private function __construct(SlowTest ...$slowTests)
     {

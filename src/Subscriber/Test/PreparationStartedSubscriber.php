@@ -23,10 +23,7 @@ use PHPUnit\Event;
  */
 final class PreparationStartedSubscriber implements Event\Test\PreparationStartedSubscriber
 {
-    /**
-     * @var TimeKeeper
-     */
-    private $timeKeeper;
+    private TimeKeeper $timeKeeper;
 
     public function __construct(TimeKeeper $timeKeeper)
     {

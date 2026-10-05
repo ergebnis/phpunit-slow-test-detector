@@ -31,25 +31,10 @@ try {
 if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
     final class Extension implements Framework\TestListener
     {
-        /**
-         * @var int
-         */
-        private $suites = 0;
-
-        /**
-         * @var MaximumDuration
-         */
-        private $maximumDuration;
-
-        /**
-         * @var Collector\Collector
-         */
-        private $collector;
-
-        /**
-         * @var Reporter\Reporter
-         */
-        private $reporter;
+        private int $suites = 0;
+        private MaximumDuration $maximumDuration;
+        private Collector\Collector $collector;
+        private Reporter\Reporter $reporter;
 
         /**
          * @var resource
@@ -272,25 +257,10 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
         Runner\AfterTestHook,
         Runner\BeforeFirstTestHook
     {
-        /**
-         * @var int
-         */
-        private $suites = 0;
-
-        /**
-         * @var MaximumDuration
-         */
-        private $maximumDuration;
-
-        /**
-         * @var Collector\Collector
-         */
-        private $collector;
-
-        /**
-         * @var Reporter\Reporter
-         */
-        private $reporter;
+        private int $suites = 0;
+        private MaximumDuration $maximumDuration;
+        private Collector\Collector $collector;
+        private Reporter\Reporter $reporter;
 
         /**
          * @var resource

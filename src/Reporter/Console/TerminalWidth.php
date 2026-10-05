@@ -21,10 +21,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\Width;
  */
 final class TerminalWidth
 {
-    /**
-     * @var Width
-     */
-    private $width;
+    private Width $width;
 
     private function __construct(Width $width)
     {

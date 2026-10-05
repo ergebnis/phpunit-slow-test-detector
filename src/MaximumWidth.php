@@ -18,10 +18,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
  */
 final class MaximumWidth
 {
-    /**
-     * @var Width
-     */
-    private $width;
+    private Width $width;
 
     private function __construct(Width $width)
     {

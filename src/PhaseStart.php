@@ -18,15 +18,8 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
  */
 final class PhaseStart
 {
-    /**
-     * @var PhaseIdentifier
-     */
-    private $phaseIdentifier;
-
-    /**
-     * @var Time
-     */
-    private $startTime;
+    private PhaseIdentifier $phaseIdentifier;
+    private Time $startTime;
 
     private function __construct(
         PhaseIdentifier $phaseIdentifier,

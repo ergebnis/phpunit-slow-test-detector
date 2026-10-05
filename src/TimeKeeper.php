@@ -21,7 +21,7 @@ final class TimeKeeper
     /**
      * @var array<string, PhaseStart>
      */
-    private $phaseStarts = [];
+    private array $phaseStarts = [];
 
     public function start(
         PhaseIdentifier $phaseIdentifier,

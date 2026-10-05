@@ -18,10 +18,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\Exception;
 #[\Attribute(\Attribute::TARGET_METHOD)]
 final class MaximumDuration
 {
-    /**
-     * @var int
-     */
-    private $milliseconds;
+    private int $milliseconds;
 
     /**
      * @throws Exception\InvalidMilliseconds

@@ -33,25 +33,10 @@ use PHPUnit\Metadata;
  */
 final class FinishedSubscriber implements Event\Test\FinishedSubscriber
 {
-    /**
-     * @var MaximumDuration
-     */
-    private $maximumDuration;
-
-    /**
-     * @var TimeKeeper
-     */
-    private $timeKeeper;
-
-    /**
-     * @var Collector\Collector
-     */
-    private $collector;
-
-    /**
-     * @var Version\Series
-     */
-    private $versionSeries;
+    private MaximumDuration $maximumDuration;
+    private TimeKeeper $timeKeeper;
+    private Collector\Collector $collector;
+    private Version\Series $versionSeries;
 
     public function __construct(
         MaximumDuration $maximumDuration,
