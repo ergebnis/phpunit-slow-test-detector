@@ -500,7 +500,6 @@ The maintainers of this project provide limited support.
 
 This project currently supports the following PHP versions:
 
-- [PHP 7.0](https://www.php.net/releases/#7.0.0) (has reached its end of life on January 10, 2019)
 - [PHP 7.1](https://www.php.net/releases/#7.1.0) (has reached its end of life on December 1, 2019)
 - [PHP 7.2](https://www.php.net/releases/#7.2.0) (has reached its end of life on November 30, 2020)
 - [PHP 7.3](https://www.php.net/releases/#7.3.0) (has reached its end of life on December 6, 2021)
