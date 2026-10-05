@@ -24,7 +24,7 @@ final class InvalidWidth extends \InvalidArgumentException
     {
         return new self(\sprintf(
             'Value should be greater than or equal to 0, but %d is not.',
-            $value
+            $value,
         ));
     }
 
@@ -35,7 +35,7 @@ final class InvalidWidth extends \InvalidArgumentException
         return new self(\sprintf(
             'Width %d can not be subtracted from width %d, as the result would be negative.',
             $subtrahend->toInt(),
-            $minuend->toInt()
+            $minuend->toInt(),
         ));
     }
 }

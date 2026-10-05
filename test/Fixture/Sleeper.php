@@ -15,10 +15,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Fixture;
 
 final class Sleeper
 {
-    /**
-     * @var int
-     */
-    private $milliseconds;
+    private int $milliseconds;
 
     private function __construct(int $milliseconds)
     {
@@ -33,7 +30,7 @@ final class Sleeper
         if (0 > $milliseconds) {
             throw new \InvalidArgumentException(\sprintf(
                 'Value for milliseconds should be greater than or equal to 0, but %d is not.',
-                $milliseconds
+                $milliseconds,
             ));
         }
 
@@ -45,7 +42,7 @@ final class Sleeper
         return $this->milliseconds;
     }
 
-    public function sleep()
+    public function sleep(): void
     {
         \usleep($this->milliseconds * 1000);
     }

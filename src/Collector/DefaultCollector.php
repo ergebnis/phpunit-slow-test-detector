@@ -24,9 +24,9 @@ final class DefaultCollector implements Collector
     /**
      * @var array<string, SlowTest>
      */
-    private $slowTests = [];
+    private array $slowTests = [];
 
-    public function collectSlowTest(SlowTest $slowTest)
+    public function collectSlowTest(SlowTest $slowTest): void
     {
         $key = $slowTest->testIdentifier()->toString();
 

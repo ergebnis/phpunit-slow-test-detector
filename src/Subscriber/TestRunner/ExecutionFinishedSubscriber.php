@@ -22,15 +22,8 @@ use PHPUnit\Event;
  */
 final class ExecutionFinishedSubscriber implements Event\TestRunner\ExecutionFinishedSubscriber
 {
-    /**
-     * @var Collector\Collector
-     */
-    private $collector;
-
-    /**
-     * @var Reporter\Reporter
-     */
-    private $reporter;
+    private Collector\Collector $collector;
+    private Reporter\Reporter $reporter;
 
     /**
      * @var resource
@@ -69,7 +62,7 @@ final class ExecutionFinishedSubscriber implements Event\TestRunner\ExecutionFin
 
         \fwrite(
             $this->output,
-            $report
+            $report,
         );
     }
 }

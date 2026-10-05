@@ -43,7 +43,7 @@ final class DurationFormatter
                 $hours,
                 $minutes,
                 $seconds,
-                $milliseconds
+                $milliseconds,
             );
         }
 
@@ -52,14 +52,14 @@ final class DurationFormatter
                 '%d:%02d.%03d',
                 $minutes + $hours * 60,
                 $seconds,
-                $milliseconds
+                $milliseconds,
             );
         }
 
         return \sprintf(
             '%d.%03d',
             $seconds + $minutes * 60 + $hours * 3600,
-            $milliseconds
+            $milliseconds,
         );
     }
 }

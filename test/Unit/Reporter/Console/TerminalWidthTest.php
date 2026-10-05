@@ -32,7 +32,7 @@ final class TerminalWidthTest extends Framework\TestCase
     /**
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::zero
      */
-    public function testFromWidthThrowsInvalidTerminalWidthWhenWidthIsNotGreaterThanZero(int $value)
+    public function testFromWidthThrowsInvalidTerminalWidthWhenWidthIsNotGreaterThanZero(int $value): void
     {
         $width = Width::fromInt($value);
 
@@ -44,7 +44,7 @@ final class TerminalWidthTest extends Framework\TestCase
     /**
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::greaterThanZero
      */
-    public function testFromWidthReturnsTerminalWidthWhenWidthIsGreaterThanZero(int $value)
+    public function testFromWidthReturnsTerminalWidthWhenWidthIsGreaterThanZero(int $value): void
     {
         $width = Width::fromInt($value);
 
@@ -53,7 +53,7 @@ final class TerminalWidthTest extends Framework\TestCase
         self::assertSame($width, $terminalWidth->toWidth());
     }
 
-    public function testDefaultReturnsTerminalWidth()
+    public function testDefaultReturnsTerminalWidth(): void
     {
         $terminalWidth = Reporter\Console\TerminalWidth::default();
 

@@ -18,10 +18,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
  */
 final class MaximumWidth
 {
-    /**
-     * @var Width
-     */
-    private $width;
+    private Width $width;
 
     private function __construct(Width $width)
     {
@@ -48,7 +45,7 @@ final class MaximumWidth
         if ($minimum->width->isGreaterThan($width)) {
             throw Exception\InvalidMaximumWidth::lessThanMinimum(
                 $width->toInt(),
-                $minimum->width->toInt()
+                $minimum->width->toInt(),
             );
         }
 

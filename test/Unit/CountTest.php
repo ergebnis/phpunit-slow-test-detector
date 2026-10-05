@@ -30,7 +30,7 @@ final class CountTest extends Framework\TestCase
     /**
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::lessThanZero
      */
-    public function testFromIntRejectsInvalidValue(int $value)
+    public function testFromIntRejectsInvalidValue(int $value): void
     {
         $this->expectException(Exception\InvalidCount::class);
 
@@ -41,14 +41,14 @@ final class CountTest extends Framework\TestCase
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::greaterThanZero
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::zero
      */
-    public function testFromIntReturnsCount(int $value)
+    public function testFromIntReturnsCount(int $value): void
     {
         $count = Count::fromInt($value);
 
         self::assertSame($value, $count->toInt());
     }
 
-    public function testEqualsReturnsFalseWhenValueIsDifferent()
+    public function testEqualsReturnsFalseWhenValueIsDifferent(): void
     {
         $faker = self::faker()->unique();
 
@@ -58,7 +58,7 @@ final class CountTest extends Framework\TestCase
         self::assertFalse($one->equals($two));
     }
 
-    public function testEqualsReturnsTrueWhenValueIsSame()
+    public function testEqualsReturnsTrueWhenValueIsSame(): void
     {
         $value = self::faker()->numberBetween(0);
 

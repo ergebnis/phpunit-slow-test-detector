@@ -29,19 +29,19 @@ final class PhaseStartTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testCreateReturnsPhaseStart()
+    public function testCreateReturnsPhaseStart(): void
     {
         $faker = self::faker();
 
         $phaseIdentifier = PhaseIdentifier::fromString($faker->word());
         $startTime = Time::fromSecondsAndNanoseconds(
             $faker->numberBetween(0, 999),
-            $faker->numberBetween(0, 999999999)
+            $faker->numberBetween(0, 999999999),
         );
 
         $phaseStart = PhaseStart::create(
             $phaseIdentifier,
-            $startTime
+            $startTime,
         );
 
         self::assertSame($phaseIdentifier, $phaseStart->phaseIdentifier());

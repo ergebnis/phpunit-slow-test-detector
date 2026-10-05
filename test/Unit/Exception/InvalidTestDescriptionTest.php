@@ -21,7 +21,7 @@ use PHPUnit\Framework;
  */
 final class InvalidTestDescriptionTest extends Framework\TestCase
 {
-    public function testBlankOrEmptyReturnsException()
+    public function testBlankOrEmptyReturnsException(): void
     {
         $exception = Exception\InvalidTestDescription::blankOrEmpty();
 

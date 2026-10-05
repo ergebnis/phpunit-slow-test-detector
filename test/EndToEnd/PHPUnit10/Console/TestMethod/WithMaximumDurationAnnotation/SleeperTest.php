@@ -80,9 +80,9 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @return list<array{0: string}>
      */
-    public static function provideDataWhereDataNameIsInteger(): array
+    public static function provideDataWhereDataNameIsInteger(): iterable
     {
-        return [
+        yield from [
             [
                 'bar',
             ],
@@ -108,9 +108,9 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @return array<string, array{0: string}>
      */
-    public static function provideDataWhereDataNameIsString(): array
+    public static function provideDataWhereDataNameIsString(): iterable
     {
-        return [
+        yield from [
             'foo' => [
                 'bar',
             ],

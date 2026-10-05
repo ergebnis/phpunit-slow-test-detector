@@ -29,7 +29,7 @@ final class MaximumCountTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testFromCountRejectsInvalidCount()
+    public function testFromCountRejectsInvalidCount(): void
     {
         $count = Count::fromInt(0);
 
@@ -41,7 +41,7 @@ final class MaximumCountTest extends Framework\TestCase
     /**
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::greaterThanZero
      */
-    public function testFromCountReturnsMaximumCount(int $value)
+    public function testFromCountReturnsMaximumCount(int $value): void
     {
         $count = Count::fromInt($value);
 
@@ -50,7 +50,7 @@ final class MaximumCountTest extends Framework\TestCase
         self::assertSame($count, $maximumCount->toCount());
     }
 
-    public function testDefaultReturnsMaximumCount()
+    public function testDefaultReturnsMaximumCount(): void
     {
         $maximumCount = MaximumCount::default();
 

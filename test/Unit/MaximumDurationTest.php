@@ -27,7 +27,7 @@ final class MaximumDurationTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testFromDurationReturnsMaximumDuration()
+    public function testFromDurationReturnsMaximumDuration(): void
     {
         $faker = self::faker();
 
@@ -38,7 +38,7 @@ final class MaximumDurationTest extends Framework\TestCase
         self::assertSame($duration, $maximumDuration->toDuration());
     }
 
-    public function testDefaultReturnsMaximumDuration()
+    public function testDefaultReturnsMaximumDuration(): void
     {
         $maximumDuration = MaximumDuration::default();
 

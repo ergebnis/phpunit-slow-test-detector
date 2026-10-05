@@ -21,7 +21,7 @@ final class SlowTestList
     /**
      * @var list<SlowTest>
      */
-    private $slowTests;
+    private array $slowTests;
 
     private function __construct(SlowTest ...$slowTests)
     {
@@ -60,7 +60,7 @@ final class SlowTestList
         return self::create(...\array_slice(
             $this->slowTests,
             0,
-            $maximumCount->toCount()->toInt()
+            $maximumCount->toCount()->toInt(),
         ));
     }
 
@@ -73,7 +73,7 @@ final class SlowTestList
         \usort($slowTests, static function (SlowTest $one, SlowTest $two) use ($durationComparator): int {
             return $durationComparator->compare(
                 $two->duration(),
-                $one->duration()
+                $one->duration(),
             );
         });
 
@@ -89,7 +89,7 @@ final class SlowTestList
         \usort($slowTests, static function (SlowTest $one, SlowTest $two) use ($durationComparator): int {
             return $durationComparator->compare(
                 $two->maximumDuration()->toDuration(),
-                $one->maximumDuration()->toDuration()
+                $one->maximumDuration()->toDuration(),
             );
         });
 

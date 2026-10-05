@@ -23,10 +23,7 @@ use PHPUnit\Event;
  */
 final class PreparationStartedSubscriber implements Event\Test\PreparationStartedSubscriber
 {
-    /**
-     * @var TimeKeeper
-     */
-    private $timeKeeper;
+    private TimeKeeper $timeKeeper;
 
     public function __construct(TimeKeeper $timeKeeper)
     {
@@ -44,8 +41,8 @@ final class PreparationStartedSubscriber implements Event\Test\PreparationStarte
             PhaseIdentifier::fromString($event->test()->id()),
             Time::fromSecondsAndNanoseconds(
                 $time->seconds(),
-                $time->nanoseconds()
-            )
+                $time->nanoseconds(),
+            ),
         );
     }
 }

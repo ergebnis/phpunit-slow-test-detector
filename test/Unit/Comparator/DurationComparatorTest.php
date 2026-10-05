@@ -24,16 +24,16 @@ use PHPUnit\Framework;
  */
 final class DurationComparatorTest extends Framework\TestCase
 {
-    public function testReturnsMinusOneWhenOneIsLessThanTwo()
+    public function testReturnsMinusOneWhenOneIsLessThanTwo(): void
     {
         $one = Duration::fromSecondsAndNanoseconds(
             5,
-            0
+            0,
         );
 
         $two = Duration::fromSecondsAndNanoseconds(
             5,
-            1
+            1,
         );
 
         $comparator = new Comparator\DurationComparator();
@@ -41,16 +41,16 @@ final class DurationComparatorTest extends Framework\TestCase
         self::assertSame(-1, $comparator->compare($one, $two));
     }
 
-    public function testReturnsZeroWhenOneEqualsTwo()
+    public function testReturnsZeroWhenOneEqualsTwo(): void
     {
         $one = Duration::fromSecondsAndNanoseconds(
             5,
-            0
+            0,
         );
 
         $two = Duration::fromSecondsAndNanoseconds(
             5,
-            0
+            0,
         );
 
         $comparator = new Comparator\DurationComparator();
@@ -58,16 +58,16 @@ final class DurationComparatorTest extends Framework\TestCase
         self::assertSame(0, $comparator->compare($one, $two));
     }
 
-    public function testReturnsPlusOneWhenOneIsGreaterThanTwo()
+    public function testReturnsPlusOneWhenOneIsGreaterThanTwo(): void
     {
         $one = Duration::fromSecondsAndNanoseconds(
             5,
-            1
+            1,
         );
 
         $two = Duration::fromSecondsAndNanoseconds(
             5,
-            0
+            0,
         );
 
         $comparator = new Comparator\DurationComparator();

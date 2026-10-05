@@ -536,10 +536,6 @@ jobs:
           - "6.5.0"
 
         php-version:
-          - "7.0"
-          - "7.1"
-          - "7.2"
-          - "7.3"
           - "7.4"
 
         dependencies:
@@ -548,51 +544,11 @@ jobs:
 
         include:
           - phpunit-version: "7.5.0"
-            php-version: "7.1"
-            dependencies: "lowest"
-
-          - phpunit-version: "7.5.0"
-            php-version: "7.1"
-            dependencies: "highest"
-
-          - phpunit-version: "7.5.0"
-            php-version: "7.2"
-            dependencies: "lowest"
-
-          - phpunit-version: "7.5.0"
-            php-version: "7.2"
-            dependencies: "highest"
-
-          - phpunit-version: "7.5.0"
-            php-version: "7.3"
-            dependencies: "lowest"
-
-          - phpunit-version: "7.5.0"
-            php-version: "7.3"
-            dependencies: "highest"
-
-          - phpunit-version: "7.5.0"
             php-version: "7.4"
             dependencies: "lowest"
 
           - phpunit-version: "7.5.0"
             php-version: "7.4"
-            dependencies: "highest"
-
-          - phpunit-version: "8.5.19"
-            php-version: "7.2"
-            dependencies: "lowest"
-
-          - phpunit-version: "8.5.19"
-            php-version: "7.2"
-            dependencies: "highest"
-
-          - phpunit-version: "8.5.19"
-            php-version: "7.3"
-            dependencies: "lowest"
-
-          - phpunit-version: "8.5.19"
-            php-version: "7.3"
             dependencies: "highest"
 
           - phpunit-version: "8.5.19"
@@ -649,14 +605,6 @@ jobs:
 
           - phpunit-version: "8.5.40"
             php-version: "8.5"
-            dependencies: "highest"
-
-          - phpunit-version: "9.0.0"
-            php-version: "7.3"
-            dependencies: "lowest"
-
-          - phpunit-version: "9.0.0"
-            php-version: "7.3"
             dependencies: "highest"
 
           - phpunit-version: "9.0.0"

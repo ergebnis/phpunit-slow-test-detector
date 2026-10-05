@@ -18,10 +18,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
  */
 final class Width
 {
-    /**
-     * @var int
-     */
-    private $value;
+    private int $value;
 
     private function __construct(int $value)
     {
@@ -45,7 +42,7 @@ final class Width
         $valueWithoutZeroWidthCharacters = \preg_replace(
             '/[\p{Mn}\p{Me}\p{Cf}]/u',
             '',
-            $value
+            $value,
         );
 
         if (!\is_string($valueWithoutZeroWidthCharacters)) {
@@ -54,7 +51,7 @@ final class Width
 
         return new self(\mb_strwidth(
             $valueWithoutZeroWidthCharacters,
-            'UTF-8'
+            'UTF-8',
         ));
     }
 
@@ -88,7 +85,7 @@ final class Width
         if ($other->isGreaterThan($this)) {
             throw Exception\InvalidWidth::subtrahendGreaterThanMinuend(
                 $this,
-                $other
+                $other,
             );
         }
 

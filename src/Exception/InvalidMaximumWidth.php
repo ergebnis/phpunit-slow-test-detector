@@ -25,7 +25,7 @@ final class InvalidMaximumWidth extends \InvalidArgumentException
         return new self(\sprintf(
             'Value should be greater than or equal to %d, but %d is not.',
             $minimum,
-            $value
+            $value,
         ));
     }
 }

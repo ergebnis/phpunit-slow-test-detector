@@ -18,10 +18,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
  */
 final class TestDescription
 {
-    /**
-     * @var string
-     */
-    private $value;
+    private string $value;
 
     private function __construct(string $value)
     {
@@ -59,7 +56,7 @@ final class TestDescription
             '//u',
             $this->value,
             -1,
-            \PREG_SPLIT_NO_EMPTY
+            \PREG_SPLIT_NO_EMPTY,
         );
 
         if (!\is_array($characters)) {
@@ -92,7 +89,7 @@ final class TestDescription
 
             \array_unshift(
                 $charactersOfTail,
-                $character
+                $character,
             );
 
             $remainingWidthOfTail -= $widthOfCharacter;
@@ -111,8 +108,8 @@ final class TestDescription
             $ellipsis,
             \implode(
                 '',
-                $charactersOfTail
-            )
+                $charactersOfTail,
+            ),
         ));
     }
 

@@ -18,10 +18,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Version;
  */
 final class Series
 {
-    /**
-     * @var Major
-     */
-    private $major;
+    private Major $major;
 
     private function __construct(Major $major)
     {
@@ -41,7 +38,7 @@ final class Series
         if (0 === \preg_match('/^(?P<major>(0|[1-9]\d*))\.(?P<minor>(0|[1-9]\d*))?$/', $value, $matches)) {
             throw new \InvalidArgumentException(\sprintf(
                 'Value "%s" does not appear to be a valid value for a semantic version.',
-                $value
+                $value,
             ));
         }
 

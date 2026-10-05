@@ -32,12 +32,12 @@ final class DurationFormatterTest extends Framework\TestCase
         Reporter\Console\Unit $unit,
         Duration $duration,
         string $formattedDuration
-    ) {
+    ): void {
         $formatter = new Reporter\Console\DurationFormatter();
 
         $formatted = $formatter->format(
             $unit,
-            $duration
+            $duration,
         );
 
         self::assertSame($formattedDuration, $formatted);
@@ -53,7 +53,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 Reporter\Console\Unit::seconds(),
                 Duration::fromSecondsAndNanoseconds(
                     0,
-                    0
+                    0,
                 ),
                 '0.000',
             ],
@@ -61,7 +61,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 Reporter\Console\Unit::seconds(),
                 Duration::fromSecondsAndNanoseconds(
                     0,
-                    123999000
+                    123999000,
                 ),
                 '0.123',
             ],
@@ -69,7 +69,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 Reporter\Console\Unit::seconds(),
                 Duration::fromSecondsAndNanoseconds(
                     1,
-                    234456789
+                    234456789,
                 ),
                 '1.234',
             ],
@@ -77,7 +77,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 Reporter\Console\Unit::seconds(),
                 Duration::fromSecondsAndNanoseconds(
                     12,
-                    345678912
+                    345678912,
                 ),
                 '12.345',
             ],
@@ -85,7 +85,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 Reporter\Console\Unit::minutes(),
                 Duration::fromSecondsAndNanoseconds(
                     0,
-                    0
+                    0,
                 ),
                 '0:00.000',
             ],
@@ -93,7 +93,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 Reporter\Console\Unit::minutes(),
                 Duration::fromSecondsAndNanoseconds(
                     12,
-                    345678912
+                    345678912,
                 ),
                 '0:12.345',
             ],
@@ -101,7 +101,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 Reporter\Console\Unit::minutes(),
                 Duration::fromSecondsAndNanoseconds(
                     1 * 60 + 23,
-                    456789012
+                    456789012,
                 ),
                 '1:23.456',
             ],
@@ -109,7 +109,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 Reporter\Console\Unit::minutes(),
                 Duration::fromSecondsAndNanoseconds(
                     12 * 60 + 34,
-                    567890123
+                    567890123,
                 ),
                 '12:34.567',
             ],
@@ -117,7 +117,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 Reporter\Console\Unit::hours(),
                 Duration::fromSecondsAndNanoseconds(
                     0,
-                    0
+                    0,
                 ),
                 '0:00:00.000',
             ],
@@ -125,7 +125,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 Reporter\Console\Unit::hours(),
                 Duration::fromSecondsAndNanoseconds(
                     12,
-                    345678912
+                    345678912,
                 ),
                 '0:00:12.345',
             ],
@@ -133,7 +133,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 Reporter\Console\Unit::hours(),
                 Duration::fromSecondsAndNanoseconds(
                     60 * 60 + 23 * 60 + 45,
-                    567890123
+                    567890123,
                 ),
                 '1:23:45.567',
             ],
@@ -141,7 +141,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 Reporter\Console\Unit::hours(),
                 Duration::fromSecondsAndNanoseconds(
                     12 * 60 * 60 + 34 * 60 + 56,
-                    789012345
+                    789012345,
                 ),
                 '12:34:56.789',
             ],
@@ -149,7 +149,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 Reporter\Console\Unit::hours(),
                 Duration::fromSecondsAndNanoseconds(
                     12 * 60 * 60 + 34 * 60 + 56,
-                    00
+                    00,
                 ),
                 '12:34:56.000',
             ],
@@ -157,13 +157,13 @@ final class DurationFormatterTest extends Framework\TestCase
                 Reporter\Console\Unit::hours(),
                 Duration::fromSecondsAndNanoseconds(
                     12 * 60 * 60 + 34 * 60,
-                    00
+                    00,
                 ),
                 '12:34:00.000',
             ],
         ];
 
-        foreach ($values as $key => list($unit, $duration, $formattedDuration)) {
+        foreach ($values as $key => [$unit, $duration, $formattedDuration]) {
             yield $key => [
                 $unit,
                 $duration,

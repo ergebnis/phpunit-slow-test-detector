@@ -24,7 +24,7 @@ final class InvalidMaximumCountTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testNotGreaterThanZeroReturnsException()
+    public function testNotGreaterThanZeroReturnsException(): void
     {
         $value = self::faker()->numberBetween();
 
@@ -32,7 +32,7 @@ final class InvalidMaximumCountTest extends Framework\TestCase
 
         $message = \sprintf(
             'Value should be greater than 0, but %d is not.',
-            $value
+            $value,
         );
 
         self::assertSame($message, $exception->getMessage());

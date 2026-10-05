@@ -28,7 +28,7 @@ final class TerminalTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testWidthReturnsTerminalWidthGreaterThanZero()
+    public function testWidthReturnsTerminalWidthGreaterThanZero(): void
     {
         $terminalWidth = Reporter\Console\Terminal::width();
 

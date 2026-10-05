@@ -21,7 +21,7 @@ use PHPUnit\Framework;
  */
 final class SleeperTest extends Framework\TestCase
 {
-    public function testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration()
+    public function testSleeperSleepsLessThanMaximumDurationFromXmlConfiguration(): void
     {
         $milliseconds = 10;
 
@@ -35,7 +35,7 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @dataProvider provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration
      */
-    public function testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider(int $milliseconds)
+    public function testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWithDataProvider(int $milliseconds): void
     {
         $sleeper = Test\Fixture\Sleeper::fromMilliseconds($milliseconds);
 
@@ -47,12 +47,12 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @return \Generator<int, array{0: int}>
      */
-    public static function provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration(): \Generator
+    public static function provideMillisecondsGreaterThanMaximumDurationFromXmlConfiguration(): iterable
     {
         $values = \range(
             200,
             1200,
-            100
+            100,
         );
 
         foreach ($values as $value) {

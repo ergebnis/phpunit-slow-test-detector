@@ -31,14 +31,14 @@ final class MaximumDurationTest extends Framework\TestCase
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::lessThanZero
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::zero
      */
-    public function testConstructorRejectsInvalidValue(int $milliseconds)
+    public function testConstructorRejectsInvalidValue(int $milliseconds): void
     {
         $this->expectException(Exception\InvalidMilliseconds::class);
 
         new Attribute\MaximumDuration($milliseconds);
     }
 
-    public function testConstructorSetsValue()
+    public function testConstructorSetsValue(): void
     {
         $milliseconds = self::faker()->numberBetween(1);
 
