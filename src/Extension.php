@@ -278,7 +278,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
         private $suites = 0;
 
         /**
-         * @var Duration
+         * @var MaximumDuration
          */
         private $maximumDuration;
 
