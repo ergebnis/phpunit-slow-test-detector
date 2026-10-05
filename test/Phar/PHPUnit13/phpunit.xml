@@ -5,7 +5,7 @@
     beStrictAboutOutputDuringTests="true"
     beStrictAboutTestsThatDoNotTestAnything="true"
     bootstrap="bootstrap.php"
-    cacheResult="false"
+    cacheDirectory="../../../.build/phpunit/"
     colors="true"
     columns="max"
     displayDetailsOnIncompleteTests="true"
