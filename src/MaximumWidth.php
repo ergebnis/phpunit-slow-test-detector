@@ -48,7 +48,7 @@ final class MaximumWidth
         if ($minimum->width->isGreaterThan($width)) {
             throw Exception\InvalidMaximumWidth::lessThanMinimum(
                 $width->toInt(),
-                $minimum->width->toInt()
+                $minimum->width->toInt(),
             );
         }
 

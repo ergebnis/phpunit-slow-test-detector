@@ -58,7 +58,7 @@ final class ConsoleReporterTest extends Framework\TestCase
             new Reporter\Console\DurationFormatter(),
             MaximumDuration::default(),
             MaximumCount::fromCount(Count::fromInt($faker->numberBetween(1))),
-            MaximumWidth::unlimited()
+            MaximumWidth::unlimited(),
         );
 
         $report = $reporter->report($slowTestList);
@@ -79,7 +79,7 @@ final class ConsoleReporterTest extends Framework\TestCase
             new Reporter\Console\DurationFormatter(),
             $maximumDuration,
             $maximumCount,
-            MaximumWidth::unlimited()
+            MaximumWidth::unlimited(),
         );
 
         $report = $reporter->report($slowTestList);
@@ -95,7 +95,7 @@ final class ConsoleReporterTest extends Framework\TestCase
         $print = static function (array $lines): string {
             return \implode(
                 "\n",
-                $lines
+                $lines,
             );
         };
 
@@ -119,7 +119,7 @@ final class ConsoleReporterTest extends Framework\TestCase
                     TestIdentifier::fromString('FooTest::test'),
                     TestDescription::fromString('FooTest::test'),
                     Duration::fromMilliseconds(300),
-                    MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
+                    MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                 )),
             ],
             'header-singular-custom' => [
@@ -142,7 +142,7 @@ final class ConsoleReporterTest extends Framework\TestCase
                     TestIdentifier::fromString('FooTest::test'),
                     TestDescription::fromString('FooTest::test'),
                     Duration::fromMilliseconds(300),
-                    MaximumDuration::fromDuration(Duration::fromMilliseconds(200))
+                    MaximumDuration::fromDuration(Duration::fromMilliseconds(200)),
                 )),
             ],
             'header-plural-global-only' => [
@@ -166,14 +166,14 @@ final class ConsoleReporterTest extends Framework\TestCase
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
                         Duration::fromMilliseconds(300),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
                         Duration::fromMilliseconds(275),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
-                    )
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                    ),
                 ),
             ],
             'header-plural-custom' => [
@@ -198,14 +198,14 @@ final class ConsoleReporterTest extends Framework\TestCase
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
                         Duration::fromMilliseconds(300),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(200))
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(200)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
                         Duration::fromMilliseconds(275),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
-                    )
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                    ),
                 ),
             ],
             'list-sorted' => [
@@ -230,20 +230,20 @@ final class ConsoleReporterTest extends Framework\TestCase
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
                         Duration::fromMilliseconds(300),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
                         Duration::fromMilliseconds(275),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
                         TestDescription::fromString('BazTest::test'),
                         Duration::fromMilliseconds(250),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
-                    )
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                    ),
                 ),
             ],
             'list-unsorted' => [
@@ -268,20 +268,20 @@ final class ConsoleReporterTest extends Framework\TestCase
                         TestIdentifier::fromString('BazTest::test'),
                         TestDescription::fromString('BazTest::test'),
                         Duration::fromMilliseconds(250),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
                         Duration::fromMilliseconds(275),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
                         Duration::fromMilliseconds(300),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
-                    )
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                    ),
                 ),
             ],
             'list-different-maximum-duration' => [
@@ -315,62 +315,62 @@ final class ConsoleReporterTest extends Framework\TestCase
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
                         Duration::fromMilliseconds(1250000),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(1000000))
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(1000000)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
                         Duration::fromMilliseconds(575000),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(500000))
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(500000)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
                         TestDescription::fromString('BazTest::test'),
                         Duration::fromMilliseconds(250),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('QuxTest::test'),
                         TestDescription::fromString('QuxTest::test'),
                         Duration::fromMilliseconds(200),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('QuuxTest::test'),
                         TestDescription::fromString('QuuxTest::test'),
                         Duration::fromMilliseconds(160),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('CorgeTest::test'),
                         TestDescription::fromString('CorgeTest::test'),
                         Duration::fromMilliseconds(150),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('GraultTest::test'),
                         TestDescription::fromString('GraultTest::test'),
                         Duration::fromMilliseconds(140),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('GarplyTest::test'),
                         TestDescription::fromString('GarplyTest::test'),
                         Duration::fromMilliseconds(130),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('WaldoTest::test'),
                         TestDescription::fromString('WaldoTest::test'),
                         Duration::fromMilliseconds(120),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('FredTest::test'),
                         TestDescription::fromString('FredTest::test'),
                         Duration::fromMilliseconds(110),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
-                    )
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                    ),
                 ),
             ],
             'list-different-maximum-duration-hours-global-only' => [
@@ -397,20 +397,20 @@ final class ConsoleReporterTest extends Framework\TestCase
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
                         Duration::fromMilliseconds(5025678),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
                         Duration::fromMilliseconds(575000),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
                         TestDescription::fromString('BazTest::test'),
                         Duration::fromMilliseconds(250),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
-                    )
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                    ),
                 ),
             ],
             'list-different-maximum-duration-hours-custom' => [
@@ -438,20 +438,20 @@ final class ConsoleReporterTest extends Framework\TestCase
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
                         Duration::fromMilliseconds(5025678),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(3600000))
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(3600000)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
                         Duration::fromMilliseconds(575000),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(500000))
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(500000)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
                         TestDescription::fromString('BazTest::test'),
                         Duration::fromMilliseconds(250),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
-                    )
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                    ),
                 ),
             ],
             'footer-singular' => [
@@ -476,14 +476,14 @@ final class ConsoleReporterTest extends Framework\TestCase
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
                         Duration::fromMilliseconds(300),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
                         Duration::fromMilliseconds(275),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
-                    )
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                    ),
                 ),
             ],
             'footer-plural' => [
@@ -508,20 +508,20 @@ final class ConsoleReporterTest extends Framework\TestCase
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
                         Duration::fromMilliseconds(300),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
                         Duration::fromMilliseconds(275),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
                         TestDescription::fromString('BazTest::test'),
                         Duration::fromMilliseconds(250),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
-                    )
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                    ),
                 ),
             ],
         ];
@@ -548,7 +548,7 @@ final class ConsoleReporterTest extends Framework\TestCase
             new Reporter\Console\DurationFormatter(),
             MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
             MaximumCount::fromCount(Count::fromInt(1)),
-            $maximumWidth
+            $maximumWidth,
         );
 
         $report = $reporter->report($slowTestList);
@@ -564,7 +564,7 @@ final class ConsoleReporterTest extends Framework\TestCase
         $print = static function (array $lines): string {
             return \implode(
                 "\n",
-                $lines
+                $lines,
             );
         };
 
@@ -574,21 +574,21 @@ final class ConsoleReporterTest extends Framework\TestCase
             TestIdentifier::fromString('FooTest::test'),
             TestDescription::fromString($testDescription),
             Duration::fromMilliseconds(300),
-            MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
+            MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
         );
 
         $slowTestWithCustomMaximumDuration = SlowTest::create(
             TestIdentifier::fromString('FooTest::test'),
             TestDescription::fromString($testDescription),
             Duration::fromMilliseconds(300),
-            MaximumDuration::fromDuration(Duration::fromMilliseconds(200))
+            MaximumDuration::fromDuration(Duration::fromMilliseconds(200)),
         );
 
         $slowTestWithMultibyteTestDescription = SlowTest::create(
             TestIdentifier::fromString('FooTest::test'),
             TestDescription::fromString('FooTest::testWithÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜ'),
             Duration::fromMilliseconds(300),
-            MaximumDuration::fromDuration(Duration::fromMilliseconds(100))
+            MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
         );
 
         $values = [

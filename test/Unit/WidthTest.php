@@ -129,7 +129,7 @@ final class WidthTest extends Framework\TestCase
         $width = Width::max(
             $one,
             $two,
-            $three
+            $three,
         );
 
         self::assertEquals($two, $width);

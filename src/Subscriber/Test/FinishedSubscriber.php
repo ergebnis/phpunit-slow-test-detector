@@ -79,8 +79,8 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
             $phaseIdentifier,
             Time::fromSecondsAndNanoseconds(
                 $time->seconds(),
-                $time->nanoseconds()
-            )
+                $time->nanoseconds(),
+            ),
         );
 
         $duration = $phase->duration();
@@ -95,7 +95,7 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
             TestIdentifier::fromString($event->test()->id()),
             self::descriptionFromTest($event->test()),
             $duration,
-            $maximumDuration
+            $maximumDuration,
         );
 
         $this->collector->collectSlowTest($slowTest);
@@ -141,7 +141,7 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
                 '%s::%s%s',
                 $test->className(),
                 $test->methodName(),
-                $dataAsStringForResultOutput
+                $dataAsStringForResultOutput,
             ));
         }
 
@@ -149,7 +149,7 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
             '%s::%s%s',
             $test->className(),
             $test->methodName(),
-            $test->testData()->dataFromDataProvider()->dataAsStringForResultOutput()
+            $test->testData()->dataFromDataProvider()->dataAsStringForResultOutput(),
         ));
     }
 
@@ -177,7 +177,7 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
         /** @var Event\Code\TestMethod $test */
         $methodReflection = new \ReflectionMethod(
             $test->className(),
-            $test->methodName()
+            $test->methodName(),
         );
 
         $attributeReflections = $methodReflection->getAttributes(Attribute\MaximumDuration::class);
@@ -203,7 +203,7 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
         /** @var Event\Code\TestMethod $test */
         $docBlock = Metadata\Annotation\Parser\Registry::getInstance()->forMethod(
             $test->className(),
-            $test->methodName()
+            $test->methodName(),
         );
 
         $symbolAnnotations = $docBlock->symbolAnnotations();

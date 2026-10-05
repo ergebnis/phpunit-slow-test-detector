@@ -60,7 +60,7 @@ final class SlowTest
             $testIdentifier,
             $testDescription,
             $duration,
-            $maximumDuration
+            $maximumDuration,
         );
     }
 

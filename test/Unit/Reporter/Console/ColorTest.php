@@ -39,7 +39,7 @@ final class ColorTest extends Framework\TestCase
 
         $expected = \sprintf(
             "\e[2m%s\e[22m",
-            $output
+            $output,
         );
 
         self::assertSame($expected, Reporter\Console\Color::dim($output));

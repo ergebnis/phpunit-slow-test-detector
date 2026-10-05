@@ -53,7 +53,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestIdentifier::fromString($faker->word()),
                 TestDescription::fromString($faker->word()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
-                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)))
+                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
             );
         }, \range(1, $faker->numberBetween(1, 10)));
 
@@ -71,7 +71,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestIdentifier::fromString($faker->word()),
                 TestDescription::fromString($faker->word()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
-                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)))
+                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
             );
         }, \range(1, $faker->numberBetween(1, 10)));
 
@@ -100,7 +100,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestIdentifier::fromString($faker->word()),
                 TestDescription::fromString($faker->word()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
-                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)))
+                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
             );
         }, \range(1, $faker->numberBetween(1, 10)));
 
@@ -127,7 +127,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestIdentifier::fromString($faker->word()),
                 TestDescription::fromString($faker->word()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
-                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)))
+                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
             );
         }, \range(1, $faker->numberBetween(1, 10)));
 
@@ -147,7 +147,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestIdentifier::fromString($faker->word()),
                 TestDescription::fromString($faker->word()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
-                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)))
+                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
             );
         }, \range(1, $faker->numberBetween(1, $maximumCount->toCount()->toInt() - 1)));
 
@@ -160,7 +160,7 @@ final class SlowTestListTest extends Framework\TestCase
         $expected = \array_slice(
             $slowTests,
             0,
-            $maximumCount->toCount()->toInt()
+            $maximumCount->toCount()->toInt(),
         );
 
         self::assertEquals($expected, $limitedToMaximumCount->toArray());
@@ -177,7 +177,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestIdentifier::fromString($faker->word()),
                 TestDescription::fromString($faker->word()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
-                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)))
+                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
             );
         }, \range(1, $faker->numberBetween($maximumCount->toCount()->toInt() + 1, $maximumCount->toCount()->toInt() + 10)));
 
@@ -190,7 +190,7 @@ final class SlowTestListTest extends Framework\TestCase
         $expected = \array_slice(
             $slowTests,
             0,
-            $maximumCount->toCount()->toInt()
+            $maximumCount->toCount()->toInt(),
         );
 
         self::assertEquals($expected, $limitedToMaximumCount->toArray());
@@ -207,7 +207,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestIdentifier::fromString($faker->word()),
                 TestDescription::fromString($faker->word()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
-                MaximumDuration::fromDuration($globalMaximumDuration)
+                MaximumDuration::fromDuration($globalMaximumDuration),
             );
         }, \range(1, $faker->numberBetween(1, 10)));
 
@@ -229,7 +229,7 @@ final class SlowTestListTest extends Framework\TestCase
                     TestIdentifier::fromString($faker->word()),
                     TestDescription::fromString($faker->word()),
                     Duration::fromMilliseconds($faker->numberBetween(0)),
-                    MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween($globalMaximumDurationInMilliseconds + 1)))
+                    MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween($globalMaximumDurationInMilliseconds + 1))),
                 );
             }
 
@@ -237,7 +237,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestIdentifier::fromString($faker->word()),
                 TestDescription::fromString($faker->word()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
-                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0, $globalMaximumDurationInMilliseconds - 1)))
+                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0, $globalMaximumDurationInMilliseconds - 1))),
             );
         }, \range(1, $faker->numberBetween(1, 10)));
 
@@ -257,7 +257,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestIdentifier::fromString($faker->word()),
                 TestDescription::fromString($faker->word()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
-                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)))
+                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
             );
         }, \range(1, $faker->numberBetween(1, 10)));
 
@@ -272,7 +272,7 @@ final class SlowTestListTest extends Framework\TestCase
         \usort($expected, static function (SlowTest $one, SlowTest $two) use ($durationComparator): int {
             return $durationComparator->compare(
                 $two->duration(),
-                $one->duration()
+                $one->duration(),
             );
         });
 
@@ -290,7 +290,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestIdentifier::fromString($faker->word()),
                 TestDescription::fromString($faker->word()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
-                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)))
+                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
             );
         }, \range(1, $faker->numberBetween(1, 10)));
 
@@ -305,7 +305,7 @@ final class SlowTestListTest extends Framework\TestCase
         \usort($expected, static function (SlowTest $one, SlowTest $two) use ($durationComparator): int {
             return $durationComparator->compare(
                 $two->maximumDuration()->toDuration(),
-                $one->maximumDuration()->toDuration()
+                $one->maximumDuration()->toDuration(),
             );
         });
 
@@ -321,7 +321,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestIdentifier::fromString($faker->word()),
                 TestDescription::fromString($faker->sentence()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
-                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)))
+                MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
             );
         }, \range(1, $faker->numberBetween(1, 10)));
 

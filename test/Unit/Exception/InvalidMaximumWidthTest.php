@@ -33,13 +33,13 @@ final class InvalidMaximumWidthTest extends Framework\TestCase
 
         $exception = Exception\InvalidMaximumWidth::lessThanMinimum(
             $value,
-            $minimum
+            $minimum,
         );
 
         $message = \sprintf(
             'Value should be greater than or equal to %d, but %d is not.',
             $minimum,
-            $value
+            $value,
         );
 
         self::assertSame($message, $exception->getMessage());

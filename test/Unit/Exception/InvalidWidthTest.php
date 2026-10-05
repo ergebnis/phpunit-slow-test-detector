@@ -35,7 +35,7 @@ final class InvalidWidthTest extends Framework\TestCase
 
         $message = \sprintf(
             'Value should be greater than or equal to 0, but %d is not.',
-            $value
+            $value,
         );
 
         self::assertSame($message, $exception->getMessage());
@@ -50,13 +50,13 @@ final class InvalidWidthTest extends Framework\TestCase
 
         $exception = Exception\InvalidWidth::subtrahendGreaterThanMinuend(
             $minuend,
-            $subtrahend
+            $subtrahend,
         );
 
         $message = \sprintf(
             'Width %d can not be subtracted from width %d, as the result would be negative.',
             $subtrahend->toInt(),
-            $minuend->toInt()
+            $minuend->toInt(),
         );
 
         self::assertSame($message, $exception->getMessage());

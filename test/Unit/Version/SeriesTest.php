@@ -44,7 +44,7 @@ final class SeriesTest extends Framework\TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(\sprintf(
             'Value "%s" does not appear to be a valid value for a semantic version.',
-            $value
+            $value,
         ));
 
         Version\Series::fromString($value);
@@ -80,14 +80,14 @@ final class SeriesTest extends Framework\TestCase
                 $key = \sprintf(
                     '%s-%s',
                     $invalidMajorKey,
-                    $invalidMinorKey
+                    $invalidMinorKey,
                 );
 
                 yield $key => [
                     \sprintf(
                         '%s.%s',
                         $invalidMajor,
-                        $invalidMinor
+                        $invalidMinor,
                     ),
                 ];
             }
@@ -118,7 +118,7 @@ final class SeriesTest extends Framework\TestCase
                         '%s-%s-%s',
                         $invalidSeparatorKey,
                         $majorKey,
-                        $minorKey
+                        $minorKey,
                     );
 
                     yield $key => [
@@ -127,7 +127,7 @@ final class SeriesTest extends Framework\TestCase
                             [
                                 $major,
                                 $minor,
-                            ]
+                            ],
                         ),
                     ];
                 }
@@ -147,7 +147,7 @@ final class SeriesTest extends Framework\TestCase
                         '%s-%s-%s',
                         $majorKey,
                         $minorKey,
-                        $patchKey
+                        $patchKey,
                     );
 
                     yield $key => [
@@ -155,7 +155,7 @@ final class SeriesTest extends Framework\TestCase
                             '%s.%s.%s',
                             $major,
                             $minor,
-                            $patch
+                            $patch,
                         ),
                     ];
                 }

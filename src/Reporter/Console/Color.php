@@ -29,7 +29,7 @@ final class Color
 
         return \sprintf(
             "\e[2m%s\e[22m",
-            $output
+            $output,
         );
     }
 }

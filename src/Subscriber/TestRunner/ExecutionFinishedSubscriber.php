@@ -69,7 +69,7 @@ final class ExecutionFinishedSubscriber implements Event\TestRunner\ExecutionFin
 
         \fwrite(
             $this->output,
-            $report
+            $report,
         );
     }
 }

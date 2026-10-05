@@ -24,7 +24,7 @@ try {
 } catch (\InvalidArgumentException $exception) {
     throw new \RuntimeException(\sprintf(
         'Unable to determine PHPUnit version from version series "%s".',
-        Runner\Version::series()
+        Runner\Version::series(),
     ));
 }
 
@@ -76,7 +76,7 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
                 if ('max' === $options['maximum-width']) {
                     $maximumWidth = MaximumWidth::fromWidth(Width::max(
                         MaximumWidth::minimum()->toWidth(),
-                        Reporter\Console\Terminal::width()->toWidth()
+                        Reporter\Console\Terminal::width()->toWidth(),
                     ));
                 } else {
                     $maximumWidth = MaximumWidth::fromWidth(Width::fromInt((int) $options['maximum-width']));
@@ -96,7 +96,7 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
 
             $this->output = \fopen(
                 $target,
-                'wb'
+                'wb',
             );
 
             $this->collector = new Collector\DefaultCollector();
@@ -104,7 +104,7 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
                 new Reporter\Console\DurationFormatter(),
                 $maximumDuration,
                 $maximumCount,
-                $maximumWidth
+                $maximumWidth,
             );
         }
 
@@ -177,7 +177,7 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
 
             \fwrite(
                 $this->output,
-                $report
+                $report,
             );
         }
 
@@ -194,7 +194,7 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
 
             $duration = Duration::fromSecondsAndNanoseconds(
                 $seconds,
-                $nanoseconds
+                $nanoseconds,
             );
 
             $maximumDuration = $this->resolveMaximumDuration($test);
@@ -207,15 +207,15 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
                 TestIdentifier::fromString(\sprintf(
                     '%s::%s',
                     \get_class($test),
-                    $test->getName()
+                    $test->getName(),
                 )),
                 TestDescription::fromString(\sprintf(
                     '%s::%s',
                     \get_class($test),
-                    $test->getName()
+                    $test->getName(),
                 )),
                 $duration,
-                $maximumDuration
+                $maximumDuration,
             );
 
             $this->collector->collectSlowTest($slowTest);
@@ -230,7 +230,7 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
 
             $symbolAnnotations = Util\Test::parseTestMethodAnnotations(
                 \get_class($test),
-                $test->getName(false)
+                $test->getName(false),
             );
 
             foreach ($annotations as $annotation) {
@@ -317,7 +317,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
                 if ('max' === $options['maximum-width']) {
                     $maximumWidth = MaximumWidth::fromWidth(Width::max(
                         MaximumWidth::minimum()->toWidth(),
-                        Reporter\Console\Terminal::width()->toWidth()
+                        Reporter\Console\Terminal::width()->toWidth(),
                     ));
                 } else {
                     $maximumWidth = MaximumWidth::fromWidth(Width::fromInt((int) $options['maximum-width']));
@@ -337,7 +337,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
 
             $this->output = \fopen(
                 $target,
-                'wb'
+                'wb',
             );
 
             $this->collector = new Collector\DefaultCollector();
@@ -345,7 +345,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
                 new Reporter\Console\DurationFormatter(),
                 $maximumDuration,
                 $maximumCount,
-                $maximumWidth
+                $maximumWidth,
             );
         }
 
@@ -375,7 +375,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
 
             $duration = Duration::fromSecondsAndNanoseconds(
                 $seconds,
-                $nanoseconds
+                $nanoseconds,
             );
 
             $maximumDuration = $this->resolveMaximumDuration($test);
@@ -388,7 +388,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
                 TestIdentifier::fromString($test),
                 TestDescription::fromString($test),
                 $duration,
-                $maximumDuration
+                $maximumDuration,
             );
 
             $this->collector->collectSlowTest($slowTest);
@@ -416,7 +416,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
 
             \fwrite(
                 $this->output,
-                $report
+                $report,
             );
         }
 
@@ -428,14 +428,14 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
              */
             $dataSetPosition = \strpos(
                 $test,
-                ' with data set'
+                ' with data set',
             );
 
             if (false !== $dataSetPosition) {
                 $test = \substr(
                     $test,
                     0,
-                    $dataSetPosition
+                    $dataSetPosition,
                 );
             }
 
@@ -445,7 +445,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
 
             [$testClassName, $testMethodName] = \explode(
                 '::',
-                $test
+                $test,
             );
 
             $annotations = [
@@ -455,7 +455,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
 
             $symbolAnnotations = Util\Test::parseTestMethodAnnotations(
                 $testClassName,
-                $testMethodName
+                $testMethodName,
             );
 
             foreach ($annotations as $annotation) {
@@ -520,7 +520,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
                 if ('max' === $parameters->get('maximum-width')) {
                     $maximumWidth = MaximumWidth::fromWidth(Width::max(
                         MaximumWidth::minimum()->toWidth(),
-                        Reporter\Console\Terminal::width()->toWidth()
+                        Reporter\Console\Terminal::width()->toWidth(),
                     ));
                 } else {
                     $maximumWidth = MaximumWidth::fromWidth(Width::fromInt((int) $parameters->get('maximum-width')));
@@ -538,7 +538,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
 
             $output = \fopen(
                 $target,
-                'wb'
+                'wb',
             );
 
             $facade->registerSubscribers(
@@ -547,7 +547,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
                     $maximumDuration,
                     $timeKeeper,
                     $collector,
-                    Version\Series::fromString(Runner\Version::series())
+                    Version\Series::fromString(Runner\Version::series()),
                 ),
                 new Subscriber\TestRunner\ExecutionFinishedSubscriber(
                     $collector,
@@ -555,10 +555,10 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
                         new Reporter\Console\DurationFormatter(),
                         $maximumDuration,
                         $maximumCount,
-                        $maximumWidth
+                        $maximumWidth,
                     ),
-                    $output
-                )
+                    $output,
+                ),
             );
         }
     }
@@ -568,5 +568,5 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
 
 throw new \RuntimeException(\sprintf(
     'Unable to select extension for PHPUnit version with version series "%s".',
-    Runner\Version::series()
+    Runner\Version::series(),
 ));
