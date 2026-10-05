@@ -25,7 +25,7 @@ return static function (Config\RectorConfig $rectorConfig): void {
         __DIR__ . '/rector.php',
     ]);
 
-    $rectorConfig->phpVersion(ValueObject\PhpVersion::PHP_70);
+    $rectorConfig->phpVersion(ValueObject\PhpVersion::PHP_71);
 
     $rectorConfig->ruleWithConfiguration(Rector\Rules\Files\ReferenceNamespacedSymbolsRelativeToNamespacePrefixRector::class, [
         'parentNamespacePrefixes' => [
