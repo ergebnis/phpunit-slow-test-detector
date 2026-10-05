@@ -31,14 +31,14 @@ final class PhaseIdentifierTest extends Framework\TestCase
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\StringProvider::blank
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\StringProvider::empty
      */
-    public function testFromStringRejectsInvalidValue(string $value)
+    public function testFromStringRejectsInvalidValue(string $value): void
     {
         $this->expectException(Exception\InvalidPhaseIdentifier::class);
 
         PhaseIdentifier::fromString($value);
     }
 
-    public function testFromStringReturnsPhaseIdentifier()
+    public function testFromStringReturnsPhaseIdentifier(): void
     {
         $value = self::faker()->word();
 

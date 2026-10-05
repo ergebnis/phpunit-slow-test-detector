@@ -21,7 +21,7 @@ use PHPUnit\Framework;
  */
 final class SlowTestListIsEmptyTest extends Framework\TestCase
 {
-    public function testFromPhaseIdentifierReturnsException()
+    public function testFromPhaseIdentifierReturnsException(): void
     {
         $exception = Exception\SlowTestListIsEmpty::create();
 

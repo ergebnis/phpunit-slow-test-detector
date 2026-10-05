@@ -24,7 +24,7 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @maximumDuration 3.14
      */
-    public function testSleeperSleepsShorterThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidMaximumDurationAnnotation()
+    public function testSleeperSleepsShorterThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidMaximumDurationAnnotation(): void
     {
         $milliseconds = 10;
 
@@ -38,7 +38,7 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @maximumDuration 3.14
      */
-    public function testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidMaximumDurationAnnotation()
+    public function testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidMaximumDurationAnnotation(): void
     {
         $milliseconds = 200;
 
@@ -52,7 +52,7 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @maximumDuration 200
      */
-    public function testSleeperSleepsShorterThanMaximumDurationFromAnnotationWhenTestMethodHasValidMaximumDurationAnnotation()
+    public function testSleeperSleepsShorterThanMaximumDurationFromAnnotationWhenTestMethodHasValidMaximumDurationAnnotation(): void
     {
         $milliseconds = 10;
 
@@ -68,7 +68,7 @@ final class SleeperTest extends Framework\TestCase
      *
      * @maximumDuration 200
      */
-    public function testSleeperSleepsShorterThanMaximumDurationFromAnnotationWithNumericDataProvider()
+    public function testSleeperSleepsShorterThanMaximumDurationFromAnnotationWithNumericDataProvider(): void
     {
         $milliseconds = 150;
 
@@ -82,9 +82,9 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @return list<array{0: string}>
      */
-    public static function provideDataWhereDataNameIsInteger(): array
+    public static function provideDataWhereDataNameIsInteger(): iterable
     {
-        return [
+        yield from [
             [
                 'bar',
             ],
@@ -96,7 +96,7 @@ final class SleeperTest extends Framework\TestCase
      *
      * @maximumDuration 200
      */
-    public function testSleeperSleepsShorterThanMaximumDurationFromAnnotationWithNamedDataProvider()
+    public function testSleeperSleepsShorterThanMaximumDurationFromAnnotationWithNamedDataProvider(): void
     {
         $milliseconds = 150;
 
@@ -110,9 +110,9 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @return array<string, array{0: string}>
      */
-    public static function provideDataWhereDataNameIsString(): array
+    public static function provideDataWhereDataNameIsString(): iterable
     {
-        return [
+        yield from [
             'foo' => [
                 'bar',
             ],
@@ -122,7 +122,7 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @maximumDuration 200
      */
-    public function testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasValidMaximumDurationAnnotation()
+    public function testSleeperSleepsLongerThanMaximumDurationFromAnnotationWhenTestMethodHasValidMaximumDurationAnnotation(): void
     {
         $milliseconds = 300;
 

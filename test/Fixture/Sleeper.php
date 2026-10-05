@@ -45,7 +45,7 @@ final class Sleeper
         return $this->milliseconds;
     }
 
-    public function sleep()
+    public function sleep(): void
     {
         \usleep($this->milliseconds * 1000);
     }

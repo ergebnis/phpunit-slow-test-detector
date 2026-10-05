@@ -27,7 +27,7 @@ final class MajorTest extends Framework\TestCase
     /**
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::lessThanZero
      */
-    public function testFromIntRejectsInvalidValue(int $value)
+    public function testFromIntRejectsInvalidValue(int $value): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(\sprintf(
@@ -42,14 +42,14 @@ final class MajorTest extends Framework\TestCase
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::greaterThanZero
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::zero
      */
-    public function testFromStringReturnsMajor(int $value)
+    public function testFromStringReturnsMajor(int $value): void
     {
         $major = Version\Major::fromInt($value);
 
         self::assertSame($value, $major->toInt());
     }
 
-    public function testEqualsReturnsFalseWhenValueIsDifferent()
+    public function testEqualsReturnsFalseWhenValueIsDifferent(): void
     {
         $faker = self::faker()->unique();
 
@@ -59,7 +59,7 @@ final class MajorTest extends Framework\TestCase
         self::assertFalse($one->equals($two));
     }
 
-    public function testEqualsReturnsTrueWhenValueIsSame()
+    public function testEqualsReturnsTrueWhenValueIsSame(): void
     {
         $value = self::faker()->numberBetween(0);
 
@@ -69,7 +69,7 @@ final class MajorTest extends Framework\TestCase
         self::assertTrue($one->equals($two));
     }
 
-    public function testIsLessThanReturnsFalseWhenValueIsSame()
+    public function testIsLessThanReturnsFalseWhenValueIsSame(): void
     {
         $value = self::faker()->numberBetween(0);
 
@@ -79,7 +79,7 @@ final class MajorTest extends Framework\TestCase
         self::assertFalse($one->isLessThan($two));
     }
 
-    public function testIsLessThanReturnsFalseWhenValueIsGreater()
+    public function testIsLessThanReturnsFalseWhenValueIsGreater(): void
     {
         $value = self::faker()->numberBetween(0);
 
@@ -89,7 +89,7 @@ final class MajorTest extends Framework\TestCase
         self::assertFalse($one->isLessThan($two));
     }
 
-    public function testIsLessThanReturnsTrueWhenValueIsLess()
+    public function testIsLessThanReturnsTrueWhenValueIsLess(): void
     {
         $value = self::faker()->numberBetween(0);
 
@@ -99,7 +99,7 @@ final class MajorTest extends Framework\TestCase
         self::assertTrue($one->isLessThan($two));
     }
 
-    public function testIsOneOfReturnsFalseWhenAllValuesAreDifferent()
+    public function testIsOneOfReturnsFalseWhenAllValuesAreDifferent(): void
     {
         $faker = self::faker()->unique();
 
@@ -110,7 +110,7 @@ final class MajorTest extends Framework\TestCase
         self::assertFalse($one->isOneOf($two, $three));
     }
 
-    public function testIsOneOfReturnsTrueWhenOneOfTheValuesIsSame()
+    public function testIsOneOfReturnsTrueWhenOneOfTheValuesIsSame(): void
     {
         $faker = self::faker()->unique();
 

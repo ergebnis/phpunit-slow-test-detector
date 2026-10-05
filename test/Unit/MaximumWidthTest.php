@@ -29,7 +29,7 @@ final class MaximumWidthTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testMinimumReturnsMaximumWidth()
+    public function testMinimumReturnsMaximumWidth(): void
     {
         $maximumWidth = MaximumWidth::minimum();
 
@@ -37,7 +37,7 @@ final class MaximumWidthTest extends Framework\TestCase
         self::assertFalse($maximumWidth->isUnlimited());
     }
 
-    public function testUnlimitedReturnsMaximumWidth()
+    public function testUnlimitedReturnsMaximumWidth(): void
     {
         $maximumWidth = MaximumWidth::unlimited();
 
@@ -45,7 +45,7 @@ final class MaximumWidthTest extends Framework\TestCase
         self::assertTrue($maximumWidth->isUnlimited());
     }
 
-    public function testFromWidthRejectsWidthLessThanMinimum()
+    public function testFromWidthRejectsWidthLessThanMinimum(): void
     {
         $width = Width::fromInt(self::faker()->numberBetween(0, 79));
 
@@ -54,7 +54,7 @@ final class MaximumWidthTest extends Framework\TestCase
         MaximumWidth::fromWidth($width);
     }
 
-    public function testFromWidthReturnsMaximumWidthWhenWidthIsMinimum()
+    public function testFromWidthReturnsMaximumWidthWhenWidthIsMinimum(): void
     {
         $width = Width::fromInt(80);
 
@@ -64,7 +64,7 @@ final class MaximumWidthTest extends Framework\TestCase
         self::assertFalse($maximumWidth->isUnlimited());
     }
 
-    public function testFromWidthReturnsMaximumWidthWhenWidthIsGreaterThanMinimum()
+    public function testFromWidthReturnsMaximumWidthWhenWidthIsGreaterThanMinimum(): void
     {
         $width = Width::fromInt(self::faker()->numberBetween(81));
 

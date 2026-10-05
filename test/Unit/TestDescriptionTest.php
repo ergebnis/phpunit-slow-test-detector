@@ -31,14 +31,14 @@ final class TestDescriptionTest extends Framework\TestCase
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\StringProvider::blank
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\StringProvider::empty
      */
-    public function testFromStringRejectsInvalidValue(string $value)
+    public function testFromStringRejectsInvalidValue(string $value): void
     {
         $this->expectException(Exception\InvalidTestDescription::class);
 
         TestDescription::fromString($value);
     }
 
-    public function testFromStringReturnsTestDescription()
+    public function testFromStringReturnsTestDescription(): void
     {
         $value = self::faker()->word();
 
@@ -47,7 +47,7 @@ final class TestDescriptionTest extends Framework\TestCase
         self::assertSame($value, $testDescription->toString());
     }
 
-    public function testTruncatedToReturnsTestDescriptionWhenWidthIsNotGreaterThanMaximumWidth()
+    public function testTruncatedToReturnsTestDescriptionWhenWidthIsNotGreaterThanMaximumWidth(): void
     {
         $value = self::faker()->sentence();
 
@@ -67,7 +67,7 @@ final class TestDescriptionTest extends Framework\TestCase
         string $value,
         Width $maximumWidth,
         string $truncatedValue
-    ) {
+    ): void {
         $testDescription = TestDescription::fromString($value);
 
         $truncated = $testDescription->truncatedTo($maximumWidth);
@@ -78,7 +78,7 @@ final class TestDescriptionTest extends Framework\TestCase
     /**
      * @return \Generator<string, array{0: string, 1: Width, 2: string}>
      */
-    public static function provideValueMaximumWidthAndTruncatedValue(): \Generator
+    public static function provideValueMaximumWidthAndTruncatedValue(): iterable
     {
         $values = [
             'maximum-width-of-one' => [
@@ -128,7 +128,7 @@ final class TestDescriptionTest extends Framework\TestCase
             ],
         ];
 
-        foreach ($values as $key => list($value, $maximumWidth, $truncatedValue)) {
+        foreach ($values as $key => [$value, $maximumWidth, $truncatedValue]) {
             yield $key => [
                 $value,
                 $maximumWidth,

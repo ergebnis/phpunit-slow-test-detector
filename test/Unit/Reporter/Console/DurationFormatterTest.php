@@ -32,7 +32,7 @@ final class DurationFormatterTest extends Framework\TestCase
         Reporter\Console\Unit $unit,
         Duration $duration,
         string $formattedDuration
-    ) {
+    ): void {
         $formatter = new Reporter\Console\DurationFormatter();
 
         $formatted = $formatter->format(
@@ -163,7 +163,7 @@ final class DurationFormatterTest extends Framework\TestCase
             ],
         ];
 
-        foreach ($values as $key => list($unit, $duration, $formattedDuration)) {
+        foreach ($values as $key => [$unit, $duration, $formattedDuration]) {
             yield $key => [
                 $unit,
                 $duration,

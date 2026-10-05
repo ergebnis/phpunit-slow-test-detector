@@ -112,50 +112,50 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
             Framework\Test $test,
             \Exception $e,
             $time
-        ) {
+        ): void {
         }
 
         public function addWarning(
             Framework\Test $test,
             Framework\Warning $e,
             $time
-        ) {
+        ): void {
         }
 
         public function addFailure(
             Framework\Test $test,
             Framework\AssertionFailedError $e,
             $time
-        ) {
+        ): void {
         }
 
         public function addIncompleteTest(
             Framework\Test $test,
             \Exception $e,
             $time
-        ) {
+        ): void {
         }
 
         public function addRiskyTest(
             Framework\Test $test,
             \Exception $e,
             $time
-        ) {
+        ): void {
         }
 
         public function addSkippedTest(
             Framework\Test $test,
             \Exception $e,
             $time
-        ) {
+        ): void {
         }
 
-        public function startTestSuite(Framework\TestSuite $suite)
+        public function startTestSuite(Framework\TestSuite $suite): void
         {
             ++$this->suites;
         }
 
-        public function endTestSuite(Framework\TestSuite $suite)
+        public function endTestSuite(Framework\TestSuite $suite): void
         {
             --$this->suites;
 
@@ -181,14 +181,14 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
             );
         }
 
-        public function startTest(Framework\Test $test)
+        public function startTest(Framework\Test $test): void
         {
         }
 
         public function endTest(
             Framework\Test $test,
             $time
-        ) {
+        ): void {
             $seconds = (int) \floor($time);
             $nanoseconds = (int) (($time - $seconds) * 1000000000);
 
@@ -443,7 +443,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
                 return $this->maximumDuration;
             }
 
-            list($testClassName, $testMethodName) = \explode(
+            [$testClassName, $testMethodName] = \explode(
                 '::',
                 $test
             );

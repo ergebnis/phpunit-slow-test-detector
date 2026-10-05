@@ -34,7 +34,7 @@ final class TimeKeeperTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testStopThrowsPhaseNotStartedExceptionWhenPhaseHasNotBeenStarted()
+    public function testStopThrowsPhaseNotStartedExceptionWhenPhaseHasNotBeenStarted(): void
     {
         $faker = self::faker();
 
@@ -54,7 +54,7 @@ final class TimeKeeperTest extends Framework\TestCase
         );
     }
 
-    public function testStopReturnsPhaseWhenPhaseHasBeenStarted()
+    public function testStopReturnsPhaseWhenPhaseHasBeenStarted(): void
     {
         $faker = self::faker();
 

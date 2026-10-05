@@ -24,28 +24,28 @@ use PHPUnit\Framework;
  */
 final class UnitTest extends Framework\TestCase
 {
-    public function testHoursReturnsUnit()
+    public function testHoursReturnsUnit(): void
     {
         $unit = Reporter\Console\Unit::hours();
 
         self::assertSame('hours', $unit->toString());
     }
 
-    public function testMinutesReturnsUnit()
+    public function testMinutesReturnsUnit(): void
     {
         $unit = Reporter\Console\Unit::minutes();
 
         self::assertSame('minutes', $unit->toString());
     }
 
-    public function testSecondsReturnsUnit()
+    public function testSecondsReturnsUnit(): void
     {
         $unit = Reporter\Console\Unit::seconds();
 
         self::assertSame('seconds', $unit->toString());
     }
 
-    public function testEqualsReturnsFalseWhenUnitsAreNotEqual()
+    public function testEqualsReturnsFalseWhenUnitsAreNotEqual(): void
     {
         $one = Reporter\Console\Unit::hours();
         $two = Reporter\Console\Unit::minutes();
@@ -53,7 +53,7 @@ final class UnitTest extends Framework\TestCase
         self::assertFalse($one->equals($two));
     }
 
-    public function testEqualsReturnsTrueWhenUnitsAreEqual()
+    public function testEqualsReturnsTrueWhenUnitsAreEqual(): void
     {
         $one = Reporter\Console\Unit::hours();
         $two = Reporter\Console\Unit::hours();
@@ -63,7 +63,7 @@ final class UnitTest extends Framework\TestCase
         self::assertTrue(Reporter\Console\Unit::hours()->equals(Reporter\Console\Unit::hours()));
     }
 
-    public function testIsGreaterThanReturnsFalseWhenUnitIsNotGreater()
+    public function testIsGreaterThanReturnsFalseWhenUnitIsNotGreater(): void
     {
         $one = Reporter\Console\Unit::minutes();
         $two = Reporter\Console\Unit::hours();
@@ -71,7 +71,7 @@ final class UnitTest extends Framework\TestCase
         self::assertFalse($one->isGreaterThan($two));
     }
 
-    public function testIsGreaterThanReturnsTrueWhenUnitIsGreater()
+    public function testIsGreaterThanReturnsTrueWhenUnitIsGreater(): void
     {
         $one = Reporter\Console\Unit::hours();
         $two = Reporter\Console\Unit::minutes();
@@ -85,7 +85,7 @@ final class UnitTest extends Framework\TestCase
     public function testFromDurationReturnsExpectedUnit(
         Reporter\Console\Unit $expectedUnit,
         Duration $duration
-    ) {
+    ): void {
         $unit = Reporter\Console\Unit::fromDuration($duration);
 
         self::assertTrue($expectedUnit->equals($unit));
@@ -123,7 +123,7 @@ final class UnitTest extends Framework\TestCase
             ],
         ];
 
-        foreach ($values as $key => list($expectedUnit, $duration)) {
+        foreach ($values as $key => [$expectedUnit, $duration]) {
             yield $key => [
                 $expectedUnit,
                 $duration,
@@ -139,7 +139,7 @@ final class UnitTest extends Framework\TestCase
     public function testFromDurationsReturnsLargestUnit(
         Reporter\Console\Unit $expectedUnit,
         array $durations
-    ) {
+    ): void {
         $unit = Reporter\Console\Unit::fromDurations(...$durations);
 
         self::assertTrue($expectedUnit->equals($unit));
@@ -179,7 +179,7 @@ final class UnitTest extends Framework\TestCase
             ],
         ];
 
-        foreach ($values as $key => list($expectedUnit, $durations)) {
+        foreach ($values as $key => [$expectedUnit, $durations]) {
             yield $key => [
                 $expectedUnit,
                 $durations,

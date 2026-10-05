@@ -28,12 +28,12 @@ final class ColorTest extends Framework\TestCase
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\StringProvider::blank
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\StringProvider::empty
      */
-    public function testDimReturnsOriginalStringWhenItIsWhitespaceOnly(string $output)
+    public function testDimReturnsOriginalStringWhenItIsWhitespaceOnly(string $output): void
     {
         self::assertSame($output, Reporter\Console\Color::dim($output));
     }
 
-    public function testDimReturnsDimmedStringWhenItIsNotWhitespaceOnly()
+    public function testDimReturnsDimmedStringWhenItIsNotWhitespaceOnly(): void
     {
         $output = self::faker()->sentence();
 

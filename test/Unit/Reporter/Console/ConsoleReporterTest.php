@@ -48,7 +48,7 @@ final class ConsoleReporterTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testReportReturnsEmptyStringWhenSlowTestListIsEmpty()
+    public function testReportReturnsEmptyStringWhenSlowTestListIsEmpty(): void
     {
         $faker = self::faker();
 
@@ -74,7 +74,7 @@ final class ConsoleReporterTest extends Framework\TestCase
         MaximumDuration $maximumDuration,
         MaximumCount $maximumCount,
         SlowTestList $slowTestList
-    ) {
+    ): void {
         $reporter = new Reporter\Console\ConsoleReporter(
             new Reporter\Console\DurationFormatter(),
             $maximumDuration,
@@ -526,7 +526,7 @@ final class ConsoleReporterTest extends Framework\TestCase
             ],
         ];
 
-        foreach ($values as $key => list($expected, $maximumDuration, $maximumCount, $slowTestList)) {
+        foreach ($values as $key => [$expected, $maximumDuration, $maximumCount, $slowTestList]) {
             yield $key => [
                 $expected,
                 $maximumDuration,
@@ -543,7 +543,7 @@ final class ConsoleReporterTest extends Framework\TestCase
         string $expectedReport,
         MaximumWidth $maximumWidth,
         SlowTestList $slowTestList
-    ) {
+    ): void {
         $reporter = new Reporter\Console\ConsoleReporter(
             new Reporter\Console\DurationFormatter(),
             MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
@@ -659,7 +659,7 @@ final class ConsoleReporterTest extends Framework\TestCase
             ],
         ];
 
-        foreach ($values as $key => list($expected, $maximumWidth, $slowTestList)) {
+        foreach ($values as $key => [$expected, $maximumWidth, $slowTestList]) {
             yield $key => [
                 $expected,
                 $maximumWidth,

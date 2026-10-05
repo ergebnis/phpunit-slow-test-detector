@@ -27,7 +27,7 @@ final class InvalidWidthTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testNotGreaterThanZeroReturnsException()
+    public function testNotGreaterThanZeroReturnsException(): void
     {
         $value = self::faker()->numberBetween();
 
@@ -41,7 +41,7 @@ final class InvalidWidthTest extends Framework\TestCase
         self::assertSame($message, $exception->getMessage());
     }
 
-    public function testSubtrahendGreaterThanMinuendReturnsException()
+    public function testSubtrahendGreaterThanMinuendReturnsException(): void
     {
         $faker = self::faker();
 

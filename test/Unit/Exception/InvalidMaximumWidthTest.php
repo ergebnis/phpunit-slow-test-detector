@@ -24,7 +24,7 @@ final class InvalidMaximumWidthTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testLessThanMinimumReturnsException()
+    public function testLessThanMinimumReturnsException(): void
     {
         $faker = self::faker();
 

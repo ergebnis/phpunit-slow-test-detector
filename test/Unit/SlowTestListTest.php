@@ -44,7 +44,7 @@ final class SlowTestListTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testCreateReturnsSlowTestList()
+    public function testCreateReturnsSlowTestList(): void
     {
         $faker = self::faker();
 
@@ -62,7 +62,7 @@ final class SlowTestListTest extends Framework\TestCase
         self::assertSame($slowTests, $slowTestList->toArray());
     }
 
-    public function testCountReturnsCountOfSlowTests()
+    public function testCountReturnsCountOfSlowTests(): void
     {
         $faker = self::faker();
 
@@ -82,7 +82,7 @@ final class SlowTestListTest extends Framework\TestCase
         self::assertEquals($expected, $slowTestList->count());
     }
 
-    public function testFirstThrowsExceptionWhenSlowTestListIsEmpty()
+    public function testFirstThrowsExceptionWhenSlowTestListIsEmpty(): void
     {
         $slowTestList = SlowTestList::create();
 
@@ -91,7 +91,7 @@ final class SlowTestListTest extends Framework\TestCase
         $slowTestList->first();
     }
 
-    public function testFirstReturnsFirstSlowTestWhenSlowTestListIsNotEmpty()
+    public function testFirstReturnsFirstSlowTestWhenSlowTestListIsNotEmpty(): void
     {
         $faker = self::faker();
 
@@ -111,14 +111,14 @@ final class SlowTestListTest extends Framework\TestCase
         self::assertSame($expected, $slowTestList->first());
     }
 
-    public function testIsEmptyReturnsTrueWhenSlowTestListIsEmpty()
+    public function testIsEmptyReturnsTrueWhenSlowTestListIsEmpty(): void
     {
         $slowTestList = SlowTestList::create();
 
         self::assertTrue($slowTestList->isEmpty());
     }
 
-    public function testIsEmptyReturnsFalseWhenSlowTestListIsNotEmpty()
+    public function testIsEmptyReturnsFalseWhenSlowTestListIsNotEmpty(): void
     {
         $faker = self::faker();
 
@@ -136,7 +136,7 @@ final class SlowTestListTest extends Framework\TestCase
         self::assertFalse($slowTestList->isEmpty());
     }
 
-    public function testLimitToReturnsSlowTestListLimitedToMaximumCountWhenSlowTestListHasFewerSlowTests()
+    public function testLimitToReturnsSlowTestListLimitedToMaximumCountWhenSlowTestListHasFewerSlowTests(): void
     {
         $faker = self::faker();
 
@@ -166,7 +166,7 @@ final class SlowTestListTest extends Framework\TestCase
         self::assertEquals($expected, $limitedToMaximumCount->toArray());
     }
 
-    public function testLimitToReturnsSlowTestListLimitedToMaximumCountWhenSlowTestListHasMoreSlowTests()
+    public function testLimitToReturnsSlowTestListLimitedToMaximumCountWhenSlowTestListHasMoreSlowTests(): void
     {
         $faker = self::faker();
 
@@ -196,7 +196,7 @@ final class SlowTestListTest extends Framework\TestCase
         self::assertEquals($expected, $limitedToMaximumCount->toArray());
     }
 
-    public function testSlowTestWithMaximumDurationDifferentFromReturnsFalseWhenAllSlowTestsHaveGlobalMaximumDuration()
+    public function testSlowTestWithMaximumDurationDifferentFromReturnsFalseWhenAllSlowTestsHaveGlobalMaximumDuration(): void
     {
         $faker = self::faker();
 
@@ -216,7 +216,7 @@ final class SlowTestListTest extends Framework\TestCase
         self::assertFalse($slowTestList->hasSlowTestWithMaximumDurationDifferentFrom($globalMaximumDuration));
     }
 
-    public function testSlowTestWithMaximumDurationDifferentFromReturnsTrueWhenAtLeastOneSlowTestHasCustomMaximumDuration()
+    public function testSlowTestWithMaximumDurationDifferentFromReturnsTrueWhenAtLeastOneSlowTestHasCustomMaximumDuration(): void
     {
         $faker = self::faker();
 
@@ -246,7 +246,7 @@ final class SlowTestListTest extends Framework\TestCase
         self::assertTrue($slowTestList->hasSlowTestWithMaximumDurationDifferentFrom($globalMaximumDuration));
     }
 
-    public function testSortByDurationDescendingReturnsSlowTestListWhereSlowTestsAreSortedByDurationDescending()
+    public function testSortByDurationDescendingReturnsSlowTestListWhereSlowTestsAreSortedByDurationDescending(): void
     {
         $faker = self::faker();
 
@@ -279,7 +279,7 @@ final class SlowTestListTest extends Framework\TestCase
         self::assertEquals($expected, $sortedByDurationDescending->toArray());
     }
 
-    public function testSortByMaximumDurationDescendingReturnsSlowTestListWhereSlowTestsAreSortedByMaximumDurationDescending()
+    public function testSortByMaximumDurationDescendingReturnsSlowTestListWhereSlowTestsAreSortedByMaximumDurationDescending(): void
     {
         $faker = self::faker();
 

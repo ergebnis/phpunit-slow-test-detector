@@ -26,7 +26,7 @@ final class SleeperTest extends Framework\TestCase
      *
      * @see https://github.com/johnkary/phpunit-speedtrap/blob/1.0/src/JohnKary/PHPUnit/Listener/SpeedTrapListener.php#L309-L331
      */
-    public function testSleeperSleepsShorterThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidSlowThresholdAnnotation()
+    public function testSleeperSleepsShorterThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidSlowThresholdAnnotation(): void
     {
         $milliseconds = 10;
 
@@ -42,7 +42,7 @@ final class SleeperTest extends Framework\TestCase
      *
      * @see https://github.com/johnkary/phpunit-speedtrap/blob/1.0/src/JohnKary/PHPUnit/Listener/SpeedTrapListener.php#L309-L331
      */
-    public function testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidSlowThresholdAnnotation()
+    public function testSleeperSleepsLongerThanMaximumDurationFromXmlConfigurationWhenTestMethodHasInvalidSlowThresholdAnnotation(): void
     {
         $milliseconds = 200;
 
@@ -58,7 +58,7 @@ final class SleeperTest extends Framework\TestCase
      *
      * @see https://github.com/johnkary/phpunit-speedtrap/blob/1.0/src/JohnKary/PHPUnit/Listener/SpeedTrapListener.php#L309-L331
      */
-    public function testSleeperSleepsShorterThanSlowThresholdFromAnnotationWhenTestMethodHasValidSlowThresholdAnnotation()
+    public function testSleeperSleepsShorterThanSlowThresholdFromAnnotationWhenTestMethodHasValidSlowThresholdAnnotation(): void
     {
         $milliseconds = 10;
 
@@ -74,7 +74,7 @@ final class SleeperTest extends Framework\TestCase
      *
      * @see https://github.com/johnkary/phpunit-speedtrap/blob/1.0/src/JohnKary/PHPUnit/Listener/SpeedTrapListener.php#L309-L331
      */
-    public function testSleeperSleepsLongerThanSlowThresholdFromAnnotationWhenTestMethodHasValidSlowThresholdAnnotation()
+    public function testSleeperSleepsLongerThanSlowThresholdFromAnnotationWhenTestMethodHasValidSlowThresholdAnnotation(): void
     {
         $milliseconds = 300;
 

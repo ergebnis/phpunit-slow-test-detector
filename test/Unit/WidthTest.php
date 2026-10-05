@@ -30,7 +30,7 @@ final class WidthTest extends Framework\TestCase
     /**
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::lessThanZero
      */
-    public function testFromIntRejectsInvalidValue(int $value)
+    public function testFromIntRejectsInvalidValue(int $value): void
     {
         $this->expectException(Exception\InvalidWidth::class);
 
@@ -41,21 +41,21 @@ final class WidthTest extends Framework\TestCase
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::greaterThanZero
      * @dataProvider \Ergebnis\PHPUnit\SlowTestDetector\Test\DataProvider\IntProvider::zero
      */
-    public function testFromIntReturnsWidth(int $value)
+    public function testFromIntReturnsWidth(int $value): void
     {
         $width = Width::fromInt($value);
 
         self::assertSame($value, $width->toInt());
     }
 
-    public function testFromStringReturnsWidthWhenValueIsEmpty()
+    public function testFromStringReturnsWidthWhenValueIsEmpty(): void
     {
         $width = Width::fromString('');
 
         self::assertSame(0, $width->toInt());
     }
 
-    public function testFromStringReturnsWidthWhenValueIsSingleByte()
+    public function testFromStringReturnsWidthWhenValueIsSingleByte(): void
     {
         $value = self::faker()->word();
 
@@ -64,35 +64,35 @@ final class WidthTest extends Framework\TestCase
         self::assertSame(\strlen($value), $width->toInt());
     }
 
-    public function testFromStringReturnsWidthWhenValueIsMultibyte()
+    public function testFromStringReturnsWidthWhenValueIsMultibyte(): void
     {
         $width = Width::fromString('ÄÖÜ');
 
         self::assertSame(3, $width->toInt());
     }
 
-    public function testFromStringReturnsWidthWhenValueContainsWideCharacters()
+    public function testFromStringReturnsWidthWhenValueContainsWideCharacters(): void
     {
         $width = Width::fromString('日本語');
 
         self::assertSame(6, $width->toInt());
     }
 
-    public function testFromStringReturnsWidthWhenValueContainsZeroWidthCharacters()
+    public function testFromStringReturnsWidthWhenValueContainsZeroWidthCharacters(): void
     {
         $width = Width::fromString("e\xCC\x81");
 
         self::assertSame(1, $width->toInt());
     }
 
-    public function testSumReturnsWidthWhenWidthsAreEmpty()
+    public function testSumReturnsWidthWhenWidthsAreEmpty(): void
     {
         $sum = Width::sum();
 
         self::assertEquals(Width::fromInt(0), $sum);
     }
 
-    public function testSumReturnsWidthWhenWidthsAreNotEmpty()
+    public function testSumReturnsWidthWhenWidthsAreNotEmpty(): void
     {
         $faker = self::faker();
 
@@ -109,7 +109,7 @@ final class WidthTest extends Framework\TestCase
         self::assertEquals($expected, $sum);
     }
 
-    public function testMaxReturnsWidthWhenOnlyOneWidthIsProvided()
+    public function testMaxReturnsWidthWhenOnlyOneWidthIsProvided(): void
     {
         $width = Width::fromInt(self::faker()->numberBetween(0));
 
@@ -118,7 +118,7 @@ final class WidthTest extends Framework\TestCase
         self::assertEquals($width, $max);
     }
 
-    public function testMaxReturnsGreatestWidthWhenMoreThanOneWidthIsProvided()
+    public function testMaxReturnsGreatestWidthWhenMoreThanOneWidthIsProvided(): void
     {
         $faker = self::faker();
 
@@ -135,7 +135,7 @@ final class WidthTest extends Framework\TestCase
         self::assertEquals($two, $width);
     }
 
-    public function testMinusThrowsInvalidWidthWhenOtherIsGreater()
+    public function testMinusThrowsInvalidWidthWhenOtherIsGreater(): void
     {
         $faker = self::faker();
 
@@ -147,7 +147,7 @@ final class WidthTest extends Framework\TestCase
         $one->minus($two);
     }
 
-    public function testMinusReturnsWidthWhenOtherIsNotGreater()
+    public function testMinusReturnsWidthWhenOtherIsNotGreater(): void
     {
         $faker = self::faker();
 
@@ -159,7 +159,7 @@ final class WidthTest extends Framework\TestCase
         self::assertSame($one - $two, $width->toInt());
     }
 
-    public function testIsGreaterThanReturnsFalseWhenValueIsLess()
+    public function testIsGreaterThanReturnsFalseWhenValueIsLess(): void
     {
         $faker = self::faker();
 
@@ -169,7 +169,7 @@ final class WidthTest extends Framework\TestCase
         self::assertFalse($one->isGreaterThan($two));
     }
 
-    public function testIsGreaterThanReturnsFalseWhenValuesAreSame()
+    public function testIsGreaterThanReturnsFalseWhenValuesAreSame(): void
     {
         $value = self::faker()->numberBetween(0);
 
@@ -179,7 +179,7 @@ final class WidthTest extends Framework\TestCase
         self::assertFalse($one->isGreaterThan($two));
     }
 
-    public function testIsGreaterThanReturnsTrueWhenValueIsGreater()
+    public function testIsGreaterThanReturnsTrueWhenValueIsGreater(): void
     {
         $faker = self::faker();
 
