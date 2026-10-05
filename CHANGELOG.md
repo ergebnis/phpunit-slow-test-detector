@@ -13,6 +13,7 @@ For a full diff see [`2.26.0...main`][2.26.0...main].
 - Dropped support for PHP 7.0 ([#943]), by [@localheinz]
 - Dropped support for PHP 7.1 ([#946]), by [@localheinz]
 - Dropped support for PHP 7.2 ([#948]), by [@localheinz]
+- Dropped support for PHP 7.3 ([#950]), by [@localheinz]
 
 ## [`2.26.0`][2.26.0]
 
@@ -536,6 +537,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#943]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/943
 [#946]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/946
 [#948]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/948
+[#950]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/950
 
 [@courtney-miles]: https://github.com/courtney-miles
 [@dantleech]: https://github.com/dantleech
