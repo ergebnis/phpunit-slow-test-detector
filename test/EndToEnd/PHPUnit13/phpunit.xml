@@ -6,7 +6,7 @@
     beStrictAboutOutputDuringTests="true"
     beStrictAboutTestsThatDoNotTestAnything="true"
     bootstrap="../../../vendor/autoload.php"
-    cacheResult="false"
+    cacheDirectory="../../../.build/phpunit/"
     colors="true"
     columns="max"
     displayDetailsOnIncompleteTests="true"
