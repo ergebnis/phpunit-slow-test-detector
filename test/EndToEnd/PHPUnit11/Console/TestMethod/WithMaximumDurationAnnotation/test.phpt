@@ -30,5 +30,6 @@ Detected 2 tests where the duration exceeded a custom or the global maximum dura
      0.000
       └─── seconds
 
+
 Time: %s
 %a
