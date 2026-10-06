@@ -63,6 +63,18 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
                 }
             }
 
+            $gitHubActionsAnnotations = GitHubActionsAnnotations::disabled();
+
+            if (\array_key_exists('github-actions-annotations', $options)) {
+                if (true === $options['github-actions-annotations']) {
+                    $gitHubActionsAnnotations = GitHubActionsAnnotations::enabled();
+                } elseif (false === $options['github-actions-annotations']) {
+                    $gitHubActionsAnnotations = GitHubActionsAnnotations::disabled();
+                } else {
+                    $gitHubActionsAnnotations = GitHubActionsAnnotations::fromString((string) $options['github-actions-annotations']);
+                }
+            }
+
             $this->maximumDuration = $maximumDuration;
 
             $target = 'php://stdout';
@@ -74,17 +86,44 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
                 $target = 'php://stderr';
             }
 
-            $this->collector = new Collector\DefaultCollector();
-            $this->reporter = new Reporter\Console\ConsoleReporter(
+            $reporter = new Reporter\Console\ConsoleReporter(
                 new Renderer\Printer(\fopen(
                     $target,
                     'wb',
                 )),
-                new Reporter\Console\DurationFormatter(),
+                new Reporter\DurationFormatter(),
                 $maximumDuration,
                 $maximumCount,
                 $maximumWidth,
             );
+
+            if ($gitHubActionsAnnotations->isOneOf(
+                GitHubActionsAnnotations::auto(),
+                GitHubActionsAnnotations::enabled(),
+            )) {
+                $ciDetector = new CiDetector\Detector();
+
+                if (
+                    $gitHubActionsAnnotations->equals(GitHubActionsAnnotations::enabled())
+                    || $ciDetector->isRunningOnGitHubActions(\getenv())
+                ) {
+                    $reporter = new Reporter\CompositeReporter(
+                        $reporter,
+                        new Reporter\GitHubActions\AnnotationReporter(
+                            new Renderer\Printer(\fopen(
+                                $target,
+                                'wb',
+                            )),
+                            new Renderer\GitHubActions\WorkflowCommandRenderer(),
+                            new Reporter\DurationFormatter(),
+                            $maximumCount,
+                        ),
+                    );
+                }
+            }
+
+            $this->collector = new Collector\DefaultCollector();
+            $this->reporter = $reporter;
         }
 
         public function addError(
@@ -278,6 +317,18 @@ if ($phpUnitVersionSeries->major()->isOneOf(
                 }
             }
 
+            $gitHubActionsAnnotations = GitHubActionsAnnotations::disabled();
+
+            if (\array_key_exists('github-actions-annotations', $options)) {
+                if (true === $options['github-actions-annotations']) {
+                    $gitHubActionsAnnotations = GitHubActionsAnnotations::enabled();
+                } elseif (false === $options['github-actions-annotations']) {
+                    $gitHubActionsAnnotations = GitHubActionsAnnotations::disabled();
+                } else {
+                    $gitHubActionsAnnotations = GitHubActionsAnnotations::fromString((string) $options['github-actions-annotations']);
+                }
+            }
+
             $this->maximumDuration = $maximumDuration;
 
             $target = 'php://stdout';
@@ -289,17 +340,44 @@ if ($phpUnitVersionSeries->major()->isOneOf(
                 $target = 'php://stderr';
             }
 
-            $this->collector = new Collector\DefaultCollector();
-            $this->reporter = new Reporter\Console\ConsoleReporter(
+            $reporter = new Reporter\Console\ConsoleReporter(
                 new Renderer\Printer(\fopen(
                     $target,
                     'wb',
                 )),
-                new Reporter\Console\DurationFormatter(),
+                new Reporter\DurationFormatter(),
                 $maximumDuration,
                 $maximumCount,
                 $maximumWidth,
             );
+
+            if ($gitHubActionsAnnotations->isOneOf(
+                GitHubActionsAnnotations::auto(),
+                GitHubActionsAnnotations::enabled(),
+            )) {
+                $ciDetector = new CiDetector\Detector();
+
+                if (
+                    $gitHubActionsAnnotations->equals(GitHubActionsAnnotations::enabled())
+                    || $ciDetector->isRunningOnGitHubActions(\getenv())
+                ) {
+                    $reporter = new Reporter\CompositeReporter(
+                        $reporter,
+                        new Reporter\GitHubActions\AnnotationReporter(
+                            new Renderer\Printer(\fopen(
+                                $target,
+                                'wb',
+                            )),
+                            new Renderer\GitHubActions\WorkflowCommandRenderer(),
+                            new Reporter\DurationFormatter(),
+                            $maximumCount,
+                        ),
+                    );
+                }
+            }
+
+            $this->collector = new Collector\DefaultCollector();
+            $this->reporter = $reporter;
         }
 
         public function executeBeforeFirstTest(): void
@@ -476,6 +554,12 @@ if ($phpUnitVersionSeries->major()->isOneOf(
                 }
             }
 
+            $gitHubActionsAnnotations = GitHubActionsAnnotations::disabled();
+
+            if ($parameters->has('github-actions-annotations')) {
+                $gitHubActionsAnnotations = GitHubActionsAnnotations::fromString($parameters->get('github-actions-annotations'));
+            }
+
             $timeKeeper = new TimeKeeper();
             $collector = new Collector\DefaultCollector();
 
@@ -483,6 +567,42 @@ if ($phpUnitVersionSeries->major()->isOneOf(
 
             if ($configuration->outputToStandardErrorStream()) {
                 $target = 'php://stderr';
+            }
+
+            $reporter = new Reporter\Console\ConsoleReporter(
+                new Renderer\Printer(\fopen(
+                    $target,
+                    'wb',
+                )),
+                new Reporter\DurationFormatter(),
+                $maximumDuration,
+                $maximumCount,
+                $maximumWidth,
+            );
+
+            if ($gitHubActionsAnnotations->isOneOf(
+                GitHubActionsAnnotations::auto(),
+                GitHubActionsAnnotations::enabled(),
+            )) {
+                $ciDetector = new CiDetector\Detector();
+
+                if (
+                    $gitHubActionsAnnotations->equals(GitHubActionsAnnotations::enabled())
+                    || $ciDetector->isRunningOnGitHubActions(\getenv())
+                ) {
+                    $reporter = new Reporter\CompositeReporter(
+                        $reporter,
+                        new Reporter\GitHubActions\AnnotationReporter(
+                            new Renderer\Printer(\fopen(
+                                $target,
+                                'wb',
+                            )),
+                            new Renderer\GitHubActions\WorkflowCommandRenderer(),
+                            new Reporter\DurationFormatter(),
+                            $maximumCount,
+                        ),
+                    );
+                }
             }
 
             $facade->registerSubscribers(
@@ -495,16 +615,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(
                 ),
                 new Subscriber\TestRunner\ExecutionFinishedSubscriber(
                     $collector,
-                    new Reporter\Console\ConsoleReporter(
-                        new Renderer\Printer(\fopen(
-                            $target,
-                            'wb',
-                        )),
-                        new Reporter\Console\DurationFormatter(),
-                        $maximumDuration,
-                        $maximumCount,
-                        $maximumWidth,
-                    ),
+                    $reporter,
                 ),
             );
         }

@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.26.0...main`][2.26.0...main].
 
+### Added
+
+- Added support for emitting slow tests as GitHub Actions annotations ([#775]), by [@localheinz]
+
 ### Removed
 
 - Dropped support for PHP 7.0 ([#943]), by [@localheinz]
@@ -535,6 +539,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#765]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/765
 [#768]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/768
 [#773]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/773
+[#775]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/775
 [#788]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/788
 [#891]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/891
 [#912]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/912

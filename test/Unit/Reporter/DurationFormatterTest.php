@@ -11,17 +11,17 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Reporter\Console;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Reporter;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 use PHPUnit\Framework;
 
 /**
- * @covers \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\DurationFormatter
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Reporter\DurationFormatter
  *
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
- * @uses \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\Unit
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Unit
  */
 final class DurationFormatterTest extends Framework\TestCase
 {
@@ -29,11 +29,11 @@ final class DurationFormatterTest extends Framework\TestCase
      * @dataProvider provideDurationUnitAndFormattedDuration
      */
     public function testFormatFormats(
-        Reporter\Console\Unit $unit,
+        Reporter\Unit $unit,
         Duration $duration,
         string $formattedDuration
     ): void {
-        $formatter = new Reporter\Console\DurationFormatter();
+        $formatter = new Reporter\DurationFormatter();
 
         $formatted = $formatter->format(
             $unit,
@@ -44,13 +44,13 @@ final class DurationFormatterTest extends Framework\TestCase
     }
 
     /**
-     * @return \Generator<string, array{0: Reporter\Console\Unit, 1: Duration, 2: string}>
+     * @return \Generator<string, array{0: Reporter\Unit, 1: Duration, 2: string}>
      */
     public static function provideDurationUnitAndFormattedDuration(): iterable
     {
         $values = [
             'seconds-zero' => [
-                Reporter\Console\Unit::seconds(),
+                Reporter\Unit::seconds(),
                 Duration::fromSecondsAndNanoseconds(
                     0,
                     0,
@@ -58,7 +58,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 '0.000',
             ],
             'seconds-milliseconds' => [
-                Reporter\Console\Unit::seconds(),
+                Reporter\Unit::seconds(),
                 Duration::fromSecondsAndNanoseconds(
                     0,
                     123999000,
@@ -66,7 +66,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 '0.123',
             ],
             'seconds-digits-one' => [
-                Reporter\Console\Unit::seconds(),
+                Reporter\Unit::seconds(),
                 Duration::fromSecondsAndNanoseconds(
                     1,
                     234456789,
@@ -74,7 +74,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 '1.234',
             ],
             'seconds-digits-two' => [
-                Reporter\Console\Unit::seconds(),
+                Reporter\Unit::seconds(),
                 Duration::fromSecondsAndNanoseconds(
                     12,
                     345678912,
@@ -82,7 +82,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 '12.345',
             ],
             'minutes-zero' => [
-                Reporter\Console\Unit::minutes(),
+                Reporter\Unit::minutes(),
                 Duration::fromSecondsAndNanoseconds(
                     0,
                     0,
@@ -90,7 +90,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 '0:00.000',
             ],
             'minutes-seconds-only' => [
-                Reporter\Console\Unit::minutes(),
+                Reporter\Unit::minutes(),
                 Duration::fromSecondsAndNanoseconds(
                     12,
                     345678912,
@@ -98,7 +98,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 '0:12.345',
             ],
             'minutes-digits-one' => [
-                Reporter\Console\Unit::minutes(),
+                Reporter\Unit::minutes(),
                 Duration::fromSecondsAndNanoseconds(
                     1 * 60 + 23,
                     456789012,
@@ -106,7 +106,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 '1:23.456',
             ],
             'minutes-digits-two' => [
-                Reporter\Console\Unit::minutes(),
+                Reporter\Unit::minutes(),
                 Duration::fromSecondsAndNanoseconds(
                     12 * 60 + 34,
                     567890123,
@@ -114,7 +114,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 '12:34.567',
             ],
             'hours-zero' => [
-                Reporter\Console\Unit::hours(),
+                Reporter\Unit::hours(),
                 Duration::fromSecondsAndNanoseconds(
                     0,
                     0,
@@ -122,7 +122,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 '0:00:00.000',
             ],
             'hours-seconds-only' => [
-                Reporter\Console\Unit::hours(),
+                Reporter\Unit::hours(),
                 Duration::fromSecondsAndNanoseconds(
                     12,
                     345678912,
@@ -130,7 +130,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 '0:00:12.345',
             ],
             'hours-digits-one' => [
-                Reporter\Console\Unit::hours(),
+                Reporter\Unit::hours(),
                 Duration::fromSecondsAndNanoseconds(
                     60 * 60 + 23 * 60 + 45,
                     567890123,
@@ -138,7 +138,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 '1:23:45.567',
             ],
             'hours-digits-two' => [
-                Reporter\Console\Unit::hours(),
+                Reporter\Unit::hours(),
                 Duration::fromSecondsAndNanoseconds(
                     12 * 60 * 60 + 34 * 60 + 56,
                     789012345,
@@ -146,7 +146,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 '12:34:56.789',
             ],
             'hours-digits-two-nanoseconds-zero' => [
-                Reporter\Console\Unit::hours(),
+                Reporter\Unit::hours(),
                 Duration::fromSecondsAndNanoseconds(
                     12 * 60 * 60 + 34 * 60 + 56,
                     00,
@@ -154,7 +154,7 @@ final class DurationFormatterTest extends Framework\TestCase
                 '12:34:56.000',
             ],
             'hours-digits-two-seconds-zero' => [
-                Reporter\Console\Unit::hours(),
+                Reporter\Unit::hours(),
                 Duration::fromSecondsAndNanoseconds(
                     12 * 60 * 60 + 34 * 60,
                     00,
