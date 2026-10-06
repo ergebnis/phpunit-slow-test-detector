@@ -18,6 +18,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumWidth;
+use Ergebnis\PHPUnit\SlowTestDetector\Renderer;
 use Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
@@ -28,24 +29,27 @@ use Ergebnis\PHPUnit\SlowTestDetector\Width;
  */
 final class ConsoleReporter implements Reporter\Reporter
 {
+    private Renderer\Printer $printer;
     private DurationFormatter $durationFormatter;
     private MaximumDuration $maximumDuration;
     private MaximumCount $maximumCount;
     private MaximumWidth $maximumWidth;
 
     public function __construct(
+        Renderer\Printer $printer,
         DurationFormatter $durationFormatter,
         MaximumDuration $maximumDuration,
         MaximumCount $maximumCount,
         MaximumWidth $maximumWidth
     ) {
+        $this->printer = $printer;
         $this->durationFormatter = $durationFormatter;
         $this->maximumDuration = $maximumDuration;
         $this->maximumCount = $maximumCount;
         $this->maximumWidth = $maximumWidth;
     }
 
-    public function report(SlowTestList $slowTestList): string
+    public function report(SlowTestList $slowTestList): void
     {
         $lines = \iterator_to_array(
             $this->lines($slowTestList),
@@ -53,13 +57,13 @@ final class ConsoleReporter implements Reporter\Reporter
         );
 
         if ([] === $lines) {
-            return '';
+            return;
         }
 
-        return \implode(
+        $this->printer->print(\implode(
             "\n",
             $lines,
-        );
+        ));
     }
 
     /**

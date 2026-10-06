@@ -35,4 +35,33 @@ trait Helper
 
         return $fakers[$locale];
     }
+
+    /**
+     * @return resource
+     */
+    final protected static function output()
+    {
+        $output = \fopen(
+            'php://memory',
+            'w+b',
+        );
+
+        self::assertIsResource($output);
+
+        return $output;
+    }
+
+    /**
+     * @param resource $output
+     */
+    final protected static function assertOutputIsIdenticalTo(
+        string $expected,
+        $output
+    ): void {
+        self::assertIsResource($output);
+
+        \rewind($output);
+
+        self::assertSame($expected, \stream_get_contents($output));
+    }
 }

@@ -18,6 +18,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumWidth;
+use Ergebnis\PHPUnit\SlowTestDetector\Renderer;
 use Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
@@ -36,6 +37,7 @@ use PHPUnit\Framework;
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumCount
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumWidth
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Renderer\Printer
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\DurationFormatter
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\Unit
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
@@ -48,43 +50,49 @@ final class ConsoleReporterTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testReportReturnsEmptyStringWhenSlowTestListIsEmpty(): void
+    public function testReportPrintsNothingWhenSlowTestListIsEmpty(): void
     {
         $faker = self::faker();
 
         $slowTestList = SlowTestList::create();
 
+        $output = self::output();
+
         $reporter = new Reporter\Console\ConsoleReporter(
+            new Renderer\Printer($output),
             new Reporter\Console\DurationFormatter(),
             MaximumDuration::default(),
             MaximumCount::fromCount(Count::fromInt($faker->numberBetween(1))),
             MaximumWidth::unlimited(),
         );
 
-        $report = $reporter->report($slowTestList);
+        $reporter->report($slowTestList);
 
-        self::assertSame('', $report);
+        self::assertOutputIsIdenticalTo('', $output);
     }
 
     /**
      * @dataProvider provideExpectedReportMaximumDurationMaximumCountAndSlowTestList
      */
-    public function testReportReturnsReportWhenSlowTestListHasFewerSlowTestsThanMaximumCount(
+    public function testReportPrintsReportWhenSlowTestListHasFewerSlowTestsThanMaximumCount(
         string $expectedReport,
         MaximumDuration $maximumDuration,
         MaximumCount $maximumCount,
         SlowTestList $slowTestList
     ): void {
+        $output = self::output();
+
         $reporter = new Reporter\Console\ConsoleReporter(
+            new Renderer\Printer($output),
             new Reporter\Console\DurationFormatter(),
             $maximumDuration,
             $maximumCount,
             MaximumWidth::unlimited(),
         );
 
-        $report = $reporter->report($slowTestList);
+        $reporter->report($slowTestList);
 
-        self::assertSame($expectedReport, $report);
+        self::assertOutputIsIdenticalTo($expectedReport, $output);
     }
 
     /**
@@ -539,21 +547,24 @@ final class ConsoleReporterTest extends Framework\TestCase
     /**
      * @dataProvider provideExpectedReportMaximumWidthAndSlowTestList
      */
-    public function testReportReturnsReportWithTestDescriptionsTruncatedToMaximumWidth(
+    public function testReportPrintsReportWithTestDescriptionsTruncatedToMaximumWidth(
         string $expectedReport,
         MaximumWidth $maximumWidth,
         SlowTestList $slowTestList
     ): void {
+        $output = self::output();
+
         $reporter = new Reporter\Console\ConsoleReporter(
+            new Renderer\Printer($output),
             new Reporter\Console\DurationFormatter(),
             MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
             MaximumCount::fromCount(Count::fromInt(1)),
             $maximumWidth,
         );
 
-        $report = $reporter->report($slowTestList);
+        $reporter->report($slowTestList);
 
-        self::assertSame($expectedReport, $report);
+        self::assertOutputIsIdenticalTo($expectedReport, $output);
     }
 
     /**
