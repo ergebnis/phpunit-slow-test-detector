@@ -36,11 +36,6 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
         private Collector\Collector $collector;
         private Reporter\Reporter $reporter;
 
-        /**
-         * @var resource
-         */
-        private $output;
-
         public function __construct(array $options = [])
         {
             $maximumCount = MaximumCount::default();
@@ -79,13 +74,12 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
                 $target = 'php://stderr';
             }
 
-            $this->output = \fopen(
-                $target,
-                'wb',
-            );
-
             $this->collector = new Collector\DefaultCollector();
             $this->reporter = new Reporter\Console\ConsoleReporter(
+                new Renderer\Printer(\fopen(
+                    $target,
+                    'wb',
+                )),
                 new Reporter\Console\DurationFormatter(),
                 $maximumDuration,
                 $maximumCount,
@@ -154,16 +148,7 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
                 return;
             }
 
-            $report = $this->reporter->report($slowTestList);
-
-            if ('' === $report) {
-                return;
-            }
-
-            \fwrite(
-                $this->output,
-                $report,
-            );
+            $this->reporter->report($slowTestList);
         }
 
         public function startTest(Framework\Test $test): void
@@ -262,11 +247,6 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
         private Collector\Collector $collector;
         private Reporter\Reporter $reporter;
 
-        /**
-         * @var resource
-         */
-        private $output;
-
         public function __construct(array $options = [])
         {
             $maximumCount = MaximumCount::default();
@@ -305,13 +285,12 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
                 $target = 'php://stderr';
             }
 
-            $this->output = \fopen(
-                $target,
-                'wb',
-            );
-
             $this->collector = new Collector\DefaultCollector();
             $this->reporter = new Reporter\Console\ConsoleReporter(
+                new Renderer\Printer(\fopen(
+                    $target,
+                    'wb',
+                )),
                 new Reporter\Console\DurationFormatter(),
                 $maximumDuration,
                 $maximumCount,
@@ -378,16 +357,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
                 return;
             }
 
-            $report = $this->reporter->report($slowTestList);
-
-            if ('' === $report) {
-                return;
-            }
-
-            \fwrite(
-                $this->output,
-                $report,
-            );
+            $this->reporter->report($slowTestList);
         }
 
         private function resolveMaximumDuration(string $test): MaximumDuration
@@ -506,11 +476,6 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
                 $target = 'php://stderr';
             }
 
-            $output = \fopen(
-                $target,
-                'wb',
-            );
-
             $facade->registerSubscribers(
                 new Subscriber\Test\PreparationStartedSubscriber($timeKeeper),
                 new Subscriber\Test\FinishedSubscriber(
@@ -522,12 +487,15 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
                 new Subscriber\TestRunner\ExecutionFinishedSubscriber(
                     $collector,
                     new Reporter\Console\ConsoleReporter(
+                        new Renderer\Printer(\fopen(
+                            $target,
+                            'wb',
+                        )),
                         new Reporter\Console\DurationFormatter(),
                         $maximumDuration,
                         $maximumCount,
                         $maximumWidth,
                     ),
-                    $output,
                 ),
             );
         }

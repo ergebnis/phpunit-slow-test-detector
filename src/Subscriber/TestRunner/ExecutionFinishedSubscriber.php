@@ -25,22 +25,12 @@ final class ExecutionFinishedSubscriber implements Event\TestRunner\ExecutionFin
     private Collector\Collector $collector;
     private Reporter\Reporter $reporter;
 
-    /**
-     * @var resource
-     */
-    private $output;
-
-    /**
-     * @param resource $output
-     */
     public function __construct(
         Collector\Collector $collector,
-        Reporter\Reporter $reporter,
-        $output
+        Reporter\Reporter $reporter
     ) {
         $this->collector = $collector;
         $this->reporter = $reporter;
-        $this->output = $output;
     }
 
     /**
@@ -54,15 +44,6 @@ final class ExecutionFinishedSubscriber implements Event\TestRunner\ExecutionFin
             return;
         }
 
-        $report = $this->reporter->report($slowTestList);
-
-        if ('' === $report) {
-            return;
-        }
-
-        \fwrite(
-            $this->output,
-            $report,
-        );
+        $this->reporter->report($slowTestList);
     }
 }
