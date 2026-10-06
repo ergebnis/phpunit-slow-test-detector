@@ -6,6 +6,8 @@
     "float",
     "int",
     "null",
+    "PHPUnit\\Event\\Application\\Finished",
+    "PHPUnit\\Event\\Application\\FinishedSubscriber",
     "PHPUnit\\Event\\Code\\Test",
     "PHPUnit\\Event\\Test\\Finished",
     "PHPUnit\\Event\\Test\\FinishedSubscriber",

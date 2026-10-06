@@ -42,6 +42,11 @@ final class MaximumCount
         return new self(Count::fromInt(10));
     }
 
+    public static function unlimited(): self
+    {
+        return new self(Count::fromInt(\PHP_INT_MAX));
+    }
+
     public function toCount(): Count
     {
         return $this->count;

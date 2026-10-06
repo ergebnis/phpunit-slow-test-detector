@@ -58,4 +58,13 @@ final class MaximumCountTest extends Framework\TestCase
 
         self::assertEquals($expected, $maximumCount->toCount());
     }
+
+    public function testUnlimitedReturnsMaximumCount(): void
+    {
+        $maximumCount = MaximumCount::unlimited();
+
+        $expected = Count::fromInt(\PHP_INT_MAX);
+
+        self::assertEquals($expected, $maximumCount->toCount());
+    }
 }

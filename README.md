@@ -453,6 +453,36 @@ final class ExtraSlowTest extends Framework\TestCase
 >
 > Support for the `@slowThreshold` annotation exists only to help you move from [`johnkary/phpunit-speedtrap`](https://github.com/johnkary/phpunit-speedtrap). It will be deprecated and removed in the near future.
 
+### Using compact output
+
+When using `phpunit/phpunit:^13.2.0` and enabling [compact output](https://github.com/sebastianbergmann/phpunit/pull/6597) with the `--compact` option or the `PHPUNIT_COMPACT_OUTPUT=1` environment variable, the extension reports slow tests in a section after the output of `phpunit/phpunit`, with records matching the compact output of `phpunit/phpunit`:
+
+```
+OK (3 tests, 3 assertions)
+
+=== ergebnis/phpunit-slow-test-detector ===
+
+--- SLOW: Example\Test\ExampleTest::testIsSlow
+0.610 seconds (maximum 0.500 seconds)
+
+--- SLOW: Example\Test\ExampleTest::testIsSlowToo
+0.550 seconds (maximum 0.500 seconds)
+
+SLOW (2 tests)
+```
+
+With compact output, the extension
+
+- reports durations in seconds
+- does not truncate the names of tests, ignoring the `maximum-width` parameter
+- reports all slow tests, unless you configure the `maximum-count` parameter
+
+When you configure the `maximum-count` parameter and the extension detects more slow tests than it reports, the summary line includes the number of slow tests that it does not report:
+
+```
+SLOW (12 tests, 2 not listed)
+```
+
 ### Understanding measured test durations
 
 #### Understanding measured test durations when using the new event system

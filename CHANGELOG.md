@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 For a full diff see [`2.26.0...main`][2.26.0...main].
 
+### Added
+
+- Added rendering of slow tests as records matching the compact output of `phpunit/phpunit:^13.2.0` when compact output is enabled ([#939]), by [@localheinz]
+
 ### Removed
 
 - Dropped support for PHP 7.0 ([#943]), by [@localheinz]
@@ -534,6 +538,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#788]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/788
 [#891]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/891
 [#912]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/912
+[#939]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/939
 [#943]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/943
 [#946]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/946
 [#948]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/948
