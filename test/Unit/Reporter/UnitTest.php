@@ -11,14 +11,14 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Reporter\Console;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Reporter;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
 use Ergebnis\PHPUnit\SlowTestDetector\Reporter;
 use PHPUnit\Framework;
 
 /**
- * @covers \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\Unit
+ * @covers \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Unit
  *
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
  */
@@ -26,55 +26,55 @@ final class UnitTest extends Framework\TestCase
 {
     public function testHoursReturnsUnit(): void
     {
-        $unit = Reporter\Console\Unit::hours();
+        $unit = Reporter\Unit::hours();
 
         self::assertSame('hours', $unit->toString());
     }
 
     public function testMinutesReturnsUnit(): void
     {
-        $unit = Reporter\Console\Unit::minutes();
+        $unit = Reporter\Unit::minutes();
 
         self::assertSame('minutes', $unit->toString());
     }
 
     public function testSecondsReturnsUnit(): void
     {
-        $unit = Reporter\Console\Unit::seconds();
+        $unit = Reporter\Unit::seconds();
 
         self::assertSame('seconds', $unit->toString());
     }
 
     public function testEqualsReturnsFalseWhenUnitsAreNotEqual(): void
     {
-        $one = Reporter\Console\Unit::hours();
-        $two = Reporter\Console\Unit::minutes();
+        $one = Reporter\Unit::hours();
+        $two = Reporter\Unit::minutes();
 
         self::assertFalse($one->equals($two));
     }
 
     public function testEqualsReturnsTrueWhenUnitsAreEqual(): void
     {
-        $one = Reporter\Console\Unit::hours();
-        $two = Reporter\Console\Unit::hours();
+        $one = Reporter\Unit::hours();
+        $two = Reporter\Unit::hours();
 
         self::assertTrue($one->equals($two));
-        self::assertTrue(Reporter\Console\Unit::minutes()->equals(Reporter\Console\Unit::minutes()));
-        self::assertTrue(Reporter\Console\Unit::hours()->equals(Reporter\Console\Unit::hours()));
+        self::assertTrue(Reporter\Unit::minutes()->equals(Reporter\Unit::minutes()));
+        self::assertTrue(Reporter\Unit::hours()->equals(Reporter\Unit::hours()));
     }
 
     public function testIsGreaterThanReturnsFalseWhenUnitIsNotGreater(): void
     {
-        $one = Reporter\Console\Unit::minutes();
-        $two = Reporter\Console\Unit::hours();
+        $one = Reporter\Unit::minutes();
+        $two = Reporter\Unit::hours();
 
         self::assertFalse($one->isGreaterThan($two));
     }
 
     public function testIsGreaterThanReturnsTrueWhenUnitIsGreater(): void
     {
-        $one = Reporter\Console\Unit::hours();
-        $two = Reporter\Console\Unit::minutes();
+        $one = Reporter\Unit::hours();
+        $two = Reporter\Unit::minutes();
 
         self::assertTrue($one->isGreaterThan($two));
     }
@@ -83,42 +83,42 @@ final class UnitTest extends Framework\TestCase
      * @dataProvider provideExpectedUnitAndDuration
      */
     public function testFromDurationReturnsExpectedUnit(
-        Reporter\Console\Unit $expectedUnit,
+        Reporter\Unit $expectedUnit,
         Duration $duration
     ): void {
-        $unit = Reporter\Console\Unit::fromDuration($duration);
+        $unit = Reporter\Unit::fromDuration($duration);
 
         self::assertTrue($expectedUnit->equals($unit));
     }
 
     /**
-     * @return \Generator<string, array{0: Reporter\Console\Unit, 1: Duration}>
+     * @return \Generator<string, array{0: Reporter\Unit, 1: Duration}>
      */
     public static function provideExpectedUnitAndDuration(): iterable
     {
         $values = [
             'zero' => [
-                Reporter\Console\Unit::seconds(),
+                Reporter\Unit::seconds(),
                 Duration::fromMilliseconds(0),
             ],
             'milliseconds' => [
-                Reporter\Console\Unit::seconds(),
+                Reporter\Unit::seconds(),
                 Duration::fromMilliseconds(500),
             ],
             'seconds' => [
-                Reporter\Console\Unit::seconds(),
+                Reporter\Unit::seconds(),
                 Duration::fromMilliseconds(59999),
             ],
             'minutes' => [
-                Reporter\Console\Unit::minutes(),
+                Reporter\Unit::minutes(),
                 Duration::fromMilliseconds(60000),
             ],
             'minutes-large' => [
-                Reporter\Console\Unit::minutes(),
+                Reporter\Unit::minutes(),
                 Duration::fromMilliseconds(3599999),
             ],
             'hours' => [
-                Reporter\Console\Unit::hours(),
+                Reporter\Unit::hours(),
                 Duration::fromMilliseconds(3600000),
             ],
         ];
@@ -137,36 +137,36 @@ final class UnitTest extends Framework\TestCase
      * @param list<Duration> $durations
      */
     public function testFromDurationsReturnsLargestUnit(
-        Reporter\Console\Unit $expectedUnit,
+        Reporter\Unit $expectedUnit,
         array $durations
     ): void {
-        $unit = Reporter\Console\Unit::fromDurations(...$durations);
+        $unit = Reporter\Unit::fromDurations(...$durations);
 
         self::assertTrue($expectedUnit->equals($unit));
     }
 
     /**
-     * @return \Generator<string, array{0: Reporter\Console\Unit, 1: list<Duration>}>
+     * @return \Generator<string, array{0: Reporter\Unit, 1: list<Duration>}>
      */
     public static function provideExpectedUnitAndDurations(): iterable
     {
         $values = [
             'all-seconds' => [
-                Reporter\Console\Unit::seconds(),
+                Reporter\Unit::seconds(),
                 [
                     Duration::fromMilliseconds(100),
                     Duration::fromMilliseconds(200),
                 ],
             ],
             'mixed-seconds-and-minutes' => [
-                Reporter\Console\Unit::minutes(),
+                Reporter\Unit::minutes(),
                 [
                     Duration::fromMilliseconds(100),
                     Duration::fromMilliseconds(60000),
                 ],
             ],
             'mixed-all' => [
-                Reporter\Console\Unit::hours(),
+                Reporter\Unit::hours(),
                 [
                     Duration::fromMilliseconds(100),
                     Duration::fromMilliseconds(60000),
@@ -174,7 +174,7 @@ final class UnitTest extends Framework\TestCase
                 ],
             ],
             'empty' => [
-                Reporter\Console\Unit::seconds(),
+                Reporter\Unit::seconds(),
                 [],
             ],
         ];

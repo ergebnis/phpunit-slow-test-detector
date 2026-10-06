@@ -38,8 +38,8 @@ use PHPUnit\Framework;
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumWidth
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Renderer\Printer
- * @uses \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\DurationFormatter
- * @uses \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Console\Unit
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Reporter\DurationFormatter
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Reporter\Unit
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTestList
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDescription
@@ -60,7 +60,7 @@ final class ConsoleReporterTest extends Framework\TestCase
 
         $reporter = new Reporter\Console\ConsoleReporter(
             new Renderer\Printer($output),
-            new Reporter\Console\DurationFormatter(),
+            new Reporter\DurationFormatter(),
             MaximumDuration::default(),
             MaximumCount::fromCount(Count::fromInt($faker->numberBetween(1))),
             MaximumWidth::unlimited(),
@@ -84,7 +84,7 @@ final class ConsoleReporterTest extends Framework\TestCase
 
         $reporter = new Reporter\Console\ConsoleReporter(
             new Renderer\Printer($output),
-            new Reporter\Console\DurationFormatter(),
+            new Reporter\DurationFormatter(),
             $maximumDuration,
             $maximumCount,
             MaximumWidth::unlimited(),
@@ -556,7 +556,7 @@ final class ConsoleReporterTest extends Framework\TestCase
 
         $reporter = new Reporter\Console\ConsoleReporter(
             new Renderer\Printer($output),
-            new Reporter\Console\DurationFormatter(),
+            new Reporter\DurationFormatter(),
             MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
             MaximumCount::fromCount(Count::fromInt(1)),
             $maximumWidth,

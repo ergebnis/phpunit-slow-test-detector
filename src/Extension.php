@@ -80,7 +80,7 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
                     $target,
                     'wb',
                 )),
-                new Reporter\Console\DurationFormatter(),
+                new Reporter\DurationFormatter(),
                 $maximumDuration,
                 $maximumCount,
                 $maximumWidth,
@@ -291,7 +291,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
                     $target,
                     'wb',
                 )),
-                new Reporter\Console\DurationFormatter(),
+                new Reporter\DurationFormatter(),
                 $maximumDuration,
                 $maximumCount,
                 $maximumWidth,
@@ -484,20 +484,48 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
                     $collector,
                     Version\Series::fromString(Runner\Version::series()),
                 ),
-                new Subscriber\TestRunner\ExecutionFinishedSubscriber(
+            );
+
+            /**
+             * @see https://github.com/sebastianbergmann/phpunit/pull/6597
+             */
+            if (
+                \method_exists($configuration, 'outputIsCompact')
+                && $configuration->outputIsCompact()
+            ) {
+                if (!$parameters->has('maximum-count')) {
+                    $maximumCount = MaximumCount::unlimited();
+                }
+
+                $facade->registerSubscriber(new Subscriber\Application\FinishedSubscriber(
                     $collector,
-                    new Reporter\Console\ConsoleReporter(
+                    new Reporter\Compact\CompactReporter(
                         new Renderer\Printer(\fopen(
                             $target,
                             'wb',
                         )),
-                        new Reporter\Console\DurationFormatter(),
-                        $maximumDuration,
+                        new Renderer\CompactRenderer(new Renderer\Sanitizer()),
+                        new Reporter\DurationFormatter(),
                         $maximumCount,
-                        $maximumWidth,
                     ),
+                ));
+
+                return;
+            }
+
+            $facade->registerSubscriber(new Subscriber\TestRunner\ExecutionFinishedSubscriber(
+                $collector,
+                new Reporter\Console\ConsoleReporter(
+                    new Renderer\Printer(\fopen(
+                        $target,
+                        'wb',
+                    )),
+                    new Reporter\DurationFormatter(),
+                    $maximumDuration,
+                    $maximumCount,
+                    $maximumWidth,
                 ),
-            );
+            ));
         }
     }
 
