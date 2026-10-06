@@ -18,6 +18,7 @@ For a full diff see [`2.26.0...main`][2.26.0...main].
 ### Fixed
 
 - Fixed the missing line break at the end of the slow test report ([#960]), by [@localheinz] and [@tstarling]
+- Fixed printing the slow test report after `phpunit/phpunit` has printed its own output on `phpunit/phpunit:^10.0.0` and later ([#961]), by [@localheinz]
 
 ## [`2.26.0`][2.26.0]
 
@@ -543,6 +544,7 @@ For a full diff see [`7afa59c...1.0.0`][7afa59c...1.0.0].
 [#948]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/948
 [#950]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/950
 [#960]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/960
+[#961]: https://github.com/ergebnis/phpunit-slow-test-detector/pull/961
 
 [@courtney-miles]: https://github.com/courtney-miles
 [@dantleech]: https://github.com/dantleech

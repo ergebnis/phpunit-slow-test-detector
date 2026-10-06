@@ -27,6 +27,11 @@ Random Seed:   1676103726
 
 .............                                                                                                                                                                                                                                                                                                   13 / 13 (100%)
 
+Time: 00:12.601, Memory: 8.00 MB
+
+OK (13 tests, 13 assertions)
+
+
 Detected 11 tests where the duration exceeded the global maximum duration (0.500).
 
  # Duration Test
@@ -46,10 +51,6 @@ Detected 11 tests where the duration exceeded the global maximum duration (0.500
        └─── seconds
 
 There is 1 additional slow test that is not listed here.
-
-Time: 00:12.601, Memory: 8.00 MB
-
-OK (13 tests, 13 assertions)
 ```
 
 ## Compatibility

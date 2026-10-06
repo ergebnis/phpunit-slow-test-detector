@@ -11,7 +11,7 @@ declare(strict_types=1);
  * @see https://github.com/ergebnis/phpunit-slow-test-detector
  */
 
-namespace Ergebnis\PHPUnit\SlowTestDetector\Subscriber\TestRunner;
+namespace Ergebnis\PHPUnit\SlowTestDetector\Subscriber\Application;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Collector;
 use Ergebnis\PHPUnit\SlowTestDetector\Reporter;
@@ -20,7 +20,7 @@ use PHPUnit\Event;
 /**
  * @internal
  */
-final class ExecutionFinishedSubscriber implements Event\TestRunner\ExecutionFinishedSubscriber
+final class FinishedSubscriber implements Event\Application\FinishedSubscriber
 {
     private Collector\Collector $collector;
     private Reporter\Reporter $reporter;
@@ -34,9 +34,9 @@ final class ExecutionFinishedSubscriber implements Event\TestRunner\ExecutionFin
     }
 
     /**
-     * @see https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/TextUI/TestRunner.php#L65
+     * @see https://github.com/sebastianbergmann/phpunit/blob/10.0.0/src/TextUI/Application.php#L175
      */
-    public function notify(Event\TestRunner\ExecutionFinished $event): void
+    public function notify(Event\Application\Finished $event): void
     {
         $slowTestList = $this->collector->slowTestList();
 

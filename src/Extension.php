@@ -484,7 +484,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\
                     $collector,
                     Version\Series::fromString(Runner\Version::series()),
                 ),
-                new Subscriber\TestRunner\ExecutionFinishedSubscriber(
+                new Subscriber\Application\FinishedSubscriber(
                     $collector,
                     new Reporter\Console\ConsoleReporter(
                         new Renderer\Printer(\fopen(
