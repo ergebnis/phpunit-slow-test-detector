@@ -30,14 +30,14 @@ use Ergebnis\PHPUnit\SlowTestDetector\Width;
 final class ConsoleReporter implements Reporter\Reporter
 {
     private Renderer\Printer $printer;
-    private DurationFormatter $durationFormatter;
+    private Reporter\DurationFormatter $durationFormatter;
     private MaximumDuration $maximumDuration;
     private MaximumCount $maximumCount;
     private MaximumWidth $maximumWidth;
 
     public function __construct(
         Renderer\Printer $printer,
-        DurationFormatter $durationFormatter,
+        Reporter\DurationFormatter $durationFormatter,
         MaximumDuration $maximumDuration,
         MaximumCount $maximumCount,
         MaximumWidth $maximumWidth
@@ -107,7 +107,7 @@ final class ConsoleReporter implements Reporter\Reporter
 
         yield '';
 
-        $unit = Unit::fromDurations(
+        $unit = Reporter\Unit::fromDurations(
             $this->maximumDuration->toDuration(),
             ...\array_merge(
                 \array_map(static function (SlowTest $slowTest): Duration {
@@ -267,7 +267,7 @@ final class ConsoleReporter implements Reporter\Reporter
 
         yield '';
 
-        $unit = Unit::fromDurations(
+        $unit = Reporter\Unit::fromDurations(
             $this->maximumDuration->toDuration(),
             ...\array_map(static function (SlowTest $slowTest): Duration {
                 return $slowTest->duration();
@@ -389,7 +389,7 @@ final class ConsoleReporter implements Reporter\Reporter
     }
 
     private function durationColumnWidth(
-        Unit $unit,
+        Reporter\Unit $unit,
         Duration ...$durations
     ): Width {
         return Width::max(
@@ -408,7 +408,7 @@ final class ConsoleReporter implements Reporter\Reporter
      * @return \Generator<int, string>
      */
     private function legend(
-        Unit $unit,
+        Reporter\Unit $unit,
         Width $durationColumnIndentation,
         Width $durationColumnWidth
     ): \Generator {
@@ -434,7 +434,7 @@ final class ConsoleReporter implements Reporter\Reporter
 
         yield $padding . $durationOfZeroFormatted;
 
-        if ($unit->equals(Unit::hours())) {
+        if ($unit->equals(Reporter\Unit::hours())) {
             yield $padding . ' │  │  └─── seconds';
 
             yield $padding . ' │  └────── minutes';
@@ -444,7 +444,7 @@ final class ConsoleReporter implements Reporter\Reporter
             return;
         }
 
-        if ($unit->equals(Unit::minutes())) {
+        if ($unit->equals(Reporter\Unit::minutes())) {
             yield $padding . ' │  └─── seconds';
 
             yield $padding . ' └────── minutes';

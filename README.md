@@ -248,6 +248,7 @@ adjust your `phpunit.xml` configuration file and configure the
 
 You can configure the extension with the following options in your `phpunit.xml` configuration file:
 
+- `github-actions-annotations`, one of `auto`, `true`, or `false`, whether the extension additionally emits slow tests as GitHub Actions annotations, defaults to `false` (see [Emitting GitHub Actions annotations](#emitting-github-actions-annotations))
 - `maximum-count`, an `int`, the maximum count of slow test that should be reported, defaults to `10`
 - `maximum-duration`, an `int`, the maximum duration in milliseconds for a test before the extension considers it as a slow test, defaults to `500`
 - `maximum-width`, an `int` of at least `80` or `max`, the maximum width in columns of the table of slow tests, where `max` detects the width of the terminal (and uses `80` for narrower terminals); test descriptions that do not fit are truncated in the middle, defaults to no truncation at all
@@ -392,6 +393,54 @@ The following example configures the maximum count of slow tests to three, the m
      </testsuites>
  </phpunit>
 ```
+
+### Emitting GitHub Actions annotations
+
+When the extension detects slow tests, it can additionally emit them as [GitHub Actions annotations](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands#setting-a-warning-message), so that they show up in the summary of a workflow run.
+
+The extension prints one `warning` workflow command per reported slow test, to the same stream as the slow test report, for example:
+
+```text
+::warning title=Slow Test::FooTest::testBar took 1.234 seconds, maximum is 0.500 seconds
+```
+
+This is disabled by default. You can enable it with the `github-actions-annotations` parameter:
+
+- `false` (default) never emits annotations
+- `auto` emits annotations only when the environment variable `GITHUB_ACTIONS` has the value `true`, which [GitHub Actions sets for every step](https://docs.github.com/en/actions/reference/workflows-and-actions/variables#default-environment-variables); any other value, including an empty one, does not count, so running the tests locally is not affected
+- `true` always emits annotations
+
+The following example enables GitHub Actions annotations when running on GitHub Actions and using `phpunit/phpunit:^10.0.0` and later:
+
+```diff
+ <phpunit
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+     bootstrap="vendor/autoload.php"
+ >
+     <extensions>
+-        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
++        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension">
++            <parameter name="github-actions-annotations" value="auto"/>
++        </bootstrap>
+     </extensions>
+     <testsuites>
+         <testsuite name="unit">
+             <directory>test/Unit/</directory>
+        </testsuite>
+     </testsuites>
+ </phpunit>
+```
+
+When using `phpunit/phpunit:^6.5.0`, `phpunit/phpunit:^7.5.0`, `phpunit/phpunit:^8.5.19`, or `phpunit/phpunit:^9.0.0`, configure the `github-actions-annotations` element in the `arguments` element:
+
+```xml
+<element key="github-actions-annotations">
+    <string>auto</string>
+</element>
+```
+
+The number of annotations follows the `maximum-count` parameter. Note that GitHub Actions [shows at most 10 warning annotations per step](https://github.com/actions/toolkit/blob/bcae5eca3f432f591cf9f052db4533fc585fb2ac/docs/problem-matchers.md#limitations) (a single run of `phpunit`) and 50 per job (across all of its steps), so annotations beyond that do not appear in the summary of a workflow run.
 
 ### Configuring the maximum duration per test case
 
