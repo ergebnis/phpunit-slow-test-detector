@@ -232,7 +232,11 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
     return;
 }
 
-if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\Major::fromInt(8), Version\Major::fromInt(9))) {
+if ($phpUnitVersionSeries->major()->isOneOf(
+    Version\Major::fromInt(7),
+    Version\Major::fromInt(8),
+    Version\Major::fromInt(9),
+)) {
     /**
      * @internal
      */
@@ -427,7 +431,12 @@ if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(7), Version\M
     return;
 }
 
-if ($phpUnitVersionSeries->major()->isOneOf(Version\Major::fromInt(10), Version\Major::fromInt(11), Version\Major::fromInt(12), Version\Major::fromInt(13))) {
+if ($phpUnitVersionSeries->major()->isOneOf(
+    Version\Major::fromInt(10),
+    Version\Major::fromInt(11),
+    Version\Major::fromInt(12),
+    Version\Major::fromInt(13),
+)) {
     /**
      * @internal
      */
