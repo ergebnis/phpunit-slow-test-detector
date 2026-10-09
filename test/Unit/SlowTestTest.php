@@ -14,26 +14,60 @@ declare(strict_types=1);
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
+use Ergebnis\PHPUnit\SlowTestDetector\File;
+use Ergebnis\PHPUnit\SlowTestDetector\Line;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\TestDescription;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
+use Ergebnis\PHPUnit\SlowTestDetector\TestLocation;
 use PHPUnit\Framework;
 
 /**
  * @covers \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
  *
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\File
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Line
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDescription
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestLocation
  */
 final class SlowTestTest extends Framework\TestCase
 {
     use Test\Util\Helper;
 
-    public function testCreateReturnsSlowTest(): void
+    public function testCreateReturnsSlowTestWhenNullableValuesAreNotNull(): void
+    {
+        $faker = self::faker();
+
+        $testIdentifier = TestIdentifier::fromString($faker->word());
+        $testDescription = TestDescription::fromString($faker->word());
+        $duration = Duration::fromMilliseconds($faker->numberBetween(0));
+        $maximumDuration = MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0)));
+        $testLocation = TestLocation::create(
+            File::fromString($faker->slug()),
+            Line::fromInt($faker->numberBetween(1)),
+        );
+
+        $slowTest = SlowTest::create(
+            $testIdentifier,
+            $testDescription,
+            $duration,
+            $maximumDuration,
+            $testLocation,
+        );
+
+        self::assertSame($testIdentifier, $slowTest->testIdentifier());
+        self::assertSame($testDescription, $slowTest->testDescription());
+        self::assertSame($duration, $slowTest->duration());
+        self::assertSame($maximumDuration, $slowTest->maximumDuration());
+        self::assertSame($testLocation, $slowTest->testLocation());
+    }
+
+    public function testCreateReturnsSlowTestWhenNullableValuesAreNull(): void
     {
         $faker = self::faker();
 
@@ -47,11 +81,13 @@ final class SlowTestTest extends Framework\TestCase
             $testDescription,
             $duration,
             $maximumDuration,
+            null,
         );
 
         self::assertSame($testIdentifier, $slowTest->testIdentifier());
         self::assertSame($testDescription, $slowTest->testDescription());
         self::assertSame($duration, $slowTest->duration());
         self::assertSame($maximumDuration, $slowTest->maximumDuration());
+        self::assertNull($slowTest->testLocation());
     }
 }
