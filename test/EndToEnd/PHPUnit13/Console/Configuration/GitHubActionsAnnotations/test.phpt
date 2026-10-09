@@ -9,6 +9,8 @@ use PHPUnit\TextUI;
 
 $_SERVER['argv'][] = '--configuration=test/EndToEnd/PHPUnit13/Console/Configuration/GitHubActionsAnnotations/phpunit.xml';
 
+\putenv('GITHUB_WORKSPACE=' . \realpath(__DIR__ . '/../../../../../..'));
+
 require_once __DIR__ . '/../../../../../../vendor/autoload.php';
 
 $application = new TextUI\Application();
@@ -32,11 +34,11 @@ Detected 5 tests where the duration exceeded the global maximum duration (0.500)
      0.000
       └─── seconds
 
-::warning title=Slow Test::Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit13\Console\Configuration\GitHubActionsAnnotations\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(1000) took 1.0%s seconds, maximum is 0.500 seconds
-::warning title=Slow Test::Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit13\Console\Configuration\GitHubActionsAnnotations\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(900) took 0.9%s seconds, maximum is 0.500 seconds
-::warning title=Slow Test::Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit13\Console\Configuration\GitHubActionsAnnotations\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(800) took 0.8%s seconds, maximum is 0.500 seconds
-::warning title=Slow Test::Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit13\Console\Configuration\GitHubActionsAnnotations\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(700) took 0.7%s seconds, maximum is 0.500 seconds
-::warning title=Slow Test::Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit13\Console\Configuration\GitHubActionsAnnotations\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(600) took 0.6%s seconds, maximum is 0.500 seconds
+::warning title=Slow Test,file=test/EndToEnd/PHPUnit13/Console/Configuration/GitHubActionsAnnotations/SleeperTest.php,line=34::Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit13\Console\Configuration\GitHubActionsAnnotations\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(1000) took 1.0%s seconds, maximum is 0.500 seconds
+::warning title=Slow Test,file=test/EndToEnd/PHPUnit13/Console/Configuration/GitHubActionsAnnotations/SleeperTest.php,line=34::Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit13\Console\Configuration\GitHubActionsAnnotations\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(900) took 0.9%s seconds, maximum is 0.500 seconds
+::warning title=Slow Test,file=test/EndToEnd/PHPUnit13/Console/Configuration/GitHubActionsAnnotations/SleeperTest.php,line=34::Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit13\Console\Configuration\GitHubActionsAnnotations\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(800) took 0.8%s seconds, maximum is 0.500 seconds
+::warning title=Slow Test,file=test/EndToEnd/PHPUnit13/Console/Configuration/GitHubActionsAnnotations/SleeperTest.php,line=34::Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit13\Console\Configuration\GitHubActionsAnnotations\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(700) took 0.7%s seconds, maximum is 0.500 seconds
+::warning title=Slow Test,file=test/EndToEnd/PHPUnit13/Console/Configuration/GitHubActionsAnnotations/SleeperTest.php,line=34::Ergebnis\PHPUnit\SlowTestDetector\Test\EndToEnd\PHPUnit13\Console\Configuration\GitHubActionsAnnotations\SleeperTest::testSleeperSleepsLongerThanDefaultMaximumDurationWithDataProvider%s(600) took 0.6%s seconds, maximum is 0.500 seconds
 
 
 Time: %s

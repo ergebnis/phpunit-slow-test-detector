@@ -401,8 +401,10 @@ When the extension detects slow tests, it can additionally emit them as [GitHub 
 The extension prints one `warning` workflow command per reported slow test, to the same stream as the slow test report, for example:
 
 ```text
-::warning title=Slow Test::FooTest::testBar took 1.234 seconds, maximum is 0.500 seconds
+::warning title=Slow Test,file=test/FooTest.php,line=42::FooTest::testBar took 1.234 seconds, maximum is 0.500 seconds
 ```
+
+For a slow test that is a test method, the annotation includes the file, relative to the directory in the environment variable `GITHUB_WORKSPACE`, and the line where the test method is declared, so that GitHub can attach the annotation to that line. When the test method is inherited, this is the file and line of the parent class that declares it. When `GITHUB_WORKSPACE` is not set or empty, when the file is not in that directory, or when the slow test is not a test method (for example, a PHPT test), the annotation does not include a file and line.
 
 This is disabled by default. You can enable it with the `github-actions-annotations` parameter:
 

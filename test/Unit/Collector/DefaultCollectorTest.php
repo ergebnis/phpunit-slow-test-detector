@@ -21,6 +21,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\TestDescription;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
+use Ergebnis\PHPUnit\SlowTestDetector\TestLocation;
 use PHPUnit\Framework;
 
 /**
@@ -32,6 +33,7 @@ use PHPUnit\Framework;
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTestList
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDescription
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestLocation
  */
 final class DefaultCollectorTest extends Framework\TestCase
 {
@@ -46,6 +48,7 @@ final class DefaultCollectorTest extends Framework\TestCase
             TestDescription::fromString($faker->word()),
             Duration::fromMilliseconds($faker->numberBetween(0)),
             MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+            TestLocation::create($faker->slug(), $faker->numberBetween(1)),
         );
 
         $two = SlowTest::create(
@@ -53,6 +56,7 @@ final class DefaultCollectorTest extends Framework\TestCase
             TestDescription::fromString($faker->word()),
             Duration::fromMilliseconds($faker->numberBetween(0)),
             MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+            TestLocation::create($faker->slug(), $faker->numberBetween(1)),
         );
 
         $collector = new Collector\DefaultCollector();
@@ -77,6 +81,7 @@ final class DefaultCollectorTest extends Framework\TestCase
             TestDescription::fromString($faker->word()),
             Duration::fromMilliseconds($faker->numberBetween(0)),
             MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0, 999999999 - 1))),
+            TestLocation::create($faker->slug(), $faker->numberBetween(1)),
         );
 
         $two = SlowTest::create(
@@ -87,6 +92,7 @@ final class DefaultCollectorTest extends Framework\TestCase
                 $one->duration()->nanoseconds() + 1,
             ),
             $one->maximumDuration(),
+            TestLocation::create($faker->slug(), $faker->numberBetween(1)),
         );
 
         $collector = new Collector\DefaultCollector();
@@ -108,6 +114,7 @@ final class DefaultCollectorTest extends Framework\TestCase
             TestDescription::fromString($faker->word()),
             Duration::fromMilliseconds($faker->numberBetween(0)),
             MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(1, 999999999))),
+            TestLocation::create($faker->slug(), $faker->numberBetween(1)),
         );
 
         $two = SlowTest::create(
@@ -118,6 +125,7 @@ final class DefaultCollectorTest extends Framework\TestCase
                 $one->duration()->nanoseconds() - 1,
             ),
             $one->maximumDuration(),
+            TestLocation::create($faker->slug(), $faker->numberBetween(1)),
         );
 
         $collector = new Collector\DefaultCollector();

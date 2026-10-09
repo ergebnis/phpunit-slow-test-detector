@@ -19,6 +19,8 @@ use PHPUnit\Framework;
 
 /**
  * @covers \Ergebnis\PHPUnit\SlowTestDetector\Renderer\GitHubActions\WorkflowCommandRenderer
+ *
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Renderer\GitHubActions\WarningMessage
  */
 final class WorkflowCommandRendererTest extends Framework\TestCase
 {
@@ -75,6 +77,41 @@ final class WorkflowCommandRendererTest extends Framework\TestCase
             ],
             $value,
         )));
+    }
+
+    public function testRenderReturnsWarningMessageWithTitleFileAndLineWhenWarningMessageHasFileAndLine(): void
+    {
+        $faker = self::faker();
+
+        $title = $faker->word();
+        $message = $faker->sentence();
+        $file = \sprintf(
+            '%s/%s.php',
+            $faker->word(),
+            $faker->word(),
+        );
+        $line = $faker->numberBetween(1);
+
+        $workflowCommandRenderer = new Renderer\GitHubActions\WorkflowCommandRenderer();
+
+        $warningMessage = Renderer\GitHubActions\WarningMessage::create(
+            $title,
+            $message,
+        )->withFileAndLine(
+            $file,
+            $line,
+        );
+
+        $expected = \sprintf(
+            '::warning title=%s,file=%s,line=%d::%s%s',
+            $title,
+            $file,
+            $line,
+            $message,
+            "\n",
+        );
+
+        self::assertSame($expected, $workflowCommandRenderer->render($warningMessage));
     }
 
     public function testRenderEscapesValue(): void
