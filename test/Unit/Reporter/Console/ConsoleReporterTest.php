@@ -25,6 +25,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\TestDescription;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
+use Ergebnis\PHPUnit\SlowTestDetector\TestLocation;
 use Ergebnis\PHPUnit\SlowTestDetector\Width;
 use PHPUnit\Framework;
 
@@ -44,6 +45,7 @@ use PHPUnit\Framework;
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTestList
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDescription
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestLocation
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Width
  */
 final class ConsoleReporterTest extends Framework\TestCase
@@ -100,6 +102,8 @@ final class ConsoleReporterTest extends Framework\TestCase
      */
     public static function provideExpectedReportMaximumDurationMaximumCountAndSlowTestList(): iterable
     {
+        $faker = self::faker();
+
         $print = static function (array $lines): string {
             return \implode(
                 "\n",
@@ -128,6 +132,7 @@ final class ConsoleReporterTest extends Framework\TestCase
                     TestDescription::fromString('FooTest::test'),
                     Duration::fromMilliseconds(300),
                     MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                    TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                 )),
             ],
             'header-singular-custom' => [
@@ -151,6 +156,7 @@ final class ConsoleReporterTest extends Framework\TestCase
                     TestDescription::fromString('FooTest::test'),
                     Duration::fromMilliseconds(300),
                     MaximumDuration::fromDuration(Duration::fromMilliseconds(200)),
+                    TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                 )),
             ],
             'header-plural-global-only' => [
@@ -175,12 +181,14 @@ final class ConsoleReporterTest extends Framework\TestCase
                         TestDescription::fromString('FooTest::test'),
                         Duration::fromMilliseconds(300),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
                         Duration::fromMilliseconds(275),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                 ),
             ],
@@ -207,12 +215,14 @@ final class ConsoleReporterTest extends Framework\TestCase
                         TestDescription::fromString('FooTest::test'),
                         Duration::fromMilliseconds(300),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(200)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
                         Duration::fromMilliseconds(275),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                 ),
             ],
@@ -239,18 +249,21 @@ final class ConsoleReporterTest extends Framework\TestCase
                         TestDescription::fromString('FooTest::test'),
                         Duration::fromMilliseconds(300),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
                         Duration::fromMilliseconds(275),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
                         TestDescription::fromString('BazTest::test'),
                         Duration::fromMilliseconds(250),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                 ),
             ],
@@ -277,18 +290,21 @@ final class ConsoleReporterTest extends Framework\TestCase
                         TestDescription::fromString('BazTest::test'),
                         Duration::fromMilliseconds(250),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
                         Duration::fromMilliseconds(275),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
                         Duration::fromMilliseconds(300),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                 ),
             ],
@@ -324,60 +340,70 @@ final class ConsoleReporterTest extends Framework\TestCase
                         TestDescription::fromString('FooTest::test'),
                         Duration::fromMilliseconds(1250000),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(1000000)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
                         Duration::fromMilliseconds(575000),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(500000)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
                         TestDescription::fromString('BazTest::test'),
                         Duration::fromMilliseconds(250),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('QuxTest::test'),
                         TestDescription::fromString('QuxTest::test'),
                         Duration::fromMilliseconds(200),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('QuuxTest::test'),
                         TestDescription::fromString('QuuxTest::test'),
                         Duration::fromMilliseconds(160),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('CorgeTest::test'),
                         TestDescription::fromString('CorgeTest::test'),
                         Duration::fromMilliseconds(150),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('GraultTest::test'),
                         TestDescription::fromString('GraultTest::test'),
                         Duration::fromMilliseconds(140),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('GarplyTest::test'),
                         TestDescription::fromString('GarplyTest::test'),
                         Duration::fromMilliseconds(130),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('WaldoTest::test'),
                         TestDescription::fromString('WaldoTest::test'),
                         Duration::fromMilliseconds(120),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('FredTest::test'),
                         TestDescription::fromString('FredTest::test'),
                         Duration::fromMilliseconds(110),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                 ),
             ],
@@ -406,18 +432,21 @@ final class ConsoleReporterTest extends Framework\TestCase
                         TestDescription::fromString('FooTest::test'),
                         Duration::fromMilliseconds(5025678),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
                         Duration::fromMilliseconds(575000),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
                         TestDescription::fromString('BazTest::test'),
                         Duration::fromMilliseconds(250),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                 ),
             ],
@@ -447,18 +476,21 @@ final class ConsoleReporterTest extends Framework\TestCase
                         TestDescription::fromString('FooTest::test'),
                         Duration::fromMilliseconds(5025678),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(3600000)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
                         Duration::fromMilliseconds(575000),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(500000)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
                         TestDescription::fromString('BazTest::test'),
                         Duration::fromMilliseconds(250),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                 ),
             ],
@@ -485,12 +517,14 @@ final class ConsoleReporterTest extends Framework\TestCase
                         TestDescription::fromString('FooTest::test'),
                         Duration::fromMilliseconds(300),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
                         Duration::fromMilliseconds(275),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                 ),
             ],
@@ -517,18 +551,21 @@ final class ConsoleReporterTest extends Framework\TestCase
                         TestDescription::fromString('FooTest::test'),
                         Duration::fromMilliseconds(300),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
                         Duration::fromMilliseconds(275),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                     SlowTest::create(
                         TestIdentifier::fromString('BazTest::test'),
                         TestDescription::fromString('BazTest::test'),
                         Duration::fromMilliseconds(250),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                     ),
                 ),
             ],
@@ -572,6 +609,8 @@ final class ConsoleReporterTest extends Framework\TestCase
      */
     public static function provideExpectedReportMaximumWidthAndSlowTestList(): iterable
     {
+        $faker = self::faker();
+
         $print = static function (array $lines): string {
             return \implode(
                 "\n",
@@ -586,6 +625,7 @@ final class ConsoleReporterTest extends Framework\TestCase
             TestDescription::fromString($testDescription),
             Duration::fromMilliseconds(300),
             MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+            TestLocation::create($faker->slug(), $faker->numberBetween(1)),
         );
 
         $slowTestWithCustomMaximumDuration = SlowTest::create(
@@ -593,6 +633,7 @@ final class ConsoleReporterTest extends Framework\TestCase
             TestDescription::fromString($testDescription),
             Duration::fromMilliseconds(300),
             MaximumDuration::fromDuration(Duration::fromMilliseconds(200)),
+            TestLocation::create($faker->slug(), $faker->numberBetween(1)),
         );
 
         $slowTestWithMultibyteTestDescription = SlowTest::create(
@@ -600,6 +641,7 @@ final class ConsoleReporterTest extends Framework\TestCase
             TestDescription::fromString('FooTest::testWithÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜÄÖÜ'),
             Duration::fromMilliseconds(300),
             MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+            TestLocation::create($faker->slug(), $faker->numberBetween(1)),
         );
 
         $values = [

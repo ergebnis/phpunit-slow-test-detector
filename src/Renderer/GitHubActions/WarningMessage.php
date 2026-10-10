@@ -22,6 +22,8 @@ final class WarningMessage implements WorkflowCommand
 {
     private string $title;
     private string $message;
+    private ?string $file = null;
+    private ?int $line = null;
 
     private function __construct(
         string $title,
@@ -41,6 +43,18 @@ final class WarningMessage implements WorkflowCommand
         );
     }
 
+    public function withFileAndLine(
+        string $file,
+        int $line
+    ): self {
+        $clone = clone $this;
+
+        $clone->file = $file;
+        $clone->line = $line;
+
+        return $clone;
+    }
+
     public function command(): string
     {
         return 'warning';
@@ -48,9 +62,19 @@ final class WarningMessage implements WorkflowCommand
 
     public function parameters(): array
     {
-        return [
+        $parameters = [
             'title' => $this->title,
         ];
+
+        if (\is_string($this->file)) {
+            $parameters['file'] = $this->file;
+        }
+
+        if (\is_int($this->line)) {
+            $parameters['line'] = (string) $this->line;
+        }
+
+        return $parameters;
     }
 
     public function value(): string

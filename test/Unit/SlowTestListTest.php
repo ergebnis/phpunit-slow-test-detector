@@ -24,6 +24,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\TestDescription;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
+use Ergebnis\PHPUnit\SlowTestDetector\TestLocation;
 use PHPUnit\Framework;
 
 /**
@@ -38,6 +39,7 @@ use PHPUnit\Framework;
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDescription
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestLocation
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Width
  */
 final class SlowTestListTest extends Framework\TestCase
@@ -54,6 +56,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestDescription::fromString($faker->word()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+                TestLocation::create($faker->slug(), $faker->numberBetween(1)),
             );
         }, \range(1, $faker->numberBetween(1, 10)));
 
@@ -72,6 +75,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestDescription::fromString($faker->word()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+                TestLocation::create($faker->slug(), $faker->numberBetween(1)),
             );
         }, \range(1, $faker->numberBetween(1, 10)));
 
@@ -101,6 +105,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestDescription::fromString($faker->word()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+                TestLocation::create($faker->slug(), $faker->numberBetween(1)),
             );
         }, \range(1, $faker->numberBetween(1, 10)));
 
@@ -128,6 +133,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestDescription::fromString($faker->word()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+                TestLocation::create($faker->slug(), $faker->numberBetween(1)),
             );
         }, \range(1, $faker->numberBetween(1, 10)));
 
@@ -148,6 +154,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestDescription::fromString($faker->word()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+                TestLocation::create($faker->slug(), $faker->numberBetween(1)),
             );
         }, \range(1, $faker->numberBetween(1, $maximumCount->toCount()->toInt() - 1)));
 
@@ -178,6 +185,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestDescription::fromString($faker->word()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+                TestLocation::create($faker->slug(), $faker->numberBetween(1)),
             );
         }, \range(1, $faker->numberBetween($maximumCount->toCount()->toInt() + 1, $maximumCount->toCount()->toInt() + 10)));
 
@@ -208,6 +216,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestDescription::fromString($faker->word()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
                 MaximumDuration::fromDuration($globalMaximumDuration),
+                TestLocation::create($faker->slug(), $faker->numberBetween(1)),
             );
         }, \range(1, $faker->numberBetween(1, 10)));
 
@@ -230,6 +239,7 @@ final class SlowTestListTest extends Framework\TestCase
                     TestDescription::fromString($faker->word()),
                     Duration::fromMilliseconds($faker->numberBetween(0)),
                     MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween($globalMaximumDurationInMilliseconds + 1))),
+                    TestLocation::create($faker->slug(), $faker->numberBetween(1)),
                 );
             }
 
@@ -238,6 +248,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestDescription::fromString($faker->word()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0, $globalMaximumDurationInMilliseconds - 1))),
+                TestLocation::create($faker->slug(), $faker->numberBetween(1)),
             );
         }, \range(1, $faker->numberBetween(1, 10)));
 
@@ -258,6 +269,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestDescription::fromString($faker->word()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+                TestLocation::create($faker->slug(), $faker->numberBetween(1)),
             );
         }, \range(1, $faker->numberBetween(1, 10)));
 
@@ -291,6 +303,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestDescription::fromString($faker->word()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+                TestLocation::create($faker->slug(), $faker->numberBetween(1)),
             );
         }, \range(1, $faker->numberBetween(1, 10)));
 
@@ -322,6 +335,7 @@ final class SlowTestListTest extends Framework\TestCase
                 TestDescription::fromString($faker->sentence()),
                 Duration::fromMilliseconds($faker->numberBetween(0)),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+                TestLocation::create($faker->slug(), $faker->numberBetween(1)),
             );
         }, \range(1, $faker->numberBetween(1, 10)));
 
