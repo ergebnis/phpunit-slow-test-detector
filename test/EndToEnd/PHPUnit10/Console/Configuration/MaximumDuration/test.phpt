@@ -19,6 +19,10 @@ $application->run($_SERVER['argv']);
 
 ............                                                      12 / 12 (100%)
 
+Time: %s
+%a
+
+
 Detected 11 tests where the duration exceeded the global maximum duration (0.100).
 
  # Duration Test
@@ -38,7 +42,3 @@ Detected 11 tests where the duration exceeded the global maximum duration (0.100
        └─── seconds
 
 There is 1 additional slow test that is not listed here.
-
-
-Time: %s
-%a

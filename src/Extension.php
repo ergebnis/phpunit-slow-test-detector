@@ -613,7 +613,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(
                     $collector,
                     Version\Series::fromString(Runner\Version::series()),
                 ),
-                new Subscriber\TestRunner\ExecutionFinishedSubscriber(
+                new Subscriber\Application\FinishedSubscriber(
                     $collector,
                     $reporter,
                 ),

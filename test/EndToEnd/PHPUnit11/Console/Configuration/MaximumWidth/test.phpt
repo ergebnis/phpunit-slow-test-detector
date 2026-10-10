@@ -19,6 +19,10 @@ $application->run($_SERVER['argv']);
 
 ......                                                              6 / 6 (100%)
 
+Time: %s
+%a
+
+
 Detected 5 tests where the duration exceeded the global maximum duration (0.500).
 
 # Duration Test
@@ -31,7 +35,3 @@ Detected 5 tests where the duration exceeded the global maximum duration (0.500)
 ----------------------------------------------------------------------------------------------------
      0.000
       └─── seconds
-
-
-Time: %s
-%a
