@@ -7,6 +7,18 @@ parameters:
 			path: src/Collector/Collector.php
 
 		-
+			message: '#^Property Ergebnis\\PHPUnit\\SlowTestDetector\\Reporter\\CompositeReporter\:\:\$reporters \(list\<Ergebnis\\PHPUnit\\SlowTestDetector\\Reporter\\Reporter\>\) does not accept array\<int\<0, max\>\|string, Ergebnis\\PHPUnit\\SlowTestDetector\\Reporter\\Reporter\>\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Reporter/CompositeReporter.php
+
+		-
+			message: '#^Property Ergebnis\\PHPUnit\\SlowTestDetector\\SlowTestList\:\:\$slowTests \(list\<Ergebnis\\PHPUnit\\SlowTestDetector\\SlowTest\>\) does not accept array\<int\<0, max\>\|string, Ergebnis\\PHPUnit\\SlowTestDetector\\SlowTest\>\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/SlowTestList.php
+
+		-
 			message: '#^Offset ''major'' might not exist on array\{\}\|array\{0\: non\-falsy\-string, major\: non\-empty\-string, 1\: non\-empty\-string, 2\: numeric\-string, minor\?\: string, 3\?\: string, 4\?\: numeric\-string\}\.$#'
 			identifier: offsetAccess.notFound
 			count: 1
