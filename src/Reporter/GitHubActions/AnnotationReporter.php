@@ -58,8 +58,8 @@ final class AnnotationReporter implements Reporter\Reporter
 
         $this->printer->print("\n" . \implode('', \array_map(function (SlowTest $slowTest) use ($unit): string {
             return $this->workflowCommandRenderer->render(Renderer\GitHubActions\WarningMessage::create(
-                'Slow Test',
-                \sprintf(
+                Renderer\GitHubActions\Title::fromString('Slow Test'),
+                Renderer\GitHubActions\Message::fromString(\sprintf(
                     '%s took %s seconds, maximum is %s seconds',
                     $slowTest->testDescription()->toString(),
                     $this->durationFormatter->format(
@@ -70,7 +70,7 @@ final class AnnotationReporter implements Reporter\Reporter
                         $unit,
                         $slowTest->maximumDuration()->toDuration(),
                     ),
-                ),
+                )),
             ));
         }, $slowTestListThatWillBeReported->toArray())));
     }
