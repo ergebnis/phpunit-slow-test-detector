@@ -44,7 +44,7 @@ phar: docker-build vendor ## Builds a phar with humbug/box
 
 .PHONY: refactoring
 refactoring: docker-build vendor ## Runs automated refactoring with rector/rector
-	docker container run --rm --volume $(CURDIR):/app --volume composer-cache:/root/.composer phpunit-slow-test-detector-php74 -c "vendor/bin/rector --ansi --config=rector.php"
+	docker container run --rm --tty --volume $(CURDIR):/app --volume composer-cache:/root/.composer phpunit-slow-test-detector-php74 -c "vendor/bin/rector --ansi --config=rector.php"
 
 .PHONY: security-analysis
 security-analysis: docker-build vendor ## Runs a security analysis with composer
