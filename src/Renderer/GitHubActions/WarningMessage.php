@@ -20,20 +20,20 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Renderer\GitHubActions;
  */
 final class WarningMessage implements WorkflowCommand
 {
-    private string $title;
-    private string $message;
+    private Title $title;
+    private Message $message;
 
     private function __construct(
-        string $title,
-        string $message
+        Title $title,
+        Message $message
     ) {
         $this->title = $title;
         $this->message = $message;
     }
 
     public static function create(
-        string $title,
-        string $message
+        Title $title,
+        Message $message
     ): self {
         return new self(
             $title,
@@ -49,12 +49,12 @@ final class WarningMessage implements WorkflowCommand
     public function parameters(): array
     {
         return [
-            'title' => $this->title,
+            'title' => $this->title->toString(),
         ];
     }
 
     public function value(): string
     {
-        return $this->message;
+        return $this->message->toString();
     }
 }

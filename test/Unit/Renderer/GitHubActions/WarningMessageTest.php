@@ -19,6 +19,9 @@ use PHPUnit\Framework;
 
 /**
  * @covers \Ergebnis\PHPUnit\SlowTestDetector\Renderer\GitHubActions\WarningMessage
+ *
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Renderer\GitHubActions\Message
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Renderer\GitHubActions\Title
  */
 final class WarningMessageTest extends Framework\TestCase
 {
@@ -28,8 +31,8 @@ final class WarningMessageTest extends Framework\TestCase
     {
         $faker = self::faker();
 
-        $title = $faker->word();
-        $message = $faker->sentence();
+        $title = Renderer\GitHubActions\Title::fromString($faker->word());
+        $message = Renderer\GitHubActions\Message::fromString($faker->sentence());
 
         $warningMessage = Renderer\GitHubActions\WarningMessage::create(
             $title,
@@ -38,8 +41,8 @@ final class WarningMessageTest extends Framework\TestCase
 
         self::assertSame('warning', $warningMessage->command());
         self::assertSame([
-            'title' => $title,
+            'title' => $title->toString(),
         ], $warningMessage->parameters());
-        self::assertSame($message, $warningMessage->value());
+        self::assertSame($message->toString(), $warningMessage->value());
     }
 }

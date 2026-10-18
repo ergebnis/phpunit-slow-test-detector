@@ -34,6 +34,8 @@ use PHPUnit\Framework;
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumCount
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Renderer\GitHubActions\Message
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Renderer\GitHubActions\Title
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Renderer\GitHubActions\WarningMessage
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Renderer\GitHubActions\WorkflowCommandRenderer
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Renderer\Printer
