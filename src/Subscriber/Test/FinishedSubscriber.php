@@ -16,11 +16,14 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Subscriber\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\Attribute;
 use Ergebnis\PHPUnit\SlowTestDetector\Collector;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
+use Ergebnis\PHPUnit\SlowTestDetector\File;
+use Ergebnis\PHPUnit\SlowTestDetector\Line;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\PhaseIdentifier;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\TestDescription;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
+use Ergebnis\PHPUnit\SlowTestDetector\TestLocation;
 use Ergebnis\PHPUnit\SlowTestDetector\Time;
 use Ergebnis\PHPUnit\SlowTestDetector\TimeKeeper;
 use Ergebnis\PHPUnit\SlowTestDetector\Version;
@@ -81,6 +84,7 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
             self::descriptionFromTest($event->test()),
             $duration,
             $maximumDuration,
+            self::testLocationFromTest($event->test()),
         );
 
         $this->collector->collectSlowTest($slowTest);
@@ -136,6 +140,31 @@ final class FinishedSubscriber implements Event\Test\FinishedSubscriber
             $test->methodName(),
             $test->testData()->dataFromDataProvider()->dataAsStringForResultOutput(),
         ));
+    }
+
+    private static function testLocationFromTest(Event\Code\Test $test): ?TestLocation
+    {
+        if (!$test->isTestMethod()) {
+            return null;
+        }
+
+        /** @var Event\Code\TestMethod $test */
+        $file = $test->file();
+
+        if ('' === \trim($file)) {
+            return null;
+        }
+
+        $line = $test->line();
+
+        if (0 >= $line) {
+            return null;
+        }
+
+        return TestLocation::create(
+            File::fromString($file),
+            Line::fromInt($line),
+        );
     }
 
     private function resolveMaximumDuration(Event\Code\Test $test): MaximumDuration

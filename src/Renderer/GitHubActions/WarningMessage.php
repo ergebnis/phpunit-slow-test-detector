@@ -13,6 +13,9 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Renderer\GitHubActions;
 
+use Ergebnis\PHPUnit\SlowTestDetector\File;
+use Ergebnis\PHPUnit\SlowTestDetector\Line;
+
 /**
  * @internal
  *
@@ -22,6 +25,8 @@ final class WarningMessage implements WorkflowCommand
 {
     private Title $title;
     private Message $message;
+    private ?File $file = null;
+    private ?Line $line = null;
 
     private function __construct(
         Title $title,
@@ -41,6 +46,18 @@ final class WarningMessage implements WorkflowCommand
         );
     }
 
+    public function withFileAndLine(
+        File $file,
+        Line $line
+    ): self {
+        $instance = clone $this;
+
+        $instance->file = $file;
+        $instance->line = $line;
+
+        return $instance;
+    }
+
     public function command(): string
     {
         return 'warning';
@@ -48,9 +65,19 @@ final class WarningMessage implements WorkflowCommand
 
     public function parameters(): array
     {
-        return [
+        $parameters = [
             'title' => $this->title->toString(),
         ];
+
+        if ($this->file instanceof File) {
+            $parameters['file'] = $this->file->toString();
+        }
+
+        if ($this->line instanceof Line) {
+            $parameters['line'] = (string) $this->line->toInt();
+        }
+
+        return $parameters;
     }
 
     public function value(): string

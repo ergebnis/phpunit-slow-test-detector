@@ -15,23 +15,29 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Collector;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Collector;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
+use Ergebnis\PHPUnit\SlowTestDetector\File;
+use Ergebnis\PHPUnit\SlowTestDetector\Line;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTest;
 use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\TestDescription;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
+use Ergebnis\PHPUnit\SlowTestDetector\TestLocation;
 use PHPUnit\Framework;
 
 /**
  * @covers \Ergebnis\PHPUnit\SlowTestDetector\Collector\DefaultCollector
  *
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\File
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Line
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTest
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTestList
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDescription
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestLocation
  */
 final class DefaultCollectorTest extends Framework\TestCase
 {
@@ -46,6 +52,10 @@ final class DefaultCollectorTest extends Framework\TestCase
             TestDescription::fromString($faker->word()),
             Duration::fromMilliseconds($faker->numberBetween(0)),
             MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+            TestLocation::create(
+                File::fromString($faker->slug()),
+                Line::fromInt($faker->numberBetween(1)),
+            ),
         );
 
         $two = SlowTest::create(
@@ -53,6 +63,10 @@ final class DefaultCollectorTest extends Framework\TestCase
             TestDescription::fromString($faker->word()),
             Duration::fromMilliseconds($faker->numberBetween(0)),
             MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0))),
+            TestLocation::create(
+                File::fromString($faker->slug()),
+                Line::fromInt($faker->numberBetween(1)),
+            ),
         );
 
         $collector = new Collector\DefaultCollector();
@@ -77,6 +91,10 @@ final class DefaultCollectorTest extends Framework\TestCase
             TestDescription::fromString($faker->word()),
             Duration::fromMilliseconds($faker->numberBetween(0)),
             MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(0, 999999999 - 1))),
+            TestLocation::create(
+                File::fromString($faker->slug()),
+                Line::fromInt($faker->numberBetween(1)),
+            ),
         );
 
         $two = SlowTest::create(
@@ -87,6 +105,10 @@ final class DefaultCollectorTest extends Framework\TestCase
                 $one->duration()->nanoseconds() + 1,
             ),
             $one->maximumDuration(),
+            TestLocation::create(
+                File::fromString($faker->slug()),
+                Line::fromInt($faker->numberBetween(1)),
+            ),
         );
 
         $collector = new Collector\DefaultCollector();
@@ -108,6 +130,10 @@ final class DefaultCollectorTest extends Framework\TestCase
             TestDescription::fromString($faker->word()),
             Duration::fromMilliseconds($faker->numberBetween(0)),
             MaximumDuration::fromDuration(Duration::fromMilliseconds($faker->numberBetween(1, 999999999))),
+            TestLocation::create(
+                File::fromString($faker->slug()),
+                Line::fromInt($faker->numberBetween(1)),
+            ),
         );
 
         $two = SlowTest::create(
@@ -118,6 +144,10 @@ final class DefaultCollectorTest extends Framework\TestCase
                 $one->duration()->nanoseconds() - 1,
             ),
             $one->maximumDuration(),
+            TestLocation::create(
+                File::fromString($faker->slug()),
+                Line::fromInt($faker->numberBetween(1)),
+            ),
         );
 
         $collector = new Collector\DefaultCollector();

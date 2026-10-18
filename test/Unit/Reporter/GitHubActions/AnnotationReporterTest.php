@@ -15,6 +15,9 @@ namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Reporter\GitHubActions;
 
 use Ergebnis\PHPUnit\SlowTestDetector\Count;
 use Ergebnis\PHPUnit\SlowTestDetector\Duration;
+use Ergebnis\PHPUnit\SlowTestDetector\File;
+use Ergebnis\PHPUnit\SlowTestDetector\GitHubWorkspace;
+use Ergebnis\PHPUnit\SlowTestDetector\Line;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumCount;
 use Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration;
 use Ergebnis\PHPUnit\SlowTestDetector\Renderer;
@@ -24,6 +27,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use Ergebnis\PHPUnit\SlowTestDetector\TestDescription;
 use Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier;
+use Ergebnis\PHPUnit\SlowTestDetector\TestLocation;
 use PHPUnit\Framework;
 
 /**
@@ -32,6 +36,9 @@ use PHPUnit\Framework;
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Comparator\DurationComparator
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Count
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Duration
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\File
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\GitHubWorkspace
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Line
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumCount
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\MaximumDuration
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\Renderer\GitHubActions\Message
@@ -45,6 +52,7 @@ use PHPUnit\Framework;
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\SlowTestList
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestDescription
  * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestIdentifier
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\TestLocation
  */
 final class AnnotationReporterTest extends Framework\TestCase
 {
@@ -59,6 +67,7 @@ final class AnnotationReporterTest extends Framework\TestCase
             new Renderer\GitHubActions\WorkflowCommandRenderer(),
             new Reporter\DurationFormatter(),
             MaximumCount::fromCount(Count::fromInt(self::faker()->numberBetween(1))),
+            GitHubWorkspace::fromString('/home/runner/work/foo/foo'),
         );
 
         $reporter->report(SlowTestList::create());
@@ -75,6 +84,7 @@ final class AnnotationReporterTest extends Framework\TestCase
             new Renderer\GitHubActions\WorkflowCommandRenderer(),
             new Reporter\DurationFormatter(),
             MaximumCount::fromCount(Count::fromInt(3)),
+            GitHubWorkspace::fromString('/home/runner/work/foo/foo'),
         );
 
         $reporter->report(SlowTestList::create(
@@ -83,19 +93,27 @@ final class AnnotationReporterTest extends Framework\TestCase
                 TestDescription::fromString('FooTest::test'),
                 Duration::fromMilliseconds(300),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                TestLocation::create(
+                    File::fromString('/home/runner/work/foo/foo/test/FooTest.php'),
+                    Line::fromInt(17),
+                ),
             ),
             SlowTest::create(
                 TestIdentifier::fromString('BarTest::test'),
                 TestDescription::fromString('BarTest::test with data set #1 (1, 2)'),
                 Duration::fromMilliseconds(61234),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
+                TestLocation::create(
+                    File::fromString('/home/runner/work/foo/foo/test/BarTest.php'),
+                    Line::fromInt(42),
+                ),
             ),
         ));
 
         $expected = \implode("\n", [
             '',
-            '::warning title=Slow Test::BarTest::test with data set #1 (1, 2) took 61.234 seconds, maximum is 0.500 seconds',
-            '::warning title=Slow Test::FooTest::test took 0.300 seconds, maximum is 0.100 seconds',
+            '::warning title=Slow Test,file=test/BarTest.php,line=42::BarTest::test with data set #1 (1, 2) took 61.234 seconds, maximum is 0.500 seconds',
+            '::warning title=Slow Test,file=test/FooTest.php,line=17::FooTest::test took 0.300 seconds, maximum is 0.100 seconds',
             '',
         ]);
 
@@ -111,6 +129,7 @@ final class AnnotationReporterTest extends Framework\TestCase
             new Renderer\GitHubActions\WorkflowCommandRenderer(),
             new Reporter\DurationFormatter(),
             MaximumCount::fromCount(Count::fromInt(2)),
+            GitHubWorkspace::fromString('/home/runner/work/foo/foo'),
         );
 
         $reporter->report(SlowTestList::create(
@@ -119,25 +138,130 @@ final class AnnotationReporterTest extends Framework\TestCase
                 TestDescription::fromString('FooTest::test'),
                 Duration::fromMilliseconds(300),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                TestLocation::create(
+                    File::fromString('/home/runner/work/foo/foo/test/FooTest.php'),
+                    Line::fromInt(17),
+                ),
             ),
             SlowTest::create(
                 TestIdentifier::fromString('BarTest::test'),
                 TestDescription::fromString('BarTest::test'),
                 Duration::fromMilliseconds(3723456),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
+                TestLocation::create(
+                    File::fromString('/home/runner/work/foo/foo/test/BarTest.php'),
+                    Line::fromInt(42),
+                ),
             ),
             SlowTest::create(
                 TestIdentifier::fromString('BazTest::test'),
                 TestDescription::fromString('BazTest::test'),
                 Duration::fromMilliseconds(700),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(500)),
+                TestLocation::create(
+                    File::fromString('/home/runner/work/foo/foo/test/BazTest.php'),
+                    Line::fromInt(23),
+                ),
             ),
         ));
 
         $expected = \implode("\n", [
             '',
-            '::warning title=Slow Test::BarTest::test took 3723.456 seconds, maximum is 0.500 seconds',
-            '::warning title=Slow Test::BazTest::test took 0.700 seconds, maximum is 0.500 seconds',
+            '::warning title=Slow Test,file=test/BarTest.php,line=42::BarTest::test took 3723.456 seconds, maximum is 0.500 seconds',
+            '::warning title=Slow Test,file=test/BazTest.php,line=23::BazTest::test took 0.700 seconds, maximum is 0.500 seconds',
+            '',
+        ]);
+
+        self::assertOutputIsIdenticalTo($expected, $output);
+    }
+
+    public function testReportPrintsWarningWithoutFileAndLineWhenGitHubWorkspaceIsNull(): void
+    {
+        $output = self::output();
+
+        $reporter = new Reporter\GitHubActions\AnnotationReporter(
+            new Renderer\Printer($output),
+            new Renderer\GitHubActions\WorkflowCommandRenderer(),
+            new Reporter\DurationFormatter(),
+            MaximumCount::fromCount(Count::fromInt(1)),
+            null,
+        );
+
+        $reporter->report(SlowTestList::create(SlowTest::create(
+            TestIdentifier::fromString('FooTest::test'),
+            TestDescription::fromString('FooTest::test'),
+            Duration::fromMilliseconds(300),
+            MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+            TestLocation::create(
+                File::fromString('/home/runner/work/foo/foo/test/FooTest.php'),
+                Line::fromInt(17),
+            ),
+        )));
+
+        $expected = \implode("\n", [
+            '',
+            '::warning title=Slow Test::FooTest::test took 0.300 seconds, maximum is 0.100 seconds',
+            '',
+        ]);
+
+        self::assertOutputIsIdenticalTo($expected, $output);
+    }
+
+    public function testReportPrintsWarningWithoutFileAndLineWhenFileIsNotInGitHubWorkspace(): void
+    {
+        $output = self::output();
+
+        $reporter = new Reporter\GitHubActions\AnnotationReporter(
+            new Renderer\Printer($output),
+            new Renderer\GitHubActions\WorkflowCommandRenderer(),
+            new Reporter\DurationFormatter(),
+            MaximumCount::fromCount(Count::fromInt(1)),
+            GitHubWorkspace::fromString('/home/runner/work/foo/foo'),
+        );
+
+        $reporter->report(SlowTestList::create(SlowTest::create(
+            TestIdentifier::fromString('FooTest::test'),
+            TestDescription::fromString('FooTest::test'),
+            Duration::fromMilliseconds(300),
+            MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+            TestLocation::create(
+                File::fromString('/home/runner/work/foo/foobar/test/FooTest.php'),
+                Line::fromInt(17),
+            ),
+        )));
+
+        $expected = \implode("\n", [
+            '',
+            '::warning title=Slow Test::FooTest::test took 0.300 seconds, maximum is 0.100 seconds',
+            '',
+        ]);
+
+        self::assertOutputIsIdenticalTo($expected, $output);
+    }
+
+    public function testReportPrintsWarningWithoutFileAndLineWhenSlowTestHasNoTestLocation(): void
+    {
+        $output = self::output();
+
+        $reporter = new Reporter\GitHubActions\AnnotationReporter(
+            new Renderer\Printer($output),
+            new Renderer\GitHubActions\WorkflowCommandRenderer(),
+            new Reporter\DurationFormatter(),
+            MaximumCount::fromCount(Count::fromInt(1)),
+            GitHubWorkspace::fromString('/home/runner/work/foo/foo'),
+        );
+
+        $reporter->report(SlowTestList::create(SlowTest::create(
+            TestIdentifier::fromString('FooTest::test'),
+            TestDescription::fromString('FooTest::test'),
+            Duration::fromMilliseconds(300),
+            MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+            null,
+        )));
+
+        $expected = \implode("\n", [
+            '',
+            '::warning title=Slow Test::FooTest::test took 0.300 seconds, maximum is 0.100 seconds',
             '',
         ]);
 

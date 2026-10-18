@@ -13,12 +13,20 @@ declare(strict_types=1);
 
 namespace Ergebnis\PHPUnit\SlowTestDetector\Test\Unit\Renderer\GitHubActions;
 
+use Ergebnis\PHPUnit\SlowTestDetector\File;
+use Ergebnis\PHPUnit\SlowTestDetector\Line;
 use Ergebnis\PHPUnit\SlowTestDetector\Renderer;
 use Ergebnis\PHPUnit\SlowTestDetector\Test;
 use PHPUnit\Framework;
 
 /**
  * @covers \Ergebnis\PHPUnit\SlowTestDetector\Renderer\GitHubActions\WorkflowCommandRenderer
+ *
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\File
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Line
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Renderer\GitHubActions\Message
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Renderer\GitHubActions\Title
+ * @uses \Ergebnis\PHPUnit\SlowTestDetector\Renderer\GitHubActions\WarningMessage
  */
 final class WorkflowCommandRendererTest extends Framework\TestCase
 {
@@ -75,6 +83,41 @@ final class WorkflowCommandRendererTest extends Framework\TestCase
             ],
             $value,
         )));
+    }
+
+    public function testRenderReturnsWarningMessageWithTitleFileAndLineWhenWarningMessageHasFileAndLine(): void
+    {
+        $faker = self::faker();
+
+        $title = $faker->word();
+        $message = $faker->sentence();
+        $file = \sprintf(
+            '%s/%s.php',
+            $faker->word(),
+            $faker->word(),
+        );
+        $line = $faker->numberBetween(1);
+
+        $workflowCommandRenderer = new Renderer\GitHubActions\WorkflowCommandRenderer();
+
+        $warningMessage = Renderer\GitHubActions\WarningMessage::create(
+            Renderer\GitHubActions\Title::fromString($title),
+            Renderer\GitHubActions\Message::fromString($message),
+        )->withFileAndLine(
+            File::fromString($file),
+            Line::fromInt($line),
+        );
+
+        $expected = \sprintf(
+            '::warning title=%s,file=%s,line=%d::%s%s',
+            $title,
+            $file,
+            $line,
+            $message,
+            "\n",
+        );
+
+        self::assertSame($expected, $workflowCommandRenderer->render($warningMessage));
     }
 
     public function testRenderEscapesValue(): void

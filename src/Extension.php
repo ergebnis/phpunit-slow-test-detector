@@ -117,6 +117,7 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
                             new Renderer\GitHubActions\WorkflowCommandRenderer(),
                             new Reporter\DurationFormatter(),
                             $maximumCount,
+                            GitHubWorkspace::fromEnvironmentVariables(\getenv()),
                         ),
                     );
                 }
@@ -225,6 +226,7 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
                 )),
                 $duration,
                 $maximumDuration,
+                self::resolveTestLocation($test),
             );
 
             $this->collector->collectSlowTest($slowTest);
@@ -265,6 +267,59 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
             }
 
             return $this->maximumDuration;
+        }
+
+        private static function resolveTestLocation(Framework\Test $test): ?TestLocation
+        {
+            if (!$test instanceof Framework\TestCase) {
+                return null;
+            }
+
+            $methodName = $test->getName(false);
+
+            if (!\is_string($methodName)) {
+                return null;
+            }
+
+            return self::testLocationFromClassNameAndMethodName(
+                \get_class($test),
+                $methodName,
+            );
+        }
+
+        private static function testLocationFromClassNameAndMethodName(
+            string $className,
+            string $methodName
+        ): ?TestLocation {
+            if (!\class_exists($className)) {
+                return null;
+            }
+
+            if (!\method_exists($className, $methodName)) {
+                return null;
+            }
+
+            $methodReflection = new \ReflectionMethod(
+                $className,
+                $methodName,
+            );
+
+            $file = $methodReflection->getFileName();
+
+            if (!\is_string($file)) {
+                return null;
+            }
+
+            $line = $methodReflection->getStartLine();
+
+            if (!\is_int($line)) {
+                return null;
+            }
+
+            return TestLocation::create(
+                File::fromString($file),
+                Line::fromInt($line),
+            );
         }
     }
 
@@ -371,6 +426,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(
                             new Renderer\GitHubActions\WorkflowCommandRenderer(),
                             new Reporter\DurationFormatter(),
                             $maximumCount,
+                            GitHubWorkspace::fromEnvironmentVariables(\getenv()),
                         ),
                     );
                 }
@@ -420,6 +476,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(
                 TestDescription::fromString($test),
                 $duration,
                 $maximumDuration,
+                self::resolveTestLocation($test),
             );
 
             $this->collector->collectSlowTest($slowTest);
@@ -503,6 +560,75 @@ if ($phpUnitVersionSeries->major()->isOneOf(
             }
 
             return $this->maximumDuration;
+        }
+
+        private static function resolveTestLocation(string $test): ?TestLocation
+        {
+            /**
+             * @see https://github.com/sebastianbergmann/phpunit/blob/6.5.0/src/Framework/TestCase.php#L352-L368
+             * @see https://github.com/sebastianbergmann/phpunit/blob/6.5.0/src/Framework/TestCase.php#L1966-L1992
+             */
+            $dataSetPosition = \strpos(
+                $test,
+                ' with data set',
+            );
+
+            if (false !== $dataSetPosition) {
+                $test = \substr(
+                    $test,
+                    0,
+                    $dataSetPosition,
+                );
+            }
+
+            if (\strpos($test, '::') === false) {
+                return null;
+            }
+
+            [$testClassName, $testMethodName] = \explode(
+                '::',
+                $test,
+            );
+
+            return self::testLocationFromClassNameAndMethodName(
+                $testClassName,
+                $testMethodName,
+            );
+        }
+
+        private static function testLocationFromClassNameAndMethodName(
+            string $className,
+            string $methodName
+        ): ?TestLocation {
+            if (!\class_exists($className)) {
+                return null;
+            }
+
+            if (!\method_exists($className, $methodName)) {
+                return null;
+            }
+
+            $methodReflection = new \ReflectionMethod(
+                $className,
+                $methodName,
+            );
+
+            $file = $methodReflection->getFileName();
+
+            if (!\is_string($file)) {
+                return null;
+            }
+
+            $line = $methodReflection->getStartLine();
+
+            if (!\is_int($line)) {
+                return null;
+            }
+
+            return TestLocation::create(
+                File::fromString($file),
+                Line::fromInt($line),
+            );
         }
     }
 
@@ -600,6 +726,7 @@ if ($phpUnitVersionSeries->major()->isOneOf(
                             new Renderer\GitHubActions\WorkflowCommandRenderer(),
                             new Reporter\DurationFormatter(),
                             $maximumCount,
+                            GitHubWorkspace::fromEnvironmentVariables(\getenv()),
                         ),
                     );
                 }
