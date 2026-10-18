@@ -21,7 +21,7 @@ use Ergebnis\PHPUnit\SlowTestDetector\SlowTestList;
  */
 interface Collector
 {
-    public function collectSlowTest(SlowTest $slowTest);
+    public function collectSlowTest(SlowTest $slowTest): void;
 
     public function slowTestList(): SlowTestList;
 }
