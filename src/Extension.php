@@ -75,6 +75,18 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
                 }
             }
 
+            $gitHubActionsStepSummary = GitHubActionsStepSummary::disabled();
+
+            if (\array_key_exists('github-actions-step-summary', $options)) {
+                if (true === $options['github-actions-step-summary']) {
+                    $gitHubActionsStepSummary = GitHubActionsStepSummary::enabled();
+                } elseif (false === $options['github-actions-step-summary']) {
+                    $gitHubActionsStepSummary = GitHubActionsStepSummary::disabled();
+                } else {
+                    $gitHubActionsStepSummary = GitHubActionsStepSummary::fromString((string) $options['github-actions-step-summary']);
+                }
+            }
+
             $this->maximumDuration = $maximumDuration;
 
             $target = 'php://stdout';
@@ -120,6 +132,33 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
                             GitHubWorkspace::fromEnvironmentVariables(\getenv()),
                         ),
                     );
+                }
+            }
+
+            if ($gitHubActionsStepSummary->isOneOf(
+                GitHubActionsStepSummary::auto(),
+                GitHubActionsStepSummary::enabled(),
+            )) {
+                $gitHubStepSummary = GitHubStepSummary::fromEnvironmentVariables(\getenv());
+
+                if ($gitHubStepSummary instanceof GitHubStepSummary) {
+                    $ciDetector = new CiDetector\Detector();
+
+                    if (
+                        $gitHubActionsStepSummary->equals(GitHubActionsStepSummary::enabled())
+                        || $ciDetector->isRunningOnGitHubActions(\getenv())
+                    ) {
+                        $reporter = new Reporter\CompositeReporter(
+                            $reporter,
+                            new Reporter\GitHubActions\StepSummaryReporter(
+                                $gitHubStepSummary,
+                                new Renderer\Markdown\TableRenderer(),
+                                new Reporter\DurationFormatter(),
+                                $maximumDuration,
+                                $maximumCount,
+                            ),
+                        );
+                    }
                 }
             }
 
@@ -384,6 +423,18 @@ if ($phpUnitVersionSeries->major()->isOneOf(
                 }
             }
 
+            $gitHubActionsStepSummary = GitHubActionsStepSummary::disabled();
+
+            if (\array_key_exists('github-actions-step-summary', $options)) {
+                if (true === $options['github-actions-step-summary']) {
+                    $gitHubActionsStepSummary = GitHubActionsStepSummary::enabled();
+                } elseif (false === $options['github-actions-step-summary']) {
+                    $gitHubActionsStepSummary = GitHubActionsStepSummary::disabled();
+                } else {
+                    $gitHubActionsStepSummary = GitHubActionsStepSummary::fromString((string) $options['github-actions-step-summary']);
+                }
+            }
+
             $this->maximumDuration = $maximumDuration;
 
             $target = 'php://stdout';
@@ -429,6 +480,33 @@ if ($phpUnitVersionSeries->major()->isOneOf(
                             GitHubWorkspace::fromEnvironmentVariables(\getenv()),
                         ),
                     );
+                }
+            }
+
+            if ($gitHubActionsStepSummary->isOneOf(
+                GitHubActionsStepSummary::auto(),
+                GitHubActionsStepSummary::enabled(),
+            )) {
+                $gitHubStepSummary = GitHubStepSummary::fromEnvironmentVariables(\getenv());
+
+                if ($gitHubStepSummary instanceof GitHubStepSummary) {
+                    $ciDetector = new CiDetector\Detector();
+
+                    if (
+                        $gitHubActionsStepSummary->equals(GitHubActionsStepSummary::enabled())
+                        || $ciDetector->isRunningOnGitHubActions(\getenv())
+                    ) {
+                        $reporter = new Reporter\CompositeReporter(
+                            $reporter,
+                            new Reporter\GitHubActions\StepSummaryReporter(
+                                $gitHubStepSummary,
+                                new Renderer\Markdown\TableRenderer(),
+                                new Reporter\DurationFormatter(),
+                                $maximumDuration,
+                                $maximumCount,
+                            ),
+                        );
+                    }
                 }
             }
 
@@ -686,6 +764,12 @@ if ($phpUnitVersionSeries->major()->isOneOf(
                 $gitHubActionsAnnotations = GitHubActionsAnnotations::fromString($parameters->get('github-actions-annotations'));
             }
 
+            $gitHubActionsStepSummary = GitHubActionsStepSummary::disabled();
+
+            if ($parameters->has('github-actions-step-summary')) {
+                $gitHubActionsStepSummary = GitHubActionsStepSummary::fromString($parameters->get('github-actions-step-summary'));
+            }
+
             $timeKeeper = new TimeKeeper();
             $collector = new Collector\DefaultCollector();
 
@@ -729,6 +813,33 @@ if ($phpUnitVersionSeries->major()->isOneOf(
                             GitHubWorkspace::fromEnvironmentVariables(\getenv()),
                         ),
                     );
+                }
+            }
+
+            if ($gitHubActionsStepSummary->isOneOf(
+                GitHubActionsStepSummary::auto(),
+                GitHubActionsStepSummary::enabled(),
+            )) {
+                $gitHubStepSummary = GitHubStepSummary::fromEnvironmentVariables(\getenv());
+
+                if ($gitHubStepSummary instanceof GitHubStepSummary) {
+                    $ciDetector = new CiDetector\Detector();
+
+                    if (
+                        $gitHubActionsStepSummary->equals(GitHubActionsStepSummary::enabled())
+                        || $ciDetector->isRunningOnGitHubActions(\getenv())
+                    ) {
+                        $reporter = new Reporter\CompositeReporter(
+                            $reporter,
+                            new Reporter\GitHubActions\StepSummaryReporter(
+                                $gitHubStepSummary,
+                                new Renderer\Markdown\TableRenderer(),
+                                new Reporter\DurationFormatter(),
+                                $maximumDuration,
+                                $maximumCount,
+                            ),
+                        );
+                    }
                 }
             }
 
