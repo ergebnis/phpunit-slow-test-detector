@@ -1,12 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Method Ergebnis\\PHPUnit\\SlowTestDetector\\Collector\\Collector\:\:collectSlowTest\(\) has no return type specified\.$#'
-			identifier: missingType.return
-			count: 1
-			path: src/Collector/Collector.php
-
-		-
 			message: '#^Property Ergebnis\\PHPUnit\\SlowTestDetector\\Reporter\\CompositeReporter\:\:\$reporters \(list\<Ergebnis\\PHPUnit\\SlowTestDetector\\Reporter\\Reporter\>\) does not accept array\<int\<0, max\>\|string, Ergebnis\\PHPUnit\\SlowTestDetector\\Reporter\\Reporter\>\.$#'
 			identifier: assign.propertyType
 			count: 1
