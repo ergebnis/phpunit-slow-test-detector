@@ -249,6 +249,7 @@ adjust your `phpunit.xml` configuration file and configure the
 You can configure the extension with the following options in your `phpunit.xml` configuration file:
 
 - `github-actions-annotations`, one of `auto`, `true`, or `false`, whether the extension additionally emits slow tests as GitHub Actions annotations, defaults to `false` (see [Emitting GitHub Actions annotations](#emitting-github-actions-annotations))
+- `github-actions-step-summary`, one of `auto`, `true`, or `false`, whether the extension additionally appends the slow test report as Markdown to the GitHub Actions step summary, defaults to `false` (see [Writing a GitHub Actions step summary](#writing-a-github-actions-step-summary))
 - `maximum-count`, an `int`, the maximum count of slow test that should be reported, defaults to `10`
 - `maximum-duration`, an `int`, the maximum duration in milliseconds for a test before the extension considers it as a slow test, defaults to `500`
 - `maximum-width`, an `int` of at least `80` or `max`, the maximum width in columns of the table of slow tests, where `max` detects the width of the terminal (and uses `80` for narrower terminals); test descriptions that do not fit are truncated in the middle, defaults to no truncation at all
@@ -443,6 +444,61 @@ When using `phpunit/phpunit:^6.5.0`, `phpunit/phpunit:^7.5.0`, `phpunit/phpunit:
 ```
 
 The number of annotations follows the `maximum-count` parameter. Note that GitHub Actions [shows at most 10 warning annotations per step](https://github.com/actions/toolkit/blob/bcae5eca3f432f591cf9f052db4533fc585fb2ac/docs/problem-matchers.md#limitations) (a single run of `phpunit`) and 50 per job (across all of its steps), so annotations beyond that do not appear in the summary of a workflow run.
+
+### Writing a GitHub Actions step summary
+
+When the extension detects slow tests, it can additionally append them as a Markdown table to the [GitHub Actions step summary](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands#adding-a-job-summary), so that they show up on the summary page of a workflow run, for example:
+
+```markdown
+## Slow tests
+
+Detected 2 tests where the duration exceeded the global maximum duration (0.500 seconds).
+
+| # | Duration | Maximum | Test |
+|--:|--:|--:|:--|
+| 1 | 1.234 | 0.500 | `FooTest::testBar` |
+| 2 | 0.900 | 0.500 | `FooTest::testBaz with data set #1 (900)` |
+```
+
+The extension appends to the file in the environment variable `GITHUB_STEP_SUMMARY`, which [GitHub Actions sets for every step](https://docs.github.com/en/actions/reference/workflows-and-actions/variables#default-environment-variables). When `GITHUB_STEP_SUMMARY` is not set or empty, or when the file cannot be opened, the extension does not write a step summary. When it does not detect any slow tests, it does not write anything either.
+
+This is disabled by default. You can enable it with the `github-actions-step-summary` parameter:
+
+- `false` (default) never writes a step summary
+- `auto` writes a step summary only when the environment variable `GITHUB_ACTIONS` has the value `true` and `GITHUB_STEP_SUMMARY` is set, so running the tests locally is not affected
+- `true` writes a step summary whenever `GITHUB_STEP_SUMMARY` is set
+
+The following example enables the GitHub Actions step summary when running on GitHub Actions and using `phpunit/phpunit:^10.0.0` and later:
+
+```diff
+ <phpunit
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+     bootstrap="vendor/autoload.php"
+ >
+     <extensions>
+-        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
++        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension">
++            <parameter name="github-actions-step-summary" value="auto"/>
++        </bootstrap>
+     </extensions>
+     <testsuites>
+         <testsuite name="unit">
+             <directory>test/Unit/</directory>
+        </testsuite>
+     </testsuites>
+ </phpunit>
+```
+
+When using `phpunit/phpunit:^6.5.0`, `phpunit/phpunit:^7.5.0`, `phpunit/phpunit:^8.5.19`, or `phpunit/phpunit:^9.0.0`, configure the `github-actions-step-summary` element in the `arguments` element:
+
+```xml
+<element key="github-actions-step-summary">
+    <string>auto</string>
+</element>
+```
+
+The number of rows follows the `maximum-count` parameter. When running `phpunit/phpunit:^10.0.0` and later with the `--no-output` option, the extension does not write a step summary.
 
 ### Configuring the maximum duration per test case
 
