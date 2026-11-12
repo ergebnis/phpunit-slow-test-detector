@@ -607,6 +607,14 @@ jobs:
             php-version: "8.5"
             dependencies: "highest"
 
+          - phpunit-version: "8.5.40"
+            php-version: "8.6"
+            dependencies: "lowest"
+
+          - phpunit-version: "8.5.40"
+            php-version: "8.6"
+            dependencies: "highest"
+
           - phpunit-version: "9.0.0"
             php-version: "7.4"
             dependencies: "lowest"
@@ -663,6 +671,14 @@ jobs:
             php-version: "8.5"
             dependencies: "highest"
 
+          - phpunit-version: "9.6.21"
+            php-version: "8.6"
+            dependencies: "lowest"
+
+          - phpunit-version: "9.6.21"
+            php-version: "8.6"
+            dependencies: "highest"
+
           - phpunit-version: "10.0.0"
             php-version: "8.1"
             dependencies: "lowest"
@@ -703,6 +719,14 @@ jobs:
             php-version: "8.5"
             dependencies: "highest"
 
+          - phpunit-version: "10.5.35"
+            php-version: "8.6"
+            dependencies: "lowest"
+
+          - phpunit-version: "10.5.35"
+            php-version: "8.6"
+            dependencies: "highest"
+
           - phpunit-version: "11.0.0"
             php-version: "8.2"
             dependencies: "lowest"
@@ -735,6 +759,14 @@ jobs:
             php-version: "8.5"
             dependencies: "highest"
 
+          - phpunit-version: "11.3.6"
+            php-version: "8.6"
+            dependencies: "lowest"
+
+          - phpunit-version: "11.3.6"
+            php-version: "8.6"
+            dependencies: "highest"
+
           - phpunit-version: "12.0.0"
             php-version: "8.3"
             dependencies: "lowest"
@@ -759,6 +791,14 @@ jobs:
             php-version: "8.5"
             dependencies: "highest"
 
+          - phpunit-version: "12.3.6"
+            php-version: "8.6"
+            dependencies: "lowest"
+
+          - phpunit-version: "12.3.6"
+            php-version: "8.6"
+            dependencies: "highest"
+
           - phpunit-version: "13.0.0"
             php-version: "8.4"
             dependencies: "lowest"
@@ -773,6 +813,14 @@ jobs:
 
           - phpunit-version: "13.0.0"
             php-version: "8.5"
+            dependencies: "highest"
+
+          - phpunit-version: "13.0.0"
+            php-version: "8.6"
+            dependencies: "lowest"
+
+          - phpunit-version: "13.0.0"
+            php-version: "8.6"
             dependencies: "highest"
 
     env:
