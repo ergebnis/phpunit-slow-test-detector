@@ -121,20 +121,15 @@ final class DurationTest extends Framework\TestCase
     public static function provideMillisecondsSecondsAndNanoseconds(): iterable
     {
         $values = [
-            'zero' => [
+            'nine-hundred-ninety-nine' => [
+                999,
                 0,
-                0,
-                0,
+                999000000,
             ],
             'one' => [
                 1,
                 0,
                 1000000,
-            ],
-            'nine-hundred-ninety-nine' => [
-                999,
-                0,
-                999000000,
             ],
             'one-thousand' => [
                 1000,
@@ -145,6 +140,11 @@ final class DurationTest extends Framework\TestCase
                 1234,
                 1,
                 234000000,
+            ],
+            'zero' => [
+                0,
+                0,
+                0,
             ],
         ];
 
@@ -174,16 +174,6 @@ final class DurationTest extends Framework\TestCase
     public static function provideDurationDurationAndResultOfAddingDurations(): iterable
     {
         $values = [
-            'zero' => [
-                Duration::fromMilliseconds(0),
-                Duration::fromMilliseconds(0),
-                Duration::fromMilliseconds(0),
-            ],
-            'not-zero' => [
-                Duration::fromMilliseconds(1),
-                Duration::fromMilliseconds(2),
-                Duration::fromMilliseconds(3),
-            ],
             'more-than-999999999-nanoseconds' => [
                 Duration::fromSecondsAndNanoseconds(
                     1,
@@ -197,6 +187,16 @@ final class DurationTest extends Framework\TestCase
                     4,
                     123456788,
                 ),
+            ],
+            'not-zero' => [
+                Duration::fromMilliseconds(1),
+                Duration::fromMilliseconds(2),
+                Duration::fromMilliseconds(3),
+            ],
+            'zero' => [
+                Duration::fromMilliseconds(0),
+                Duration::fromMilliseconds(0),
+                Duration::fromMilliseconds(0),
             ],
         ];
 

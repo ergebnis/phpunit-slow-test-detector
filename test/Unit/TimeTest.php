@@ -107,11 +107,11 @@ final class TimeTest extends Framework\TestCase
     public static function provideStartGreaterThanEnd(): iterable
     {
         $values = [
-            'seconds-greater' => [
-                11,
-                1,
+            'nanoseconds-greater' => [
                 10,
                 1,
+                10,
+                0,
             ],
             'seconds-and-nanoseconds-greater' => [
                 11,
@@ -119,11 +119,11 @@ final class TimeTest extends Framework\TestCase
                 10,
                 0,
             ],
-            'nanoseconds-greater' => [
-                10,
+            'seconds-greater' => [
+                11,
                 1,
                 10,
-                0,
+                1,
             ],
         ];
 
@@ -176,16 +176,6 @@ final class TimeTest extends Framework\TestCase
                     0,
                 ),
             ],
-            'start-smaller-than-end' => [
-                10,
-                50,
-                12,
-                70,
-                Duration::fromSecondsAndNanoseconds(
-                    2,
-                    20,
-                ),
-            ],
             'start-nanoseconds-greater-than-end-nanoseconds' => [
                 10,
                 50,
@@ -194,6 +184,16 @@ final class TimeTest extends Framework\TestCase
                 Duration::fromSecondsAndNanoseconds(
                     1,
                     999999980,
+                ),
+            ],
+            'start-smaller-than-end' => [
+                10,
+                50,
+                12,
+                70,
+                Duration::fromSecondsAndNanoseconds(
+                    2,
+                    20,
                 ),
             ],
         ];

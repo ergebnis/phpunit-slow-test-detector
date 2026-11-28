@@ -94,11 +94,11 @@ final class IntProvider extends AbstractProvider
         $faker = self::faker();
 
         return [
+            'int-greater-than-plus-one' => $faker->numberBetween(1),
             'int-less-than-minus-one' => -1 * $faker->numberBetween(1),
             'int-minus-one' => -1,
-            'int-zero' => 0,
             'int-plus-one' => 1,
-            'int-greater-than-plus-one' => $faker->numberBetween(1),
+            'int-zero' => 0,
         ];
     }
 }

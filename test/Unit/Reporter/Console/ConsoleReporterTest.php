@@ -116,11 +116,11 @@ final class ConsoleReporterTest extends Framework\TestCase
         };
 
         $values = [
-            'header-singular-global-only' => [
+            'footer-plural' => [
                 $print([
                     '',
                     '',
-                    'Detected 1 test where the duration exceeded the global maximum duration (0.100).',
+                    'Detected 3 tests where the duration exceeded the global maximum duration (0.100).',
                     '',
                     '# Duration Test',
                     '------------------------',
@@ -128,48 +128,45 @@ final class ConsoleReporterTest extends Framework\TestCase
                     '------------------------',
                     '     0.000',
                     '      └─── seconds',
+                    '',
+                    'There are 2 additional slow tests that are not listed here.',
                 ]),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                 MaximumCount::fromCount(Count::fromInt(1)),
-                SlowTestList::create(SlowTest::create(
-                    TestIdentifier::fromString('FooTest::test'),
-                    TestDescription::fromString('FooTest::test'),
-                    Duration::fromMilliseconds(300),
-                    MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
-                    TestLocation::create(
-                        File::fromString($faker->slug()),
-                        Line::fromInt($faker->numberBetween(1)),
+                SlowTestList::create(
+                    SlowTest::create(
+                        TestIdentifier::fromString('FooTest::test'),
+                        TestDescription::fromString('FooTest::test'),
+                        Duration::fromMilliseconds(300),
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create(
+                            File::fromString($faker->slug()),
+                            Line::fromInt($faker->numberBetween(1)),
+                        ),
                     ),
-                )),
-            ],
-            'header-singular-custom' => [
-                $print([
-                    '',
-                    '',
-                    'Detected 1 test where the duration exceeded a custom or the global maximum duration (0.100).',
-                    '',
-                    '# Duration          Test',
-                    '  Actual   Maximum',
-                    '---------------------------------',
-                    '1    0.300    0.200 FooTest::test',
-                    '---------------------------------',
-                    '     0.000',
-                    '      └─── seconds',
-                ]),
-                MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
-                MaximumCount::fromCount(Count::fromInt(1)),
-                SlowTestList::create(SlowTest::create(
-                    TestIdentifier::fromString('FooTest::test'),
-                    TestDescription::fromString('FooTest::test'),
-                    Duration::fromMilliseconds(300),
-                    MaximumDuration::fromDuration(Duration::fromMilliseconds(200)),
-                    TestLocation::create(
-                        File::fromString($faker->slug()),
-                        Line::fromInt($faker->numberBetween(1)),
+                    SlowTest::create(
+                        TestIdentifier::fromString('BarTest::test'),
+                        TestDescription::fromString('BarTest::test'),
+                        Duration::fromMilliseconds(275),
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create(
+                            File::fromString($faker->slug()),
+                            Line::fromInt($faker->numberBetween(1)),
+                        ),
                     ),
-                )),
+                    SlowTest::create(
+                        TestIdentifier::fromString('BazTest::test'),
+                        TestDescription::fromString('BazTest::test'),
+                        Duration::fromMilliseconds(250),
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create(
+                            File::fromString($faker->slug()),
+                            Line::fromInt($faker->numberBetween(1)),
+                        ),
+                    ),
+                ),
             ],
-            'header-plural-global-only' => [
+            'footer-singular' => [
                 $print([
                     '',
                     '',
@@ -178,13 +175,14 @@ final class ConsoleReporterTest extends Framework\TestCase
                     '# Duration Test',
                     '------------------------',
                     '1    0.300 FooTest::test',
-                    '2    0.275 BarTest::test',
                     '------------------------',
                     '     0.000',
                     '      └─── seconds',
+                    '',
+                    'There is 1 additional slow test that is not listed here.',
                 ]),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
-                MaximumCount::fromCount(Count::fromInt(2)),
+                MaximumCount::fromCount(Count::fromInt(1)),
                 SlowTestList::create(
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
@@ -248,23 +246,22 @@ final class ConsoleReporterTest extends Framework\TestCase
                     ),
                 ),
             ],
-            'list-sorted' => [
+            'header-plural-global-only' => [
                 $print([
                     '',
                     '',
-                    'Detected 3 tests where the duration exceeded the global maximum duration (0.100).',
+                    'Detected 2 tests where the duration exceeded the global maximum duration (0.100).',
                     '',
                     '# Duration Test',
                     '------------------------',
                     '1    0.300 FooTest::test',
                     '2    0.275 BarTest::test',
-                    '3    0.250 BazTest::test',
                     '------------------------',
                     '     0.000',
                     '      └─── seconds',
                 ]),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
-                MaximumCount::fromCount(Count::fromInt(3)),
+                MaximumCount::fromCount(Count::fromInt(2)),
                 SlowTestList::create(
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
@@ -280,16 +277,6 @@ final class ConsoleReporterTest extends Framework\TestCase
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
                         Duration::fromMilliseconds(275),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
-                        TestLocation::create(
-                            File::fromString($faker->slug()),
-                            Line::fromInt($faker->numberBetween(1)),
-                        ),
-                    ),
-                    SlowTest::create(
-                        TestIdentifier::fromString('BazTest::test'),
-                        TestDescription::fromString('BazTest::test'),
-                        Duration::fromMilliseconds(250),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                         TestLocation::create(
                             File::fromString($faker->slug()),
@@ -298,55 +285,58 @@ final class ConsoleReporterTest extends Framework\TestCase
                     ),
                 ),
             ],
-            'list-unsorted' => [
+            'header-singular-custom' => [
                 $print([
                     '',
                     '',
-                    'Detected 3 tests where the duration exceeded the global maximum duration (0.100).',
+                    'Detected 1 test where the duration exceeded a custom or the global maximum duration (0.100).',
+                    '',
+                    '# Duration          Test',
+                    '  Actual   Maximum',
+                    '---------------------------------',
+                    '1    0.300    0.200 FooTest::test',
+                    '---------------------------------',
+                    '     0.000',
+                    '      └─── seconds',
+                ]),
+                MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                MaximumCount::fromCount(Count::fromInt(1)),
+                SlowTestList::create(SlowTest::create(
+                    TestIdentifier::fromString('FooTest::test'),
+                    TestDescription::fromString('FooTest::test'),
+                    Duration::fromMilliseconds(300),
+                    MaximumDuration::fromDuration(Duration::fromMilliseconds(200)),
+                    TestLocation::create(
+                        File::fromString($faker->slug()),
+                        Line::fromInt($faker->numberBetween(1)),
+                    ),
+                )),
+            ],
+            'header-singular-global-only' => [
+                $print([
+                    '',
+                    '',
+                    'Detected 1 test where the duration exceeded the global maximum duration (0.100).',
                     '',
                     '# Duration Test',
                     '------------------------',
                     '1    0.300 FooTest::test',
-                    '2    0.275 BarTest::test',
-                    '3    0.250 BazTest::test',
                     '------------------------',
                     '     0.000',
                     '      └─── seconds',
                 ]),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
-                MaximumCount::fromCount(Count::fromInt(3)),
-                SlowTestList::create(
-                    SlowTest::create(
-                        TestIdentifier::fromString('BazTest::test'),
-                        TestDescription::fromString('BazTest::test'),
-                        Duration::fromMilliseconds(250),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
-                        TestLocation::create(
-                            File::fromString($faker->slug()),
-                            Line::fromInt($faker->numberBetween(1)),
-                        ),
+                MaximumCount::fromCount(Count::fromInt(1)),
+                SlowTestList::create(SlowTest::create(
+                    TestIdentifier::fromString('FooTest::test'),
+                    TestDescription::fromString('FooTest::test'),
+                    Duration::fromMilliseconds(300),
+                    MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                    TestLocation::create(
+                        File::fromString($faker->slug()),
+                        Line::fromInt($faker->numberBetween(1)),
                     ),
-                    SlowTest::create(
-                        TestIdentifier::fromString('BarTest::test'),
-                        TestDescription::fromString('BarTest::test'),
-                        Duration::fromMilliseconds(275),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
-                        TestLocation::create(
-                            File::fromString($faker->slug()),
-                            Line::fromInt($faker->numberBetween(1)),
-                        ),
-                    ),
-                    SlowTest::create(
-                        TestIdentifier::fromString('FooTest::test'),
-                        TestDescription::fromString('FooTest::test'),
-                        Duration::fromMilliseconds(300),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
-                        TestLocation::create(
-                            File::fromString($faker->slug()),
-                            Line::fromInt($faker->numberBetween(1)),
-                        ),
-                    ),
-                ),
+                )),
             ],
             'list-different-maximum-duration' => [
                 $print([
@@ -477,58 +467,6 @@ final class ConsoleReporterTest extends Framework\TestCase
                     ),
                 ),
             ],
-            'list-different-maximum-duration-hours-global-only' => [
-                $print([
-                    '',
-                    '',
-                    'Detected 3 tests where the duration exceeded the global maximum duration (0:00:00.100).',
-                    '',
-                    '# Duration    Test',
-                    '---------------------------',
-                    '1 1:23:45.678 FooTest::test',
-                    '2 0:09:35.000 BarTest::test',
-                    '3 0:00:00.250 BazTest::test',
-                    '---------------------------',
-                    '  0:00:00.000',
-                    '   │  │  └─── seconds',
-                    '   │  └────── minutes',
-                    '   └───────── hours',
-                ]),
-                MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
-                MaximumCount::fromCount(Count::fromInt(3)),
-                SlowTestList::create(
-                    SlowTest::create(
-                        TestIdentifier::fromString('FooTest::test'),
-                        TestDescription::fromString('FooTest::test'),
-                        Duration::fromMilliseconds(5025678),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
-                        TestLocation::create(
-                            File::fromString($faker->slug()),
-                            Line::fromInt($faker->numberBetween(1)),
-                        ),
-                    ),
-                    SlowTest::create(
-                        TestIdentifier::fromString('BarTest::test'),
-                        TestDescription::fromString('BarTest::test'),
-                        Duration::fromMilliseconds(575000),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
-                        TestLocation::create(
-                            File::fromString($faker->slug()),
-                            Line::fromInt($faker->numberBetween(1)),
-                        ),
-                    ),
-                    SlowTest::create(
-                        TestIdentifier::fromString('BazTest::test'),
-                        TestDescription::fromString('BazTest::test'),
-                        Duration::fromMilliseconds(250),
-                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
-                        TestLocation::create(
-                            File::fromString($faker->slug()),
-                            Line::fromInt($faker->numberBetween(1)),
-                        ),
-                    ),
-                ),
-            ],
             'list-different-maximum-duration-hours-custom' => [
                 $print([
                     '',
@@ -582,28 +520,30 @@ final class ConsoleReporterTest extends Framework\TestCase
                     ),
                 ),
             ],
-            'footer-singular' => [
+            'list-different-maximum-duration-hours-global-only' => [
                 $print([
                     '',
                     '',
-                    'Detected 2 tests where the duration exceeded the global maximum duration (0.100).',
+                    'Detected 3 tests where the duration exceeded the global maximum duration (0:00:00.100).',
                     '',
-                    '# Duration Test',
-                    '------------------------',
-                    '1    0.300 FooTest::test',
-                    '------------------------',
-                    '     0.000',
-                    '      └─── seconds',
-                    '',
-                    'There is 1 additional slow test that is not listed here.',
+                    '# Duration    Test',
+                    '---------------------------',
+                    '1 1:23:45.678 FooTest::test',
+                    '2 0:09:35.000 BarTest::test',
+                    '3 0:00:00.250 BazTest::test',
+                    '---------------------------',
+                    '  0:00:00.000',
+                    '   │  │  └─── seconds',
+                    '   │  └────── minutes',
+                    '   └───────── hours',
                 ]),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
-                MaximumCount::fromCount(Count::fromInt(1)),
+                MaximumCount::fromCount(Count::fromInt(3)),
                 SlowTestList::create(
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
                         TestDescription::fromString('FooTest::test'),
-                        Duration::fromMilliseconds(300),
+                        Duration::fromMilliseconds(5025678),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                         TestLocation::create(
                             File::fromString($faker->slug()),
@@ -613,7 +553,17 @@ final class ConsoleReporterTest extends Framework\TestCase
                     SlowTest::create(
                         TestIdentifier::fromString('BarTest::test'),
                         TestDescription::fromString('BarTest::test'),
-                        Duration::fromMilliseconds(275),
+                        Duration::fromMilliseconds(575000),
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create(
+                            File::fromString($faker->slug()),
+                            Line::fromInt($faker->numberBetween(1)),
+                        ),
+                    ),
+                    SlowTest::create(
+                        TestIdentifier::fromString('BazTest::test'),
+                        TestDescription::fromString('BazTest::test'),
+                        Duration::fromMilliseconds(250),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                         TestLocation::create(
                             File::fromString($faker->slug()),
@@ -622,7 +572,7 @@ final class ConsoleReporterTest extends Framework\TestCase
                     ),
                 ),
             ],
-            'footer-plural' => [
+            'list-sorted' => [
                 $print([
                     '',
                     '',
@@ -631,14 +581,14 @@ final class ConsoleReporterTest extends Framework\TestCase
                     '# Duration Test',
                     '------------------------',
                     '1    0.300 FooTest::test',
+                    '2    0.275 BarTest::test',
+                    '3    0.250 BazTest::test',
                     '------------------------',
                     '     0.000',
                     '      └─── seconds',
-                    '',
-                    'There are 2 additional slow tests that are not listed here.',
                 ]),
                 MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
-                MaximumCount::fromCount(Count::fromInt(1)),
+                MaximumCount::fromCount(Count::fromInt(3)),
                 SlowTestList::create(
                     SlowTest::create(
                         TestIdentifier::fromString('FooTest::test'),
@@ -664,6 +614,56 @@ final class ConsoleReporterTest extends Framework\TestCase
                         TestIdentifier::fromString('BazTest::test'),
                         TestDescription::fromString('BazTest::test'),
                         Duration::fromMilliseconds(250),
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create(
+                            File::fromString($faker->slug()),
+                            Line::fromInt($faker->numberBetween(1)),
+                        ),
+                    ),
+                ),
+            ],
+            'list-unsorted' => [
+                $print([
+                    '',
+                    '',
+                    'Detected 3 tests where the duration exceeded the global maximum duration (0.100).',
+                    '',
+                    '# Duration Test',
+                    '------------------------',
+                    '1    0.300 FooTest::test',
+                    '2    0.275 BarTest::test',
+                    '3    0.250 BazTest::test',
+                    '------------------------',
+                    '     0.000',
+                    '      └─── seconds',
+                ]),
+                MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                MaximumCount::fromCount(Count::fromInt(3)),
+                SlowTestList::create(
+                    SlowTest::create(
+                        TestIdentifier::fromString('BazTest::test'),
+                        TestDescription::fromString('BazTest::test'),
+                        Duration::fromMilliseconds(250),
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create(
+                            File::fromString($faker->slug()),
+                            Line::fromInt($faker->numberBetween(1)),
+                        ),
+                    ),
+                    SlowTest::create(
+                        TestIdentifier::fromString('BarTest::test'),
+                        TestDescription::fromString('BarTest::test'),
+                        Duration::fromMilliseconds(275),
+                        MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
+                        TestLocation::create(
+                            File::fromString($faker->slug()),
+                            Line::fromInt($faker->numberBetween(1)),
+                        ),
+                    ),
+                    SlowTest::create(
+                        TestIdentifier::fromString('FooTest::test'),
+                        TestDescription::fromString('FooTest::test'),
+                        Duration::fromMilliseconds(300),
                         MaximumDuration::fromDuration(Duration::fromMilliseconds(100)),
                         TestLocation::create(
                             File::fromString($faker->slug()),
@@ -757,22 +757,6 @@ final class ConsoleReporterTest extends Framework\TestCase
         );
 
         $values = [
-            'global-only-truncated' => [
-                $print([
-                    '',
-                    '',
-                    'Detected 1 test where the duration exceeded the global maximum duration (0.100).',
-                    '',
-                    '# Duration Test',
-                    '--------------------------------------------------------------------------------',
-                    '1    0.300 FooTest::testSleeperSleepsLongerTh…umDuration with data set #0 (1000)',
-                    '--------------------------------------------------------------------------------',
-                    '     0.000',
-                    '      └─── seconds',
-                ]),
-                MaximumWidth::fromWidth(Width::fromInt(80)),
-                SlowTestList::create($slowTestWithGlobalMaximumDuration),
-            ],
             'custom-and-global-truncated' => [
                 $print([
                     '',
@@ -789,6 +773,22 @@ final class ConsoleReporterTest extends Framework\TestCase
                 ]),
                 MaximumWidth::fromWidth(Width::fromInt(80)),
                 SlowTestList::create($slowTestWithCustomMaximumDuration),
+            ],
+            'global-only-truncated' => [
+                $print([
+                    '',
+                    '',
+                    'Detected 1 test where the duration exceeded the global maximum duration (0.100).',
+                    '',
+                    '# Duration Test',
+                    '--------------------------------------------------------------------------------',
+                    '1    0.300 FooTest::testSleeperSleepsLongerTh…umDuration with data set #0 (1000)',
+                    '--------------------------------------------------------------------------------',
+                    '     0.000',
+                    '      └─── seconds',
+                ]),
+                MaximumWidth::fromWidth(Width::fromInt(80)),
+                SlowTestList::create($slowTestWithGlobalMaximumDuration),
             ],
             'greater-than-required' => [
                 $print([

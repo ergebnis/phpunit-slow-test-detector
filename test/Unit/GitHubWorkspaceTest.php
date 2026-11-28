@@ -117,8 +117,8 @@ final class GitHubWorkspaceTest extends Framework\TestCase
     public static function provideValueThatContainsFile(): iterable
     {
         $values = [
-            'without-trailing-directory-separator' => '/home/runner/work/foo/foo',
             'with-trailing-directory-separator' => '/home/runner/work/foo/foo/',
+            'without-trailing-directory-separator' => '/home/runner/work/foo/foo',
         ];
 
         foreach ($values as $key => $value) {

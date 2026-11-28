@@ -18,7 +18,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
  */
 final class MaximumCount
 {
-    private $count;
+    private Count $count;
 
     private function __construct(Count $count)
     {

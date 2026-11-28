@@ -12,24 +12,28 @@ declare(strict_types=1);
  */
 
 use Ergebnis\Rector;
-use Rector\Config;
-use Rector\ValueObject;
 
-return static function (Config\RectorConfig $rectorConfig): void {
-    $rectorConfig->cacheDirectory(__DIR__ . '/.build/rector/');
+$ruleSet = Rector\Config\RuleSet\Php74::create()->withRules(Rector\Config\Rules::fromArray([
+    Rector\Rules\Files\ReferenceNamespacedSymbolsRelativeToNamespacePrefixRector::class => [
+        'discoverNamespacePrefixes' => true,
+        'parentNamespacePrefixes' => [
+            'Ergebnis\PHPUnit\SlowTestDetector',
+            'Symfony\Component',
+        ],
+    ],
+]));
 
-    $rectorConfig->paths([
+return Rector\Config\Factory::fromRuleSet($ruleSet)
+    ->withCache(__DIR__ . '/.build/rector/')
+    ->withPaths([
         __DIR__ . '/src/',
         __DIR__ . '/test/',
         __DIR__ . '/.php-cs-fixer.php',
         __DIR__ . '/rector.php',
-    ]);
-
-    $rectorConfig->phpVersion(ValueObject\PhpVersion::PHP_74);
-
-    $rectorConfig->ruleWithConfiguration(Rector\Rules\Files\ReferenceNamespacedSymbolsRelativeToNamespacePrefixRector::class, [
-        'parentNamespacePrefixes' => [
-            'Ergebnis\PHPUnit\SlowTestDetector',
+    ])
+    ->withSkip([
+        Rector\Rules\Expressions\Arrays\SortAssociativeArrayByKeyRector::class => [
+            __DIR__ . '/test/Unit/Renderer/GitHubActions/WarningMessageTest.php',
+            __DIR__ . '/test/Unit/Renderer/GitHubActions/WorkflowCommandRendererTest.php',
         ],
     ]);
-};

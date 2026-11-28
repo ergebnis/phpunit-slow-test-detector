@@ -58,8 +58,8 @@ final class SeriesTest extends Framework\TestCase
         $faker = self::faker();
 
         $invalidMajors = [
-            'major-minus-one' => '-1',
             'major-letter' => $faker->randomLetter(),
+            'major-minus-one' => '-1',
             'major-word' => $faker->word(),
         ];
 
@@ -70,8 +70,8 @@ final class SeriesTest extends Framework\TestCase
         }
 
         $invalidMinors = [
-            'minor-minus-one' => '-1',
             'minor-letter' => $faker->randomLetter(),
+            'minor-minus-one' => '-1',
             'minor-word' => $faker->word(),
         ];
 
@@ -94,21 +94,21 @@ final class SeriesTest extends Framework\TestCase
         }
 
         $invalidSeparators = [
-            'separator-space' => ' ',
             'separator-dash' => ' ',
             'separator-dots-two' => '..',
+            'separator-space' => ' ',
         ];
 
         $majors = [
-            'major-zero' => '0',
-            'major-one' => '1',
             'major-greater-than-one' => (string) $faker->numberBetween(2),
+            'major-one' => '1',
+            'major-zero' => '0',
         ];
 
         $minors = [
-            'minor-zero' => '0',
-            'minor-one' => '1',
             'minor-greater-than-one' => (string) $faker->numberBetween(2),
+            'minor-one' => '1',
+            'minor-zero' => '0',
         ];
 
         foreach ($invalidSeparators as $invalidSeparatorKey => $invalidSeparator) {
@@ -135,9 +135,9 @@ final class SeriesTest extends Framework\TestCase
         }
 
         $patches = [
-            'minor-zero' => '0',
-            'minor-one' => '1',
             'minor-greater-than-one' => (string) $faker->numberBetween(2),
+            'minor-one' => '1',
+            'minor-zero' => '0',
         ];
 
         foreach ($majors as $majorKey => $major) {
@@ -181,17 +181,17 @@ final class SeriesTest extends Framework\TestCase
     public static function provideValidValueAndMajor(): iterable
     {
         $values = [
-            'major-zero-minor-zero' => [
-                '0.0',
-                Version\Major::fromInt(0),
+            'major-minor' => [
+                '123.456',
+                Version\Major::fromInt(123),
             ],
             'major-one-minor-zero' => [
                 '1.0',
                 Version\Major::fromInt(1),
             ],
-            'major-minor' => [
-                '123.456',
-                Version\Major::fromInt(123),
+            'major-zero-minor-zero' => [
+                '0.0',
+                Version\Major::fromInt(0),
             ],
         ];
 

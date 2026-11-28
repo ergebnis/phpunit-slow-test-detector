@@ -80,14 +80,12 @@ final class SleeperTest extends Framework\TestCase
     }
 
     /**
-     * @return list<array{0: string}>
+     * @return \Iterator<int<0, max>, array{string}>
      */
     public static function provideDataWhereDataNameIsInteger(): iterable
     {
-        yield from [
-            [
-                'bar',
-            ],
+        yield [
+            'bar',
         ];
     }
 
@@ -108,14 +106,12 @@ final class SleeperTest extends Framework\TestCase
     }
 
     /**
-     * @return array<string, array{0: string}>
+     * @return \Iterator<string, array{string}>
      */
     public static function provideDataWhereDataNameIsString(): iterable
     {
-        yield from [
-            'foo' => [
-                'bar',
-            ],
+        yield 'foo' => [
+            'bar',
         ];
     }
 
