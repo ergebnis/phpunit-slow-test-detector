@@ -21,7 +21,7 @@ use PHPUnit\Util;
 
 try {
     $phpUnitVersionSeries = Version\Series::fromString(Runner\Version::series());
-} catch (\InvalidArgumentException $exception) {
+} catch (\InvalidArgumentException $invalidArgumentException) {
     throw new \RuntimeException(\sprintf(
         'Unable to determine PHPUnit version from version series "%s".',
         Runner\Version::series(),
@@ -36,6 +36,9 @@ if ($phpUnitVersionSeries->major()->equals(Version\Major::fromInt(6))) {
         private Collector\Collector $collector;
         private Reporter\Reporter $reporter;
 
+        /**
+         * @param array<string, mixed> $options
+         */
         public function __construct(array $options = [])
         {
             $maximumCount = MaximumCount::default();
@@ -345,6 +348,9 @@ if ($phpUnitVersionSeries->major()->isOneOf(
         private Collector\Collector $collector;
         private Reporter\Reporter $reporter;
 
+        /**
+         * @param array<string, mixed> $options
+         */
         public function __construct(array $options = [])
         {
             $maximumCount = MaximumCount::default();

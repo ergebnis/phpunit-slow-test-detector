@@ -97,17 +97,13 @@ final class UnitTest extends Framework\TestCase
     public static function provideExpectedUnitAndDuration(): iterable
     {
         $values = [
-            'zero' => [
-                Reporter\Unit::seconds(),
-                Duration::fromMilliseconds(0),
+            'hours' => [
+                Reporter\Unit::hours(),
+                Duration::fromMilliseconds(3600000),
             ],
             'milliseconds' => [
                 Reporter\Unit::seconds(),
                 Duration::fromMilliseconds(500),
-            ],
-            'seconds' => [
-                Reporter\Unit::seconds(),
-                Duration::fromMilliseconds(59999),
             ],
             'minutes' => [
                 Reporter\Unit::minutes(),
@@ -117,9 +113,13 @@ final class UnitTest extends Framework\TestCase
                 Reporter\Unit::minutes(),
                 Duration::fromMilliseconds(3599999),
             ],
-            'hours' => [
-                Reporter\Unit::hours(),
-                Duration::fromMilliseconds(3600000),
+            'seconds' => [
+                Reporter\Unit::seconds(),
+                Duration::fromMilliseconds(59999),
+            ],
+            'zero' => [
+                Reporter\Unit::seconds(),
+                Duration::fromMilliseconds(0),
             ],
         ];
 
@@ -158,12 +158,9 @@ final class UnitTest extends Framework\TestCase
                     Duration::fromMilliseconds(200),
                 ],
             ],
-            'mixed-seconds-and-minutes' => [
-                Reporter\Unit::minutes(),
-                [
-                    Duration::fromMilliseconds(100),
-                    Duration::fromMilliseconds(60000),
-                ],
+            'empty' => [
+                Reporter\Unit::seconds(),
+                [],
             ],
             'mixed-all' => [
                 Reporter\Unit::hours(),
@@ -173,9 +170,12 @@ final class UnitTest extends Framework\TestCase
                     Duration::fromMilliseconds(3600000),
                 ],
             ],
-            'empty' => [
-                Reporter\Unit::seconds(),
-                [],
+            'mixed-seconds-and-minutes' => [
+                Reporter\Unit::minutes(),
+                [
+                    Duration::fromMilliseconds(100),
+                    Duration::fromMilliseconds(60000),
+                ],
             ],
         ];
 

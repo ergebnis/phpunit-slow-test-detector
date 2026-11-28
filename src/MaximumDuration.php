@@ -18,7 +18,7 @@ namespace Ergebnis\PHPUnit\SlowTestDetector;
  */
 final class MaximumDuration
 {
-    private $duration;
+    private Duration $duration;
 
     private function __construct(Duration $duration)
     {

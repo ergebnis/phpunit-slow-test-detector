@@ -49,86 +49,6 @@ final class DurationFormatterTest extends Framework\TestCase
     public static function provideDurationUnitAndFormattedDuration(): iterable
     {
         $values = [
-            'seconds-zero' => [
-                Reporter\Unit::seconds(),
-                Duration::fromSecondsAndNanoseconds(
-                    0,
-                    0,
-                ),
-                '0.000',
-            ],
-            'seconds-milliseconds' => [
-                Reporter\Unit::seconds(),
-                Duration::fromSecondsAndNanoseconds(
-                    0,
-                    123999000,
-                ),
-                '0.123',
-            ],
-            'seconds-digits-one' => [
-                Reporter\Unit::seconds(),
-                Duration::fromSecondsAndNanoseconds(
-                    1,
-                    234456789,
-                ),
-                '1.234',
-            ],
-            'seconds-digits-two' => [
-                Reporter\Unit::seconds(),
-                Duration::fromSecondsAndNanoseconds(
-                    12,
-                    345678912,
-                ),
-                '12.345',
-            ],
-            'minutes-zero' => [
-                Reporter\Unit::minutes(),
-                Duration::fromSecondsAndNanoseconds(
-                    0,
-                    0,
-                ),
-                '0:00.000',
-            ],
-            'minutes-seconds-only' => [
-                Reporter\Unit::minutes(),
-                Duration::fromSecondsAndNanoseconds(
-                    12,
-                    345678912,
-                ),
-                '0:12.345',
-            ],
-            'minutes-digits-one' => [
-                Reporter\Unit::minutes(),
-                Duration::fromSecondsAndNanoseconds(
-                    1 * 60 + 23,
-                    456789012,
-                ),
-                '1:23.456',
-            ],
-            'minutes-digits-two' => [
-                Reporter\Unit::minutes(),
-                Duration::fromSecondsAndNanoseconds(
-                    12 * 60 + 34,
-                    567890123,
-                ),
-                '12:34.567',
-            ],
-            'hours-zero' => [
-                Reporter\Unit::hours(),
-                Duration::fromSecondsAndNanoseconds(
-                    0,
-                    0,
-                ),
-                '0:00:00.000',
-            ],
-            'hours-seconds-only' => [
-                Reporter\Unit::hours(),
-                Duration::fromSecondsAndNanoseconds(
-                    12,
-                    345678912,
-                ),
-                '0:00:12.345',
-            ],
             'hours-digits-one' => [
                 Reporter\Unit::hours(),
                 Duration::fromSecondsAndNanoseconds(
@@ -160,6 +80,86 @@ final class DurationFormatterTest extends Framework\TestCase
                     00,
                 ),
                 '12:34:00.000',
+            ],
+            'hours-seconds-only' => [
+                Reporter\Unit::hours(),
+                Duration::fromSecondsAndNanoseconds(
+                    12,
+                    345678912,
+                ),
+                '0:00:12.345',
+            ],
+            'hours-zero' => [
+                Reporter\Unit::hours(),
+                Duration::fromSecondsAndNanoseconds(
+                    0,
+                    0,
+                ),
+                '0:00:00.000',
+            ],
+            'minutes-digits-one' => [
+                Reporter\Unit::minutes(),
+                Duration::fromSecondsAndNanoseconds(
+                    60 + 23,
+                    456789012,
+                ),
+                '1:23.456',
+            ],
+            'minutes-digits-two' => [
+                Reporter\Unit::minutes(),
+                Duration::fromSecondsAndNanoseconds(
+                    12 * 60 + 34,
+                    567890123,
+                ),
+                '12:34.567',
+            ],
+            'minutes-seconds-only' => [
+                Reporter\Unit::minutes(),
+                Duration::fromSecondsAndNanoseconds(
+                    12,
+                    345678912,
+                ),
+                '0:12.345',
+            ],
+            'minutes-zero' => [
+                Reporter\Unit::minutes(),
+                Duration::fromSecondsAndNanoseconds(
+                    0,
+                    0,
+                ),
+                '0:00.000',
+            ],
+            'seconds-digits-one' => [
+                Reporter\Unit::seconds(),
+                Duration::fromSecondsAndNanoseconds(
+                    1,
+                    234456789,
+                ),
+                '1.234',
+            ],
+            'seconds-digits-two' => [
+                Reporter\Unit::seconds(),
+                Duration::fromSecondsAndNanoseconds(
+                    12,
+                    345678912,
+                ),
+                '12.345',
+            ],
+            'seconds-milliseconds' => [
+                Reporter\Unit::seconds(),
+                Duration::fromSecondsAndNanoseconds(
+                    0,
+                    123999000,
+                ),
+                '0.123',
+            ],
+            'seconds-zero' => [
+                Reporter\Unit::seconds(),
+                Duration::fromSecondsAndNanoseconds(
+                    0,
+                    0,
+                ),
+                '0.000',
             ],
         ];
 
