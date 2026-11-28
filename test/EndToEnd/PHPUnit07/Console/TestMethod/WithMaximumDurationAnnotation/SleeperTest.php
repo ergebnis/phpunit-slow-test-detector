@@ -82,7 +82,7 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @return \Iterator<int<0, max>, array{string}>
      */
-    public static function provideDataWhereDataNameIsInteger(): \Iterator
+    public static function provideDataWhereDataNameIsInteger(): iterable
     {
         yield [
             'bar',
@@ -108,7 +108,7 @@ final class SleeperTest extends Framework\TestCase
     /**
      * @return \Iterator<string, array{string}>
      */
-    public static function provideDataWhereDataNameIsString(): \Iterator
+    public static function provideDataWhereDataNameIsString(): iterable
     {
         yield 'foo' => [
             'bar',
